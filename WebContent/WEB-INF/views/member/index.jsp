@@ -10,9 +10,6 @@
 
 <%@include file="/WEB-INF/views/member/inc/asset.jsp" %>
 
-<link rel="stylesheet" href="/bookjuck/css/footer.css">
-<link rel="stylesheet" href="/bookjuck/css/header.css">
-<link rel="stylesheet" href="/bookjuck/css/mypage.css">
 <link rel="stylesheet" href="/bookjuck/css/global.css">
 <link rel="stylesheet" href="/bookjuck/css/firstpage.css">
 
@@ -44,14 +41,14 @@
 
 
 	<!-- 플로팅 메뉴 -->
-	<%@include file="/WEB-INF/views/member/inc/bookjuckee.jsp" %>
-	<%@include file="/WEB-INF/views/member/inc/top.jsp" %>
+	<%@include file="/WEB-INF/views/common/bookjuckee.jsp" %>
+	<%@include file="/WEB-INF/views/common/top.jsp" %>
 	
 
 
 
 	<!-- ########## 하단 시작 -->
-	<%@include file="/WEB-INF/views/member/inc/footer.jsp" %>
+	<%@include file="/WEB-INF/views/common/footer.jsp" %>
 	<!-- ########## 하단 끝 -->
 	
 

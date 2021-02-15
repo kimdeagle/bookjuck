@@ -31,6 +31,7 @@ aside {
 .contentsection {
 	margin:15px;
     float:left;
+    min-width:74%;
 }
 
 footer {
@@ -192,6 +193,8 @@ textarea {
     3. 버튼 설정
     4. 리스트 점 없애기
     5. 모달창 화면 가운데로 뜨기
+    6. 북적이 챗봇
+    7. top(상단으로)
 
 */
 
@@ -248,4 +251,144 @@ ul {
     display: inline-block;
     text-align: left;
     vertical-align: middle;
+}
+
+
+
+/*  6. 북적이(챗봇) css  */
+#bookjeok {
+    text-align:center;
+    position: fixed;
+    padding:20px;
+    bottom: 0;
+}
+
+#chatbtn {
+    width:60px;
+}
+
+
+/*  7. top(상단으로) css  */
+#top {
+    text-align:center;
+    position:fixed;
+    padding:20px;
+    bottom:0px;
+    right:0px;
+}
+
+#top > span {
+    font-size:1.5em;
+    color:#BC4B51;
+}
+
+
+
+
+/* 
+
+	전체 적용할 헤더, 푸터 css
+	21.02.15 추가
+
+*/
+
+/*  header 적용 css   */
+#headerlink {
+    text-align:right;
+    margin:20px;
+}
+
+.headerlink-item {
+    margin:0 5px;
+}
+
+#searchmenu {
+    text-align:center;
+}
+
+#realtime {
+    margin:10px;
+}
+
+/* navigation bar */
+
+.nav {
+    width:105%;
+}
+
+.nav > li {
+    width:16%;
+    text-align:center;
+}
+
+.navbar {
+    background-color: #F4E285;
+    border:none;
+}
+
+.nav > li > a:hover {
+    background-color:transparent;
+}
+
+.nav > li > a:active {
+    background-color:transparent;
+}
+
+.nav > li> a:visited {
+    background-color:transparent;
+}
+
+.nav > li > a:focus{
+    background-color:transparent;
+}
+
+a {
+    outline:none;
+}
+
+
+
+
+/*  footer 적용 css  */
+/* footer */
+
+footer {
+    background-color: #f8edb7;
+    text-align:center;
+}
+
+#footerlink {
+    width:100%;
+    text-align:center;
+    padding:20px;
+    background-color: #8CB369;
+}
+
+.footerlink-item {
+    margin:0 3%;
+    color:white;
+    
+}
+
+.separator {
+    color:white;
+}
+
+footer .logo_area {
+    display: inline-block;
+    position: relative;
+    top: -20px;
+    left: 20px;
+}
+
+footer .click_footer {
+    display: inline-block;
+    position: relative;
+    text-align:left;
+    top: 20px;
+    left: 30px;
+}
+
+.logo_area {
+    display:inline;
 }
