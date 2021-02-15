@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+//http://localhost:8090/bookjuck/member/mypage/basic.do
+
 @WebServlet("/member/mypage/basic.do")
 public class MyPage extends HttpServlet {
 	
