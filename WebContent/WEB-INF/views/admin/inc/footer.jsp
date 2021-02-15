@@ -19,7 +19,7 @@
         </div>
     
         <div class="logo_area">
-            <img src="image/bookjeok/logo.png" class="logo" alt="북적북적" />
+            <img src="/bookjuck/image/bookjeok/logo.png" class="logo" alt="북적북적" />
         </div>
         <div class="click_footer">
             <address>

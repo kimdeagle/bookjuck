@@ -12,11 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/member/mypage/basic.do")
 public class MyPage extends HttpServlet {
 	
-		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/member/mypage/basic.jsp");
-		dispatcher.include(request, response);
+		dispatcher.forward(request, response);
 		
 	}
-
 }

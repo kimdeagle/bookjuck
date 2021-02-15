@@ -20,7 +20,7 @@
  
 <body>
     <div id="logo">
-        <img src="image/bookjeok/logo.png">
+        <img src="/bookjuck/image/bookjeok/logo.png">
     </div>
 
     <div id="login">

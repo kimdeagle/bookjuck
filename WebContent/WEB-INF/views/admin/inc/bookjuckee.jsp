@@ -6,7 +6,7 @@
 
 <div id="bookjeok">
     <label for="character">
-    <img src="image/bookjeok/chatbtn.png" id="chatbtn">
+    <img src="/bookjuck/image/bookjeok/chatbtn.png" id="chatbtn">
     <h6>북적이에게</h6>
     <h6>문의하기</h6>
     </label>

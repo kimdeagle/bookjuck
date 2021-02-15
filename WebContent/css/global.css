@@ -24,8 +24,12 @@ aside {
     float:left;
 }
 
-section {
+.mainsection {
     margin:15px;
+}
+
+.contentsection {
+	margin:15px;
     float:left;
 }
 

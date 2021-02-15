@@ -6,7 +6,7 @@
 
     <header>
         <!-- 로고 및 캐릭터 -->
-        <img src="image/bookjeok/logo.png" id="logo">
+        <img src="/bookjuck/image/bookjeok/logo.png" id="logo">
 
         <div class="searchdiv inline">
             <input type="text" id="search" class="form-control noline large inline">

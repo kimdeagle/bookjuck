@@ -23,7 +23,7 @@
         <div id="searchmenu">
 
             <!-- 로고 및 캐릭터 -->
-            <img src="image/bookjeok/logo.png" class="logo">
+            <img src="/bookjuck/image/bookjeok/logo.png" class="logo">
             
             <!-- 통합검색창(검색분류선택창) -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">통합검색<span class="caret"></span></a>

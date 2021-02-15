@@ -12,10 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/admin/login.do")
 public class Login extends HttpServlet {
 	
-		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/admin/login.jsp");
-		dispatcher.include(request, response);
+		dispatcher.forward(request, response);
 		
 	}
 

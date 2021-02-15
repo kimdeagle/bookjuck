@@ -3,7 +3,7 @@
     
     
 <!-- 도서 회전 영역 -->
-<section class="contentsection">
+<section class="section">
     <div class="slick-items">
         <div class="slick-item">
             <img src="image/달러구트 꿈 백화점.png" class="book-sm">
