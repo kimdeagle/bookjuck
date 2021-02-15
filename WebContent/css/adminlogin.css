@@ -1,0 +1,25 @@
+#logo {
+    text-align:center;
+}
+
+#logo > img {
+    width:300px;
+    margin:100px;
+}
+
+#login {
+    width:400px;
+    margin:0 auto;
+    border:1px solid #ccc;
+    text-align:center;
+    padding:30px;
+}
+
+#id, #pwd {
+    margin:15px;
+}
+
+#loginbtn {
+    display:block;
+    margin:20px auto;
+}

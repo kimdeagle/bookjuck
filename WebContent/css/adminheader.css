@@ -1,0 +1,39 @@
+header {
+    padding:50px 0px;
+    text-align:center;
+}
+
+#logo {
+    width:250px;
+    margin-bottom:20px;
+    margin-right:10px;
+    margin-left:-5px;
+}
+
+/* 사이드메뉴 21.02.14 추가 */
+
+#introtitle {
+    width:100%;
+    padding:15px;
+    text-align:center;
+    clear:both;
+    background-color: #5B8E7D;
+}
+
+#mypagemenu {
+    background-color: white;
+    border:1px solid #ccc;
+    width:100%;
+    padding-top:5px;
+    padding-bottom:15px;
+    clear:both;
+}
+
+.menuitem {
+    margin-top:30px;
+}
+
+.menusubitem {
+    margin-left:-25px;
+    margin-top:15px;
+}

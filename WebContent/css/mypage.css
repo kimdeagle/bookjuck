@@ -1,0 +1,163 @@
+#headerlink {
+    text-align:right;
+    margin:20px;
+}
+
+.headerlink-item {
+    margin:0 5px;
+}
+
+#searchmenu {
+    text-align:center;
+}
+
+#realtime {
+    margin:10px;
+}
+
+/* navigation bar */
+
+.nav {
+    width:105%;
+}
+
+.nav > li {
+    width:16%;
+    text-align:center;
+}
+
+.navbar {
+    background-color: #F4E285;
+    border:none;
+}
+
+.nav > li > a:hover {
+    background-color:transparent;
+}
+
+.nav > li > a:active {
+    background-color:transparent;
+}
+
+.nav > li> a:visited {
+    background-color:transparent;
+}
+
+.nav > li > a:focus{
+    background-color:transparent;
+}
+
+a {
+    outline:none;
+}
+
+/* 사이드메뉴 21.02.14 추가 */
+
+#introtitle {
+    width:100%;
+    padding:15px;
+    text-align:center;
+    clear:both;
+    background-color: #5B8E7D;
+}
+
+#intro {
+    background-color:white;
+    text-align:center;
+    border-left:1px solid #ccc;
+    border-right:1px solid #ccc;
+    width:100%;
+    padding-top:20px;
+    padding-bottom:5px;
+    clear:both;
+}
+
+#mypagemenu {
+    background-color: white;
+    border-left:1px solid #ccc;
+    border-right:1px solid #ccc;
+    border-bottom:1px solid #ccc;
+    width:100%;
+    padding-top:5px;
+    padding-bottom:15px;
+    clear:both;
+}
+
+.menuitem {
+    margin-top:30px;
+}
+
+.menusubitem {
+    margin-left:-25px;
+    margin-top:15px;
+}
+
+/* footer */
+
+footer {
+    background-color: #f8edb7;
+    text-align:center;
+}
+
+#footerlink {
+    width:100%;
+    text-align:center;
+    padding:20px;
+
+}
+
+.footerlink-item {
+    margin:0 3%;
+}
+
+.separator {
+    color:white;
+}
+
+footer .logo_area {
+    display: inline-block;
+    position: relative;
+    top: -20px;
+    left: 20px;
+}
+
+footer .click_footer {
+    display: inline-block;
+    position: relative;
+    text-align:left;
+    top: 20px;
+    left: 30px;
+}
+
+.logo_area {
+    display:inline;
+}
+/* 화면 고정 요소 */
+
+/* 북적이에게 문의하기 */
+
+#bookjeok {
+    text-align:center;
+    position: fixed;
+    padding:20px;
+    bottom: 0;
+}
+
+#chatbtn {
+    width:60px;
+}
+
+/* top */
+
+#top {
+    text-align:center;
+    position:fixed;
+    padding:20px;
+    bottom:0px;
+    right:0px;
+}
+
+#top > span {
+    font-size:1.5em;
+    color:#BC4B51;
+}

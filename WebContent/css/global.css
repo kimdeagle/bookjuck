@@ -1,0 +1,247 @@
+/*
+
+    4조
+    모든 페이지에서 사용할 CSS 파일
+    
+*/
+
+
+/* 
+
+    구조 설정(21.02.14 추가)
+
+    - header(nav 포함)
+    - aside | section
+    - footer
+    - 의 구조
+
+*/
+
+aside {
+    width:20%;
+    margin:15px;
+    min-height:1000px;
+    float:left;
+}
+
+section {
+    margin:15px;
+    float:left;
+}
+
+footer {
+    clear:both;
+}
+
+/*
+
+    글꼴
+
+    1. 제목(레코체)
+    2. 일반(넥슨 Lv2 고딕)
+    3. 글꼴 + 태그 선택자 설정
+    4. 헤딩 설정
+    5. 헤딩 크기 설정
+    6. 헤딩 태그(white)
+    7. 일반 강조(string, b태그)
+
+*/
+
+/* 1. 제목(레코체) */
+@font-face {
+    font-family: 'Recipekorea';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/Recipekorea.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 2. 일반(넥슨 Lv2 고딕) */
+@font-face {
+    font-family: 'NEXON Lv2 Gothic';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 3. 글꼴 + 태그 선택자 */
+body, p, div, span, ul, ol, li, dl, dt, dd, table, th, td, a, blockquote, textarea, fieldset, small, strong, b, i, em {
+    font-family: 'NEXON Lv2 Gothic';
+    color:#555;
+    line-height:1.5em;
+    font-size:15px;
+}
+
+/* 4. 헤딩 설정 */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Recipekorea';
+    color:#5B8E7D;
+}
+
+/* 5. 헤딩 크기 설정 */
+h1 { font-size:45px; }
+h2 { font-size:40px; }
+h3 { font-size:30px; }
+h4 { font-size:25px; }
+h5 { font-size:20px; }
+h6 { font-size:15px; }
+
+/* 6. 헤딩 태그(white) */
+
+.h1-white, .h2-white, .h3-white, .h4-white, .h5-white, .h6-white {
+    font-family: 'Recipekorea';
+    color:white;
+}
+
+/* 7. 일반 강조 */
+strong, b {
+    font-family: 'NEXON Lv2 Gothic';
+    color:#5B8E7D;
+}
+
+/*
+
+    텍스트 박스 설정
+    
+*/
+
+textarea {
+    resize:none;
+}
+
+.noline {
+    outline: none;
+}
+
+.form-control:focus {
+    box-shadow:none;
+    border-color:#ccc;
+}
+
+/*
+
+    크기 설정
+
+    1. 로고 이미지
+    2. 텍스트박스
+    3. 도서표지 이미지
+    4. 테이블
+
+*/
+
+/* 1. 로고 이미지 */
+
+.logo {
+    width:250px;
+    margin-bottom:20px;
+    margin-right:10px;
+    margin-left:-5px;
+}
+
+/* 2. 텍스트박스 */
+
+.small {
+    width:200px;
+}
+
+.medium {
+    width:300px;
+}
+
+.large {
+    width:400px;
+}
+
+/* 3. 도서표지 이미지 */
+
+.book-sm {
+    width:130px;
+}
+
+.book-md {
+    width:170px;
+}
+
+.book-lg {
+    width:210px;
+}
+
+/* 4. 테이블 */
+
+.tbl-sm {
+    width:650px;
+}
+
+.tbl-md {
+    width:850px;
+}
+
+.tbl-lg {
+    width:1000px;
+}
+
+/*
+
+    기타
+    
+    1. 인라인(block 태그를 inline으로 바꿔야할 때 사용하는 클래스)
+    2. 링크 설정
+    3. 버튼 설정
+    4. 리스트 점 없애기
+    5. 모달창 화면 가운데로 뜨기
+
+*/
+
+/* 1. 인라인 */
+
+.inline {
+    display:inline;
+}
+
+/* 2. 링크 설정 */
+
+a:hover {
+    text-decoration: none;
+    color:#F4A259;
+    border:none;
+    font-weight:bold;
+}
+
+/* 3. 버튼 설정 */
+
+.btn-general {
+    background-color:#BC4B51;
+    color:white;
+}
+
+.btn-general:hover {
+    background-color: transparent;
+    border:1px solid #ccc;
+    color:#F4A259;
+}
+
+/* 4. 리스트 점 없애기 21.02.14 추가 */
+
+ul {
+    list-style:none;
+}
+
+/* 5. 모달창 화면 가운데로 뜨기 */
+
+.modal {
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) { 
+    .modal:before {
+            display: inline-block;
+            vertical-align: middle;
+            content: " ";
+            height: 100%;
+    }
+}
+
+.modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}
