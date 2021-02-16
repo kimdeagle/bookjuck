@@ -6,3 +6,6 @@
 
 <script src="/bookjuck/node_modules/jquery/dist/jquery.js"></script>
 <script src="/bookjuck/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
+<!-- header.js -->
+<script src="/bookjuck/js/header.js"></script>
