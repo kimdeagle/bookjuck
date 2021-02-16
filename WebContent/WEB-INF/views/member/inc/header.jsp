@@ -2,8 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div class="container">
-
     <!-- header -->
     <header>
 
@@ -65,7 +63,7 @@
         
         <!-- 국내도서 중분류 -->
 		<div id="internalmenu">
-			<a href="/WEB-INF/views/member/book/inlist.do" class="">소설</a>
+			<a href="/bookjuck/member/book/inlist.do" class="">소설</a>
 			<a href="#" class="">시/에세이</a>
 			<a href="#" class="">경제/경영</a>
 			<a href="#" class="">인문</a>
@@ -84,10 +82,9 @@
 		
 		<!-- 해외도서 중분류 -->
 		<div id="externalmenu">
-			<a href="/WEB-INF/views/member/book/exlist.do" class="">서양도서</a>
+			<a href="/bookjuck/member/book/exlist.do" class="">서양도서</a>
 			<a href="" class="">어린이/청소년</a>
 			<a href="" class="">일본도서</a>
 			<a href="" class="">기타언어권</a>
 		</div>
     </header>
-</div>

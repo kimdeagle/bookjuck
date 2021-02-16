@@ -346,6 +346,10 @@ a {
     outline:none;
 }
 
+#searchbtn:focus {
+	outline:none !important;
+}
+
 /* 국내도서 중분류 */
 #internalmenu {
 	display: none;

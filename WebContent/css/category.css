@@ -1,0 +1,35 @@
+/* 카테고리 css */
+
+#categorytitle {
+    width:80%;
+    padding:10px;
+    text-align:center;
+    clear:both;
+    background-color: #5B8E7D;
+}
+
+#categorylist {
+    background-color: white;
+    border-left:1px solid #ccc;
+    border-right:1px solid #ccc;
+    border-bottom:1px solid #ccc;
+    width:80%;
+    padding-top:5px;
+    padding-bottom:15px;
+    clear:both;
+}
+
+#categorylist > a {
+	display: block;
+	text-align: center;
+	margin: 10px auto 5px auto;
+}
+
+.menuitem {
+    margin-top:30px;
+}
+
+.menusubitem {
+    margin-left:-25px;
+    margin-top:15px;
+}
