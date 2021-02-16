@@ -119,7 +119,7 @@
                     </tr>
                 </table>
 
-                <input type="button" class="btn btn-general" value="신청하기">
+                <input type="button" class="btn btn-general" id="btnapply" value="신청하기">
 
             </article>
 
