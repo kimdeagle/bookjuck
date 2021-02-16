@@ -346,10 +346,6 @@ a {
     outline:none;
 }
 
-#searchbtn:focus {
-	outline:none !important;
-}
-
 /* 국내도서 중분류 */
 #internalmenu {
 	display: none;
@@ -385,7 +381,6 @@ a {
 	display: block;
 	margin: 5px auto 5px auto;
 }
-
 
 /*  footer 적용 css  */
 /* footer */
