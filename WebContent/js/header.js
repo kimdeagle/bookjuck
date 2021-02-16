@@ -1,3 +1,6 @@
+/* header JavaScript */
+
+/* 국내도서, 해외도서 mouse event 관련 JavaScript */
 $(window).load(function() {
 	
 	/* 국내도서 중분류 */
@@ -41,3 +44,4 @@ $(window).load(function() {
 	});
 
 });
+
