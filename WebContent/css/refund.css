@@ -1,0 +1,28 @@
+/*   취소/교환/환불 신청 폼   */
+.application-form {
+    /* border: 1px solid black; */
+    margin-top: 50px;
+    margin-left: 270px;
+}
+
+.application-form .btn {
+    /* border: 1px solid black; */
+    margin-top: -20px;
+    margin-left: 370px;
+}
+
+.application-form table {
+    margin-top: 30px;
+}
+
+/*   취소/교환/환불 안내사항   */
+
+.refund-info {
+    /* border: 1px solid black; */
+    margin-top: 110px;
+    margin-left: 270px;
+}
+
+.refund-info li {
+    list-style: square;
+}
