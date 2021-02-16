@@ -1,0 +1,150 @@
+/* 
+
+Olivine : #8CB369 - RGB(140,179,105)
+Buff : #F4E285 - RGB(244,226,133)
+Sandy Brown : #F4A259 - RGB(244,162,89)
+Wintergreen Dream : #5B8E7D - RGB(91,142,125)
+Bittersweet Shimmer : #BC4B51 - RGB(188,75,81)
+
+*/
+
+th{
+    background-color: RGBA(244,162,89,.13);
+    width: 200px;
+}
+
+
+.read{
+    border: 0;
+    outline: none;
+}
+
+.date{
+    width: 90px;
+}
+
+.orderer{
+    border-bottom: 1px solid #DDD;
+    text-indent: 30px;
+}
+
+.olDate{
+    margin-top: 30px;
+    margin-bottom: 3px;
+    font-size: 13px;
+}
+
+.orderCnt{
+    width: 26px;
+    text-align: right;
+}
+
+.orderList th,.orderList td {
+    text-align: center;
+    border-right: 1px solid #ddd;
+}
+
+.orderList th:nth-child(6),.orderList td:nth-child(6){
+    border-right: 0;
+}
+
+.olInfo{
+    /* height: 150px; */
+}
+
+.orderList tr th:nth-child(1){
+    width: 150px;
+}
+.orderList tr th:nth-child(2){
+    width: 110px;
+}
+.orderList tr th:nth-child(3){
+    width: 290px;
+}
+.orderList tr th:nth-child(4){
+    width: 50px;
+}
+.orderList tr th:nth-child(5){
+    width: 130px;
+}
+.orderList tr th:nth-child(6){
+    width: 120px;
+}
+
+
+.orderList tr td:nth-child(1){
+    padding-top: 35px;
+    
+}
+.orderList tr td:nth-child(2){
+    padding-top: 73px;
+
+}
+.orderList tr td:nth-child(3){
+    text-align: left;
+}
+
+.orderList tr td:nth-child(4){
+    text-align: center;
+    padding-top: 73px;
+}
+
+.orderList tr td:nth-child(5){
+    padding-top: 73px;
+}
+
+.orderList tr td:nth-child(6){
+    padding-top: 28px;
+}
+
+
+.orderList tr td:nth-child(3) a{
+    position: relative;
+    top: -50px;
+}
+
+.orderList tr td:nth-child(6) button{
+    margin-bottom: 5px;
+    width: 80px;
+}
+
+.book-xs{
+    width: 90px;
+}
+
+.noOrderList{
+    text-align: center;
+    font-weight: bold;
+    display: none;
+}
+
+.noOrderList span{
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+.btn-order{
+    /* background-color: RGBA(244,162,89,.3); */
+    background-color: #5B8E7D;
+    color: white;
+    width: 120px;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+.btn-order:hover{
+    color: white;
+    font-weight: normal;
+}
+
+.btn1{
+    background-color: #EFEFEF;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 3px;
+}
+
+.btn1:hover{
+    color: #555;
+    font-weight: normal;
+}
