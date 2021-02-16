@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 
 
-<div class="container">
     <footer>
         <div id="footerlink">
             <a href="#" class="footerlink-item">회사소개</a>
@@ -31,6 +30,5 @@
             </address>
         </div>
     </footer>
-</div>
 
 
