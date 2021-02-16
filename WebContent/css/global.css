@@ -346,8 +346,41 @@ a {
     outline:none;
 }
 
+/* 국내도서 중분류 */
+#internalmenu {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 1;
+	width: 181.44px;
+	/* background-color: #D5E8CB; */
+	background-color: #F4EB8D;
+	text-align: center;
+}
 
+#internalmenu > a {
+	display: block;
+	margin: 5px auto 5px auto;
+}
 
+/* 해외도서 중분류 */
+#externalmenu {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 1;
+	width: 181.44px;
+	/* background-color: #D5E8CB; */
+	background-color: #F4EB8D;
+	text-align: center;
+}
+
+#externalmenu > a {
+	display: block;
+	margin: 5px auto 5px auto;
+}
 
 /*  footer 적용 css  */
 /* footer */
