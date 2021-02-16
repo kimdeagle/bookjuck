@@ -21,9 +21,7 @@
 
 <body>
 
-	<!-- ########## 상단 헤더 시작 -->
-	<%@include file="/WEB-INF/views/member/inc/header.jsp" %>
-	<!-- ########## 상단 헤더 끝 -->
+
 
 	<!-- 플로팅 메뉴 (북적이& top) -->
 	<%@include file="/WEB-INF/views/common/bookjuckee.jsp" %>
@@ -32,8 +30,15 @@
 
 	<div class="container">
 	
-		<!-- 마이페이지 -->
+		<!-- ########## 상단 헤더 시작 -->
+		<%@include file="/WEB-INF/views/member/inc/header.jsp" %>
+		<!-- ########## 상단 헤더 끝 -->
+	
+	
+		<!-- 마이페이지 side bar -->
 		<%@include file="/WEB-INF/views/member/inc/mypage.jsp" %>
+		
+		
 		
 		<!-- @@@@@여기에 개인작업 페이지 넣을 것 -->
 		<section class="contentsection">
@@ -43,12 +48,13 @@
       </article>
 		</section>
 
+
+		<!-- ########## 하단 시작 -->
+		<%@include file="/WEB-INF/views/common/footer.jsp" %>
+		<!-- ########## 하단 끝 -->
+		
 	</div>
 	
-	
-	<!-- ########## 하단 시작 -->
-	<%@include file="/WEB-INF/views/common/footer.jsp" %>
-	<!-- ########## 하단 끝 -->
 	
 
 </body>
