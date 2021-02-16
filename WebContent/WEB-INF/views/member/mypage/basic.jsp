@@ -40,7 +40,7 @@
 			<article>
 			섹션입니다. 
 			마이페이지(좌측sub메뉴) 사용하시는 분들은 이 소스 복사해서 여기에서 작업해주세요.
-			</article>
+      </article>
 		</section>
 
 	</div>
