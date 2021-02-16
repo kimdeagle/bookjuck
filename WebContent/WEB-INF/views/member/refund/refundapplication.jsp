@@ -49,7 +49,7 @@
                 <h3>환불 신청</h3>
 
                 <table class="table tbl-md">
-                    <tr>
+                    <tr style="background-color: RGBA(140,179,105,0.2)">
                         <th>주문번호</th>
                         <td><input type="text" class="form-control"></td>
                         <th>상품정보</th>
