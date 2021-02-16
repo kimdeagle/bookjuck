@@ -93,6 +93,11 @@
     width:220px;
 }
 
+/* 추천,베스트,신간 클릭 시 테두리 비활성화 */
+.btns > input:focus {
+	outline:none !important;
+}
+
 #booktable {
     margin:70px auto;
     border:1px solid #ccc;

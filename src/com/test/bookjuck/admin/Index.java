@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//http://localhost:8090/bookjuck/index.do
+//http://localhost:8090/bookjuck/admin/index.do
 
 @WebServlet("/admin/index.do")
 public class Index extends HttpServlet {
