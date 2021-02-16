@@ -1,0 +1,114 @@
+
+.bestSellerList {
+	position: relative;
+	left: 0px;
+}
+
+#leftmenu {
+	border: 1px solid #f4e285;
+	display: inline-block;
+}
+
+#leftmenu>div {
+	margin: 15px;
+	margin-right: 100px;
+}
+
+.list1 {
+	color: #555b6e;
+	margin: 10px;
+	font-size: 15px;
+}
+
+#menuname1 {
+	border: 1px solid #f4e285;
+	width: 193px;
+	height: 50px;
+	text-align: center;
+	font-weight: bold;
+	line-height: 50px;
+	background-color: #f4e285;
+}
+
+.intro {
+	font-size: large;
+}
+
+.bookbox {
+	border: 1px solid #E5E5E5;
+	width: 900px;
+	height: 300px;
+}
+
+.bookbox2, .bookbox3, .bookbox4 {
+	border: 1px solid #E5E5E5;
+	width: 300px;
+	height: 520px;
+	text-align: center;
+	float: left;
+}
+
+.bookbox5, .bookbox6, .bookbox7, .bookbox8, .bookbox9, .bookbox10 {
+	border: 1px solid #E5E5E5;
+	width: 900px;
+	height: 220px;
+}
+
+.bookbox img {
+	float: left;
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+#rank2to4 img {
+	margin-top: 10px;
+}
+
+#rank5to10 img {
+	height: 160px;
+	float: left;
+	margin: 10px;
+}
+
+.bookname {
+	font-size: larger;
+}
+
+.bookcopy {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.bookname, .bookinfo, .bookcopy, .price {
+	margin-top: 15px;
+}
+
+.btn-default, .btn-danger, .btn-warning {
+	float: left;
+	margin: 3px;
+}
+
+.rank1btn {
+	position: relative;
+	top: 30px;
+	left: 10px;
+}
+
+.rank2to4 {
+	position: relative;
+	left: 15px;
+}
+
+.bestSellerListRight {
+	float:right;
+}
+
+#choicedate {
+	position: relative;
+	left: 0px;
+}
+
+.dateselect {
+	background-color: #295B37;
+	color: white;
+}
