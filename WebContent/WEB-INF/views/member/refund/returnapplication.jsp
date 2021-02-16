@@ -43,7 +43,7 @@
 		
 		
 		<!-- @@@@@여기에 개인작업 페이지 넣을 것 -->
-        <section class="mypagesection">
+        <section class="contentsection">
             <article class="application-form">
 
                 <h3>교환 신청</h3>
