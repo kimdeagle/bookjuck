@@ -93,6 +93,10 @@
     width:220px;
 }
 
+.btns > input:focus {
+	outline:none !important;
+}
+
 #booktable {
     margin:70px auto;
     border:1px solid #ccc;
