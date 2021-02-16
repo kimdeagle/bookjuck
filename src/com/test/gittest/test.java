@@ -1,7 +1,7 @@
 package com.test.gittest;
 
 public class test {
-	
-//	깃헙 테스트용 파일입니다.
+
+  // 최진영 테스트
 
 }
