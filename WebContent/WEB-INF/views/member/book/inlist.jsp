@@ -15,96 +15,13 @@
 <!-- sidemenu.css -->
 <link rel="stylesheet" href="/bookjuck/css/category.css">
 
+<!-- inlist.css -->
+<link rel="stylesheet" href="/bookjuck/css/inlist.css">
+
+<!-- inlist.js -->
+<script src="/bookjuck/js/inlist.js"></script>
 
 <style>
-
-	/* 이미지 셀 */
-	table td:nth-child(1) {
-		height: 200px;
-	}
-	
-	/* 텍스트 셀 */
-	table td:nth-child(2) {
-		width: 500px;
-		height: 200px;
-	}
-	
-	/* 텍스트 margin */
-	table td:nth-child(2) div {
-		margin: 5px 15px;
-	}
-	
-	/* 수량 및 버튼 셀 */
-	table td:nth-child(3) {
-		width: 200px;
-		height: 200px;
-		text-align: right;
-	}
-
-	/* 이미지 */
-	table td .image {
-		height: 200px;
-	}
-	
-	/* 텍스트 > 제목 */
-	table td .title {
-		font-size: 2em;
-	}
-	
-	table td .info {
-		
-	}
-	
-	table td .subinfo {
-	
-	}
-	
-	/* 도서 소개 */
-	table td .intro {
-		height: 45px;
-		overflow: hidden;
-	}
-	
-	table td .priceinfo {
-	
-	}
-	
-	/* 텍스트 > 정가 + 가격 */
-	table td .priceinfo .price {
-		font-size: 0.9em;
-	}
-	
-	/* 텍스트 > 판매가 */
-	table td .priceinfo .saleprice {
-		font-size: 1.3em;
-		margin-left: 50px;
-	}
-	
-	/* 텍스트 > 판매가격 */
-	table td .priceinfo .saleprice strong {
-		color: red;
-		font-size: 1.5em;
-	}
-	
-	/* 수량 > + , - 버튼 */
-	table td .amount input[type=button] {
-		outline: none !important;
-	}
-	
-	/* 수량 > 텍스트박스 */
-	table td .amount input[type=text] {
-		width: 50px;
-		height: 30px;
-		text-align: right;
-	}
-	
-	/* 버튼 */
-	table td .btns button {
-		display: inline-block;
-		width: 57%;
-		margin-top: 7px;
-		outline:none !important;
-	}
 
 </style>
 </head>
@@ -123,14 +40,15 @@
 	<!-- ########## 카테고리 사이드 메뉴 끝 -->
 	
 	
-	<!-- 섹션 메뉴 -->
+	<!-- 섹션 -->
 	<section class="contentsection">
        <h6>국내도서 > 소설 > 한국소설</h6>
+       <hr>
        <table class="tblbooklist">
        	<tbody>
        		<tr>
        			<td>
-       				<img src="/bookjuck/image/바이러스 X.png" id="image1" class="image">
+       				<img src="/bookjuck/image/바이러스 X.png" class="image">
        			</td>
        			<td>
        				<div class="title">대체불가 라틴아메리카</div>
@@ -144,9 +62,9 @@
        			</td>
        			<td>
        				<div class="form-inline amount">
-       					<input type="button" value="-" class="btn btn-default btn-sm">
-       					<input type="text" value="1" class="form-control">
-       					<input type="button" value="+" class="btn btn-default btn-sm">
+       					<input type="button" value="-" class="btn btn-default btn-sm" id="minus">
+       					<input type="text" value="1" class="form-control" id="cnt">
+       					<input type="button" value="+" class="btn btn-default btn-sm" id="plus">
        				</div>
        				<div class="btns">
         				<button class="btn btn-success btn-lg cart">장바구니</button>
@@ -158,6 +76,28 @@
        	</tbody>
        </table>
        <hr>
+       
+       
+       <!-- paging -->
+       <nav>
+		  <ul class="pagination">
+		    <li>
+		      <a href="#" aria-label="Previous">
+		        <span aria-hidden="true">&laquo;</span>
+		      </a>
+		    </li>
+		    <li class="active"><a href="#">1</a></li>
+		    <li><a href="#">2</a></li>
+		    <li><a href="#">3</a></li>
+		    <li><a href="#">4</a></li>
+		    <li><a href="#">5</a></li>
+		    <li>
+		      <a href="#" aria-label="Next">
+		        <span aria-hidden="true">&raquo;</span>
+		      </a>
+		    </li>
+		  </ul>
+		</nav>
        
        </section>
 
@@ -174,7 +114,7 @@
 
 
 	<script>
-	
+
 	</script>
 
 </body>
