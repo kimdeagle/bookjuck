@@ -8,9 +8,13 @@ Bittersweet Shimmer : #BC4B51 - RGB(188,75,81)
 
 */
 
+
+.contentsection{
+	margin-bottom: 150px;
+}
+
 th{
     background-color: RGBA(244,162,89,.13);
-    width: 200px;
 }
 
 
@@ -25,11 +29,55 @@ th{
 
 .orderer{
     border-bottom: 1px solid #DDD;
-    text-indent: 30px;
+    text-indent: 40px;
+}
+
+.orderer th{
+    width: 150px;   
+}
+
+.periodbox{
+	margin-top: 30px;
+}
+
+.periodtbl{
+    border-bottom: 1px solid #DDD;
+}
+
+.periodtbl th{
+    width: 150px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.sort_option{
+    /* border: 1px solid #555; */
+    border-radius: 3px;
+    padding: 3px 4px 2px;
+    
+}
+
+.sort_option a{
+    border-radius: 3px;
+    width: 31px;
+    height: 13px;
+    padding: 3px 4px 2px;
+    /* border: 1px solid #EEE; */
+    /* border-right: 1px solid #555; */
+    /* border-left: 1px solid #555; */
+}
+
+.sort_option a.on{
+    border: 1px solid #DDD;
+    background-color: RGBA(244,162,89,.3);
+    color: #333;
+    /* box-shadow: 5px 5px 10px 1px gray inset; */
+    box-shadow: inset 1.5px 1.5px 0 RGBA(244,162,89,.6), inset -1px -1px 3px RGBA(244,162,89,.6);
+    font-weight: normal;
 }
 
 .olDate{
-    margin-top: 30px;
+    margin-top: 80px;
     margin-bottom: 3px;
     font-size: 13px;
 }
@@ -39,6 +87,7 @@ th{
     text-align: right;
 }
 
+
 .orderList th,.orderList td {
     text-align: center;
     border-right: 1px solid #ddd;
@@ -46,10 +95,6 @@ th{
 
 .orderList th:nth-child(6),.orderList td:nth-child(6){
     border-right: 0;
-}
-
-.olInfo{
-    /* height: 150px; */
 }
 
 .orderList tr th:nth-child(1){
@@ -77,7 +122,7 @@ th{
     
 }
 .orderList tr td:nth-child(2){
-    padding-top: 73px;
+    padding-top: 68px;
 
 }
 .orderList tr td:nth-child(3){
@@ -86,11 +131,11 @@ th{
 
 .orderList tr td:nth-child(4){
     text-align: center;
-    padding-top: 73px;
+    padding-top: 68px;
 }
 
 .orderList tr td:nth-child(5){
-    padding-top: 73px;
+    padding-top: 68px;
 }
 
 .orderList tr td:nth-child(6){
@@ -115,7 +160,7 @@ th{
 .noOrderList{
     text-align: center;
     font-weight: bold;
-    display: none;
+    margin: 90px 0;
 }
 
 .noOrderList span{
@@ -147,4 +192,14 @@ th{
 .btn1:hover{
     color: #555;
     font-weight: normal;
+}
+
+input[type=date]{
+	width:150px;
+	display:inline-block;
+}
+
+#periodbtn{
+	padding: 8px 16px;
+	margin-left: 10px;
 }

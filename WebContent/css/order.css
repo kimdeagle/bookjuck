@@ -1,0 +1,48 @@
+
+
+.statebox{
+	width: 1000px;
+	margin: 0 auto;
+	background-color: RGBA(244,162,89,.2);
+	height: 180px;
+	padding: 30px 50px;
+	margin-bottom: 100px;
+	position: relative;
+}
+
+.statebox>div{
+	float: left;
+}
+
+.statebox >div:nth-child(2){
+	margin-top: 30px; 
+}
+
+.img-orderstate{
+	width: 100px;
+	height: 100px;
+	/* border: 1px solid black;  */
+	margin-top: 10px;
+	margin-right: 40px;
+}
+
+.orderstep{
+	position: absolute;
+	right: 40px;
+	bottom: 28px;
+}
+
+.orderstep>div{
+	float: left;
+	margin: 10px;
+}
+
+.orderstep>div div:first-child{
+	margin-right: 20px;
+	font-size: 20px;
+}
+
+.orderstep> div div:last-child{
+	font-size: 28px;
+}
+
