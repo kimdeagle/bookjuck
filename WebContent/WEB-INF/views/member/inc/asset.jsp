@@ -9,3 +9,6 @@
 
 <!-- header.js -->
 <script src="/bookjuck/js/header.js"></script>
+
+<!-- top.js -->
+<script src="/bookjuck/js/top.js"></script>
