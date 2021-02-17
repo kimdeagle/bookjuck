@@ -1,13 +1,24 @@
-/* inlist.jsp > css */
+/* bookdetail.jsp > css */
+
+/* 섹션 margin 변경 */
+.contentsection {
+	margin-left: -20px;
+	margin-top: -10px;
+}
+
+.table tbody tr td {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
 
 /* 이미지 셀 */
 table td:nth-child(1) {
-	width: 130px;
+	width: 180px;
 }
 
 /* 텍스트 셀 */
 table td:nth-child(2) {
-	width: 500px;
+	width: 520px;
 }
 
 /* 텍스트 margin */
@@ -23,7 +34,7 @@ table td:nth-child(3) {
 
 /* 이미지 */
 table td .image {
-	width: 130px;
+	width: 180px;
 }
 
 /* 텍스트 > 제목 */
@@ -31,22 +42,11 @@ table td .title {
 	font-size: 2em;
 }
 
-table td .info {
-	
-}
-
-table td .subinfo {
-
-}
-
-/* 도서 소개 */
-table td .intro {
-	height: 45px;
-	overflow: hidden;
-}
-
-table td .priceinfo {
-
+/* 텍스트 > 한줄카피 */
+table td .copy {
+	font-size: 1.2em;
+	font-weight: bold;
+	color: black;
 }
 
 /* 텍스트 > 정가 + 가격 */
@@ -64,6 +64,11 @@ table td .priceinfo .saleprice {
 table td .priceinfo .saleprice strong {
 	color: red;
 	font-size: 1.5em;
+}
+
+/* 수량 > div */
+table td .amount {
+	margin-top: 50px;
 }
 
 /* 수량 > + , - 버튼 */
@@ -85,3 +90,8 @@ table td .btns button {
 	outline:none !important;
 }
 
+/* 목차 제목 */
+table td .index strong {
+	display: block;
+	margin: 10px 0 10px 0;
+}

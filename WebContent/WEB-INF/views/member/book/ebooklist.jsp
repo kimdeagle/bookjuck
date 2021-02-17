@@ -13,13 +13,14 @@
 <link rel="stylesheet" href="/bookjuck/css/global.css">
 
 <!-- sidemenu.css -->
-<link rel="stylesheet" href="/bookjuck/css/category.css">
+<link rel="stylesheet" href="/bookjuck/css/ebookcategory.css">
 
-<!-- inlist.css -->
-<link rel="stylesheet" href="/bookjuck/css/inlist.css">
+<!-- ebookcategory.js -->
+<script src="/bookjuck/js/ebookcategory.js"></script>
 
-<!-- inlist.js -->
-<script src="/bookjuck/js/inlist.js"></script>
+<!-- ebooklist.css -->
+<link rel="stylesheet" href="/bookjuck/css/ebooklist.css">
+
 
 <style>
 
@@ -36,7 +37,7 @@
 	
 	
 	<!-- ########## 카테고리 사이드 메뉴 시작 -->
-    <%@include file="/WEB-INF/views/member/inc/category.jsp" %>
+    <%@include file="/WEB-INF/views/member/inc/ebookcategory.jsp" %>
 	<!-- ########## 카테고리 사이드 메뉴 끝 -->
 	
 	
@@ -45,18 +46,18 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th colspan="3"><h6>국내도서 > 소설 > 한국소설</h6></th>
+					<th colspan="3"><h6>국내E-Book > 소설 > 한국소설</h6></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td>
-						<a href="/bookjuck/member/book/bookdetail.do">
+						<a href="/bookjuck/member/book/ebookdetail.do">
 							<img src="/bookjuck/image/바이러스 X.png" class="image">
 						</a>
 					</td>
 					<td>
-						<div><a href="/bookjuck/member/book/bookdetail.do" class="title">대체불가 라틴아메리카</a></div>
+						<div><a href="/bookjuck/member/book/ebookdetail.do" class="title">대체불가 라틴아메리카</a></div>
 						<div class="info">장재준 | 의미와재미</div>
 						<div class="subinfo">2021년 1월 20일 | 292쪽</div>
 						<div class="intro">다양성과 혼종성, 식민성과 근대성이 공존하는 곳.<br />잉카, 마야, 아스텍 문명을 품은 땅에서 이민족의 오랜 야만을 인내한 사람들.</div>
@@ -66,15 +67,9 @@
 						</div>
 					</td>
 					<td>
-						<div class="form-inline amount">
-							<input type="button" value="-" class="btn btn-default btn-sm" id="minus">
-							<input type="text" value="1" class="form-control" id="cnt">
-							<input type="button" value="+" class="btn btn-default btn-sm" id="plus">
-						</div>
 						<div class="btns">
 							<button class="btn btn-success btn-lg btn-block cart">장바구니</button>
 							<button class="btn btn-primary btn-lg btn-block buy">바로구매</button>
-							<button class="btn btn-warning btn-lg btn-block baro">바로드림</button>
 						</div>
 					</td>
 				</tr>

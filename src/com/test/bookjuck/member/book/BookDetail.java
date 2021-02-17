@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/member/book/inlist.do")
-public class Inlist extends HttpServlet {
+@WebServlet("/member/book/bookdetail.do")
+public class BookDetail extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/member/book/inlist.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/member/book/bookdetail.jsp");
 		dispatcher.forward(request, response);
 		
 	}
