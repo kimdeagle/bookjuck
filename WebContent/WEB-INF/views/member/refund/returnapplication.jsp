@@ -43,13 +43,13 @@
 		
 		
 		<!-- @@@@@여기에 개인작업 페이지 넣을 것 -->
-        <section class="mypagesection">
+        <section class="contentsection">
             <article class="application-form">
 
                 <h3>교환 신청</h3>
 
                 <table class="table tbl-md">
-                    <tr>
+                    <tr style="background-color: RGBA(140,179,105,0.2)">
                         <th>주문번호</th>
                         <td><input type="text" class="form-control"></td>
                         <th>상품정보</th>
@@ -100,7 +100,7 @@
                     </tr>
                 </table>
 
-                <input type="button" class="btn btn-general" value="신청하기">
+                <input type="button" class="btn btn-general" id="btnapply" value="신청하기">
 
             </article>
 

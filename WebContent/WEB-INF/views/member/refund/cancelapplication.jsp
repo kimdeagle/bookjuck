@@ -46,32 +46,24 @@
         <section class="contentsection">
             <article class="application-form">
 
-                <h3>환불 신청</h3>
+                <h3>취소 신청</h3>
 
                 <table class="table tbl-md">
                     <tr style="background-color: RGBA(140,179,105,0.2)">
                         <th>주문번호</th>
-                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control" value="0000"></td>
                         <th>상품정보</th>
-                        <td>
-                            <select name="book-title" class="form-control">
-                                <option value="">자바의 정석</option>
-                            </select>
-                        </td>
-                        <th>수량</th>
-                        <td>
-                            <select name="book-amount" class="form-control">
-                                <option value="">1</option>
-                            </select>                            
-                        </td>
+                        <td><input type="text" class="form-control" value="자바의 정석 외 1"></td>
+                        <th>도서 총 수량</th>
+                        <td><input type="text" class="form-control" value="2"></td>
                     </tr>
                     <tr>
-                        <th>환불 사유</th>
+                        <th>취소 사유</th>
                         <td colspan="5">
                             <select name="refund-reason" class="form-control">
                             <option value="단순 변심">단순 변심</option>
-                            <option value="상품 하자">상품 하자</option>
-                            <option value="상품 오배송">상품 오배송</option>
+                            <option value="상품 하자">더 저렴한 사이트를 찾음</option>
+                            <option value="상품 오배송">주문을 잘못 신청함</option>
                             <option value="기타">기타</option>
                             </select>
                         </td>
@@ -80,12 +72,6 @@
                         <th>상세 사유</th>
                         <td colspan="5">
                             <textarea class="form-control" placeholder="사유를 자세히 적어주세요."></textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>회수지 정보</th>
-                        <td colspan="5">
-                            <textarea class="form-control" placeholder="주소를 입력하세요."></textarea>
                         </td>
                     </tr>
                     <tr>

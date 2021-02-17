@@ -1,28 +1,170 @@
+/* ------------- 전체적용.jsp ------------ */
 /*   취소/교환/환불 신청 폼   */
-.application-form {
-    /* border: 1px solid black; */
-    margin-top: 50px;
-    margin-left: 270px;
-}
-
-.application-form .btn {
-    /* border: 1px solid black; */
+#btnapply {
     margin-top: -20px;
     margin-left: 370px;
 }
 
-.application-form table {
+.application-form table, .list-form table {
     margin-top: 30px;
 }
 
-/*   취소/교환/환불 안내사항   */
 
+/*   취소/교환/환불 안내사항   */
 .refund-info {
-    /* border: 1px solid black; */
-    margin-top: 110px;
-    margin-left: 270px;
+    margin-top: 150px;
 }
 
 .refund-info li {
     list-style: square;
+}
+
+
+
+
+
+/* ------------- list.jsp ------------ */
+
+/*   교환/환불/취소 조회창 오더 프로세스 사진 크롭    */
+.list-form .order-process {
+    margin-left: -20px;
+    margin-top: -30px;
+}
+
+.list-form .crop {
+    width: 60px;
+    height: 50px;
+    overflow: hidden;
+    margin-left: 15px;
+    margin-bottom: -10px;
+}
+
+.list-form b {
+    font-size: 1.2em;
+}
+
+
+.list-form .glyphicon {
+    text-align: center;
+    font-size: 40px;
+    color: #DDD;
+}
+
+.list-form .next {
+    vertical-align: middle;
+}
+
+.list-form .line {
+    border: 1px solid #DDD;
+    border-top: none;
+    border-bottom: none;
+}
+
+.list-form .line-bottom {
+    border: none;
+}
+
+.list-form .outline-l {
+    border-left: 1px solid #DDD;
+}
+
+.list-form .outline-r {
+    border-right: 1px solid #DDD;
+}
+
+
+
+/*    기간/상품 조회 선택 창     */
+.list-form .search-type {
+    margin-top: -10px;
+}
+
+/*    datepicker 사이즈 + display : inline-block    */
+.list-form #now_date {
+    width: 165px;
+    display: inline-block;
+}
+
+.list-form #date_before_month {
+    width: 165px;
+    display: inline-block;
+}
+
+
+/*    교환/환불/취소 조회 버튼 사이즈 조정   */
+.list-form #btnview {
+    width: 90px;
+    height: 80px;
+}
+
+
+
+/*    기간조회 버튼    */
+.list-form .period .btn:hover {
+    background-color: #f3dbc7;
+    /* color: white; */
+}
+
+.list-form .period input{
+    margin-left: 10px;
+}
+
+
+.list-form .period .btn:focus {
+    outline:none;
+    background-color: #F4A259;
+    color: white;
+}
+
+/* @@@@@ 주문번호 링크 표시 @@@@@ */
+.list-form a {
+    /* text-decoration: underline; */
+    color: #F4A259;
+}
+
+/*   교환/환불/취소 조회 결과 테이블    */
+.list-form .table .amount {
+    color: #AAA;
+    font-size: 0.8em;
+    padding-left: 5px;
+}
+
+.list-form .table th {
+    text-align: center;
+}
+
+.list-form .list td {
+    text-align: center;
+}
+
+.list-form .list .book {
+    text-align: left;
+    padding: auto 20px;
+}
+
+.list-form #ctg {
+    width: 60px;
+}
+
+.list-form #orderN {
+    width: 120px;
+}
+
+.list-form #date {
+    width: 120px;
+}
+
+.list-form #totalamount {
+    width: 60px
+}
+
+.list-form #process {
+    width: 90px;
+}
+
+
+.list-form #searchrule {
+    list-style: square;
+    margin-top: -20px;
+    margin-left: -20px;
 }

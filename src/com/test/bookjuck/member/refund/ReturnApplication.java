@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//http://localhost:8090/bookjuck/member/mypage/returnapplication.do
+//http://localhost:8090/bookjuck/member/refund/returnapplication.do
 
 @WebServlet("/member/refund/returnapplication.do")
 public class ReturnApplication extends HttpServlet {
