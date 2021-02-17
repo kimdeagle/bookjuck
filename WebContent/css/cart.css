@@ -1,0 +1,173 @@
+ul{
+	padding:0;
+}
+
+
+.cart_prod_tab{
+	width:1000px;
+	margin-bottom: 20px;
+}
+
+.cart_prod_tab ul{
+	height: 40px;
+	border-bottom: 1px solid #DDD;
+}
+
+.cart_prod_tab li{
+	float: left;
+	width: 120px;
+	text-align: center;
+	padding: 8px;
+	font-weight: bold;
+	border: 1px solid #EEE;
+	border-bottom: 0;
+	background-color: #fbfbfb;
+}
+
+.cart_prod_tab li.on{
+	border: 1px solid #DDD;	
+	border-bottom: 1px solid #FFF;
+	background-color: #FFF
+}
+
+.cart_prod_tab:after{
+	content:"";
+	display:block;
+	clear: both;
+}
+
+.cart_controller span{
+	position: relative;
+	top: -5px;
+	margin-left: 6px;
+}
+
+.cart_controller a{
+	position: relative;
+	top: -5px;
+	margin-left: 8px;
+}
+
+.img-orderstate{
+	background-image: url(/bookjuck/image/shopping-cart1.png);	
+}
+
+.orderstep> div:first-child div{
+	color: #F4A259;
+	font-weight: bold;
+}
+
+.cartbox{
+	margin: 0 auto;
+	width:1000px;
+	margin-bottom: 300px;
+}
+
+.cartcheck{
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+}
+
+.cartlistbox{
+	margin-top: 60px;
+}
+
+.cartcount{
+	width: 48.48px;
+	margin-bottom: 8px;
+	text-align: center;
+}
+
+.cartlist th, .cartlist td {
+    text-align: center;
+    border-right: 1px solid #ddd;
+}
+
+.cartlist th:first-child{
+	border-right: 0;
+	width: 50px;
+}
+
+.cartlist th:nth-child(2){
+	width:430px;
+}
+
+.cartlist th:nth-child(3){
+	width: 150px;
+}
+
+.cartlist th:nth-child(4){
+	width: 150px;
+}
+
+.cartlist th:nth-child(5){
+	width: 70px;
+}
+
+.cartlist th:nth-child(6){
+	width: 150px;
+}
+
+
+
+
+
+.cartlist tr td:nth-child(1){
+	border-right: 0;
+}
+
+
+.cartlist tr td:nth-child(2) ~ td{
+	padding-top: 68px;
+}
+
+.cartlist .olInfo td:nth-child(5){
+	padding-top: 48px;
+}
+
+.cartlistbox #ebookcart .olInfo td:nth-child(5){
+	padding-top: 68px;
+}
+
+
+
+.cartlist th:last-child, .cartlist td:last-child{
+    border-right: 0;
+}
+
+.cartlist tr td:nth-child(2){
+    text-align: left;
+}
+
+.cartlist tr td:nth-child(2) a{
+    position: relative;
+    top: -50px;
+}
+
+#check_all_foot{
+	margin-top: 60px;
+}
+
+#bookcartcheck, #barocartcheck, #ebookcartcheck{
+	position: relative;
+	top: 3px;
+	margin-right: 6px;
+}
+
+h4 .btn1{
+	position: relative;
+	top: -4px;
+	left: 10px;
+}
+
+.orderbtnbox{
+	float:right;
+	margin-top: 30px;
+}
+
+.orderbtnbox a{
+	font-size: 18px;
+	padding: 15px 25px;
+	margin-left: 10px;
+}
