@@ -14,6 +14,7 @@
             <a href="#" class="headerlink-item">장바구니</a>
             <a href="#" class="headerlink-item">주문/배송조회</a>
             <a href="#" class="headerlink-item">고객센터</a>
+            <a href="/bookjuck/member/notice/list.do" class="headerlink-item">공지사항</a>
         </div>
 
         <!-- 로고, 캐릭터, 검색창 -->
@@ -21,7 +22,7 @@
         <div id="searchmenu">
 
             <!-- 로고 및 캐릭터 -->
-            <img src="/bookjuck/image/bookjeok/logo.png" class="logo">
+            <a href="/bookjuck/index.do"><img src="/bookjuck/image/bookjeok/logo.png" class="logo"></a>
             
             <!-- 통합검색창(검색분류선택창) -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">통합검색<span class="caret"></span></a>

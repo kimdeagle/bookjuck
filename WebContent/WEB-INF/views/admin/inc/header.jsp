@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-    
-<div class="container">
 
     <header>
         <!-- 로고 및 캐릭터 -->
@@ -30,4 +27,3 @@
 	        </ul>
 	    </div>
 	</aside>
-</div>
