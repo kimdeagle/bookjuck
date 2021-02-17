@@ -429,3 +429,21 @@ footer .click_footer {
 .logo_area {
     display:inline;
 }
+
+/*
+
+	페이지네이션 CSS
+	21.02.17 추가
+
+*/
+
+.pagination {
+    display:block;
+    text-align:center;
+    margin:50px 0;
+}
+
+.pagination > li > a {
+    float:none;
+    margin-left:-5px;
+}
