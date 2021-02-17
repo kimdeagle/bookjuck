@@ -1,0 +1,68 @@
+/* inlist.jsp > css */
+
+/* 이미지 셀 */
+table td:nth-child(1) {
+	width: 130px;
+}
+
+/* 텍스트 셀 */
+table td:nth-child(2) {
+	width: 500px;
+}
+
+/* 텍스트 margin */
+table td:nth-child(2) div {
+	margin: 5px 15px;
+}
+
+/* 수량 및 버튼 셀 */
+table td:nth-child(3) {
+	width: 150px;
+	text-align: center;
+}
+
+/* 이미지 */
+table td .image {
+	width: 130px;
+}
+
+/* 텍스트 > 제목 */
+table td .title {
+	font-size: 2em;
+}
+
+/* 도서 소개 */
+table td .intro {
+	height: 45px;
+	overflow: hidden;
+}
+
+/* 텍스트 > 정가 + 가격 */
+table td .priceinfo .price {
+	font-size: 0.9em;
+}
+
+/* 텍스트 > 판매가 */
+table td .priceinfo .saleprice {
+	font-size: 1.3em;
+	margin-left: 50px;
+}
+
+/* 텍스트 > 판매가격 */
+table td .priceinfo .saleprice strong {
+	color: red;
+	font-size: 1.5em;
+}
+
+/* 버튼 > div */
+table td .btns {
+	margin-top: 100px;
+}
+
+/* 버튼 */
+table td .btns button {
+	display: block;
+	margin: 7px auto;
+	outline:none !important;
+}
+
