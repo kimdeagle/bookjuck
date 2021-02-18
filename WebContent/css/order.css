@@ -1,5 +1,3 @@
-
-
 .statebox{
 	width: 1000px;
 	margin: 0 auto;
@@ -32,6 +30,11 @@
 	bottom: 28px;
 }
 
+.orderstep .on div{
+	color: #F4A259;
+	font-weight: bold;
+}
+
 .orderstep>div{
 	float: left;
 	margin: 10px;
@@ -46,3 +49,30 @@
 	font-size: 28px;
 }
 
+.tbl-pay th{
+	text-align: center;
+	border-right: 1px solid #DDD;
+	width: 200px;
+}
+
+.tbl-pay th:nth-child(3){
+	width: 250px;
+}
+
+.tbl-pay td{
+	text-align: right;
+	border-bottom: 1px solid #DDD;
+	border-right: 1px solid #DDD;
+}
+
+.tbl-pay td:nth-child(3),.tbl-pay td:nth-child(3) span{
+	color: red;
+}
+
+.tbl-pay th:last-child, .tbl-pay td:last-child {
+	border-right: 0;	
+}
+
+.tbl-pay td span{
+	float: left;
+}

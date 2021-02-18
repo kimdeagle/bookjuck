@@ -2,6 +2,10 @@ ul{
 	padding:0;
 }
 
+table{
+	border-bottom: 1px solid #DDD;
+}
+
 
 .cart_prod_tab{
 	width:1000px;
@@ -52,11 +56,6 @@ ul{
 	background-image: url(/bookjuck/image/shopping-cart1.png);	
 }
 
-.orderstep> div:first-child div{
-	color: #F4A259;
-	font-weight: bold;
-}
-
 .cartbox{
 	margin: 0 auto;
 	width:1000px;
@@ -74,7 +73,7 @@ ul{
 }
 
 .cartcount{
-	width: 48.48px;
+	width: 45px;
 	margin-bottom: 8px;
 	text-align: center;
 }

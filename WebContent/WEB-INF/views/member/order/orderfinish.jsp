@@ -14,7 +14,6 @@
 <link rel="stylesheet" href="/bookjuck/css/global.css">
 <link rel="stylesheet" href="/bookjuck/css/orderlist.css">
 <link rel="stylesheet" href="/bookjuck/css/order.css">
-<link rel="stylesheet" href="/bookjuck/css/orderfinish.css">
 
 <style>
 
@@ -38,21 +37,18 @@
 	
 		<article>
 			<div class="statebox">
-				<div class="img-orderstate"></div>
+				<div class="img-orderstate" style="background-image: url(/bookjuck/image/clipboard1.png);"></div>
 				<div><h3>주문완료</h3>주문 내역을 확인해주세요.</div>
 				<div class="orderstep">
-					<!-- <div><span>STEP01</span><span>STEP02</span><span>STEP03</span></div>
-					<div><span>장바구니 > </span><span>주문/결제 > </span><span>주문완료</span></div>
-					 -->
 					<div><div>STEP01</div><div>장바구니&nbsp;&nbsp;&nbsp;></div></div>
 					<div><div>STEP02</div><div>주문/결제&nbsp;&nbsp;&nbsp;></div></div>
-					<div><div>STEP03</div><div>주문완료</div></div>
+					<div class="on"><div>STEP03</div><div>주문완료</div></div>
 				</div>
 			</div>
 		</article>
 		
 		
-		<article class="orderlistbox">
+		<article class="orderlistbox" style="margin: 0 auto; width:1000px; margin-bottom: 300px;">
 			<h3>주문 내역</h3>
 			<table class="orderList table tbl-lg">
 		        <tr>
