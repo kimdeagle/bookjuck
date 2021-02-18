@@ -15,6 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 public class bestSeller extends HttpServlet {
 	
 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+	
+		String aaa = request.getParameter("aaa");
+		
+		//dao.list(aaa);  //where 
+		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/member/book/bestseller.jsp");
 		dispatcher.forward(request, response);

@@ -1,15 +1,15 @@
 package com.test.bookjuck.member.book;
 
-public class BookDTO {
+public class BookDTO { //컬럼값이 유사하므로 EbookDTO도 함께 공용
 	
-	private int seq;
+	private String seq;
 	private int seqAuthor;
 	private int seqSCategory;
 	private String title; 
 	private String publisher; 
 	private int price; 
 	private int saleprice; 
-	private String pubDate; 
+	private String pubdate; 
 	private String summary;
 	private String isbn; 
 	private String copy; 
@@ -17,11 +17,14 @@ public class BookDTO {
 	private String contents; 
 	private int page;
 	
+	private String Author;  
+	private String lcategory;
 	
-	public int getSeq() {
+	
+	public String getSeq() {
 		return seq;
 	}
-	public void setSeq(int seq) {
+	public void setSeq(String seq) {
 		this.seq = seq;
 	}
 	public int getSeqAuthor() {
@@ -60,11 +63,11 @@ public class BookDTO {
 	public void setSaleprice(int saleprice) {
 		this.saleprice = saleprice;
 	}
-	public String getPubDate() {
-		return pubDate;
+	public String getPubdate() {
+		return pubdate;
 	}
-	public void setPubDate(String pubDate) {
-		this.pubDate = pubDate;
+	public void setPubdate(String pubdate) {
+		this.pubdate = pubdate;
 	}
 	public String getSummary() {
 		return summary;
@@ -102,6 +105,20 @@ public class BookDTO {
 	public void setPage(int page) {
 		this.page = page;
 	}
+	public String getAuthor() {
+		return Author;
+	}
+	public void setAuthor(String author) {
+		Author = author;
+	}
+	public String getLcategory() {
+		return lcategory;
+	}
+	public void setLcategory(String lcategory) {
+		this.lcategory = lcategory;
+	} 
+	
+	
 	
 	
 	

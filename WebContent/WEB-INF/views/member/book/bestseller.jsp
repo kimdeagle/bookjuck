@@ -32,13 +32,13 @@
 						<a href="" ; class="list1">소설종합</a>
 					</div>
 					<div>
-						<a href="" ; class="list1">국내소설</a>
+						<a href="/bookjuck/member/book/bestseller.do?aaa=111"  class="list1">국내소설</a>
 					</div>
 					<div>
-						<a href="" ; class="list1">외국소설</a>
+						<a href="/bookjuck/member/book/bestseller.do?aaa=222"  class="list1">외국소설</a>
 					</div>
 					<div>
-						<a href="" ; class="list1">비소설</a>
+						<a href="/bookjuck/member/book/bestseller.do?aaa=333"  class="list1">비소설</a>
 					</div>
 					<div>
 						<a href="" ; class="list1">시</a>

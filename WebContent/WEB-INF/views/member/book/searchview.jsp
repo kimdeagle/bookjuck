@@ -1,15 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+	
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 <%
-   
+	
 %>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>search test v1</title>
+<title>Insert title here</title>
 <%@include file="/WEB-INF/views/member/inc/asset.jsp" %>
 <link rel="stylesheet" href="/bookjuck/css/bestseller.css">
 <link rel="stylesheet" href="/bookjuck/css/global.css">
@@ -18,23 +19,31 @@
 
 </head>
 <body>
+	<!-- -->
+	<div class="container">
 	
-	
-	
-   <form id="searchform" method="GET" action="/bookjuck/member/book/searchview.do">
+	<form id="searchform" method="GET" action="/bookjuck/member/book/searchview.do">
    	<select name="sk"> <!-- 검색키: search key  -->
    		<option value="">전체도서</option>
    		<option value="해외도서">해외도서</option>
    		<option value="국내도서">국내도서</option>
    		<option value="EBOOK">EBOOK</option>   	
    	</select>
-   	<input type="text" name="sv"><!-- 검색값: search value -->
+   	<input type="text" name="sv" value="${sv}"><!-- 검색값: search value -->
    	<input type="submit" value="검색버튼">   
    </form>
-
+   <script>
+   		$("select[name=sk]").val("${sk}"); // 검색창내 검색어 입력 유지
+   </script>
 	
-	<!-- <div class="container"> -->
-		<%-- <c:forEach items="${list}" var="dto">
+	
+	<c:if test="${not empty sv}">
+    <div>
+    '${sv}'에 대한 ${sk} 검색결과 총 ${list.size()}권의 도서를 검색했습니다.
+    </div>
+     </c:if>
+     <br>
+		<c:forEach items="${list}" var="dto">
 			<div class="bookbox9">
 				<div class="bestrank5">
 					<img src="../image/${dto.image}">
@@ -55,7 +64,24 @@
 					</div>
 				</div>
 			</div>
-		</c:forEach> --%>
-	<!-- </div> -->
+		</c:forEach>		
+	</div>
+
+	<script>
+		
+	</script>
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
