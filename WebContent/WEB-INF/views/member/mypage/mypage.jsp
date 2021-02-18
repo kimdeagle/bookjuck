@@ -12,68 +12,28 @@
 
 <link rel="stylesheet" href="/bookjuck/css/mypage.css">
 <link rel="stylesheet" href="/bookjuck/css/global.css">
+<link rel="stylesheet" href="/bookjuck/css/mypagemain.css">
 
 
 <style>
-/*마이페이지 메인 화면 css 파일*/
-#content {
-	width: 1000px;
-	height: 500px;
-	display: inline-block;
-	position: relative;
-	top:  -50px;
-	left: 100px;
-	
-}
-
-.contentsbox {
-	width: 850px;
-	height: 200px;
-	margin: auto;
-	margin-top: 30px;
-	margin-bottom: 30px;
-	
-}
-
-.contentsbox>a {
-	position: relative;
-	text-align: right;
-	left: 500px;
-}
-
-.contentsBox>span{
-	width:300px;
-	/* border: 1px solid black;  */
-}
-
-.contentsBox > h3{
- 	width:300px;
-	float: left;
-}
-
-.contentsBox > a{
-	position: relative;
-	left: 500px;
-	top:40px;
-	
-}
-
-
 </style>
 </head>
 
 <body>
 
-	<!-- ########## 상단 헤더 시작 -->
-	<%@include file="/WEB-INF/views/member/inc/header.jsp" %>
-	<!-- ########## 상단 헤더 끝 -->
+	
 
 	<!-- 플로팅 메뉴 (북적이& top) -->
 	<%@include file="/WEB-INF/views/common/bookjuckee.jsp" %>
 	<%@include file="/WEB-INF/views/common/top.jsp" %>
 
+	
 
 	<div class="container">
+	
+		<!-- ########## 상단 헤더 시작 -->
+		<%@include file="/WEB-INF/views/member/inc/header.jsp" %>
+		<!-- ########## 상단 헤더 끝 -->
 	
 		<!-- 마이페이지 -->
 		<%@include file="/WEB-INF/views/member/inc/mypage.jsp" %>
@@ -139,7 +99,7 @@
 					</table>
 				</div>
 				<div class="contentsBox">
-					<h3>나의 관심 상품</h3>
+					<h3>나의 관심 분야</h3>
 					<a href="#myInterest" data-toggle="modal">설정하기</a>
 					<table class="table tbl-md" id="interestItem">
 						<tr>
@@ -160,12 +120,12 @@
 			</article>
 		</section>
 
-	</div>
-	
 	
 	<!-- ########## 하단 시작 -->
 	<%@include file="/WEB-INF/views/common/footer.jsp" %>
 	<!-- ########## 하단 끝 -->
+	</div>
+	
 	
 	
 	

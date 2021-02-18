@@ -1,0 +1,295 @@
+@charset "UTF-8";
+
+로그인 CSS
+/* 배경 */
+* {
+	margin: 0;
+	padding: 0;
+	
+}
+
+html, body {
+	height: 100%;
+	background-color: #8CB369;
+	
+}
+
+#container {
+	margin: auto;
+	width: 600px;
+	height: 100%;
+	background-color: white;
+
+} 
+ 
+
+
+
+/*내용*/
+#content {
+	width: 550px;
+	padding: 10px;
+	margin: auto;
+	position: relative;
+}
+
+#loginsub{
+	margin: 10px 0px;
+}
+
+
+
+#logo {
+	text-align: center;
+}
+
+#logo>img {
+	width: 300px;
+	margin: 50px;
+}
+
+#login,
+#nmLogin{
+	width: 400px;
+	height: 350px;
+	margin: 0 auto;
+	border: 1px solid #ccc;
+	text-align: center;
+	padding: 30px;
+}
+
+
+
+
+/* 로그인 */
+#login{
+	position: relative;
+}
+
+/* 비로그인 주문 조회*/
+#nmlogin{
+	position: absolute; 
+	 
+}
+
+
+#id, #pwd {
+	margin: 15px;
+	
+}
+
+#loginbtn {
+	display: block;
+	margin: 20px auto;
+} 
+
+address{
+
+	width: 400px;
+	margin: auto;
+	margin-top: 200px;
+	text-align: center;
+	
+}
+
+
+
+/*로그인 CSS*/
+
+#switchBox {
+	width: 401px;
+	height: 60px;
+	margin: 0px auto;
+	padding-left: 0.5px;
+}
+
+/*체인지 박스 ()*/
+.switchBoxs {
+	border: 1px solid #ccc;
+	width: 200px;
+	height: 60px;
+	padding: 10px;
+	text-align: center;
+	vertical-align: middle;
+	border-collapse: collapse;
+	border-bottom: none;
+	float: left;  
+}
+
+
+
+/*소셜 로그인 버튼*/
+#socialLogin > img{
+	margin:5px 15px;
+}
+
+#loginsub > a{
+	margin:0px 15px;	
+}
+
+
+
+
+/*chbox 호버*/
+#memberbtn:hover, #nonMbtn:hover {
+	cursor: pointer;
+	background-color: #ccc;
+} 
+
+
+
+
+span{
+	margin:0px 3px;	
+}
+
+#minf{
+	border: 1px solid black;
+	width: 100%;
+	margin: auto;
+	padding: 5px; 
+}
+
+
+
+
+/*아이디,비밀번호 찾기 찾기  css*/
+#idFindTbl,
+#pwFindTbl{
+	
+	width: 300px;
+	margin: auto;
+	text-align: center;
+	
+}
+
+#idFindTbl >td,
+#pwFindTbl >td{
+	
+margin: 3px 0px;
+	
+}
+
+#idFindSwitch
+{
+	width: 400px;
+	height: 55px;
+	padding: 5px;	
+	margin: auto;
+	padding-left: 11.6px;
+	
+}
+
+.idFindSwitchs{
+
+	width: 125px;
+	height: 50px;
+	border: 1px solid #ccc;
+	margin: auto;
+	float: left;
+	border-collapse: collapse;
+	padding: 10px;
+	text-align: center;
+}
+
+.idFindSwitchContent{
+	width: 375px;
+	height: 150px;
+	border: 1px solid #ccc;
+	margin: auto;
+	text-align: center;
+	align-items: center;
+	padding-top: 50px;
+	
+}
+
+
+.idFindSwitchContent > input {
+	margin-top: 15px;	
+}
+
+#telContent,
+#emailContent,
+#telContentPw,
+#emailContentPw{
+	display: none;
+	margin-left: 97px;
+}
+
+#ssn:hover, #tel:hover, #email:hover,
+#ssnPw:hover, #telPw:hover, #emailPw:hover{
+	cursor: pointer;
+	background-color: #ccc;
+}
+
+
+/*비밀번호 찾기 css*/
+#pwFindTbl th,
+#pwFindTbl td{
+	padding-top: 10px;
+}
+
+
+
+
+/* 포지션 */
+.relative{
+	position: relative;
+}
+
+.absolute{
+	position: absolute;
+}
+
+
+/* 로그인 텍스트 박스 */
+.log-sm{
+	width: 70px	
+}
+
+.log-md{
+	width: 110px;
+}
+
+.log-lg{
+	width: 260px;
+}
+
+
+
+.float-left{
+	float: left;
+}
+
+.float-right{
+	float: right;
+} 
+
+
+
+
+/*form 박스 사이즈*/
+.form-sm{
+	width: 350px;
+	margin: 0 auto;
+	border: 1px solid #ccc;
+	text-align: center;
+	padding: 30px;	
+}
+
+.form-md{
+	width: 500px;
+	margin: 0 auto;
+	border: 1px solid #ccc;
+	text-align: center;
+	padding: 30px;
+}
+
+
+.form-lg{
+	width: 700px;
+	margin: 0 auto;
+	border: 1px solid #ccc;
+	text-align: center;
+	padding: 30px;	
+}
