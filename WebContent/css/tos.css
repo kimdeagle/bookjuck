@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+
+
+label {
+/* 	margin-left: 5px;
+	border: 1px solid black; */
+}
+
+/*약관보기*/
+#tostbl1 td:last-child {
+	padding-left: 150px;
+}
+
+
+#tosForm {
+	width: 500px;
+	margin: 0 auto;
+	border: 1px solid #ccc;
+	text-align: center;
+	padding: 30px;
+}
+
+address {
+	margin-top: 100px;
+}
+
+#tostbl3  th {
+	width: 100px;
+}
+
+.tostbl{
+	width: 100%;
+	margin: auto;
+	text-align: left;
+}
+
+#tostbl3 td:nth-child(3) input[type=button] {
+	margin-left: 12px;
+}
+
+
+.modalTxtArea{
+	width: 100%;
+	height: 250px;
+}

@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+/**/
+#tosForm {
+	width: 500px;
+	margin: 0 auto;
+	border: 1px solid #ccc;
+	text-align: center;
+	padding: 30px;
+}
+
+/* #createId{
+	text-align: left;
+	border: 1px solid black;
+} */
+
+
+.createId{
+	margin: 10px auto;
+	width: 100%;
+	border: 1px solid white;
+}
+
+.createId > tr > td,
+.createId > tr > th{
+	padding: 20px;
+	
+}
+
+
+
+#test001 tr:nth-child(3), 
+#test001 tr:nth-child(4),
+#test001 tr:nth-child(5),
+#test001 tr:nth-child(6){
+	text-align: left;
+}
+
+
+#test001 input[type="radio"]{
+	margin-right: 10px;
+}
+
+#registerForm > h2{
+	padding-bottom: 15px;	
+}
+
