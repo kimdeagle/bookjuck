@@ -1,4 +1,4 @@
-package com.test.bookjuck.member.qna;
+package com.test.bookjuck.admin.curationletter;
 
 import java.io.IOException;
 
@@ -9,14 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/member/qna/add.do")
-public class Add extends HttpServlet {
+@WebServlet("/admin/curationletter/del.do")
+public class Del extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/member/qna/add.jsp");
-		dispatcher.forward(req, resp);
 	}
 
 }
