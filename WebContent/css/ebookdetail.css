@@ -72,9 +72,9 @@ table td .priceinfo .savepoint {
 	margin-left: 15px;
 }
 
-/* 수량 > div */
-table td .amount {
-	margin-top: 50px;
+/* .btns(장바구니, 바로구매 감싸는 div) */
+table td .btns {
+	margin-top: 150px;
 }
 
 /* 수량 > + , - 버튼 */

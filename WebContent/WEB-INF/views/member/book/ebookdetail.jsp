@@ -13,13 +13,13 @@
 <link rel="stylesheet" href="/bookjuck/css/global.css">
 
 <!-- sidemenu.css -->
-<link rel="stylesheet" href="/bookjuck/css/category.css">
+<link rel="stylesheet" href="/bookjuck/css/ebookcategory.css">
 
-<!-- bookdetail.css -->
-<link rel="stylesheet" href="/bookjuck/css/bookdetail.css">
+<!-- ebookcategory.js -->
+<script src="/bookjuck/js/ebookcategory.js"></script>
 
-<!-- inlist.js -->
-<script src="/bookjuck/js/inlist.js"></script>
+<!-- ebookdetail.css -->
+<link rel="stylesheet" href="/bookjuck/css/ebookdetail.css">
 
 
 <style>
@@ -37,7 +37,7 @@
 	
 	
 	<!-- ########## 카테고리 사이드 메뉴 시작 -->
-    <%@include file="/WEB-INF/views/member/inc/category.jsp" %>
+    <%@include file="/WEB-INF/views/member/inc/ebookcategory.jsp" %>
 	<!-- ########## 카테고리 사이드 메뉴 끝 -->
 	
 	
@@ -46,7 +46,7 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th colspan="3"><h6>국내도서 > 소설 > 한국소설</h6></th>
+					<th colspan="3"><h6>국내E-Book > 소설 > 한국소설</h6></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -68,15 +68,9 @@
 						</div>
 					</td>
 					<td>
-						<div class="form-inline amount">
-							<input type="button" value="-" class="btn btn-default btn-sm" id="minus">
-							<input type="text" value="1" class="form-control" id="cnt">
-							<input type="button" value="+" class="btn btn-default btn-sm" id="plus">
-						</div>
 						<div class="btns">
 							<button class="btn btn-success btn-lg btn-block cart">장바구니</button>
 							<button class="btn btn-primary btn-lg btn-block buy">바로구매</button>
-							<button class="btn btn-warning btn-lg btn-block baro">바로드림</button>
 						</div>
 					</td>
 				</tr>
