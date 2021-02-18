@@ -158,7 +158,7 @@
 					</table>
 				</div>
 			</article>
-		</section class="mypagesection">
+		</section>
 
 	</div>
 	

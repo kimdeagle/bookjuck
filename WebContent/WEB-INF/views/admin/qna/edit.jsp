@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="/bookjuck/css/notice.css">
 <link rel="stylesheet" href="/bookjuck/css/global.css">
-<link rel="stylesheet" href="/bookjuck/css/notice.css">
+<link rel="stylesheet" href="/bookjuck/css/qna.css">
 
 <style>
 
@@ -28,17 +28,16 @@
 	
 	
 		<section class="contentsection">
-            <h3>공지사항</h3>
+            <h3>QnA</h3>
 
             <div id="subtitle">수정하기</div>
-            <form method="POST" action="/member/notice/editok.do">
-	            <div id="writebox">
-		            <input type="text" id="title" name="title" class="form-control" value="수정하기 전 제목">
+            <form method="POST" action="/member/qna/editok.do">
+	            <div id="answerbox">
 		            <textarea id="content" name="content" class="form-control" cols="40" rows="13">수정하기 전 내용</textarea>
 	            </div>
 	            <div id="btn">
 	                <input type="button" class="btn btn-general inline" value="저장하기" id="save">
-	                <button type="button" class="btn btn-general" id="back" onclick="location.href='/bookjuck/admin/notice/list.do'">뒤로가기</button>
+	                <button type="button" class="btn btn-general" id="back" onclick="location.href='/bookjuck/admin/qna/list.do'">뒤로가기</button>
 	            </div>
             </form>
     	</section>
