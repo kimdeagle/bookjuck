@@ -1,0 +1,113 @@
+article{
+	margin-top: 36px;
+	margin-bottom: 72px;
+}
+
+.orderer{
+	text-indent: 10px;
+}
+
+
+.waybill-number div{
+	float: right;
+}
+
+.waybill-number div a{
+	color: #F4A259;
+}
+
+.orderdetail{
+	border-bottom: 1px solid #DDD;
+	margin-bottom: 30px;
+}
+
+.orderdetail th{
+	border-right: 1px solid #DDD;
+	text-align: center;
+}
+
+.orderdetail td{
+	border-right: 1px solid #DDD;	
+	text-align: center;
+}
+
+.orderdetail tr th:first-child {
+	width: 150px;
+}
+
+.orderdetail tr th:nth-child(2) {
+	width: 128px;	
+}
+
+.orderdetail tr th:nth-child(3) {
+	width: 334px;	
+}
+
+.orderdetail tr th:nth-child(4) {
+	width: 80px;	
+}
+
+.orderdetail tr th:nth-child(5) {
+	width: 158px;
+	border-right: 0;
+}
+
+
+.orderdetail .olInfo td{
+	vertical-align: middle;
+}
+
+.orderdetail .bookinfo{
+	text-align: left;
+}
+
+
+.orderdetail .bookinfo a{
+	position: relative;
+	top: -50px;
+	
+}
+
+.orderdetail>.olInfo:last-child>td{
+	border-bottom: 1px solid #DDD;
+}
+
+
+.orderdetail tr td:last-child {
+	border-right: 0;
+}
+
+
+.receiver{
+	border-bottom: 1px solid #DDD;
+	text-indent: 10px;
+}
+
+.receiver th{
+	width: 150px;
+}
+
+.btn-report{
+	background-color: #BC4B51;
+    color: white;
+    width: 120px;
+    padding: 4px 10px;
+    border-radius: 3px;
+    margin-top: 8px;
+    display: inline-block;
+}
+
+.btn-report:hover{
+	color: white;
+    font-weight: normal;	
+}
+
+.orderlistback{
+	margin-top: 60px;
+	text-align: center;
+}
+
+.orderlistback a{
+	padding: 16px 20px;
+	font-size: 18px;
+}

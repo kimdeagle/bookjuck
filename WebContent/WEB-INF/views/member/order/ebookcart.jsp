@@ -45,7 +45,7 @@
 					<!-- <div><span>STEP01</span><span>STEP02</span><span>STEP03</span></div>
 					<div><span>장바구니 > </span><span>주문/결제 > </span><span>주문완료</span></div>
 					 -->
-					<div><div>STEP01</div><div>장바구니&nbsp;&nbsp;&nbsp;></div></div>
+					<div class="on"><div>STEP01</div><div>장바구니&nbsp;&nbsp;&nbsp;></div></div>
 					<div><div>STEP02</div><div>주문/결제&nbsp;&nbsp;&nbsp;></div></div>
 					<div><div>STEP03</div><div>주문완료</div></div>
 				</div>
@@ -63,14 +63,6 @@
 				</ul>
 			</div>
 			
-			<div class="cart_controller">
-				<label>
-					<input type="checkbox" id="check_all_top" name="check_all" class="cartcheck check_all" checked><span>전체선택</span>
-				</label>
-				<a href="#" class="btn1">삭제</a>
-			</div>
-			
-			
 			<!-- 장바구니 내역이 없으면 보이는 화면 -->
                 <div class="noOrderList">
                     <span>장바구니에 담긴 상품이 없습니다.</span>
@@ -79,6 +71,14 @@
                 </div>
                 
             
+			
+			<div class="cart_controller">
+				<label>
+					<input type="checkbox" id="check_all_top" name="check_all" class="cartcheck check_all" checked><span>전체선택</span>
+				</label>
+				<a href="#" class="btn1">삭제</a>
+			</div>
+			
 		    <!-- 없으면 안보임 -->
 		    <div class="cartlistbox">
 				<h4><input type="checkbox" id="ebookcartcheck" class="cartcheck" checked>E-Book<a href="#" class="btn1">삭제</a></h4>
@@ -107,15 +107,15 @@
 			    </table>
 		    </div>
 		    
-		    <div class="cart_controller">
-				<label>
-					<input type="checkbox" id="check_all_foot" name="check_all" class="cartcheck check_all" checked onclick=""><span>전체선택</span>
-				</label>
-				<a href="#" class="btn1">삭제</a>
-			</div>
+<!-- 		    <div class="cart_controller"> -->
+<!-- 				<label> -->
+<!-- 					<input type="checkbox" id="check_all_foot" name="check_all" class="cartcheck check_all" checked onclick=""><span>전체선택</span> -->
+<!-- 				</label> -->
+<!-- 				<a href="#" class="btn1">삭제</a> -->
+<!-- 			</div> -->
 			
 			<div class="orderbtnbox">
-				<a href="#" onclick="" class="btn-order">주문하기</a>
+				<a href="/bookjuck/member/order/orderpaymem.do" onclick="" class="btn-order">주문하기</a>
 			</div>
 		    
 	    </article>
@@ -147,7 +147,7 @@
 		$(document).ready(function(){
 			
 			$(".check_all").click(function() {
-				if($(".check_all").is(":checked")){
+				if($(".check_all").prop("checked")){
 					$(".cartcheck").prop("checked",true);
 				}else{
 					$(".cartcheck").prop("checked",false);				
@@ -155,7 +155,25 @@
 				
 			});
 			
-		})
+			$(".cartcheck").click(function name() {
+				if($(".cartcheck:checked").length==3){
+					$(".check_all").prop("checked",true);
+				}else{
+					$(".check_all").prop("checked",false);
+				}
+			});
+			
+			$(".check_all").click(function() {
+				if($(".check_all").prop("checked")){
+					$(".cartcheck").prop("checked",true);
+				}else{
+					$(".cartcheck").prop("checked",false);				
+				}
+				
+			});
+			
+			
+		});
 	
 	</script>
 

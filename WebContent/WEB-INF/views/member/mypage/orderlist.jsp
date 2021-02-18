@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>북적북적::주문/결제 리스트 | MyPage</title>
+<title>북적북적::주문/결제내역 리스트| MyPage</title>
 
 <%@include file="/WEB-INF/views/member/inc/asset.jsp" %>
 
@@ -41,8 +41,9 @@
 		 
 		 <!-- 주문자 정보 영역 -->
         <section class="contentsection">
+            <h3>주문/결제 조회</h3>
+                <!-- 비회원만 보임 -->
             <article>
-                <h3>주문/결제 조회</h3>
                 
                 <table class="orderer table tbl-md">
                     <tr>
@@ -50,12 +51,7 @@
                         <td>이름 | 연락처 | 이메일</td>
                     </tr>
                 </table>
-                
-                
-                <!-- 비회원만 보임 -->
                 <div>※ 비회원은 최대 1개월 내의 주문 내역을 확인하실 수 있습니다. &nbsp&nbsp&nbsp<a href="#" class="btn1" style="font-weight: bold;">회원가입</a></div>
-                
-                                
             </article>
         
         
@@ -116,14 +112,14 @@
                     </tr>
                     <tr class="olInfo">
                         <td>
-                            <a href="#">주문번호</a><br>
+                            <a href="/bookjuck/member/mypage/orderdetail.do">주문번호</a><br>
                             (주문일)<br><br>
-                            <a href="#" onclick="" class="btn-order">주문상세보기</a>
+                            <a href="/bookjuck/member/mypage/orderdetail.do" onclick="" class="btn-order">주문상세보기</a>
                         </td>
                         <td>가격</td>
                         <td>
                             <img src="/bookjuck/image/달러구트 꿈 백화점.png" class="book-xs">
-                            <a href="#">도서명</a>
+                            <a href="/bookjuck/member/book/bookdetail.do">도서명</a>
                         </td>
                         <td>0</td>
                         <td>주문상태</td>

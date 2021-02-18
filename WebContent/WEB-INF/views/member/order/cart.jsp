@@ -45,7 +45,7 @@
 					<!-- <div><span>STEP01</span><span>STEP02</span><span>STEP03</span></div>
 					<div><span>장바구니 > </span><span>주문/결제 > </span><span>주문완료</span></div>
 					 -->
-					<div><div>STEP01</div><div>장바구니&nbsp;&nbsp;&nbsp;></div></div>
+					<div class="on"><div>STEP01</div><div>장바구니&nbsp;&nbsp;&nbsp;></div></div>
 					<div><div>STEP02</div><div>주문/결제&nbsp;&nbsp;&nbsp;></div></div>
 					<div><div>STEP03</div><div>주문완료</div></div>
 				</div>
@@ -63,14 +63,6 @@
 				</ul>
 			</div>
 			
-			<div class="cart_controller">
-				<label>
-					<input type="checkbox" id="check_all_top" name="check_all" class="cartcheck check_all" checked><span>전체선택</span>
-				</label>
-				<a href="#" class="btn1">삭제</a>
-			</div>
-			
-			
 			<!-- 장바구니 내역이 없으면 보이는 화면 -->
                 <div class="noOrderList">
                     <span>장바구니에 담긴 상품이 없습니다.</span>
@@ -78,9 +70,17 @@
                     <img src="/bookjuck/image/bookjeok/chat.png">
                 </div>
                 
+			
+			<div class="cart_controller">
+				<label>
+					<input type="checkbox" id="check_all_top" name="check_all" class="cartcheck check_all" checked><span>전체선택</span>
+				</label>
+				<a href="#" class="btn1">삭제</a>
+			</div>
+			
             <!-- 없으면 안보임 -->    
 			<div class="cartlistbox">
-				<h4><input type="checkbox" id="bookcartcheck" class="cartcheck" checked>일반구매<a href="#" class="btn1">삭제</a></h4>
+				<h4><input type="checkbox" id="bookcartcheck" class="cartcheck" checked onclick="">일반구매<a href="#" class="btn1">삭제</a></h4>
 				<table id="bookcart" class="cartlist table tbl-lg">
 			        <tr>
 			        	<th></th>
@@ -91,16 +91,16 @@
 			            <th>합계</th>
 			        </tr>
 			        <tr class="olInfo">
-			        	<td><input type="checkbox" id="" class="cartcheck" checked></td>
+			        	<td><input type="checkbox" id="" class="cartcheck bookcheck" checked></td>
 			            <td>
 			                <img src="/bookjuck/image/달러구트 꿈 백화점.png" class="book-xs">
-			                <a href="#">도서명</a>
+			                <a href="/bookjuck/member/book/bookdetail.do">도서명</a>
 			            </td>
 			            <td>정가</td>
 			            <td>판매가</td>
 			            <td>
 			            	<input type="text" id="" class="cartcount" value="1">
-			            	<a href="" onclick="" class="btn1">변경</a>
+			            	<a href="#" onclick="" class="btn1">변경</a>
 			            </td>
 			            <td>판매가x수량</td>
 			        </tr>
@@ -121,10 +121,10 @@
 			            <th>합계</th>
 			        </tr>
 			        <tr class="olInfo">
-			        	<td><input type="checkbox" id="" class="cartcheck" checked></td>
+			        	<td><input type="checkbox" id="" class="cartcheck barocheck" checked></td>
 			            <td>
 			                <img src="/bookjuck/image/달러구트 꿈 백화점.png" class="book-xs">
-			                <a href="#">도서명</a>
+			                <a href="/bookjuck/member/book/bookdetail.do">도서명</a>
 			            </td>
 			            <td>정가</td>
 			            <td>판매가</td>
@@ -150,10 +150,10 @@
 			            <th>합계</th>
 			        </tr>
 			        <tr class="olInfo">
-			        	<td><input type="checkbox" id="" class="cartcheck" checked></td>
+			        	<td><input type="checkbox" id="" class="cartcheck ebookcheck" checked></td>
 			            <td>
 			                <img src="/bookjuck/image/달러구트 꿈 백화점.png" class="book-xs">
-			                <a href="#">도서명</a>
+			                <a href="/bookjuck/member/book/bookdetail.do">도서명</a>
 			            </td>
 			            <td>정가</td>
 			            <td>판매가</td>
@@ -167,15 +167,15 @@
 		    
 		    <div class="cart_controller">
 				<label>
-					<input type="checkbox" id="check_all_foot" name="check_all" class="cartcheck check_all" checked onclick=""><span>전체선택</span>
+<!-- 					<input type="checkbox" id="check_all_foot" name="check_all" class="cartcheck check_all" checked><span>전체선택</span> -->
 				</label>
 				<a href="#" class="btn1">삭제</a>
 			</div>
 			
 			<div class="orderbtnbox">
 				<!-- 회원은 안보이기 -->
-				<a href="#" onclick="" class="btn1">비회원 주문하기</a>
-				<a href="#" onclick="" class="btn-order">주문하기</a>
+				<a href="/bookjuck/member/order/orderpaynon.do" onclick="" class="btn1">비회원 주문하기</a>
+				<a href="/bookjuck/member/order/orderpaymem.do" onclick="" class="btn-order">주문하기</a>
 			</div>
 		    
 	    </article>
@@ -207,7 +207,7 @@
 		$(document).ready(function(){
 			
 			$(".check_all").click(function() {
-				if($(".check_all").is(":checked")){
+				if($(".check_all").prop("checked")){
 					$(".cartcheck").prop("checked",true);
 				}else{
 					$(".cartcheck").prop("checked",false);				
@@ -215,7 +215,25 @@
 				
 			});
 			
-		})
+			$(".cartcheck").click(function name() {
+				if($(".cartcheck:checked").length==7){
+					$(".check_all").prop("checked",true);
+				}else{
+					$(".check_all").prop("checked",false);
+				}
+			});
+			
+			$(".check_all").click(function() {
+				if($(".check_all").prop("checked")){
+					$(".cartcheck").prop("checked",true);
+				}else{
+					$(".cartcheck").prop("checked",false);				
+				}
+				
+			});
+			
+			
+		});
 	
 	</script>
 

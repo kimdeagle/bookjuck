@@ -1,0 +1,82 @@
+article{
+	margin: 0 auto;
+	width:1000px;
+}
+
+.img-orderstate{
+	background-image: url(/bookjuck/image/credit-card1.png);	
+}
+
+.btn1{
+    background-color: #EFEFEF;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 3px;
+}
+
+.btn1:hover{
+    color: #555;
+    font-weight: normal;
+}
+
+.not-login {
+    position: relative;
+    bottom: -35px;
+    left: -50px;
+    height: 35px;
+    background-color: RGBA(244,162,89,.1);
+    width: 1000px;
+    padding-top: 6px;
+    padding-left: 60px;
+}
+
+
+.agreebox span{
+	font-size: 16px;
+	position: relative;
+	bottom: -3px;
+	left: 5px;
+}
+
+.agreebox textarea{
+	width: 1000px;
+	height: 200px;
+	padding: 13px;
+	font-size: 13px;
+	outline: none;
+	border: 3px solid #DDD;
+	border-radius: 3px;
+	line-height: 20px;
+	color: #888;
+}
+
+.agreebox .agree2{
+	margin-top: 30px;
+}
+
+.agreecheckbox{
+	margin-top: 10px;
+}
+
+.agreecheckbox input[id="agreecheck"] {
+    position: relative;
+    top: 1.2px;
+}
+
+
+
+.btn-pay{
+	background-color: #BC4B51;
+    color: white;
+    width: 120px;
+    height: 50px;
+    padding: 4px 10px;
+    border-radius: 3px;
+    margin-top: 8px;
+    display: inline-block;
+}
+
+.btn-pay:hover{
+	color: white;
+    font-weight: normal;	
+}

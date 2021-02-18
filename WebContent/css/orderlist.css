@@ -87,6 +87,9 @@ th{
     text-align: right;
 }
 
+.orderList{
+	border-bottom: 1px solid #DDD;
+}
 
 .orderList th,.orderList td {
     text-align: center;
@@ -118,9 +121,9 @@ th{
 
 
 .orderList tr td:nth-child(1){
-    padding-top: 35px;
-    
+    padding-top: 35px;   
 }
+
 .orderList tr td:nth-child(2){
     padding-top: 68px;
 
@@ -142,6 +145,10 @@ th{
     padding-top: 28px;
 }
 
+
+.orderList tr td:nth-child(1) a:first-child{
+	color: #F4A259;
+}
 
 .orderList tr td:nth-child(3) a{
     position: relative;
@@ -195,7 +202,7 @@ th{
 }
 
 input[type=date]{
-	width:150px;
+	width:170px;
 	display:inline-block;
 }
 
