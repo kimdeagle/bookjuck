@@ -1,0 +1,72 @@
+/*
+
+	큐레이션레터 CSS
+	
+	1. 큐레이션레터 목록조회
+	2. 큐레이션레터 작성
+	3. 큐레이션레터 상세조회
+
+*/
+
+h3 {
+    margin-bottom:30px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+}
+
+#subtitle {
+    text-align:center;
+    margin-bottom:50px;
+}
+
+#btn {
+	width:100%;
+	text-align:center;
+}
+
+/* 2. 큐레이션레터 작성 */
+
+#example {
+    width:100%px;
+    background-color:rgba(91, 142, 125, .2);
+    margin-bottom:50px;
+    margin-left:auto;
+    margin-right:auto;
+    padding:50px;
+}
+
+#letterbox {
+    background-color:#5B8E7D;
+    padding:15px;
+    margin-bottom:40px;
+    margin-left:auto;
+    margin-right:auto;
+    width:80%;
+    height:500px;
+}
+
+#title {
+    width:80%;
+    margin:20px auto;
+}
+
+#title, #content {
+    width:80%;
+    margin:50px auto;
+}
+
+/* 3. 큐레이션레터 상세조회 */
+
+#qbox {
+    width:700px;
+    background-color:rgba(91, 142, 125, .2);
+    margin-bottom:50px;
+    margin-left:auto;
+    margin-right:auto;
+    padding:50px;
+}
+
+#qbox > h5 {
+    border-bottom:1px dashed #ccc;
+}
