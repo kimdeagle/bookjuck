@@ -64,6 +64,7 @@
 						<div class="priceinfo">
 							<span class="price" id="price"><s>정가 17,000원</s></span>
 							<span class="saleprice" id="saleprice">판매가 <strong>15,300</strong>원</span>
+							<span class="savepoint">(적립금 1,530원)</span>
 						</div>
 					</td>
 					<td>

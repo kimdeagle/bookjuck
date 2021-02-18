@@ -66,6 +66,12 @@ table td .priceinfo .saleprice strong {
 	font-size: 1.5em;
 }
 
+/* 적립금 */
+table td .priceinfo .savepoint {
+	display: inline-block;
+	margin-left: 15px;
+}
+
 /* 수량 > div */
 table td .amount {
 	margin-top: 50px;
