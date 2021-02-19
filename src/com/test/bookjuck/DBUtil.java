@@ -14,7 +14,7 @@ public class DBUtil {
 		
 		String url = "jdbc:oracle:thin:@localhost:1521:xe"; 
 		
-		String id = "hr";
+		String id = "zeratull1004";
 		String pw = "java1234";
 		
 		try {

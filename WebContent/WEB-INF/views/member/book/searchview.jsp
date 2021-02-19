@@ -132,8 +132,14 @@
 					</div>
 				</div>
 			</div>
-		</c:forEach>		
+		</c:forEach>	
+		<!-- 하단 -->
+	<%@include file="/WEB-INF/views/common/footer.jsp" %>	
 </div>
+
+<!-- 플로팅 -->
+	<%@include file="/WEB-INF/views/common/bookjuckee.jsp" %>
+	<%@include file="/WEB-INF/views/common/top.jsp" %>
 	<script>
 		
 		
@@ -150,6 +156,19 @@
 
 			})
 		})
+		
+		/*
+		
+		$("#searchform").submit(function(evt) {
+			
+			if ($("#searchBox").val().trim() != "") {
+				alert("검색어를 입력해 주세요.");
+				evt.preventDefault();
+				return false;				
+			}
+		});
+		*/
+		
 	</script>
 
 </body>
