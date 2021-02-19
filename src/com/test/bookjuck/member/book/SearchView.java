@@ -24,9 +24,10 @@ public class SearchView extends HttpServlet {
 		
 		
 		HashMap<String,String> map = new HashMap<String,String>();
+		if (!(sv == null || sv.equals(""))) {
 		map.put("sv", sv);
 		map.put("sk", sk);
-		
+		}
 		
 		BookDAO dao = new BookDAO();
 		ArrayList<BookDTO> list = dao.list(map);

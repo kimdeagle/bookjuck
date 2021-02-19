@@ -1,3 +1,18 @@
+@charset "UTF-8";
+
+#booklist{
+
+  display: flex;
+  justify-content: center;
+  margin:auto;
+
+
+}
+
+#booklist > img {
+	float:left;
+}
+
 
 .bestSellerList {
 	position: relative;
@@ -50,8 +65,11 @@
 
 .bookbox5, .bookbox6, .bookbox7, .bookbox8, .bookbox9, .bookbox10 {
 	border: 1px solid #E5E5E5;
-	width: 900px;
+	width: 700px;
 	height: 220px;
+
+	
+	
 }
 
 .bookbox img {
@@ -112,4 +130,11 @@
 	background-color: #295B37;
 	color: white;
 }
+
+select {
+	width:50px;
+	height:32px;	
+}
+
+
 

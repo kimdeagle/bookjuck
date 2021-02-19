@@ -39,7 +39,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		BookDAO dao = new BookDAO();
 		
 		ArrayList<BookDTO> list = dao.list(map);
-		
+		/*
 		for (BookDTO dto : list) {
 			
 			//날짜에서 시간 잘라내기
@@ -56,7 +56,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 			}
 			
 		}
-		
+		*/
 		request.setAttribute("list", list);
 		request.setAttribute("sk", sk);
 		request.setAttribute("sv", sv);
