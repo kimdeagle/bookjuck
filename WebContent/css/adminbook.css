@@ -1,5 +1,7 @@
 /* admin/book/list.jsp */
 
+[readonly] { background-color: transparent !important; }
+
 .tblbookcount {
 	margin-top: 20px;
 	margin-bottom: 100px;
@@ -84,6 +86,7 @@ input[type=button]:focus {
 
 #copy { width: 400px; }
 
+/* 이미지 파일명 */
 #imagename {
 	display: inline-block;
 	width: 300px;
@@ -91,23 +94,23 @@ input[type=button]:focus {
 	margin-right: 10px;
 }
 
-/* 추가, 취소 버튼 집합 */
+/* 하단 버튼 집합 div */
 .actionbtns {
 	margin: 50px 0;
 	text-align: right;
 }
 
-#btnadd, #btncancel {
+/* 하단 버튼 */
+.actionbtns input {
 	width: 150px;
 	height: 60px;
-	font-size: 1.5em;
+	font-size: 1.4em;
+	margin-right: 50px;
 }
 
-#btnadd { margin-right: 50px; }
+/* 취소, 목록 버튼 */
+#btncancel, #btnlist { background-color: lightgray; }
 
-#btncancel { background-color: lightgray; }
-
-#searchauthor { width: 200px; display: inline-block; }
 
 
 /* modal */
@@ -117,4 +120,6 @@ input[type=button]:focus {
 	text-align: center;
 }
 
+/* modal > 작가명 검색창 */
+#searchauthor { width: 200px; display: inline-block; }
 
