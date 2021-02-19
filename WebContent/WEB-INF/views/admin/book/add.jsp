@@ -28,7 +28,7 @@
 	<!-- 관리자페이지 헤더 좌측 메뉴 + 상단 로고 + 검색창 -->
 	<%@include file="/WEB-INF/views/admin/inc/header.jsp" %>
 
-	<div class="contentsection">
+	<section class="contentsection">
 	
 		<h4>도서관리 > 추가</h4>
 		
@@ -134,7 +134,7 @@
 		<%@include file="/WEB-INF/views/admin/book/bookmodal.jsp" %>
 		
 	
-	</div>
+	</section>
 	
 	<!-- ########## 하단 시작 -->
 	<%@include file="/WEB-INF/views/common/footer.jsp" %>

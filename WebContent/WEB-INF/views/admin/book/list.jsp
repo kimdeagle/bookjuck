@@ -70,9 +70,9 @@
 					<td>J.K.Rowling</td>
 					<td>2</td>
 					<td>
-						<input type="button" class="btn btn-warning" value="상세">
+						<input type="button" class="btn btn-warning" value="상세" onclick="location.href='/bookjuck/admin/book/view.do';">
 						<input type="button" class="btn btn-success" value="수정" onclick="location.href='/bookjuck/admin/book/edit.do';">
-						<input type="button" class="btn btn-danger" value="삭제">
+						<input type="button" class="btn btn-danger" value="삭제" data-toggle="modal" data-target="#deletemodal">
 					</td>
 				</tr>
 				<tr>
@@ -111,6 +111,8 @@
 		  </ul>
 		</nav>
 		
+	  	<!-- modal -->
+		<%@include file="/WEB-INF/views/admin/book/bookmodal.jsp" %>
 	
 	</section>
 	

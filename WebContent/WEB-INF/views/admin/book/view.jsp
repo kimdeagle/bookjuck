@@ -30,23 +30,22 @@
 
 	<section class="contentsection">
 	
-		<h4>도서관리 > 수정</h4>
+		<h4>도서관리 > 상세보기</h4>
 		
 		<form>
 			<div class="form-group">
 		    	<label for="title">도서명</label>
-		    	<input type="text" class="form-control" id="title" placeholder="도서명을 입력해주세요." maxlength=50  required value="해리포터와 불의 잔 1">
+		    	<input type="text" class="form-control" id="title" placeholder="도서명을 입력해주세요." maxlength=50 value="해리포터와 불의 잔 1" readonly>
 		  	</div>
 		  	
 			<div class="form-group">
 		    	<label for="publisher">출판사</label>
-		    	<input type="text" class="form-control" id="publisher" placeholder="출판사를 입력해주세요." maxlength=20  required value="호그와트">
+		    	<input type="text" class="form-control" id="publisher" placeholder="출판사를 입력해주세요." maxlength=20 value="호그와트" readonly>
 		  	</div>
 		  	
 		  	<div class="form-group">
 		    	<label>카테고리</label>
 		    	<div class="form-inline">
-			    	<input type="button" class="btn btn-success" id="btnselcategory" value="카테고리 선택" data-toggle="modal" data-target="#categorymodal">
 			    	<input type="text" class="form-control category" id="firstcategory" placeholder="1차 카테고리" value="국내도서" readonly>
 			    	&gt;
 			    	<input type="text" class="form-control category" id="secondcategory" placeholder="2차 카테고리" value="소설" readonly>
@@ -57,14 +56,6 @@
 		  	
 			<div class="form-group">
 		    	<label>작가</label>
-		    	<div class="form-inline">
-			    	<input type="button" class="btn btn-success" id="btnsearchauthor" value="작가 검색하기" data-toggle="modal" data-target="#authormodal">
-			    	<input type="button" class="btn btn-info" id="btnaddauthor" value="새로 추가하기">
-		    	</div>	
-				
-		  	</div>
-		  	
-			<div class="form-group">
 		    	<label for="authorname">작가명</label>
 		    	<input type="text" class="form-control" id="authorname" placeholder="작가명을 입력해주세요." maxlength=20 value="덤블도어" readonly>
 		  	</div>
@@ -76,43 +67,43 @@
 
 			<div class="form-group">
 		    	<label for="pubdate">출간일</label>
-		    	<input type="date" class="form-control" id="pubdate" required value="2021-02-07">
+		    	<input type="date" class="form-control" id="pubdate" required value="2021-02-07" readonly>
 		  	</div>
 		  	
 			<div class="form-group">
 		    	<label for="isbn">ISBN</label>
-		    	<input type="text" class="form-control" id="isbn" placeholder="ISBN을 입력해주세요." maxlength=13 required value="1234561234567">
+		    	<input type="text" class="form-control" id="isbn" placeholder="ISBN을 입력해주세요." maxlength=13 value="1234561234567" readonly>
 		  	</div>
 		  	
 			<div class="form-group">
 		    	<label for="price">정가</label>
-		    	<input type="text" class="form-control" id="price" value="20000" required>
+		    	<input type="text" class="form-control" id="price" value="20000" readonly>
 		  	</div>
 		  	
 		  	<div class="form-group">
 		    	<label for="amount">수량</label>
-		    	<input type="number" class="form-control" id="amount" min="0" max="100" value="2" required>
+		    	<input type="number" class="form-control" id="amount" min="0" max="100" value="2" readonly>
 		  	</div>
 		  	
 		  	<div class="form-group">
 		    	<label for="page">페이지 수</label>
-		    	<input type="number" class="form-control" id="page" min="0" value="200" required>
+		    	<input type="number" class="form-control" id="page" min="0" value="200" readonly>
 		  	</div>
 		  	
 			<div class="form-group">
 		    	<label for="copy">한줄카피</label>
-		    	<input type="text" class="form-control" id="copy" placeholder="한줄카피를 입력해주세요." maxlength=50 required value="해리포터는 과연 불의 잔에 쪽지를 넣었을까?">
+		    	<input type="text" class="form-control" id="copy" placeholder="한줄카피를 입력해주세요." maxlength=50 value="해리포터는 과연 불의 잔에 쪽지를 넣었을까?" readonly>
 		  	</div>
 		  	
 			<div class="form-group">
 		    	<label for="bookintro">도서 소개</label>
-		    	<textarea class="form-control" id="bookintro" placeholder="도서소개를 입력해주세요." rows="10" required>해리포터 시리즈 중 5번째인 '해리포터와 불의 잔' 1부.
+		    	<textarea class="form-control" id="bookintro" placeholder="도서소개를 입력해주세요." rows="10" readonly>해리포터 시리즈 중 5번째인 '해리포터와 불의 잔' 1부.
 해리포터는 자신이 불의 잔에 쪽지를 넣지 않았지만 어떤 이유로 자신의 이름이 적힌 쪽지가 불의 잔에 들어갔는지 모른다.</textarea>
 		  	</div>
 		  	
 			<div class="form-group">
 		    	<label for="index">목차</label>
-		    	<textarea class="form-control" id="index" placeholder="목차를 입력해주세요." rows="10" required>1. 소개
+		    	<textarea class="form-control" id="index" placeholder="목차를 입력해주세요." rows="10" readonly>1. 소개
 2. 누가 쪽지를 넣었을까?
 3. 어둠을 먹는자
 4. 포트키를 집어선 안 돼!</textarea>
@@ -120,16 +111,14 @@
 		  	
 		  	<div class="form-group">
 		  		<label style="display: block;">이미지</label>
-		  		<label for="image" class="btn btn-info">이미지 선택</label>
-		  		<input type="file" id="image" style="display: none;">
 		  		<input type="text" class="form-control" id="imagename" placeholder="파일 선택" readonly value="해리포터와 혼혈 왕자 1.png">
 		  		<input type="button" class="btn btn-warning" value="미리보기" data-toggle="modal" data-target="#previewmodal">
-		  		<p class="help-block">※하나의 이미지만 등록 가능합니다.</p>
 		  	</div>
 		  	
 		  	<div class="form-group actionbtns">
-			  	<input type="submit" class="btn btn-success" id="btnedit" value="수정">
-			  	<input type="button" class="btn btn-default" id="btncancel" value="취소" onclick="location.href='/bookjuck/admin/book/list.do';">
+			  	<input type="button" class="btn btn-success" id="btnedit" value="수정" onclick="location.href='/bookjuck/admin/book/edit.do';">
+			  	<input type="button" class="btn btn-danger" id="btndel" value="삭제" data-toggle="modal" data-target="#deletemodal">
+			  	<input type="button" class="btn btn-default" id="btnlist" value="목록" onclick="location.href='/bookjuck/admin/book/list.do';">
 		  	</div>
 		  	
 	  	</form>
