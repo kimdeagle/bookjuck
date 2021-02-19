@@ -24,14 +24,14 @@
 	
         <!-- 상단메뉴 -->
 
-        <div id="headerlink">
+       <!--  <div id="headerlink">
             <a href="#" class="headerlink-item">마이페이지</a>
             <a href="#" class="headerlink-item">로그인</a>
             <a href="#" class="headerlink-item">회원가입</a>
             <a href="#" class="headerlink-item">장바구니</a>
             <a href="#" class="headerlink-item">주문/배송조회</a>
             <a href="#" class="headerlink-item">고객센터</a>
-        </div>
+        </div> -->
 
         <!-- 로고, 캐릭터, 검색창 -->
 
@@ -63,7 +63,7 @@
         </div>
 
         <!-- 도서분류메뉴(navbar) -->
-        <nav class="navbar">
+       <!--  <nav class="navbar">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
@@ -76,10 +76,10 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> -->
         
         <!-- 국내도서 중분류 -->
-		<div id="internalmenu">
+<!-- 		<div id="internalmenu">
 			<a href="/bookjuck/member/book/inlist.do" class="">소설</a>
 			<a href="#" class="">시/에세이</a>
 			<a href="#" class="">경제/경영</a>
@@ -95,7 +95,7 @@
 			<a href="#" class="">참고서/교재</a>
 			<a href="#" class="">취업/수험서</a>
 			<a href="#" class="">외국어</a>
-		</div>
+		</div> -->
 		
 		<!-- 해외도서 중분류 -->
 		<div id="externalmenu">
@@ -135,12 +135,12 @@
 			</div>
 		</c:forEach>	
 		<!-- 하단 -->
-	<%@include file="/WEB-INF/views/common/footer.jsp" %>	
+	<%-- <%@include file="/WEB-INF/views/common/footer.jsp" %>	 --%>
 </div>
 
 <!-- 플로팅 -->
-	<%@include file="/WEB-INF/views/common/bookjuckee.jsp" %>
-	<%@include file="/WEB-INF/views/common/top.jsp" %>
+	<%-- <%@include file="/WEB-INF/views/common/bookjuckee.jsp" %>
+	<%@include file="/WEB-INF/views/common/top.jsp" %> --%>
 	<script>
 		
 		
