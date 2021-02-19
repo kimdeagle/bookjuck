@@ -1,47 +1,45 @@
 /* admin/book/list.jsp */
 
-.count {
-	width: 220px;
-	height: 50px;
+.tblbookcount {
+	margin-top: 20px;
+	margin-bottom: 100px;
+}
+
+.tblbookcount th, .tblbookcount td {
 	text-align: center;
-	padding-top: 10px;
-	border-radius: 5px;
-	display: inline-block;
-	margin: 10px 30px;
-	font-size: 1.2em;
 }
 
-.count > a {
+.tblbookcount .label {
 	font-size: 1em;
-	font-weight: bold;
+	opacity: 0.7;
 }
 
-.count > a:hover {
-    color:#F4A259;
-}
-
-table {
+.tblbooklist {
 	margin-top: 20px;
 }
 
-table th, table td {
+.tblbooklist th, .tblbooklist td {
 	text-align: center;
 }
 
-table th:nth-child(1) {
-	width: 250px;
+.tblbooklist th:nth-child(1) {
+	width: 240px;
 }
 
-table th:nth-child(2) {
-	width: 220px;
+.tblbooklist th:nth-child(2) {
+	width: 210px;
 }
 
-table th:nth-child(3) {
-	width: 170px;
+.tblbooklist th:nth-child(3) {
+	width: 160px;
 }
 
-table td input[type=button] {
-	margin-right: 10px;
+.tblbooklist th:nth-child(4) {
+	width: 50px;
+}
+
+.tblbooklist td input[type=button] {
+	margin-right: 5px;
 }
 
 input[type=button]:focus {
@@ -63,7 +61,7 @@ input[type=button]:focus {
 	margin-right: 30px;
 }
 
-/* add.jsp */
+/* admin/book/add.jsp */
 #title { width: 300px; }
 
 #publisher { width: 300px; }
@@ -78,11 +76,11 @@ input[type=button]:focus {
 
 #isbn { width: 200px; }
 
-#price { width: 150px; }
+#price { width: 100px; text-align: right; }
 
-#amount { width: 70px; text-align: center; }
+#amount { width: 80px; text-align: center; }
 
-#page { width: 90px; text-align: center; }
+#page { width: 80px; text-align: center; }
 
 #copy { width: 400px; }
 
@@ -110,5 +108,13 @@ input[type=button]:focus {
 #btncancel { background-color: lightgray; }
 
 #searchauthor { width: 200px; display: inline-block; }
+
+
+/* modal */
+
+/* modal > 카테고리 선택 */
+.tblcategory th {
+	text-align: center;
+}
 
 

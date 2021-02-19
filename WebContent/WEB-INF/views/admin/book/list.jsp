@@ -30,21 +30,36 @@
 	
 		<h4>도서관리</h4>
 		
-		<div class="bg-success count">전체 도서 수 : <a href="/bookjuck/admin/book/list.do" class="text-primary">2315</a></div>
-		<div class="bg-success count">국내 도서 수 : <a href="/bookjuck/admin/book/list.do" class="text-primary">1315</a></div>
-		<div class="bg-success count">해외 도서 수 : <a href="/bookjuck/admin/book/list.do" class="text-primary">1000</a></div>
+		<table class="table tblbookcount">
+			<thead>
+				<tr class="success">
+					<th>전체 도서</th>
+					<th>국내 도서</th>
+					<th>해외 도서</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><a href="/bookjuck/admin/book/list.do"><span class="label label-success">2315</span></a></td>
+					<td><a href="/bookjuck/admin/book/list.do"><span class="label label-success">1315</span></a></td>
+					<td><a href="/bookjuck/admin/book/list.do"><span class="label label-success">1000</span></a></td>
+
+				</tr>
+			</tbody>
+		</table>
 		
 		<div class="listheader">
 			<h5>전체 도서 목록</h5>
-			<input type="button" class="btn btn-primary btn-lg" value="도서추가" onclick="location.href='/bookjuck/admin/book/add.do'">
+			<input type="button" class="btn btn-primary btn-lg" value="도서추가" onclick="location.href='/bookjuck/admin/book/add.do';">
 			<div style="clear:both;"></div>
 		</div>
-		<table class="table table-hover table-condensed">
+		<table class="table table-hover table-condensed tblbooklist">
 			<thead>
 				<tr>
 					<th>도서명</th>
 					<th>카테고리</th>
 					<th>저자</th>
+					<th>수량</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -53,9 +68,10 @@
 					<td>해리포터와 불의 잔 1</td>
 					<td>국내도서-소설-외국소설</td>
 					<td>J.K.Rowling</td>
+					<td>2</td>
 					<td>
 						<input type="button" class="btn btn-warning" value="상세">
-						<input type="button" class="btn btn-success" value="수정">
+						<input type="button" class="btn btn-success" value="수정" onclick="location.href='/bookjuck/admin/book/edit.do';">
 						<input type="button" class="btn btn-danger" value="삭제">
 					</td>
 				</tr>
@@ -63,6 +79,7 @@
 					<td>해리포터와 불의 잔 2</td>
 					<td>국내도서-소설-외국소설</td>
 					<td>J.K.Rowling</td>
+					<td>10</td>
 					<td>
 						<input type="button" class="btn btn-warning" value="상세">
 						<input type="button" class="btn btn-success" value="수정">
