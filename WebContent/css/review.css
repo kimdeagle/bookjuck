@@ -1,0 +1,112 @@
+/*
+
+	독후감 CSS
+	
+	1. 독후감 목록 조회(관리자)
+	2. 독후감 상세 조회
+	3. 독후감 목록 조회(고객)
+
+*/
+
+/* 1. 독후감 목록 조회(관리자) */
+
+#btn {
+    width:100%;
+    text-align:center;
+}
+
+.reviewtbl {
+	margin:0 auto;
+}
+
+.reviewtbl th {
+	text-align:center;
+}
+
+.reviewtbl td {
+	text-align:center;
+}
+
+.reviewtbl .cell2, .reviewtbl .cell3 {
+	text-align:left;
+}
+
+/* 2. 독후감 상세 조회 */
+
+#qbox {
+    width:700px;
+    background-color:rgba(91, 142, 125, .2);
+    margin:0 auto;
+    padding:50px;
+}
+
+#btn {
+    width:100%;
+    text-align:center;
+    margin:20px 0;
+}
+
+.label {
+    position:relative;
+    left:5px;
+    top:-2px;
+    margin-left:10px;
+}
+
+/* 3. 독후감 목록 조회(고객) */
+
+h3 {
+    margin-bottom:30px;
+}
+
+#subtitle {
+    text-align:center;
+    margin-bottom:50px;
+}
+
+#qbox {
+    width:700px;
+    background-color:rgba(91, 142, 125, .2);
+    margin-bottom:50px;
+    margin-left:auto;
+    margin-right:auto;
+    padding:50px;
+}
+
+#qbox > h5 {
+    border-bottom:1px dashed #ccc;
+}
+
+#btn {
+    width:100%;
+    text-align:center;
+}
+
+#senddate {
+    margin-bottom:20px;
+}
+
+/* 페이지네이션 설정 -> global로 빠져야 할듯 */
+
+.pagination {
+    display:block;
+    text-align:center;
+    margin:50px 0;
+}
+
+.pagination > li > a {
+    float:none;
+    margin-left:-5px;
+}
+
+table {
+    position:relative;
+}
+
+#writebtn {
+    margin:10px;
+}
+
+#selected {
+	width:200px;
+}

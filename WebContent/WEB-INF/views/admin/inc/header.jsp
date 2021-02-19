@@ -28,7 +28,7 @@
 		                <li class="contents"><a href="/bookjuck/admin/notice/list.do">공지사항</a></li>
 		                <li class="contents"><a href="/bookjuck/admin/faq/list.do">자주 하는 질문</a></li>
 		                <li class="contents"><a href="/bookjuck/admin/qna/list.do">1대1문의글</a></li>
-		                <li class="contents"><a href="#">독후감게시판</a></li>
+		                <li class="contents"><a href="/bookjuck/admin/review/list.do">독후감게시판</a></li>
 		                <li class="contents"><a href="#">중고거래게시판</a></li>
 					</ul>
 	        </ul>
