@@ -30,7 +30,7 @@
                 <ul>
                     <li class="menusubitem"><a href="#">장바구니</li>
                     <li class="menusubitem"><a href="#">중고게시판</a></li>
-                    <li class="menusubitem"><a href="#">나의 독후감</a></li>
+                    <li class="menusubitem"><a href="/bookjuck/member/review/list.do">나의 독후감</a></li>
                 </ul>
             <li class="menuitem"s><h6>고객센터</h6></li>
                 <ul>
