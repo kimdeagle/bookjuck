@@ -37,9 +37,8 @@ public class SearchView extends HttpServlet {
 			list = dao.list(map);
 			System.out.println(list);
 		
-		  for (BookDTO dto : list) {//선생님 sv검색창 입력값이 if문에 걸려 해쉬맵에 put이 안되어 null값이 발생하는 것같은데..
-			  						//(검색어 입력안하고 검색버튼 누를시 검색값이 안뜨게 하기위함)
-			  						//아래와 같이 dto 서브스트링을 적용하려면 어떻게 해야할까요?
+		  for (BookDTO dto : list) {
+			  
 		  
 		  //날짜에서 시간 잘라내기 
 		  dto.setPubdate(dto.getPubdate().substring(0,10));

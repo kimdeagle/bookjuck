@@ -20,6 +20,9 @@ public class BookDTO { //컬럼값이 유사하므로 EbookDTO도 함께 공용
 	private String Author;  
 	private String lcategory;
 	
+	private String totalSale;
+	private String saleRank;
+	
 	
 	public String getSeq() {
 		return seq;
@@ -116,6 +119,18 @@ public class BookDTO { //컬럼값이 유사하므로 EbookDTO도 함께 공용
 	}
 	public void setLcategory(String lcategory) {
 		this.lcategory = lcategory;
+	}
+	public String getTotalSale() {
+		return totalSale;
+	}
+	public void setTotalSale(String totalSale) {
+		this.totalSale = totalSale;
+	}
+	public String getSaleRank() {
+		return saleRank;
+	}
+	public void setSaleRank(String saleRank) {
+		this.saleRank = saleRank;
 	} 
 	
 	
