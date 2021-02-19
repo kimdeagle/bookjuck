@@ -54,6 +54,7 @@
 		   	<input type="text" id ="searchBox"name="sv" class="form-control noline small inline" value="${sv}" placeholder ="2021년 3월 해리포터 신작출간"><!-- 검색값: search value -->
 		   	<input type="submit" id="searchButton" value="검색" class="btn btn-general noline">   
 		   </form>
+		  
 
             <!-- 실시간검색어(현우님이 나중에 수정해주셔야 함! id랑 class는 CSS때문에 주의!) -->
             <!-- <div id="realtime" class="inline">실시간검색어</div> -->
