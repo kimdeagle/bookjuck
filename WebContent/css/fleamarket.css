@@ -1,0 +1,186 @@
+/* ----------- 중고거래 게시판 list ------------  */
+/*    게시판 list 상단 바 - (목록/썸네일 전환버튼) + 검색창 + 글쓰기 버튼  */
+.fleamarket #searchForm {
+    width: 500px;
+    display: inline-block;
+    margin: 0px 60px;
+    margin-bottom: -13px;
+}
+
+.fleamarket #searchForm #basic-addon2 {
+    background-color: #5B8E7D;
+    border: #5B8E7D;
+}
+
+.fleamarket #searchForm .glyphicon {
+    color: white;
+}
+
+.fleamarket #topbox1, .fleamarket #topbox2 {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 50px;
+}
+
+
+#topbox1 .btn-pics:hover {
+    background-color: #f3dbc7;
+}
+
+#topbox2 .btn-list:hover {
+    background-color: #f3dbc7;
+}
+
+
+
+
+
+
+
+/*   중고 게시판 목록형 조회 테이블 css    */
+.fleamarket .table th {
+    text-align: center;
+}
+
+.fleamarket td {
+    text-align: center;
+}
+
+.fleamarket .title {
+    text-align: left;
+    padding-left: 30px;
+}
+
+.fleamarket #num {
+    width: 70px;
+}
+
+.fleamarket #name {
+    width: 100px;
+}
+
+.fleamarket #date {
+    width: 130px;
+}
+
+.fleamarket #cnt {
+    width: 70px;
+}
+
+.fleamarket .table tr:hover {
+    background-color: #fffdf2;
+}
+
+
+/* ------- 중고도서 거래 게시판 글 상세보기 --------  */
+
+.fleamarket .table-view {
+    margin-top: 25px;
+}
+
+
+.fleamarket .table-view tr:hover {
+    background-color: transparent;
+}
+
+.fleamarket .table-view td {
+   text-align: left;
+}
+
+.fleamarket .table-view .second-col {
+    width: 120px;
+}
+
+
+/*  글 제목  */
+.fleamarket .table-view .subject {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/*  작성일   */
+.fleamarket .table-view .regdate {
+    font-size: 0.8em;
+}
+
+.fleamarket .table-view .second-line {
+    padding-top: 5px;
+}
+
+/*  버튼 hover  */
+.fleamarket  .table-view .btn-mail:hover, .fleamarket .table-view .btn-url:hover,
+.fleamarket .table-view .btn-comment:hover {
+    color: #F4A259;
+    font-weight: bold;
+}
+
+.fleamarket .btn-preview {
+    margin-left: 470px;
+    margin-bottom: -50px;
+}
+
+/*  글 내용   */
+.fleamarket .table-view .content {
+    height: 300px;
+    resize: none;
+}
+
+
+/*  첨부파일(사진)  */
+/* TODO@@@@@@@@ 200px 이상일땐 200px으로 제한해서 출력할 것 */
+.fleamarket .table-view .attach {
+    width: 200px;
+}
+
+
+.fleamarket .table-view .glyphicon {
+    vertical-align: middle;
+    padding-bottom: 3px;
+}
+
+/*  댓글  */
+.fleamarket .table-view .comment-area {
+    height: 55px;
+    max-height: 300px;
+    width: 725px;
+    float: left;
+
+}
+
+
+.fleamarket .table-view .btn-comment {
+    width: 100px;
+    height: 55px;
+    margin-left: 5px;
+}
+
+.fleamarket .table-view .user-id {
+    padding-left: 10px;
+}
+
+.fleamarket .table-view .cmt-container {
+    padding-top: 5px;
+}
+
+
+
+/*    글 상세보기 하단 버튼 4개(목록,수정,삭제,답변    */
+.fleamarket .btns {
+    margin: -20px 0px;
+    float: right;
+}
+
+.fleamarket .btn-group .glyphicon {
+    color: #5B8E7D;
+}
+
+.fleamarket .table-view .border-none {
+    border-top: none;
+}
+
+
+/*  댓글  */
+.fleamarket .table-comment .date {
+    margin-left: 15px;
+    font-size: 0.9em;
+}
