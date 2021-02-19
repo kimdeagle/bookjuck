@@ -1,4 +1,4 @@
-/* admin/book/list */
+/* admin/book/list.jsp */
 
 .count {
 	width: 220px;
@@ -62,4 +62,53 @@ input[type=button]:focus {
 	float: right;
 	margin-right: 30px;
 }
+
+/* add.jsp */
+#title { width: 300px; }
+
+#publisher { width: 300px; }
+
+#btnselcategory, #btnsearchauthor { margin-right: 10px;	}
+
+.category { text-align: center; }
+
+#authorname { width: 300px; }
+
+#pubdate { width: 200px; }
+
+#isbn { width: 200px; }
+
+#price { width: 150px; }
+
+#amount { width: 70px; text-align: center; }
+
+#page { width: 90px; text-align: center; }
+
+#copy { width: 400px; }
+
+#imagename {
+	display: inline-block;
+	width: 300px;
+	margin-left: 5px;
+	margin-right: 10px;
+}
+
+/* 추가, 취소 버튼 집합 */
+.actionbtns {
+	margin: 50px 0;
+	text-align: right;
+}
+
+#btnadd, #btncancel {
+	width: 150px;
+	height: 60px;
+	font-size: 1.5em;
+}
+
+#btnadd { margin-right: 50px; }
+
+#btncancel { background-color: lightgray; }
+
+#searchauthor { width: 200px; display: inline-block; }
+
 
