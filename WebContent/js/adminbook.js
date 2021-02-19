@@ -1,4 +1,4 @@
-/* admin/book/add.jsp > JavaScript */
+/* admin/book/adminbook.js */
 
 $(window).load(function() {
 	/* 작가 새로 추가 클릭 시 입력창 활성화 */
