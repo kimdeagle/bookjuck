@@ -22,8 +22,8 @@
 	            <li class="menuitem"><a href="/bookjuck/admin/book/ebooklist.do"><h6>E-Book 관리</h6></a></li>
 	            <li class="menuitem"><a href="#"><h6>주문 관리</h6></a></li>
 	            	<ul class="menusubitem">
-		                <li class="contents"><a href="#">주문/배송조회</a></li>
-		                <li class="contents"><a href="#">취소/교환/환불조회</a></li>
+		                <li class="contents"><a href="/bookjuck/admin/order/orderlist.do">주문/배송조회</a></li>
+		                <li class="contents"><a href="/bookjuck/admin/order/refundlist.do">취소/교환/환불조회</a></li>
 					</ul>
 	            <li class="menuitem"><a href="#"><h6>통계</h6></a></li>
 	            <li class="menuitem"><a href="#"><h6>고객 관리</h6></a></li>

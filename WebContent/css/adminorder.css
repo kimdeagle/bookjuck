@@ -1,0 +1,255 @@
+/* 
+
+    관리자 - 주문관리 CSS
+
+    1. 주문/배송 조회 + 취소/교환/환불 조회 CSS
+        - orderlist
+        - refundlist
+    
+    2. 주문 상세조회 CSS
+        - view
+
+
+*/
+
+
+
+/* -----1. 주문/배송 조회----- */
+/*    조회 선택 창     */
+.list-form .search-type {
+    margin-top: 20px;
+}
+
+/* 조회 선택 테이블 th */
+.list-form .search-type th {
+    /* background-color: RGBA(140,179,105,0.2); */
+    vertical-align: middle;
+    text-align: center;
+}
+
+/*    datepicker 사이즈 + display : inline-block    */
+.list-form #now_date {
+    width: 165px;
+    display: inline-block;
+}
+
+.list-form #date_before_month {
+    width: 165px;
+    display: inline-block;
+}
+
+
+/* 교환/환불/취소 조회 버튼 위치 조정 */
+.list-form .search-type tr:nth-child(1) > td:nth-child(3), .list-form .search-type tr:nth-child(1) > td:nth-child(5) {
+    vertical-align: middle;
+    text-align: center;
+}
+
+/*    교환/환불/취소 조회 버튼 사이즈 조정   */
+.list-form #btnview {
+    width: 90px;
+    height: 120px;
+}
+
+
+
+/*    기간조회 버튼    */
+.list-form .period .btn:hover {
+    background-color: #f3dbc7;
+    /* color: white; */
+}
+
+.list-form .period input{
+    margin-left: 10px;
+}
+
+
+.list-form .period .btn:focus {
+    outline:none;
+    background-color: #F4A259;
+    color: white;
+}
+
+
+
+/* 주문 내역 조회 결과 소제목 + 테이블 */
+.list-form .subtitle {
+    font-size: 1.4em;
+}
+
+.list-form .tbl-result {
+    margin-top: 10px;
+}
+
+.list-form .tbl-result th, .list-form .tbl-result td {
+    text-align: center;
+}
+
+.list-form .tbl-result th {
+    background-color: RGBA(140,179,105,0.2);
+}
+
+.list-form .tbl-result th:nth-child(1) {
+    width: 90px;
+}
+
+.list-form .tbl-result th:nth-child(2) {
+    width: 100px;
+}
+
+/* 주문번호 */
+.list-form .tbl-result td:nth-child(2) a {
+    color: #F4A259;
+}
+
+.list-form .tbl-result th:nth-child(3) {
+    width: 120px;
+}
+
+.list-form .tbl-result td:nth-child(4) {
+    text-align: left;
+}
+
+/* 상품정보 (주문 수량 표기) */
+.list-form .table .amount {
+    color: #AAA;
+    font-size: 0.8em;
+    padding-left: 5px;
+}
+
+.list-form .tbl-result th:nth-child(5) {
+    width: 110px;
+}
+
+.list-form .tbl-result th:nth-child(6) {
+    width: 110px;
+}
+
+
+
+
+/* -----2. 주문 상세조회----- */
+.view-form .subtitle {
+    font-size: 1.4em;
+}
+
+.view-form .ordernumber {
+    padding-left: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.view-form .table {
+    margin-top: 8px;
+}
+
+.view-form .table th {
+    background-color: RGBA(140,179,105,0.2);
+    text-align: center;
+}
+
+
+/* 전체 버튼 */
+.view-form .btn-general:focus {
+    outline: none;
+}
+
+/* 주문 정보 테이블 */
+.view-form .orderinfo td, .view-form .orderinfo th, .view-form .detailinfo td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+/* 주문 정보 상세 테이블 */
+/* 상품정보 이미지 */
+.view-form .detailinfo img {
+    width: 80px;
+}
+
+.view-form .detailinfo td:nth-child(1), .view-form .detailinfo td:nth-child(3), .view-form .detailinfo td:nth-child(4), .view-form .detailinfo td:nth-child(5), .view-form .detailinfo td:nth-child(6) {
+    width: 100px;
+}
+
+.view-form .detailinfo td:nth-child(2) {
+    width: 350px;
+    text-align: left;
+    padding-left: 30px;
+}
+
+.view-form .detailinfo td:nth-child(2) span {
+    margin-left: 10px;
+}
+
+
+/* 배송정보 테이블 */
+.view-form .deliveryinfo th {
+    width: 100px;
+}
+
+.view-form .deliveryinfo tr:nth-child(1) td {
+    width: 200px;
+}
+
+
+/* 결제정보 + 환불정보 테이블 */
+.view-form .tbl-xs {
+    width: 400px;
+}
+
+.view-form .pay, .view-form .pay-refund {
+    float: left;
+}
+
+.view-form .pay {
+    margin-right: 50px;
+}
+
+.view-form .pay th, .view-form .pay-refund th, .view-form .refundinfo th {
+    width: 140px;
+}
+
+
+.view-form .pay tr:nth-child(2) td {
+    color: cornflowerblue;
+}
+
+.view-form .pay tr:nth-child(3) td {
+    font-weight: bold;
+}
+
+.view-form .pay-refund tr:nth-child(1) td {
+    color: red;
+}
+
+/* 취소/교환/환불 정보 테이블 */
+/* 상태 수정 버튼 */
+.view-form .process {
+    margin-left: 580px;
+}
+
+.view-form .refundinfo td {
+    width: 300px;
+}
+
+/* 주문정보 상세보기 하단 버튼 */
+.view-form .btns {
+    margin-top: -10px;
+    margin-bottom: 100px;
+}
+
+.view-form .back {
+    margin-right: 690px;
+}
+
+.view-form .back:hover {
+    background-color: #f3dbc7;
+}
+
+
+
+/* 모달창 제어 */
+.modal .table th {
+    width: 150px;
+    text-align: center;
+}
