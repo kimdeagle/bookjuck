@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+h5 {
+	margin-top: 50px;
+}
+
+
+.info-sm{
+	width: 70px	
+}
+
+.info-md{
+	width: 150px;
+}
+
+.info-lg{
+	width: 260px;
+}
+
+span{
+	margin: 0px 5px;
+}
+
+input[type="radio"]{
+	margin-right: 5px;
+}
+
+#submit-btn{
+	margin-left: 780px;
+	
+}
+
+#idtbl tr:nth-child(2) a {
+	margin-left: 360px;	 
+}
+
+#editidtbl a {
+	margin-left: 280px;
+}

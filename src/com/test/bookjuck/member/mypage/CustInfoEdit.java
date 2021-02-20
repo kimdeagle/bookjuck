@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-//http://localhost:8090/bookjuck/member/mypage/mypage.do
+//http://localhost:8090/bookjuck/member/mypage/custinfoedit.do
 
-@WebServlet("/member/mypage/mypage.do")
-public class MyPage extends HttpServlet {
+@WebServlet("/member/mypage/custinfoedit.do")
+public class CustInfoEdit extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/member/mypage/mypage.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/member/mypage/custinfoedit.jsp");
 		dispatcher.forward(request, response);
 		
 	}

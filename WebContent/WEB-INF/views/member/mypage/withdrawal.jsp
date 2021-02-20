@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>북적북적::MyPage</title>
+<title>북적북적::회원탈퇴| MyPage</title>
 
 <%@include file="/WEB-INF/views/member/inc/asset.jsp" %>
 
@@ -54,8 +54,8 @@
 상품리뷰, 독후감은 모두 삭제되며, 삭제된 데이터는 복구되지 않습니다.<br>
  게시판형 서비스에 등록한 게시물은 삭제되지 않고 유지됩니다.<br>
 <hr>
-<b>1개월간 회원 재가입 제한</b><br>
-회원탈퇴 후, 1개월간은 회원 재가입이 불가능합니다.<br>
+<b>회원정보 영구 삭제</b><br>
+회원탈퇴 후,  탈퇴 계정의 개인정보는 영구 삭제합니다.<br>
 <hr>
 <b>탈퇴 후 정보보관</b><br>
 전자상거래 등에서의 소비자보호에 관한 법률 제6조에 의거 성명, 주소 등 거래의 주체를 식별할 수 있는 정보에 한하여 서비스<br>
