@@ -238,8 +238,9 @@
 	
 	        <!-- 주문 상세보기 하단 (라인 + 버튼) -->
 	        <hr>
-	        <div class="btns">
-	            <input type="button" value="목록으로" class="btn back">
+	        <div class="btns"> 
+	        	<!-- 목록으로 버튼 링크 연결 시 주의할 것 -->
+	            <input type="button" value="목록으로" class="btn back" onclick="location.href='/bookjuck/admin/order/orderlist.do';">
 	            <button class="btn btn-general"  data-toggle="modal" data-target="#ordercancel">
 	                주문취소
 	            </button>

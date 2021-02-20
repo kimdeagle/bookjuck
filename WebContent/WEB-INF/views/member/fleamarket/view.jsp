@@ -101,7 +101,7 @@
                     <tr>
                         <td>
                             <span class="more">
-                                <a href=""><span class="writer-id">글쓴이id</span>님의 게시물 더 보기
+                                <a href="/bookjuck/member/fleamarket/list.do"><span class="writer-id">글쓴이id</span>님의 게시물 더 보기
                                     <span class="glyphicon glyphicon-menu-right"></span></a>
                             </span>
                         </td>
