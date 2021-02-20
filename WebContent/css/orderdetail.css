@@ -111,3 +111,28 @@ article{
 	padding: 16px 20px;
 	font-size: 18px;
 }
+
+
+
+
+/*
+
+	Author, Daeun
+	주문 상세 조회 - 취소/교환/환불 CSS 추가
+	21.02.20
+
+*/
+.tbl-refundinfo {
+	border-bottom: 1px solid #DDD;
+	/* text-indent: 10px; */
+}
+
+.contentsection .tbl-refundinfo th {
+	width: 150px;
+	padding-left: 15px;	
+}
+
+.contentsection .tbl-refundinfo td {
+	width: 250px;
+	padding-left: 15px;	
+}
