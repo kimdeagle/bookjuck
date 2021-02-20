@@ -133,7 +133,7 @@
 				<ul id="searchrule">
 					<li>최근 1개월이 기본으로 조회 되며, 기간 변경시 기간 선택한 후 조회버튼을 클릭해 주세요.</li>
 					<li>한번에 조회 가능한 기간은 최대 6개월이며, 최근 2년부터 조회 가능합니다.</li>
-					<li>배송완료 된 주문건은 <a href="">구매내역</a>에서도 확인 하실 수 있습니다.</li>
+					<li>배송완료 된 주문건은 <a href="/bookjuck/member/mypage/orderlist.do">구매내역</a>에서도 확인 하실 수 있습니다.</li>
 				</ul>
 
 
@@ -148,7 +148,7 @@
                     </tr>
                     <tr>
                         <td>환불</td>
-                        <td><a href="" class="ordernumber">00000000</a></td>
+                        <td><a href="/bookjuck/member/mypage/refundorderdetail.do" class="ordernumber">00000000</a></td>
                         <td>2021-02-17</td>
                         <td class="book">자바의 정석<span class="amount">외 3</span></td>
                         <td>4</td>
@@ -156,7 +156,7 @@
                     </tr>
                     <tr>
                         <td>환불</td>
-                        <td><a href="" class="ordernumber">00000000</a></td>
+                        <td><a href="/bookjuck/member/mypage/refundorderdetail.do" class="ordernumber">00000000</a></td>
                         <td>2021-02-17</td>
                         <td class="book">자바의 정석<span class="amount">외 3</span></td>
                         <td>4</td>
@@ -164,7 +164,7 @@
                     </tr>
                     <tr>
                         <td>환불</td>
-                        <td><a href="" class="ordernumber">00000000</a></td>
+                        <td><a href="/bookjuck/member/mypage/refundorderdetail.do" class="ordernumber">00000000</a></td>
                         <td>2021-02-17</td>
                         <td class="book">자바의 정석<span class="amount">외 3</span></td>
                         <td>4</td>
@@ -172,7 +172,7 @@
                     </tr>
                     <tr>
                         <td>환불</td>
-                        <td><a href="" class="ordernumber">00000000</a></td>
+                        <td><a href="/bookjuck/member/mypage/refundorderdetail.do" class="ordernumber">00000000</a></td>
                         <td>2021-02-17</td>
                         <td class="book">자바의 정석<span class="amount">외 3</span></td>
                         <td>4</td>
