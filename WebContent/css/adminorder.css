@@ -149,6 +149,11 @@
 }
 
 
+/* 전체 버튼 */
+.view-form .btn-general:focus {
+    outline: none;
+}
+
 /* 주문 정보 테이블 */
 .view-form .orderinfo td, .view-form .orderinfo th, .view-form .detailinfo td {
     text-align: center;
@@ -204,11 +209,23 @@
     width: 140px;
 }
 
+
+.view-form .pay tr:nth-child(2) td {
+    color: cornflowerblue;
+}
+
+.view-form .pay tr:nth-child(3) td {
+    font-weight: bold;
+}
+
+.view-form .pay-refund tr:nth-child(1) td {
+    color: red;
+}
+
 /* 취소/교환/환불 정보 테이블 */
 /* 상태 수정 버튼 */
 .view-form .process {
-    /* border: black solid 1px; */
-    margin-left: 600px;
+    margin-left: 580px;
 }
 
 .view-form .refundinfo td {
@@ -227,4 +244,12 @@
 
 .view-form .back:hover {
     background-color: #f3dbc7;
+}
+
+
+
+/* 모달창 제어 */
+.modal .table th {
+    width: 150px;
+    text-align: center;
 }
