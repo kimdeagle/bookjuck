@@ -123,7 +123,7 @@
 		  		<label for="image" class="btn btn-info">이미지 선택</label>
 		  		<input type="file" id="image" style="display: none;">
 		  		<input type="text" class="form-control" id="imagename" placeholder="파일 선택" readonly value="해리포터와 혼혈 왕자 1.png">
-		  		<input type="button" class="btn btn-warning" value="미리보기" data-toggle="modal" data-target="#previewmodal">
+		  		<input type="button" class="btn btn-warning" value="미리보기" data-toggle="modal" data-target="#previewimagemodal">
 		  		<p class="help-block">※하나의 이미지만 등록 가능합니다.</p>
 		  	</div>
 		  	
