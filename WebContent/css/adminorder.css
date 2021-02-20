@@ -2,12 +2,17 @@
 
     관리자 - 주문관리 CSS
 
-    1. 주문/배송 조회 CSS
+    1. 주문/배송 조회 + 취소/교환/환불 조회 CSS
         - orderlist
+        - refundlist
     
+    2. 주문 상세조회 CSS
+        - view
 
 
 */
+
+
 
 /* -----1. 주문/배송 조회----- */
 /*    조회 선택 창     */
@@ -121,4 +126,105 @@
 }
 
 
-/*  */
+
+
+/* -----2. 주문 상세조회----- */
+.view-form .subtitle {
+    font-size: 1.4em;
+}
+
+.view-form .ordernumber {
+    padding-left: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.view-form .table {
+    margin-top: 8px;
+}
+
+.view-form .table th {
+    background-color: RGBA(140,179,105,0.2);
+    text-align: center;
+}
+
+
+/* 주문 정보 테이블 */
+.view-form .orderinfo td, .view-form .orderinfo th, .view-form .detailinfo td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+/* 주문 정보 상세 테이블 */
+/* 상품정보 이미지 */
+.view-form .detailinfo img {
+    width: 80px;
+}
+
+.view-form .detailinfo td:nth-child(1), .view-form .detailinfo td:nth-child(3), .view-form .detailinfo td:nth-child(4), .view-form .detailinfo td:nth-child(5), .view-form .detailinfo td:nth-child(6) {
+    width: 100px;
+}
+
+.view-form .detailinfo td:nth-child(2) {
+    width: 350px;
+    text-align: left;
+    padding-left: 30px;
+}
+
+.view-form .detailinfo td:nth-child(2) span {
+    margin-left: 10px;
+}
+
+
+/* 배송정보 테이블 */
+.view-form .deliveryinfo th {
+    width: 100px;
+}
+
+.view-form .deliveryinfo tr:nth-child(1) td {
+    width: 200px;
+}
+
+
+/* 결제정보 + 환불정보 테이블 */
+.view-form .tbl-xs {
+    width: 400px;
+}
+
+.view-form .pay, .view-form .pay-refund {
+    float: left;
+}
+
+.view-form .pay {
+    margin-right: 50px;
+}
+
+.view-form .pay th, .view-form .pay-refund th, .view-form .refundinfo th {
+    width: 140px;
+}
+
+/* 취소/교환/환불 정보 테이블 */
+/* 상태 수정 버튼 */
+.view-form .process {
+    /* border: black solid 1px; */
+    margin-left: 600px;
+}
+
+.view-form .refundinfo td {
+    width: 300px;
+}
+
+/* 주문정보 상세보기 하단 버튼 */
+.view-form .btns {
+    margin-top: -10px;
+    margin-bottom: 100px;
+}
+
+.view-form .back {
+    margin-right: 690px;
+}
+
+.view-form .back:hover {
+    background-color: #f3dbc7;
+}
