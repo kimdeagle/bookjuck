@@ -35,7 +35,7 @@
 
 
 /* 교환/환불/취소 조회 버튼 위치 조정 */
-.list-form .search-type tr:nth-child(1) > td:nth-child(3) {
+.list-form .search-type tr:nth-child(1) > td:nth-child(3), .list-form .search-type tr:nth-child(1) > td:nth-child(5) {
     vertical-align: middle;
     text-align: center;
 }
@@ -90,6 +90,11 @@
 
 .list-form .tbl-result th:nth-child(2) {
     width: 100px;
+}
+
+/* 주문번호 */
+.list-form .tbl-result td:nth-child(2) a {
+    color: #F4A259;
 }
 
 .list-form .tbl-result th:nth-child(3) {

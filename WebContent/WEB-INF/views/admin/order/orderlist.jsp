@@ -88,7 +88,7 @@
 					</tr>
 					<tr>
 						<td>자사배송</td>
-						<td>00000000</td>
+						<td><a href>00000000</a></td>
 						<td>test0123</td>
 						<td>자바의 정석<span class="amount">외 3</span></td>
 						<td>2021-02-20</td>
@@ -96,7 +96,7 @@
 					</tr>
 					<tr>
 						<td>E-Book</td>
-						<td>00001111</td>
+						<td><a href>00001111</a></td>
 						<td>test0123</td>
 						<td>개인주의자 선언</td>
 						<td>2021-02-20</td>
