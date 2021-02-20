@@ -24,14 +24,14 @@
 	
         <!-- 상단메뉴 -->
 
-       <!--  <div id="headerlink">
+         <div id="headerlink">
             <a href="#" class="headerlink-item">마이페이지</a>
             <a href="#" class="headerlink-item">로그인</a>
             <a href="#" class="headerlink-item">회원가입</a>
             <a href="#" class="headerlink-item">장바구니</a>
             <a href="#" class="headerlink-item">주문/배송조회</a>
             <a href="#" class="headerlink-item">고객센터</a>
-        </div> -->
+        </div> 
 
         <!-- 로고, 캐릭터, 검색창 -->
 
@@ -41,7 +41,7 @@
             <img src="/bookjuck/image/bookjeok/logo.png" class="logo">
             
             
-            <form id="searchform" method="GET" action="/bookjuck/member/book/searchview.do">
+            <form id="searchform" method="GET" action="/bookjuck/common/searchview.do">
             <!-- 통합검색창(검색분류선택창) -->
             <select name="sk" class="form-control noline small inline" style="width:100px"> <!-- 검색키: search key  -->
 		   		<option value="">전체도서</option>
@@ -63,7 +63,7 @@
         </div>
 
         <!-- 도서분류메뉴(navbar) -->
-       <!--  <nav class="navbar">
+         <nav class="navbar">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
@@ -76,7 +76,7 @@
                     </ul>
                 </div>
             </div>
-        </nav> -->
+        </nav> 
         
         <!-- 국내도서 중분류 -->
 <!-- 		<div id="internalmenu">

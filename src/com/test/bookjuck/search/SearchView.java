@@ -1,4 +1,4 @@
-package com.test.bookjuck.member.book;
+package com.test.bookjuck.search;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,8 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.test.bookjuck.member.book.BookDAO;
+import com.test.bookjuck.member.book.BookDTO;
 
-@WebServlet("/member/book/searchview.do")
+
+@WebServlet("/common/searchview.do")
 public class SearchView extends HttpServlet {
 
 	
@@ -63,7 +66,7 @@ public class SearchView extends HttpServlet {
 		
 		
 
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/member/book/searchview.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/common/searchview.jsp");
 		dispatcher.forward(req, resp);
 
 	}
