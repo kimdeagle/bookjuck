@@ -16,6 +16,13 @@ $(window).load(function() {
 		var filename = $(this)[0].files[0].name;
 		$(this).siblings("#imagename").val(filename);
 	});	
+	
+	/* E-Book 선택 > 파일명 가져오기 */
+	var fileTarget = $("#ebook");
+	fileTarget.on("change", function() {
+		var filename = $(this)[0].files[0].name;
+		$(this).siblings("#ebookname").val(filename);
+	});	
 
 });
 

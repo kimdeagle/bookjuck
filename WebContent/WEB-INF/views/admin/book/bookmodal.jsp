@@ -106,8 +106,8 @@
 	</div>
 </div>
 
-<!-- 미리보기 클릭 > 모달 -->
-<div class="modal fade" id="previewmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- 이미지 미리보기 클릭 > 모달 -->
+<div class="modal fade" id="previewimagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 	    <div class="modal-content">
 			<div class="modal-header">
@@ -117,6 +117,26 @@
 			<div class="modal-body" style="text-align: center;">
 			
 				<img src="/bookjuck/image/해리포터와 혼혈 왕자 1.png" style="width: 300px;">
+				
+			</div>
+			<div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- E-Book 미리보기 클릭 > 모달 -->
+<div class="modal fade" id="previewebookmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+	    <div class="modal-content">
+			<div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">미리보기</h4>
+			</div>
+			<div class="modal-body" style="text-align: center;">
+			
+				<iframe width="100%" height="600" src="/bookjuck/ebook/test.pdf"></iframe>
 				
 			</div>
 			<div class="modal-footer">
