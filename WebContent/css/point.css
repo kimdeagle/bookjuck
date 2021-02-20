@@ -1,0 +1,106 @@
+@charset "UTF-8";
+
+/*float*/
+.float-left {
+	float: left;
+}
+
+.float-right {
+	float: right;
+}
+
+/* display*/
+
+/* 공통 */
+.pointContents {
+	width: 100%;
+	border: 1px solid #ccc;
+	margin-bottom: 30px;
+}
+
+/*box1 css 시작*/
+#box1 {
+	padding: 10px 0px;
+}
+
+/*box2 css 시작*/
+#searchBtn {
+	width: 200px;
+	border: 1px solid black;
+	padding: 10px;
+}
+
+#dateBox {
+	width: 500px;
+	border: 1px solid green;
+	display: inline-block;
+}
+
+.datePick {
+	border: 1px solid #ccc;
+	padding: 5px;
+	display: inline-block;
+}
+
+/*데이트 피커 크기 조절*/
+#box2 input[type="date"] {
+	width: 180px;
+	/* border: 1px solid red; */
+	margin-left: 60px;
+	float: left;
+}
+
+#searchDateTbl input[type="date"] {
+	width: 200px;
+	/* border: 1px solid red; */
+	margin-left: 60px;
+	float: left;
+}
+
+#searchDateTbl input[type="button"] {
+	margin-left: 6px;
+	margin-top: 8px;
+}
+
+#searchDateTbl  td:nth-child(1) {
+	width: 300px;
+	padding: 0px 10px;
+	/* border: 1px solid aqua; */
+	word-spacing: inherit;
+}
+
+#searchDateTbl  td:nth-child(3) {
+	/* border: 1px solid purple; */
+	text-align: center;
+	padding-top: 13px;
+}
+
+#searchDateTbl  td:nth-child(4) input {
+	position: relative;
+	/* border: 1px solid green; */
+	left: -30px;
+}
+
+#searchDateTbl tr:nth-child(2) td:nth-child(1) select{
+	position:relative;
+	left: 50px;
+	top: 10px;
+	
+}
+
+#searchDateTbl tr:nth-child(2) td:nth-child(3) input{
+	position:relative;
+	left: -100px;
+	top: -14px;
+	
+}
+
+/*box3 css*/
+#box3 table td:nth-child(3),
+#box3 table td:nth-child(4),
+#box3 table td:nth-child(5){
+	
+	text-align: right;
+}
+
+

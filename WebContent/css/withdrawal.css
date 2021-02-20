@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+#box1{
+	width: 100%;
+	background-color: #ccc;
+	padding: 10px;	
+}
+
+#pwBox{
+	width: 350px;
+	border: 1px solid #ccc;
+	text-align:center;
+	margin: 40px auto;
+	padding: 10px;
+}
+
+#pwtable{
+	margin-bottom: 10px;
+}
+
+
