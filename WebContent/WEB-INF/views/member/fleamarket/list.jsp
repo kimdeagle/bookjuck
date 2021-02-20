@@ -50,14 +50,14 @@
 
                 <div id="topbox1">
                     <input type="button" class="btn btn-list" value="목록" style="background-color: #F4A259; color: white;">
-                    <input type="button" class="btn btn-pics" value="썸네일">
+                    <input type="button" class="btn btn-pics" value="썸네일"  onclick="location.href='/bookjuck/member/fleamarket/thumbnail.do';">
 
                     <!-- <input type="text" class="form-control" id="search"> -->
 
-                    <form id="searchForm" method="GET" action="/codestudy/board/list.do">
+                    <form id="searchForm" method="GET" action="">
                         <div class="input-group search">
                         
-                            <input type="text" class="form-control" id="search" name="search" placeholder="" aria-describedby="basic-addon2" required value="">
+                            <input type="text" class="form-control" id="fleamarket-search" name="fleamarket-search" placeholder="" aria-describedby="basic-addon2" required value="">
                             
                             <span class="input-group-addon" id="basic-addon2" style="cursor:pointer;" onclick=""><span class="glyphicon glyphicon-search"></span></span>
                         </div>

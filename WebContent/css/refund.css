@@ -12,7 +12,8 @@
 
 /*   취소/교환/환불 안내사항   */
 .refund-info {
-    margin-top: 150px;
+    margin-top: 30px;
+    margin-bottom: 100px;
 }
 
 .refund-info li {
@@ -24,6 +25,10 @@
 
 
 /* ------------- list.jsp ------------ */
+/* 교환/환불 신청 프로세스 테이블 */
+.list-form .tbl-process tr:nth-child(2) td {
+    border-top: none;
+}
 
 /*   교환/환불/취소 조회창 오더 프로세스 사진 크롭    */
 .list-form .order-process {
