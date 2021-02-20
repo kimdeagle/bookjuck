@@ -1,0 +1,119 @@
+/* 
+
+    관리자 - 주문관리 CSS
+
+    1. 주문/배송 조회 CSS
+        - orderlist
+    
+
+
+*/
+
+/* -----1. 주문/배송 조회----- */
+/*    조회 선택 창     */
+.list-form .search-type {
+    margin-top: 20px;
+}
+
+/* 조회 선택 테이블 th */
+.list-form .search-type th {
+    /* background-color: RGBA(140,179,105,0.2); */
+    vertical-align: middle;
+    text-align: center;
+}
+
+/*    datepicker 사이즈 + display : inline-block    */
+.list-form #now_date {
+    width: 165px;
+    display: inline-block;
+}
+
+.list-form #date_before_month {
+    width: 165px;
+    display: inline-block;
+}
+
+
+/* 교환/환불/취소 조회 버튼 위치 조정 */
+.list-form .search-type tr:nth-child(1) > td:nth-child(3) {
+    vertical-align: middle;
+    text-align: center;
+}
+
+/*    교환/환불/취소 조회 버튼 사이즈 조정   */
+.list-form #btnview {
+    width: 90px;
+    height: 120px;
+}
+
+
+
+/*    기간조회 버튼    */
+.list-form .period .btn:hover {
+    background-color: #f3dbc7;
+    /* color: white; */
+}
+
+.list-form .period input{
+    margin-left: 10px;
+}
+
+
+.list-form .period .btn:focus {
+    outline:none;
+    background-color: #F4A259;
+    color: white;
+}
+
+
+
+/* 주문 내역 조회 결과 소제목 + 테이블 */
+.list-form .subtitle {
+    font-size: 1.4em;
+}
+
+.list-form .tbl-result {
+    margin-top: 10px;
+}
+
+.list-form .tbl-result th, .list-form .tbl-result td {
+    text-align: center;
+}
+
+.list-form .tbl-result th {
+    background-color: RGBA(140,179,105,0.2);
+}
+
+.list-form .tbl-result th:nth-child(1) {
+    width: 90px;
+}
+
+.list-form .tbl-result th:nth-child(2) {
+    width: 100px;
+}
+
+.list-form .tbl-result th:nth-child(3) {
+    width: 120px;
+}
+
+.list-form .tbl-result td:nth-child(4) {
+    text-align: left;
+}
+
+/* 상품정보 (주문 수량 표기) */
+.list-form .table .amount {
+    color: #AAA;
+    font-size: 0.8em;
+    padding-left: 5px;
+}
+
+.list-form .tbl-result th:nth-child(5) {
+    width: 110px;
+}
+
+.list-form .tbl-result th:nth-child(6) {
+    width: 110px;
+}
+
+
+/*  */
