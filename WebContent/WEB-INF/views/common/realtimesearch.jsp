@@ -8,33 +8,28 @@
     <head>
         <title>Real-time Rank</title>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-        <link href="stylesheet.css" media="screen" rel="stylesheet" type="text/css" />
+        <!-- <link href="/bookjuck/css/realtimesearch.css" media="screen" rel="stylesheet" type="text/css" /> -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
         <link rel="stylesheet" href="/bookjuck/css/global.css">
         <%@include file="/WEB-INF/views/member/inc/asset.jsp" %>
         </head>
     <body>
+    
         <div id="content">
             <dl id="rank-list">
                 <dt>실시간 급상승 검색어</dt>
                 <dd>
                     <ol>
-                        <li><a href="#">1 순위</a></li>
-                        <li><a href="#">2 순위</a></li>
-                        <li><a href="#">3 순위</a></li>
-                        <li><a href="#">4 순위</a></li>
-                        <li><a href="#">5 순위</a></li>
-                        <li><a href="#">6 순위</a></li>
-                        <li><a href="#">7 순위</a></li>
-                        <li><a href="#">8 순위</a></li>
-                        <li><a href="#">9 순위</a></li>
-                        <li><a href="#">10 순위</a></li>
+                        <c:forEach items="${list}" var="dto">
+                        <li><a href="http://localhost:8090/bookjuck/common/searchview.do?sk=&sv=${dto.searchword}">${dto.searchword}</a></li>
+                        </c:forEach>
                     </ol>
                 </dd>
             </dl>
         </div>
+       
         <script>
-$(function() {
+/* $(function() { //실시간 검색어 순위대로 보여주기
     var count = $('#rank-list li').length;
     var height = $('#rank-list li').height();
 
@@ -47,7 +42,7 @@ $(function() {
     }
 
     step(1);
-});
+}); */
 </script>
     </body>
 </html>
