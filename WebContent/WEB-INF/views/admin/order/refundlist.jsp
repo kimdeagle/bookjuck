@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>북적북적_Admin::Welcome</title>
+<title>북적북적_Admin::주문관리</title>
 
 <%@include file="/WEB-INF/views/admin/inc/asset.jsp"%>
 
@@ -103,7 +103,7 @@
 	            </tr>
 	            <tr>
 	                <td>자사배송</td>
-	                <td><a href>00002222</a></td>
+	                <td><a href="/bookjuck/admin/order/view.do">00002222</a></td>
 	                <td>test0123</td>
 	                <td>자바의 정석<span class="amount">외 3</span></td>
 	                <td>2021-02-20</td>
@@ -111,7 +111,7 @@
 	            </tr>
 	            <tr>
 	                <td>자사배송</td>
-	                <td><a href>00003333</a></td>
+	                <td><a href="/bookjuck/admin/order/view.do">00003333</a></td>
 	                <td>test0123</td>
 	                <td>자바의 정석</td>
 	                <td>2021-02-20</td>
@@ -119,7 +119,7 @@
 	            </tr>
 	            <tr>
 	                <td>E-Book</td>
-	                <td><a href>00004444</a></td>
+	                <td><a href="/bookjuck/admin/order/view.do">00004444</a></td>
 	                <td>test0123</td>
 	                <td>개인주의자 선언</td>
 	                <td>2021-02-20</td>
