@@ -158,6 +158,10 @@ textarea {
 
 /* 3. 도서표지 이미지 */
 
+.book-xs{
+    width: 90px;
+}
+
 .book-sm {
     width:130px;
 }

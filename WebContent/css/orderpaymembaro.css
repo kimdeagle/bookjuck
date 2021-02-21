@@ -1,0 +1,13 @@
+.btn1{
+	margin-left: 20px;
+    background-color: #EFEFEF;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 3px;  
+}
+
+.btn1:hover{
+    color: #555;
+    font-weight: normal;
+}
+

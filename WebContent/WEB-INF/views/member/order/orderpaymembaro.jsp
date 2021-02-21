@@ -79,109 +79,43 @@
 
 
 			<article>
-				<h4>배송 정보</h4>
-				<div class="delivery-type-tab">
-					<ul>
-						<li><a href="#deliery-type1" class="on"
-							onclick="typeChange('delivery-type1')">일반배송</a></li>
-						<li><a href="#deliery-type2"
-							onclick="typeChange('delivery-type2')">편의점배송</a></li>
-					</ul>
-				</div>
+				<h4>바로드림 정보</h4>
 
 				<div class="delivery-type-box">
 					<div id="delivery-type1">
-
-						<!-- 종이책 일반 배송일경우 -->
-						<!-- 최근 배송지 -->
-						<div class="book">
-
-							<div class="latest-address" style="display: block;">
-								<div class="default-info">
-									<div>
-										<strong>[최근 배송지]</strong> 이름 <a href="javascript:void(0);"
-											onclick="changeAddress()" class="btn1">배송지 변경</a>
-									</div>
-									<div>(우편번호) 주소, 상세주소</div>
-									<div>핸드폰 번호</div>
+						<!-- 바로드림일 경우 -->
+						<div style="display: block">
+							<div class="default-info">
+								<div>
+									<strong style="color: #555">[바로드림 수령점]</strong> <strong>서울시 강남구 역삼동 한독빌딩</strong>
 								</div>
 							</div>
-
-							<!-- 배송지 변경 -->
-							<div class="change-address" style="display: none">
+							<div class="baro-type1" style="display: block;">
+								<div style="margin-bottom: 8px">이름 <a href="javascript:void(0);"
+										onclick="changeBaroType()" class="btn1" id="change-receiver">수령인 변경</a></div>
+								<div>핸드폰 번호</div>
+							</div>
+							
+							<div class="baro-type2" style="display: none">
 								<table class="tbl-receiver table tbl-lg">
 									<tr>
-										<td>이름 *</td>
-										<td><input type="text" placeholder="10자리 내 입력"
-											maxlength="10" id="receiverName" name="receiverName">
+										<td>받는분 이름 *</td>
+										<td><input type="text"
+											maxlength="10" id="baroName" name="baroName" value="이름">
 										</td>
 									</tr>
 									<tr>
 										<td>휴대폰 *</td>
-										<td><input type="text" id="receiverPhone"
-											name="receiverPhone"
+										<td><input type="text" id="baroPhone"
+											name="baroPhone"
 											onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"
-											maxlength="11" style="width: 200px;"></td>
-									</tr>
-									<tr>
-										<td>주소 *</td>
-										<td><input type="text" id="sample6_postcode"
-											placeholder="우편번호" readonly="readonly" style="width: 110px;">
-											<input type="button" onclick="sample6_execDaumPostcode()"
-											value="주소 찾기"><br> <input type="text"
-											id="sample6_address" placeholder="주소" readonly="readonly"
-											style="width: 400px;"><br> <input type="text"
-											id="sample6_detailAddress" placeholder="상세주소"
-											style="width: 400px;"> <input type="text"
-											id="sample6_extraAddress" placeholder="참고항목"
-											readonly="readonly" style="width: 200px;"></td>
+											maxlength="11" value="전화번호" style="width: 200px;"></td>
 									</tr>
 								</table>
-								<a href="javascript:void(0);" onclick="changeAddress()"><
-									최근배송지로 변경</a>
 							</div>
+							
 						</div>
 
-
-					</div>
-
-					<!-- 편의점 택배 -->
-					<div id="delivery-type2" style="display: none">
-						<table class="tbl-receiver table tbl-lg">
-							<tr>
-								<td>이름 *</td>
-								<td><input type="text" placeholder="10자리 내 입력"
-									id="convReceiverName" name="convReceiverName" maxlength="10">
-									<label><input type="checkbox"
-										onclick="infoConvChange()"> 주문자와 동일</label></td>
-							</tr>
-							<tr>
-								<td>휴대폰 *</td>
-								<td><input type="text" id="convReceiverPhone"
-									name="convReceiverPhone"
-									onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"
-									style="width: 200px;"></td>
-							</tr>
-							<tr>
-								<td>주소 *</td>
-								<td><input type="text" id="sample6_postcode"
-									placeholder="편의점 이름" readonly="readonly" style="width: 200px;">
-									<input type="button" onclick="sample6_execDaumPostcode()"
-									value="GS25검색"> <input type="button"
-									onclick="sample6_execDaumPostcode()" value="CU검색"><br>
-									<input type="text" id="sample6_address" placeholder="주소"
-									readonly="readonly" style="width: 400px;"><br> <input
-									type="text" id="sample6_detailAddress" placeholder="상세주소"
-									style="width: 400px;"></td>
-							</tr>
-							<tr>
-								<td>편의점 연락처</td>
-								<td><input type="text" id="convPhone" name="convPhone"
-									maxlength="11"
-									onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"
-									style="width: 200px;"></td>
-							</tr>
-						</table>
 					</div>
 
 				</div>
@@ -282,7 +216,6 @@
 
 
 
-
 		</section>
 
 
@@ -306,40 +239,20 @@
 
 
 	<script>
-		function typeChange(evt) {
-			$(".delivery-type-box input[type=text]").val('');
-			$(".delivery-type-tab li a").attr('class', '');
-			$(event.target).attr('class', 'on');
-			$("#delivery-type1,#delivery-type2").css('display', 'none');
-			$("#" + evt).css('display', 'block');
+		
+		function changeBaroType() {
+			$(".baro-type1").css('display','none');
+			$(".baro-type2").css('display','block');
 		}
 
-		function changeAddress() {
-
-			if ($(".latest-address").css('display') == 'block') {
-				$(".latest-address").css('display', 'none');
-				$(".change-address").css('display', 'block');
-			} else {
-				$(".change-address").css('display', 'none');
-				$(".latest-address").css('display', 'block');
-			}
-		}
-
-		function infoConvChange() {
-			if (event.target.checked) {
-				$("#convReceiverName").val($("#nonOrdererName").val());
-				$("#convReceiverPhone").val($("#nonOrdererPhone").val());
-			} else {
-				$("#convReceiverName").val('');
-				$("#convReceiverPhone").val('');
-			}
-		}
+		
 
 		function payChange() {
+			
 			if ($("#card-type").is(':checked')) {
 				$(".account").css('display', 'none');
 				$("#btn-account-type").css('display', 'none');
-				$("#btn-card-type").css('display', 'block');
+				$("#btn-card-type").css('display', 'block');				
 			} else {
 				$(".account").css('display', 'block');
 				$("#btn-card-type").css('display', 'none');

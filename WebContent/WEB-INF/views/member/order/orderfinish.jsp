@@ -61,9 +61,9 @@
 		        </tr>
 		        <tr class="olInfo">
 		            <td>
-		                <a href="#">주문번호</a><br>
+		                <a href="/bookjuck/member/mypage/orderdetail.do">주문번호</a><br>
 		                (주문일)<br><br>
-		                <a href="#" onclick="" class="btn-order">주문상세보기</a>
+		                <a href="/bookjuck/member/mypage/orderdetail.do" onclick="" class="btn-order">주문상세보기</a>
 		            </td>
 		            <td>가격</td>
 		            <td>

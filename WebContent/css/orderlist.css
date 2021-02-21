@@ -8,6 +8,9 @@ Bittersweet Shimmer : #BC4B51 - RGB(188,75,81)
 
 */
 
+article{
+	margin-bottom: 30px;
+}
 
 .contentsection{
 	margin-bottom: 150px;
@@ -75,6 +78,65 @@ th{
     box-shadow: inset 1.5px 1.5px 0 RGBA(244,162,89,.6), inset -1px -1px 3px RGBA(244,162,89,.6);
     font-weight: normal;
 }
+
+#strDate,
+#endDate
+{
+	width: 150px;
+	background: #FFF;
+	display: inline-block;
+	cursor: pointer;
+	background-image: url(/bookjuck/image/calendar1.png);
+	background-repeat: no-repeat;
+	background-position: 116px;
+}
+
+.datepicker th{
+	background-color: #FFF;
+}
+
+.order-state-box{
+	width: 100%;
+	height: 75px;
+	background-repeat: no-repeat;
+}
+
+.order-state{
+	float: left;
+}
+
+.order-state li{
+	background-image: url(/bookjuck/image/orderstate.gif);
+	background-position: -15px 6px;
+	background-repeat: no-repeat;
+	width: 112px;
+	height: 75px;
+	display: inline-block;
+	margin-right: 18px;
+	
+}
+
+.order-state-box li:nth-child(2){
+	background-position: -124px 6px;
+}
+
+.order-state-box li:nth-child(3){
+	background-position: -236px 6px;
+}
+
+.order-state-box li:nth-child(4){
+	background-position: -350px 6px;
+}
+
+.total-order{
+	width: 150px;
+	float: left;
+}
+
+.total-order span{
+	float: right;
+}
+
 
 .olDate{
     margin-top: 80px;
@@ -160,9 +222,6 @@ th{
     width: 80px;
 }
 
-.book-xs{
-    width: 90px;
-}
 
 .noOrderList{
     text-align: center;
@@ -209,4 +268,8 @@ input[type=date]{
 #periodbtn{
 	padding: 8px 16px;
 	margin-left: 10px;
+}
+
+.datepicker{
+	color: red;
 }

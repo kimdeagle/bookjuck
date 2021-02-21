@@ -1,0 +1,52 @@
+article{
+	margin: 0 auto;
+	width:1000px;
+	margin-bottom: 60px;
+}
+
+.tbl-mem-orderer{
+	text-indent: 17px;
+}
+
+.tbl-mem-orderer td:first-child {
+	width:200px;
+	border-right: 1px solid #DDD;
+}
+
+.default-info{
+	margin-bottom: 20px;
+}
+
+.default-info div{
+	margin-bottom: 10px;
+}
+
+.btn1{
+	margin-left: 20px;
+    background-color: #EFEFEF;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 3px;  
+}
+
+.btn1:hover{
+    color: #555;
+    font-weight: normal;
+}
+
+#change-receiver{
+	position: absolute;
+	right: 0px;
+	top: -8px;
+}
+
+.baro-type1{
+	width: 300px;
+	position: relative;
+}
+
+.ebooknotice{
+	padding: 20px 10px;
+	border-top: 2px solid #DDD;
+	border-bottom: 2px solid #DDD;
+}

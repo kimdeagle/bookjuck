@@ -14,6 +14,11 @@
 <link rel="stylesheet" href="/bookjuck/css/global.css">
 <link rel="stylesheet" href="/bookjuck/css/orderlist.css">
 
+<!-- datepicker -->
+<link rel="stylesheet" href="/bookjuck/node_modules/bootstrap/dist/css/bootstrap-datepicker.min.css">
+<script src="/bookjuck/node_modules/bootstrap/dist/js/bootstrap-datepicker.js"></script>
+<script src="/bookjuck/node_modules/bootstrap/dist/js/bootstrap-datepicker.ko.min.js"></script>
+
 
 <style>
 
@@ -53,12 +58,31 @@
                 </table>
                 <div>※ 비회원은 최대 1개월 내의 주문 내역을 확인하실 수 있습니다. &nbsp&nbsp&nbsp<a href="#" class="btn1" style="font-weight: bold;">회원가입</a></div>
             </article>
+            
+            
+            
+            <article>
+            	<div class="order-state-box">
+            		<ul class="order-state">
+            			<li class="cell1"><b>주문완료 0</b></li>
+            			<li class="cell2"><b>결제완료 0</b></li>
+            			<li class="cell3"> <b> 배송중 0</b></li>
+            			<li class="cell4" style="width: 80px;"><b>배송완료 0</b></li>
+            		</ul>
+            		<div class="total-order">
+            			<ul>
+            				<li>취소 <span>0건</span></li>
+            				<li>교환 <span>0건</span></li>
+            				<li>환불 <span>0건</span></li>            				
+            			</ul>
+            		</div>
+            	</div>
+            </article>
         
         
-        <!-- 주문 내역 영역-->  
+        	
         
             <article>
-
                 <!-- 조회 기간 설정 -->
                 <!-- 로그인한 회원만 보임 -->
                 <div class="periodbox">
@@ -67,17 +91,17 @@
                             <th style="padding-top:16px;">기간 조회</th>
                             <td>
                                 <span class="sort_option">
-                                <a id="period_1week"             href="javascript:;" onclick="" >1주일</a>
-                                <a id="period_1month"            href="javascript:;" onclick="" class="on">1개월</a>
-                                <a id="period_3month"            href="javascript:;" onclick="" >3개월</a>
-                                <a id="period_3month"            href="javascript:;" onclick="" >6개월</a>
-                                </a>
+                                <a id="period_1week"             href="javascript:;" onclick="periodChange(id)" >1주일</a>
+                                <a id="period_1month"            href="javascript:;" onclick="periodChange(id)" class="on">1개월</a>
+                                <a id="period_3month"            href="javascript:;" onclick="periodChange(id)" >3개월</a>
+                                <a id="period_6month"            href="javascript:;" onclick="periodChange(id)" >6개월</a>
                                 </span>
                                 
-                                <input type="date" id="strDate" class="form-control" value="">
+                                <input id="strDate" class="form-control" readonly="readonly" style="margin-left: 20px;">
                                 ~
-                                <input type="date" id="endDate" class="form-control" value="">
-                                <a href="#" id="periodbtn" class="btn-order" onclick="" >조 회</a>
+                                <input id="endDate" class="form-control" readonly="readonly">
+                                <a href="javascript:void(0);" id="periodbtn" class="btn-order" onclick="" >조 회</a>
+                                
                             </td>
                         </tr>
                     </table>
@@ -151,7 +175,7 @@
                 </ul>
                               
 
-            
+            </article>
 
 
         </section>
@@ -183,6 +207,27 @@
 		   
 		   })
 		});
+	
+	$(function(){
+		   $("#endDate").datepicker({
+		      format:'yyyy-mm-dd',
+		      startDate:'-2y',
+		      endDate : '0',
+		      language: "ko"
+		   })
+		});
+	
+	
+	
+	
+	function periodChange(id) {
+		console.log($(id));
+		$(".sort_option a").attr('class','');
+		$("#"+id).attr('class','on');
+	}
+	
+	
+	
 	</script>
 
 </html>

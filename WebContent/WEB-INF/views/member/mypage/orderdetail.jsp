@@ -62,11 +62,11 @@
 			</article>
 
 			<article>
-				<h5>배송정보</h5>
+				<h5>주문/배송정보</h5>
 
 				<!-- 일반 배송시 -->
 				<div class="waybill-number">
-					<span>일반 배송</span>
+					<b>일반배송</b>
 					<div>
 						운송장 번호 : <a href="#">123456789</a>
 					</div>
@@ -106,7 +106,7 @@
 				</table>
 
 				<!-- 바로드림, 비회원 안 보임 -->
-				<span>바로드림</span>
+				<b>바로드림</b>
 				<table class="orderdetail table tbl-md">
 					<tr>
 						<th>주문번호</th>
@@ -141,7 +141,7 @@
 				</table>
 
 				<!-- e-book 비회원 안 보임-->
-				<span>E-Book</span>
+				<b>E-Book</b>
 				<table class="orderdetail table tbl-md">
 					<tr>
 						<th>주문번호</th>
@@ -158,9 +158,7 @@
 							src="/bookjuck/image/달러구트 꿈 백화점.png" class="book-xs"> <a
 							href="/bookjuck/member/book/ebooklist.do">도서명</a></td>
 						<td>1</td>
-						<td>주문상태 <!-- 주문상태가 다운로드 완료일 때 보임 --> <a href="#"
-							class="btn-report">독후감 쓰러 가기</a>
-						</td>
+						<td>주문상태</td>
 					</tr>
 
 					<tr class="olInfo">
@@ -169,10 +167,7 @@
 							src="/bookjuck/image/달러구트 꿈 백화점.png" class="book-xs"> <a
 							href="/bookjuck/member/book/ebooklist.do">도서명</a></td>
 						<td>1</td>
-						<td>주문상태 <!-- 주문상태가 다운로드 완료일 때 보임 --> <a href="#"
-							class="btn-report">독후감 쓰러 가기</a>
-						</td>
-					</tr>
+						<td>주문상태</td>
 					</tr>
 				</table>
 

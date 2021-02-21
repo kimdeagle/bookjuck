@@ -57,9 +57,9 @@
 		
 			<div class="cart_prod_tab">
 				<ul>
-					<li><a href="/bookjuck/member/order/cart.do">전체구매</a></li>
+					<li><a href="/bookjuck/member/order/cart.do">일반구매</a></li>
 					<li><a href="/bookjuck/member/order/barocart.do">바로드림</a></li>
-					<li class="on"><a href="/bookjuck/member/order/ebookcart.do">E-Book</a></li>
+					<li><a href="/bookjuck/member/order/ebookcart.do" class="on">E-Book</a></li>
 				</ul>
 			</div>
 			
@@ -76,12 +76,12 @@
 				<label>
 					<input type="checkbox" id="check_all_top" name="check_all" class="cartcheck check_all" checked><span>전체선택</span>
 				</label>
-				<a href="#" class="btn1">삭제</a>
+				<a href="javascript:void(0);" class="btn1">삭제</a>
 			</div>
 			
 		    <!-- 없으면 안보임 -->
 		    <div class="cartlistbox">
-				<h4><input type="checkbox" id="ebookcartcheck" class="cartcheck" checked>E-Book<a href="#" class="btn1">삭제</a></h4>
+				<h4>E-Book</h4>
 				<table id="ebookcart" class="cartlist table tbl-lg">
 			        <tr>
 			        	<th></th>
@@ -107,15 +107,26 @@
 			    </table>
 		    </div>
 		    
-<!-- 		    <div class="cart_controller"> -->
-<!-- 				<label> -->
-<!-- 					<input type="checkbox" id="check_all_foot" name="check_all" class="cartcheck check_all" checked onclick=""><span>전체선택</span> -->
-<!-- 				</label> -->
-<!-- 				<a href="#" class="btn1">삭제</a> -->
-<!-- 			</div> -->
+		    <div class="carttotalpaybox">
+		    	<table class="carttotalpay table tbl-lg">
+		    		<tr>
+		    			<th>상품 금액</th>
+		    			<th>배송비</th>
+		    			<th>결제 예정금액</th>
+		    			<th>적립예정 포인트</th>
+		    		</tr>
+		    		<tr>
+		    			<td>원</td>
+		    			<td>원</td>
+		    			<td style="color: #BC4B51">원</td>
+		    			<td></td>
+		    		</tr>
+		    	</table>
+		    </div>
+
 			
-			<div class="orderbtnbox">
-				<a href="/bookjuck/member/order/orderpaymem.do" onclick="" class="btn-order">주문하기</a>
+			<div class="btn-box">
+				<a href="/bookjuck/member/order/orderpaymemebook.do" onclick="" class="btn-order">주문하기</a>
 			</div>
 		    
 	    </article>
@@ -155,8 +166,9 @@
 				
 			});
 			
+			/* ############ length == 장바구니에 담겨있는 책 + 1 ###########*/
 			$(".cartcheck").click(function name() {
-				if($(".cartcheck:checked").length==3){
+				if($(".cartcheck:checked").length==2){
 					$(".check_all").prop("checked",true);
 				}else{
 					$(".check_all").prop("checked",false);
