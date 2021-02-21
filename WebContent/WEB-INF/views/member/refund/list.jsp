@@ -48,7 +48,7 @@
 
                 <h3>교환/환불/취소 조회</h3>
 
-                <table class="table tbl-md">
+                <table class="table tbl-md tbl-process">
                     <tr>
                         <th class="outline-l">교환신청<b>(0)</b></th>
                         <th rowspan="2" class="next">
@@ -133,7 +133,7 @@
 				<ul id="searchrule">
 					<li>최근 1개월이 기본으로 조회 되며, 기간 변경시 기간 선택한 후 조회버튼을 클릭해 주세요.</li>
 					<li>한번에 조회 가능한 기간은 최대 6개월이며, 최근 2년부터 조회 가능합니다.</li>
-					<li>배송완료 된 주문건은 <a href="">구매내역</a>에서도 확인 하실 수 있습니다.</li>
+					<li>배송완료 된 주문건은 <a href="/bookjuck/member/mypage/orderlist.do">구매내역</a>에서도 확인 하실 수 있습니다.</li>
 				</ul>
 
 
@@ -148,7 +148,7 @@
                     </tr>
                     <tr>
                         <td>환불</td>
-                        <td><a href="" class="ordernumber">00000000</a></td>
+                        <td><a href="/bookjuck/member/mypage/refundorderdetail.do" class="ordernumber">00000000</a></td>
                         <td>2021-02-17</td>
                         <td class="book">자바의 정석<span class="amount">외 3</span></td>
                         <td>4</td>
@@ -156,7 +156,7 @@
                     </tr>
                     <tr>
                         <td>환불</td>
-                        <td><a href="" class="ordernumber">00000000</a></td>
+                        <td><a href="/bookjuck/member/mypage/refundorderdetail.do" class="ordernumber">00000000</a></td>
                         <td>2021-02-17</td>
                         <td class="book">자바의 정석<span class="amount">외 3</span></td>
                         <td>4</td>
@@ -164,7 +164,7 @@
                     </tr>
                     <tr>
                         <td>환불</td>
-                        <td><a href="" class="ordernumber">00000000</a></td>
+                        <td><a href="/bookjuck/member/mypage/refundorderdetail.do" class="ordernumber">00000000</a></td>
                         <td>2021-02-17</td>
                         <td class="book">자바의 정석<span class="amount">외 3</span></td>
                         <td>4</td>
@@ -172,7 +172,7 @@
                     </tr>
                     <tr>
                         <td>환불</td>
-                        <td><a href="" class="ordernumber">00000000</a></td>
+                        <td><a href="/bookjuck/member/mypage/refundorderdetail.do" class="ordernumber">00000000</a></td>
                         <td>2021-02-17</td>
                         <td class="book">자바의 정석<span class="amount">외 3</span></td>
                         <td>4</td>
@@ -216,7 +216,7 @@
                 <ul>
                     <li>교환신청은 상품의 결함 및 계약내용과 다를 경우 문제점 발견 후 30일 이내 가능합니다.</li>
                     <li>변심반품의 경우 수령 후 7일 이내, 상품의 결함 및 계약내용과 다를 경우 문제점 발견 후 30일 이내 가능합니다.</li>
-                    <li>오픈마켓, 기프트, 중고장터, 해외배송주문, 바로드림주문건은 <b>[1:1 상담]</b>으로 문의 바랍니다. <a href=""><input type="button" class="btn btn-xs btn-general" value="1:1 상담 문의"></a></li>
+                    <li>오픈마켓, 기프트, 중고장터, 해외배송주문, 바로드림주문건은 <b>[1:1 상담]</b>으로 문의 바랍니다. <a href="/bookjuck/member/mypage/servicecenter.do"><input type="button" class="btn btn-xs btn-general" value="1:1 상담 문의"></a></li>
                     <li><b>반품처리 절차 : 반품신청 > 접수 > 반품회수 > 회수완료 > 반품완료</b></li>
                     <li><b>교환처리 절차 : 교환신청 > 접수 > 처리중 > 교환완료</b></li>
                     <li>반품/교환신청건은 접수 이전 상태에서 신청취소가 가능합니다.

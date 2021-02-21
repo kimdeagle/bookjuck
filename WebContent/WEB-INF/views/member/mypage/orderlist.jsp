@@ -124,9 +124,9 @@
                         <td>0</td>
                         <td>주문상태</td>
                         <td>
-                            <button type="submit" class="btn" onclick="location.href='';">취 소</button>
-                            <button type="submit" class="btn" onclick="location.href='';">교 환</button>
-                            <button type="submit" class="btn" onclick="location.href='';">환 불</button>
+                            <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/cancelapplication.do';">취 소</button>
+                            <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/returnapplication.do';">교 환</button>
+                            <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/refundapplication.do';">환 불</button>
                         </td>
                     </tr>
                 </table>

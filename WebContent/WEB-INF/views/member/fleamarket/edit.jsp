@@ -76,7 +76,7 @@
 
 
                 <div class="btns btn-group">
-                    <button type="button" class="btn btn-default" onclick="location.href='/codestudy/board/list.do';">
+                    <button type="button" class="btn btn-default" onclick="location.href='/bookjuck/member/fleamarket/list.do';">
                         <span class="glyphicon glyphicon-chevron-left"></span>
                         뒤로
                     </button>

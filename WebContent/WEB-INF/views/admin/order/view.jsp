@@ -144,12 +144,16 @@
 	                    <td>8,550원</td>
 	                </tr>
 	                <tr>
-	                    <th>할인합계</th>
-	                    <td>-1,000원</td>
+	                    <th>사용포인트</th>
+	                    <td>-1,000P</td>
 	                </tr>
 	                <tr>
 	                    <th>최종결제금액</th>
 	                    <td>7,550원</td>
+	                </tr>
+	                <tr>
+	                    <th>적립포인트</th>
+	                    <td>850P</td>
 	                </tr>
 	                <tr>
 	                    <th>결제수단</th>
@@ -169,6 +173,10 @@
 	                    <th>환불금액</th>
 	                    <td>8,550원</td>
 	                </tr>
+	                <tr>
+	                    <th>환불포인트</th>
+	                    <td>850P</td>
+	                </tr>	                
 	                <tr>
 	                    <th>환불수단</th>
 	                    <td>카드+적립금</td>
@@ -225,21 +233,32 @@
 	
 	        <!-- 교환 배송지 정보 (교환일때만 보여주기) -->
 	        <b class="subtitle">교환상품 배송 정보</b>
-	        <table class="table tbl-md">
+	        <table class="table tbl-md deliveryinfo">
 	            <tr>
-	                <th>주소</th>
-	                <td>서울특별시 강남구 역삼동 한독빌딩</td>
+	                <th>받으시는 분</th>
+	                <td>테스트</td>
+	                <th>연락처</th>
+	                <td>010-1111-1111</td>
+	                <th>운송장번호</th>
+	                <td>
+	                    <a href>한진택배 01010239</a>
+	                </td>
 	            </tr>
 	            <tr>
-	                <td colspan="2"></td>
+	                <th>주소</th>
+	                <td colspan="5">서울특별시 강남구 역삼동 한독빌딩</td>
+	            </tr>
+	            <tr>
+	                <td colspan="5"></td>
 	            </tr>
 	        </table>
 	
 	
 	        <!-- 주문 상세보기 하단 (라인 + 버튼) -->
 	        <hr>
-	        <div class="btns">
-	            <input type="button" value="목록으로" class="btn back">
+	        <div class="btns"> 
+	        	<!-- 목록으로 버튼 링크 연결 시 주의할 것 -->
+	            <input type="button" value="목록으로" class="btn back" onclick="location.href='/bookjuck/admin/order/orderlist.do';">
 	            <button class="btn btn-general"  data-toggle="modal" data-target="#ordercancel">
 	                주문취소
 	            </button>
