@@ -7,10 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>북적북적_Admin::Welcome</title>
-
 <%@include file="/WEB-INF/views/admin/inc/asset.jsp"%>
 <link rel="stylesheet" href="/bookjuck/css/global.css">
-<link rel="stylesheet" href="/bookjuck/css/custmng.css">
+<link rel="stylesheet" href="/bookjuck/css/dormancymng.css">
 <style type="text/css">
 </style>
 </head>
@@ -43,11 +42,7 @@
 					</td>
 					<th width="150">개인정보 유효기간</th>
 					<td>
-						<label>전체<input  type="radio" name="term" checked></label>
-						<label>1년<input  type="radio" name="term" ></label>
-						<label>2년<input  type="radio" name="term" ></label>
-						<label>5년<input  type="radio" name="term" ></label>
-						<label>10년<input type="radio" name="term" ></label>
+						<input type="text">일 이상
 					</td>
 				</tr>
 				<tr>
@@ -73,7 +68,7 @@
 						<span>~</span>
 						<input type="date" class="form-control">
 					</td>
-					<th>최근 접속일</th>
+					<th>휴면 전환일</th>
 					<td>
 						<input type="date" class="form-control">
 						<span>~</span>
@@ -118,10 +113,10 @@
 					회원구분
 				</th>
 				<th>
-					큐레이션
+					휴면 전환일
 				</th>
 				<th>
-					최근 접속일
+					전환 경과일
 				</th>
 				<th width="150">
 					
@@ -135,8 +130,8 @@
 				<td>010-5125-0577</td>
 				<td>2021-01-01</td>
 				<td>일반</td>
-				<td>O</td>
-				<td>2021-02-21</td>
+				<td>2021-01-01</td>
+				<td>30일</td>
 				<td>
 					<input type="button" value="조회" id="#custSearch" href="#custSearch" data-toggle="modal">
 					<input type="button" value="탈퇴" id="#custWithdrawal" href="#custWithdrawal" data-toggle="modal">
@@ -144,15 +139,15 @@
 				</td>
 			</tr>
 			<tr>
-				<td><input  type="checkbox"id="Check2" name="chk"></td>
+				<td><input  type="checkbox" id="Check1" name="chk"></td>
 				<td>2</td>
 				<td>마석동</td>
 				<td>TEST002</td>
 				<td>010-7723-0341</td>
 				<td>2021-01-10</td>
 				<td>카카오</td>
-				<td>X</td>
-				<td>2021-02-02</td>
+				<td>2021-02-01</td>
+				<td>21일</td>
 				<td>
 					<input type="button" value="조회" id="#custSearch" href="#custSearch" data-toggle="modal">
 					<input type="button" value="탈퇴">
@@ -321,28 +316,28 @@
 			</div>
 		<!--########### 회원 정보 조회 모달 끝 -->
 		
-		<!--########### 회원 휴면 전환 모달 시작  -->
+		<!--########### 회원 일반 전환 모달 시작  -->
 			<div class="modal fade" id="custdormancy" role="dialog">
 				<div class="modal-dialog modal-md">
 					<div class="modal-content">
 						<!-- 모달 해더 시작 -->
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
-							<h3>휴면 계정 전환</h3>
+							<h3>일반 계정 전환</h3>
 						</div>
 						<!-- 모달 해더 끝 -->
 							
 						<!-- 모달 보디 시작 -->
 						<div class="modal-body">
 							<p>회원 번호: 1</p>
-							<p>'홍길동'님의 계정을 <b>휴면계정으로 전환하시겠습니까?</b></p>
+							<p>'홍길동'님의 계정을 <b>일반계정으로 전환하시겠습니까?</b></p>
 							<input type="button" id="withdrawalbtn" class="mdalbtn" value="확인">
 						</div>
 						<!-- 모달 보디 끝 -->
 					</div>
 				</div>
 			</div>
-		<!--########### 회원 휴면 전환 모달 끝 -->
+		<!--########### 회원 일반 전환 모달 끝 -->
 	
 	
 	
