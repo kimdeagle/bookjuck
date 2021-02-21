@@ -25,6 +25,20 @@ public class SearchView extends HttpServlet {
 		String sv = req.getParameter("sv"); //검색창 입력값
 		String sk = req.getParameter("sk");	//검색 카테고리 입력값
 		
+		System.out.println(sv);
+		RealTimeSearchDAO dao2 = new RealTimeSearchDAO(); //실시간 검색어 
+		RealTimeSearchDTO dto2 = new RealTimeSearchDTO();
+		
+		dto2.setSearchword(sv);
+		int result = dao2.insertWord(dto2);//검색어 DB삽입
+		
+		if(result ==1) {
+			System.out.println("DB삽입완료");
+		} else {
+			System.out.println("DB삽입실패");
+		}
+		
+		
 		
 		HashMap<String,String> map = new HashMap<String,String>();
 		if (!(sv == null || sv.equals(""))) {
@@ -34,10 +48,10 @@ public class SearchView extends HttpServlet {
 		
 		
 		ArrayList<BookDTO> list = new ArrayList<BookDTO>();
-		
+				
 		if (!(sv == null || sv.equals(""))) {
 			BookDAO dao = new BookDAO();
-			list = dao.list(map);
+			list = dao.list(map);			
 			System.out.println(list);
 		
 		  for (BookDTO dto : list) {

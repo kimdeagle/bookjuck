@@ -33,6 +33,34 @@ public class RealTimeSearchDAO {
 		}
 	}
 	
+	
+	public int insertWord(RealTimeSearchDTO dto) {
+		
+		
+		try {
+			
+			String sql = "insert into tblsearchrank (seq, searchdate, searchword) values (seqsearchrank.nextval, to_date(sysdate,'yyyy.mm.dd hh24:mi'), ?)";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getSearchword());
+			
+			System.out.println(sql);
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		
+		return 0;
+				
+		
+	}
+	
+	
+	
+	
+
 	public ArrayList<RealTimeSearchDTO> getSearchRank() {
 		
 		try {

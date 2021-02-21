@@ -18,6 +18,9 @@ public class RealTimeSearch extends HttpServlet {
 
 		
 		
+		
+		
+		
 		ArrayList<RealTimeSearchDTO> list = new ArrayList<RealTimeSearchDTO>();
 		
 		RealTimeSearchDAO dao = new RealTimeSearchDAO();
