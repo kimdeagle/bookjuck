@@ -66,7 +66,7 @@
                     <!-- <div style="clear:both;"></div> -->
 
 
-                    <input type="button" class="btn btn-general" value="새 글쓰기">
+                    <input type="button" class="btn btn-general" value="새 글쓰기" onclick="location.href='/bookjuck/member/fleamarket/write.do';">
                 </div><!-- topbox -->
                 
 
