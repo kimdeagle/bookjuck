@@ -76,3 +76,217 @@
 .tbl-pay td span{
 	float: left;
 }
+
+
+.btn-back{
+    background-color: #EFEFEF;
+    height: 50px;
+    border-radius: 3px; 
+}
+
+.btn-back:hover{
+    color: #555;
+    font-weight: normal;
+}
+
+
+.btn-pay{
+	background-color: #BC4B51;
+    color: white;
+    width: 120px;
+    height: 50px;
+    border-radius: 3px;
+    
+}
+
+.btn-pay:hover{
+	color: white;
+    font-weight: normal;	
+}
+
+
+.delivery-type-tab{
+	width:1000px;
+	margin-bottom: 20px;
+}
+
+.delivery-type-tab ul{
+	height: 40px;
+	border-bottom: 1px solid #DDD;
+}
+
+.delivery-type-tab li a{
+	float: left;
+	width: 120px;
+	text-align: center;
+	padding: 8px;
+	font-weight: bold;
+	border: 1px solid #EEE;
+	border-bottom: 0;
+	background-color: #fbfbfb;
+}
+
+.delivery-type-tab li a.on{
+	border: 1px solid #DDD;	
+	border-bottom: 1px solid #FFF;
+	background-color: #FFF
+}
+
+
+.delivery-type-tab:after{
+	content:"";
+	display:block;
+	clear: both;
+}
+
+.tbl-receiver{
+	border-top: 1px solid #DDD;
+}
+
+.tbl-receiver tr td:first-child{
+	text-indent: 17px;
+	width: 200px;
+	border-right: 1px solid #DDD;
+	vertical-align: middle;
+}
+
+.tbl-receiver tr td input{
+	margin-left: 20px;
+	padding: 6px 5px;
+	width: 160px;
+}
+
+.tbl-receiver tr:first-child td input[type=checkbox]{
+	margin-left: 16px;
+	width: 20px;
+}
+
+.tbl-receiver tr td input[type=button]{
+	width: 100px;
+}
+
+.tbl-receiver tr:nth-child(3) td input{
+	margin-bottom: 8px;
+} 
+
+.tbl-receiver tr:nth-child(3) td input:nth-last-child(2),
+.tbl-receiver tr:nth-child(3) td input:last-child {
+	margin-bottom: 0;
+}
+
+.orderbox{
+	float: left;	
+}
+
+.tbl-orderpaylist{
+	text-align: center;
+}
+
+.tbl-orderpaylist th{
+	text-align: center;
+	border-right: 1px solid #DDD;
+}
+
+
+.tbl-orderpaylist th:last-child{
+	width: 350px;
+	border-right: 0;
+}
+
+.tbl-orderpaylist td{
+	border-right: 1px solid #DDD;	
+}
+
+
+.tbl-orderpaylist td:last-child{
+	vertical-align: middle;
+	border-right: 0;	
+}
+
+.tbl-orderpaylist tr td:first-child div{	
+	text-align: left;
+	margin: 0 120px;
+}
+
+.tbl-orderpaylist tr a{
+	position: relative;
+    top: -50px;
+}
+
+
+
+.pay-tab{
+	font-size: 18px;
+	margin-top: 18px;
+}
+
+.pay-tab label{
+	cursor: pointer;
+}
+
+
+.account{
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.paymentbox{
+	float:left
+}
+
+.paymentbox tr td:first-child,
+.paymentbox tr th
+{
+	text-indent: 17px;
+	width: 200px;
+	border-right: 1px solid #DDD;
+}
+
+.paymentbox tr td:last-child{
+	text-align: right;
+	padding-right: 30px;
+}
+
+#bank-type{
+	margin-left: 8px;
+}
+
+.pointbox{
+	float: left;
+	width: 320px;
+	margin-left: 30px;
+}
+
+.pointbox div{
+	margin-top: 17px;
+}
+
+#point{
+	width: 100px;
+	text-align: right;
+	color: #BC4B51;
+}
+
+.btn-box{
+	float:right;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.btn-pay-box{
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.btn-pay-box a{
+	font-size: 18px;
+	padding: 15px 25px;
+	margin-right: 10px;
+}
+
+
+.paybox{
+	width: 330px;
+	height: 256.250px;
+	margin-left: 20px;
+}

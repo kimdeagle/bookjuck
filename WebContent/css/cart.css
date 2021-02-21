@@ -17,7 +17,7 @@ table{
 	border-bottom: 1px solid #DDD;
 }
 
-.cart_prod_tab li{
+.cart_prod_tab li a{
 	float: left;
 	width: 120px;
 	text-align: center;
@@ -28,7 +28,7 @@ table{
 	background-color: #fbfbfb;
 }
 
-.cart_prod_tab li.on{
+.cart_prod_tab li a.on{
 	border: 1px solid #DDD;	
 	border-bottom: 1px solid #FFF;
 	background-color: #FFF
@@ -59,7 +59,6 @@ table{
 .cartbox{
 	margin: 0 auto;
 	width:1000px;
-	margin-bottom: 300px;
 }
 
 .cartcheck{
@@ -144,9 +143,26 @@ table{
     top: -50px;
 }
 
-#check_all_foot{
-	margin-top: 60px;
+.carttotalpaybox{
+	margin-top: 10px;	
 }
+
+.carttotalpay tr th{
+	width: 25%;
+	border-right: 1px solid #DDD;
+}
+
+.carttotalpay tr td{
+	border-right: 1px solid #DDD;	
+	text-align: right;
+}
+
+.carttotalpay tr th:last-child,
+.carttotalpay tr td:last-child
+{
+	border-right: 0;
+}
+
 
 #bookcartcheck, #barocartcheck, #ebookcartcheck{
 	position: relative;
@@ -160,13 +176,15 @@ h4 .btn1{
 	left: 10px;
 }
 
-.orderbtnbox{
+.btn-box{
 	float:right;
-	margin-top: 30px;
+	margin-top: 60px;
+	margin-bottom: 60px;
 }
 
-.orderbtnbox a{
+.btn-box a{
 	font-size: 18px;
 	padding: 15px 25px;
 	margin-left: 10px;
 }
+
