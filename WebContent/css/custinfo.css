@@ -4,19 +4,6 @@ h5 {
 	margin-top: 50px;
 }
 
-
-.info-sm{
-	width: 70px	
-}
-
-.info-md{
-	width: 150px;
-}
-
-.info-lg{
-	width: 260px;
-}
-
 span{
 	margin: 0px 5px;
 }
@@ -30,10 +17,25 @@ input[type="radio"]{
 	
 }
 
+/*custinfo css*/
 #idtbl tr:nth-child(2) a {
 	margin-left: 360px;	 
 }
 
+/*custinfoedit css*/
 #editidtbl a {
 	margin-left: 280px;
+}
+
+/*텍스트 박스 크기*/
+.info-sm{
+	width: 70px	
+}
+
+.info-md{
+	width: 150px;
+}
+
+.info-lg{
+	width: 260px;
 }

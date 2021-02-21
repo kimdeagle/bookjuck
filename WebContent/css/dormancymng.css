@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+/*tbl1 css*/
+#tbl1 th{
+	background-color:  #8CB369;
+	text-align: center;
+}
+
+#tbl1 label{
+	margin-left: 5px;
+}
+
+#tbl1 tr:nth-child(1) select {
+	height: 30px;
+}
+
+#tbl1 tr:nth-child(1) td:nth-child(4) input[type="text"]{
+	width: 60px;
+	/* margin-left: 90px; */
+}
+
+#tbl1 tr:nth-child(3) input[type="date"]{
+	width: 110px;
+	display: inline;
+}
+
+
+
+/*검색 버튼*/
+#listbtn{
+	margin-left: 795px;
+}
+
+
+/*리스트 개수 select*/
+#selbox2{
+	margin-left: 800px;
+}
+
+/*tbl2 css*/
+#tbl2 th{
+	text-align: center;
+}
+
+#tbl2 td:nth-child(10){
+	padding-left:8px;
+}
+
+/*modal*/
+.mdalbtn{
+	margin-left:250px;
+	
+}
+
+
+
+
+/*텍스트 박스*/
+custMng-sm{
+	width: 150px;	
+}
+
+custMng-md{
+	width: 200px;
+}
+
+custMng-lg{
+	width: 250px;
+}

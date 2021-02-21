@@ -15,6 +15,7 @@
 
 
 <style>
+
 </style>
 </head>
 
@@ -48,7 +49,7 @@
 				<form action="" method="GET">
 				<table class="table table tbl-md" id="editidtbl">
 					<tr>
-						<th width="265">아이디:</th>
+						<th width="250">아이디:</th>
 						<td colspan="1">
 							TEST001
 						</td>
@@ -98,7 +99,7 @@
 			</tr>
 			<tr>
 				<th>주소:</th>
-				<td><input type="text" class="info-lg" placeholder="주소 API 결정되면 수정하겠습니다." required></td>
+				<td><input type="text" class="info-lg" placeholder="" required></td>
 			</tr>
 			<tr>
 				<th>E-Mail:</th>
@@ -125,7 +126,7 @@
 				<td> <label>1년<input type="radio" name="term" checked></label><label>2년<input type="radio" name="term" cheked value="3"></label><label>5년<input type="radio" name="term" cheked value="3"></label><label>10년<input type="radio" name="term" cheked value="3"></label></td>
 			</tr>		
 		</table>
-		<input type="submit" class="btn btn-general" id="submit-btn">
+		<input type="submit" class="btn btn-general" id="submit-btn" value="수 정">
 		</form>
 	
 			</article>
