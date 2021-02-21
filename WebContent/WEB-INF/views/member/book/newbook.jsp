@@ -110,7 +110,7 @@
 			<span class="intro" style="font-weight: bold;">북적북적의 신간도서를
 					소개합니다.</span>
 				<br>
-				<form id="searchform" method="GET" action="/bookjuck/member/book/bestseller.do">
+				<form id="searchform" method="GET" action="/bookjuck/member/book/newbook.do">
 					<div id="choicedate">
 						<!-- 기간 선택 -->
 						<input type="text" name="yearStart" id="yearStart" style="width: 50px;" placeholder="YYYY" class="datebtn" value="${yearStart}">

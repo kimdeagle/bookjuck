@@ -23,6 +23,8 @@ public class BookDTO { //컬럼값이 유사하므로 EbookDTO도 함께 공용
 	private String totalSale;
 	private String saleRank;
 	
+	private String rank;
+	
 	
 	public String getSeq() {
 		return seq;
@@ -131,6 +133,12 @@ public class BookDTO { //컬럼값이 유사하므로 EbookDTO도 함께 공용
 	}
 	public void setSaleRank(String saleRank) {
 		this.saleRank = saleRank;
+	}
+	public String getRank() {
+		return rank;
+	}
+	public void setRank(String rank) {
+		this.rank = rank;
 	} 
 	
 	
