@@ -2,15 +2,17 @@
 
 #booklist{
 
-  display: flex;
-  justify-content: center;
-  margin:auto;
+  /* display: flex;
+  justify-content: center; 
+  margin:auto;*/
 
 
 }
 
 #booklist > img {
 	float:left;
+	width:100px;
+	height:100px;
 }
 
 

@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 
 //http://localhost:8090/bookjuck/member/book/bestseller.do
-@WebServlet("/member/book/bestseller.do")
-public class bestSeller extends HttpServlet {
+@WebServlet("/member/book/BestSeller.do")
+public class BestSeller extends HttpServlet {
 	
 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	

@@ -105,7 +105,7 @@
 				</div>
 			</nav>
 			
-		
+			
 			<div class="bestSellerListRight">
 			<span class="intro" style="font-weight: bold;">북적북적의 신간도서를
 					소개합니다.</span>
@@ -133,7 +133,7 @@
 				<c:forEach items="${list}" var="dto" begin="0" end="0" step="1">
 				<div class="bookbox">
 					<div class="bestrank1">
-						<img src="../image/${dto.image}">
+						<img src="/bookjuck/image/${dto.image}">
 						<div class="bookname">
 							<strong>${dto.title}</strong>
 						</div>
@@ -157,7 +157,7 @@
 				<div id="rank2to4">
 					<div class="bookbox2">
 						<div class="bestrank2">
-							<img src="../image/${dto.image}">
+							<img src="/bookjuck/image/${dto.image}">
 							<div class="bookname">
 								<strong>${dto.title}</strong>
 							</div>
@@ -180,7 +180,7 @@
 					</div>
 					<div class="bookbox3">
 						<div class="bestrank3">
-							<img src="../image/${dto.image}">
+							<img src="/bookjuck/image/${dto.image}">
 							<div class="bookname">
 								<strong>${dto.title}</strong>
 							</div>
@@ -203,7 +203,7 @@
 					</div>
 					<div class="bookbox4">
 						<div class="bestrank4">
-							<img src="../image/${dto.image}">
+							<img src="/bookjuck/image/${dto.image}">
 							<div class="bookname">
 								<strong>${dto.title}</strong>
 							</div>
@@ -228,7 +228,7 @@
 				<div id="rank5to10" style="clear: both;">
 					<div class="bookbox5">
 						<div class="bestrank5">
-							<img src="../image/${dto.image}">
+							<img src="/bookjuck/image/${dto.image}">
 							<div class="bookname">
 								<strong>${dto.title}</strong>
 							</div>
@@ -249,7 +249,7 @@
 					</div>
 					<div class="bookbox6">
 						<div class="bestrank5">
-							<img src="../image/${dto.image}">
+							<img src="/bookjuck/image/${dto.image}">
 							<div class="bookname">
 								<strong>${dto.title}</strong>
 							</div>
@@ -270,7 +270,7 @@
 					</div>
 					<div class="bookbox7">
 						<div class="bestrank5">
-							<img src="../image/${dto.image}">
+							<img src="/bookjuck/image/${dto.image}">
 							<div class="bookname">
 								<strong>${dto.title}</strong>
 							</div>
@@ -291,7 +291,7 @@
 					</div>
 					<div class="bookbox8">
 						<div class="bestrank5">
-							<img src="../image/${dto.image}">
+							<img src="/bookjuck/image/${dto.image}">
 							<div class="bookname">
 								<strong>${dto.title}</strong>
 							</div>
@@ -312,7 +312,7 @@
 					</div>
 					<div class="bookbox9">
 						<div class="bestrank5">
-							<img src="../image/${dto.image}">
+							<img src="/bookjuck/image/${dto.image}">
 							<div class="bookname">
 								<strong>${dto.title}</strong>
 							</div>
@@ -333,7 +333,7 @@
 					</div>
 					<div class="bookbox10">
 						<div class="bestrank5">
-							<img src="../image/${dto.image}">
+							<img src="/bookjuck/image/${dto.image}">
 							<div class="bookname">
 								<strong>${dto.title}</strong>
 							</div>

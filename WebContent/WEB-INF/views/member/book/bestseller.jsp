@@ -22,6 +22,7 @@
 
 	<div class="container">
 		<%@include file="/WEB-INF/views/common/searchview.jsp"%>
+		
 		<div class="bestSellerList">
 			<div id="menuname1">베스트도서</div>
 			<nav id="leftmenu">

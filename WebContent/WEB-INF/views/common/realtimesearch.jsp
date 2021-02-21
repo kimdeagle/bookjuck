@@ -29,7 +29,7 @@
         </div>
        
         <script>
- $(function() { //실시간 검색어 순위대로 보여주기
+ /* $(function() { //실시간 검색어 순위대로 보여주기
     var count = $('#rank-list li').length;
     var height = $('#rank-list li').height();
 
@@ -42,7 +42,7 @@
     }
 
     step(1);
-}); 
+});  */
 </script>
     </body>
 </html>

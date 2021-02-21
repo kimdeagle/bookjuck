@@ -236,6 +236,51 @@ public class BookDAO {
 		return null;
 		
 	} 
+		
+	public ArrayList<BookDTO> monthlyBestSeller() {
+		
+		
+		try {
+			
+			String sql = "select * from vwbestseller where pubdate between trunc(sysdate, 'mm') and last_day(sysdate)";
+			
+			
+					
+			
+			pstat = conn.prepareStatement(sql);
+			rs = pstat.executeQuery();
+			
+			
+			ArrayList<BookDTO> list = new ArrayList<BookDTO>();
+			
+			while (rs.next()) {
+				
+				BookDTO dto = new BookDTO();
+				
+				dto.setImage(rs.getString("image"));
+				dto.setTitle(rs.getString("title"));
+				dto.setCopy(rs.getString("copy"));
+				System.out.println(rs.getString("title"));
+							
+				
+				list.add(dto);
+				System.out.println(list);
+				System.out.println(list.size());
+				
+			}
+			
+			return list;
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		
+		return null;
+		
+	}
+	
 	
 
 }
