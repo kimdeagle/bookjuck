@@ -20,6 +20,11 @@ public class BookDTO {
 	private String author; //작가명
 	private String lCategory; //대분류 카테고리
 	
+	private String totalSale;//매출액
+	private String saleRank;//판매순위
+	
+	private String rank;//순위
+	
 	
 	public String getSeq() {
 		return seq;
@@ -116,6 +121,24 @@ public class BookDTO {
 	}
 	public void setLCategory(String lCategory) {
 		this.lCategory = lCategory;
+	}
+	public String getTotalSale() {
+		return totalSale;
+	}
+	public void setTotalSale(String totalSale) {
+		this.totalSale = totalSale;
+	}
+	public String getSaleRank() {
+		return saleRank;
+	}
+	public void setSaleRank(String saleRank) {
+		this.saleRank = saleRank;
+	}
+	public String getRank() {
+		return rank;
+	}
+	public void setRank(String rank) {
+		this.rank = rank;
 	}
 	
 	

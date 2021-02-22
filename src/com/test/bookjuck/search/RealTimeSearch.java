@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.test.bookjuck.dtosave.RealTimeSearchDAO;
-import com.test.bookjuck.dtosave.RealTimeSearchDTO;
+import com.test.bookjuck.dao.RealTimeSearchDAO;
+import com.test.bookjuck.dto.RealTimeSearchDTO;
 
 @WebServlet("/common/realtimesearch.do")
 public class RealTimeSearch extends HttpServlet {

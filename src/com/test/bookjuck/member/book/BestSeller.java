@@ -11,7 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.test.bookjuck.dtosave.BookDTO;
+import com.test.bookjuck.dao.BookDAO;
+import com.test.bookjuck.dto.BookDTO;
+
+
 
 
 //http://localhost:8090/bookjuck/member/book/bestseller.do
@@ -79,7 +82,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 			for (BookDTO dto : list) {
 	
 				// 날짜에서 시간 잘라내기
-				dto.setPubdate(dto.getPubdate().substring(0, 10));
+				dto.setPubDate(dto.getPubDate().substring(0, 10));
 	
 				// 제목, 카피 너무 길면 자르기
 				if (dto.getTitle().length() > 30) {
