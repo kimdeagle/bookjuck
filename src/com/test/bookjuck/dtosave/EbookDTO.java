@@ -1,4 +1,4 @@
-package com.test.bookjuck.member.book;
+package com.test.bookjuck.dtosave;
 
 public class EbookDTO {
 	

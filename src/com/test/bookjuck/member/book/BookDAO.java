@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.test.bookjuck.DBUtil;
+import com.test.bookjuck.dtosave.BookDTO;
 
 
 
@@ -104,6 +105,8 @@ public class BookDAO {
 	//베스트셀러 list
 	public ArrayList<BookDTO> bestSeller (HashMap<String, String> map){
 		
+		System.out.println("select");
+		
 		try {
 			
 			String where ="";
@@ -150,7 +153,7 @@ public class BookDAO {
 				dto.setTotalSale(rs.getString("totalsale"));
 				dto.setSaleRank(rs.getString("salerank"));
 				dto.setAuthor(rs.getString("author"));
-				
+				System.out.println(rs.getString("title"));
 				
 				
 				list.add(dto);
@@ -217,7 +220,7 @@ public class BookDAO {
 				dto.setImage(rs.getString("image"));
 				dto.setAuthor(rs.getString("author"));
 				dto.setRank(rs.getString("rank"));
-				
+				System.out.println(rs.getString("title"));
 				
 				
 				list.add(dto);

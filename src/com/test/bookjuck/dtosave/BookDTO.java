@@ -1,4 +1,4 @@
-package com.test.bookjuck.member.book;
+package com.test.bookjuck.dtosave;
 
 public class BookDTO { //컬럼값이 유사하므로 EbookDTO도 함께 공용
 	

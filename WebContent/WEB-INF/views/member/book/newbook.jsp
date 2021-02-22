@@ -21,7 +21,7 @@
 <body>
 
 	<div class="container">
-		<%@include file="/WEB-INF/views/common/searchview.jsp"%>
+	<%-- 	<%@include file="/WEB-INF/views/common/searchview.jsp"%> --%>
 		<div class="bestSellerList">
 			<div id="menuname1">신간도서</div>
 			<nav id="leftmenu">
@@ -130,10 +130,11 @@
     			</div>
     			</c:if>
 				<br>
-				<c:forEach items="${list}" var="dto" begin="0" end="0" step="1">
+				
+				<c:forEach items="${list1}" var="dto">
 				<div class="bookbox">
 					<div class="bestrank1">
-						<img src="/bookjuck/image/${dto.image}">
+						<img src="../image/${dto.image}">
 						<div class="bookname">
 							<strong>${dto.title}</strong>
 						</div>
@@ -154,10 +155,16 @@
 						</div>
 					</div>
 				</div>
+				</c:forEach>
+				
+				
 				<div id="rank2to4">
+					<div id="rank2to4">
+					<c:if test="${not empty list2}">
+					<c:forEach items="${list2}" var="dto">
 					<div class="bookbox2">
 						<div class="bestrank2">
-							<img src="/bookjuck/image/${dto.image}">
+							<img src="../image/${dto.image}">
 							<div class="bookname">
 								<strong>${dto.title}</strong>
 							</div>
@@ -178,9 +185,9 @@
 							</div>
 						</div>
 					</div>
-					<div class="bookbox3">
+					<%-- <div class="bookbox3">
 						<div class="bestrank3">
-							<img src="/bookjuck/image/${dto.image}">
+							<img src="../image/${dto.image}">
 							<div class="bookname">
 								<strong>${dto.title}</strong>
 							</div>
@@ -203,7 +210,7 @@
 					</div>
 					<div class="bookbox4">
 						<div class="bestrank4">
-							<img src="/bookjuck/image/${dto.image}">
+							<img src="../image/${dto.image}">
 							<div class="bookname">
 								<strong>${dto.title}</strong>
 							</div>
@@ -223,12 +230,20 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> --%>
+					</c:forEach>
+					</c:if>
 				</div>
+			</div>
+			
+			
+			
 				<div id="rank5to10" style="clear: both;">
+					<c:if test="${not empty list3}"> 
+					<c:forEach items="${list3}" var="dto">
 					<div class="bookbox5">
 						<div class="bestrank5">
-							<img src="/bookjuck/image/${dto.image}">
+							<img src="../image/${dto.image}">
 							<div class="bookname">
 								<strong>${dto.title}</strong>
 							</div>
@@ -247,9 +262,9 @@
 							</div>
 						</div>
 					</div>
-					<div class="bookbox6">
+					<%-- <div class="bookbox6">
 						<div class="bestrank5">
-							<img src="/bookjuck/image/${dto.image}">
+							<img src="../image/${dto.image}">
 							<div class="bookname">
 								<strong>${dto.title}</strong>
 							</div>
@@ -270,7 +285,7 @@
 					</div>
 					<div class="bookbox7">
 						<div class="bestrank5">
-							<img src="/bookjuck/image/${dto.image}">
+							<img src="../image/${dto.image}">
 							<div class="bookname">
 								<strong>${dto.title}</strong>
 							</div>
@@ -291,7 +306,7 @@
 					</div>
 					<div class="bookbox8">
 						<div class="bestrank5">
-							<img src="/bookjuck/image/${dto.image}">
+							<img src="../image/${dto.image}">
 							<div class="bookname">
 								<strong>${dto.title}</strong>
 							</div>
@@ -312,7 +327,7 @@
 					</div>
 					<div class="bookbox9">
 						<div class="bestrank5">
-							<img src="/bookjuck/image/${dto.image}">
+							<img src="../image/${dto.image}">
 							<div class="bookname">
 								<strong>${dto.title}</strong>
 							</div>
@@ -333,7 +348,7 @@
 					</div>
 					<div class="bookbox10">
 						<div class="bestrank5">
-							<img src="/bookjuck/image/${dto.image}">
+							<img src="../image/${dto.image}">
 							<div class="bookname">
 								<strong>${dto.title}</strong>
 							</div>
@@ -351,16 +366,21 @@
 								<input type="button" class="btn btn-warning" value="장바구니 담기">
 							</div>
 						</div>
-					</div>
-				</c:forEach>
+					</div>  --%>
+					</c:forEach>
+					</c:if>			
+				
+				
+				
+				
 				</div>
-			</div>
+			</div>	
 		</div>
-		<%@include file="/WEB-INF/views/common/footer.jsp"%>
+		<%-- <%@include file="/WEB-INF/views/common/footer.jsp"%> --%>
 	</div>
 	<!-- 플로팅 메뉴 -->
-	<%@include file="/WEB-INF/views/common/bookjuckee.jsp"%>
-	<%@include file="/WEB-INF/views/common/top.jsp"%>
+	<%-- <%@include file="/WEB-INF/views/common/bookjuckee.jsp"%>
+	<%@include file="/WEB-INF/views/common/top.jsp"%> --%>
 
 
 	<script>

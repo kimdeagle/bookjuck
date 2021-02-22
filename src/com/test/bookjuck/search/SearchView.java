@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.test.bookjuck.dtosave.BookDTO;
+import com.test.bookjuck.dtosave.RealTimeSearchDAO;
+import com.test.bookjuck.dtosave.RealTimeSearchDTO;
 import com.test.bookjuck.member.book.BookDAO;
-import com.test.bookjuck.member.book.BookDTO;
 
 
 @WebServlet("/common/searchview.do")

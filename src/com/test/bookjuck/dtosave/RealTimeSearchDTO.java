@@ -1,4 +1,4 @@
-package com.test.bookjuck.search;
+package com.test.bookjuck.dtosave;
 
 public class RealTimeSearchDTO {
 	

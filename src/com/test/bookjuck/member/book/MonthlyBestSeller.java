@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.test.bookjuck.dtosave.BookDTO;
+
 @WebServlet("/member/book/MonthlyBestSeller.do")
 public class MonthlyBestSeller extends HttpServlet {
 
