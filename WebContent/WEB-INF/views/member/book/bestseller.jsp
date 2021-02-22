@@ -136,7 +136,7 @@
 				<c:forEach items="${list1}" var="dto">
 				<div class="bookbox">
 					<div class="bestrank1">
-						<img src="../image/${dto.image}">
+						<img src="/bookjuck/image/${dto.image}">
 						<div class="bookname">
 							<strong>${dto.title}</strong>
 						</div>
@@ -166,7 +166,7 @@
 					<c:forEach items="${list2}" var="dto">
 					<div class="bookbox2">
 						<div class="bestrank2">
-							<img src="../image/${dto.image}">
+							<img src="/bookjuck/image/${dto.image}">
 							<div class="bookname">
 								<strong>${dto.title}</strong>
 							</div>
@@ -245,7 +245,7 @@
 					<c:forEach items="${list3}" var="dto">
 					<div class="bookbox5">
 						<div class="bestrank5">
-							<img src="../image/${dto.image}">
+							<img src="/bookjuck/image/${dto.image}">
 							<div class="bookname">
 								<strong>${dto.title}</strong>
 							</div>

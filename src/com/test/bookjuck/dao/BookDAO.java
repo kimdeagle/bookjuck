@@ -36,7 +36,7 @@ public class BookDAO {
 		}
 	}
 	
-	//검색구현
+	//검색구현 -- 이현우
 	public ArrayList<BookDTO> list (HashMap<String, String> map){
 		
 		try {
@@ -103,7 +103,7 @@ public class BookDAO {
 	
 	}
 	
-	//베스트셀러 list
+	//베스트셀러 list -- 이현우
 	public ArrayList<BookDTO> bestSeller (HashMap<String, String> map){
 		
 		System.out.println("select");
@@ -175,7 +175,7 @@ public class BookDAO {
 	} 
 	
 	
-	//(날짜 입력 전)신간도서 list 
+	//(날짜 입력 전)신간도서 list --이현우 
 	public ArrayList<BookDTO> defaultNewBook(){
 		
 		
@@ -228,7 +228,7 @@ public class BookDAO {
 	
 	
 	
-	//(날짜 입력 후)신간도서 list 
+	//(날짜 입력 후)신간도서 list -- 이현우
 	public ArrayList<BookDTO> newBook (HashMap<String, String> map){
 		
 		try {
@@ -294,7 +294,7 @@ public class BookDAO {
 		return null;
 		
 	} 
-		
+	//월간베스트 -- 이현우
 	public ArrayList<BookDTO> monthlyBestSeller() {
 		
 		

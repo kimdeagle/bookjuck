@@ -85,8 +85,8 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 					dto.setTitle(dto.getTitle().substring(0, 30) + "..");
 				}
 	
-				if (dto.getCopy().length() > 40) {
-					dto.setCopy(dto.getCopy().substring(0, 40) + "..");
+				if (dto.getCopy().length() > 80) {
+					dto.setCopy(dto.getCopy().substring(0, 80) + "..");
 				}
 	
 			}
@@ -144,8 +144,8 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 					dto.setTitle(dto.getTitle().substring(0, 30) + "..");
 				}
 	
-				if (dto.getCopy().length() > 40) {
-					dto.setCopy(dto.getCopy().substring(0, 40) + "..");
+				if (dto.getCopy().length() > 80) {
+					dto.setCopy(dto.getCopy().substring(0, 80) + "..");
 				}
 	
 			}
