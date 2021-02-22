@@ -39,7 +39,7 @@
 	
 	<%@include file="/WEB-INF/views/member/inc/button.jsp" %>
 	
-	<%@include file="/WEB-INF/views/member/inc/bestseller.jsp" %>
+	<%@include file="/WEB-INF/views/member/book/monthlybestseller.jsp" %>
 
 
 	<!-- ########## 하단 시작 -->

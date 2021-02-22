@@ -1,30 +1,26 @@
-package com.test.bookjuck.member.book;
+package com.test.bookjuck.dtosave;
 
-public class BookDTO { //컬럼값이 유사하므로 EbookDTO도 함께 공용
+public class EbookDTO {
 	
-	private String seq;
+	private int seq;
 	private int seqAuthor;
 	private int seqSCategory;
 	private String title; 
 	private String publisher; 
 	private int price; 
 	private int saleprice; 
-	private String pubdate; 
-	private String summary;
+	private String pubDate; 
 	private String isbn; 
 	private String copy; 
 	private String image;
 	private String contents; 
-	private int page;
+	private String eFile;
+	private String intro;
 	
-	private String Author;  
-	private String lcategory;
-	
-	
-	public String getSeq() {
+	public int getSeq() {
 		return seq;
 	}
-	public void setSeq(String seq) {
+	public void setSeq(int seq) {
 		this.seq = seq;
 	}
 	public int getSeqAuthor() {
@@ -63,17 +59,11 @@ public class BookDTO { //컬럼값이 유사하므로 EbookDTO도 함께 공용
 	public void setSaleprice(int saleprice) {
 		this.saleprice = saleprice;
 	}
-	public String getPubdate() {
-		return pubdate;
+	public String getPubDate() {
+		return pubDate;
 	}
-	public void setPubdate(String pubdate) {
-		this.pubdate = pubdate;
-	}
-	public String getSummary() {
-		return summary;
-	}
-	public void setSummary(String summary) {
-		this.summary = summary;
+	public void setPubDate(String pubDate) {
+		this.pubDate = pubDate;
 	}
 	public String getIsbn() {
 		return isbn;
@@ -99,28 +89,18 @@ public class BookDTO { //컬럼값이 유사하므로 EbookDTO도 함께 공용
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	public int getPage() {
-		return page;
+	public String geteFile() {
+		return eFile;
 	}
-	public void setPage(int page) {
-		this.page = page;
+	public void seteFile(String eFile) {
+		this.eFile = eFile;
 	}
-	public String getAuthor() {
-		return Author;
+	public String getIntro() {
+		return intro;
 	}
-	public void setAuthor(String author) {
-		Author = author;
+	public void setIntro(String intro) {
+		this.intro = intro;
 	}
-	public String getLcategory() {
-		return lcategory;
-	}
-	public void setLcategory(String lcategory) {
-		this.lcategory = lcategory;
-	} 
-	
-	
-	
-	
 	
 	
 	

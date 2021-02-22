@@ -24,14 +24,14 @@
 	
         <!-- 상단메뉴 -->
 
-        <div id="headerlink">
+         <div id="headerlink">
             <a href="#" class="headerlink-item">마이페이지</a>
             <a href="#" class="headerlink-item">로그인</a>
             <a href="#" class="headerlink-item">회원가입</a>
             <a href="#" class="headerlink-item">장바구니</a>
             <a href="#" class="headerlink-item">주문/배송조회</a>
             <a href="#" class="headerlink-item">고객센터</a>
-        </div>
+        </div> 
 
         <!-- 로고, 캐릭터, 검색창 -->
 
@@ -41,7 +41,7 @@
             <img src="/bookjuck/image/bookjeok/logo.png" class="logo">
             
             
-            <form id="searchform" method="GET" action="/bookjuck/member/book/searchview.do">
+            <form id="searchform" method="GET" action="/bookjuck/common/searchview.do">
             <!-- 통합검색창(검색분류선택창) -->
             <select name="sk" class="form-control noline small inline" style="width:100px"> <!-- 검색키: search key  -->
 		   		<option value="">전체도서</option>
@@ -54,6 +54,7 @@
 		   	<input type="text" id ="searchBox"name="sv" class="form-control noline small inline" value="${sv}" placeholder ="2021년 3월 해리포터 신작출간"><!-- 검색값: search value -->
 		   	<input type="submit" id="searchButton" value="검색" class="btn btn-general noline">   
 		   </form>
+		  
 
             <!-- 실시간검색어(현우님이 나중에 수정해주셔야 함! id랑 class는 CSS때문에 주의!) -->
             <!-- <div id="realtime" class="inline">실시간검색어</div> -->
@@ -62,7 +63,7 @@
         </div>
 
         <!-- 도서분류메뉴(navbar) -->
-        <nav class="navbar">
+         <nav class="navbar">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
@@ -75,10 +76,10 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> 
         
         <!-- 국내도서 중분류 -->
-		<div id="internalmenu">
+<!-- 		<div id="internalmenu">
 			<a href="/bookjuck/member/book/inlist.do" class="">소설</a>
 			<a href="#" class="">시/에세이</a>
 			<a href="#" class="">경제/경영</a>
@@ -94,7 +95,7 @@
 			<a href="#" class="">참고서/교재</a>
 			<a href="#" class="">취업/수험서</a>
 			<a href="#" class="">외국어</a>
-		</div>
+		</div> -->
 		
 		<!-- 해외도서 중분류 -->
 		<div id="externalmenu">
@@ -132,8 +133,14 @@
 					</div>
 				</div>
 			</div>
-		</c:forEach>		
+		</c:forEach>	
+		<!-- 하단 -->
+	<%-- <%@include file="/WEB-INF/views/common/footer.jsp" %>	 --%>
 </div>
+
+<!-- 플로팅 -->
+	<%-- <%@include file="/WEB-INF/views/common/bookjuckee.jsp" %>
+	<%@include file="/WEB-INF/views/common/top.jsp" %> --%>
 	<script>
 		
 		
@@ -150,6 +157,19 @@
 
 			})
 		})
+		
+		/*
+		
+		$("#searchform").submit(function(evt) {
+			
+			if ($("#searchBox").val().trim() != "") {
+				alert("검색어를 입력해 주세요.");
+				evt.preventDefault();
+				return false;				
+			}
+		});
+		*/
+		
 	</script>
 
 </body>

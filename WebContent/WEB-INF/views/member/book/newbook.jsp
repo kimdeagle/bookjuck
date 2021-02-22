@@ -21,9 +21,9 @@
 <body>
 
 	<div class="container">
-		<%-- <%@include file="/WEB-INF/views/common/searchview.jsp"%> --%>
+	<%-- 	<%@include file="/WEB-INF/views/common/searchview.jsp"%> --%>
 		<div class="bestSellerList">
-			<div id="menuname1">베스트도서</div>
+			<div id="menuname1">신간도서</div>
 			<nav id="leftmenu">
 				<div>
 					<a href="" ; class="list1"><strong>종합</strong></a></strong>
@@ -105,12 +105,12 @@
 				</div>
 			</nav>
 			
-		
+			
 			<div class="bestSellerListRight">
-			<span class="intro" style="font-weight: bold;">북적북적의 베스트셀러를
+			<span class="intro" style="font-weight: bold;">북적북적의 신간도서를
 					소개합니다.</span>
 				<br>
-				<form id="searchform" method="GET" action="/bookjuck/member/book/bestseller.do">
+				<form id="searchform" method="GET" action="/bookjuck/member/book/newbook.do">
 					<div id="choicedate">
 						<!-- 기간 선택 -->
 						<input type="text" name="yearStart" id="yearStart" style="width: 50px;" placeholder="YYYY" class="datebtn" value="${yearStart}">
@@ -126,12 +126,10 @@
 				<br>
 				<c:if test="${not empty yearStart}">
 				<div>
-    			'${yearStart}-${monthStart}-${dayStart} ~ ${yearEnd}-${monthEnd}-${dayEnd}' 기간의 베스트셀러 조회결과 입니다.
+    			'${yearStart}-${monthStart}-${dayStart} ~ ${yearEnd}-${monthEnd}-${dayEnd}' 기간의 신간도서 조회결과 입니다.
     			</div>
     			</c:if>
 				<br>
-				
-				
 				
 				<c:forEach items="${list1}" var="dto">
 				<div class="bookbox">
@@ -371,14 +369,17 @@
 					</div>  --%>
 					</c:forEach>
 					</c:if>			
+				
+				
+				
+				
 				</div>
-			
-			</div>
+			</div>	
 		</div>
 		<%-- <%@include file="/WEB-INF/views/common/footer.jsp"%> --%>
 	</div>
 	<!-- 플로팅 메뉴 -->
-<%-- 	<%@include file="/WEB-INF/views/common/bookjuckee.jsp"%>
+	<%-- <%@include file="/WEB-INF/views/common/bookjuckee.jsp"%>
 	<%@include file="/WEB-INF/views/common/top.jsp"%> --%>
 
 
