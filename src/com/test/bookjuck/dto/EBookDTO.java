@@ -1,28 +1,40 @@
 package com.test.bookjuck.dto;
 
 public class EBookDTO {
-
+	
 	private String seq;
-	private String title;
+	private String seqAuthor;
+	private String seqSCategory;
+	private String title; 
 	private String publisher;
-	private String pubDate;
-	private String price;
-	private String salePrice;
-	private String isbn;
-	private String copy;
+	private String pubDate; 
+	private int price;
+	private int salePrice; 
+	private String isbn; 
+	private String copy; 
 	private String intro;
-	private String contents;
+	private String contents; 
 	private String image;
 	private String eFile;
 	
-	private String seqAuthor;
-	private String seqSCategory;
 	
 	public String getSeq() {
 		return seq;
 	}
 	public void setSeq(String seq) {
 		this.seq = seq;
+	}
+	public String getSeqAuthor() {
+		return seqAuthor;
+	}
+	public void setSeqAuthor(String seqAuthor) {
+		this.seqAuthor = seqAuthor;
+	}
+	public String getSeqSCategory() {
+		return seqSCategory;
+	}
+	public void setSeqSCategory(String seqSCategory) {
+		this.seqSCategory = seqSCategory;
 	}
 	public String getTitle() {
 		return title;
@@ -42,16 +54,16 @@ public class EBookDTO {
 	public void setPubDate(String pubDate) {
 		this.pubDate = pubDate;
 	}
-	public String getPrice() {
+	public int getPrice() {
 		return price;
 	}
-	public void setPrice(String price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
-	public String getSalePrice() {
+	public int getSalePrice() {
 		return salePrice;
 	}
-	public void setSalePrice(String salePrice) {
+	public void setSalePrice(int salePrice) {
 		this.salePrice = salePrice;
 	}
 	public String getIsbn() {
@@ -90,19 +102,8 @@ public class EBookDTO {
 	public void seteFile(String eFile) {
 		this.eFile = eFile;
 	}
-	public String getSeqAuthor() {
-		return seqAuthor;
-	}
-	public void setSeqAuthor(String seqAuthor) {
-		this.seqAuthor = seqAuthor;
-	}
-	public String getSeqSCategory() {
-		return seqSCategory;
-	}
-	public void setSeqSCategory(String seqSCategory) {
-		this.seqSCategory = seqSCategory;
-	}
 	
 	
 	
+
 }
