@@ -11,6 +11,14 @@
 
 <link rel="stylesheet" href="/bookjuck/css/login.css">
 <link rel="stylesheet" href="/bookjuck/css/global.css">
+<!-- 구글 -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="743921267192-oka0vtqtlbvgk911f5d4eth8kgur8nvl.apps.googleusercontent.com">
+<!-- 카카오 -->
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<!-- 네이버 -->
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
 <style type="text/css">
 </style>
@@ -60,15 +68,18 @@
 					</div>
 
 					<div id="socialLogin">
-						<img alt="" src="/bookjuck/image/social/w_login_g.jpg"> 
-						<img alt="" src="/bookjuck/image/social/w_login_n.jpg"> 
-						<img alt="" src="/bookjuck/image/social/w_login_k.jpg">
+						<img alt="" src="/bookjuck/image/social/w_login_g.jpg" data-onsuccess="onSignIn" class="g-signin2 socialBtn"> 
+						<div class="g-signin2" data-onsuccess="onSignIn"></div><!-- 구글 로그인 버튼 -->
+						<img alt="" src="/bookjuck/image/social/w_login_n.jpg" class="socialBtn">
+						<img alt="" src="/bookjuck/image/social/w_login_k.jpg" class="socialBtn" id="kakao-login-btn"> <!-- 카카오 로그인 버튼 -->
+						<div id="naver_id_login"></div> <!-- 네이버 로그인 버튼 -->
+						
+						
+						<!-- <a href="http://developers.kakao.com/logout"></a> -->
 					</div>
-
+					
 					<div id="loginBox">
-
-						<input type="submit" class="btn btn-general" id="loginbtn"
-							value="로그인">
+						<input type="submit" class="btn btn-general" id="loginbtn" value="로그인">
 					</div>
 				</div>
 
@@ -253,13 +264,16 @@
 
 			nmLogin.style.display = 'block';
 			login.style.display = 'none';
-
+			memberbtn.style.backgroundColor = '#ccc';
+			nonMbtn.style.backgroundColor = 'white';
 		});
 
 		memberbtn.addEventListener('mousedown', function(e) {
 
 			nmLogin.style.display = 'none';
 			login.style.display = 'block';
+			memberbtn.style.backgroundColor = 'white';
+			nonMbtn.style.backgroundColor = '#ccc';
 		});
 		/* 회원,비회원 전환 스크립트  끝*/
 
@@ -341,7 +355,51 @@
 		$("#container").height($(document).height());
 	});
 	$("#container").height($(document).height());
+	
+	
+	
+	/* 구글 로그인  */
+	function onSignIn(googleUser) {
+  	var profile = googleUser.getBasicProfile();
+  	console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  	console.log('Name: ' + profile.getName());
+  	console.log('Image URL: ' + profile.getImageUrl());
+  	console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+	}
+	
+	
+	
+	/* 카카오 로그인*/
+	Kakao.init('a81cc7fa3bef4c7a26700b30cae18152');
+	
+	// 카카오 로그인 버튼을 생성합니다.
+   	Kakao.Auth.createLoginButton({
+     container: '#kakao-login-btn',
+     success: function(authObj) {
+    alert(JSON.stringify(authObj));
+     },
+     fail: function(err) {
+     alert(JSON.stringify(err));
+     }
+   });
+	
+	
+	
+	/* 네이버 로그인 */
+	/* var naver_id_login = new naver_id_login("YOUR_CLIENT_ID", "YOUR_CALLBACK_URL"); */
+	var naver_id_login = new naver_id_login("5FotIk_OVojgU5ZwiCBF","http://localhost:8090/bookjuck/member/login.do");
+  	var state = naver_id_login.getUniqState();
+  	naver_id_login.setButton("white", 2,40);
+  	naver_id_login.setDomain("http://localhost:8090/bookjuck/member/login.do");
+  	naver_id_login.setState(state);
+  	naver_id_login.setPopup();
+  	naver_id_login.init_naver_id_login();
 	</script>
+	
+	
+	
+	
+	
 </body>
 
 </html>
