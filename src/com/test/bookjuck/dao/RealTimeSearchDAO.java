@@ -1,4 +1,4 @@
-package com.test.bookjuck.dtosave;
+package com.test.bookjuck.dao;
 
 import java.beans.Statement;
 import java.sql.Connection;
@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import com.test.bookjuck.DBUtil;
+import com.test.bookjuck.dto.RealTimeSearchDTO;
 
 
 public class RealTimeSearchDAO {
