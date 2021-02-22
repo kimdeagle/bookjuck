@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 //http://localhost:8090/bookjuck/member/mypage/custinfo.do
-//http://localhost:8090/bookjuck/member/mypage/custinfo.do
+
 @WebServlet("/member/mypage/custinfo.do")
 public class CustInfo extends HttpServlet {
 
