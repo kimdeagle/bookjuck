@@ -1,28 +1,43 @@
 package com.test.bookjuck.dto;
 
 public class BookDTO {
-
-	private String seq;
-	private String title;
-	private String publisher;
-	private String price;
-	private String salePrice;
-	private String pubDate;
-	private String summary;
-	private String isbn;
-	private String copy;
-	private String image;
-	private String page;
-	private String contents;
 	
+	private String seq;
 	private String seqAuthor;
 	private String seqSCategory;
+	private String title; 
+	private String publisher; 
+	private int price; 
+	private int salePrice; 
+	private String pubDate; 
+	private String summary;
+	private String isbn; 
+	private String copy; 
+	private String image;
+	private String contents; 
+	private int page;
+	
+	private String author; //작가명
+	private String lCategory; //대분류 카테고리
+	
 	
 	public String getSeq() {
 		return seq;
 	}
 	public void setSeq(String seq) {
 		this.seq = seq;
+	}
+	public String getSeqAuthor() {
+		return seqAuthor;
+	}
+	public void setSeqAuthor(String seqAuthor) {
+		this.seqAuthor = seqAuthor;
+	}
+	public String getSeqSCategory() {
+		return seqSCategory;
+	}
+	public void setSeqSCategory(String seqSCategory) {
+		this.seqSCategory = seqSCategory;
 	}
 	public String getTitle() {
 		return title;
@@ -36,16 +51,16 @@ public class BookDTO {
 	public void setPublisher(String publisher) {
 		this.publisher = publisher;
 	}
-	public String getPrice() {
+	public int getPrice() {
 		return price;
 	}
-	public void setPrice(String price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
-	public String getSalePrice() {
+	public int getSalePrice() {
 		return salePrice;
 	}
-	public void setSalePrice(String salePrice) {
+	public void setSalePrice(int salePrice) {
 		this.salePrice = salePrice;
 	}
 	public String getPubDate() {
@@ -78,31 +93,32 @@ public class BookDTO {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	public String getPage() {
-		return page;
-	}
-	public void setPage(String page) {
-		this.page = page;
-	}
 	public String getContents() {
 		return contents;
 	}
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	public String getSeqAuthor() {
-		return seqAuthor;
+	public int getPage() {
+		return page;
 	}
-	public void setSeqAuthor(String seqAuthor) {
-		this.seqAuthor = seqAuthor;
+	public void setPage(int page) {
+		this.page = page;
 	}
-	public String getSeqSCategory() {
-		return seqSCategory;
+	public String getAuthor() {
+		return author;
 	}
-	public void setSeqSCategory(String seqSCategory) {
-		this.seqSCategory = seqSCategory;
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+	public String getLCategory() {
+		return lCategory;
+	}
+	public void setLCategory(String lCategory) {
+		this.lCategory = lCategory;
 	}
 	
 	
 	
+
 }
