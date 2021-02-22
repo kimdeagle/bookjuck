@@ -73,9 +73,7 @@
 			<tr>
 				<th>주민번호:</th>
 				<td>
-					<input type="text" class="log-md" required>
-					<span>- </span>
-					<input type="text" class="log-md" required>
+					940123<span>- </span>1122345
 				</td>
 			</tr>
 			<tr>
