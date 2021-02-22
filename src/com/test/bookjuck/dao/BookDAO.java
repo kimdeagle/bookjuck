@@ -174,7 +174,61 @@ public class BookDAO {
 		
 	} 
 	
-	//신간도서 list
+	
+	//(날짜 입력 전)신간도서 list 
+	public ArrayList<BookDTO> defaultNewBook(){
+		
+		
+		try {
+			
+			String sql = "select * from vwnewbook where rank between 1 and 10";
+			
+			
+			
+			pstat = conn.prepareStatement(sql);
+			rs = pstat.executeQuery();
+			
+			ArrayList<BookDTO> list = new ArrayList<BookDTO>();
+			
+			while(rs.next()) {
+				
+				BookDTO dto = new BookDTO();
+				
+				dto.setSeq(rs.getString("seq"));
+				dto.setTitle(rs.getString("title"));
+				dto.setPublisher(rs.getString("publisher"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setPubDate(rs.getString("pubdate"));
+				dto.setCopy(rs.getString("copy"));
+				dto.setImage(rs.getString("image"));
+				dto.setAuthor(rs.getString("author"));
+				dto.setRank(rs.getString("rank"));
+				System.out.println(rs.getString("title"));
+				
+				
+				list.add(dto);
+				
+				
+			}
+			
+			return list;
+			
+			
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		
+		return null;
+		
+		
+	}
+	
+	
+	
+	//(날짜 입력 후)신간도서 list 
 	public ArrayList<BookDTO> newBook (HashMap<String, String> map){
 		
 		try {
@@ -246,7 +300,7 @@ public class BookDAO {
 		
 		try {
 			
-			String sql = "select * from vwbestseller where pubdate between trunc(sysdate, 'mm') and last_day(sysdate)";
+			String sql = "select * from vwbestseller";
 			
 			
 					
@@ -261,9 +315,16 @@ public class BookDAO {
 				
 				BookDTO dto = new BookDTO();
 				
-				dto.setImage(rs.getString("image"));
+				dto.setSeq(rs.getString("seq"));
 				dto.setTitle(rs.getString("title"));
+				dto.setPublisher(rs.getString("publisher"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setPubDate(rs.getString("pubdate"));
 				dto.setCopy(rs.getString("copy"));
+				dto.setImage(rs.getString("image"));
+				dto.setTotalSale(rs.getString("totalsale"));
+				dto.setSaleRank(rs.getString("salerank"));
+				dto.setAuthor(rs.getString("author"));
 				System.out.println(rs.getString("title"));
 							
 				

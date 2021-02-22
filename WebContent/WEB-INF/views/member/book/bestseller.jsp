@@ -141,7 +141,7 @@
 							<strong>${dto.title}</strong>
 						</div>
 						<div class="bookinfo">${dto.author}| ${dto.publisher} |
-							${dto.pubdate}</div>
+							${dto.pubDate}</div>
 						<div class="bookcopy">${dto.copy}</div>
 						<div class="price">가격: ${dto.price}원</div>
 						<div class="rank1btn">
@@ -171,7 +171,7 @@
 								<strong>${dto.title}</strong>
 							</div>
 							<div class="bookinfo">${dto.author}| ${dto.publisher} |
-								${dto.pubdate}</div>
+								${dto.pubDate}</div>
 							<div class="bookcopy">${dto.copy}</div>
 							<div class="price">가격: ${dto.price}원</div>
 							<div class="rank2to4">
@@ -250,7 +250,7 @@
 								<strong>${dto.title}</strong>
 							</div>
 							<div class="bookinfo">${dto.author}| ${dto.publisher} |
-								${dto.pubdate}</div>
+								${dto.pubDate}</div>
 							<div class="bookcopy">${dto.copy}</div>
 							<div class="price">가격: ${dto.price}원</div>
 							<div>
