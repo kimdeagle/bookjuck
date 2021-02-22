@@ -1,0 +1,82 @@
+/* 제일 바깥쪽 채팅창 전체를 감싸는 div */
+#main-container{
+    width:100%;
+    display: inline-block;
+}
+
+/* 채팅내용이 표시되는 채팅창 */
+   #chat-container{
+   vertical-align: bottom;
+   min-height: 670px;
+   max-height: 670px;
+   overflow: scroll;
+   overflow-x:hidden;
+   background: #F4E285;
+}
+
+/* 채팅입력폼이 들어있는 div */
+#bottom-container{
+	padding:10px;
+   	background-color:#8cb369;
+}
+
+/* 채팅입력창 */
+#message {
+    width:85%;
+}
+
+/* 전송버튼 */
+#btn {
+    margin-left:10px;
+}
+
+/* 내 채팅내용을 감싸고 있는 div */
+.mybox {
+	text-align: right;
+}
+
+/* 채팅내용 설정 */
+.chat {
+    color:black;
+    margin: 5px;
+    padding: 5px 10px;
+    text-align: left;
+    word-break : break-all;
+    background: white;
+    max-width:60%;
+    display:inline-block;
+    border-radius: 10px;
+}
+
+/* 시스템 메시지 */
+.system {
+    margin: 5px;
+    padding: 5px 10px;
+    word-break : break-all;
+    display:inline-block;
+    border-radius: 10px;
+    background-color:rgba(0, 0, 0, .1);
+    text-align: center;
+    display: block;
+}
+
+/*
+    내 채팅메시지
+    전체적인 채팅메시지는 chat클래스로 잡아주고,
+    내 채팅메시지에만 다른 색 적용
+*/
+.mychat{
+       background-color:#F4A259;
+}
+
+.chat-info{
+	font-size: 12px;
+	padding: 0 10px;
+	padding-top: 0px;
+}
+
+/* 여러 채팅창 간의 간격과 배열 위치*/
+.float-left{
+float:left;
+margin: 5px;
+}
