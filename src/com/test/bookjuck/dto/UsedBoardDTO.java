@@ -20,6 +20,8 @@ public class UsedBoardDTO {
 	private int gap; //최신글
 	private String id; //글쓴 회원 id
 	
+	private String email; //글쓴 회원 email
+	
 	
 	public String getSeq() {
 		return seq;
@@ -87,6 +89,12 @@ public class UsedBoardDTO {
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	} 
 	
 	

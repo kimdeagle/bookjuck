@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,18 +72,21 @@
                 
                 <table class="table tbl-md table-view">
                     <tr>
-                        <td colspan="2" class="subject">글제목입니다. 하하하하</td>
+                        <td colspan="2" class="subject">
+	                        <span class="seq">${dto.seq}.</span>
+	                        <span>${dto.title}</span>
+                        </td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <span class="writer-id first-line">글쓴이id</span>
-                            <a href>
-                                <input type="button" class="btn btn-xs btn-mail" value="메일보내기" onclick="location.href='mailto: 글쓴이 메일주소 ';">
+                            <span class="writer-id first-line">${dto.id}</span>
+                            <a href="">
+                                <input type="button" class="btn btn-xs btn-mail" value="메일보내기" onclick="location.href='mailto:${dto.email}';">
                             </a>
                             <div class="second-line">
                                 <div style="float: left; width: 730px;">
-                                    <span class="regdate">2021-02-18 14:56:00</span>
-                                    <span class="read-cnt">조회 (0)</span>
+                                    <span class="regdate">${dto.regDate}</span>
+                                    <span class="read-cnt">조회 (${dto.readcnt})</span>
                                 </div>
                                 <div>
                                     <span class="commment">댓글 5</span>
@@ -94,14 +98,17 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <img src="/bookjuck/image/빛의 과거.png" class="attach" style="display: block; margin: 20px auto;">
-                            <p>이게 바로 내용입니다.</p>
+                        
+	                        <c:if test="${dto.image.toLowerCase().endsWith('jpg') || dto.image.toLowerCase().endsWith('gif') || dto.image.toLowerCase().endsWith('png') }">
+	                            <img src="/bookjuck/files/${dto.image}" class="attach" style="display: block; margin: 20px auto;">
+	                        </c:if>
+                            <p>${dto.content}</p>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <span class="more">
-                                <a href="/bookjuck/member/fleamarket/list.do"><span class="writer-id">글쓴이id</span>님의 게시물 더 보기
+                                <a href="/bookjuck/member/fleamarket/list.do?fleamarketsearch=${dto.id}"><span class="writer-id">${dto.id}</span>님의 게시물 더 보기
                                     <span class="glyphicon glyphicon-menu-right"></span></a>
                             </span>
                         </td>

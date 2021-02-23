@@ -111,4 +111,44 @@ public class UsedBoardDAO {
 		return null;
 	}
 
+	
+	//View 서블릿 -> 글 1개 반환해달라고 요청 : 글 번호에 해당하는 글 정보 가져오기
+	public UsedBoardDTO get(String seq) {
+		
+		try {
+			
+			String sql = "select u.*, (select id from tblMember m where u.seqmember = m.seq) as id, (select email from tblMember m where u.seqmember = m.seq) as email from tblUsedBoard u where seq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				
+				UsedBoardDTO dto = new UsedBoardDTO();
+				
+				dto.setSeq(rs.getString("seq"));
+				dto.setTitle(rs.getString("title"));
+				dto.setContent(rs.getString("content"));
+				dto.setRegDate(rs.getString("regdate"));
+				dto.setDealState(rs.getString("dealstate"));
+				dto.setReadcnt(rs.getInt("readcnt"));
+				dto.setSeqMember(rs.getString("seqMember"));
+				
+				dto.setId(rs.getString("id"));
+				
+				dto.setImage(rs.getString("image"));
+				dto.setOrgimage(rs.getString("orgimage"));
+				
+				return dto;
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+	}
+
 }

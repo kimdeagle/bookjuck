@@ -52,13 +52,24 @@ public class List extends HttpServlet {
 		//데이터 조작은 서블릿이, 데이터 출력은 JSP가 담당한다.
 		
 		//1.5 데이터 조작할 것 : 날짜 (시간 자르기), 글제목 (너무 길면 자르기)
+		for (UsedBoardDTO dto : list) {
+			
+			//날짜에서 시간 잘라내기 yyyy-mm-dd로 표기 
+			dto.setRegDate(dto.getRegDate().substring(0, 10));
+			
+			//글 제목이 너무 길면 자르기
+			if (dto.getTitle().length() > 34) {
+				
+				dto.setTitle(dto.getTitle().substring(0, 34) + " ...");
+			}
+			
+		}
 		
 		//2. 
+		//검색어까지
 		req.setAttribute("list", list);
 		req.setAttribute("fleamarketsearch", fleamarketsearch);
 		
-		//TODO test
-		System.out.println(fleamarketsearch);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/member/fleamarket/list.jsp");
 		dispatcher.forward(req, resp);
