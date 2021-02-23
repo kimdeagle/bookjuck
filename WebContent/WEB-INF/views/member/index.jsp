@@ -37,8 +37,8 @@
 	<!-- 변경 후 -->
 	<%
 		out.flush();
-	    RequestDispatcher dheader = request.getRequestDispatcher("/member/inc/header.do");
-	    dheader.include(request, response);
+		RequestDispatcher dheader = request.getRequestDispatcher("/member/inc/header.do");
+		dheader.include(request, response);
 	%>
 	<!-- ########## 상단 헤더 끝 -->
 	

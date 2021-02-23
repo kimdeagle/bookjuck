@@ -67,7 +67,7 @@
 		
 			<c:forEach var="dto" items="${mCategoryList}">
 				<c:if test="${dto.seqLCategory == 1}">
-					<a href="/bookjuck/member/book/inlist.do">${dto.mCategory}</a>
+					<a href="/bookjuck/member/book/booklist.do?mseq=${dto.seqMCategory}">${dto.mCategory}</a>
 				</c:if>
 			</c:forEach>
 		
@@ -78,7 +78,7 @@
 		
 			<c:forEach var="dto" items="${mCategoryList}">
 				<c:if test="${dto.seqLCategory == 2}">
-					<a href="/bookjuck/member/book/inlist.do">${dto.mCategory}</a>
+					<a href="/bookjuck/member/book/booklist.do?mseq=${dto.seqMCategory}">${dto.mCategory}</a>
 				</c:if>
 			</c:forEach>	
 			
