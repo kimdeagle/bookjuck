@@ -25,6 +25,12 @@ public class BookDTO {
 	
 	private String rank;//순위
 	
+	private String authorIntro; //작가 소개
+	
+	private String seqMCategory; //중분류 카테고리 번호
+	
+	private String sCategory; //소분류 카테고리
+	
 	
 	public String getSeq() {
 		return seq;
@@ -139,6 +145,24 @@ public class BookDTO {
 	}
 	public void setRank(String rank) {
 		this.rank = rank;
+	}
+	public String getAuthorIntro() {
+		return authorIntro;
+	}
+	public void setAuthorIntro(String authorIntro) {
+		this.authorIntro = authorIntro;
+	}
+	public String getSeqMCategory() {
+		return seqMCategory;
+	}
+	public void setSeqMCategory(String seqMCategory) {
+		this.seqMCategory = seqMCategory;
+	}
+	public String getsCategory() {
+		return sCategory;
+	}
+	public void setsCategory(String sCategory) {
+		this.sCategory = sCategory;
 	}
 	
 	
