@@ -96,6 +96,8 @@ public class UsedBoardDAO {
 				dto.setImage(rs.getString("image"));
 				dto.setId(rs.getString("id"));
 				
+				dto.setGap(rs.getInt("gap"));
+				
 				list.add(dto); //***잘 빼먹는 부분 : 에러메세지 안뜨니 주의할 것
 				
 			}
@@ -149,6 +151,51 @@ public class UsedBoardDAO {
 		}
 		
 		return null;
+	}
+
+	
+	//조회 수 증가시키기
+	public void updateReadcnt(String seq) {
+
+		try {
+			
+			String sql = "update tblUsedBoard set readcnt = readcnt + 1 where seq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			rs = pstat.executeQuery();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+		
+		
+	}
+
+	
+	//EditOk 서블릿 -> 글 수정해달라고 요청
+	public int edit(UsedBoardDTO dto) {
+
+		try {
+			
+			String sql = "update tblUsedBoard set title = ?, content = ?, dealstate = ? where seq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getTitle());
+			pstat.setString(2, dto.getContent());
+			pstat.setString(3, dto.getDealState());
+			pstat.setString(4, dto.getSeq());  //글 번호
+			
+			return pstat.executeUpdate(); //1 or 0
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		
+		return 0;
 	}
 
 }

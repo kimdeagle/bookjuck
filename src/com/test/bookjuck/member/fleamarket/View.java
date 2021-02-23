@@ -33,6 +33,10 @@ public class View extends HttpServlet {
 		//2.
 		UsedBoardDAO dao = new UsedBoardDAO();
 		
+		//2.5. 조회수 증가시키기
+		dao.updateReadcnt(seq);
+		
+		
 		UsedBoardDTO dto = dao.get(seq);
 		
 		dao.close();

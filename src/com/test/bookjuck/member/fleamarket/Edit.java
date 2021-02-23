@@ -30,7 +30,7 @@ public class Edit extends HttpServlet {
 		
 		//2.
 		UsedBoardDAO dao = new UsedBoardDAO();
-		UsedBoardDTO dto = new UsedBoardDTO();
+		UsedBoardDTO dto = dao.get(seq); 	//글 보기 (view.do에서 사용하던 메서드)
 		
 		
 		

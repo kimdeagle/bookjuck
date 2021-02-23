@@ -53,26 +53,34 @@
                 </button>
                 
                 <form method="POST" action="/bookjuck/member/fleamarket/editok.do">
+                
                 <table class="table tbl-md table-view">
                     <tr>
-                        <td colspan="2" class="subject">
-                            <input type="text" class="form-control" required id="title" name="title" value='${dto.title.replace("\"", "&quot;")}'>
+                        <td class="subject">
+                            <input type="text" class="form-control" placeholder="제목을 입력해주세요." style="width: 700px;" id="title" name="title" required value='${dto.title.replace("\"", "&quot;")}'>
+                        </td>
+                        <td>
+                            <select name="dealState" id="dealState" class="form-control">
+                                <option value="판매중">판매중</option>
+                                <option value="예약중">예약중</option>
+                                <option value="판매완료">판매완료</option>
+                            </select>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
                             <p>
-                                <textarea class="form-control content" id="content" name="content" required>${dto.content}</textarea>    
+                                <textarea class="form-control content" placeholder="내용을 입력하세요." id="content" name="content">${dto.content}</textarea>
                             </p>
                         </td>
                     </tr>
                     <!-- 
                     <tr>
-                        <td>
+                        <td colspan="2">
                             <input type="file" class="form-control">
                         </td>
                     </tr>
-                    -->
+                     -->
                 </table>
 
                 

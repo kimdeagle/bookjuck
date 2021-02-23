@@ -103,13 +103,24 @@
 		                        
 
 								 
-								<!-- 최신글 -->
-	                           	<c:if test="${dto.gap < 1}">
+								<!-- 최신글 글쓴지 하루 이하는 new 뱃지 표기 -->
+	                           	<c:if test="${dto.gap < 24}">
 	                           		<span class="label label-danger">new</span>
 	                           	</c:if>
 	                        
 	                        </td>
-	                        <td>${dto.dealState }</td>
+
+							
+							<c:if test="${dto.dealState.equals('판매완료')}">
+		                    	<td style="color: #BBB; font-weight: bold;">${dto.dealState }</td>
+	                        </c:if>
+							<c:if test="${dto.dealState.equals('판매중')}">
+		                    	<td style="color: #3eaf7a; font-weight: bold;">${dto.dealState }</td>
+	                        </c:if>
+							<c:if test="${dto.dealState.equals('예약중')}">
+		                    	<td style="color: #df484f; font-weight: bold;">${dto.dealState }</td>
+	                        </c:if>
+							
 	                        <td>${dto.id }</td>
 	                        <td>${dto.regDate }</td>
 	                        <td>${dto.readcnt }</td>

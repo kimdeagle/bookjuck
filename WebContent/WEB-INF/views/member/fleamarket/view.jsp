@@ -53,17 +53,17 @@
                 <h3>중고도서 거래 게시판</h3>
 
                 <div class="btns btn-group">
-                    <button type="button" class="btn btn-default " onclick="location.href='/bookjuck/member/fleamarket/list.do';">
+                    <button type="button" class="btn btn-default " onclick="location.href='/bookjuck/member/fleamarket/list.do?fleamarketsearch=${fleamarketsearch}';">
                         <span class="glyphicon glyphicon-th-list"></span>
                         목록
                     </button>
                     
-                    <button type="button" class="btn btn-default" onclick="location.href='/bookjuck/member/fleamarket/edit.do';">
+                    <button type="button" class="btn btn-default" onclick="location.href='/bookjuck/member/fleamarket/edit.do?seq=${dto.seq}';">
                         <span class="glyphicon glyphicon-minus"></span>
                         수정
                     </button>
                     
-                    <button type="button" class="btn btn-default" onclick="location.href='';">
+                    <button type="button" class="btn btn-default" onclick="location.href='/bookjuck/member/fleamarket/delete.do?seq=${dto.seq}';">
                         <span class="glyphicon glyphicon-remove"></span>
                         삭제
                     </button>
@@ -82,7 +82,7 @@
 	                        	<span class="dealstate label label-success">${dto.dealState }</span>
 	                        </c:if>
 	                        <c:if test="${dto.dealState.equals('예약중')}">
-	                        	<span class="dealstate label label-primary">${dto.dealState }</span>
+	                        	<span class="dealstate label label-danger">${dto.dealState }</span>
 	                        </c:if>
                         </td>
                     </tr>
