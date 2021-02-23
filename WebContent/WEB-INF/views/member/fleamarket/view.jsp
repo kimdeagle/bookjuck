@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,17 +61,17 @@
                 <h3>중고도서 거래 게시판</h3>
 
                 <div class="btns btn-group">
-                    <button type="button" class="btn btn-default " onclick="location.href='/bookjuck/member/fleamarket/list.do';">
+                    <button type="button" class="btn btn-default " onclick="location.href='/bookjuck/member/fleamarket/list.do?fleamarketsearch=${fleamarketsearch}';">
                         <span class="glyphicon glyphicon-th-list"></span>
                         목록
                     </button>
                     
-                    <button type="button" class="btn btn-default" onclick="location.href='/bookjuck/member/fleamarket/edit.do';">
+                    <button type="button" class="btn btn-default" onclick="location.href='/bookjuck/member/fleamarket/edit.do?seq=${dto.seq}';">
                         <span class="glyphicon glyphicon-minus"></span>
                         수정
                     </button>
                     
-                    <button type="button" class="btn btn-default" onclick="location.href='';">
+                    <button type="button" class="btn btn-default" onclick="location.href='/bookjuck/member/fleamarket/delete.do?seq=${dto.seq}';">
                         <span class="glyphicon glyphicon-remove"></span>
                         삭제
                     </button>
@@ -79,18 +80,30 @@
                 
                 <table class="table tbl-md table-view">
                     <tr>
-                        <td colspan="2" class="subject">글제목입니다. 하하하하</td>
+                        <td colspan="2" class="subject">
+	                        <span class="seq">${dto.seq}.</span>
+	                        <span>${dto.title}</span>
+	                        <c:if test="${dto.dealState.equals('판매완료')}">
+	                        	<span class="dealstate label label-default">${dto.dealState }</span>	
+	                        </c:if>
+	                        <c:if test="${dto.dealState.equals('판매중')}">
+	                        	<span class="dealstate label label-success">${dto.dealState }</span>
+	                        </c:if>
+	                        <c:if test="${dto.dealState.equals('예약중')}">
+	                        	<span class="dealstate label label-danger">${dto.dealState }</span>
+	                        </c:if>
+                        </td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <span class="writer-id first-line">글쓴이id</span>
-                            <a href>
-                                <input type="button" class="btn btn-xs btn-mail" value="메일보내기" onclick="location.href='mailto: 글쓴이 메일주소 ';">
+                            <span class="writer-id first-line">${dto.id}</span>
+                            <a href="">
+                                <input type="button" class="btn btn-xs btn-mail" value="메일보내기" onclick="location.href='mailto:${dto.email}';">
                             </a>
                             <div class="second-line">
                                 <div style="float: left; width: 730px;">
-                                    <span class="regdate">2021-02-18 14:56:00</span>
-                                    <span class="read-cnt">조회 (0)</span>
+                                    <span class="regdate">${dto.regDate}</span>
+                                    <span class="read-cnt">조회 (${dto.readcnt})</span>
                                 </div>
                                 <div>
                                     <span class="commment">댓글 5</span>
@@ -102,14 +115,17 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <img src="/bookjuck/image/빛의 과거.png" class="attach" style="display: block; margin: 20px auto;">
-                            <p>이게 바로 내용입니다.</p>
+                        
+	                        <c:if test="${dto.image.toLowerCase().endsWith('jpg') || dto.image.toLowerCase().endsWith('gif') || dto.image.toLowerCase().endsWith('png') }">
+	                            <img src="/bookjuck/files/${dto.image}" class="attach" style="display: block; margin: 20px auto;">
+	                        </c:if>
+                            <p>${dto.content}</p>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <span class="more">
-                                <a href="/bookjuck/member/fleamarket/list.do"><span class="writer-id">글쓴이id</span>님의 게시물 더 보기
+                                <a href="/bookjuck/member/fleamarket/list.do?fleamarketsearch=${dto.id}"><span class="writer-id">${dto.id}</span>님의 게시물 더 보기
                                     <span class="glyphicon glyphicon-menu-right"></span></a>
                             </span>
                         </td>
@@ -126,10 +142,9 @@
                     <tr>
                         <td>
                             <span class="comment">코멘트입니다.</span>
-                            <span class="date">2021-02-19</span>
-                            <span class="name">hong1234</span>
-                            
-                            <span class="delete" onclick=""><a href>[삭제]</a></span>
+                            <span class="name text-right">hong1234</span>
+                            <span class="date text-right">2021-02-19</span>
+                            <span class="delete text-right" onclick=""><a href>[삭제]</a></span>
                         </td>
                     </tr>
                     <tr>
