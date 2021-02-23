@@ -51,23 +51,24 @@
                 <button type="button" class="btn btn-general btn-preview" onclick="location.href='';">
                     미리보기
                 </button>
+                <form method="POST" action="/bookjuck/member/fleamarket/writeok.do" enctype="multipart/form-data">
                 
                 <table class="table tbl-md table-view">
                     <tr>
                         <td colspan="2" class="subject">
-                            <input type="text" class="form-control" placeholder="제목을 입력해주세요.">
+                            <input type="text" class="form-control" placeholder="제목을 입력해주세요." id="title" name="title" required>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
                             <p>
-                                <textarea class="form-control content" placeholder="내용을 입력하세요."></textarea>    
+                                <textarea class="form-control content" placeholder="내용을 입력하세요." id="content" name="content" required></textarea>    
                             </p>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <input type="file" class="form-control">
+                            <input type="file" class="form-control" id="file" name="attach">
                         </td>
                     </tr>
                 </table>
@@ -83,7 +84,9 @@
                         <span class="glyphicon glyphicon-plus"></span>
                         쓰기
                     </button>
-                </div>
+                </div>  <!-- ### 버튼 그룹 끝 -->
+                
+                </form>
                 <div style="clear:both;"></div>
 
 
