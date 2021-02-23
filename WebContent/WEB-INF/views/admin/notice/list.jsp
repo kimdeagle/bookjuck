@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,25 +31,35 @@
 		<section class="contentsection">
 		    <h3 class="membertitle">공지사항</h3>
 		
-		    <table class="table tbl-md noticetbl">
+		    <table class="table tbl-md" id="listtbl">
 		        <tr>
 		            <th class="col-md-2 cell1">번호</th>
 		            <th class="col-md-6 cell2">제목</th>
 		            <th class="col-md-2 cell3">작성일</th>
 		        </tr>
+		        
+		        <c:if test="${nlist.size()==0}">
+			        <tr>
+			        	<td colspan="3" style="text-align:center;">게시물이 없습니다.</td>
+			        </tr>
+			    </c:if>
+			    
+		        <c:forEach items="${nlist}" var="dto">
 		        <tr>
-		            <td class="cell1">2</td>
-		            <td class="cell2"><a href="/bookjuck/admin/notice/detail.do">서점 비치도서 판매 이벤트 안내</a></td>
-		            <td class="cell3">2021-02-05</td>
+		            <td class="cell1">${dto.seq}</td>
+		            <td class="cell2"><a href="/bookjuck/admin/notice/detail.do?seq=${dto.seq}&page=${nowPage}">${dto.title}</a></td>
+		            <td class="cell3">${dto.regdate.substring(0, 10)}</td>
 		        </tr>
-		        <tr>
-		            <td class="cell1">1</td>
-		            <td class="cell2"><a href="#">폭설로 인한 남부지방 배송 지연 안내</a></td>
-		            <td class="cell3">2021-02-03</td>
-		        </tr>
+		        </c:forEach>
 		    </table>
+		    
+		    <nav class="pagebar">
+                <ul class="pagination">
+                    ${pagebar}
+                </ul>
+            </nav>
 		
-		    <ul class="pagination">
+		    <!-- <ul class="pagination">
 		        <li>
 		        <a href="#" aria-label="Previous">
 		            <span aria-hidden="true">&laquo;</span>
@@ -64,7 +75,7 @@
 		            <span aria-hidden="true">&raquo;</span>
 		        </a>
 		        </li>
-		    </ul>
+		    </ul> -->
 		
 		    <div id="btn">
 		        <button type="button" class="btn btn-general" id="add" onclick="location.href='/bookjuck/admin/notice/add.do'">작성하기</button>
