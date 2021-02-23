@@ -9,17 +9,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+
 //http://localhost:8090/bookjuck/member/login.do
 @WebServlet("/member/login.do")
-public class Login extends HttpServlet{
+public class Login extends HttpServlet {
+
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/member/login.jsp");
+		dispatcher.forward(req, resp);
 
 	
-protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/member/login.jsp");
-		dispatcher.forward(request, response);
-		
-	}
+		}
 
-	
 }
