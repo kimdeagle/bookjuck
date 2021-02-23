@@ -98,6 +98,41 @@ public class CategoryDAO {
 		
 		return null;
 	}
+
+	//EBookCategory 서블릿 -> ebookcategorylist 반환
+	public ArrayList<CategoryDTO> eBookCategoryList() {
+		
+		try {
+			
+			String sql = "select * from vwSCategory";
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			ArrayList<CategoryDTO> categoryList = new ArrayList<CategoryDTO>(); 
+			
+			while (rs.next()) {
+				CategoryDTO dto = new CategoryDTO();
+				
+				dto.setSeqLCategory(rs.getString("seqLCategory"));
+				dto.setSeqMCategory(rs.getString("seqMCategory"));
+				dto.setSeqSCategory(rs.getString("seqSCategory"));
+				
+				dto.setlCategory(rs.getString("lCategory"));
+				dto.setmCategory(rs.getString("mCategory"));
+				dto.setsCategory(rs.getString("sCategory"));
+				
+				categoryList.add(dto);
+				
+			}
+			
+			return categoryList;
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+	}
 	
 	//주혁 끝
 	

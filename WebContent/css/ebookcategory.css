@@ -38,7 +38,7 @@
     margin-top:15px;
 }
 
-#subcategorylist {
+.subcategorylist {
 	display: none;
 	position: absolute;
 	left: 0;
@@ -50,7 +50,7 @@
 	text-align: center;
 }
 
-#subcategorylist > a {
+.subcategorylist > a {
 	display: block;
 	margin: 5px auto 5px auto;
 }

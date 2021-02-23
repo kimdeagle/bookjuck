@@ -87,7 +87,7 @@
 						<div class="intro">${dto.summary.substring(0, 100)}</div>
 						<div class="priceinfo">
 							<span class="price"><s>정가 ${String.format('%,d원', dto.price)}</s></span>
-							<span class="saleprice">판매가 <strong>${String.format('%,d원', dto.salePrice)}</strong></span>
+							<span class="saleprice">판매가 <strong>${String.format('%,d', dto.salePrice)}</strong>원</span>
 						</div>
 					</td>
 					<td>

@@ -77,7 +77,7 @@
 						<div class="readtimeinfo" style="font-size: 0.8em;">(완독 예상 시간은 소개, 목차 등 전체 페이지를 기준으로 측정된 시간이며, 실제 완독 시간과 오차가 있을 수 있습니다.)</div>
 						<div class="priceinfo">
 							<span class="price"><s>정가 ${String.format('%,d원', dto.price)}</s></span>
-							<span class="saleprice">판매가 <strong>${String.format('%,d원', dto.salePrice)}</strong></span>
+							<span class="saleprice">판매가 <strong>${String.format('%,d', dto.salePrice)}</strong>원</span>
 							<span class="savepoint">(적립금 <fmt:formatNumber type="number" value="${dto.salePrice / 10}" />원)</span>
 						</div>
 					</td>
@@ -108,7 +108,6 @@
 								<c:if test="${dto.summary.indexOf('<br><br>') == -1}">
 									${dto.summary}
 								</c:if>
-								
 								
 							</p>
 						</div>
