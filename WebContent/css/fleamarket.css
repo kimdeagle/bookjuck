@@ -252,7 +252,20 @@
 
 
 /*  댓글  */
-.fleamarket .table-comment .date {
-    margin-left: 15px;
-    font-size: 0.9em;
+.table-comment .text-right {
+    display: block;
+    float: right;
+    margin: 0px 3px;
+    font-size: 0.8em;
+}
+
+.table-comment .text-right a {
+	font-size: 0.9em;
+}
+
+
+/* 판매상태 추가 21.02.23 */
+.fleamarket .table-view .dealstate {
+    display: block;
+    float: right;
 }

@@ -75,6 +75,15 @@
                         <td colspan="2" class="subject">
 	                        <span class="seq">${dto.seq}.</span>
 	                        <span>${dto.title}</span>
+	                        <c:if test="${dto.dealState.equals('판매완료')}">
+	                        	<span class="dealstate label label-default">${dto.dealState }</span>	
+	                        </c:if>
+	                        <c:if test="${dto.dealState.equals('판매중')}">
+	                        	<span class="dealstate label label-success">${dto.dealState }</span>
+	                        </c:if>
+	                        <c:if test="${dto.dealState.equals('예약중')}">
+	                        	<span class="dealstate label label-primary">${dto.dealState }</span>
+	                        </c:if>
                         </td>
                     </tr>
                     <tr>
@@ -125,10 +134,9 @@
                     <tr>
                         <td>
                             <span class="comment">코멘트입니다.</span>
-                            <span class="date">2021-02-19</span>
-                            <span class="name">hong1234</span>
-                            
-                            <span class="delete" onclick=""><a href>[삭제]</a></span>
+                            <span class="name text-right">hong1234</span>
+                            <span class="date text-right">2021-02-19</span>
+                            <span class="delete text-right" onclick=""><a href>[삭제]</a></span>
                         </td>
                     </tr>
                     <tr>

@@ -52,24 +52,27 @@
                     미리보기
                 </button>
                 
+                <form method="POST" action="/bookjuck/member/fleamarket/editok.do">
                 <table class="table tbl-md table-view">
                     <tr>
                         <td colspan="2" class="subject">
-                            <input type="text" class="form-control" value="글제목입니다. 하하하하">
+                            <input type="text" class="form-control" required id="title" name="title" value='${dto.title.replace("\"", "&quot;")}'>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
                             <p>
-                                <textarea class="form-control content">이게 바로 내용입니다.</textarea>    
+                                <textarea class="form-control content" id="content" name="content" required>${dto.content}</textarea>    
                             </p>
                         </td>
                     </tr>
+                    <!-- 
                     <tr>
                         <td>
                             <input type="file" class="form-control">
                         </td>
                     </tr>
+                    -->
                 </table>
 
                 
@@ -85,8 +88,11 @@
                         수정
                     </button>
                 </div>
+                
+                <input type="hidden" name="seq" value="${dto.seq}">
+                
+                </form>
                 <div style="clear:both;"></div>
-
 
 
             </article>

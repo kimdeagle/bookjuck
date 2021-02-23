@@ -78,6 +78,7 @@
 	                    <tr style="background-color: RGBA(140,179,105,0.2)">
 	                        <th id="num">글번호</th>
 	                        <th id="title">글제목</th>
+	                        <th id="state">거래상태</th>
 	                        <th id="name">작성자</th>
 	                        <th id="date">작성일</th>
 	                        <th id="cnt">읽음</th>
@@ -108,6 +109,7 @@
 	                           	</c:if>
 	                        
 	                        </td>
+	                        <td>${dto.dealState }</td>
 	                        <td>${dto.id }</td>
 	                        <td>${dto.regDate }</td>
 	                        <td>${dto.readcnt }</td>
