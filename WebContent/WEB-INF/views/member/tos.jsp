@@ -35,7 +35,7 @@
 			<table class="tostbl" id="tostbl1">
 				<tr>
 					<td>
-						<input type="checkbox" id="allCheck" name="chk">
+						<input type="checkbox" id="allCheck" name="allCheck" class="chk">
 						<label for="allCheck">전체 동의</label>
 					</td>
 					<td>
@@ -44,7 +44,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="checkbox" id="Check1" name="chk" required>
+						<input type="checkbox" id="Check1" name="Check1" class="chk" required>
 						<label for="Check1">이용 약관</label>
 					</td>
 					<td>
@@ -53,7 +53,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="checkbox" id="Check2" name="chk" required> 
+						<input type="checkbox" id="Check2" name="Check2" class="chk" required> 
 						<label for="Check2">개인정보 수집 및 동의</label>
 					</td>
 					<td>
@@ -62,7 +62,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="checkbox" id="Check3" name="chk" required>
+						<input type="checkbox" id="Check3" name="Check3" class="chk" required>
 						<label for="Check3">개인정보 처리 위탁 및 정리</label>
 					</td>
 					<td>
@@ -78,7 +78,7 @@
 				<tr>
 					<th>이름:</th>
 					<td>
-						<input type="text" class="log-md" required>	
+						<input type="text" class="log-md" required id ="name" name="name">	
 					</td>
 
 					<!-- <td>성별: 
@@ -95,7 +95,7 @@
 				<tr>
 					<th>주민번호:</th>
 					<td>
-						<input type="text" class="log-md" required ><span>- </span><input type="text" class="log-md" required>
+						<input type="text" class="log-md" required id="ssn1" name="ssn1"><span>- </span><input type="text" class="log-md" required id="ssn2" name="ssn2">
 					</td>
 					<td>
 					</td>
@@ -109,6 +109,7 @@
 			<h6>이메일 인증</h6>
 			
 			<!-- 세번째 테이블 시작 -->
+			
 			<table  class="tostbl" id="tostbl3">
 				<tr>
 					<th>이메일:</th>
@@ -521,12 +522,12 @@ YP e-money 총 금액의 100분의 60(1만원 이하 금액은 100분의 80) 이
 				//클릭되었으면
 				if ($("#allCheck").prop("checked")) {
 					//input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
-					$("input[name=chk]").prop("checked", true);
+					$("input[class=chk]").prop("checked", true);
 
 					//클릭이 안되있으면
 				} else {
 					//input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
-					$("input[name=chk]").prop("checked", false);
+					$("input[class=chk]").prop("checked", false);
 				}
 			})
 		})

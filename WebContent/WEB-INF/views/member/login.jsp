@@ -53,10 +53,11 @@
 
 
 			<!-- 회원 로그인 Form -->
-			<form action="loginok.jsp" method="POST" id="loginForm">
+			<!-- <form action="/bookjuck/member/loginok.do" method="POST" id="loginForm"> -->
 
 				<div id="login">
 
+			<form action="/bookjuck/member/loginok.do" method="POST" id="loginForm">
 					<input type="text" name="id" id="id" class="form-control noline medium inline" maxlength="15" placeholder="아이디를 입력해주세요"> 
 					<input type="password" name="pw" id="pw" class="form-control noline medium inline" maxlength="20" placeholder="비밀번호를 입력해주세요.">
 
@@ -69,10 +70,11 @@
 
 					<div id="socialLogin">
 						<img alt="" src="/bookjuck/image/social/w_login_g.jpg" data-onsuccess="onSignIn" class="g-signin2 socialBtn"> 
-						<div class="g-signin2" data-onsuccess="onSignIn"></div><!-- 구글 로그인 버튼 -->
+						<!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> --><!-- 구글 로그인 버튼 -->
 						<img alt="" src="/bookjuck/image/social/w_login_n.jpg" class="socialBtn">
 						<img alt="" src="/bookjuck/image/social/w_login_k.jpg" class="socialBtn" id="kakao-login-btn"> <!-- 카카오 로그인 버튼 -->
-						<div id="naver_id_login"></div> <!-- 네이버 로그인 버튼 -->
+						<div class="socialBtn" onclick="document.getElementByID(naver_id_login').click;"></div>
+						<div id="naver_id_login" style="display:none"></div>  <!-- 네이버 로그인 버튼 -->
 						
 						
 						<!-- <a href="http://developers.kakao.com/logout"></a> -->
@@ -81,9 +83,9 @@
 					<div id="loginBox">
 						<input type="submit" class="btn btn-general" id="loginbtn" value="로그인">
 					</div>
+			</form>
 				</div>
 
-			</form>
 			<!-- 회원 로그인 Form 종료-->
 
 
