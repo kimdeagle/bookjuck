@@ -67,13 +67,17 @@
                         </td>
                     </tr>
                     <tr>
+                        <td colspan="2">
+                            <input type="file"  id="file" name="attach" class="form-control" onchange="setThumbnail(event);">
+                        </td>
+                    </tr>
+                    <tr>
                         <td>
-                            <input type="file" class="form-control" id="file" name="attach">
+                            <div id="image_container"></div>
                         </td>
                     </tr>
                 </table>
 
-             
 
                 <div class="btns btn-group">
                     <button type="button" class="btn btn-default" onclick="location.href='/bookjuck/member/fleamarket/list.do';">
@@ -90,7 +94,6 @@
                 <div style="clear:both;"></div>
 
 
-
             </article>
         </section>
 
@@ -100,7 +103,22 @@
 		<!-- ########## 하단 끝 -->
 		
 	</div>
-	
+
+
+    <script>
+
+        function setThumbnail(event) {
+            var reader = new FileReader();
+            reader.onload = function (event) {
+                var img = document.createElement("img");
+                img.setAttribute("src", event.target.result);
+                document.querySelector("div#image_container").appendChild(img);
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+
+
+    </script>	
 	
 
 </body>
