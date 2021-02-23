@@ -18,8 +18,8 @@
 <!-- bookdetail.css -->
 <link rel="stylesheet" href="/bookjuck/css/bookdetail.css">
 
-<!-- inlist.js -->
-<script src="/bookjuck/js/inlist.js"></script>
+<!-- booklist.js -->
+<script src="/bookjuck/js/booklist.js"></script>
 
 
 <style>
@@ -32,7 +32,15 @@
 	<div class="container">
 
 	<!-- ########## 상단 헤더 시작 -->
-	<%@include file="/WEB-INF/views/member/inc/header.jsp" %>
+	<!-- 변경 전 -->
+	<%-- <%@include file="/WEB-INF/views/member/inc/header.jsp" %> --%>
+
+	<!-- 변경 후 -->
+	<%
+		out.flush();
+		RequestDispatcher dheader = request.getRequestDispatcher("/member/inc/header.do");
+		dheader.include(request, response);
+	%>
 	<!-- ########## 상단 헤더 끝 -->
 	
 	
