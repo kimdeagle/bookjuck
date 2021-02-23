@@ -69,9 +69,9 @@ public class UsedBoardDAO {
 			
 			String where = "";
 			
-			if (map.get("search")!= null) {
+			if (map.get("fleamarketsearch")!= null) {
 				
-				where = String.format("where name like '%%%s%%' or title like '%%%s%%' or content like '%%%s%%'", map.get("search"), map.get("search"), map.get("search"));
+				where = String.format("where id like '%%%s%%' or title like '%%%s%%' or content like '%%%s%%'", map.get("fleamarketsearch"), map.get("fleamarketsearch"), map.get("fleamarketsearch"));
 			}
 			
 			
@@ -94,6 +94,7 @@ public class UsedBoardDAO {
 				dto.setDealState(rs.getString("dealState"));
 				dto.setReadcnt(rs.getInt("readcnt"));
 				dto.setImage(rs.getString("image"));
+				dto.setId(rs.getString("id"));
 				
 				list.add(dto); //***잘 빼먹는 부분 : 에러메세지 안뜨니 주의할 것
 				

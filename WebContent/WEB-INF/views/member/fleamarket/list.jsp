@@ -57,10 +57,10 @@
                     <!-- <input type="text" class="form-control" id="search"> -->
 
 
-                    <form id="searchForm" method="GET" action="/bookjuct/member/fleamarket/list.do">
-                        <div class="input-group search">
+                    <form id="searchForm" method="GET" action="/bookjuck/member/fleamarket/list.do">
+                        <div class="input-group fleamarketsearch">
                         
-                            <input type="text" class="form-control" id="fleamarket-search" name="fleamarket-search" placeholder="" aria-describedby="basic-addon2" required value="${search}">
+                            <input type="text" class="form-control" id="fleamarketsearch" name="fleamarketsearch" placeholder="" aria-describedby="basic-addon2" required value="${fleamarketsearch}">
                             
                             <span class="input-group-addon" id="basic-addon2" style="cursor:pointer;" onclick="$('#searchForm').submit();"><span class="glyphicon glyphicon-search"></span></span>
                         </div>
@@ -96,7 +96,7 @@
 	                        <td>${dto.seq}</td>
 	                        <td class="title">
 	                        
-		                        <a href="/bookjuck/member/fleamarket/view.do?seq=${dto.seq}&search=${search}">
+		                        <a href="/bookjuck/member/fleamarket/view.do?seq=${dto.seq}&fleamarketsearch=${fleamarketsearch}">
 		                        ${dto.title}
 		                        </a>
 		                        

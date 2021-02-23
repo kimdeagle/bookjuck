@@ -28,12 +28,11 @@ public class List extends HttpServlet {
 		
 		HashMap<String,String> map = new HashMap<String,String>();
 		
-		String search = req.getParameter("search");
+		String fleamarketsearch = req.getParameter("fleamarketsearch");
 		
-		if ( !(search == null || search.equals("")) ) {
-			map.put("search", search);
+		if ( !(fleamarketsearch == null || fleamarketsearch.equals("")) ) {
+			map.put("fleamarketsearch", fleamarketsearch);
 		}		
-		
 		
 		//1. DB 작업 -> select
 		//2. 목록 반환 + JSP 전달 후 호출하기
@@ -56,7 +55,10 @@ public class List extends HttpServlet {
 		
 		//2. 
 		req.setAttribute("list", list);
-		req.setAttribute("search", search);
+		req.setAttribute("fleamarketsearch", fleamarketsearch);
+		
+		//TODO test
+		System.out.println(fleamarketsearch);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/member/fleamarket/list.jsp");
 		dispatcher.forward(req, resp);
