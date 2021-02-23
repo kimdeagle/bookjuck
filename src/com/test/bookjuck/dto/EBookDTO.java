@@ -17,6 +17,14 @@ public class EBookDTO {
 	private String image;
 	private String eFile;
 	
+	private String author; //작가명
+	
+	private String authorIntro; //작가 소개
+	
+	private String sCategory; //카테고리명(소)
+	private String mCategory; //카테고리명(중)
+	private String lCategory; //카테고리명(대)
+	
 	
 	public String getSeq() {
 		return seq;
@@ -101,6 +109,36 @@ public class EBookDTO {
 	}
 	public void seteFile(String eFile) {
 		this.eFile = eFile;
+	}
+	public String getAuthor() {
+		return author;
+	}
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+	public String getAuthorIntro() {
+		return authorIntro;
+	}
+	public void setAuthorIntro(String authorIntro) {
+		this.authorIntro = authorIntro;
+	}
+	public String getsCategory() {
+		return sCategory;
+	}
+	public void setsCategory(String sCategory) {
+		this.sCategory = sCategory;
+	}
+	public String getmCategory() {
+		return mCategory;
+	}
+	public void setmCategory(String mCategory) {
+		this.mCategory = mCategory;
+	}
+	public String getlCategory() {
+		return lCategory;
+	}
+	public void setlCategory(String lCategory) {
+		this.lCategory = lCategory;
 	}
 	
 	
