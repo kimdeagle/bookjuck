@@ -17,7 +17,7 @@
         <ul>
             <li class="menuitem"><h6>나의 주문 내역</h6></li>
                 <ul>
-                    <li class="menusubitem"><a href="#">주문/배송/결제</a></li>
+                    <li class="menusubitem"><a href="/bookjuck/member/mypage/orderlist.do">주문/배송/결제</a></li>
                     <li class="menusubitem"><a href="/bookjuck/member/refund/list.do">교환/환불/취소</a></li>
                 </ul>
             <li class="menuitem"><h6>나의 정보</h6></li>
@@ -28,7 +28,7 @@
                 </ul>
             <li class="menuitem"><h6>기타</h6></li>
                 <ul>
-                    <li class="menusubitem"><a href="#">장바구니</li>
+                    <li class="menusubitem"><a href="/bookjuck/member/order/cart.do">장바구니</li>
                     <li class="menusubitem"><a href="/bookjuck/member/fleamarket/list.do">중고게시판</a></li>
                     <li class="menusubitem"><a href="/bookjuck/member/review/list.do">나의 독후감</a></li>
                 </ul>

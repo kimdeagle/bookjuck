@@ -9,9 +9,69 @@ package com.test.bookjuck.dto;
 public class BaroCartDTO {
 	
 	private String seq; // 바로드림 카드 번호
-	private String seqMember; // 회원번호
-	private String seqBook; // 도서 정보 번호
-	private int amount; // 수량
-	private String pick; // 선택여부
+	private String seqMember; //회원번호
+	private String seqBook; //책번호
+	private int amount; //수량
+	private String pick; //선택여부
+	
+	private String title;//책 제목
+	private int price;//책 가격
+	private String image; //책 이미지
+	private int total; // 총 금액 책가격x수량
+	
+	public String getSeq() {
+		return seq;
+	}
+	public void setSeq(String seq) {
+		this.seq = seq;
+	}
+	public String getSeqMember() {
+		return seqMember;
+	}
+	public void setSeqMember(String seqMember) {
+		this.seqMember = seqMember;
+	}
+	public String getSeqBook() {
+		return seqBook;
+	}
+	public void setSeqBook(String seqBook) {
+		this.seqBook = seqBook;
+	}
+	public int getAmount() {
+		return amount;
+	}
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+	public String getPick() {
+		return pick;
+	}
+	public void setPick(String pick) {
+		this.pick = pick;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
+	public int getTotal() {
+		return total;
+	}
+	public void setTotal(int total) {
+		this.total = total;
+	}
 
 }

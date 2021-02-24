@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,15 +63,19 @@
 					<li><a href="/bookjuck/member/order/ebookcart.do">E-Book</a></li>
 				</ul>
 			</div>
-			
 			<!-- 장바구니 내역이 없으면 보이는 화면 -->
+            	<c:if test="${list.size() == 0}">
                 <div class="noOrderList">
+                
                     <span>장바구니에 담긴 상품이 없습니다.</span>
                     
                     <img src="/bookjuck/image/bookjeok/chat.png">
                 </div>
-                
+                </c:if>
 			
+
+            <!-- 장바구니 내역 없으면 안보임 -->    
+			<c:if test="${list.size() > 0}">
 			<div class="cart_controller">
 				<label>
 					<input type="checkbox" id="check_all_top" class="cartcheck check_all" checked><span>전체선택</span>
@@ -78,7 +83,6 @@
 				<a href="javascript:void(0);" class="btn1" onclick="">삭제</a>
 			</div>
 			
-            <!-- 없으면 안보임 -->    
 			<div class="cartlistbox">
 				<h4>일반구매</h4>
 				<table id="bookcart" class="cartlist table tbl-lg">
@@ -90,20 +94,22 @@
 			            <th>수량</th>
 			            <th>합계</th>
 			        </tr>
+			        <c:forEach items="${list}" var="dto">
 			        <tr class="olInfo">
 			        	<td><input type="checkbox" id="" class="cartcheck bookcheck" checked></td>
 			            <td>
-			                <img src="/bookjuck/image/달러구트 꿈 백화점.png" class="book-xs">
-			                <a href="/bookjuck/member/book/bookdetail.do">도서명</a>
+			                <img src="/bookjuck/image/book/+${dto.image}" alt="${dto.image}" class="book-xs">
+			                <a href="/bookjuck/member/book/bookdetail.do">${dto.title}</a>
 			            </td>
-			            <td>정가</td>
-			            <td>판매가</td>
+			            <td>${dto.price}</td>
+			            <td>${dto.salePrice}</td>
 			            <td>
-			            	<input type="text" id="" class="cartcount" value="1">
-			            	<a href="#" onclick="" class="btn1">변경</a>
+			            	<input type="text" id="" class="cartcount" value="${dto.amount}">
+			            	<a href="#!" onclick="" class="btn1">변경</a>
 			            </td>
-			            <td>판매가x수량</td>
+			            <td>${dto.total}</td>
 			        </tr>
+			        </c:forEach>
 			    </table>
 		    </div>
 		    
@@ -129,6 +135,8 @@
 				<a href="/bookjuck/member/order/orderpaynon.do" onclick="" class="btn1">비회원 주문하기</a>
 				<a href="/bookjuck/member/order/orderpaymem.do" onclick="" class="btn-order">주문하기</a>
 			</div>
+			
+			</c:if>
 		    
 	    </article>
 	
