@@ -124,7 +124,7 @@
 		  	
 		  	<div class="form-group actionbtns">
 			  	<input type="submit" class="btn btn-primary" id="btnadd" value="추가">
-			  	<input type="button" class="btn btn-default" id="btncancel" value="취소" onclick="location.href='/bookjuck/admin/book/list.do';">
+			  	<input type="button" class="btn btn-default" id="btncancel" value="취소" onclick="location.href='/bookjuck/admin/book/booklist.do';">
 		  	</div>
 		  	
 	  	</form>
@@ -132,6 +132,14 @@
 	  	
 	  	<!-- modal -->
 		<%@include file="/WEB-INF/views/admin/book/bookmodal.jsp" %>
+		<%--
+		<%
+			out.flush();
+			RequestDispatcher dmodal = request.getRequestDispatcher("/admin/book/bookmodal.do");
+			dmodal.include(request, response);
+		%>
+		--%>
+
 		
 	
 	</section>

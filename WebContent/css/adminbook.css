@@ -3,6 +3,8 @@
 [readonly] { background-color: transparent !important; }
 button { outline:none !important; }
 
+.contentsection { margin-left: 5px !important; }
+
 .tblbookcount, .tblebookcount {
 	margin-top: 20px;
 	margin-bottom: 100px;
@@ -26,11 +28,11 @@ button { outline:none !important; }
 }
 
 .tblbooklist th:nth-child(1) {
-	width: 240px;
+	width: 210px;
 }
 
 .tblbooklist th:nth-child(2) {
-	width: 210px;
+	width: 240px;
 }
 
 .tblbooklist th:nth-child(3) {
@@ -39,6 +41,10 @@ button { outline:none !important; }
 
 .tblbooklist th:nth-child(4) {
 	width: 50px;
+}
+
+.tblbooklist th:nth-child(5) {
+	width: 190px;
 }
 
 .tblebooklist th:nth-child(1) {
@@ -53,7 +59,7 @@ button { outline:none !important; }
 	width: 170px;
 }
 
-.tblbooklist td input[type=button] {
+.tblbooklist td input[type=button], .tblebooklist td input[type=button] {
 	margin-right: 5px;
 }
 
@@ -67,7 +73,7 @@ input[type=button]:focus {
 
 .listheader h5 {
 	margin-top: 20px;
-	display: inline-block;
+	float: left;
 }
 
 .listheader input[type=button] {
@@ -136,3 +142,7 @@ input[type=button]:focus {
 /* modal > 작가명 검색창 */
 #searchauthor { width: 200px; display: inline-block; }
 
+
+.btnAdd > span {
+	color : white;
+}

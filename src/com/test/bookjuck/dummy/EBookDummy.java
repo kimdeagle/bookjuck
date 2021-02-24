@@ -404,11 +404,15 @@ public class EBookDummy {
 			Iterator<String> iter = isbn.iterator();
 			
 			for (int i=1; i<=120; i++) {
+				if (i == 2) {
+					//국내 - 소설 - 외국소설 제외 (해리포터)
+					continue;
+				}
 				for (int j=0; j<20; j++) {
 					int temp = price[rnd.nextInt(price.length)];
 					pstat.setString(1, (rnd.nextInt(15) + 1) + "");
 					pstat.setString(2, i + "");
-					pstat.setString(3, title[rnd.nextInt(title.length)]);
+					pstat.setString(3, "[E-Book]" + title[rnd.nextInt(title.length)]);
 					pstat.setString(4, publisher[rnd.nextInt(publisher.length)]);
 					pstat.setString(5, pubDate[rnd.nextInt(pubDate.length)]);
 					pstat.setInt(6, temp);

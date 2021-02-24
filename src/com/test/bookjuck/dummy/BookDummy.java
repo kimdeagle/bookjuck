@@ -401,6 +401,10 @@ public class BookDummy {
 			Iterator<String> iter = isbn.iterator();
 			
 			for (int i=1; i<=120; i++) {
+				if (i == 2) {
+					//국내 - 소설 - 외국소설 제외 (해리포터)
+					continue;
+				}
 				for (int j=0; j<20; j++) {
 					int temp = price[rnd.nextInt(price.length)];
 					pstat.setString(1, (rnd.nextInt(15) + 1) + "");
