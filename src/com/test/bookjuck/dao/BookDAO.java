@@ -37,7 +37,9 @@ public class BookDAO {
 		}
 	}
 	
-	//검색구현
+  
+  //----- 현우 시작 
+	//검색구현 -- 이현우
 	public ArrayList<BookDTO> list (HashMap<String, String> map){
 		
 		try {
@@ -104,7 +106,7 @@ public class BookDAO {
 	
 	}
 	
-	//베스트셀러 list
+	//베스트셀러 list -- 이현우
 	public ArrayList<BookDTO> bestSeller (HashMap<String, String> map){
 		
 		System.out.println("select");
@@ -175,7 +177,61 @@ public class BookDAO {
 		
 	} 
 	
-	//신간도서 list
+	
+	//(날짜 입력 전)신간도서 list --이현우 
+	public ArrayList<BookDTO> defaultNewBook(){
+		
+		
+		try {
+			
+			String sql = "select * from vwnewbook where rank between 1 and 10";
+			
+			
+			
+			pstat = conn.prepareStatement(sql);
+			rs = pstat.executeQuery();
+			
+			ArrayList<BookDTO> list = new ArrayList<BookDTO>();
+			
+			while(rs.next()) {
+				
+				BookDTO dto = new BookDTO();
+				
+				dto.setSeq(rs.getString("seq"));
+				dto.setTitle(rs.getString("title"));
+				dto.setPublisher(rs.getString("publisher"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setPubDate(rs.getString("pubdate"));
+				dto.setCopy(rs.getString("copy"));
+				dto.setImage(rs.getString("image"));
+				dto.setAuthor(rs.getString("author"));
+				dto.setRank(rs.getString("rank"));
+				System.out.println(rs.getString("title"));
+				
+				
+				list.add(dto);
+				
+				
+			}
+			
+			return list;
+			
+			
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		
+		return null;
+		
+		
+	}
+	
+	
+	
+	//(날짜 입력 후)신간도서 list -- 이현우
 	public ArrayList<BookDTO> newBook (HashMap<String, String> map){
 		
 		try {
@@ -241,14 +297,14 @@ public class BookDAO {
 		return null;
 		
 	} 
-		
+	//월간베스트 -- 이현우
 	public ArrayList<BookDTO> monthlyBestSeller() {
 		
 		
 		try {
 			
-			String sql = "select * from vwbestseller where pubdate between trunc(sysdate, 'mm') and last_day(sysdate)";
-			
+			//String sql = "select * from vwbestseller where pubdate between trunc(sysdate, 'mm') and last_day(sysdate)";
+			String sql = "select * from vwbestseller";
 			
 					
 			
@@ -262,9 +318,16 @@ public class BookDAO {
 				
 				BookDTO dto = new BookDTO();
 				
-				dto.setImage(rs.getString("image"));
+				dto.setSeq(rs.getString("seq"));
 				dto.setTitle(rs.getString("title"));
+				dto.setPublisher(rs.getString("publisher"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setPubDate(rs.getString("pubdate"));
 				dto.setCopy(rs.getString("copy"));
+				dto.setImage(rs.getString("image"));
+				dto.setTotalSale(rs.getString("totalsale"));
+				dto.setSaleRank(rs.getString("salerank"));
+				dto.setAuthor(rs.getString("author"));
 				System.out.println(rs.getString("title"));
 							
 				
@@ -285,6 +348,165 @@ public class BookDAO {
 		return null;
 		
 	}
+	//메인 베스트셀러 --이현우
+	public ArrayList<BookDTO> mainBestSeller(){
+		
+		try {
+			
+			String sql = "select * from vwbestseller where salerank between 1 and 6";
+			
+			pstat = conn.prepareStatement(sql);
+			rs = pstat.executeQuery();
+			
+			ArrayList<BookDTO> list = new ArrayList<BookDTO>();
+			
+			while (rs.next()) {
+				
+				BookDTO dto = new BookDTO();
+				
+				dto.setSeq(rs.getString("seq"));
+				dto.setTitle(rs.getString("title"));
+				dto.setPublisher(rs.getString("publisher"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setPubDate(rs.getString("pubdate"));
+				dto.setCopy(rs.getString("copy"));
+				dto.setImage(rs.getString("image"));
+				dto.setTotalSale(rs.getString("totalsale"));
+				dto.setSaleRank(rs.getString("salerank"));
+				dto.setAuthor(rs.getString("author"));
+				dto.setSaleRank(rs.getString("salerank"));
+				System.out.println(rs.getString("title"));
+							
+				
+				list.add(dto);
+				System.out.println(list);
+				System.out.println(list.size());
+				
+			}
+			
+			return list;
+			
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		
+		
+		return null;
+		
+		
+		
+	}
+	// 메인 신간도서 -- 이현우
+	public ArrayList<BookDTO> mainNewBook(){
+		
+		
+		try {
+			
+			String sql = "select * from vwnewbook where rank between 1 and 6";
+			
+			
+			
+			pstat = conn.prepareStatement(sql);
+			rs = pstat.executeQuery();
+			
+			ArrayList<BookDTO> list = new ArrayList<BookDTO>();
+			
+			while(rs.next()) {
+				
+				BookDTO dto = new BookDTO();
+				
+				dto.setSeq(rs.getString("seq"));
+				dto.setTitle(rs.getString("title"));
+				dto.setPublisher(rs.getString("publisher"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setPubDate(rs.getString("pubdate"));
+				dto.setCopy(rs.getString("copy"));
+				dto.setImage(rs.getString("image"));
+				dto.setAuthor(rs.getString("author"));
+				dto.setRank(rs.getString("rank"));
+				System.out.println(rs.getString("title"));
+				
+				
+				list.add(dto);
+				
+				
+			}
+			
+			return list;
+			
+			
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		
+		return null;
+		
+		
+	}
+	
+	//메인 추천도서--이현우
+	public ArrayList<BookDTO> mainRecommendBook (String seq){
+		
+		
+		try {
+			
+			
+			String sql = "";
+			sql = String.format("select * from vwrecommendbook where seq = %s and rank between 1 and 6 order by rank", seq);
+			//sql = String.format("select * from vwrecommendbook where seq = 24 and rank between 1 and 6 order by rank");
+			
+			pstat = conn.prepareStatement(sql);
+			rs = pstat.executeQuery();
+			
+			//ResultSet -> ArrayList<DTO>
+			ArrayList<BookDTO> list = new ArrayList<BookDTO>();
+			
+			while(rs.next()) {
+				
+				BookDTO dto = new BookDTO();
+				
+				dto.setSeq(rs.getString("seq"));
+				dto.setTitle(rs.getString("title"));
+				//dto.setPublisher(rs.getString("publisher"));
+				//dto.setPrice(rs.getInt("price"));
+				//dto.setPubDate(rs.getString("pubdate"));
+				dto.setCopy(rs.getString("copy"));
+				dto.setImage(rs.getString("image"));
+				//dto.setAuthor(rs.getString("author"));
+				dto.setRank(rs.getString("rank"));
+				System.out.println(rs.getString("title"));
+				
+				
+				list.add(dto);
+				System.out.println(list);
+				
+			}
+			
+			return list;
+			
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		
+		
+		
+		
+		return null;
+		
+		
+	}
+  
+  //----- 현우 끝 
+  
 
 	//주혁 시작
 	

@@ -1,0 +1,248 @@
+@charset "UTF-8";
+
+		#headerlink {
+            text-align:right;
+            margin:20px;
+        }
+
+        #searchmenu {
+            text-align:center;
+        }
+
+        #logo {
+            width:250px;
+            margin-bottom:20px;
+            margin-right:10px;
+            margin-left:-5px;
+        }  /* 헤더에도 있는 중복된 CSS! 헤더랑 합치려면 이 코드 하나는 삭제해야 함! */
+
+        #realtime {
+            margin:10px;
+        }
+
+        .headerlink-item {
+            margin:0 5px;
+        }
+        
+        .navbar {
+            background-color: #F4E285;
+            border:none;
+        }
+
+        .nav > li > a:hover {
+            background-color:transparent;
+        }
+
+        .nav > li > a:active {
+            background-color:transparent;
+        }
+
+        .nav > li> a:visited {
+            background-color:transparent;
+        }
+
+        .nav > li > a:focus{
+            background-color:transparent;
+        }
+
+        a {
+            outline:none;
+        }
+
+        .btns {
+            margin-top:70px;
+            margin-left:auto;
+            margin-right:auto;
+            margin-bottom:-50px;
+            text-align:center;
+        }
+
+        .btns > input {
+            margin-left:auto;
+            margin-right:auto;
+            width:220px;
+        }
+
+        #booktable {
+            margin:70px auto;
+            border:1px solid #ccc;
+        }
+
+        .tblitem {
+            width:220px;
+            text-align:center;
+            padding:20px;
+        }
+
+        #bestmonth {
+            margin:70px auto;
+            text-align:center;
+        }
+
+        #bestmonthtitle {
+            border-top:1px dashed #ccc;
+            text-align:center;
+            width:500px;
+            padding-top:50px;
+            margin-left:auto;
+            margin-right:auto;
+
+        }
+
+        .monthitem {
+            width:160px;
+        }
+
+        /* footer */
+
+        footer {
+            background-color: #f8edb7;
+            text-align:center;
+        }
+
+        #footerlink {
+            width:100%;
+            text-align:center;
+            padding:20px;
+
+        }
+
+        .footerlink-item {
+            margin:0 3%;
+        }
+
+        .separator {
+            color:white;
+        }
+
+        footer .logo_area {
+            display: inline-block;
+            position: relative;
+            top: -20px;
+            left: 20px;
+        }
+
+        footer .click_footer {
+            display: inline-block;
+            position: relative;
+            text-align:left;
+            top: 20px;
+            left: 30px;
+        }
+
+        .logo_area {
+            display:inline;
+        }
+
+        /* 화면 고정 요소 */
+
+        /* 북적이에게 문의하기 */
+
+        #bookjeok {
+            text-align:center;
+            position: fixed;
+            padding:20px;
+            bottom: 0;
+        }
+
+        #chatbtn {
+            width:60px;
+        }
+
+        /* TOP */
+
+        #top {
+            text-align:center;
+            position:fixed;
+            padding:20px;
+            bottom:0px;
+            right:0px;
+        }
+
+        #top > span {
+            font-size:1.5em;
+            color:#BC4B51;
+        }
+
+        /* 슬라이더 */
+
+        .slick-items {
+            width:60%;
+            margin:70px auto;
+        }
+
+        .slick-item {
+            text-align:center;
+        }
+
+        .slick-item > img {
+            margin-left:auto;
+            margin-right:auto;
+        }
+
+        /*post slider*/
+
+        .post-slider{
+            width:70%;
+            margin:px auto;
+            position:relative;
+        }
+        .post-slider .silder-title{
+            text-align:center;
+            margin:30px auto;
+        }
+        .post-slider .next{
+            position:absolute;
+            top:50%;
+            right:30px;
+            font-size:2em;
+            color:gray;
+            cursor: pointer;
+        }
+        .post-slider .prev{
+            position:absolute;
+            top:50%;
+            left:30px;
+            font-size:2em;
+            color:gray;
+            cursor: pointer;
+        }
+        .post-slider .post-wrapper{
+            width:84%;
+            height:350px;
+            margin:0px auto;
+            overflow: hidden;
+            padding:10px 0px 10px 0px;
+        }
+        .post-slider .post-wrapper .post{
+            width:300px;
+            height:300px;
+            margin:0px 10px;
+            display:inline-block;
+            background:white;
+            border-radius: 5px;
+        }
+        .post-slider .post-wrapper .post .post-info{
+            font-size:15px;
+            height:30%;
+            padding-left:10px;
+        }
+        .post-slider .post-wrapper .post .slider-image{
+            width:100%;
+            height:175px;
+            border-top-left-radius:5px;
+            border-top-right-radius:5px;
+        }
+
+        .slick-dots li button:before {
+            color:#F4A259;
+        }
+
+        .slick-dots li.slick-active button:before {
+            color:#BC4B51;
+        }
+        
+        #recbook, #bestbook, #newbook {
+        	display:inline;
+        
+        }

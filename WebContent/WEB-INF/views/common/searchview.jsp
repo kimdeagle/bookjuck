@@ -113,13 +113,13 @@
      </c:if>
      <br>
 		<c:forEach items="${list}" var="dto">
-			<div class="bookbox9" id="booklist">
+			<div class="bookbox9" id="booklist" style="left:50%; margin:auto;">
 				<div class="bestrank5">
-					<img src="../image/${dto.image}">
+					<img src="/bookjuck/image/${dto.image}" style="width:100px; height:160px; float:left; margin:10px;">
 					<div class="bookname">
 						<strong>${dto.title}</strong>
 					</div> 
-					<div class="bookinfo">${dto.author} | ${dto.publisher} | ${dto.pubdate}</div>
+					<div class="bookinfo">${dto.author} | ${dto.publisher} | ${dto.pubDate}</div>
 					<div class="bookcopy">${dto.copy}</div>
 					<div class="price">가격: ${dto.price}원</div>
 					<div>
