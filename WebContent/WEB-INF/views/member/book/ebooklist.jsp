@@ -90,7 +90,7 @@
 					<td>
 						<div><a href="/bookjuck/member/book/ebookdetail.do?seqLCategory=${seqLCategory}&lCategory=${lCategory}&seqMCategory=${seqMCategory}&mCategory=${mCategory}&seqSCategory=${seqSCategory}&sCategory=${sCategory}&seq=${dto.seq}" class="title">${dto.title}</a></div>
 						<div class="info">${dto.author} | ${dto.publisher}</div>
-						<div class="subinfo">${String.format('%s년 %s월 %s일', dto.pubDate.substring(0, 4), dto.pubDate.substring(5, 7), dto.pubDate.substring(8, 10))}</div>
+						<div class="subinfo">${dto.pubDate}</div>
 						<div class="intro">${dto.intro.substring(0, 100)}</div>
 						<div class="priceinfo">
 							<span class="price"><s>정가 ${String.format('%,d원', dto.price)}</s></span>

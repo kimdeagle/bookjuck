@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.test.bookjuck.dao.EBookDAO;
+import com.test.bookjuck.dto.BookDTO;
 import com.test.bookjuck.dto.CategoryDTO;
 import com.test.bookjuck.dto.EBookDTO;
 
@@ -71,6 +72,16 @@ public class EbookList extends HttpServlet {
 		EBookDAO dao = new EBookDAO();
 		
 		ArrayList<EBookDTO> eblist = dao.getEBookList(map);
+		
+		
+		//날짜 데이터 자르기 -> 년 월 일로 변환
+		for (EBookDTO ebdto : eblist) {
+			ebdto.setPubDate(ebdto.getPubDate().substring(0, 10));
+			String temp = "";
+			temp = ebdto.getPubDate().substring(0, 4) + "년 " + ebdto.getPubDate().substring(5, 7) + "월 " + ebdto.getPubDate().substring(8) + "일";
+			ebdto.setPubDate(temp);
+		}
+		
 		
 		//총 페이지 수 계산하기
 		
@@ -181,6 +192,7 @@ public class EbookList extends HttpServlet {
 			}
 		}
 		
+		dao.close();
 		
 		//3.
 		
