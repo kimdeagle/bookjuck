@@ -32,7 +32,7 @@ public class View extends HttpServlet {
 		String seq = req.getParameter("seq");
 		String fleamarketsearch = req.getParameter("fleamarketsearch"); //검색어
 		
-		//String page = req.getParameter("page"); //왜받았냐??? view.jsp 한테 넘기기 위해!
+		String page = req.getParameter("page"); //왜받았냐??? view.jsp 한테 넘기기 위해!
 		
 		//2.
 		UsedBoardDAO dao = new UsedBoardDAO();
@@ -65,7 +65,7 @@ public class View extends HttpServlet {
 		req.setAttribute("dto", dto);
 		req.setAttribute("fleamarketsearch", fleamarketsearch);
 		
-		//req.setAttribute("page", page); //페이지 번호 view.jsp한테 넘겨주자
+		req.setAttribute("page", page); //페이지 번호 view.jsp한테 넘겨주자
 		
 		req.setAttribute("clist", clist);
 		

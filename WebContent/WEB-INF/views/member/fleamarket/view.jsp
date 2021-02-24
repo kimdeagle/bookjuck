@@ -108,7 +108,7 @@
                                     <span class="read-cnt">조회 (${dto.readcnt})</span>
                                 </div>
                                 <div>
-                                    <span class="commment">댓글 5</span>
+                                    <span class="commment">댓글 ${dto.ccount}</span>
                                     <input type="button" class="btn btn-xs btn-url" value="URL복사" data-toggle="modal" data-target="#url">
                                 </div>
                                 <div style="clear: both;"></div>
@@ -132,7 +132,7 @@
                             </span>
                         </td>
                         <td class="second-col">
-                            <span>댓글 5</span>
+                            <span>댓글 ${dto.ccount }</span>
                             <input type="button" class="btn btn-xs btn-url" value="URL복사" data-toggle="modal" data-target="#url">
                         </td>
                     </tr>
@@ -141,29 +141,39 @@
 
 
                 <table class="table tbl-md table-comment table-view">
+                    <c:forEach items="${clist}" var="cdto">
                     <tr>
                         <td>
-                            <span class="comment">코멘트입니다.</span>
-                            <span class="name text-right">hong1234</span>
-                            <span class="date text-right">2021-02-19</span>
-                            <span class="delete text-right" onclick=""><a href>[삭제]</a></span>
+                            <span class="comment">${cdto.ccontent }</span>
+                            <span class="date text-right">${cdto.regdate }</span>
+                            <span class="name text-right">${cdto.id }</span>
+                            
+                            <c:if test="${cdto.seqMember == seq}">
+                            <span class="delete text-right" onclick=""><a href="/bookjuck/member/fleamarket/deletecommentok.do?seq=${cdto.seq}&seqUsedBoard=${dto.seq}';">[삭제]</a></span>
+                            </c:if>
                         </td>
                     </tr>
+                    </c:forEach>
                     <tr>
+                   		<c:if test="${not empty id}">
                         <td>
                             <div>
-                                댓글<b class="user-id">로그인한 유저id</b>
+                                댓글<b class="user-id">${id}</b>
                             </div>
-                            <div class="cmt-container">
-                                <div class="comment-area">
-                                    <textarea class="form-control comment-area" id="comment" placeholder="댓글을 남겨보세요." cols="30"
-                                        rows="10"></textarea>
-                                    <div id="comment_cnt">(0 / 100)</div>
-                                </div>
-                                <input type="button" class="btn btn-sm btn-comment" value="등록">
-                                <div clear:both;></div>
-                            </div>
+                            <form method="POST" action="/bookjuck/member/fleamarket/commentok.do">
+	                            <div class="cmt-container">
+	                                <div class="comment-area">
+	                                    <textarea class="form-control comment-area" id="ccontent" name="ccontent" required placeholder="댓글을 남겨보세요." cols="30"
+	                                        rows="10"></textarea>
+	                                    <div id="comment_cnt">(0 / 100)</div>
+	                                </div>
+	                                <input type="button" class="btn btn-sm btn-comment" value="등록" onclick="location.href='/bookjuck/member/fleamarket/commentok.do';">
+	                                <div clear:both;></div>
+	                            </div>
+	                            <input type="hidden" name="seqUsedBoard" value="${dto.seq}">
+                            </form>
                         </td>
+                        </c:if>
                     </tr>
                 </table>
 

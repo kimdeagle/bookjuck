@@ -43,6 +43,37 @@ public class List extends HttpServlet {
 		session.setAttribute("read", false);
 		
 		
+		//페이징------------------------------------------------------------
+		int nowPage = 0;		//현재 페이지 번호
+		int totalCount = 0;		//총 게시물 수 
+		int pageSize = 10;		//한 페이지당 출력 개수
+		int totalPage = 0;		//총 페이지 수
+		int begin = 0;			//rnum 시작번호
+		int end = 0;			//rnum 끝번호
+		int n = 0;				//페이지바 관련 변수
+		int loop = 0;			//페이지바 관련 변수
+		int blockSize = 10;		//페이지바 관련 변수
+		
+		
+		String page = req.getParameter("page");
+		
+		if (page == null || page == "") {
+			//기본 -> page = 1
+			nowPage = 1;
+		} else {
+			nowPage = Integer.parseInt(page);
+		}
+		
+		
+		begin = ((nowPage - 1) * pageSize) + 1;
+		end = begin + pageSize - 1;
+		
+		//HashMap에 정보를 넘겨
+		map.put("begin", begin + "");
+		map.put("end", end + "");
+		
+		
+		
 		//1.
 		UsedBoardDAO dao = new UsedBoardDAO();
 		
@@ -65,11 +96,79 @@ public class List extends HttpServlet {
 			
 		}
 		
+		
+		//총 페이지 수 계산하기
+		//총 게시물 수 = 269개
+		//총 페이지 수 = 269 / 10 -> 26.9페이지 -올림-> 28페이지 (무조건 올림 : ceiling함수)
+		
+		totalCount = dao.getTotalCount(map); //총 게시물 수
+		System.out.println(totalCount);		//269개
+		
+		//totalPage = totalCount / pageSize + 1; //총 페이지 수
+		totalPage = (int)Math.ceil((double)totalCount / pageSize); //총 페이지 수
+		System.out.println(totalPage);		//26페이지 -(ceil)-> 27페이지
+		
+		
+		String pagebar = "";
+		
+		loop = 1;
+		n = ((nowPage - 1) / blockSize) * blockSize + 1;
+		
+		//이전 10페이지로
+		if(n == 1) {
+			pagebar += String.format("<li class='disabled'>"
+						+ "            <a href=\"#!\" aria-label=\"Previous\">"
+						+ "                <span aria-hidden=\"true\">&laquo;</span>"
+						+ "            </a>"
+						+ "         </li>");
+		} else {
+			pagebar += String.format("<li>"
+						+ "            <a href=\"/bookjuck/member/fleamarket/list.do?page=%d\" aria-label=\"Previous\">"
+						+ "                <span aria-hidden=\"true\">&laquo;</span>"
+						+ "            </a>"
+						+ "         </li>", n - 1);			
+		}
+		
+		
+		
+		while (!(loop > blockSize || n > totalPage)) {
+
+			if (nowPage == n) {
+				pagebar += "<li class='active'>";
+			} else {
+				pagebar += "<li>";
+			}
+			pagebar += String.format("<a href=\"/bookjuck/member/fleamarket/list.do?page=%d\">%d</a></li> ", n, n);
+
+			loop++;
+			n++;
+
+		}
+		
+		
+		//다음 10페이지로 이동
+		if (n > totalPage) {
+			pagebar += String.format("<li class='disabled'>"
+						+ "            <a href=\"#!\" aria-label=\"Next\">"
+						+ "                <span aria-hidden=\"true\">&raquo;</span>"
+						+ "            </a>"
+						+ "          </li> ");
+			//a href = "#" 본인 페이지 항상 위, "#!" 위로 올라가는 현상 사라짐
+		} else {
+			pagebar += String.format("<li>"
+					+ "            <a href=\"/bookjuck/member/fleamarket/list.do?page=%d\" aria-label=\"Next\">"
+					+ "                <span aria-hidden=\"true\">&raquo;</span>"
+					+ "            </a>"
+					+ "          </li> ", n);
+		}
+		
+		
 		//2. 
 		//검색어까지
 		req.setAttribute("list", list);
 		req.setAttribute("fleamarketsearch", fleamarketsearch);
-		
+		req.setAttribute("pagebar", pagebar);
+		req.setAttribute("nowPage", nowPage);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/member/fleamarket/list.jsp");
 		dispatcher.forward(req, resp);
