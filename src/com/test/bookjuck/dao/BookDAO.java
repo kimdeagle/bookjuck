@@ -1,6 +1,6 @@
 package com.test.bookjuck.dao;
 
-import java.beans.Statement;
+import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -511,24 +511,25 @@ public class BookDAO {
 	//주혁 시작
 	
 	//BookList 서블릿 -> 도서 리스트 반환
-	public ArrayList<BookDTO> getBookList(CategoryDTO cdto) {
+	public ArrayList<BookDTO> getBookList(HashMap<String, String> map) {
 		
 		try {
 			
 			String sql = "";
+			String innerSql = "";
 			
-			if (cdto.getSeqSCategory() == null || cdto.getSeqSCategory().equals("")) {
+			if (map.get("seqSCategory") == null) {
 				//도서 리스트 첫 화면
-				sql = "select b.*, mc.seq as seqMCategory, (select name from tblAuthor where seq = b.seqAuthor) as author from tblBook b inner join tblSCategory sc on b.seqSCategory = sc.seq inner join tblMCategory mc on sc.seqMCategory = mc.seq where mc.seq = ? order by b.pubDate desc, b.title";
-				pstat = conn.prepareStatement(sql);
-				pstat.setString(1, cdto.getSeqMCategory());
+				innerSql = String.format("select b.*, mc.seq as seqMCategory, (select name from tblAuthor where seq = b.seqAuthor) as author from tblBook b inner join tblSCategory sc on b.seqSCategory = sc.seq inner join tblMCategory mc on sc.seqMCategory = mc.seq where mc.seq = %s order by b.pubDate desc, b.title", map.get("seqMCategory"));
+
 			} else {
 				//도서 리스트 좌측 소분류 선택
-				sql = "select b.*, (select name from tblAuthor where seq = b.seqAuthor) as author from tblBook b where seqSCategory = ? order by b.pubDate desc, b.title";
-				pstat = conn.prepareStatement(sql);
-				pstat.setString(1, cdto.getSeqSCategory());
+				innerSql = String.format("select b.*, (select name from tblAuthor where seq = b.seqAuthor) as author from tblBook b where seqSCategory = %s order by b.pubDate desc, b.title", map.get("seqSCategory"));
 			}
 			
+			sql = String.format("select * from (select a.*, rownum as rnum from (%s) a) where rnum between %s and %s", innerSql, map.get("begin"), map.get("end"));
+			
+			pstat = conn.prepareStatement(sql);
 			rs = pstat.executeQuery();
 			
 			ArrayList<BookDTO> blist = new ArrayList<BookDTO>();
@@ -602,6 +603,37 @@ public class BookDAO {
 		}
 		
 		return null;
+	}
+	
+	
+	//BookList 서블릿 -> 도서 수 반환
+	public int getBookCount(HashMap<String, String> map) {
+		
+		try {
+			
+			String where = "";
+			
+			if (map.get("seqSCategory") != null) {
+				//소분류 선택
+				where = String.format("where b.seqSCategory = %s", map.get("seqSCategory"));
+			} else {
+				where = String.format("where mc.seq = %s", map.get("seqMCategory"));
+			}
+			
+			String sql = String.format("select count(*) as cnt from tblBook b inner join tblSCategory sc on b.seqSCategory = sc.seq inner join tblMCategory mc on sc.seqMCategory = mc.seq %s", where);
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			if (rs.next()) {
+				return rs.getInt("cnt");
+			}
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return 0;
 	}
 	
 	//주혁 끝

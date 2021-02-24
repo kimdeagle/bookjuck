@@ -12,7 +12,7 @@
 		<h6>국내E-Book</h6>
 		<c:forEach items="${mCategoryList}" var="dto">
 			<c:if test="${dto.seqLCategory == 1}">
-				<a href="#">${dto.mCategory}</a>
+				<a href="#!">${dto.mCategory}</a>
 				<div class="subcategorylist">
 				<c:forEach items="${categoryList}" var="sdto">
 					<c:if test="${dto.mCategory == sdto.mCategory}">
@@ -25,7 +25,7 @@
 		<h6>해외E-Book</h6>
 		<c:forEach items="${mCategoryList}" var="dto">
 			<c:if test="${dto.seqLCategory == 2}">
-				<a href="#">${dto.mCategory}</a>
+				<a href="#!">${dto.mCategory}</a>
 				<div class="subcategorylist">
 				<c:forEach items="${categoryList}" var="sdto">
 					<c:if test="${dto.mCategory == sdto.mCategory}">
