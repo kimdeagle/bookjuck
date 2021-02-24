@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,56 +28,21 @@
 	<%@include file="/WEB-INF/views/admin/inc/header.jsp" %>
 
 	<section class="contentsection">
-            <h3>자주 하는 질문<small>질문카테고리 관리</small></h3>
+            <h3>자주 하는 질문<small style="margin-left:15px;">질문카테고리 관리</small></h3>
 	            <table class="table tbl-md small" id="categorytbl">
 	                <tr>
 	                    <th colspan="2">현재 질문카테고리</th>
 	                </tr>
+	                <c:forEach items="${clist}" var="cdto">
 	                <tr>
-	                    <td>주문결제</td>
+	                    <td>${cdto.category}</td>
 	                    <td>
 	                        <div id="tblbtn">
-	                            <button type="button" class="btn btn-general" data-toggle="modal" href="#editModal">수정</button>
-	                            <button type="button" class="btn btn-general inline">삭제</button>
+	                            <button type="button" class="btn btn-general" id="edit" data-toggle="modal" href="#editModal" data-seq=${cdto.seq} data-category=${cdto.category}>카테고리명 수정하기</button>
 	                        </div>
 	                    </td>
 	                </tr>
-	                <tr>
-	                    <td>수령일안내</td>
-	                    <td>
-	                        <div id="tblbtn">
-	                            <button type="button" class="btn btn-general" data-toggle="modal" href="#editModal">수정</button>
-	                            <button type="button" class="btn btn-general inline">삭제</button>
-	                        </div>
-	                    </td>
-	                </tr>
-	                <tr>
-	                    <td>반품</td>
-	                    <td>
-	                        <div id="tblbtn">
-	                            <button type="button" class="btn btn-general" data-toggle="modal" href="#editModal">수정</button>
-	                            <button type="button" class="btn btn-general inline">삭제</button>
-	                        </div>
-	                    </td>
-	                </tr>
-	                <tr>
-	                    <td>교환</td>
-	                    <td>
-	                        <div id="tblbtn">
-	                        <button type="button" class="btn btn-general" data-toggle="modal" href="#editModal">수정</button>
-	                        <button type="button" class="btn btn-general inline">삭제</button>
-	                        </div>
-	                    </td>
-	                </tr>
-	                <tr>
-	                    <td>환불</td>
-	                    <td>
-	                        <div id="tblbtn">
-	                        <button type="button" class="btn btn-general" data-toggle="modal" href="#editModal">수정</button>
-	                        <button type="button" class="btn btn-general inline">삭제</button>
-	                        </div>
-	                    </td>
-	                </tr>
+	                </c:forEach>
 	            </table>
 
             <!-- 질문카테고리가 너무 많아질 수도 있으므로 살려둘 것 -->
@@ -99,7 +65,7 @@
             </ul> -->
 
             <div id="normalbtn">
-                <button type="button" class="btn btn-general" data-toggle="modal" href="#addModal">추가하기</button>
+                <button type="button" class="btn btn-general" data-toggle="modal" href="#addModal" data-seq="${cdto.seq}">추가하기</button>
                 <button type="button" class="btn btn-general" id="back">뒤로가기</button>
             </div>
         </section>
@@ -113,10 +79,10 @@
 	
 	
 	<!-- 플로팅 메뉴 -->
-	<%@include file="/WEB-INF/views/common/bookjuckee.jsp" %>
+	<%@include file="/WEB-INF/views/admin/bookjuckee.jsp" %>
 	<%@include file="/WEB-INF/views/common/top.jsp" %>
 
-	<!-- Modal -->
+	<!-- 질문카테고리 추가 모달 -->
     <div class="modal fade" id="addModal" role="dialog">
         <div class="modal-dialog modal-md">
             <div class="modal-content">
@@ -125,9 +91,9 @@
                 <h4 class="modal-title">질문카테고리 추가</h4>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="" id="form">
+                    <form method="POST" action="/bookjuck/admin/qcategory/addok.do" id="form">
                         <p>추가할 질문카테고리를 입력해주세요.</p>
-                        <input type="text" class="form-control large inline">
+                        <input type="text" class="form-control large inline" id="addcategory" name="addcategory">
                         <input type="submit" class="btn btn-general inline" id="add" value="추가">
                     </form>
                 </div>  
@@ -138,7 +104,7 @@
         </div>
     </div>
 
-	<!-- Modal -->
+	<!-- 질문카테고리 수정 모달 -->
     <div class="modal fade" id="editModal" role="dialog">
         <div class="modal-dialog modal-md">
             <div class="modal-content">
@@ -147,9 +113,10 @@
                 <h4 class="modal-title">질문카테고리 수정</h4>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="" id="editform">
+                    <form method="POST" action="/bookjuck/admin/qcategory/editok.do" id="editform">
                         <p>수정할 질문카테고리를 입력해주세요.</p>
-                        <input type="text" class="form-control large inline">
+                        <input type="text" class="form-control large inline" id="category" name="category">
+                        <input type="hidden" id="seq" name="seq">
                         <input type="submit" class="btn btn-general inline" id="edit" value="수정">
                     </form>
                 </div>  
@@ -159,7 +126,16 @@
         </div> -->
         </div>
     </div>
-
+    
+    <script>
+    
+    	$('#tblbtn > #edit').on('click', function(){
+			$('#seq').val($(this).data("seq"));
+			$('#category').val($(this).data("category"));
+			
+		});
+	
+	</script>
 </body>
 
 </html>

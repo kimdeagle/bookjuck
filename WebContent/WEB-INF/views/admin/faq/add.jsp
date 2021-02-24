@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +16,6 @@
 <link rel="stylesheet" href="/bookjuck/css/faq.css">
 
 <style>
-
 </style>
 </head>
 
@@ -28,7 +28,7 @@
 
 	<section class="contentsection">
         <h3>자주 하는 질문<small>작성하기</small></h3>
-            	<form method="POST" action="/admin/faq/addok.do">
+            	<form method="POST" action="/bookjuck/admin/faq/addok.do">
 					<div id="letterbox">
 			        	<input type="text" id="title" name="title" class="form-control inline" placeholder="제목을 입력해주세요">
 					        <span class="dropdown">
@@ -37,12 +37,12 @@
 						            <span class="caret"></span>
 					            </button>
 						        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="category">
-									<li role="presentation"><a role="menuitem" tabindex="-1">반품</a></li>
-									<li role="presentation"><a role="menuitem" tabindex="-1">환불</a></li>
-									<li role="presentation"><a role="menuitem" tabindex="-1">교환</a></li>
-									<li role="presentation"><a role="menuitem" tabindex="-1">배송</a></li>
+						        	<c:forEach items="${clist}" var="cdto">
+										<li role="presentation"><a role="menuitem" tabindex="-1" value="${cdto.seq}">${cdto.category}</a></li>
+									</c:forEach>
 						        </ul>
 					        </span>
+					        <input type="hidden" id="qcategory" name="qcategory">
 					        <textarea id="content" name="content" class="form-control" cols="40" rows="15" placeholder="내용을 입력해주세요"></textarea>
 					</div>
 					<div id="btn">
@@ -59,16 +59,15 @@
 	<!-- ########## 하단 끝 -->
 	
 	<!-- 플로팅 메뉴 -->
-	<%@include file="/WEB-INF/views/common/bookjuckee.jsp" %>
+	<%@include file="/WEB-INF/views/admin/bookjuckee.jsp" %>
 	<%@include file="/WEB-INF/views/common/top.jsp" %>
 
 	<script>
-
         $('#category li > a').on('click', function() {
-            // 버튼에 선택된 항목 텍스트 넣기 
+            // 버튼에 선택된 항목 텍스트 넣기
             $('#selected').text($(this).text());
+            $('#qcategory').val($(this).text());
         });
-
     </script>
 
 </body>

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Web Socket Example</title>
+<title>북적북적::채팅상담 확인하기</title>
 <%@include file="/WEB-INF/views/member/inc/asset.jsp" %>
 <link rel="stylesheet" href="/bookjuck/css/global.css">
 <link rel="stylesheet" href="/bookjuck/css/chat.css">

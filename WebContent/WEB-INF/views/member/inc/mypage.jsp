@@ -34,7 +34,8 @@
                 </ul>
             <li class="menuitem"><h6>고객센터</h6></li>
                 <ul>
-                    <li class="menusubitem"><a href="/bookjuck/member/mypage/servicecenter.do">고객센터</a></li>
+                    <li class="menusubitem"><a href="/bookjuck/member/qna/list.do">QnA</a></li>
+                	<li class="menusubitem"><a href="/bookjuck/member/faq/list.do">자주 하는 질문</a></li>
                 </ul>
         </ul>
     </div>

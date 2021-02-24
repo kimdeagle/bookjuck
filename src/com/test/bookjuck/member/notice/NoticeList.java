@@ -103,7 +103,6 @@ public class NoticeList extends HttpServlet {
 					+ "                <span aria-hidden=\"true\">&raquo;</span>"
 					+ "            </a>"
 					+ "        </li>", n);
-			//pagebar += String.format("<a href=\"/codestudy/board/list.do?page=%d\">다음 10페이지</a>", n);
 		}
 		
 		// 2.

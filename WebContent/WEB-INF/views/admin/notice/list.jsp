@@ -83,16 +83,18 @@
 		    </div>
 		</section>
 	
-		<!-- 플로팅 메뉴 -->
-		<%@include file="/WEB-INF/views/common/bookjuckee.jsp" %>
-		<%@include file="/WEB-INF/views/common/top.jsp" %>
 		
-		
-		<!-- ########## 하단 시작 -->
-		<%@include file="/WEB-INF/views/common/footer.jsp" %>
-		<!-- ########## 하단 끝 -->
-
 	</div>
+	
+	<!-- 플로팅 메뉴 -->
+	<%@include file="/WEB-INF/views/admin/bookjuckee.jsp" %>
+	<%@include file="/WEB-INF/views/common/top.jsp" %>
+	
+	
+	<!-- ########## 하단 시작 -->
+	<%@include file="/WEB-INF/views/common/footer.jsp" %>
+	<!-- ########## 하단 끝 -->
+
 
 </body>
 
