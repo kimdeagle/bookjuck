@@ -167,7 +167,7 @@
 	                                        rows="10"></textarea>
 	                                    <div id="comment_cnt">(0 / 100)</div>
 	                                </div>
-	                                <input type="button" class="btn btn-sm btn-comment" value="등록" onclick="location.href='/bookjuck/member/fleamarket/commentok.do';">
+	                                <button type="submit" class="btn btn-sm btn-comment" >등록</button>
 	                                <div clear:both;></div>
 	                            </div>
 	                            <input type="hidden" name="seqUsedBoard" value="${dto.seq}">

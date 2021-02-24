@@ -19,7 +19,7 @@ import com.test.bookjuck.dto.CommentDTO;
 public class CommentOk extends HttpServlet {
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		HttpSession session = req.getSession();
 		req.setCharacterEncoding("UTF-8");
@@ -27,6 +27,10 @@ public class CommentOk extends HttpServlet {
 		//1.
 		String seqUsedBoard = req.getParameter("seqUsedBoard");
 		String ccontent = req.getParameter("ccontent");
+		
+		System.out.println(seqUsedBoard);
+		System.out.println(ccontent);
+		System.out.println((String)session.getAttribute("seq"));
 		
 		//2.
 		UsedBoardDAO dao = new UsedBoardDAO();

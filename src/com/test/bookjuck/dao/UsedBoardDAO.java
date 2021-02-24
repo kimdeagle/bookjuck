@@ -270,8 +270,8 @@ public class UsedBoardDAO {
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, dto.getCcontent());
-			pstat.setString(2, dto.getSeqMember());
-			pstat.setString(3, dto.getSeqUsedBoard());
+			pstat.setString(2, dto.getSeqUsedBoard());
+			pstat.setString(3, dto.getSeqMember());
 			
 			return pstat.executeUpdate(); //1 or 0
 			
