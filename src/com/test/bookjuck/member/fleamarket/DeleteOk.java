@@ -11,35 +11,53 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/member/fleamarket/write.do")
-public class Write extends HttpServlet {
+import com.test.bookjuck.dao.UsedBoardDAO;
+
+@WebServlet("/member/fleamarket/deleteok.do")
+public class DeleteOk extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		
-		//로그인 안한 사람이 접근할 때 내 쫓기
+
+
 		HttpSession session = req.getSession();
 		
-		if (session.getAttribute("id") == null) {	
-			
-			//경고(JavaScript) 후 내쫓기
-			PrintWriter writer = resp.getWriter();
+		//1.
+		req.setCharacterEncoding("UTF-8");
+		
+		
+		String seq = req.getParameter("seq");	// 삭제할 글 번호
+		
+		
+		//2.
+		UsedBoardDAO dao = new UsedBoardDAO();
 
+		
+		int result = dao.del(seq); // 글삭제하기
+		
+		
+		if (result == 1) {
+			
+			//글삭제 성공 -> 게시판 목록으로 이동
+			resp.sendRedirect("/bookjuck/member/fleamarket/list.do");
+			
+			
+		} else {
+			//글삭제 실패 -> 경고 + 뒤로가기
+			PrintWriter writer = resp.getWriter();
+			
 			writer.print("<html><body>");
 			writer.print("<script>");
 			writer.print("alert('failed');");
-			writer.print("location.href='/bookjuck/member/fleamarket/list.do';");
+			writer.print("history.back();");
 			writer.print("</script>");
 			writer.print("</body></html>");
 			
 			writer.close();
 			
 		}
-		
 
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/member/fleamarket/write.jsp");
-		dispatcher.forward(req, resp);
+		
 	}
 
 }

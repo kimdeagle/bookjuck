@@ -40,7 +40,7 @@ public class List extends HttpServlet {
 		HttpSession session = req.getSession();
 		
 		//view.do -> 새로고침으로 생기는 조회 수 증가 방지 : flag 생성
-//		session.setAttribute("read", false);
+		session.setAttribute("read", false);
 		
 		
 		//1.

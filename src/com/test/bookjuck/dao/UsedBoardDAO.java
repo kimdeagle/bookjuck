@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.test.bookjuck.DBUtil;
+import com.test.bookjuck.dto.CommentDTO;
 import com.test.bookjuck.dto.UsedBoardDTO;
 
 public class UsedBoardDAO {
@@ -196,6 +197,33 @@ public class UsedBoardDAO {
 		
 		
 		return 0;
+	}
+	
+	
+	//DeleteOk 서블릿 -> 글 삭제하기
+	public int del(String seq) {
+		
+		try {
+
+			String sql = "delete from tblUsedBoard where seq = ?";
+
+			pstat = conn.prepareStatement(sql);	
+			pstat.setString(1, seq);	//글 번호
+
+			return pstat.executeUpdate(); // 1 or 0
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return 0;
+	}
+
+	
+	
+	public ArrayList<CommentDTO> listComment(String seq) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

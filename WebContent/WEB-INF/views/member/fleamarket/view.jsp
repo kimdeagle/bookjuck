@@ -36,9 +36,6 @@
 
 	<div class="container">
 	
-		<!-- ########## 상단 헤더 시작 -->
-		<!-- 변경 전 -->
-	<%-- <%@include file="/WEB-INF/views/member/inc/header.jsp" %> --%>
 
 	<!-- 변경 후 -->
 	<%
@@ -66,6 +63,8 @@
                         목록
                     </button>
                     
+                    <c:if test="${dto.id.equals(id)}">
+                    
                     <button type="button" class="btn btn-default" onclick="location.href='/bookjuck/member/fleamarket/edit.do?seq=${dto.seq}';">
                         <span class="glyphicon glyphicon-minus"></span>
                         수정
@@ -75,6 +74,9 @@
                         <span class="glyphicon glyphicon-remove"></span>
                         삭제
                     </button>
+                    
+                    </c:if>
+                    
                 </div>
                 <div style="clear:both;"></div>
                 
