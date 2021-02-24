@@ -13,7 +13,7 @@ import com.test.bookjuck.dao.EBookDAO;
 import com.test.bookjuck.dto.EBookDTO;
 
 @WebServlet("/member/book/ebookdetail.do")
-public class EbookDetail extends HttpServlet {
+public class EBookDetail extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

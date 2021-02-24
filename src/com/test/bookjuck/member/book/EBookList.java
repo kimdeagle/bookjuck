@@ -17,7 +17,7 @@ import com.test.bookjuck.dto.CategoryDTO;
 import com.test.bookjuck.dto.EBookDTO;
 
 @WebServlet("/member/book/ebooklist.do")
-public class EbookList extends HttpServlet {
+public class EBookList extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
