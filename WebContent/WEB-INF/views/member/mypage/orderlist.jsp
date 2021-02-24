@@ -64,7 +64,10 @@
                         <td>이름 | 연락처 | 이메일</td>
                     </tr>
                 </table>
-                <div>※ 비회원은 최대 1개월 내의 주문 내역을 확인하실 수 있습니다. &nbsp&nbsp&nbsp<a href="#" class="btn1" style="font-weight: bold;">회원가입</a></div>
+                <!-- 비회원일때 회원가입 유도 -->
+                <c:if test="${empty id}">
+                <div>※ 비회원은 최대 1개월 내의 주문 내역을 확인하실 수 있습니다. &nbsp&nbsp&nbsp<a href="/bookjuck/member/register.do" class="btn1" style="font-weight: bold;">회원가입</a></div>
+                </c:if>
             </article>
             
             
@@ -93,6 +96,7 @@
             <article>
                 <!-- 조회 기간 설정 -->
                 <!-- 로그인한 회원만 보임 -->
+                <c:if test="${not empty id}">
                 <div class="periodbox">
                     <table class="periodtbl table tbl-md">
                         <tr>
@@ -117,22 +121,24 @@
         
                 <div>※ 최근1개월이 기본으로 조회 되며, 기간 변경시 기간 선택 후 조회 버튼을 클릭해 주세요.</div>
                 <div>※ 최근 2년부터 조회가 가능합니다.</div>
-          
+          		</c:if>
 
                 <!-- 조회 기간 ol:orderList-->
                 <div class="olDate">yyyy-mm-dd ~ yyyy-mm-dd 까지의 주문 총 00건</div>
 
                 <!-- 조회 리스트 -->
                 <!-- 주문 내역이 없으면 보이는 화면 -->
+                <c:if test="${list.size == 0}">
                 <div class="noOrderList">
                     <span>주문 내역이 없습니다.</span>
                     
                     <img src="/bookjuck/image/bookjeok/chat.png">
                 </div>
+                </c:if>
 
                 
                 <!-- 주문 내역 있으면 보이는 리스트 -->
-                
+                <c:if test="${list.size > 0}">
                 <table class="orderList table tbl-md">
                     <tr>
                         <th>주문번호</th>
@@ -181,6 +187,8 @@
                     </a>
                     </li>
                 </ul>
+                
+                </c:if>
                               
 
             </article>
@@ -219,6 +227,7 @@
 	$(function(){
 		   $("#endDate").datepicker({
 		      format:'yyyy-mm-dd',
+		      defaultDate:'2021-02-23',
 		      startDate:'-2y',
 		      endDate : '0',
 		      language: "ko"
