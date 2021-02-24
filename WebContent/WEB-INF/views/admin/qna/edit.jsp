@@ -28,22 +28,29 @@
 	
 	
 		<section class="contentsection">
-            <h3>QnA</h3>
-
-            <div id="subtitle">수정하기</div>
-            <form method="POST" action="/member/qna/editok.do">
-	            <div id="answerbox">
-		            <textarea id="content" name="content" class="form-control" cols="40" rows="13">수정하기 전 내용</textarea>
-	            </div>
-	            <div id="btn">
-	                <input type="button" class="btn btn-general inline" value="저장하기" id="save">
-	                <button type="button" class="btn btn-general" id="back" onclick="location.href='/bookjuck/admin/qna/list.do'">뒤로가기</button>
-	            </div>
-            </form>
+            <h3>QnA<small style="margin-left:15px;">답변 수정하기</small></h3>
+            <form method="POST" action="/bookjuck/admin/qna/editok.do">
+           		<table class="table tbl-md" id="edittbl">
+           			<tr>
+           				<th>답변내용</th>
+           			</tr>
+           			<tr>
+           				<td>
+            				<textarea id="answerContent" name="answerContent" class="form-control" cols="40" rows="15" style="width:100%;">${dto.answerContent}</textarea>
+            			</td>
+            		</tr>
+           		</table>
+           		<input type="hidden" id="seqQuestion" name="seqQuestion" value=${dto.seqQuestion}>
+           		<input type="hidden" id="seq" name="seq" value=${dto.seq}>
+           		<div id="btn">
+               		<input type="submit" class="btn btn-general" value="저장하기">
+               		<button type="button" class="btn btn-general inline" id="back" onclick="location.href='/bookjuck/admin/qna/detail.do?seq=${dto.seqQuestion}'">뒤로가기</button>
+           		</div>
+           	</form>
     	</section>
 	
 		<!-- 플로팅 메뉴 -->
-		<%@include file="/WEB-INF/views/common/bookjuckee.jsp" %>
+		<%@include file="/WEB-INF/views/admin/bookjuckee.jsp" %>
 		<%@include file="/WEB-INF/views/common/top.jsp" %>
 		
 		

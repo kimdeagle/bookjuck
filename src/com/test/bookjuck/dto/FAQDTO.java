@@ -11,6 +11,7 @@ public class FAQDTO {
 	private String seqQcategory;	// 질문분야번호
 	private String title;			// 제목
 	private String content;			// 내용
+	private String qCategory; 		// 카테고리명
 	
 	public String getSeq() {
 		return seq;
@@ -35,6 +36,12 @@ public class FAQDTO {
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public String getqCategory() {
+		return qCategory;
+	}
+	public void setqCategory(String qCategory) {
+		this.qCategory = qCategory;
 	}
 	
 	
