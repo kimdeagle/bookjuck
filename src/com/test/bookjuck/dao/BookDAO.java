@@ -635,6 +635,126 @@ public class BookDAO {
 		
 		return 0;
 	}
+
+	//admin -> BookList 서블릿 -> 목록 반환
+	public ArrayList<BookDTO> getAdminBookList(String seqLCategory) {
+		
+		try {
+			
+			String where = "";
+			
+			if (seqLCategory != null) {
+				where = "where seqLCategory = " + seqLCategory;
+			}
+			
+			String sql = "select vb.*, (select amount from tblInventory where seqBook = vb.seq) as amount from vwBook vb " + where;
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			ArrayList<BookDTO> list = new ArrayList<BookDTO>();
+			
+			while (rs.next()) {
+				BookDTO dto = new BookDTO();
+				
+				dto.setSeq(rs.getString("seq"));
+				dto.setTitle(rs.getString("title"));
+				dto.setSeqAuthor(rs.getString("seqAuthor"));
+				dto.setPublisher(rs.getString("publisher"));
+				dto.setPubDate(rs.getString("pubDate"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setSalePrice(rs.getInt("salePrice"));
+				dto.setCopy(rs.getString("copy"));
+				dto.setIsbn(rs.getString("isbn"));
+				dto.setSummary(rs.getString("summary"));
+				dto.setImage(rs.getString("image"));
+				dto.setPage(rs.getInt("page"));
+				dto.setContents(rs.getString("contents"));
+				dto.setAuthor(rs.getString("author"));
+				dto.setAuthorIntro(rs.getString("authorIntro"));
+				dto.setSeqLCategory(rs.getString("seqLCategory"));
+				dto.setlCategory(rs.getString("lCategory"));
+				dto.setSeqMCategory(rs.getString("seqMCategory"));
+				dto.setmCategory(rs.getString("mCategory"));
+				dto.setSeqSCategory(rs.getString("seqSCategory"));
+				dto.setsCategory(rs.getString("sCategory"));
+				dto.setAmount(rs.getInt("amount"));
+				
+				list.add(dto);
+				
+			}
+			
+			return list;
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+	}
+
+	//admin -> BookList 서블릿 -> 전체도서 수
+	public int getWholeBookCount() {
+		
+		try {
+			
+			String sql = "select count(*) as cnt from vwBook";
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			if (rs.next()) {
+				return rs.getInt("cnt");
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return 0;
+	}
+
+	//admin -> BookList 서블릿 -> 국내도서 수
+	public int getInternalBookCount() {
+
+		try {
+			
+			String sql = "select count(*) as cnt from vwBook where seqLCategory = 1";
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			if (rs.next()) {
+				return rs.getInt("cnt");
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}		
+		
+		return 0;
+	}
+
+	//admin -> BookList 서블릿 -> 해외도서 수
+	public int getExternalBookCount() {
+
+		try {
+			
+			String sql = "select count(*) as cnt from vwBook where seqLCategory = 2";
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			if (rs.next()) {
+				return rs.getInt("cnt");
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}		
+		
+		return 0;
+	}
 	
 	//주혁 끝
 

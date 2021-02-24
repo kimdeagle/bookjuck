@@ -12,9 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.test.bookjuck.dao.EBookDAO;
-import com.test.bookjuck.dto.BookDTO;
-import com.test.bookjuck.dto.CategoryDTO;
 import com.test.bookjuck.dto.EBookDTO;
+
 
 @WebServlet("/member/book/ebooklist.do")
 public class EBookList extends HttpServlet {

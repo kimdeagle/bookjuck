@@ -116,7 +116,7 @@
 			</div>
 			<div class="modal-body" style="text-align: center;">
 			
-				<img src="/bookjuck/image/해리포터와 혼혈 왕자 1.png" style="width: 300px;">
+				<img src="/bookjuck/image/book/해리포터와 혼혈 왕자 1.png" style="width: 300px;">
 				
 			</div>
 			<div class="modal-footer">
@@ -136,7 +136,7 @@
 			</div>
 			<div class="modal-body" style="text-align: center;">
 			
-				<iframe width="100%" height="600" src="/bookjuck/ebook/test.pdf"></iframe>
+				<iframe width="100%" height="600" src="/bookjuck/file/ebook/해리포터와 마법사의 돌 1.pdf"></iframe>
 				
 			</div>
 			<div class="modal-footer">

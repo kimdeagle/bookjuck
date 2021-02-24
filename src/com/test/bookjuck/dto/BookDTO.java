@@ -18,6 +18,9 @@ public class BookDTO {
 	private int page;
 	
 	private String author; //작가명
+	private String authorIntro; //작가 소개
+	
+	private String seqLCategory; //대분류 카테고리번호
 	private String lCategory; //대분류 카테고리
 	
 	private String totalSale;//매출액
@@ -25,11 +28,13 @@ public class BookDTO {
 	
 	private String rank;//순위
 	
-	private String authorIntro; //작가 소개
 	
-	private String seqMCategory; //중분류 카테고리 번호
+	private String seqMCategory; //중분류 카테고리번호
+	private String mCategory; //중분류 카테고리
 	
 	private String sCategory; //소분류 카테고리
+	
+	private int amount; //도서 수량
 	
 	
 	public String getSeq() {
@@ -163,6 +168,30 @@ public class BookDTO {
 	}
 	public void setsCategory(String sCategory) {
 		this.sCategory = sCategory;
+	}
+	public String getSeqLCategory() {
+		return seqLCategory;
+	}
+	public void setSeqLCategory(String seqLCategory) {
+		this.seqLCategory = seqLCategory;
+	}
+	public String getmCategory() {
+		return mCategory;
+	}
+	public void setmCategory(String mCategory) {
+		this.mCategory = mCategory;
+	}
+	public String getlCategory() {
+		return lCategory;
+	}
+	public void setlCategory(String lCategory) {
+		this.lCategory = lCategory;
+	}
+	public int getAmount() {
+		return amount;
+	}
+	public void setAmount(int amount) {
+		this.amount = amount;
 	}
 	
 	

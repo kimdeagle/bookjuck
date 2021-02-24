@@ -140,6 +140,13 @@
 	  	
 	  	<!-- modal -->
 		<%@include file="/WEB-INF/views/admin/book/bookmodal.jsp" %>
+		<%--
+		<%
+			out.flush();
+			RequestDispatcher dmodal = request.getRequestDispatcher("/admin/book/bookmodal.do");
+			dmodal.include(request, response);
+		%>
+		--%>
 		
 		
 	</section>
