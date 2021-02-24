@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +35,15 @@
 	<div class="container">
 	
 		<!-- ########## 상단 헤더 시작 -->
-		<%@include file="/WEB-INF/views/member/inc/header.jsp" %>
+		<!-- 변경 전 -->
+	<%-- <%@include file="/WEB-INF/views/member/inc/header.jsp" %> --%>
+
+	<!-- 변경 후 -->
+	<%
+		out.flush();
+		RequestDispatcher dheader = request.getRequestDispatcher("/member/inc/header.do");
+		dheader.include(request, response);
+	%>
 		<!-- ########## 상단 헤더 끝 -->
 	
 	
@@ -54,12 +64,13 @@
 
                     <!-- <input type="text" class="form-control" id="search"> -->
 
-                    <form id="searchForm" method="GET" action="">
-                        <div class="input-group search">
+
+                    <form id="searchForm" method="GET" action="/bookjuck/member/fleamarket/list.do">
+                        <div class="input-group fleamarketsearch">
                         
-                            <input type="text" class="form-control" id="fleamarket-search" name="fleamarket-search" placeholder="" aria-describedby="basic-addon2" required value="">
+                            <input type="text" class="form-control" id="fleamarketsearch" name="fleamarketsearch" placeholder="" aria-describedby="basic-addon2" required value="${fleamarketsearch}">
                             
-                            <span class="input-group-addon" id="basic-addon2" style="cursor:pointer;" onclick=""><span class="glyphicon glyphicon-search"></span></span>
+                            <span class="input-group-addon" id="basic-addon2" style="cursor:pointer;" onclick="$('#searchForm').submit();"><span class="glyphicon glyphicon-search"></span></span>
                         </div>
                     </form> 
                         
@@ -70,48 +81,61 @@
                 </div>
 
                 <table class="table tbl-md">
-                    <tr style="background-color: RGBA(140,179,105,0.2)">
-                        <th id="num">글번호</th>
-                        <th id="title">글제목</th>
-                        <th id="name">작성자</th>
-                        <th id="date">작성일</th>
-                        <th id="cnt">읽음</th>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td class="title"><a href="/bookjuck/member/fleamarket/view.do">테스트입니다. 중고도서지만 깨끗합니다.</a></td>
-                        <td>테스트</td>
-                        <td>2021-02-17</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td class="title"><a href="/bookjuck/member/fleamarket/view.do">테스트입니다. 중고도서지만 깨끗합니다.</a></td>
-                        <td>테스트</td>
-                        <td>2021-02-17</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td class="title"><a href="/bookjuck/member/fleamarket/view.do">테스트입니다. 중고도서지만 깨끗합니다.</a></td>
-                        <td>테스트</td>
-                        <td>2021-02-17</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td class="title"><a href="/bookjuck/member/fleamarket/view.do">테스트입니다. 중고도서지만 깨끗합니다.</a></td>
-                        <td>테스트</td>
-                        <td>2021-02-17</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td class="title"><a href="/bookjuck/member/fleamarket/view.do">테스트입니다. 중고도서지만 깨끗합니다.</a></td>
-                        <td>테스트</td>
-                        <td>2021-02-17</td>
-                        <td>0</td>
-                    </tr>                   
+                
+                	<thead>
+	                    <tr style="background-color: RGBA(140,179,105,0.2)">
+	                        <th id="num">글번호</th>
+	                        <th id="title">글제목</th>
+	                        <th id="state">거래상태</th>
+	                        <th id="name">작성자</th>
+	                        <th id="date">작성일</th>
+	                        <th id="cnt">읽음</th>
+	                    </tr>
+                    </thead>
+                    
+                    <tbody>
+                    	<c:if test="${list.size() == 0 }">
+	                    	<tr>
+	                    		<td colspan="5" style="text-align:center;">게시물이 없습니다.</td>
+	                    	</tr>
+                    	</c:if>
+                    	
+                    	<c:forEach items="${list}" var="dto">
+	                    <tr>
+	                        <td>${dto.seq}</td>
+	                        <td class="title">
+	                        
+		                        <a href="/bookjuck/member/fleamarket/view.do?seq=${dto.seq}&fleamarketsearch=${fleamarketsearch}">
+		                        ${dto.title}
+		                        </a>
+		                        
+
+								 
+								<!-- 최신글 글쓴지 하루 이하는 new 뱃지 표기 -->
+	                           	<c:if test="${dto.gap < 24}">
+	                           		<span class="label label-danger">new</span>
+	                           	</c:if>
+	                        
+	                        </td>
+
+							
+							<c:if test="${dto.dealState.equals('판매완료')}">
+		                    	<td style="color: #BBB; font-weight: bold;">${dto.dealState }</td>
+	                        </c:if>
+							<c:if test="${dto.dealState.equals('판매중')}">
+		                    	<td style="color: #3eaf7a; font-weight: bold;">${dto.dealState }</td>
+	                        </c:if>
+							<c:if test="${dto.dealState.equals('예약중')}">
+		                    	<td style="color: #df484f; font-weight: bold;">${dto.dealState }</td>
+	                        </c:if>
+							
+	                        <td>${dto.id }</td>
+	                        <td>${dto.regDate }</td>
+	                        <td>${dto.readcnt }</td>
+	                    </tr>
+	                    </c:forEach>
+    				</tbody>
+    				
                 </table>
 
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,22 +28,24 @@
 	<%@include file="/WEB-INF/views/admin/inc/header.jsp" %>
 
 	<section class="contentsection">
-            <h3>공지사항</h3>
-
-            <div id="subtitle">상세조회</div>
-
-            <div id="detailbox">
-                <h5>채팅상담 연결 안내</h5>
-                <p id="senddate">2021-02-07</p>
-                <div>안녕하세요. 북적북적입니다. 많은 채팅상담 연결로 인하여 채팅상담의 연결이 원활하지 못했던 점 사과말씀드립니다. 현재 장애는 복구되어 정상적으로 이용 가능합니다. 보다 친절하고 기분 좋은 상담 서비스가 될 수 있도록 노력하는 북적북적이 되겠습니다. 감사합니다.</div>
-                
-            </div>
-
-            <div id="btn">
-                <button type="button" class="btn btn-general inline" id="edit" onclick="location.href='/bookjuck/admin/notice/edit.do'">수정하기</button>
-                <button type="button" class="btn btn-general inline" id="delete" onclick="location.href='/bookjuck/admin/notice/del.do'">삭제하기</button>
-                <button type="button" class="btn btn-general" id="back" onclick="location.href='/bookjuck/admin/notice/list.do'">뒤로가기</button>
-            </div>
+         <h3>공지사항<small style="margin-left:15px;">상세조회</small></h3>
+         
+		<table class="table tbl-md" id="detailtbl">
+			<tr>
+				<th class="col-md-2">제목</th>
+				<td class="col-md-4">${dto.title}</td>
+				<th class="col-md-2">작성일
+				<td class="col-md-4"><p id="senddate">${dto.regdate.substring(0, 10)}</p></td>
+			</tr>
+         	<tr>
+             	<td colspan="4"><div>${dto.content}</div></td>
+          	</tr>
+		</table>
+         <div id="btn">
+             <button type="button" class="btn btn-general inline" id="edit" onclick="location.href='/bookjuck/admin/notice/edit.do?seq=${dto.seq}'">수정하기</button>
+            <button type="button" class="btn btn-general inline" id="delete" data-toggle="modal" data-target="#myModal">삭제하기</button>
+            <button type="button" class="btn btn-general" id="back" onclick="location.href='/bookjuck/admin/notice/list.do?page=${page}'">뒤로가기</button>
+        </div>
         
     </section>
 	
@@ -55,8 +58,27 @@
 	<!-- ########## 하단 시작 -->
 	<%@include file="/WEB-INF/views/common/footer.jsp" %>
 	<!-- ########## 하단 끝 -->
-
 	
+	<!-- 삭제 확인 모달 -->
+	<div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-md">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+	            <p>정말 삭제하시겠습니까?</p>
+            </div>
+            <div id="btn">
+                <button type="button" class="btn btn-general inline" id="back" onclick="location.href='/bookjuck/admin/notice/del.do?seq=${dto.seq}'">삭제하기</button>
+            </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div> -->
+        </div>
+        </div>
+    </div>
 
 </body>
 

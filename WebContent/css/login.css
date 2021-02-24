@@ -19,7 +19,7 @@ html, body {
 	width: 600px;
 	height: 100%;
 	background-color: white;
-
+	margin-top: none;
 } 
  
 
@@ -56,6 +56,7 @@ html, body {
 	border: 1px solid #ccc;
 	text-align: center;
 	padding: 30px;
+	border-top: none;
 }
 
 
@@ -108,7 +109,7 @@ address{
 	border: 1px solid #ccc;
 	width: 200px;
 	height: 60px;
-	padding: 10px;
+	padding: 10.5px;
 	text-align: center;
 	vertical-align: middle;
 	border-collapse: collapse;
@@ -127,15 +128,21 @@ address{
 	margin:0px 15px;	
 }
 
+.socialBtn{
+	box-shadow: 1px 1px 1px #ccc;
+}
 
+.socialBtn:hover{
+	box-shadow: 0px 0px 8px #8CB369;
+	cursor: pointer;
+	transition: ease 0.3s;
+}
 
 
 /*chbox 호버*/
-#memberbtn:hover, #nonMbtn:hover {
-	cursor: pointer;
+#nonMbtn{
 	background-color: #ccc;
-} 
-
+}
 
 
 

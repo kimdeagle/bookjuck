@@ -1,90 +1,62 @@
 /*
 
-	공지사항CSS
-	
-	1. 공지사항 목록조회
-	2. 공지사항 상세조회
+	공지사항 CSS
 
 */
 
+/*
 
-/* 1. 공지사항 목록조회 */
+	관리자 list.jsp
+	XXXX
 
-h3 {
-    margin-bottom:30px;
-    margin-left:auto;
-    margin-right:auto;
-    text-align:center;
+*/
+
+/*
+
+	고객 list.jsp
+	
+*/
+
+#listtbl th, td {
+	text-align:center;
 }
 
-#membertitle {
-	margin-top:100px;
+#listtbl, #detailtbl {
+	margin:0 auto;
 }
 
-#subtitle {
-    text-align:center;
-    margin-bottom:50px;
+
+
+/* add.jsp */
+
+#addtbl th, td, #edittbl td, td {
+	text-align:center;
 }
 
 #btn {
     width:100%;
     text-align:center;
+    margin:20px;
 }
 
-.noticetbl {
-	margin:0 auto;
-}
+/* edit.jsp */
 
-.noticetbl th, td {
+#edittbl td, td {
 	text-align:center;
 }
 
-.cell2 {
+/* detail.jsp */
+
+#detailtbl th, td {
+	text-align:center;
+}
+
+#detailtbl tr:nth-child(2) td {
 	text-align:left;
+	padding:30px;
 }
 
-#memberbtn {
-	margin-bottom:50px;
-}
-
-/* 2. 공지사항 상세조회 */
-
-#detailbox {
-    width:700px;
-    background-color:rgba(91, 142, 125, .2);
-    margin-bottom:50px;
-    margin-left:auto;
-    margin-right:auto;
-    padding:50px;
-}
-
-#detailbox > h5 {
-    border-bottom:1px dashed #ccc;
-}
-
-
-/* 3. 공지사항 작성 */
-
-#example {
-    width:100%px;
-    background-color:rgba(91, 142, 125, .2);
-    margin-bottom:50px;
-    margin-left:auto;
-    margin-right:auto;
-    padding:50px;
-}
-
-#writebox {
-    background-color:#5B8E7D;
-    padding:15px;
-    margin-bottom:40px;
-    margin-left:auto;
-    margin-right:auto;
-    width:80%;
-    height:500px;
-}
-
-#title, #content {
-    width:80%;
-    margin:50px auto;
+.mainsection {
+	text-align:center;
+	margin:70px !important;
 }

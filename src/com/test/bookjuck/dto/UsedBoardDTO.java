@@ -2,6 +2,10 @@ package com.test.bookjuck.dto;
 
 public class UsedBoardDTO {
 	
+	//DTO 멤버
+	//1. 대상 테이블의 컬럼
+	//2. 실제 컬럼은 아니지만 필요에 의해 추가로 생성되는 컬럼
+	
 	private String seq;
 	private String seqMember; 
 	private String title; 
@@ -11,6 +15,12 @@ public class UsedBoardDTO {
 	private int readcnt; 
 	private String image; 
 	private String orgimage;
+	
+	
+	private int gap; //최신글
+	private String id; //글쓴 회원 id
+	
+	private String email; //글쓴 회원 email
 	
 	
 	public String getSeq() {
@@ -66,6 +76,25 @@ public class UsedBoardDTO {
 	}
 	public void setOrgimage(String orgimage) {
 		this.orgimage = orgimage;
+	}
+
+	public int getGap() {
+		return gap;
+	}
+	public void setGap(int gap) {
+		this.gap = gap;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	} 
 	
 	

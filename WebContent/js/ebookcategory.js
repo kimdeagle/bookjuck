@@ -2,22 +2,26 @@
 
 $(window).load(function() {
 
-	$("#categorylist a").mouseenter(function() {
+	$("#categorylist > a").mouseenter(function() {
 		var p = $(this).offset();
-		$("#subcategorylist").css("left", p.left + 180);
-		$("#subcategorylist").css("top", p.top);
-		$("#subcategorylist").show();
+		$(this).next().css("left", p.left + 180);
+		$(this).next().css("top", p.top);
+		$(this).next().show();
 	});
 	
-	$("#categorylist a").mouseleave(function() {
-		$("#subcategorylist").hide();
+	$("#categorylist > a").mouseleave(function() {
+		$(this).next().hide();
 	});
 	
-	$("#subcategorylist").mouseenter(function() {
-		$("#subcategorylist").show();
+	$(".subcategorylist").mouseenter(function() {
+		$(this).show();
 	});
 	
-	$("#subcategorylist").mouseleave(function() {
-		$("#subcategorylist").hide();
-	});		
+	$(".subcategorylist").mouseleave(function() {
+		$(this).hide();
+	});
+	
+	$("#categorylist > a").click(function(evt) {
+		evt.preventDefault();
+	});
 });

@@ -28,18 +28,25 @@
 	
 	
 		<section class="contentsection">
-            <h3>공지사항</h3>
-
-            <div id="subtitle">작성하기</div>
-            <form method="POST" action="/member/notice/addOk.do">
-	            <div id="writebox">
-		            <input type="text" id="title" name="title" class="form-control" placeholder="제목을 입력해주세요">
-		            <textarea id="content" name="content" class="form-control"  placeholder="내용을 입력해주세요" cols="40" rows="13"></textarea>
-	            </div>
-	            <div id="btn">
-	                <input type="button" class="btn btn-general inline" value="저장하기" id="save">
+            <h3>공지사항<small>작성하기</small></h3>
+            
+            <form method="POST" action="/bookjuck/admin/notice/addok.do">
+            <table class="table tbl-md table-bordered" id="addtbl">
+            	<tr>
+            		<td>제목</td>
+            		<td><input type="text" id="title" name="title" class="form-control" placeholder="제목을 입력해주세요"></td>
+            	</tr>
+            	<tr>
+            		<td>내용</td>
+            		<td><textarea id="content" name="content" class="form-control"  placeholder="내용을 입력해주세요" cols="40" rows="13"></textarea></td>
+            	</tr>
+            
+            </table>
+				<div id="btn">
+	                <input type="submit" class="btn btn-general inline" value="저장하기" id="save">
 	                <button type="button" class="btn btn-general" id="back" onclick="location.href='/bookjuck/admin/notice/list.do'">뒤로가기</button>
 	            </div>
+	            
             </form>
     	</section>
 	
