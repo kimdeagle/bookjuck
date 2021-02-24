@@ -47,7 +47,7 @@
 	<script >
 	
 		// 서버의 admin의 서블릿으로 웹 소켓을 한다.
-		var webSocket = new WebSocket("ws://localhost:8080/bookjuck/chat/adminchat");
+		var webSocket = new WebSocket("ws://localhost:8090/bookjuck/chat/adminchat");
 		
 		// 운영자에서의 open, close, error는 의미가 없어서 형태만 선언
 		webSocket.onopen = function(message) { };

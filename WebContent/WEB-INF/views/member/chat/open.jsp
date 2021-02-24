@@ -25,7 +25,7 @@
 	<script type="text/javascript">
 
 	// 서버의 broadsocket의 서블릿으로 웹 소켓을 한다.
-	var webSocket = new WebSocket("ws://localhost:8080/bookjuck/chat/memberchat");
+	var webSocket = new WebSocket("ws://localhost:8090/bookjuck/chat/memberchat");
 	
 	// 콘솔 텍스트 영역
 	var messageTextArea = document.getElementById("messageTextArea");
