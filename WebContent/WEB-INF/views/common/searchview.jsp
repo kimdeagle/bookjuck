@@ -139,8 +139,8 @@
 </div>
 
 <!-- 플로팅 -->
-	<%-- <%@include file="/WEB-INF/views/common/bookjuckee.jsp" %>
-	<%@include file="/WEB-INF/views/common/top.jsp" %> --%>
+	<%-- <%@include file="/WEB-INF/views/member/bookjuckee.jsp" %>
+	<%@include file="/WEB-INF/views/common/top.jsp"%> --%>
 	<script>
 		
 		
