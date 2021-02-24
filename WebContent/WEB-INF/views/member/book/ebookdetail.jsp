@@ -74,7 +74,7 @@
 						<div class="info">${dto.author} | ${dto.publisher}</div>
 						<div class="subinfo">${String.format('%s년 %s월 %s일', dto.pubDate.substring(0, 4), dto.pubDate.substring(5, 7), dto.pubDate.substring(8, 10))}</div>
 						<div class="efileinfo">E-Book 구매 안내 (<span class="text-danger">아래 내용을 꼭 읽어주세요!</span>)</div>
-						<div class="readtimeinfo" style="font-size: 0.8em;">(E-Book의 경우 수량을 선택할 수 없으며, 미리보기는 제공하지 않습니다. 결제 완료 후 E-Book 읽기가 가능합니다.)</div>
+						<div class="readtimeinfo" style="font-size: 0.8em;">(E-Book의 경우 수량을 선택할 수 없으며, 미리보기는 제공하지 않습니다.<br>결제 완료 후 E-Book 읽기가 가능합니다.)</div>
 						<div class="priceinfo">
 							<span class="price" id="price"><s>정가 ${String.format('%,d원', dto.price)}</s></span>
 							<span class="saleprice" id="saleprice">판매가 <strong>${String.format('%,d', dto.salePrice)}</strong>원</span>

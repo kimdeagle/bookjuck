@@ -21,7 +21,5 @@ $(window).load(function() {
 		$(this).hide();
 	});
 	
-	$("#categorylist > a").click(function(evt) {
-		evt.preventDefault();
-	});
+
 });

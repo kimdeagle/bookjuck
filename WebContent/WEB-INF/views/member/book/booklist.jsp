@@ -72,6 +72,11 @@
 				
 			</thead>
 			<tbody>
+				<c:if test="${blist.size() == 0}">
+					<tr>
+						<td colspan="3" style="text-align: center; padding-top: 50px;"><b style="font-size: 1.5em;">도서 목록이 없습니다.</b></td>
+					</tr>
+				</c:if>
 			
 				<c:forEach items="${blist}" var="dto">
 				<tr>
@@ -109,26 +114,13 @@
 		</table>
 		
 		<!-- paging -->
-		<nav>
-		  <ul class="pagination">
-		    <li>
-		      <a href="#" aria-label="Previous">
-		        <span aria-hidden="true">&laquo;</span>
-		      </a>
-		    </li>
-		    <li class="active"><a href="#">1</a></li>
-		    <li><a href="#">2</a></li>
-		    <li><a href="#">3</a></li>
-		    <li><a href="#">4</a></li>
-		    <li><a href="#">5</a></li>
-		    <li>
-		      <a href="#" aria-label="Next">
-		        <span aria-hidden="true">&raquo;</span>
-		      </a>
-		    </li>
-		  </ul>
+		<c:if test="${not empty blist}">
+		<nav class="pagebar">
+			<ul class="pagination">${pagebar}
+			</ul>
 		</nav>
-       
+		</c:if>
+
 	</section>
 
 
