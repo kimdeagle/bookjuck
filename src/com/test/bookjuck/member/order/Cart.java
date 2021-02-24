@@ -24,7 +24,9 @@ public class Cart extends HttpServlet {
 		
 		BookCartDAO dao = new BookCartDAO();
 		
+		//장바구니 리스트
 		ArrayList<BookCartDTO> list = dao.list(seqMember);
+		
 		
 		req.setAttribute("list", list);
 		

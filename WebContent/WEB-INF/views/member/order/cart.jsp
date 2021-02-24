@@ -29,15 +29,7 @@
 	<div class="container">
 
 	<!-- ########## 상단 헤더 시작 -->
-	<!-- 변경 전 -->
-	<%-- <%@include file="/WEB-INF/views/member/inc/header.jsp" %> --%>
-
-	<!-- 변경 후 -->
-	<%
-		out.flush();
-		RequestDispatcher dheader = request.getRequestDispatcher("/member/inc/header.do");
-		dheader.include(request, response);
-	%>
+	<%@include file="/WEB-INF/views/member/inc/header.jsp" %>
 	<!-- ########## 상단 헤더 끝 -->
 	
 	
@@ -88,7 +80,7 @@
 				<label>
 					<input type="checkbox" id="check_all_top" class="cartcheck check_all" checked><span>전체선택</span>
 				</label>
-				<a href="javascript:void(0);" class="btn1" onclick="">삭제</a>
+				<a href="javascript:void(0);" class="btn1" onclick="deleteAll()">삭제</a>
 			</div>
 			
 			<div class="cartlistbox">
@@ -102,20 +94,20 @@
 			            <th>수량</th>
 			            <th>합계</th>
 			        </tr>
-			        <c:forEach items="${list}" var="dto">
+			        <c:forEach items="${list}" var="dto" varStatus="rs">
 			        <tr class="olInfo">
-			        	<td><input type="checkbox" id="" class="cartcheck bookcheck" checked></td>
+			        	<td><input type="checkbox" name="cbDelete" class="cartcheck bookcheck" checked></td>
 			            <td>
-			                <img src="/bookjuck/image/book/+${dto.image}" alt="${dto.image}" class="book-xs">
+			                <img src="/bookjuck/image/book/${dto.image}" alt="${dto.image}" class="book-xs">
 			                <a href="/bookjuck/member/book/bookdetail.do">${dto.title}</a>
 			            </td>
 			            <td>${dto.price}</td>
 			            <td>${dto.salePrice}</td>
 			            <td>
-			            	<input type="text" id="" class="cartcount" value="${dto.amount}">
+			            	<input type="text" id="amount${rs.index}" class="cartcount" value="${dto.amount}">
 			            	<a href="#!" onclick="" class="btn1">변경</a>
 			            </td>
-			            <td>${dto.total}</td>
+			            <td><span id="totalpay${rs.index}">${dto.total}</span></td>
 			        </tr>
 			        </c:forEach>
 			    </table>
@@ -130,7 +122,7 @@
 		    			<th>적립예정 포인트</th>
 		    		</tr>
 		    		<tr>
-		    			<td>원</td>
+		    			<td><span id="totalpay">원</span></td>
 		    			<td>원</td>
 		    			<td style="color: #BC4B51">원</td>
 		    			<td></td>
@@ -166,13 +158,13 @@
 
 
 	<!-- 플로팅 메뉴 -->
-	<%@include file="/WEB-INF/views/member/bookjuckee.jsp" %>
+	<%@include file="/WEB-INF/views/common/bookjuckee.jsp" %>
 	<%@include file="/WEB-INF/views/common/top.jsp" %>
 
 	<script>
 
 	
-		$(document).ready(function(){
+		
 			
 			$(".check_all").click(function() {
 				if($(".check_all").prop("checked")){
@@ -185,7 +177,7 @@
 			
 			/* ############ length == 장바구니에 담겨있는 책 + 1 ###########*/
 			$(".cartcheck").click(function name() {
-				if($(".cartcheck:checked").length==2){
+				if($(".cartcheck:checked").length == ${list.size()}+1){
 					$(".check_all").prop("checked",true);
 				}else{
 					$(".check_all").prop("checked",false);
@@ -202,7 +194,8 @@
 			});
 			
 			
-		});
+			
+		
 	
 	</script>
 
