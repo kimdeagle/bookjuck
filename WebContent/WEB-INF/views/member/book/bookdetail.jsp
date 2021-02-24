@@ -72,7 +72,7 @@
 						<div class="title">${dto.title}</div>
 						<div class="copy">${dto.copy}</div>
 						<div class="info">${dto.author} | ${dto.publisher}</div>
-						<div class="subinfo">${String.format('%s년 %s월 %s일', dto.pubDate.substring(0, 4), dto.pubDate.substring(5, 7), dto.pubDate.substring(8, 10))} | ${dto.page}쪽</div>
+						<div class="subinfo">${dto.pubDate} | ${dto.page}쪽</div>
 						<div class="readtime">완독 예상 시간 : <fmt:parseNumber integerOnly="true" value="${dto.page * 2 / 60}" />시간 ${dto.page * 2 % 60}분</div>
 						<div class="readtimeinfo" style="font-size: 0.8em;">(완독 예상 시간은 소개, 목차 등 전체 페이지를 기준으로 측정된 시간이며, 실제 완독 시간과 오차가 있을 수 있습니다.)</div>
 						<div class="priceinfo">

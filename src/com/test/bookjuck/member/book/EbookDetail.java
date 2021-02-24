@@ -34,6 +34,15 @@ public class EbookDetail extends HttpServlet {
 		EBookDAO dao = new EBookDAO();
 		EBookDTO dto = dao.getEBookDetail(seq);
 		
+		//날짜 데이터 자르기 -> 년 월 일로 변환
+
+		dto.setPubDate(dto.getPubDate().substring(0, 10));
+		String temp = "";
+		temp = dto.getPubDate().substring(0, 4) + "년 " + dto.getPubDate().substring(5, 7) + "월 " + dto.getPubDate().substring(8) + "일";
+		dto.setPubDate(temp);
+		
+		
+		
 		dao.close();
 		
 		

@@ -76,6 +76,14 @@ public class BookList extends HttpServlet {
 				
 		ArrayList<BookDTO> blist = dao.getBookList(map);
 		
+		//날짜 데이터 자르기 -> 년 월 일로 변환
+		for (BookDTO bdto : blist) {
+			bdto.setPubDate(bdto.getPubDate().substring(0, 10));
+			String temp = "";
+			temp = bdto.getPubDate().substring(0, 4) + "년 " + bdto.getPubDate().substring(5, 7) + "월 " + bdto.getPubDate().substring(8) + "일";
+			bdto.setPubDate(temp);
+		}
+		
 		//총 페이지 수 계산하기
 		
 		//총 게시물 수 가져오기
@@ -197,6 +205,7 @@ public class BookList extends HttpServlet {
 			}
 		}
 		
+		dao.close();
 		
 		//3.
 		request.setAttribute("seqLCategory", seqLCategory);
