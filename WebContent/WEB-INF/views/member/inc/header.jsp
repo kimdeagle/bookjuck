@@ -64,8 +64,8 @@
                     <ul class="nav navbar-nav">
                         <li><a href="#" class="nav-item">베스트도서</a></li>
                         <li><a href="#" class="nav-item">신간도서</a></li>
-                        <li><a href="#" class="nav-item" id="internalbook">국내도서</a></li>
-                        <li><a href="#" class="nav-item" id="externalbook">해외도서</a></li>
+                        <li><a href="#!" class="nav-item" id="internalbook">국내도서</a></li>
+                        <li><a href="#!" class="nav-item" id="externalbook">해외도서</a></li>
                         <li><a href="/bookjuck/member/book/ebooklist.do" class="nav-item">E-Book</a></li>
                         <li><a href="/bookjuck/member/fleamarket/list.do" class="nav-item">중고게시판</a></li>
                     </ul>
