@@ -19,6 +19,7 @@ public class BookCartDTO {
 	private String image; //책 이미지
 	private int total; // 총 금액 책가격x수량
 	
+	
 	public String getSeq() {
 		return seq;
 	}

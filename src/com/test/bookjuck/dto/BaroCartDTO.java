@@ -15,7 +15,8 @@ public class BaroCartDTO {
 	private String pick; //선택여부
 	
 	private String title;//책 제목
-	private int price;//책 가격
+	private int price;//정가
+	private int salePrice;//판매가
 	private String image; //책 이미지
 	private int total; // 총 금액 책가격x수량
 	
@@ -72,6 +73,12 @@ public class BaroCartDTO {
 	}
 	public void setTotal(int total) {
 		this.total = total;
+	}
+	public int getSalePrice() {
+		return salePrice;
+	}
+	public void setSalePrice(int salePrice) {
+		this.salePrice = salePrice;
 	}
 
 }
