@@ -27,7 +27,7 @@
 			<img src="/bookjuck/image/bookjeok/logo.png">
 		</div>
 
-		<form action="nonMemberSearch.jsp" method="POST" id="tosForm">
+		<form action="http://localhost:8090/bookjuck/member/register.do" method="GET" id="tosForm">
 
 			<h5>약관 체크</h5>
 			
@@ -35,7 +35,7 @@
 			<table class="tostbl" id="tostbl1">
 				<tr>
 					<td>
-						<input type="checkbox" id="allCheck" name="chk">
+						<input type="checkbox" id="allCheck" name="allCheck" class="chk">
 						<label for="allCheck">전체 동의</label>
 					</td>
 					<td>
@@ -44,7 +44,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="checkbox" id="Check1" name="chk">
+						<input type="checkbox" id="Check1" name="Check1" class="chk" required>
 						<label for="Check1">이용 약관</label>
 					</td>
 					<td>
@@ -53,7 +53,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="checkbox" id="Check2" name="chk">
+						<input type="checkbox" id="Check2" name="Check2" class="chk" required> 
 						<label for="Check2">개인정보 수집 및 동의</label>
 					</td>
 					<td>
@@ -62,7 +62,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="checkbox" id="Check3" name="chk">
+						<input type="checkbox" id="Check3" name="Check3" class="chk" required>
 						<label for="Check3">개인정보 처리 위탁 및 정리</label>
 					</td>
 					<td>
@@ -78,7 +78,7 @@
 				<tr>
 					<th>이름:</th>
 					<td>
-						<input type="text" class="log-md">	
+						<input type="text" class="log-md" required id ="name" name="name">	
 					</td>
 
 					<!-- <td>성별: 
@@ -95,7 +95,7 @@
 				<tr>
 					<th>주민번호:</th>
 					<td>
-						<input type="text" class="log-md"><span>- </span><input type="text" class="log-md">
+						<input type="text" class="log-md" required id="ssn1" name="ssn1"><span>- </span><input type="text" class="log-md" required id="ssn2" name="ssn2">
 					</td>
 					<td>
 					</td>
@@ -109,12 +109,13 @@
 			<h6>이메일 인증</h6>
 			
 			<!-- 세번째 테이블 시작 -->
+			
 			<table  class="tostbl" id="tostbl3">
 				<tr>
 					<th>이메일:</th>
 					<td>
 					
-						<input type="text" class="log-sm"><span>@</span><input type="text" class="log-md">
+						<input type="text" class="log-sm" required><span>@</span><input type="text" class="log-md" required>
 					</td>
 					<td>
 						<input type="button" class="btn-general" value="보내기">
@@ -130,7 +131,7 @@
 				<tr>
 					<th>인증번호:</th>
 					<td>
-						<input type="text" class="log-md">
+						<input type="text" class="log-md" required>
 					</td>
 					<td>
 						<input type="submit" class="btn btn-general" id="loginbtn" value="인증">
@@ -154,7 +155,7 @@
 
 
 
-<!--##### 이용 약관 모달  -->
+<!--##### 이용 약관 모달  시작 -->
 	<div class="modal fade" id="tosView1" role="dialog">
 		<div class="modal-dialog modal-md">
 			<div class="modal-content">
@@ -168,12 +169,12 @@
 				<textarea rows="" cols="" class="modalTxtArea">
 				제1조(목적)
 
-이 약관은 (주)영풍문고가 운영하는 온라인서점(이하 "몰"이라 한다)에서 제공하는 인터넷 관련 서비스(이하 "서비스"라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리·의무 및 책임사항을 규정함을 목적으로 합니다.
+이 약관은 (주)북적북적이 운영하는 온라인서점(이하 "몰"이라 한다)에서 제공하는 인터넷 관련 서비스(이하 "서비스"라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리·의무 및 책임사항을 규정함을 목적으로 합니다.
 
 
 제2조(정의)
 
-① "몰"이란 (주)영풍문고가 재화 또는 용역(이하 "재화 등"이라 함)을 이용자에게 제공하기 위하여 컴퓨터등 정보통신설비를 이용하여 재화 등을 거래할 수 있도록 설정한 가상의 영업장을 말하며, 아울러 사이버몰을 운영하는 사업자의 의미로도 사용합니다.
+① "몰"이란 (주)북적북적 재화 또는 용역(이하 "재화 등"이라 함)을 이용자에게 제공하기 위하여 컴퓨터등 정보통신설비를 이용하여 재화 등을 거래할 수 있도록 설정한 가상의 영업장을 말하며, 아울러 사이버몰을 운영하는 사업자의 의미로도 사용합니다.
 ② "이용자"란 "몰"에 접속하여 이 약관에 따라 "몰"이 제공하는 서비스를 받는 회원 및 비회원을 말합니다.
 ③ ‘회원’이라 함은 "몰"에 개인정보를 제공하여 회원등록을 한 자로서, "몰"의 정보를 지속적으로 제공받으며, "몰"이 제공하는 서비스를 계속적으로 이용할 수 있는 자를 말합니다.
 ④ ‘비회원’이라 함은 회원에 가입하지 않고 "몰"이 제공하는 서비스를 이용하는 자를 말합니다.
@@ -181,7 +182,7 @@
 
 제3조 (약관등의 명시와 설명 및 개정) 
 
-① "몰"은 이 약관의 내용과 상호 및 대표자 성명, 영업소 소재지 주소(소비자의 불만을 처리할 수 있는 곳의 주소를 포함), 전화번호․팩스번호․전자우편주소, 사업자등록번호, 통신판매업신고번호, 개인정보관리책임자등을 이용자가 쉽게 알 수 있도록 (주)영풍문고 온라인서점의 초기 서비스화면(전면)에 게시합니다. 다만, 약관의 내용은 이용자가 연결화면을 통하여 볼 수 있도록 할 수 있습니다.
+① "몰"은 이 약관의 내용과 상호 및 대표자 성명, 영업소 소재지 주소(소비자의 불만을 처리할 수 있는 곳의 주소를 포함), 전화번호․팩스번호․전자우편주소, 사업자등록번호, 통신판매업신고번호, 개인정보관리책임자등을 이용자가 쉽게 알 수 있도록 (주)북적북적 온라인서점의 초기 서비스화면(전면)에 게시합니다. 다만, 약관의 내용은 이용자가 연결화면을 통하여 볼 수 있도록 할 수 있습니다.
 ② "몰은 이용자가 약관에 동의하기에 앞서 약관에 정하여져 있는 내용 중 청약철회·배송책임·환불조건 등과 같은 중요한 내용을 이용자가 이해할 수 있도록 별도의 연결화면 또는 팝업화면 등을 제공하여 이용자의 확인을 구하여야 합니다.
 ③ "몰"은 전자상거래등에서의소비자보호에관한법률, 약관의규제에관한법률, 전자거래기본법, 전자서명법, 정보통신망이용촉진등에관한법률, 방문판매등에관한법률, 소비자보호법 등 관련법을 위배하지 않는 범위에서 이 약관을 개정할 수 있습니다.
 ④ "몰"이 약관을 개정할 경우에는 적용일자 및 개정사유를 명시하여 현행약관과 함께 몰의 초기화면에 그 적용일자 7일 이전부터 적용일자 전일까지 공지합니다.
@@ -428,14 +429,87 @@ YP e-money 총 금액의 100분의 60(1만원 이하 금액은 100분의 80) 이
 			</div>
 		</div>
 	</div>
-	<!--##### 아이디 찾기 모달 끝  -->
+<!--##### 이용 약관 모달  끝 -->
 
 
 
 
 
 
+<!--##### 개인정보 수집 및 동의  시작 -->
+	<div class="modal fade" id="tosView2" role="dialog">
+		<div class="modal-dialog modal-md">
+			<div class="modal-content">
+				<!-- 모달 해더 시작 -->
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">개인정보 수집 및 동의</h4>
+					<hr>			
+				</div>
+				<!-- 모달 해더 끝 -->
+				<textarea rows="" cols="" class="modalTxtArea">
+북적북적 서점 개인정보 처리방침
+﻿
+북적북적 주식회사(이하 ‘스토어’ 혹은 ‘회사’)는 서비스기획부터 종료까지 정보통신망 이용촉진 및 정보보호 등에 관한 법률(이하 ‘정보통신망법’), 개인정보보호법 등 국내의 개인정보 보호 법령을 철저히 준수합니다. 또한, OECD의 개인정보 보호 가이드라인 등 국제 기준을 준수하여 서비스를 제공합니다.
+ 
+본 개인정보 처리방침의 목차는 아래와 같습니다.
+일부는 관계법령이 개인정보처리방침의 작성에 있어 요구하는 필수 사항을 포함하였고, 나머지는 회사가 자체적으로 이용자의 개인정보보호에 있어 중요하다 판단하는 내용을 추가하였습니다.
 
+1. 개인정보처리방침의 의의
+2. 수집하는 개인정보 (필수 안내사항)
+3. 수집한 개인정보의 이용 (필수 안내사항)
+4. 개인정보의 제공 및 위탁 (필수 안내사항)
+5. 개인정보의 파기 (필수 안내사항)
+6. 이용자 및 법정대리인의 권리와 행사 방법 (필수 안내사항)
+7. 개인정보보호를 위한 회사의 노력
+8. 개인정보 보호책임자 및 담당자 안내 (필수 안내사항)
+9. 본 개인정보취급방침의 적용 범위
+10. 개정 전 고지 의무
+
+				
+				</textarea>
+				<!-- 모달 바디 시작 -->
+				<div class="modal-body relative">
+					
+					
+					
+
+				</div>
+				<!-- 모달 바디 끝 -->
+			</div>
+		</div>
+	</div>
+<!--##### 개인정보 수집 및 동의 끝 -->
+
+
+
+<!--##### 개인정보 처리위탁 및 정리  시작 -->
+	<div class="modal fade" id="tosView3" role="dialog">
+		<div class="modal-dialog modal-md">
+			<div class="modal-content">
+				<!-- 모달 해더 시작 -->
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">개인정보 처리위탁 및 정리</h4>
+					<hr>			
+				</div>
+				<!-- 모달 해더 끝 -->
+				<textarea rows="" cols="" class="modalTxtArea">
+개인정보 처리위탁
+회사는 서비스 향상을 위해서 아래와 같이 개인정보를 위탁하고 있으며, 관계 법령에 따라 위탁계약 시 개인정보가 안전하게 관리될 수 있도록 필요한 사항을 규정하고 있습니다. 또한 동의를 거부하시고자 하는 경우 회원정보변경을 통해 직접 탈퇴 진행 또는 고객센터로 요청할 수 있습니다. 단,동의거부에 따른 서비스사용에 제한이 있을 수 있습니다.
+				</textarea>
+				<!-- 모달 바디 시작 -->
+				<div class="modal-body relative">
+					
+					
+					
+
+				</div>
+				<!-- 모달 바디 끝 -->
+			</div>
+		</div>
+	</div>
+<!--##### 개인정보 처리위탁 및 정리  끝 -->
 
 
 
@@ -448,12 +522,12 @@ YP e-money 총 금액의 100분의 60(1만원 이하 금액은 100분의 80) 이
 				//클릭되었으면
 				if ($("#allCheck").prop("checked")) {
 					//input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
-					$("input[name=chk]").prop("checked", true);
+					$("input[class=chk]").prop("checked", true);
 
 					//클릭이 안되있으면
 				} else {
 					//input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
-					$("input[name=chk]").prop("checked", false);
+					$("input[class=chk]").prop("checked", false);
 				}
 			})
 		})

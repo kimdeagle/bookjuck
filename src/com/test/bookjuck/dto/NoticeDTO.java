@@ -1,19 +1,18 @@
 package com.test.bookjuck.dto;
 
-import java.sql.Date;
 
 public class NoticeDTO {
 	
-	private int seq;		//번호
+	private String seq;		//번호
 	private String title;	//제목
 	private String content; //내용
 	private String regdate; //작성일
 	
 	
-	public int getSeq() {
+	public String getSeq() {
 		return seq;
 	}
-	public void setSeq(int seq) {
+	public void setSeq(String seq) {
 		this.seq = seq;
 	}
 	public String getTitle() {

@@ -1,18 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <aside>
 <!-- 카테고리 좌측메뉴 -->
     <div id="categorytitle">
-        <h6 class="h6-white">국내도서 > 소설</h6>
+        <h5 class="h5-white">${lCategory}</h5>
+        <h6 class="h6-white">${mCategory}</h6>
     </div>
 
     <div id="categorylist">
-        <a href="/bookjuck/member/book/inlist.do"><strong>한국소설</strong></a>
-        <a href="#">외국소설</a>
-        <a href="#">청소년소설</a>
-        <a href="#">고전소설</a>
-        <a href="#">기타</a>
+        <c:forEach items="${sCategoryList}" var="dto">
+        	<a href="/bookjuck/member/book/booklist.do?seqLCategory=${seqLCategory}&lCategory=${lCategory}&seqMCategory=${seqMCategory}&mCategory=${mCategory}&seqSCategory=${dto.seqSCategory}&sCategory=${dto.sCategory}">${dto.sCategory}</a>
+        </c:forEach>
+        
     </div>
 
 </aside>

@@ -33,7 +33,15 @@
 	<div class="container">
 	
 		<!-- ########## 상단 헤더 시작 -->
-		<%@include file="/WEB-INF/views/member/inc/header.jsp" %>
+		<!-- 변경 전 -->
+	<%-- <%@include file="/WEB-INF/views/member/inc/header.jsp" %> --%>
+
+	<!-- 변경 후 -->
+	<%
+		out.flush();
+		RequestDispatcher dheader = request.getRequestDispatcher("/member/inc/header.do");
+		dheader.include(request, response);
+	%>
 		<!-- ########## 상단 헤더 끝 -->
 	
 	
@@ -52,24 +60,35 @@
                     미리보기
                 </button>
                 
+                <form method="POST" action="/bookjuck/member/fleamarket/editok.do">
+                
                 <table class="table tbl-md table-view">
                     <tr>
-                        <td colspan="2" class="subject">
-                            <input type="text" class="form-control" value="글제목입니다. 하하하하">
+                        <td class="subject">
+                            <input type="text" class="form-control" placeholder="제목을 입력해주세요." style="width: 700px;" id="title" name="title" required value='${dto.title.replace("\"", "&quot;")}'>
+                        </td>
+                        <td>
+                            <select name="dealState" id="dealState" class="form-control">
+                                <option value="판매중">판매중</option>
+                                <option value="예약중">예약중</option>
+                                <option value="판매완료">판매완료</option>
+                            </select>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
                             <p>
-                                <textarea class="form-control content">이게 바로 내용입니다.</textarea>    
+                                <textarea class="form-control content" placeholder="내용을 입력하세요." id="content" name="content">${dto.content}</textarea>
                             </p>
                         </td>
                     </tr>
+                    <!-- 
                     <tr>
-                        <td>
+                        <td colspan="2">
                             <input type="file" class="form-control">
                         </td>
                     </tr>
+                     -->
                 </table>
 
                 
@@ -85,8 +104,11 @@
                         수정
                     </button>
                 </div>
+                
+                <input type="hidden" name="seq" value="${dto.seq}">
+                
+                </form>
                 <div style="clear:both;"></div>
-
 
 
             </article>

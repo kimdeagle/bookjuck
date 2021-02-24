@@ -28,20 +28,28 @@
 	
 	
 		<section class="contentsection">
-            <h3>공지사항</h3>
-
-            <div id="subtitle">수정하기</div>
-            <form method="POST" action="/member/notice/editok.do">
-	            <div id="writebox">
-		            <input type="text" id="title" name="title" class="form-control" value="수정하기 전 제목">
-		            <textarea id="content" name="content" class="form-control" cols="40" rows="13">수정하기 전 내용</textarea>
-	            </div>
-	            <div id="btn">
-	                <input type="button" class="btn btn-general inline" value="저장하기" id="save">
+            <h3>공지사항<small>수정하기</small></h3>
+            
+            <form method="POST" action="/bookjuck/admin/notice/editok.do">
+            <table class="table tbl-md table-bordered" id="edittbl">
+            	<tr>
+            		<td>제목</td>
+            		<td><input type="text" id="title" name="title" class="form-control" value="${dto.title}"></td>
+            	</tr>
+            	<tr>
+            		<td>내용</td>
+            		<td><textarea id="content" name="content" class="form-control" cols="40" rows="13">${dto.content}</textarea></td>
+            	</tr>
+            
+            </table>
+				<div id="btn">
+	                <input type="submit" class="btn btn-general inline" value="저장하기" id="save">
 	                <button type="button" class="btn btn-general" id="back" onclick="location.href='/bookjuck/admin/notice/list.do'">뒤로가기</button>
 	            </div>
+	            <input type="hidden" name="seq" value="${dto.seq}">
             </form>
     	</section>
+	</div>
 	
 		<!-- 플로팅 메뉴 -->
 		<%@include file="/WEB-INF/views/common/bookjuckee.jsp" %>
@@ -50,9 +58,7 @@
 		
 		<!-- ########## 하단 시작 -->
 		<%@include file="/WEB-INF/views/common/footer.jsp" %>
-		<!-- ########## 하단 끝 -->
-
-	</div>
+		<!-- ########## 하단 끝 -->	
 
 </body>
 

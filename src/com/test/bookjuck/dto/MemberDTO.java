@@ -2,25 +2,27 @@ package com.test.bookjuck.dto;
 
 public class MemberDTO {
 
-	private int seq;			//번호
+	private String seq;			//번호
 	private String id;			//아이디
 	private String pw;			//비밀번호
 	private String name;		//이름
-	private int num;			//연락처
+	private int tel;			//연락처
 	private String regDate; 	//가입일
 	private String address;		//주소
 	private String ssn;			//주민번호
 	private String login;		//로그인방식
 	private String email;		//이메일
-	private int point;			//포인트
+	private int points;			//포인트
 	private int privacy; 		//개인정보 유효기간
 	private String lastDate;	//최종접속일
 	
 	
-	public int getSeq() {
+	
+	
+	public String getSeq() {
 		return seq;
 	}
-	public void setSeq(int seq) {
+	public void setSeq(String seq) {
 		this.seq = seq;
 	}
 	public String getId() {
@@ -41,11 +43,11 @@ public class MemberDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getNum() {
-		return num;
+	public int getTel() {
+		return tel;
 	}
-	public void setNum(int num) {
-		this.num = num;
+	public void setTel(int tel) {
+		this.tel = tel;
 	}
 	public String getRegDate() {
 		return regDate;
@@ -77,11 +79,11 @@ public class MemberDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getPoint() {
-		return point;
+	public int getPoints() {
+		return points;
 	}
-	public void setPoint(int point) {
-		this.point = point;
+	public void setPoints(int points) {
+		this.points = points;
 	}
 	public int getPrivacy() {
 		return privacy;

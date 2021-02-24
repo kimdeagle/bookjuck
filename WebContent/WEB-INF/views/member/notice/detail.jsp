@@ -32,25 +32,36 @@
 	<div class="container">
 	
 		<!-- ########## 상단 헤더 시작 -->
-		<%@include file="/WEB-INF/views/member/inc/header.jsp" %>
+		<!-- 변경 전 -->
+	<%-- <%@include file="/WEB-INF/views/member/inc/header.jsp" %> --%>
+
+	<!-- 변경 후 -->
+	<%
+		out.flush();
+		RequestDispatcher dheader = request.getRequestDispatcher("/member/inc/header.do");
+		dheader.include(request, response);
+	%>
 		<!-- ########## 상단 헤더 끝 -->
 	
 		<!-- @@@@@여기에 개인작업 페이지 넣을 것 -->
 		<section class="mainsection">
-            <h3 id="membertitle">공지사항</h3>
-
-            <div id="subtitle">상세조회</div>
-
-            <div id="detailbox">
-                <h5>채팅상담 연결 안내</h5>
-                <p id="senddate">2021-02-07</p>
-                <div>안녕하세요. 북적북적입니다. 많은 채팅상담 연결로 인하여 채팅상담의 연결이 원활하지 못했던 점 사과말씀드립니다. 현재 장애는 복구되어 정상적으로 이용 가능합니다. 보다 친절하고 기분 좋은 상담 서비스가 될 수 있도록 노력하는 북적북적이 되겠습니다. 감사합니다.</div>
-                
-            </div>
-
-            <div id="btn">
-                <button type="button" class="btn btn-general" value="뒤로가기" id="memberbtn" onclick="location.href='/bookjuck/member/notice/list.do'">뒤로가기</button>
-            </div>
+         	<h3>공지사항<small style="margin-left:15px;">상세조회</small></h3>
+         
+			<table class="table tbl-md" id="detailtbl">
+				<tr>
+					<th class="col-md-2">제목</th>
+					<td class="col-md-4">${dto.title}</td>
+					<th class="col-md-2">작성일</th>
+					<td class="col-md-4"><p id="senddate">${dto.regdate.substring(0, 10)}</p></td>
+				</tr>
+	         	<tr>
+	             	<td colspan="4"><div>${dto.content}</div></td>
+	          	</tr>
+			</table>
+	        <div id="btn">
+	            <button type="button" class="btn btn-general" id="back" onclick="location.href='/bookjuck/member/notice/list.do'">뒤로가기</button>
+	        </div>
+        
     	</section>
 
 
