@@ -58,29 +58,28 @@
 
                 <h3>중고도서 거래 게시판</h3>
 
-                <table class="table tbl-md">
-                <br><br><br><br>
-                    <tr style="background-color: RGBA(140,179,105,0.2)">
-                        <td>삭제</td>
-                    </tr>
+                <table class="table tbl-md tbl-delete">
                     <tr>
                         <td>
-                        
-                            <button type="button" class="btn btn-default" onclick="location.href='/bookjuck/member/fleamarket/view.do?seq=${seq}';">
-                                <span class="glyphicon glyphicon-chevron-left"></span>
-								뒤로
-                            </button>
-                                                        
-                            <button type="button" class="btn btn-default" onclick="location.href='deleteok.do?seq=${seq}';">
-                                <span class="glyphicon glyphicon-remove"></span>
-								삭제
-                            </button>
-                            
+                            <img src="/bookjuck/image/bookjeok/delete.png" style="width: 300px;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border-top: none; border-bottom: 2px solid #ddd; padding-bottom: 30px;">
+                        <div class="btn-group">
+                        <button type="button" class="btn btn-default" onclick="location.href='/bookjuck/member/fleamarket/view.do?seq=${seq}';">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                            뒤로
+                        </button>
+                                                    
+                        <button type="button" class="btn btn-default" onclick="location.href='deleteok.do?seq=${seq}';">
+                            <span class="glyphicon glyphicon-remove"></span>
+                            삭제
+                        </button>
+                        </div>
                         </td>
                     </tr>
                 </table>
-
-
 
             </article>
         </section>
