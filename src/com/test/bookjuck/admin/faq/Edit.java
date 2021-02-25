@@ -21,14 +21,6 @@ public class Edit extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		// edit으로 넘어가기 전에
-		// edit에서 사용할 질문카테고리 데이터를 받아와야 한다.
-		
-		QCategoryDAO cdao=new QCategoryDAO();
-		ArrayList<QCategoryDTO> clist=cdao.getList();
-		
-		req.setAttribute("clist", clist);
-		
 		// 모달창에서 받아온 seq로 수정할 글 찾기
 		
 		String seq=req.getParameter("seq");
