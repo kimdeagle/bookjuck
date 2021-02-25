@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Web Socket Example</title>
+<title>북적북적::북적이에게 문의하기</title>
 <%@include file="/WEB-INF/views/member/inc/asset.jsp" %>
 <link rel="stylesheet" href="/bookjuck/css/global.css">
 <link rel="stylesheet" href="/bookjuck/css/chat.css">
 </head>
-<body>
+<body onresize="parent.resizeTo(450,775)" onload="parent.resizeTo(450,775)">
 
 	<div id="main-container">
 		<div id="chat-container">
@@ -25,7 +25,7 @@
 	<script type="text/javascript">
 
 	// 서버의 broadsocket의 서블릿으로 웹 소켓을 한다.
-	var webSocket = new WebSocket("ws://localhost:8080/bookjuck/chat/memberchat");
+	var webSocket = new WebSocket("ws://localhost:8090/bookjuck/chat/memberchat");
 	
 	// 콘솔 텍스트 영역
 	var messageTextArea = document.getElementById("messageTextArea");

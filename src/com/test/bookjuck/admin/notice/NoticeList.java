@@ -57,10 +57,8 @@ public class NoticeList extends HttpServlet {
 		
 		// 1.5 페이징
 		totalCount = dao.getTotalCount(map); //총 게시물 수
-		System.out.println(totalCount);
 		
 		totalPage = (int)Math.ceil((double)totalCount / pageSize); //총 페이지 수
-		System.out.println(totalPage); //27페이지 -> 28페이지
 		
 		
 		String pagebar = "";
@@ -109,7 +107,6 @@ public class NoticeList extends HttpServlet {
 					+ "                <span aria-hidden=\"true\">&raquo;</span>"
 					+ "            </a>"
 					+ "        </li>", n);
-			//pagebar += String.format("<a href=\"/codestudy/board/list.do?page=%d\">다음 10페이지</a>", n);
 		}
 
 		// 2.

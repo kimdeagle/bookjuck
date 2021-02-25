@@ -73,6 +73,13 @@
 			</thead>
 			<tbody>
 			
+				<c:if test="${eblist.size() == 0}">
+					<tr>
+						<td colspan="3" style="text-align: center; padding-top: 50px;"><b style="font-size: 1.5em;">E-Book 목록이 없습니다.</b></td>
+					</tr>
+				</c:if>
+			
+			
 				<c:forEach items="${eblist}" var="dto">
 				<tr>
 					<td>
@@ -83,7 +90,7 @@
 					<td>
 						<div><a href="/bookjuck/member/book/ebookdetail.do?seqLCategory=${seqLCategory}&lCategory=${lCategory}&seqMCategory=${seqMCategory}&mCategory=${mCategory}&seqSCategory=${seqSCategory}&sCategory=${sCategory}&seq=${dto.seq}" class="title">${dto.title}</a></div>
 						<div class="info">${dto.author} | ${dto.publisher}</div>
-						<div class="subinfo">${String.format('%s년 %s월 %s일', dto.pubDate.substring(0, 4), dto.pubDate.substring(5, 7), dto.pubDate.substring(8, 10))}</div>
+						<div class="subinfo">${dto.pubDate}</div>
 						<div class="intro">${dto.intro.substring(0, 100)}</div>
 						<div class="priceinfo">
 							<span class="price"><s>정가 ${String.format('%,d원', dto.price)}</s></span>
@@ -103,25 +110,12 @@
 		</table>
 		
 		<!-- paging -->
-		<nav>
-		  <ul class="pagination">
-		    <li>
-		      <a href="#" aria-label="Previous">
-		        <span aria-hidden="true">&laquo;</span>
-		      </a>
-		    </li>
-		    <li class="active"><a href="#">1</a></li>
-		    <li><a href="#">2</a></li>
-		    <li><a href="#">3</a></li>
-		    <li><a href="#">4</a></li>
-		    <li><a href="#">5</a></li>
-		    <li>
-		      <a href="#" aria-label="Next">
-		        <span aria-hidden="true">&raquo;</span>
-		      </a>
-		    </li>
-		  </ul>
+		<c:if test="${not empty eblist}">
+		<nav class="pagebar">
+			<ul class="pagination">${pagebar}
+			</ul>
 		</nav>
+		</c:if>
        
 	</section>
 
@@ -133,7 +127,7 @@
 	</div>
 	
 	<!-- 플로팅 메뉴 -->
-	<%@include file="/WEB-INF/views/common/bookjuckee.jsp" %>
+	<%@include file="/WEB-INF/views/member/bookjuckee.jsp" %>
 	<%@include file="/WEB-INF/views/common/top.jsp" %>
 
 

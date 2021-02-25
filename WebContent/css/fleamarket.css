@@ -269,3 +269,10 @@
     display: block;
     float: right;
 }
+
+
+
+/* 삭제 페이지 css 추가 21.02.24 */
+.fleamarket .tbl-delete tr:hover {
+    background-color: transparent;
+}

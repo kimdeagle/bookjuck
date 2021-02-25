@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import com.test.bookjuck.DBUtil;
@@ -133,8 +134,8 @@ public class MemberDAO {
 			System.out.println(e);
 		}
 		return null;
-	}
-	// ############ (최진영) 종료
+	
+  // ############ (최진영) 종료
 
 	
 	// ############ (최진영) 시작 
@@ -204,4 +205,48 @@ public class MemberDAO {
 		}	
 		return null;
 	}
+
+	
+	// ############ (조아라) 시작
+	/**
+	 * 큐레이션 레터를 수신하는 회원들의 정보를 가져오는 메서드입니다.
+	 * @param id
+	 * @return 회원정보를 담고 있는 MemberDTO를 반환합니다.
+	 */
+	public ArrayList<MemberDTO> getList() {
+		
+		try {
+			
+			String sql="select m.email as email, m.id as id, m.seq as seq from tblMember m"
+					+ "    inner join tblletterrecipient lr"
+					+ "        on m.seq=lr.seqmember";
+			
+			stat=conn.createStatement();
+			rs=stat.executeQuery(sql);
+			
+			ArrayList<MemberDTO> list=new ArrayList<MemberDTO>();
+			
+			while (rs.next()) {
+				MemberDTO dto=new MemberDTO();
+				dto.setSeq(rs.getString("seq"));
+				dto.setEmail(rs.getString("email"));
+				dto.setId(rs.getString("id"));
+				
+				list.add(dto);
+			}
+			
+			return list;
+			
+			
+		} catch (Exception e) {
+			System.out.println("MemberDAO.getList()");
+			e.printStackTrace();
+		}
+		
+		return null;
+		
+	}
+	
+	// ############ (조아라) 시작
+
 }

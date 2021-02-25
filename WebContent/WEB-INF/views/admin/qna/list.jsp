@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,7 +31,7 @@
 		<section class="contentsection">
             <h3>QnA</h3>
 
-            <table class="table tbl-md qnatbl">
+            <table class="table tbl-md" id="listtbl">
                 <tr>
                     <th class="col-md-2 cell1">카테고리</th>
                     <th class="col-md-2 cell2">아이디</th>
@@ -38,51 +39,43 @@
                     <th class="col-md-2 cell4">작성일</th>
                     <th class="col-md-2 cell5">답변여부</th>
                 </tr>
+                <c:forEach items="${qlist}" var="qdto">
                 <tr>
-                    <td class="cell1">환불</td>
-                    <td class="cell2">abcd1111</td>
-                    <td class="cell3"><a href="/bookjuck/admin/qna/detail.do">환불 신청 어떻게 하나요?</a></td>
-                    <td class="cell4">2021-02-05</td>
-                    <td class="cell5">미답변</td>
+                    <td class="cell1">${qdto.qCategory}</td>
+                    <td class="cell2">${qdto.id}</td>
+                    <td class="cell3"><a href="/bookjuck/admin/qna/detail.do?seq=${qdto.seq}&page=${nowPage}">${qdto.title}</a></td>
+                    <td class="cell4">${qdto.regDate.substring(0, 10)}</td>
+                    <td class="cell5">
+                    	<c:if test="${qdto.isDone.substring(0, 10).equals('1900-01-01')}">
+                    		<span>답변대기중</span>
+                    	</c:if>
+                    	<c:if test="${!qdto.isDone.substring(0, 10).equals('1900-01-01')}">
+                    		<span>답변완료</span>
+                    	</c:if>
+                    </td>
                 </tr>
-                <tr>
-                    <td class="cell1">교환</td>
-                    <td class="cell2">abcd1111</td>
-                    <td class="cell3"><a href="/bookjuck/admin/qna/detail.do">찢어져서 온 책 어떻게 하나요?</a></td>
-                    <td class="cell4">2021-02-05</td>
-                    <td class="cell5">미답변</td>
-                </tr>
+                </c:forEach>
             </table>
 
-            <ul class="pagination">
-                <li>
-                <a href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-                </li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li>
-                <a href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-                </li>
-            </ul>
+            <nav class="pagebar">
+                <ul class="pagination">
+                    ${pagebar}
+                </ul>
+            </nav>
+            
         </section>
 	
-		<!-- 플로팅 메뉴 -->
-		<%@include file="/WEB-INF/views/common/bookjuckee.jsp" %>
-		<%@include file="/WEB-INF/views/common/top.jsp" %>
 		
-		
-		<!-- ########## 하단 시작 -->
-		<%@include file="/WEB-INF/views/common/footer.jsp" %>
-		<!-- ########## 하단 끝 -->
 
 	</div>
+	<!-- 플로팅 메뉴 -->
+	<%@include file="/WEB-INF/views/admin/bookjuckee.jsp" %>
+	<%@include file="/WEB-INF/views/common/top.jsp" %>
+	
+	
+	<!-- ########## 하단 시작 -->
+	<%@include file="/WEB-INF/views/common/footer.jsp" %>
+	<!-- ########## 하단 끝 -->
 
 </body>
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +26,7 @@
 
 
 	<!-- 플로팅 메뉴 (북적이& top) -->
-	<%@include file="/WEB-INF/views/common/bookjuckee.jsp" %>
+	<%@include file="/WEB-INF/views/member/bookjuckee.jsp" %>
 	<%@include file="/WEB-INF/views/common/top.jsp" %>
 
 
@@ -49,46 +50,44 @@
 		
 		
 		
-		<section class="contentsection">
-	        <h3>QnA</h3>
-	
-	        <div id="subtitle">수정하기</div>
-				<form method="POST" action="/member/qna/edit.do">
-		        <div id="letterbox">
-	                <div class="dropdown">
-	                    <button class="btn btn-default dropdown-toggle selected" type="button" data-toggle="dropdown" aria-expanded="true" id="category">
-	                      질문카테고리
-	                      <span class="caret"></span>
-	                    </button>
-	                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="category">
-	                      <li role="presentation"><a role="menuitem" tabindex="-1">반품</a></li>
-	                      <li role="presentation"><a role="menuitem" tabindex="-1">환불</a></li>
-	                      <li role="presentation"><a role="menuitem" tabindex="-1">교환</a></li>
-	                      <li role="presentation"><a role="menuitem" tabindex="-1">배송</a></li>
-	                    </ul>
-	                </div>
-	                <div class="dropdown">
-	                    <button class="btn btn-default dropdown-toggle selected" type="button" data-toggle="dropdown" aria-expanded="true" id="ordernum">
-	                      주문번호
-	                      <span class="caret"></span>
-	                    </button>
-	                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="ordernum">
-	                      <li role="presentation"><a role="menuitem" tabindex="-1">1232342</a></li>
-	                      <li role="presentation"><a role="menuitem" tabindex="-1">1232342</a></li>
-	                      <li role="presentation"><a role="menuitem" tabindex="-1">1232342</a></li>
-	                      <li role="presentation"><a role="menuitem" tabindex="-1">1232342</a></li>
-	                    </ul>
-	                </div>
-	                <input type="text" id="title" name="title" class="form-control inline" placeholder="제목을 입력해주세요">
-	                
-	                <textarea id="content" name="content" class="form-control" cols="40" rows="15" placeholder="내용을 입력해주세요"></textarea>
-		        </div>
-		        <div id="btn">
-		            <input type="submit" class="btn btn-general inline" value="저장하기" id="save">
-		            <button type="button" class="btn btn-general" id="back" onclick="location.href='/bookjuck/member/mypage/servicecenter.do'">뒤로가기</button>
-		        </div>
-	        </form>
-		</section>
+		<!-- @@@@@여기에 개인작업 페이지 넣을 것 -->
+        <section class="contentsection">
+            <h3>QnA<small style="margin-left:15px;">수정하기</small></h3>
+			<form method="POST" action="/bookjuck/member/qna/editok.do">
+				<table class="table tbl-md" id="edittbl">
+           			<tr>
+           				<th class="col-md-2">질문카테고리</th>
+           				<td class="col-md-10">
+           					<select class="form-control selectpicker medium" id="email" name="seqQcategory">
+            					<option value=${dto.seqQCategory}>${dto.qCategory}</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" style="vertical-align:middle;">
+							<span class="glyphicon glyphicon-exclamation-sign"></span><b>주문번호를 기재해주시면 보다 정확한 답변이 가능합니다!</b>
+						</td>
+           			</tr>
+           			<tr>
+           				<th class="col-md-2">제목</th>
+           				<td class="col-md-10"><input type="text" id="title" name="title" class="form-control inline" value="${dto.title}"></td>
+           			</tr>
+           			<tr>
+           				<th>내용</th>
+           				<td colspan="2">
+           					<textarea id="content" name="content" class="form-control" cols="40" rows="15" style="width:100%;" placeholder="내용을 입력해주세요">${dto.content}</textarea>
+           				</td>
+           			</tr>
+           		</table>
+
+				<input type="hidden" id="qcategory" name="qcategory" value="${dto.seqQCategory}"> <!-- 질문카테고리 이름 다른 데이터와 같이 editOk서블릿으로 넘긴다! -->
+	            <input type="hidden" id="seq" name="seq" value="${dto.seq}">
+	            <div id="btn">
+	                <input type="submit" class="btn btn-general inline" value="저장하기" id="save">
+	                <button type="button" class="btn btn-general" id="back" onclick="location.href='/bookjuck/member/qna/list.do'">뒤로가기</button>
+	            </div>
+            </form>
+    	</section>
 
 
 		<!-- ########## 하단 시작 -->
@@ -96,20 +95,6 @@
 		<!-- ########## 하단 끝 -->
 		
 	</div>
-	
-	<script>
-
-        $('#category li > a').on('click', function() {
-            // 버튼에 선택된 항목 텍스트 넣기 
-            $('#category').text($(this).text());
-        });
-
-        $('#ordernum li > a').on('click', function() {
-            // 버튼에 선택된 항목 텍스트 넣기 
-            $('#ordernum').text($(this).text());
-        });
-
-    </script>
 
 </body>
 

@@ -25,7 +25,7 @@
 
 
 	<!-- 플로팅 메뉴 (북적이& top) -->
-	<%@include file="/WEB-INF/views/common/bookjuckee.jsp" %>
+	<%@include file="/WEB-INF/views/member/bookjuckee.jsp" %>
 	<%@include file="/WEB-INF/views/common/top.jsp" %>
 
 

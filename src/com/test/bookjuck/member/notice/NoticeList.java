@@ -47,13 +47,17 @@ public class NoticeList extends HttpServlet {
 		
 		map.put("begin", begin + "");
 		map.put("end", end + "");
-				
+		
 		// 1. DB 작업
+		// 2. JSP에게 넘겨주기
+		
+		// 1.
 		NoticeDAO dao=new NoticeDAO();
 		ArrayList<NoticeDTO> nlist=dao.getList(map);
 		
 		// 1.5 페이징
 		totalCount = dao.getTotalCount(map); //총 게시물 수
+		
 		totalPage = (int)Math.ceil((double)totalCount / pageSize); //총 페이지 수
 		
 		
@@ -70,7 +74,7 @@ public class NoticeList extends HttpServlet {
 					+ "        </li>");
 		} else {				
 			pagebar += String.format("<li>"
-					+ "            <a href=\"/bookjuck/admin/notice/list.do?page=%d\" aria-label=\"Previous\">"
+					+ "            <a href=\"/bookjuck/member/notice/list.do?page=%d\" aria-label=\"Previous\">"
 					+ "                <span aria-hidden=\"true\">&laquo;</span>"
 					+ "            </a>"
 					+ "        </li>", n - 1);
@@ -103,14 +107,13 @@ public class NoticeList extends HttpServlet {
 					+ "                <span aria-hidden=\"true\">&raquo;</span>"
 					+ "            </a>"
 					+ "        </li>", n);
-			//pagebar += String.format("<a href=\"/codestudy/board/list.do?page=%d\">다음 10페이지</a>", n);
 		}
-		
+
 		// 2.
 		req.setAttribute("nlist", nlist);
 		req.setAttribute("pagebar", pagebar);
 		req.setAttribute("nowPage", nowPage);
-				
+		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/member/notice/list.jsp");
 		dispatcher.forward(req, resp);
 	}

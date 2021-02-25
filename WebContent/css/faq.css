@@ -1,32 +1,9 @@
 /*
 
-	FAQ CSS
-	1. 자주하는 질문 목록조회
+	자주하는 질문 CSS
 
 */
 
-/* 1. 자주하는 질문 목록조회 */
-
-.qnatbl {
-	margin:0 auto;
-}
-
-.qnatbl th, td {
-	text-align:center;
-}
-
-#qbox {
-    width:700px;
-    background-color:rgba(91, 142, 125, .2);
-    margin-bottom:50px;
-    margin-left:auto;
-    margin-right:auto;
-    padding:50px;
-}
-
-#qbox > h5 {
-    border-bottom:1px dashed #ccc;
-}
 
 #btn {
     width:100%;
@@ -34,65 +11,20 @@
     margin:20px 0;
 }
 
-#senddate {
-    margin-bottom:20px;
-}
+/* 관리자 자주하는 질문 작성 */
 
-/* 2. 자주하는 질문 작성 */
-
-#example {
-    width:100%px;
-    background-color:rgba(91, 142, 125, .2);
-    margin-bottom:50px;
-    margin-left:auto;
-    margin-right:auto;
-    padding:50px;
-}
-
-#btn {
-    width:100%;
-    text-align:center;
-}
-
-#letterbox {
-    background-color:#5B8E7D;
-    padding-top:30px;
-    margin-bottom:40px;
-    margin-left:auto;
-    margin-right:auto;
-    width:80%;
-    height:500px;
-}
-
-#title {
-    width:55%;
-    margin-top:20px;
-    margin-bottom:20px;
-    margin-left:10%;
-    margin-right:6.5%;
-}
-
-#content {
-    width:80%;
-    margin:20px auto;
-}
-
-#selected {
-    width:120px;
-}
-
-#faqsearch {
-	float:right;
-}
-
-#faqtbl {
-	margin-top:30px;
-}
-
-#faqtbl th, td {
+#addtbl th {
 	text-align:center;
 }
 
-#faqtbl td .cell2 {
-	text-align:left;
+/* 관리자 자주하는 질문 수정 */
+
+#edittbl th {
+	text-align:center;
+}
+
+/* 관리자, 회원 자주하는 질문 목록조회 */
+
+#listtbl th, td {
+	text-align:center;
 }

@@ -26,22 +26,20 @@
 
 
 	<!-- 플로팅 메뉴 (북적이& top) -->
-	<%@include file="/WEB-INF/views/common/bookjuckee.jsp" %>
+	<%@include file="/WEB-INF/views/member/bookjuckee.jsp" %>
 	<%@include file="/WEB-INF/views/common/top.jsp" %>
 
 
 	<div class="container">
 	
 		<!-- ########## 상단 헤더 시작 -->
-		<!-- 변경 전 -->
-	<%-- <%@include file="/WEB-INF/views/member/inc/header.jsp" %> --%>
 
-	<!-- 변경 후 -->
-	<%
-		out.flush();
-		RequestDispatcher dheader = request.getRequestDispatcher("/member/inc/header.do");
-		dheader.include(request, response);
-	%>
+		<!-- 변경 후 -->
+		<%
+			out.flush();
+			RequestDispatcher dheader = request.getRequestDispatcher("/member/inc/header.do");
+			dheader.include(request, response);
+		%>
 		<!-- ########## 상단 헤더 끝 -->
 	
 	
@@ -113,7 +111,7 @@
 		
 	</div>
 	
-	
+
 
 </body>
 

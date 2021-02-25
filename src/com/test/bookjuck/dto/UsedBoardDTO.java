@@ -22,7 +22,15 @@ public class UsedBoardDTO {
 	
 	private String email; //글쓴 회원 email
 	
+	private String ccount; //현재 글에 달린 댓글 수
 	
+	
+	public String getCcount() {
+		return ccount;
+	}
+	public void setCcount(String ccount) {
+		this.ccount = ccount;
+	}
 	public String getSeq() {
 		return seq;
 	}

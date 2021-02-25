@@ -22,25 +22,22 @@ $(window).load(function() {
 	fileTarget.on("change", function() {
 		var filename = $(this)[0].files[0].name;
 		$(this).siblings("#ebookname").val(filename);
-	});	
+	});
+	
+	//도서추가 -> 추가 버튼 클릭
+	$("#btnadd").click(function() {
+		if (!($("#imagename").val().toLowerCase().endsWith("jpg") || $("#imagename").val().toLowerCase().endsWith("gif") || $("#imagename").val().toLowerCase().endsWith("png"))) {
+			//이미지가 아니면
+			alert("지원되는 이미지 파일만 첨부할 수 있습니다.");
+			return;
+		} else {		
+			$("#formAdd").submit();
+		}
+	});
+	
+	//작가 새로추가 -> seqAuthor 삭제
+	$("#btnaddauthor").click(function() {
+		$("#seqAuthor").val("");
+	});
 
 });
-
-/* 카테고리 모달 > 카테고리 선택 완료 */
-function selcategory() {
-	$("#firstcategory").val($("#selfirstcategory").val());
-	$("#secondcategory").val($("#selsecondcategory").val());
-	$("#thirdcategory").val($("#selthirdcategory").val());
-	$("#categorymodal").modal("hide");
-}
-
-/* 작가선택 모달 > 작가 선택 완료 (맞는건가...) */
-function selauthor() {
-	
-	$("#authorname").val($("#tblauthorlist input[type=radio]:checked").parent().next().text());
-	$("#authorintro").val($("#tblauthorlist input[type=radio]:checked").parent().next().next().text());
-	$("#authorname").attr("readonly", true);
-	$("#authorintro").attr("readonly", true);
-	$("#authormodal").modal("hide");
-}
-

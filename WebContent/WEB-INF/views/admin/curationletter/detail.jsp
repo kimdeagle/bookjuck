@@ -27,20 +27,26 @@
 	<%@include file="/WEB-INF/views/admin/inc/header.jsp" %>
 
 	<section class="contentsection">
-        <h3>큐레이션레터</h3>
+        <h3>큐레이션레터<small style="margin-left:15px;">상세조회</small></h3>
 
-        <div id="subtitle">상세조회</div>
-
-        <div id="qbox">
-            <h5>아주 조그만 보물 하나가 나를 찾아냈다. 그건 한 단어였다.아주 조그만 보물 하나가 나를 찾아냈다. 그건 한 단어였다.아주 조그만 보</h5>
-            <p id="senddate">2021-02-07</p>
-            <div>[기록된 단어들 사이, 자리를 잃은 존재들에 대하여] 〈옥스퍼드 영어 사전〉 편찬사를 바탕으로 한 소설. 이야기는 어린시절의 상당 부분을 사전 편집실에서 보낸 한 여자아이의 시선을 따라간다. 단어에 대한 아이의 질문은 이내 세계에 대한 의문으로 이어지며, 그 답을 찾는 여정 속에서, 마땅히 복원해야 할 사라진 이들의 역사가 되살아난다. -소설MD 박형욱</div>
-            
-        </div>
+		<table class="table tbl-md" id="lettertbl">
+			<tr>
+				<th class="col-md-2">제목</th>
+				<td class="col-md-10">${dto.title}</td>
+			</tr>
+			<tr>
+				<th class="col-md-2">전송일</th>
+				<td class="col-md-10">${dto.regDate}</td>
+			</tr>
+			<tr>
+				<th class="col-md-2">내용</th>
+				<td class="col-md-10">${dto.content}</td>
+			</tr>
+		</table>
 
         <div id="btn">
             <input type="submit" class="btn btn-general inline" value="삭제하기" id="del">
-            <button type="button" class="btn btn-general" id="back" onclick="location.href='/bookjuck/admin/curationletter/list.do'">뒤로가기</button>
+            <button type="button" class="btn btn-general" id="back" onclick="location.href='/bookjuck/admin/curationletter/list.do?page=${page}'">뒤로가기</button>
         </div>
         
     </section>
@@ -52,7 +58,7 @@
 	</div>
 	
 	<!-- 플로팅 메뉴 -->
-	<%@include file="/WEB-INF/views/common/bookjuckee.jsp" %>
+	<%@include file="/WEB-INF/views/admin/bookjuckee.jsp" %>
 	<%@include file="/WEB-INF/views/common/top.jsp" %>
 
 

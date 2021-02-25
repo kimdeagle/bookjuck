@@ -28,7 +28,7 @@
 	
 	
 		<section class="contentsection">
-            <h3>공지사항<small>수정하기</small></h3>
+            <h3>공지사항<small style="margin-left:15px;">수정하기</small></h3>
             
             <form method="POST" action="/bookjuck/admin/notice/editok.do">
             <table class="table tbl-md table-bordered" id="edittbl">
@@ -52,7 +52,7 @@
 	</div>
 	
 		<!-- 플로팅 메뉴 -->
-		<%@include file="/WEB-INF/views/common/bookjuckee.jsp" %>
+		<%@include file="/WEB-INF/views/admin/bookjuckee.jsp" %>
 		<%@include file="/WEB-INF/views/common/top.jsp" %>
 		
 		

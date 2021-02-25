@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,28 +29,33 @@
 
 	<section class="contentsection">
         <h3>자주 하는 질문<small>수정하기</small></h3>
-            	<form method="POST" action="/admin/faq/editok.do">
-					<div id="letterbox">
-			        	<input type="text" id="title" name="title" class="form-control inline" value="수정 전 제목">
-					        <span class="dropdown">
-					            <button class="btn btn-default dropdown-toggle" type="button" id="selected" data-toggle="dropdown" aria-expanded="true">
-						            질문카테고리
-						            <span class="caret"></span>
-					            </button>
-						        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="category">
-									<li role="presentation"><a role="menuitem" tabindex="-1">반품</a></li>
-									<li role="presentation"><a role="menuitem" tabindex="-1">환불</a></li>
-									<li role="presentation"><a role="menuitem" tabindex="-1">교환</a></li>
-									<li role="presentation"><a role="menuitem" tabindex="-1">배송</a></li>
-						        </ul>
-					        </span>
-					        <textarea id="content" name="content" class="form-control" cols="40" rows="15">수정 전 내용</textarea>
-					</div>
-					<div id="btn">
-					    <input type="submit" class="btn btn-general inline" value="저장하기" id="save">
-					    <button type="button" class="btn btn-general" value="뒤로가기" id="back" onclick="location.href='/bookjuck/admin/faq/list.do'">뒤로가기</button>
-					</div>
-            	</form>
+           	<form method="POST" action="/bookjuck/admin/faq/editok.do">
+           		<table class="table tbl-md" id="edittbl">
+           			<tr>
+           				<th class="col-md-2">질문카테고리</th>
+           				<td class="col-md-10">
+           					<select class="form-control selectpicker medium" id="seqQcategory" name="seqQcategory">
+								<option value=${dto.seqQcategory}>${dto.qCategory}</option>
+							</select>
+						</td>
+           			</tr>
+           			<tr>
+           				<th class="col-md-2">제목</th>
+           				<td class="col-md-10"><input type="text" id="title" name="title" class="form-control inline" value="${dto.title}"></td>
+           			</tr>
+           			<tr>
+           				<th>내용</th>
+           				<td colspan="2">
+           					<textarea id="content" name="content" class="form-control" cols="40" rows="15" style="width:100%;">${dto.content}</textarea>
+           				</td>
+           			</tr>
+           		</table>
+				<input type="hidden" id="seq" name="seq" value=${dto.seq}>
+				<div id="btn">
+				    <input type="submit" class="btn btn-general inline" value="저장하기" id="save">
+				    <button type="button" class="btn btn-general" value="뒤로가기" id="back" onclick="location.href='/bookjuck/admin/faq/list.do'">뒤로가기</button>
+				</div>
+           	</form>
     </section>
 	
 	</div>
@@ -59,7 +65,7 @@
 	<!-- ########## 하단 끝 -->
 	
 	<!-- 플로팅 메뉴 -->
-	<%@include file="/WEB-INF/views/common/bookjuckee.jsp" %>
+	<%@include file="/WEB-INF/views/admin/bookjuckee.jsp" %>
 	<%@include file="/WEB-INF/views/common/top.jsp" %>
 
 	<script>
@@ -67,6 +73,8 @@
         $('#category li > a').on('click', function() {
             // 버튼에 선택된 항목 텍스트 넣기 
             $('#selected').text($(this).text());
+            // 수정할 때 카테고리 변경 반영되도록 수정
+            $('#qcategory').val($(this).text());
         });
 
     </script>

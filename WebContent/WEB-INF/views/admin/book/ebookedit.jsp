@@ -140,6 +140,13 @@
 	  	
 	  	<!-- modal -->
 		<%@include file="/WEB-INF/views/admin/book/bookmodal.jsp" %>
+		<%--
+		<%
+			out.flush();
+			RequestDispatcher dmodal = request.getRequestDispatcher("/admin/book/bookmodal.do");
+			dmodal.include(request, response);
+		%>
+		--%>
 		
 		
 	</section>
@@ -151,7 +158,7 @@
 	</div>
 	
 	<!-- 플로팅 메뉴 -->
-	<%@include file="/WEB-INF/views/common/bookjuckee.jsp" %>
+	<%@include file="/WEB-INF/views/admin/bookjuckee.jsp" %>
 	<%@include file="/WEB-INF/views/common/top.jsp" %>
 
 	<script>

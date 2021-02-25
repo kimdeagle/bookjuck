@@ -5,10 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.test.bookjuck.DBUtil;
-import com.test.bookjuck.dto.BookDTO;
-import com.test.bookjuck.dto.CategoryDTO;
 import com.test.bookjuck.dto.EBookDTO;
 
 public class EBookDAO {
@@ -38,23 +37,26 @@ public class EBookDAO {
 	//주혁 시작
 	
 	//EBookList 서블릿 -> ebooklist 반환
-	public ArrayList<EBookDTO> getEBookList(CategoryDTO cdto) {
+	public ArrayList<EBookDTO> getEBookList(HashMap<String, String> map) {
 		
 		try {
 			
 			String sql = "";
+			String innerSql = "";
 			
-			if (cdto.getSeqSCategory() == null || cdto.getSeqSCategory().equals("")) {
+			if (map.get("seqSCategory") == null) {
 				//E-Book 리스트 첫 화면
-				sql = "select eb.*, (select name from tblAuthor where seq = eb.seqAuthor) as author from tblEbook eb order by eb.pubDate desc, title asc";
-				pstat = conn.prepareStatement(sql);
+				innerSql = "select eb.*, (select name from tblAuthor where seq = eb.seqAuthor) as author from tblEbook eb order by eb.pubDate desc, eb.title asc";
+
 			} else {
 				//도서 리스트 좌측 소분류 선택
-				sql = "select eb.*, (select name from tblAuthor where seq = eb.seqAuthor) as author from tblEbook eb where eb.seqSCategory = ? order by eb.pubDate desc, title asc";
-				pstat = conn.prepareStatement(sql);
-				pstat.setString(1, cdto.getSeqSCategory());
+				innerSql = String.format("select eb.*, (select name from tblAuthor where seq = eb.seqAuthor) as author from tblEbook eb where eb.seqSCategory = %s order by eb.pubDate desc, eb.title asc", map.get("seqSCategory"));
+
 			}
 			
+			sql = String.format("select * from (select a.*, rownum as rnum from (%s) a) where rnum between %s and %s", innerSql, map.get("begin"), map.get("end"));
+			
+			pstat = conn.prepareStatement(sql);
 			rs = pstat.executeQuery();
 			
 			ArrayList<EBookDTO> eblist = new ArrayList<EBookDTO>();
@@ -129,6 +131,34 @@ public class EBookDAO {
 		}
 		
 		return null;
+	}
+
+	//EBookList 서블릿 -> E-Book 수 반환
+	public int getEBookCount(HashMap<String, String> map) {
+		
+		try {
+			
+			String where = "";
+			
+			if (map.get("seqSCategory") != null) {
+				//소분류 선택
+				where = String.format("where seqSCategory = %s", map.get("seqSCategory"));
+			}
+			
+			String sql = String.format("select count(*) as cnt from tblEBook %s", where);
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			if (rs.next()) {
+				return rs.getInt("cnt");
+			}
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return 0;
 	}
 	
 	//주혁 끝

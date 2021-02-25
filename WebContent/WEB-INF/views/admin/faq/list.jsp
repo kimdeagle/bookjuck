@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,53 +29,35 @@
 
 	<section class="contentsection">
     	<h3>자주 하는 질문</h3>
-            <table class="table tbl-md qnatbl">
+            <table class="table tbl-md" id="listtbl">
                 <tr>
                     <th>카테고리</th>
                     <th>결제</th>
                 </tr>
+                
+                <c:if test="${nlist.size()==0}">
+			        <tr>
+			        	<td colspan="3" style="text-align:center;">게시물이 없습니다.</td>
+			        </tr>
+			    </c:if>
+			    
+		        <c:forEach items="${flist}" var="fdto">
+		        
                 <tr>
-                    <td>주문결제</td>
-                    <td class="cell2"><a data-toggle="modal" href="#myModal">온라인 송금으로 주문했을 때 주문자와 입금자가 같아야 하나요?</a></td>
+                    <td>${fdto.qCategory}</td>
+                    <td class="cell2"><a id="openModal" data-toggle="modal" href="#myModal" data-seq="${fdto.seq}" data-title="${fdto.title}" data-content="${fdto.content}">${fdto.title}</a></td>
                 </tr>
-                <tr>
-                    <td>수령일안내</td>
-                    <td class="cell2"><a data-toggle="modal" href="#myModal">주문한 상품이 아직 안 왔어요.</a></td>
-                </tr>
-                <tr>
-                    <td>반품</td>
-                    <td class="cell2"><a data-toggle="modal" href="#myModal">반품시 마일리지 환원되나요?</a></td>
-                </tr>
-                <tr>
-                    <td>교환</td>
-                    <td class="cell2"><a data-toggle="modal" href="#myModal">배송받은 제품을 교환하고 싶어요</a></td>
-                </tr>
-                <tr>
-                    <td>환불</td>
-                    <td class="cell2"><a data-toggle="modal" href="#myModal">결함품 환불가능한가요?</a></td>
-                </tr>
+                </c:forEach>
             </table>
+            
+            <nav class="pagebar">
+                <ul class="pagination">
+                    ${pagebar}
+                </ul>
+            </nav>
 
-            <ul class="pagination">
-                <li>
-                <a href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-                </li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li>
-                <a href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-                </li>
-            </ul>
-
-            <div id="btn">
-                <button type="button" class="btn btn-general" id="qcategory">질문카테고리 관리하기</button>
+			<div id="btn">
+                <button type="button" class="btn btn-general" id="qcategory"  onclick="location.href='/bookjuck/admin/qcategory/list.do'">질문카테고리 관리하기</button>
                 <button type="button" class="btn btn-general inline" id="add" onclick="location.href='/bookjuck/admin/faq/add.do'">작성하기</button>
             </div>
         </section>
@@ -88,24 +71,26 @@
 	
 	
 	<!-- 플로팅 메뉴 -->
-	<%@include file="/WEB-INF/views/common/bookjuckee.jsp" %>
+	<%@include file="/WEB-INF/views/admin/bookjuckee.jsp" %>
 	<%@include file="/WEB-INF/views/common/top.jsp" %>
 
-	    <!-- Modal -->
+	<!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog modal-md">
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">자주 하는 질문</h4>
+              <h4 class="modal-title"></h4>
             </div>
             <div class="modal-body">
-	            <p>Q. 온라인 송금으로 주문했을 때 주문자와 입금자가 같아야 하나요?</p>
-	            <p>A. 네 같아야 합니다.</p>
+            	<span class="glyphicon glyphicon-question-sign"></span><p id="modaltitle"></p>
+	            <br>
+	            <span class="glyphicon glyphicon-ok-sign"></span><p id="modalcontent"></p>
+	            <input type="hidden" id="modalseq">
             </div>
             <div id="btn">
                 <button type="button" class="btn btn-general" id="edit">수정하기</button>
-                <button type="button" class="btn btn-general inline" id="back">삭제하기</button>
+                <button type="button" class="btn btn-general inline" id="del">삭제하기</button>
             </div>
         <!-- <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -114,6 +99,29 @@
         </div>
     </div>
 
+	<script>
+	
+		var seq="";
+		var title="";
+		var content="";
+	
+		$('.cell2 > a').on('click', function(){
+			$('#modalseq').val($(this).data("seq"));
+			$('#modaltitle').text($(this).data("title"));
+			$('#modalcontent').text($(this).data("content"));
+			
+		});
+		
+		$('#edit').on('click', function(){
+			location.href="/bookjuck/admin/faq/edit.do?seq="+$('#modalseq').val();
+		});
+		
+		$('#del').on('click', function(){
+			location.href="/bookjuck/admin/faq/del.do?seq="+$('#modalseq').val();
+		});
+	
+	</script>
+	
 </body>
 
 </html>

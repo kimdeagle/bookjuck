@@ -134,12 +134,12 @@
 				<c:forEach items="${list1}" var="dto">
 				<div class="bookbox">
 					<div class="bestrank1">
-						<img src="../image/${dto.image}">
+						<img src="/bookjuck/image/${dto.image}">
 						<div class="bookname">
 							<strong>${dto.title}</strong>
 						</div>
 						<div class="bookinfo">${dto.author}| ${dto.publisher} |
-							${dto.pubdate}</div>
+							${dto.pubDate}</div>
 						<div class="bookcopy">${dto.copy}</div>
 						<div class="price">가격: ${dto.price}원</div>
 						<div class="rank1btn">
@@ -164,12 +164,12 @@
 					<c:forEach items="${list2}" var="dto">
 					<div class="bookbox2">
 						<div class="bestrank2">
-							<img src="../image/${dto.image}">
+							<img src="/bookjuck/image/${dto.image}">
 							<div class="bookname">
 								<strong>${dto.title}</strong>
 							</div>
 							<div class="bookinfo">${dto.author}| ${dto.publisher} |
-								${dto.pubdate}</div>
+								${dto.pubDate}</div>
 							<div class="bookcopy">${dto.copy}</div>
 							<div class="price">가격: ${dto.price}원</div>
 							<div class="rank2to4">
@@ -243,12 +243,12 @@
 					<c:forEach items="${list3}" var="dto">
 					<div class="bookbox5">
 						<div class="bestrank5">
-							<img src="../image/${dto.image}">
+							<img src="/bookjuck/image/${dto.image}">
 							<div class="bookname">
 								<strong>${dto.title}</strong>
 							</div>
 							<div class="bookinfo">${dto.author}| ${dto.publisher} |
-								${dto.pubdate}</div>
+								${dto.pubDate}</div>
 							<div class="bookcopy">${dto.copy}</div>
 							<div class="price">가격: ${dto.price}원</div>
 							<div>
@@ -379,7 +379,7 @@
 		<%-- <%@include file="/WEB-INF/views/common/footer.jsp"%> --%>
 	</div>
 	<!-- 플로팅 메뉴 -->
-	<%-- <%@include file="/WEB-INF/views/common/bookjuckee.jsp"%>
+	<%-- 	<%@include file="/WEB-INF/views/member/bookjuckee.jsp" %>"%>
 	<%@include file="/WEB-INF/views/common/top.jsp"%> --%>
 
 

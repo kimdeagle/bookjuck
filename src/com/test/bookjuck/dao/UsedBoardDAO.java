@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.test.bookjuck.DBUtil;
+import com.test.bookjuck.dto.CommentDTO;
 import com.test.bookjuck.dto.UsedBoardDTO;
 
 public class UsedBoardDAO {
@@ -75,7 +76,13 @@ public class UsedBoardDAO {
 			}
 			
 			
-			String sql = String.format("select * from vwUsedBoard %s order by seq desc", where);
+			//String sql = String.format("select * from vwUsedBoard %s order by seq desc", where);
+			
+			String sql = String.format("select * from (select a.*, rownum as rnum from (select * from vwUsedBoard %s order by seq desc) a) where rnum between %s and %s"
+					, where
+					, map.get("begin")
+					, map.get("end"));
+			
 			
 			pstat = conn.prepareStatement(sql);
 			rs = pstat.executeQuery();
@@ -197,5 +204,126 @@ public class UsedBoardDAO {
 		
 		return 0;
 	}
+	
+	
+	//DeleteOk 서블릿 -> 글 삭제하기
+	public int del(String seq) {
+		
+		try {
+
+			String sql = "delete from tblUsedBoard where seq = ?";
+
+			pstat = conn.prepareStatement(sql);	
+			pstat.setString(1, seq);	//글 번호
+
+			return pstat.executeUpdate(); // 1 or 0
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return 0;
+	}
+
+	
+
+	//총 게시물 수 를 세는 메서드
+	//List 서블릿 -> 총 게시물 수 반환
+	public int getTotalCount(HashMap<String, String> map) {
+		
+		try {
+			
+			String where = "";
+			
+			if (map.get("fleamarketsearch")!= null) {
+				
+				where = String.format("where id like '%%%s%%' or title like '%%%s%%' or content like '%%%s%%'", map.get("fleamarketsearch"), map.get("fleamarketsearch"), map.get("fleamarketsearch"));
+				
+			}
+			
+			String sql = String.format("select count(*) as cnt from vwUsedBoard %s", where);
+			
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			if (rs.next()) {
+				return rs.getInt("cnt");
+			}
+			
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
+	
+	
+	
+	//CommentOk 서블릿 -> 댓글 쓰기
+	public int writeComment(CommentDTO dto) {
+		
+		try {
+			
+			String sql = "insert into tblComment (seq, ccontent, regdate, seqUsedBoard, seqMember) values (seqComment.nextVal, ?, default, ?, ?)";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getCcontent());
+			pstat.setString(2, dto.getSeqUsedBoard());
+			pstat.setString(3, dto.getSeqMember());
+			
+			return pstat.executeUpdate(); //1 or 0
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return 0;
+		
+	}
+	
+	
+	//View 서블릿 -> 댓글 목록
+	public ArrayList<CommentDTO> listComment(String seq) {
+		
+
+		try {
+			
+			String sql = "select c.*, (select name from tblMember where seq = c.seqMember) as name, (select id from tblMember where seq = c.seqMember) as id from tblComment c where c.seqUsedBoard = ? order by c.seq desc"; 
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);//부모 글번호
+			
+			rs = pstat.executeQuery();
+			
+			ArrayList<CommentDTO> clist = new ArrayList<CommentDTO>();
+			
+			while (rs.next()) {
+				
+				CommentDTO dto = new CommentDTO();
+				
+				dto.setSeq(rs.getString("seq"));
+				dto.setCcontent(rs.getString("ccontent"));
+				dto.setRegdate(rs.getString("regDate"));
+				dto.setSeqMember(rs.getString("seqMember"));
+				dto.setSeqUsedBoard(rs.getString("seqUsedBoard"));
+				dto.setId(rs.getString("id"));
+				
+				clist.add(dto);
+				
+			}
+			
+			return clist;
+			
+			
+		} catch (Exception e) {
+			
+			System.out.println(e);
+		}
+		
+		return null;
+	}
+	
 
 }
