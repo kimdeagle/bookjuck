@@ -31,7 +31,7 @@
 		<section class="contentsection">
             <h3>QnA</h3>
 
-            <table class="table tbl-md qnatbl">
+            <table class="table tbl-md" id="listtbl">
                 <tr>
                     <th class="col-md-2 cell1">카테고리</th>
                     <th class="col-md-2 cell2">아이디</th>
@@ -43,8 +43,8 @@
                 <tr>
                     <td class="cell1">${qdto.qCategory}</td>
                     <td class="cell2">${qdto.id}</td>
-                    <td class="cell3"><a href="/bookjuck/admin/qna/detail.do?seq=${qdto.seq}">${qdto.title}</a></td>
-                    <td class="cell4">${qdto.regDate}</td>
+                    <td class="cell3"><a href="/bookjuck/admin/qna/detail.do?seq=${qdto.seq}&page=${nowPage}">${qdto.title}</a></td>
+                    <td class="cell4">${qdto.regDate.substring(0, 10)}</td>
                     <td class="cell5">
                     	<c:if test="${qdto.isDone.substring(0, 10).equals('1900-01-01')}">
                     		<span>답변대기중</span>

@@ -27,24 +27,30 @@
 	<%@include file="/WEB-INF/views/admin/inc/header.jsp" %>
 
 	<section class="contentsection">
-        <h3>자주 하는 질문<small>작성하기</small></h3>
+        <h3>자주 하는 질문<small style="margin-left:15px;">작성하기</small></h3>
             	<form method="POST" action="/bookjuck/admin/faq/addok.do">
-					<div id="letterbox">
-			        	<input type="text" id="title" name="title" class="form-control inline" placeholder="제목을 입력해주세요">
-					        <span class="dropdown">
-					            <button class="btn btn-default dropdown-toggle" type="button" id="selected" data-toggle="dropdown" aria-expanded="true">
-						            질문카테고리
-						            <span class="caret"></span>
-					            </button>
-						        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="category">
-						        	<c:forEach items="${clist}" var="cdto">
-										<li role="presentation"><a role="menuitem" tabindex="-1" value="${cdto.seq}">${cdto.category}</a></li>
-									</c:forEach>
-						        </ul>
-					        </span>
-					        <input type="hidden" id="qcategory" name="qcategory">
-					        <textarea id="content" name="content" class="form-control" cols="40" rows="15" placeholder="내용을 입력해주세요"></textarea>
-					</div>
+            		<table class="table tbl-md" id="addtbl">
+            			<tr>
+            				<th class="col-md-2">질문카테고리</th>
+            				<td class="col-md-10">
+            					<select class="form-control selectpicker medium" id="email" name="seqQcategory">
+		            				<c:forEach items="${clist}" var="cdto">
+		            					<option value=${cdto.seq}>${cdto.category}</option>
+		            				</c:forEach>
+								</select>
+							</td>
+            			</tr>
+            			<tr>
+            				<th class="col-md-2">제목</th>
+            				<td class="col-md-10"><input type="text" id="title" name="title" class="form-control inline" placeholder="제목을 입력해주세요"></td>
+            			</tr>
+            			<tr>
+            				<th>내용</th>
+            				<td colspan="2">
+            					<textarea id="content" name="content" class="form-control" cols="40" rows="15" style="width:100%;" placeholder="내용을 입력해주세요"></textarea>
+            				</td>
+            			</tr>
+            		</table>
 					<div id="btn">
 					    <input type="submit" class="btn btn-general inline" value="저장하기" id="save">
 					    <button type="button" class="btn btn-general" value="뒤로가기" id="back" onclick="location.href='/bookjuck/admin/faq/list.do'">뒤로가기</button>
@@ -62,13 +68,6 @@
 	<%@include file="/WEB-INF/views/admin/bookjuckee.jsp" %>
 	<%@include file="/WEB-INF/views/common/top.jsp" %>
 
-	<script>
-        $('#category li > a').on('click', function() {
-            // 버튼에 선택된 항목 텍스트 넣기
-            $('#selected').text($(this).text());
-            $('#qcategory').val($(this).text());
-        });
-    </script>
 
 </body>
 

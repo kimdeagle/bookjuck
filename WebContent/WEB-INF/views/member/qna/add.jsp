@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,39 +54,29 @@
         <section class="contentsection">
             <h3>QnA<small style="margin-left:15px;">작성하기</small></h3>
 			<form method="POST" action="/bookjuck/member/qna/addok.do">
-				<table class="table table-md" id="addtbl">
-					<tr>
-						<th>질문카테고리</th>
-						<td>
-							<div class="dropdown">
-	                        	<button class="btn btn-default dropdown-toggle selected" type="button" data-toggle="dropdown" aria-expanded="true" id="category">
-	                          	질문카테고리
-	                          	<span class="caret"></span>
-	                        	</button>
-	                        	<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="category">
-					        	<c:forEach items="${clist}" var="cdto">
-									<li role="presentation"><a role="menuitem" tabindex="-1" value="${cdto.seq}">${cdto.category}</a></li>
-								</c:forEach>
-					        	</ul>
-                    		</div>
+				<table class="table tbl-md" id="addtbl">
+           			<tr>
+           				<th class="col-md-2">질문카테고리</th>
+           				<td class="col-md-10">
+           					<select class="form-control selectpicker medium" id="email" name="seqQcategory">
+	            				<c:forEach items="${clist}" var="cdto">
+	            					<option value=${cdto.seq}>${cdto.category}</option>
+	            				</c:forEach>
+							</select>
 						</td>
-						<td style="vertical-align:middle;">
-							<span class="glyphicon glyphicon-exclamation-sign"></span><b>주문번호를 기재해주시면 보다 정확한 답변이 가능합니다!</b></td>
-						</td>
-					</tr>
-					<tr>
-						<th class="col-md-3">제목</th>
-						<td class="col-md-9" colspan="3">
-							<input type="text" id="title" name="title" class="form-control inline" placeholder="제목을 입력해주세요">
-						</td>
-					</tr>
-					<tr>
-						<th class="col-md-1">내용</th>
-						<td class="col-md-11" colspan="3"><textarea id="content" name="content" class="form-control" cols="40" rows="15" style="width:100%;" placeholder="내용을 입력해주세요"></textarea></td>
-					</tr>
-				</table>
-				<input type="hidden" id="qcategory" name="qcategory"> <!-- 질문카테고리 이름 다른 데이터와 같이 AddOk서블릿으로 넘긴다! -->
-	            <div id="btn">
+           			</tr>
+           			<tr>
+           				<th class="col-md-2">제목</th>
+           				<td class="col-md-10"><input type="text" id="title" name="title" class="form-control inline" placeholder="제목을 입력해주세요"></td>
+           			</tr>
+           			<tr>
+           				<th>내용</th>
+           				<td colspan="2">
+           					<textarea id="content" name="content" class="form-control" cols="40" rows="15" style="width:100%;" placeholder="내용을 입력해주세요"></textarea>
+           				</td>
+           			</tr>
+           		</table>
+				<div id="btn">
 	                <input type="submit" class="btn btn-general inline" value="저장하기" id="save">
 	                <button type="button" class="btn btn-general" id="back" onclick="location.href='/bookjuck/member/qna/list.do'">뒤로가기</button>
 	            </div>

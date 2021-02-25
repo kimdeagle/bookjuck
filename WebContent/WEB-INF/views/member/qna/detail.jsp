@@ -90,7 +90,7 @@
 			<div id="btn">
                 <button type="button" class="btn btn-general inline" id="edit" onclick="location.href='/bookjuck/member/qna/edit.do?seq=${qdto.seq}'">수정하기</button>
                 <button type="button" class="btn btn-general inline" id="del" data-toggle="modal" data-target="#myModal">삭제하기</button>
-                <button type="button" class="btn btn-general" id="back" onclick="location.href='/bookjuck/member/qna/list.do'">뒤로가기</button>
+                <button type="button" class="btn btn-general" id="back" onclick="location.href='/bookjuck/member/qna/list.do?page=${page}'">뒤로가기</button>
             </div>
 	     </section>
 

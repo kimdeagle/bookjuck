@@ -31,6 +31,7 @@ public class Edit extends HttpServlet {
 		QuestionDTO dto=dao.getInfo(seq);
 		
 		req.setAttribute("dto", dto);
+
 		
 		// edit으로 넘어가기 전에
 		// edit에서 사용할 질문카테고리 데이터를 받아와야 한다.

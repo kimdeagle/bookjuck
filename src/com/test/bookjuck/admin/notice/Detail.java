@@ -24,9 +24,10 @@ public class Detail extends HttpServlet {
 		
 		String seq=req.getParameter("seq");
 		String page=req.getParameter("page");
-		
+		System.out.println(page);
 		NoticeDAO dao=new NoticeDAO();
 		NoticeDTO dto=dao.getInfo(seq);
+		
 		
 		// 공지사항의 내용같은 경우는 \r\n을 <br>로 바꿔줘야 한다.
 		dto.setContent(dto.getContent().replace("\r\n", "<br>"));

@@ -29,20 +29,19 @@ public class AddOk extends HttpServlet {
 		String seq=req.getParameter("seq");
 		String title=req.getParameter("title");
 		String content=req.getParameter("content");
-		String qCategory=req.getParameter("qcategory");
-		
+		String seqQcategory=req.getParameter("seqQcategory");
 		FAQDTO dto=new FAQDTO();
 		FAQDAO dao=new FAQDAO();
 		
 		dto.setTitle(title);
 		dto.setContent(content);
-		dto.setqCategory(qCategory);
+		dto.setSeqQcategory(seqQcategory); // 질문카테고리번호
 		
 		int result=dao.add(dto);
 		
 		if (result==1) {
 			// 자주하는 질문 추가 성공 -> 게시판 목록으로 이동
-			resp.sendRedirect("/bookjuck/member/qna/list.do");
+			resp.sendRedirect("/bookjuck/admin/faq/list.do");
 		} else {
 			// 자주하는 질문 실패 -> 경고 + 뒤로 가기
 			PrintWriter writer=resp.getWriter();

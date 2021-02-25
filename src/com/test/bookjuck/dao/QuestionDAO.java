@@ -50,7 +50,7 @@ public class QuestionDAO {
 		
 		try {
 			
-			String sql="insert into tblQuestion(seq, seqmember, seqqcategory, title, content, regdate)  values(seqQuestion.nextVal, ?, (select seq from tblQcategory where category=?), ?, ?, sysdate)";
+			String sql="insert into tblQuestion(seq, seqmember, seqqcategory, title, content, regdate)  values(seqQuestion.nextVal, ?, ?, ?, ?, sysdate)";
 			
 			pstat=conn.prepareStatement(sql);
 			pstat.setString(1, dto.getSeqMember());
@@ -169,6 +169,7 @@ public class QuestionDAO {
 			String sql="select"
 					+ "    q.seq as seq,"
 					+ "    m.id as id,"
+					+ "    c.seq as seqqcategory,"
 					+ "    c.category as category,"
 					+ "    q.title as title,"
 					+ "    q.content as content,"
@@ -188,6 +189,7 @@ public class QuestionDAO {
 			if (rs.next()) {
 				dto.setSeq(rs.getString("seq"));
 				dto.setId(rs.getString("id"));
+				dto.setSeqQCategory(rs.getString("seqqcategory"));
 				dto.setqCategory(rs.getString("category"));
 				dto.setTitle(rs.getString("title"));
 				dto.setContent(rs.getString("content"));
@@ -213,12 +215,12 @@ public class QuestionDAO {
 		
 		try {
 			
-			String sql="update tblQuestion set title=?, content=?, seqqcategory=(select seq from tblQcategory where category=?) where seq=?";
+			String sql="update tblQuestion set title=?, content=?, seqqcategory=? where seq=?";
 			
 			pstat=conn.prepareStatement(sql);
 			pstat.setString(1, dto.getTitle());
 			pstat.setString(2, dto.getContent());
-			pstat.setString(3, dto.getqCategory());
+			pstat.setString(3, dto.getSeqQCategory());
 			pstat.setString(4, dto.getSeq());
 			return pstat.executeUpdate();
 			
@@ -321,6 +323,11 @@ public class QuestionDAO {
 		return null;
 	}
 
+	/**
+	 * 관리자페이지에서 pagination을 위해 모든 1대1문의글 수를 가져오는 메서드입니다.
+	 * @param map pagination을 위한 시작 글번호, 끝 글번호가 담긴 HashMap입니다.
+	 * @return 문의글 수를 반환합니다.
+	 */
 	public int getTotalCount(HashMap<String, String> map) {
 		
 		try {

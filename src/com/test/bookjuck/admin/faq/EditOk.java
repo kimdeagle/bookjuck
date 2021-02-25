@@ -25,7 +25,7 @@ public class EditOk extends HttpServlet {
 		String seq=req.getParameter("seq");
 		String title=req.getParameter("title");
 		String content=req.getParameter("content");
-		String qCategory=req.getParameter("qcategory");
+		String seqQcategory=req.getParameter("seqQcategory");
 		
 		FAQDAO dao=new FAQDAO();
 		FAQDTO dto=new FAQDTO();
@@ -33,7 +33,7 @@ public class EditOk extends HttpServlet {
 		dto.setSeq(seq);
 		dto.setTitle(title);
 		dto.setContent(content);
-		dto.setqCategory(qCategory);
+		dto.setSeqQcategory(seqQcategory);
 		
 		int result=dao.edit(dto);
 		
