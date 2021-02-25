@@ -24,7 +24,7 @@
 	<div id="container">
 
 		<div id="logo">
-			<img src="/bookjuck/image/bookjeok/logo.png">
+			<img src="/bookjuck/image/bookjeok/logo.png" onclick="home()">
 		</div>
 
 		<form action="http://localhost:8090/bookjuck/member/register.do" method="GET" id="tosForm">
@@ -78,7 +78,7 @@
 				<tr>
 					<th>이름:</th>
 					<td>
-						<input type="text" class="log-md" required id ="name" name="name">	
+						<input type="text" class="log-md" required id ="name" name="name" maxlength="">	
 					</td>
 
 					<!-- <td>성별: 
@@ -95,7 +95,7 @@
 				<tr>
 					<th>주민번호:</th>
 					<td>
-						<input type="text" class="log-md" required id="ssn1" name="ssn1"><span>- </span><input type="text" class="log-md" required id="ssn2" name="ssn2">
+						<input type="text" class="log-md" required id="ssn1" name="ssn1" maxlength="6"><span>- </span><input type="text" class="log-md" required id="ssn2" name="ssn2" maxlength="7">
 					</td>
 					<td>
 					</td>
@@ -114,8 +114,7 @@
 				<tr>
 					<th>이메일:</th>
 					<td>
-					
-						<input type="text" class="log-sm" required><span>@</span><input type="text" class="log-md" required>
+						<input type="text" class="log-sm" id="email1" name="email1" required><span>@</span><input type="text" class="log-md" id="email2" name="email2" required>
 					</td>
 					<td>
 						<input type="button" class="btn-general" value="보내기">
@@ -146,7 +145,7 @@
 		<address>
 
 			<p>
-				Copyright ©<b>BookJeok</b>Corp. All Rights Reserved.
+				Copyright ©<b>BookJuck</b>Corp. All Rights Reserved.
 			</p>
 		</address>
 	</div>
@@ -516,25 +515,32 @@ YP e-money 총 금액의 100분의 60(1만원 이하 금액은 100분의 80) 이
 
 
 	<script>
-		$(document).ready(function() {
-			//최상단 체크박스 클릭
-			$("#allCheck").click(function() {
-				//클릭되었으면
-				if ($("#allCheck").prop("checked")) {
-					//input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
-					$("input[class=chk]").prop("checked", true);
+	/*로고 HOME으로*/
+	function home(){
+		location.href="http://localhost:8090/bookjuck/index.do";
+	}
+	
+	
+	
+	$(document).ready(function() {
+		//최상단 체크박스 클릭
+		$("#allCheck").click(function() {
+			//클릭되었으면
+			if ($("#allCheck").prop("checked")) {
+				//input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
+				$("input[class=chk]").prop("checked", true);
 
-					//클릭이 안되있으면
-				} else {
-					//input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
-					$("input[class=chk]").prop("checked", false);
-				}
-			})
+				//클릭이 안되있으면
+			} else {
+				//input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
+				$("input[class=chk]").prop("checked", false);
+			}
 		})
+	})
 		
 		
-		/*배경 container */
-		$(window).resize(function() {
+	/*배경 container */
+	$(window).resize(function() {
 		$("#container").height($(document).height());
 	});
 	$("#container").height($(document).height());

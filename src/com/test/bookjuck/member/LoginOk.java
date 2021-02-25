@@ -24,8 +24,7 @@ public class LoginOk extends HttpServlet {
 		String id = req.getParameter("id");
 		String pw = req.getParameter("pw");
 		
-		System.out.println(id);
-		System.out.println(pw);
+		
 		// 2.
 		MemberDAO dao = new MemberDAO();
 		MemberDTO dto = new MemberDTO();
@@ -34,6 +33,8 @@ public class LoginOk extends HttpServlet {
 		dto.setPw(pw);
 		
 		int result = dao.login(dto);
+		
+		
 		
 		if (result == 1) {
 

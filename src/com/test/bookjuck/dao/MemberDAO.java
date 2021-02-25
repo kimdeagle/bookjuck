@@ -34,11 +34,14 @@ public class MemberDAO {
 
 	}
 
-	/* 최진영 - tos.jsp(이용약관 정보 추가) 시작 */
-	public int Tosadd(MemberDTO dto) {
+	
+
+	// ############ (최진영) 시작
+	public int add(MemberDTO dto) {
+
 		try {
 
-			String sql = "insert into tblMember(seq, id, pw, name, tel, regDate, address, ssn, login, email, points, privacy, lastDate) values(seqMember.nextVal, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "insert into tblMember (seq, id, pw, name, tel, regdate, address, ssn, login, email, points, privacy, lastDate) values(seqMember.nextVal, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 			pstat = conn.prepareStatement(sql);
 
@@ -55,45 +58,6 @@ public class MemberDAO {
 			pstat.setInt(11, dto.getPrivacy());
 			pstat.setString(12, dto.getLastDate());
 
-			rs = pstat.executeQuery();
-
-			if (rs.next()) {
-				return rs.getInt("cnt");
-			}
-
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		return 0;
-	}
-	/* 최진영 - tos.jsp(이용약관 정보 추가) 시작 */
-
-	/* 최진영 - registerOK.java(회원가입) 시작 */
-	public int add(MemberDTO dto) {
-
-		try {
-
-			String sql = "insert into tblMember (seq, id, pw, name, tel, regdate, address, ssn, login, email, points, privacy, lastdate) values(seqMember.nextVal, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-			Calendar cal = Calendar.getInstance();
-			SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd HH:mm:ss");
-			String now = format.format(cal.getTime());
-
-			pstat = conn.prepareStatement(sql);
-
-			pstat.setString(1, dto.getId());
-			pstat.setString(2, dto.getPw());
-			pstat.setString(3, dto.getName());
-			pstat.setInt(4, dto.getTel());
-			pstat.setString(5, dto.getAddress());
-			pstat.setString(6, dto.getRegDate());
-			pstat.setString(7, dto.getSsn());
-			pstat.setString(8, dto.getLogin());
-			pstat.setString(9, dto.getEmail());
-			pstat.setInt(10, dto.getPoints());
-			pstat.setInt(11, dto.getPrivacy());
-			pstat.setString(12, dto.getLastDate());
-
 			return pstat.executeUpdate();
 
 		} catch (Exception e) {
@@ -102,27 +66,28 @@ public class MemberDAO {
 
 		return 0;
 	}
-	/* 최진영 - registerOK.java(회원가입) 종료 */
+	// ############ (최진영) 종료
 
-	/* 최진영 - Loginok.java(로그인) 시작 */
+	
+	// ############ (최진영) 시작 
 	public int login(MemberDTO dto) {
 
 		try {
-
+			
 			String sql = "select count(*) as cnt from tblMember where id =? and pw=?";
 
 			pstat = conn.prepareStatement(sql);
-			System.out.println("---------------------------------------------------------DAO오류 와드 1");
+			
 			pstat.setString(1, dto.getId());
 			pstat.setString(2, dto.getPw());
 
 			rs = pstat.executeQuery();
 			
 			if (rs.next()) {
-			
-
+				
 				return rs.getInt("cnt");
 			}
+			
 			
 
 		} catch (Exception e) {
@@ -131,10 +96,10 @@ public class MemberDAO {
 
 		return 0;
 	}
-	/* 최진영 - Loginok.java(로그인) 종료 */
+	// ############ (최진영) 종료 
 
-	/* 최진영 - Loginok.java(로그인2) 시작 */
-	// Login 서블릿이 id를 건내주면서 회원 정보를 달라고 위임
+	
+	// ############ (최진영) 시작
 	public MemberDTO getMember(String id) {
 		try {
 
@@ -144,7 +109,7 @@ public class MemberDAO {
 			pstat.setString(1, id);
 
 			rs = pstat.executeQuery();
-
+			
 			if (rs.next()) {
 				MemberDTO dto = new MemberDTO();
 
@@ -169,8 +134,78 @@ public class MemberDAO {
 			System.out.println(e);
 		}
 		return null;
+	
+  // ############ (최진영) 종료
+
+	
+	// ############ (최진영) 시작 
+	public int add_c(MemberDTO dto) {
+		
+		try {
+			String sql = "insert into tblLetterRecipient (seq, seqMember) values(seqLetterRecipient.nextVal, seqLetterRecipient.nextVal)";
+			
+			pstat = conn.prepareStatement(sql);
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
 	}
-	/* 최진영 - Loginok.java(로그인2) 종료 */
+	// ############ (최진영) 종료
+
+	// ############ (최진영) 시작
+	public int checkId(String id) {
+	
+		
+		try {
+			String sql = "select count(*) as cnt from tblMember where id = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, id);
+			
+			
+			rs = pstat.executeQuery();
+			
+			
+			if (rs.next()) {
+				return rs.getInt("cnt");
+			}
+		
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return 0;
+	}
+	// ############ (최진영) 종료
+
+	
+	// ############ (최진영) 시작
+	public String findIdSsn(String ssn, String name) {
+		
+		try {
+			
+			String sql = "select id from tblMember where name=? and ssn = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, name);
+			pstat.setString(2, ssn);
+			
+			rs = pstat.executeQuery();
+			System.out.println(ssn);
+			System.out.println(name);
+			
+			if(rs.next()) {
+				return rs.getString("id");
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}	
+		return null;
+	}
+
 	
 	// ############ (조아라) 시작
 	/**
@@ -213,4 +248,5 @@ public class MemberDAO {
 	}
 	
 	// ############ (조아라) 시작
+
 }

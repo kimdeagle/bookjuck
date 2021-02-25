@@ -20,7 +20,7 @@
 		
 		<c:if test="${not empty id}">
         <div id="headerlink">
-            <a href="#" class="headerlink-item">마이페이지</a>
+            <a href="/bookjuck/member/mypage.do" class="headerlink-item">마이페이지</a>
             <a href="/bookjuck/member/logoutok.do" class="headerlink-item">로그아웃</a>
             <a href="#" class="headerlink-item">장바구니</a>
             <a href="#" class="headerlink-item">주문/배송조회</a>

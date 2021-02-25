@@ -48,6 +48,10 @@ html, body {
 	margin: 50px;
 }
 
+#logo>img:hover{
+	cursor: pointer;
+}
+
 #login,
 #nmLogin{
 	width: 400px;
@@ -96,7 +100,6 @@ address{
 
 
 /*로그인 CSS*/
-
 #switchBox {
 	width: 401px;
 	height: 60px;
@@ -140,6 +143,11 @@ address{
 
 
 /*chbox 호버*/
+#memberbtn:hover,
+#nonMbtn:hover{
+	cursor: pointer;
+}
+
 #nonMbtn{
 	background-color: #ccc;
 }
@@ -160,7 +168,7 @@ span{
 
 
 
-/*아이디,비밀번호 찾기 찾기  css*/
+/*아이디,비밀번호 찾기  css*/
 #idFindTbl,
 #pwFindTbl{
 	
@@ -183,7 +191,8 @@ margin: 3px 0px;
 	height: 55px;
 	padding: 5px;	
 	margin: auto;
-	padding-left: 11.6px;
+	padding-left: 13.1px;
+	
 	
 }
 
@@ -194,6 +203,7 @@ margin: 3px 0px;
 	border: 1px solid #ccc;
 	margin: auto;
 	float: left;
+	border-bottom: none;
 	border-collapse: collapse;
 	padding: 10px;
 	text-align: center;
@@ -203,6 +213,7 @@ margin: 3px 0px;
 	width: 375px;
 	height: 150px;
 	border: 1px solid #ccc;
+	border-top: none;
 	margin: auto;
 	text-align: center;
 	align-items: center;
@@ -223,11 +234,13 @@ margin: 3px 0px;
 	margin-left: 97px;
 }
 
-#ssn:hover, #tel:hover, #email:hover,
+/* 아이디, 비밀번호 찾기 hover*/
+/* #ssn:hover, #tel:hover, #email:hover,
 #ssnPw:hover, #telPw:hover, #emailPw:hover{
 	cursor: pointer;
 	background-color: #ccc;
-}
+} */
+#tel, #email, #Pwtel, #email{background-color: #ccc;}
 
 
 /*비밀번호 찾기 css*/
