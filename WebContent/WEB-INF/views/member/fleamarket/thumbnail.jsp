@@ -95,7 +95,12 @@
                         <div class="subject">${dto.title}</div>
                         <div class="id">${dto.id}</div>
                         <div class="regdate">${dto.regDate}</div>
-                        <div class="cnt">댓수</div>
+                        <c:if test="${dto.ccount > 0}">
+                        <div class="cnt">${dto.ccount}</div>
+                        </c:if>
+                        <c:if test="${dto.ccount == 0 ||dto.ccount == null}">
+                        <div class="cnt">0</div>
+                        </c:if>
                     </div>
 					</c:forEach>
 					
