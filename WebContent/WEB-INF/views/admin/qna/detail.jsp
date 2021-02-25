@@ -71,12 +71,12 @@
                 	<c:if test="${empty adto.answerDate}">
 					<button type="button" class="btn btn-general" id="addModalbtn" data-toggle="modal" href="#addModal" data-seq="${qdto.seq}">답변 작성하기</button>
                     <button type="button" class="btn btn-general inline" id="delModalbtn" data-toggle="modal" data-target="#delModal">삭제하기</button>
-                	<button type="button" class="btn btn-general inline" id="back" onclick="location.href='/bookjuck/admin/qna/list.do'">뒤로가기</button>
+                	<button type="button" class="btn btn-general inline" id="back" onclick="location.href='/bookjuck/admin/qna/list.do?page=${page}'">뒤로가기</button>
                 	</c:if>
                 	<c:if test="${not empty adto.answerDate}">
                 	<button type="button" class="btn btn-general" id="editModalbtn" data-toggle="modal" href="#editModal" data-seq="${adto.seq}" data-answercontent="${adto.answerContent}" data-seqquestion="${qdto.seq}">답변 수정하기</button>
                     <button type="button" class="btn btn-general inline" id="delModalbtn" data-toggle="modal" data-target="#delModal">삭제하기</button>
-                    <button type="button" class="btn btn-general inline" id="back" onclick="location.href='/bookjuck/admin/qna/list.do'">뒤로가기</button>
+                    <button type="button" class="btn btn-general inline" id="back" onclick="location.href='/bookjuck/admin/qna/list.do?page=${page}'">뒤로가기</button>
                 	</c:if>
                 </div>
             

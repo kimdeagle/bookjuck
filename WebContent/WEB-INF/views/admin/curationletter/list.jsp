@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,43 +28,33 @@
 	<%@include file="/WEB-INF/views/admin/inc/header.jsp" %>
 
 	<section class="contentsection">
-            <h3>큐레이션레터</h3>
+            <h3>큐레이션레터<small style="margin-left:15px;">전송내역</small></h3>
 
-            <table class="table tbl-md">
+            <table class="table tbl-md" id="logtbl">
                 <tr>
-                    <th>레터번호</th>
-                    <th>제목</th>
-                    <th>전송일</th>
+                    <th class="col-md-1">레터번호</th>
+                    <th class="col-md-6">제목</th>
+                    <th class="col-md-2">아이디</th>
+                    <th class="col-md-3">전송일</th>
                 </tr>
+                <c:forEach items="${llist}" var="ldto">
                 <tr>
-                    <td>17</td>
-                    <td><a href="/bookjuck/admin/curationletter/detail.do">큐레이션레터</a></td>
-                    <td>2021-02-05</td>
+                    <td>${ldto.seq}</td>
+                    <td><a href="/bookjuck/admin/curationletter/detail.do?seq=${ldto.seqLetter}&page=${nowPage}">${ldto.title}</a></td>
+                    <td>${ldto.id}</td>
+                    <td>${ldto.sendDate}</td>
                 </tr>
+                </c:forEach>
                 <tr>
-                    <td>17</td>
-                    <td><a href="/bookjuck/admin/curationletter/detail.do">큐레이션레터</a></td>
-                    <td>2021-02-05</td>
+                	<td colspan="4"><span class="glyphicon glyphicon-exclamation-sign"></span><b>방금 전송한 큐레이션 레터 내역이 보이는지 꼭 확인해주세요!<br>보이지 않는다면 관리자에게 문의해주세요.</b></td></td>
                 </tr>
             </table>
 
-            <ul class="pagination">
-                <li>
-                <a href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-                </li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li>
-                <a href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-                </li>
-            </ul>
+            <nav class="pagebar">
+                <ul class="pagination">
+                    ${pagebar}
+                </ul>
+            </nav>
 
             <div id="btn">
                 <button type="button" class="btn btn-general" id="edit" onclick="location.href='/bookjuck/admin/curationletter/add.do'">작성하기</button>

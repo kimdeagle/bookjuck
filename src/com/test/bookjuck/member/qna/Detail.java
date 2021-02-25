@@ -21,6 +21,7 @@ public class Detail extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		String seq=req.getParameter("seq"); // QnA 글번호
+		String page=req.getParameter("page");
 		
 		// 글번호를 이용해서
 		// QnA 질문, 답변을 가져온다. (질문, 답변 따로)
@@ -35,6 +36,7 @@ public class Detail extends HttpServlet {
 		
 		req.setAttribute("adto", adto);
 		req.setAttribute("qdto", qdto);
+		req.setAttribute("page", page);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/member/qna/detail.jsp");
 		dispatcher.forward(req, resp);

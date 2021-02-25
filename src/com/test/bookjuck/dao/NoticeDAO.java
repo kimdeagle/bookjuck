@@ -142,7 +142,6 @@ public class NoticeDAO {
 	public int edit(NoticeDTO dto) {
 		
 		try {
-			System.out.println(dto.getSeq());
 			String sql="update tblNotice set title=?, content=? where seq=?";
 			pstat=conn.prepareStatement(sql);
 			pstat.setString(1, dto.getTitle());

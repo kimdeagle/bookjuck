@@ -91,9 +91,9 @@ public class FAQDAO {
 		
 		try {
 			
-			String sql="insert into tblFAQ(seq, seqqcategory, title, content) values (seqFAQ.nextVal, (select q.seq from tblQcategory q where category=?), ?, ?)";
+			String sql="insert into tblFAQ(seq, seqqcategory, title, content) values (seqFAQ.nextVal, ?, ?, ?)";
 			pstat=conn.prepareStatement(sql);
-			pstat.setString(1, dto.getqCategory());
+			pstat.setString(1, dto.getSeqQcategory());
 			pstat.setString(2, dto.getTitle());
 			pstat.setString(3, dto.getContent());
 			
@@ -140,7 +140,7 @@ public class FAQDAO {
 		
 		try {
 			
-			String sql="select f.seq as seq, f.title as title, f.content as content, c.category as category from tblFAQ f"
+			String sql="select f.seq as seq, f.title as title, f.content as content, c.seq as seqqcategory, c.category as category from tblFAQ f"
 					+ "    inner join tblQcategory c"
 					+ "        on f.seqqcategory=c.seq where f.seq=?";
 			pstat=conn.prepareStatement(sql);
@@ -153,6 +153,7 @@ public class FAQDAO {
 				dto.setSeq(rs.getString("seq"));
 				dto.setTitle(rs.getString("title"));
 				dto.setContent(rs.getString("content"));
+				dto.setSeqQcategory(rs.getString("seqqcategory"));
 				dto.setqCategory(rs.getString("category"));
 				
 				return dto;
@@ -175,12 +176,12 @@ public class FAQDAO {
 	public int edit(FAQDTO dto) {
 		
 		try {
-			String sql="update tblFAQ set title=?, content=?, seqqcategory=(select seq from tblQcategory where category=?) where seq=?";
+			String sql="update tblFAQ set title=?, content=?, seqqcategory=? where seq=?";
 			
 			pstat=conn.prepareStatement(sql);
 			pstat.setString(1, dto.getTitle());
 			pstat.setString(2, dto.getContent());
-			pstat.setString(3, dto.getqCategory());
+			pstat.setString(3, dto.getSeqQcategory());
 			pstat.setString(4, dto.getSeq());
 			return pstat.executeUpdate();
 			

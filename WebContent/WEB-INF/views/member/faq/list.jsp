@@ -43,7 +43,7 @@
 		<!-- @@@@@여기에 개인작업 페이지 넣을 것 -->
 		<section class="contentsection">
     	<h3>자주 하는 질문</h3>
-            <table class="table tbl-md qnatbl">
+            <table class="table tbl-md" id="listtbl">
                 <tr>
                     <th>카테고리</th>
                     <th>결제</th>

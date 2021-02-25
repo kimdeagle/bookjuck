@@ -26,14 +26,14 @@ public class AddOk extends HttpServlet {
 		// 1.
 		req.setCharacterEncoding("UTF-8");
 		
-		String qcategory=req.getParameter("qcategory");
+		String seqQcategory=req.getParameter("seqQcategory");
 		String title=req.getParameter("title");
 		String content=req.getParameter("content");
 		
 		QuestionDAO dao=new QuestionDAO();
 		QuestionDTO dto=new QuestionDTO();
 		
-		dto.setSeqQCategory(qcategory);
+		dto.setSeqQCategory(seqQcategory);
 		dto.setTitle(title);
 		dto.setContent(content);
 		dto.setSeqMember("21"); // TODO 세션에서 얻어올 회원번호

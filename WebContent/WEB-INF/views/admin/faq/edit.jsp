@@ -30,24 +30,27 @@
 	<section class="contentsection">
         <h3>자주 하는 질문<small>수정하기</small></h3>
            	<form method="POST" action="/bookjuck/admin/faq/editok.do">
-				<div id="letterbox">
-		        	<input type="text" id="title" name="title" class="form-control inline" value="${dto.title}">
-				        <span class="dropdown">
-				            <button class="btn btn-default dropdown-toggle" type="button" id="selected" data-toggle="dropdown" aria-expanded="true">
-					            ${dto.qCategory}
-					            <span class="caret"></span>
-				            </button>
-					        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="category">
-					        	<c:forEach items="${clist}" var="cdto">
-									<li role="presentation"><a role="menuitem" tabindex="-1" value="${cdto.seq}">${cdto.category}</a></li>
-								</c:forEach>
-					        </ul>
-					        
-				        </span>
-				        <input type="hidden" id="seq" name="seq" value="${dto.seq}">
-				        <input type="hidden" id="qcategory" name="qcategory" value="${dto.qCategory}">
-				        <textarea id="content" name="content" class="form-control" cols="40" rows="15">${dto.content}</textarea>
-				</div>
+           		<table class="table tbl-md" id="edittbl">
+           			<tr>
+           				<th class="col-md-2">질문카테고리</th>
+           				<td class="col-md-10">
+           					<select class="form-control selectpicker medium" id="seqQcategory" name="seqQcategory">
+								<option value=${dto.seqQcategory}>${dto.qCategory}</option>
+							</select>
+						</td>
+           			</tr>
+           			<tr>
+           				<th class="col-md-2">제목</th>
+           				<td class="col-md-10"><input type="text" id="title" name="title" class="form-control inline" value="${dto.title}"></td>
+           			</tr>
+           			<tr>
+           				<th>내용</th>
+           				<td colspan="2">
+           					<textarea id="content" name="content" class="form-control" cols="40" rows="15" style="width:100%;">${dto.content}</textarea>
+           				</td>
+           			</tr>
+           		</table>
+				<input type="hidden" id="seq" name="seq" value=${dto.seq}>
 				<div id="btn">
 				    <input type="submit" class="btn btn-general inline" value="저장하기" id="save">
 				    <button type="button" class="btn btn-general" value="뒤로가기" id="back" onclick="location.href='/bookjuck/admin/faq/list.do'">뒤로가기</button>

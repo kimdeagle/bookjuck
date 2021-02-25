@@ -24,14 +24,14 @@ public class EditOk extends HttpServlet {
 		String seq=req.getParameter("seq");
 		String title=req.getParameter("title");
 		String content=req.getParameter("content");
-		String qCategory=req.getParameter("qcategory");
+		String seqQCategory=req.getParameter("seqQcategory");
 		QuestionDAO dao=new QuestionDAO();
 		QuestionDTO dto=new QuestionDTO();
 		
 		dto.setSeq(seq);
 		dto.setTitle(title);
 		dto.setContent(content);
-		dto.setqCategory(qCategory);
+		dto.setSeqQCategory(seqQCategory);
 		
 		int result=dao.edit(dto);
 		

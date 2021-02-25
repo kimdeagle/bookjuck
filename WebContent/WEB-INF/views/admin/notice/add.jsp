@@ -28,17 +28,17 @@
 	
 	
 		<section class="contentsection">
-            <h3>공지사항<small>작성하기</small></h3>
+            <h3>공지사항<small style="margin-left:15px;">작성하기</small></h3>
             
             <form method="POST" action="/bookjuck/admin/notice/addok.do">
-            <table class="table tbl-md table-bordered" id="addtbl">
+            <table class="table tbl-md" id="addtbl">
             	<tr>
-            		<td>제목</td>
-            		<td><input type="text" id="title" name="title" class="form-control" placeholder="제목을 입력해주세요"></td>
+            		<td class="col-md-2">제목</td>
+            		<td class="col-md-10"><input type="text" id="title" name="title" class="form-control" placeholder="제목을 입력해주세요"></td>
             	</tr>
             	<tr>
-            		<td>내용</td>
-            		<td><textarea id="content" name="content" class="form-control"  placeholder="내용을 입력해주세요" cols="40" rows="13"></textarea></td>
+            		<td class="col-md-2">내용</td>
+            		<td class="col-md-10"><textarea id="content" name="content" class="form-control"  placeholder="내용을 입력해주세요" cols="40" rows="13"></textarea></td>
             	</tr>
             
             </table>

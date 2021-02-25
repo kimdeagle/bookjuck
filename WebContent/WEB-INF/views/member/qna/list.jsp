@@ -26,7 +26,7 @@
 
 
 	<!-- 플로팅 메뉴 (북적이& top) -->
-	<%@include file="/WEB-INF/views/member/bookjuckee.jsp" %>" %>
+	<%@include file="/WEB-INF/views/member/bookjuckee.jsp" %>
 	<%@include file="/WEB-INF/views/common/top.jsp" %>
 
 
@@ -45,7 +45,7 @@
 		<section class="contentsection">
             <h3>QnA</h3>
 
-            <table class="table tbl-md qnatbl">
+            <table class="table tbl-md" id="listtbl">
                 <tr>
                     <th class="col-md-2 cell1">카테고리</th>
                     <th class="col-md-6 cell3">제목</th>
@@ -55,7 +55,7 @@
                 <c:forEach items="${qlist}" var="qdto">
                 <tr>
                     <td class="cell1">${qdto.qCategory}</td>
-                    <td class="cell3"><a href="/bookjuck/member/qna/detail.do?seq=${qdto.seq}">${qdto.title}</a></td>
+                    <td class="cell3"><a href="/bookjuck/member/qna/detail.do?seq=${qdto.seq}&page=${nowPage}">${qdto.title}</a></td>
                     <td class="cell4">${qdto.regDate.substring(0, 10)}</td>
                     <td class="cell5">
                     	<c:if test="${qdto.isDone.substring(0, 10).equals('1900-01-01')}">

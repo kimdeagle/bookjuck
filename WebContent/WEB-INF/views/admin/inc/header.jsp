@@ -27,11 +27,15 @@
 					</ul>
 	            <li class="menuitem"><a href="#"><h6>통계</h6></a></li>
 	            <li class="menuitem"><a href="#"><h6>고객 관리</h6></a></li>
+	            	<ul class="menusubitem">
+		                <li class="contents">고객정보조회</a></li>
+		                <li class="contents"><a href="/bookjuck/admin/curationletter/list.do">큐레이션레터</a></li>
+	            	</ul>
 	            <li class="menuitem"><a href="#!"><h6>게시판 관리</h6></a></li>
 		           	<ul class="menusubitem">
 		                <li class="contents"><a href="/bookjuck/admin/notice/list.do">공지사항</a></li>
 		                <li class="contents"><a href="/bookjuck/admin/faq/list.do">자주 하는 질문</a></li>
-		                <li class="contents"><a href="/bookjuck/admin/qna/list.do">1대1문의글</a></li>
+		                <li class="contents"><a href="/bookjuck/admin/qna/list.do">QnA</a></li>
 		                <li class="contents"><a href="/bookjuck/admin/review/list.do">독후감게시판</a></li>
 		                <li class="contents"><a href="/bookjuck/admin/fleamarket/list.do">중고거래게시판</a></li>
 					</ul>
