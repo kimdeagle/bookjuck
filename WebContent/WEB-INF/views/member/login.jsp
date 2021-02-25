@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -20,6 +19,7 @@
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
+
 <style type="text/css">
 </style>
 </head>
@@ -31,7 +31,7 @@
 
 		<!-- 로고  -->
 		<div id="logo">
-			<img src="/bookjuck/image/bookjeok/logo.png">
+			<img src="/bookjuck/image/bookjeok/logo.png" onclick="home()">
 		</div>
 
 
@@ -53,75 +53,86 @@
 
 
 			<!-- 회원 로그인 Form -->
-			<!-- <form action="/bookjuck/member/loginok.do" method="POST" id="loginForm"> -->
+			<div id="login">
 
-				<div id="login">
-
-			<form action="/bookjuck/member/loginok.do" method="POST" id="loginForm">
-					<input type="text" name="id" id="id" class="form-control noline medium inline" maxlength="15" placeholder="아이디를 입력해주세요"> 
+				<form action="/bookjuck/member/loginok.do" method="POST" id="loginForm">
+					<input type="text" name="id" id="id" class="form-control noline medium inline" maxlength="15" placeholder="아이디를 입력해주세요">
 					<input type="password" name="pw" id="pw" class="form-control noline medium inline" maxlength="20" placeholder="비밀번호를 입력해주세요.">
 
 					<div id="loginsub">
-						<a href="http://localhost:8090/bookjuck/member/tos.do">회원가입</a> <span>|</span>
-						<a href="#idFind" data-toggle="modal">아이디 찾기</a> 
-						<span>|</span> 
+						<a href="http://localhost:8090/bookjuck/member/tos.do">회원가입</a>
+						<span>|</span>
+						<a href="#idFind" data-toggle="modal">아이디 찾기</a>
+						<span>|</span>
 						<a href="#pwFind" data-toggle="modal">비밀번호 찾기</a>
 					</div>
 
 					<div id="socialLogin">
-						<img alt="" src="/bookjuck/image/social/w_login_g.jpg" data-onsuccess="onSignIn" class="g-signin2 socialBtn"> 
-						<!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> --><!-- 구글 로그인 버튼 -->
-						<img alt="" src="/bookjuck/image/social/w_login_n.jpg" class="socialBtn">
-						<img alt="" src="/bookjuck/image/social/w_login_k.jpg" class="socialBtn" id="kakao-login-btn"> <!-- 카카오 로그인 버튼 -->
-						<div class="socialBtn" onclick="document.getElementByID(naver_id_login').click;"></div>
-						<div id="naver_id_login" style="display:none"></div>  <!-- 네이버 로그인 버튼 -->
-						
-						
-						<!-- <a href="http://developers.kakao.com/logout"></a> -->
-					</div>
 					
+
+						<!-- 구글 로그인 버튼 -->
+						<!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> --> 
+						
+						
+						<!-- <img src="/bookjuck/image/social/w_login_g.jpg"  class="socialBtn" onClick="onSignIn(googleUser)"> -->
+						<img src="/bookjuck/image/social/w_login_g.jpg"  class="socialBtn" onClick="google()">
+						<!-- 카카오 로그인 버튼 -->
+						<img src="/bookjuck/image/social/w_login_k.jpg" class="socialBtn" id="kakao-login-btn" onClick="kakao()">
+						<!-- <a href="http://developers.kakao.com/logout">카카오 로그아웃</a> -->
+						
+						<!-- 네이버 로그인 버튼 -->
+						<img src="/bookjuck/image/social/w_login_n.jpg" class="socialBtn" onclick="document.getElementByID(naver_id_login').click;">
+						<!-- <div class="socialBtn" onclick="document.getElementByID(naver_id_login').click;"></div> -->
+						<div id="naver_id_login"></div>
+
+
+					</div>
+
 					<div id="loginBox">
 						<input type="submit" class="btn btn-general" id="loginbtn" value="로그인">
 					</div>
-			</form>
-				</div>
+				</form>
+			</div>
 
 			<!-- 회원 로그인 Form 종료-->
 
 
 			<!-- 비회원 주문 조회 -->
-			<form action="nonMemberSearch.jsp" method="POST" id="nmLoginForm">
+			<form action="/bookjuck/member/nonmemberlogin.do" method="POST" id="nmLoginForm">
 				<div id="nmLogin" style="display: none">
-					<input type="text" name="id" id="id" class="form-control noline medium inline" placeholder="E-Mail을 입력해주세요"> 
-					<input type="text" name="id" id="id" class="form-control noline medium inline" placeholder="연락처를 입력해주세요"> 
-					<input type="text" name="id" id="id" class="form-control noline medium inline" placeholder="비밀번호를 입력해주세요"> 
-					<input type="submit" class="btn btn-general" id="loginbtn" value="주문 조회">
+					<input type="text" name="nmEmail" id="nmEmail" class="nmiput form-control noline medium inline" placeholder="E-Mail을 입력해주세요" required>
+					<input type="text" name="nmTel" id="nmTel" class="nmiput form-control noline medium inline" placeholder="연락처를 입력해주세요" required>
+					<input type="password" name="nmPw" id="nmPw" class="nmiput form-control noline medium inline" placeholder="비밀번호를 입력해주세요" required>
+					<input type="submit" class="nmiput btn btn-general" id="loginbtn" value="주문 조회">
 				</div>
 			</form>
 			<!-- 비회원 주문 조회 종료-->
 
 			<div>
 				<address>
-					<a>고객센터</a>
+					<a href="/bookjuck/member/notice/list.do">고객센터</a>
 					<p>
-						Copyright © <b>BookJeok</b> Corp. All Rights Reserved.
+						Copyright ©
+						<b>BookJuck</b>
+						Corp. All Rights Reserved.
 					</p>
 				</address>
 			</div>
-			
+
 
 		</div>
 		<!-- ######content 종료  -->
 	</div>
 	<!-- ######container 종료 -->
 
-
+ㅋ
 
 	<!--##### 아이디 찾기 모달  -->
+	
 	<div class="modal fade" id="idFind" role="dialog">
 		<div class="modal-dialog modal-md">
 			<div class="modal-content">
-				<!-- 모달 해더 시작 -->			
+				<!-- 모달 해더 시작 -->
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">아이디찾기</h4>
@@ -129,12 +140,15 @@
 					<table id="idFindTbl">
 						<tr>
 							<th>이름:</th>
-							<td><input type="text"></td>
+							<td>
+								<input type="text" id="name" name="name">
+							</td>
 						</tr>
 					</table>
 				</div>
 				<!-- 모달 해더 끝 -->
 
+						
 				<!-- 모달 바디 시작 -->
 				<div class="modal-body relative">
 					<div id="idFindSwitch">
@@ -143,19 +157,28 @@
 						<div class="idFindSwitchs" id="email">이메일</div>
 					</div>
 					<div class="idFindSwitchContent relative" id="ssnContent">
-						<div class="float-left">
-							주민번호: <input type="text" class="log-md"><span>-</span><input
-								type="text" class="log-md">
-						</div>
-						<div>
-							<input type="button" class="btn-general" value="확    인">
-						</div>
+						<form action="/bookjuck/member/findid.do" method="post">	
+							<div class="float-left">
+								이름:<input type="text" id="name" name="name">
+								주민번호:
+								<input type="text" class="log-md" maxlength="6" id="ssn1" name="ssn1">
+								<span>-</span>
+								<input type="text" class="log-md" maxlength="7" id="ssn2" name="name2">
+							</div>
+							<div>
+								<input type="submit" class="btn-general" value="확    인">
+							</div>
+						</form>
 					</div>
+						
 					<div class="idFindSwitchContent relative" id="telContent">
 						<div class="float-left">
-							연락처: <input type="text" class="log-sm" maxlength="3"><span>-</span><input
-								type="text" class="log-sm" maxlength="4"><span>-</span><input
-								type="text" class="log-sm" maxlength="4">
+							연락처:
+							<input type="text" class="log-sm" maxlength="3" id="tel1" name="tel1">
+							<span>-</span>
+							<input type="text" class="log-sm" maxlength="4" id="tel2" name="tel2">
+							<span>-</span>
+							<input type="text" class="log-sm" maxlength="4" id="tel3" name="tel3">
 						</div>
 						<div>
 							<input type="button" class="btn-general" value="확    인">
@@ -163,8 +186,11 @@
 					</div>
 					<div class="idFindSwitchContent relative" id="emailContent">
 						<div class="float-left">
-							E-Mail: <input type="text" class="log-sm"><span>@</span><input
-								type="text" class="log-md"> <select class="selectpicker">
+							E-Mail:
+							<input type="text" class="log-sm" id="">
+							<span>@</span>
+							<input type="text" class="log-md">
+							<select class="selectpicker">
 								<option>구글</option>
 								<option>네이버</option>
 								<option>다음</option>
@@ -179,6 +205,7 @@
 			</div>
 		</div>
 	</div>
+
 	<!--##### 아이디 찾기 모달 끝  -->
 
 
@@ -195,11 +222,15 @@
 					<table id="pwFindTbl">
 						<tr>
 							<th>이름:</th>
-							<td><input type="text"></td>
+							<td>
+								<input type="text">
+							</td>
 						</tr>
 						<tr>
 							<th>아이디:</th>
-							<td><input type="text"></td>
+							<td>
+								<input type="text">
+							</td>
 						</tr>
 					</table>
 				</div>
@@ -215,8 +246,10 @@
 					</div>
 					<div class="idFindSwitchContent relative" id="ssnContentPw">
 						<div class="float-left">
-							주민번호: <input type="text" class="log-md"><span>-</span><input
-								type="text" class="log-md">
+							주민번호:
+							<input type="text" class="log-md">
+							<span>-</span>
+							<input type="text" class="log-md">
 						</div>
 						<div>
 							<input type="button" class="btn-general" value="확    인">
@@ -224,18 +257,24 @@
 					</div>
 					<div class="idFindSwitchContent relative" id="telContentPw">
 						<div class="float-left">
-							연락처: <input type="text" class="log-sm" maxlength="3"><span>-</span><input
-								type="text" class="log-sm" maxlength="4"><span>-</span><input
-								type="text" class="log-sm" maxlength="4">
+							연락처:
+							<input type="text" class="log-sm" maxlength="3">
+							<span>-</span>
+							<input type="text" class="log-sm" maxlength="4">
+							<span>-</span>
+							<input type="text" class="log-sm" maxlength="4">
 						</div>
 						<div>
-						<input type="button" class="btn-general" value="확    인">
+							<input type="button" class="btn-general" value="확    인">
 						</div>
 					</div>
 					<div class="idFindSwitchContent relative" id="emailContentPw">
 						<div class="float-left">
-							E-Mail: <input type="text" class="log-sm"><span>@</span><input
-								type="text" class="log-md"> <select class="selectpicker">
+							E-Mail:
+							<input type="text" class="log-sm">
+							<span>@</span>
+							<input type="text" class="log-md">
+							<select class="selectpicker">
 								<option>구글</option>
 								<option>네이버</option>
 								<option>다음</option>
@@ -293,6 +332,10 @@
 			ssnContent.style.display = 'block';
 			telContent.style.display = 'none';
 			emailContent.style.display = 'none';
+			ssn.style.backgroundColor = 'white';
+			tel.style.backgroundColor = '#ccc';
+			email.style.backgroundColor = '#ccc';
+			
 			
 		});
 
@@ -301,7 +344,9 @@
 			ssnContent.style.display = 'none';
 			telContent.style.display = 'block';
 			emailContent.style.display = 'none';
-
+			ssn.style.backgroundColor = '#ccc';
+			tel.style.backgroundColor = 'white';
+			email.style.backgroundColor = '#ccc';
 		});
 
 		email.addEventListener('mousedown', function(e) {
@@ -309,7 +354,9 @@
 			ssnContent.style.display = 'none';
 			telContent.style.display = 'none';
 			emailContent.style.display = 'block';
-
+			ssn.style.backgroundColor = '#ccc';
+			tel.style.backgroundColor = '#ccc';
+			email.style.backgroundColor = 'white';
 		});
 		/* 아이디 찾기  전환 스크립트 끝  */
 		
@@ -352,56 +399,92 @@
 		/*비밀번호 찾기 전화 스크립트 끝*/
 		
 		
-		/*배경 container */
-		$(window).resize(function() {
+	/*배경 container */
+	$(window).resize(function() {
 		$("#container").height($(document).height());
 	});
 	$("#container").height($(document).height());
 	
-	
-	
-	/* 구글 로그인  */
-	function onSignIn(googleUser) {
-  	var profile = googleUser.getBasicProfile();
-  	console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-  	console.log('Name: ' + profile.getName());
-  	console.log('Image URL: ' + profile.getImageUrl());
-  	console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+	/*로고 HOME으로*/
+	function home(){
+		location.href="http://localhost:8090/bookjuck/index.do";
 	}
 	
 	
+	/* 구글 로그인  */
+	function google() {
+		alert(" - 정검중 - ")
+		
+	function onSignIn(googleUser) {
+		
+	  		var profile = googleUser.getBasicProfile();
+	  		alert(profile.getName())
+	  		alert(profile.getEmail())
+	  		
+		  	 $("form").attr("method","GET").attr("action","/bookjuck/member/register.do?name="+profile.getId()).attr("target","_parent").submit();
+	  		console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+	  		console.log('Name: ' + profile.getName());
+		  	console.log('Image URL: ' + profile.getImageUrl());
+		  	console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+		  	
+		}
+	
+	}
+	
 	
 	/* 카카오 로그인*/
-	Kakao.init('a81cc7fa3bef4c7a26700b30cae18152');
-	
-	// 카카오 로그인 버튼을 생성합니다.
-   	Kakao.Auth.createLoginButton({
-     container: '#kakao-login-btn',
-     success: function(authObj) {
-    alert(JSON.stringify(authObj));
-     },
-     fail: function(err) {
-     alert(JSON.stringify(err));
-     }
-   });
+	Kakao.init('a81cc7fa3bef4c7a26700b30cae18152'); 
+	/* Kakao.isInitialized(); */
+	console.log(Kakao.isInitialized());
 	
 	
-	
+   	function kakao() {
+	 
+	  Kakao.Auth.createLoginButton({
+		    container: '#kakao-login-btn',
+		    success: function(authObj) {
+		      Kakao.API.request({
+			        url: '/v2/user/me',
+			        success: function(res) {
+			        	 alert(JSON.stringify(res)) 
+			        	 $("form").attr("method","GET").attr("action","/bookjuck/member/register.do?name='홍길동'").attr("target","_parent").submit();
+			        },
+			        fail: function(error) {
+			          alert('login success, but failed to request user information: ' + JSON.stringify(error))
+			        },
+		      })
+		    },
+		    fail: function(err) {
+		      alert('failed to login: ' + JSON.stringify(err))
+		    },
+	 })
+   }
+   
+
+   
 	/* 네이버 로그인 */
-	/* var naver_id_login = new naver_id_login("YOUR_CLIENT_ID", "YOUR_CALLBACK_URL"); */
-	var naver_id_login = new naver_id_login("5FotIk_OVojgU5ZwiCBF","http://localhost:8090/bookjuck/member/login.do");
-  	var state = naver_id_login.getUniqState();
-  	naver_id_login.setButton("white", 2,40);
-  	naver_id_login.setDomain("http://localhost:8090/bookjuck/member/login.do");
-  	naver_id_login.setState(state);
-  	naver_id_login.setPopup();
-  	naver_id_login.init_naver_id_login();
+	function name() {
+		
+		alert(" - 정검중 - ")
+		
+	  	var state = naver_id_login.getUniqState();
+	  	naver_id_login.setButton("white", 2,40);
+	  	naver_id_login.setDomain("http://localhost:8090/bookjuck/member/login.do");
+	  	naver_id_login.setState(state);
+	  	naver_id_login.setPopup();
+	  	naver_id_login.init_naver_id_login();
+		var naver_id_login = new naver_id_login("5FotIk_OVojgU5ZwiCBF","http://localhost:8090/bookjuck/member/register.do");
+	}
+	
+		
+	
+	
 	</script>
+
+
 	
-	
-	
-	
-	
+
+
 </body>
 
 </html>

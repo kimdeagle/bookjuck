@@ -2,17 +2,18 @@ package com.test.bookjuck.dto;
 
 public class NonMemberDTO {
 	
-	private int seq;		//번호
+	private String seq;		//번호
 	private String name;	//이름
 	private String email;	//이메일
 	private String pw;		//비밀번호
 	private int tel;		//휴대폰 번호
 	
 	
-	public int getSeq() {
+	
+	public String getSeq() {
 		return seq;
 	}
-	public void setSeq(int seq) {
+	public void setSeq(String seq) {
 		this.seq = seq;
 	}
 	public String getName() {

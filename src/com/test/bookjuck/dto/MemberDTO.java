@@ -16,9 +16,15 @@ public class MemberDTO {
 	private int privacy; 		//개인정보 유효기간
 	private String lastDate;	//최종접속일
 	
+	private int subscript;		//큐레이션 서비스
 	
 	
-	
+	public int getSubscript() {
+		return subscript;
+	}
+	public void setSubscript(int subscript) {
+		this.subscript = subscript;
+	}
 	public String getSeq() {
 		return seq;
 	}

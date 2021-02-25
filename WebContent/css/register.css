@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-/**/
 #tosForm {
 	width: 500px;
 	margin: 0 auto;
@@ -8,11 +7,6 @@
 	text-align: center;
 	padding: 30px;
 }
-
-/* #createId{
-	text-align: left;
-	border: 1px solid black;
-} */
 
 
 .createId{
@@ -28,8 +22,6 @@
 }
 
 
-
-/* #test001 tr:nth-child(3),  */
 #test001 tr:nth-child(4),
 #test001 tr:nth-child(5),
 #test001 tr:nth-child(6){
@@ -45,4 +37,14 @@
 	padding-bottom: 15px;	
 }
 
+/*주소 TEXT 크기*/
+#sample6_postcode{width: 100px;}
+#sample6_address{width: 320px;}
+#sample6_detailAddress{width:200px;}
+#sample6_extraAddress{width:115px;}
+
+.nminput{
+	margin-top: 10px;
+	border: 1px solid red;
+}
 
