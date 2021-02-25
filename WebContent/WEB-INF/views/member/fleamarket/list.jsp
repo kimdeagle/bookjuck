@@ -35,15 +35,12 @@
 	<div class="container">
 	
 		<!-- ########## 상단 헤더 시작 -->
-		<!-- 변경 전 -->
-	<%-- <%@include file="/WEB-INF/views/member/inc/header.jsp" %> --%>
-
-	<!-- 변경 후 -->
-	<%
-		out.flush();
-		RequestDispatcher dheader = request.getRequestDispatcher("/member/inc/header.do");
-		dheader.include(request, response);
-	%>
+		<!-- 변경 후 -->
+		<%
+			out.flush();
+			RequestDispatcher dheader = request.getRequestDispatcher("/member/inc/header.do");
+			dheader.include(request, response);
+		%>
 		<!-- ########## 상단 헤더 끝 -->
 	
 	
@@ -140,21 +137,7 @@
 
 
                 <ul class="pagination">
-                    <li>
-                    <a href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                    </li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li>
-                    <a href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                    </li>
+                    ${pagebar}
                 </ul>
 
             </article>

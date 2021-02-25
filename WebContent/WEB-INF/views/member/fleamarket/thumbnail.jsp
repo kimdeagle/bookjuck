@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,15 +34,12 @@
 	<div class="container">
 	
 		<!-- ########## 상단 헤더 시작 -->
-		<!-- 변경 전 -->
-	<%-- <%@include file="/WEB-INF/views/member/inc/header.jsp" %> --%>
-
-	<!-- 변경 후 -->
-	<%
-		out.flush();
-		RequestDispatcher dheader = request.getRequestDispatcher("/member/inc/header.do");
-		dheader.include(request, response);
-	%>
+		<!-- 변경 후 -->
+		<%
+			out.flush();
+			RequestDispatcher dheader = request.getRequestDispatcher("/member/inc/header.do");
+			dheader.include(request, response);
+		%>
 		<!-- ########## 상단 헤더 끝 -->
 	
 	
@@ -62,12 +60,12 @@
 
                     <!-- <input type="text" class="form-control" id="search"> -->
 
-                    <form id="searchForm" method="GET" action="">
-                        <div class="input-group search">
+                    <form id="searchForm" method="GET" action="/bookjuck/member/fleamarket/thumbnail.do">
+                        <div class="input-group fleamarketsearch">
                         
-                            <input type="text" class="form-control" id="fleamarket-search" name="fleamarket-search" placeholder="" aria-describedby="basic-addon2" required value="">
+                            <input type="text" class="form-control" id="fleamarketsearch" name="fleamarketsearch" placeholder="" aria-describedby="basic-addon2" required value="${fleamarketsearch}">
                             
-                            <span class="input-group-addon" id="basic-addon2" style="cursor:pointer;" onclick=""><span class="glyphicon glyphicon-search"></span></span>
+                            <span class="input-group-addon" id="basic-addon2" style="cursor:pointer;" onclick="$('#searchForm').submit();"><span class="glyphicon glyphicon-search"></span></span>
                         </div>
                     </form> 
                         
@@ -80,117 +78,35 @@
 
                 <!-- 썸네일형 리스트 -->
                 <div class="thumbnail-box">
-                    <div class="thumbnail-list" onclick="location.href='/bookjuck/member/fleamarket/view.do';">
-                        <div class="seq">1.</div>
-                        <div class="attach"><img src="/bookjuck/image/바이러스 X.png" class="book-sm"></div>
-                        <div class="subject">글 제목</div>
-                        <div class="id">글쓴사람 id</div>
-                        <div class="regdate">글 작성날짜</div>
-                        <div class="cnt">0</div>
+                
+                	<c:if test="${list.size() == 0 }">
+                		<div style="text-align:center;">게시물이 없습니다.</div>
+                	</c:if>
+                	
+                	<c:forEach items="${list}" var="dto">
+                    <div class="thumbnail-list" onclick="location.href='/bookjuck/member/fleamarket/view.do?seq=${dto.seq}&fleamarketsearch=${fleamarketsearch}';">
+                        <div class="seq">${dto.seq}</div>
+                        <c:if test="${not empty dto.image}">
+                        <div class="attach"><img src="/bookjuck/files/${dto.image }" class="book-sm"></div>
+                        </c:if>
+                        <c:if test="${dto.image == null}">
+                        <div class="attach"><img src="/bookjuck/image/nopic.png" class="book-sm"></div>
+                        </c:if>
+                        <div class="subject">${dto.title}</div>
+                        <div class="id">${dto.id}</div>
+                        <div class="regdate">${dto.regDate}</div>
+                        <div class="cnt">댓수</div>
                     </div>
-
-                    <div class="thumbnail-list">
-                        <div class="seq">1.</div>
-                        <div class="attach"><img src="/bookjuck/image/마법천자문 1.png" class="book-sm"></div>
-                        <div class="subject">제 추억이 담긴 소중</div>
-                        <div class="id">ddarong2</div>
-                        <div class="regdate">2021-02-20</div>
-                        <div class="cnt">99</div>
-                    </div>
-
-                    <div class="thumbnail-list">
-                        <div class="seq">1.</div>
-                        <div class="attach"><img src="/bookjuck/image/우리가 사랑한 고흐.png" class="book-sm"></div>
-                        <div class="subject">팔기 싫은데 팝니다</div>
-                        <div class="id">durrup2</div>
-                        <div class="regdate">2021-02-20</div>
-                        <div class="cnt">2</div>
-                    </div>
-
-                    <div class="thumbnail-list">
-                        <div class="seq">1.</div>
-                        <div class="attach"><img src="/bookjuck/image/우리가 사랑한 고흐.png" class="book-sm"></div>
-                        <div class="subject">팔기 싫은데 팝니다</div>
-                        <div class="id">durrup2</div>
-                        <div class="regdate">2021-02-20</div>
-                        <div class="cnt">2</div>
-                    </div>
-
-                    <div class="thumbnail-list">
-                        <div class="seq">1.</div>
-                        <div class="attach"><img src="/bookjuck/image/우리가 사랑한 고흐.png" class="book-sm"></div>
-                        <div class="subject">팔기 싫은데 팝니다</div>
-                        <div class="id">durrup2</div>
-                        <div class="regdate">2021-02-20</div>
-                        <div class="cnt">2</div>
-                    </div>
-
-                    <div class="thumbnail-list">
-                        <div class="seq">1.</div>
-                        <div class="attach"><img src="/bookjuck/image/우리가 사랑한 고흐.png" class="book-sm"></div>
-                        <div class="subject">팔기 싫은데 팝니다</div>
-                        <div class="id">durrup2</div>
-                        <div class="regdate">2021-02-20</div>
-                        <div class="cnt">2</div>
-                    </div>
-
-                    <div class="thumbnail-list">
-                        <div class="seq">1.</div>
-                        <div class="attach"><img src="/bookjuck/image/우리가 사랑한 고흐.png" class="book-sm"></div>
-                        <div class="subject">팔기 싫은데 팝니다</div>
-                        <div class="id">durrup2</div>
-                        <div class="regdate">2021-02-20</div>
-                        <div class="cnt">2</div>
-                    </div>
-
-                    <div class="thumbnail-list">
-                        <div class="seq">1.</div>
-                        <div class="attach"><img src="/bookjuck/image/우리가 사랑한 고흐.png" class="book-sm"></div>
-                        <div class="subject">팔기 싫은데 팝니다</div>
-                        <div class="id">durrup2</div>
-                        <div class="regdate">2021-02-20</div>
-                        <div class="cnt">2</div>
-                    </div>
-
-                    <div class="thumbnail-list">
-                        <div class="seq">1.</div>
-                        <div class="attach"><img src="/bookjuck/image/해리포터와 마법사의 돌 2.png" class="book-sm"></div>
-                        <div class="subject">제 자서전입니다.</div>
-                        <div class="id">dumbledore</div>
-                        <div class="regdate">2021-02-20</div>
-                        <div class="cnt">88</div>
-                    </div>
-
-                    <div class="thumbnail-list">
-                        <div class="seq">1.</div>
-                        <div class="attach"><img src="/bookjuck/image/우리가 사랑한 고흐.png" class="book-sm"></div>
-                        <div class="subject">팔기 싫은데 팝니다</div>
-                        <div class="id">durrup2</div>
-                        <div class="regdate">2021-02-20</div>
-                        <div class="cnt">2</div>
-                    </div>
-
+					</c:forEach>
+					
+                   
                 </div>
 
                 <div style="clear: both;"></div>
 
 
                 <ul class="pagination">
-                    <li>
-                    <a href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                    </li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li>
-                    <a href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                    </li>
+                    ${pagebar}
                 </ul>
 
             </article>

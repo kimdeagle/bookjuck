@@ -10,6 +10,13 @@
 }
 
 
+.contentsection .application-form .table th {
+	vertical-align: middle;
+	text-align: center;
+}
+
+
+
 /*   취소/교환/환불 안내사항   */
 .refund-info {
     margin-top: 30px;
@@ -172,4 +179,30 @@
     list-style: square;
     margin-top: -20px;
     margin-left: -20px;
+}
+
+
+/* 회수지 정보CSS 추가 21.02.25  */
+.application-form .btn-postcode:focus {
+    outline-color: #ccc;
+    margin-bottom: 5px;
+}
+
+.application-form #sample2_postcode {
+	width: 150px;
+    float: left;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.application-form #sample2_detailAddress {
+    width: 400px;
+    float: left;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+.application-form #sample2_extraAddress{
+    width: 310px;
+    margin-top: 5px;
 }

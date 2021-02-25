@@ -12,43 +12,43 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.test.bookjuck.dao.UsedBoardDAO;
-import com.test.bookjuck.dto.UsedBoardDTO;
+import com.test.bookjuck.dto.CommentDTO;
 
-@WebServlet("/member/fleamarket/editok.do")
-public class EditOk extends HttpServlet {
+
+@WebServlet("/member/fleamarket/commentok.do")
+public class CommentOk extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		
+
 		HttpSession session = req.getSession();
-		
-		//1.
 		req.setCharacterEncoding("UTF-8");
 		
-		String title = req.getParameter("title");
-		String content = req.getParameter("content");
-		String dealState = req.getParameter("dealState");
+		//1.
+		String seqUsedBoard = req.getParameter("seqUsedBoard");
+		String ccontent = req.getParameter("ccontent");
 		
-		String seq = req.getParameter("seq"); //수정할 글 번호
-		
+		System.out.println(seqUsedBoard);
+		System.out.println(ccontent);
+		System.out.println((String)session.getAttribute("seq"));
 		
 		//2.
 		UsedBoardDAO dao = new UsedBoardDAO();
-		UsedBoardDTO dto = new UsedBoardDTO();
+		CommentDTO dto = new CommentDTO();
 		
-		dto.setTitle(title);
-		dto.setContent(content);
-		dto.setDealState(dealState);
-		dto.setSeq(seq);	//글 번호
+		dto.setCcontent(ccontent);
+		dto.setSeqUsedBoard(seqUsedBoard);
+		dto.setSeqMember((String)session.getAttribute("seq"));
 		
-		int result = dao.edit(dto);
+		int result = dao.writeComment(dto);
 		
+		//3.
 		if (result == 1) {
+			//글쓰기 성공
+			resp.sendRedirect("/bookjuck/member/fleamarket/view.do?seq=" + seqUsedBoard);
 			
-			resp.sendRedirect("/bookjuck/member/fleamarket/view.do?seq=" + seq);
 		} else {
-			//글수정 실패 -> 경고 + 뒤로가기
+			//글쓰기 실패 -> 경고 + 뒤로 가기
 			PrintWriter writer = resp.getWriter();
 			
 			writer.print("<html><body>");
@@ -59,11 +59,8 @@ public class EditOk extends HttpServlet {
 			writer.print("</body></html>");
 			
 			writer.close();
-			
 		}
-		
-		
-		
+
 	}
 
 }
