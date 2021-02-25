@@ -134,7 +134,7 @@ public class MemberDAO {
 			System.out.println(e);
 		}
 		return null;
-	
+	}
   // ############ (최진영) 종료
 
 	
