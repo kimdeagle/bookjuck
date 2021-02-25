@@ -43,6 +43,8 @@ public class Thumbnail extends HttpServlet {
 		session.setAttribute("read", false);
 		
 		
+		
+		
 		//페이징------------------------------------------------------------
 		int nowPage = 0;		//현재 페이지 번호
 		int totalCount = 0;		//총 게시물 수 
@@ -89,7 +91,12 @@ public class Thumbnail extends HttpServlet {
 			//날짜에서 시간 잘라내기 yyyy-mm-dd로 표기 
 			dto.setRegDate(dto.getRegDate().substring(0, 10));
 			
+
 		}
+		
+
+		
+		
 		
 		
 		
@@ -165,6 +172,7 @@ public class Thumbnail extends HttpServlet {
 		req.setAttribute("fleamarketsearch", fleamarketsearch);
 		req.setAttribute("pagebar", pagebar);
 		req.setAttribute("nowPage", nowPage);
+		
 		
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/member/fleamarket/thumbnail.jsp");

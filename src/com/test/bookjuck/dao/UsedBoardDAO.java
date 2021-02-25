@@ -105,6 +105,8 @@ public class UsedBoardDAO {
 				
 				dto.setGap(rs.getInt("gap"));
 				
+				dto.setCcount(rs.getString("ccount")); //댓글 수
+				
 				list.add(dto); //***잘 빼먹는 부분 : 에러메세지 안뜨니 주의할 것
 				
 			}
@@ -126,7 +128,7 @@ public class UsedBoardDAO {
 		
 		try {
 			
-			String sql = "select u.*, (select id from tblMember m where u.seqmember = m.seq) as id, (select email from tblMember m where u.seqmember = m.seq) as email from tblUsedBoard u where seq = ?";
+			String sql = "select u.*, (select id from tblMember m where u.seqmember = m.seq) as id, (select email from tblMember m where u.seqmember = m.seq) as email, (select count(*) from tblComment where seqUsedBoard = u.seq) as ccount from tblUsedBoard u where seq = ?";
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, seq);
@@ -149,6 +151,8 @@ public class UsedBoardDAO {
 				
 				dto.setImage(rs.getString("image"));
 				dto.setOrgimage(rs.getString("orgimage"));
+				
+				dto.setCcount(rs.getString("ccount")); //댓글 수
 				
 				return dto;
 			}
@@ -324,6 +328,29 @@ public class UsedBoardDAO {
 		
 		return null;
 	}
+
+	
+	//Comment 삭제 메서드
+	public int deleteComment(String seq) {
+		
+		try {
+			
+			String sql = "delete from tblComment where seq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			return pstat.executeUpdate(); //1 or 0
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return 0;
+	}
+
+	
+
 	
 
 }

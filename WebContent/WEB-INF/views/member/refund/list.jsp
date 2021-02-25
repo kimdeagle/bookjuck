@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,15 +34,13 @@
 	<div class="container">
 	
 		<!-- ########## 상단 헤더 시작 -->
-		<!-- 변경 전 -->
-	<%-- <%@include file="/WEB-INF/views/member/inc/header.jsp" %> --%>
 
-	<!-- 변경 후 -->
-	<%
-		out.flush();
-		RequestDispatcher dheader = request.getRequestDispatcher("/member/inc/header.do");
-		dheader.include(request, response);
-	%>
+		<!-- 변경 후 -->
+		<%
+			out.flush();
+			RequestDispatcher dheader = request.getRequestDispatcher("/member/inc/header.do");
+			dheader.include(request, response);
+		%>
 		<!-- ########## 상단 헤더 끝 -->
 	
 	
@@ -110,33 +109,43 @@
                 </table>
 
                 <!-- style="background-color: RGBA(140,179,105,0.2)" -->
+                <form method="GET" action="/bookjuck/member/refund/list.do" id="searchForm">
                 <table class="table tbl-md search-type">
                     <tr>
+                        <th>구분</th>
+                        <td>
+                            <select name="type" id="type" class="form-control" style="width: 200px;margin-left: 10px;">
+                                <option value="1">일반배송</option>
+                                <option value="2">바로드림</option>
+                                <option value="3">E-Book</option>
+                            </select>
+                        </td>
+                        <th>상품조회</th>
+                        <td>
+                            <input type="text" class="form-control" id="refundsearch" name="refundsearch" placeholder="상품명을 입력하세요.">
+                        </td>
+                        <td rowspan="2">
+                            <input type="button" class="btn btn-general" id="btnview" value="조회하기" onclick="$('#searchForm').submit();">
+                        </td>
+                    </tr>
+                    <tr>
                         <th>기간조회</th>
-                        <td class="period">
+                        <td class="period" colspan="2">
                             <input type="button" class="btn btn-sm" value="일주일">
                             <input type="button" class="btn btn-sm" value="1개월">
                             <input type="button" class="btn btn-sm" value="3개월">
                             <input type="button" class="btn btn-sm" value="6개월">
                         </td>
                         <td>
-                            <input type="date"class="form-control" id="date_before_month"> ~
-                            <input type="date"class="form-control" id="now_date">
-                        </td>
-                        <td rowspan="2">
-                            <input type="button" class="btn btn-general" id="btnview" value="조회하기">
+                            <input type="date" class="form-control" id="date_before_month" name="startDate"> ~
+                            <input type="date" class="form-control" id="now_date" name="endDate">
                         </td>
                     </tr>
                     <tr>
-                        <th>상품조회</th>
-                        <td colspan="2">
-                            <input type="text" class="form-control" placeholder="상품명을 입력하세요.">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="4"></td>
+                        <td colspan="5"></td>
                     </tr>
                 </table>
+                </form>
 
 				<ul id="searchrule">
 					<li>최근 1개월이 기본으로 조회 되며, 기간 변경시 기간 선택한 후 조회버튼을 클릭해 주세요.</li>
@@ -147,46 +156,49 @@
 
                 <table class="table tbl-md list">
                     <tr style="background-color: RGBA(140,179,105,0.2)">
-                        <th id="ctg">구분</th>
                         <th id="orderN">주문번호</th>
                         <th id="date">접수일자</th>
                         <th id="bookinfo">상품정보</th>
                         <th id="totalamount">수량</th>
                         <th id="process">상태</th>
                     </tr>
+                    
+                    <c:if test="${not empty blist }">
+                    <c:forEach items="${blist}" var="dto">
                     <tr>
-                        <td>환불</td>
-                        <td><a href="/bookjuck/member/mypage/refundorderdetail.do" class="ordernumber">00000000</a></td>
-                        <td>2021-02-17</td>
-                        <td class="book">자바의 정석<span class="amount">외 3</span></td>
-                        <td>4</td>
-                        <td>환불완료</td>
+                        <td><a href="/bookjuck/member/mypage/refundorderdetail.do" class="ordernumber">${dto.seq}</a></td>
+                        <td>${dto.applyDate}</td>
+                        <td class="book">${dto.title}<span class="amount">외 ${dto.totalAmount - 1}</span></td>
+                        <td>${dto.totalAmount}</td>
+                        <td>${dto.orderState}</td>
                     </tr>
+                    </c:forEach>
+                    </c:if>
+                    
+                    <c:if test="${not empty balist }">
+                    <c:forEach items="${balist}" var="dto">
                     <tr>
-                        <td>환불</td>
-                        <td><a href="/bookjuck/member/mypage/refundorderdetail.do" class="ordernumber">00000000</a></td>
-                        <td>2021-02-17</td>
-                        <td class="book">자바의 정석<span class="amount">외 3</span></td>
-                        <td>4</td>
-                        <td>환불완료</td>
+                        <td><a href="/bookjuck/member/mypage/refundorderdetail.do" class="ordernumber">${dto.seq}</a></td>
+                        <td>${dto.applyDate}</td>
+                        <td class="book">${dto.title}<span class="amount">외 ${dto.totalAmount - 1}</span></td>
+                        <td>${dto.totalAmount}</td>
+                        <td>${dto.orderState}</td>
                     </tr>
+                    </c:forEach>
+                    </c:if>
+                    
+                    <c:if test="${not empty elist }">
+                    <c:forEach items="${elist}" var="dto">
                     <tr>
-                        <td>환불</td>
-                        <td><a href="/bookjuck/member/mypage/refundorderdetail.do" class="ordernumber">00000000</a></td>
-                        <td>2021-02-17</td>
-                        <td class="book">자바의 정석<span class="amount">외 3</span></td>
-                        <td>4</td>
-                        <td>환불완료</td>
+                        <td><a href="/bookjuck/member/mypage/refundorderdetail.do" class="ordernumber">${dto.seq}</a></td>
+                        <td>${dto.applyDate}</td>
+                        <td class="book">${dto.title}<span class="amount">외 ${dto.totalAmount - 1}</span></td>
+                        <td>${dto.totalAmount}</td>
+                        <td>${dto.orderState}</td>
                     </tr>
-                    <tr>
-                        <td>환불</td>
-                        <td><a href="/bookjuck/member/mypage/refundorderdetail.do" class="ordernumber">00000000</a></td>
-                        <td>2021-02-17</td>
-                        <td class="book">자바의 정석<span class="amount">외 3</span></td>
-                        <td>4</td>
-                        <td>환불완료</td>
-                    </tr>
-
+                    </c:forEach>
+                    </c:if>
+                    
                 </table>
 
 
@@ -240,7 +252,13 @@
 		
 	</div>
 	
+	<script>
+		
+		//분류 고정
+		$("#type").val("${type}").prop("selected",true);
 	
+	
+	</script>
 
 </body>
 
