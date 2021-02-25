@@ -33,15 +33,13 @@
 	<div class="container">
 	
 		<!-- ########## 상단 헤더 시작 -->
-		<!-- 변경 전 -->
-	<%-- <%@include file="/WEB-INF/views/member/inc/header.jsp" %> --%>
 
-	<!-- 변경 후 -->
-	<%
-		out.flush();
-		RequestDispatcher dheader = request.getRequestDispatcher("/member/inc/header.do");
-		dheader.include(request, response);
-	%>
+		<!-- 변경 후 -->
+		<%
+			out.flush();
+			RequestDispatcher dheader = request.getRequestDispatcher("/member/inc/header.do");
+			dheader.include(request, response);
+		%>
 		<!-- ########## 상단 헤더 끝 -->
 	
 	
@@ -113,7 +111,7 @@
 		
 	</div>
 	
-	
+
 
 </body>
 
