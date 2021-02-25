@@ -12,7 +12,8 @@ select
     dealstate,
     (sysdate - regdate)  * 24 as gap,
     image,
-    orgimage
+    orgimage,
+    (select count(*) from tblComment where seqUsedBoard = tblUsedBoard.seq) as ccount
 from tblUsedBoard;
 -- ########### 중고게시판 뷰
 
