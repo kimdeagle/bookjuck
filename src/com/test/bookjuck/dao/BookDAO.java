@@ -637,17 +637,20 @@ public class BookDAO {
 	}
 
 	//admin -> BookList 서블릿 -> 목록 반환
-	public ArrayList<BookDTO> getAdminBookList(String seqLCategory) {
+	public ArrayList<BookDTO> getAdminBookList(HashMap<String, String> map) {
 		
 		try {
 			
 			String where = "";
 			
-			if (seqLCategory != null) {
-				where = "where seqLCategory = " + seqLCategory;
+			if (map.get("seqLCategory") != null) {
+				where = "where seqLCategory = " + map.get("seqLCategory");
 			}
 			
-			String sql = "select vb.*, (select amount from tblInventory where seqBook = vb.seq) as amount from vwBook vb " + where;
+			String sql = String.format("select * from (select a.*, rownum as rnum from (select vb.*, (select amount from tblInventory where seqBook = vb.seq) as amount from vwBook vb %s) a) where rnum between %s and %s"
+					, where
+					, map.get("begin")
+					, map.get("end"));
 			
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);
@@ -754,6 +757,73 @@ public class BookDAO {
 		}		
 		
 		return 0;
+	}
+
+	public int getAdminBookCount(HashMap<String, String> map) {
+		
+		try {
+			
+			String where = "";
+			
+			if (map.get("seqLCategory") != null) {
+				//대분류 선택
+				where = String.format("where seqLCategory = %s", map.get("seqLCategory"));
+			}
+			
+			String sql = String.format("select count(*) as cnt from vwBook %s", where);
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			if (rs.next()) {
+				return rs.getInt("cnt");
+			}
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return 0;
+	}
+
+	//BookAddOk 서블릿 -> 도서 추가
+	public String add(BookDTO bdto) {
+		
+		try {
+			
+			String sql = "insert into tblBook (seq, seqAuthor, seqSCategory, title, publisher, price, salePrice, pubDate, summary, isbn, copy, image, page, contents) values (seqBook.nextVal, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, bdto.getSeqAuthor());
+			pstat.setString(2, bdto.getSeqSCategory());
+			pstat.setString(3, bdto.getTitle());
+			pstat.setString(4, bdto.getPublisher());
+			pstat.setInt(5, bdto.getPrice());
+			pstat.setInt(6, (bdto.getPrice() / 10) * 9);
+			pstat.setString(7, bdto.getPubDate());
+			pstat.setString(8, bdto.getSummary());
+			pstat.setString(9, bdto.getIsbn());
+			pstat.setString(10, bdto.getCopy());
+			pstat.setString(11, bdto.getImage());
+			pstat.setInt(12, bdto.getPage());
+			pstat.setString(13, bdto.getContents());
+			
+			int result = pstat.executeUpdate();
+			
+			if (result == 1) {
+				sql = "select max(seq) as seq from tblBook";
+				stat = conn.createStatement();
+				rs = stat.executeQuery(sql);
+				
+				if (rs.next()) {
+					return rs.getString("seq");
+				}
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
 	}
 	
 	//주혁 끝

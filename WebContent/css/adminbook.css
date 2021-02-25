@@ -135,14 +135,20 @@ input[type=button]:focus {
 /* modal */
 
 /* modal > 카테고리 선택 */
-.tblcategory th {
+#tblcategory th {
 	text-align: center;
 }
 
+/* 작가명 검색어 입력 텍스트박스 + 검색 버튼 -> 우측 정렬 */
+.searchbar { text-align: right; }
+
 /* modal > 작가명 검색창 */
-#searchauthor { width: 200px; display: inline-block; }
+#searchauthorname { width: 200px; display: inline-block; }
+
+/* modal > 작가 리스트 테이블 */
+#tblauthorlist th:nth-child(1) { width: 50px; }
+#tblauthorlist th:nth-child(2) { width: 100px; }
+#tblauthorlist th:nth-child(3) { width: auto; }
 
 
-.btnAdd > span {
-	color : white;
-}
+

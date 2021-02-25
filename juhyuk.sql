@@ -65,7 +65,40 @@ from tblBook b
                                 on b.seqAuthor = a.seq;
 
 
-
+--E-Book 조회 뷰
+create or replace view vwEBook
+as
+select
+    eb.seq as seq,
+    eb.title as title,
+    a.seq as seqAuthor,
+    eb.publisher as publisher,
+    eb.pubDate as pubDate,
+    eb.price as price,
+    eb.salePrice as salePrice,
+    eb.copy as copy,
+    eb.isbn as isbn,
+    eb.intro as intro,
+    eb.image as image,
+    eb.eFile as eFile,
+    eb.contents as contents,
+    a.name as author,
+    a.intro as authorIntro,
+    lc.seq as seqLCategory,
+    lc.lCategory as lCategory,
+    mc.seq as seqMCategory,
+    mc.mCategory as mCategory,
+    sc.seq as seqSCategory,
+    sc.sCategory as sCategory
+from tblEBook eb
+    inner join tblSCategory sc
+        on eb.seqSCategory = sc.seq
+            inner join tblMCategory mc
+                on sc.seqMCategory = mc.seq
+                    inner join tblLCategory lc
+                        on mc.seqLCategory = lc.seq
+                            inner join tblAuthor a
+                                on eb.seqAuthor = a.seq;
 
 
 

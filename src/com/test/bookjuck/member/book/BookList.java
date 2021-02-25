@@ -80,8 +80,15 @@ public class BookList extends HttpServlet {
 		for (BookDTO bdto : blist) {
 			bdto.setPubDate(bdto.getPubDate().substring(0, 10));
 			String temp = "";
-			temp = bdto.getPubDate().substring(0, 4) + "년 " + bdto.getPubDate().substring(5, 7) + "월 " + bdto.getPubDate().substring(8) + "일";
+			temp = bdto.getPubDate().substring(0, 4) + "년 " + bdto.getPubDate().substring(5, 7) + "월 " + bdto.getPubDate().substring(8, 10) + "일";
 			bdto.setPubDate(temp);
+		}
+		
+		//summary 데이터 자르기
+		for (BookDTO bdto : blist) {
+			if (bdto.getSummary().length() > 100) {
+				bdto.setSummary(bdto.getSummary().substring(0, 100));
+			}
 		}
 		
 		//총 페이지 수 계산하기

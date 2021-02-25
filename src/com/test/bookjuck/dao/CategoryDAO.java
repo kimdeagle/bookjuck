@@ -134,6 +134,102 @@ public class CategoryDAO {
 		return null;
 	}
 	
+	public ArrayList<CategoryDTO> getLCategoryList() {
+		
+		try {
+			
+			String sql = "select * from tblLCategory";
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			ArrayList<CategoryDTO> clist = new ArrayList<CategoryDTO>(); 
+			
+			while (rs.next()) {
+				CategoryDTO dto = new CategoryDTO();
+				
+				dto.setSeqLCategory(rs.getString("seq"));
+				
+				dto.setlCategory(rs.getString("lCategory"));
+				
+				clist.add(dto);
+				
+			}
+			
+			return clist;
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+	}	
+	
+	public ArrayList<CategoryDTO> getMCategoryList() {
+		
+		try {
+			
+			String sql = "select mc.*, (select lCategory from tblLCategory where seq = mc.seqLCategory) as lCategory from tblMCategory mc";
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			ArrayList<CategoryDTO> clist = new ArrayList<CategoryDTO>(); 
+			
+			while (rs.next()) {
+				CategoryDTO dto = new CategoryDTO();
+				
+				dto.setSeqLCategory(rs.getString("seqLCategory"));
+				dto.setSeqMCategory(rs.getString("seq"));
+				
+				dto.setlCategory(rs.getString("lCategory"));
+				dto.setmCategory(rs.getString("mCategory"));
+				
+				clist.add(dto);
+				
+			}
+			
+			return clist;
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+	}	
+
+	public ArrayList<CategoryDTO> getSCategoryList() {
+		
+		try {
+			
+			String sql = "select * from vwSCategory";
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			ArrayList<CategoryDTO> clist = new ArrayList<CategoryDTO>(); 
+			
+			while (rs.next()) {
+				CategoryDTO dto = new CategoryDTO();
+				
+				dto.setSeqLCategory(rs.getString("seqLCategory"));
+				dto.setSeqMCategory(rs.getString("seqMCategory"));
+				dto.setSeqSCategory(rs.getString("seqSCategory"));
+				
+				dto.setlCategory(rs.getString("lCategory"));
+				dto.setmCategory(rs.getString("mCategory"));
+				dto.setsCategory(rs.getString("sCategory"));
+				
+				clist.add(dto);
+				
+			}
+			
+			return clist;
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+	}
+	
 	//주혁 끝
 	
 } //CategoryDAO
