@@ -12,9 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.test.bookjuck.dao.BaroOrderDAO;
 import com.test.bookjuck.dao.BookOrderDAO;
+import com.test.bookjuck.dao.EBookOrderDAO;
+import com.test.bookjuck.dto.BaroOrderDTO;
 import com.test.bookjuck.dto.BookOrderDTO;
-import com.test.bookjuck.dto.UsedBoardDTO;
+import com.test.bookjuck.dto.EBookOrderDTO;
 
 
 
@@ -32,15 +35,20 @@ public class List extends HttpServlet {
 		HashMap<String,String> map = new HashMap<String,String>();
 		
 		String refundsearch = req.getParameter("refundsearch");
+		String type = "1";
+		
+		if (req.getParameter("type") != null) {
+			type = req.getParameter("type");
+		}
+				
+		String startDate = req.getParameter("startDate");
+		String endDate = req.getParameter("endDate");
+		
+		System.out.println(type + startDate  + endDate );
+		
 		
 		if ( !(refundsearch == null || refundsearch.equals("")) ) {
 			map.put("refundsearch", refundsearch);
-		}	
-		
-		String refundperiod = req.getParameter("refundperiod");
-		
-		if ( !(refundperiod == null || refundperiod.equals("")) ) {
-			map.put("refundperiod", refundperiod);
 		}	
 		
 		//1. DB 작업 -> select
@@ -50,24 +58,65 @@ public class List extends HttpServlet {
 		
 		
 		//1.
-		BookOrderDAO dao = new BookOrderDAO();	
+		//BookOrderDAO dao = new BookOrderDAO();	
+		//EBookOrderDAO dao = new EBookOrderDAO();	
+		//BaroOrderDAO dao = new BaroOrderDAO();	
+		ArrayList<BookOrderDTO> blist = new ArrayList<BookOrderDTO>();
+		ArrayList<BaroOrderDTO> balist = new ArrayList<BaroOrderDTO>();
+		ArrayList<EBookOrderDTO> elist = new ArrayList<EBookOrderDTO>();
 		
-		ArrayList<BookOrderDTO> list = dao.list(map);	
 		
-		
-		//1.5 데이터 조작할 것 : 날짜 (시간 자르기), 글제목 (너무 길면 자르기)
-		for (BookOrderDTO dto : list) {
+		if (type.equals("1")) {
 			
-			//날짜에서 시간 잘라내기 yyyy-mm-dd로 표기 
-			dto.setApplyDate(dto.getApplyDate().substring(0, 10));
+			BookOrderDAO dao = new BookOrderDAO();	
+			blist = dao.list(map);	
+			
+			//1.5 데이터 조작할 것
+			for (BookOrderDTO dto : blist) {
+				
+				//날짜에서 시간 잘라내기 yyyy-mm-dd로 표기 
+				dto.setApplyDate(dto.getApplyDate().substring(0, 10));
+				
+			}
+			
+		} else if (type.equals("2")) {
+			
+			BaroOrderDAO dao = new BaroOrderDAO();	
+			balist = dao.list(map);	
+			
+			//1.5 데이터 조작할 것
+			for (BaroOrderDTO dto : balist) {
+				
+				//날짜에서 시간 잘라내기 yyyy-mm-dd로 표기 
+				dto.setApplyDate(dto.getApplyDate().substring(0, 10));
+				
+			}
 			
 			
+		} else {
+			
+			EBookOrderDAO dao = new EBookOrderDAO();	
+			elist = dao.list(map);	
+			
+			//1.5 데이터 조작할 것
+			for (EBookOrderDTO dto : elist) {
+				
+				//날짜에서 시간 잘라내기 yyyy-mm-dd로 표기 
+				dto.setApplyDate(dto.getApplyDate().substring(0, 10));
+				
+			}
 		}
 		
 		
-		//2.
-		req.setAttribute("list", list);
 		
+		
+		
+		//2.
+		req.setAttribute("blist", blist);
+		req.setAttribute("balist", balist);
+		req.setAttribute("elist", elist);
+		
+		req.setAttribute("type", type);
 		
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/member/refund/list.jsp");

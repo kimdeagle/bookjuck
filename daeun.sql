@@ -49,7 +49,8 @@ from tblbookorderdetail a
         on a.seqbookorder = b.seq
             group by b.seq
                 having b.seq = bo.seq) as totalamount,
-    bo.orderstate
+    bo.orderstate,
+    m.seq as seqMember
 from tblBookOrder bo
 inner join tblBookOrderDetail bod
     on bo.seq = bod.seqBookOrder
@@ -61,10 +62,11 @@ inner join tblBookOrderDetail bod
                             on bo.seq = bc.seqBookOrder
                                 left outer join tblBookChange bch
                                     on bo.seq = bch.seqBookOrder
+                                        inner join tblMember m
+                                            on bo.seqMember = m.seq
 where bo.orderstate in ('주문취소', '주문환불', '주문교환')
 order by bo.seq asc;
 -- #### 자사배송 주문 (교환/취소/환불) 조회 리스트 뷰
-
 
 
 
@@ -76,14 +78,42 @@ select distinct
     er.refunddate as applydate,
     b.title,
     1 as totalAmount,
-    eo.orderstate
+    eo.orderstate,
+    m.seq as seqMember
 from tblEOrder eo
 inner join tblEOrderDetail eod
     on eo.seq = eod.seqEOrder
-        inner join tblBook b
+        inner join tblEBook b
             on b.seq = eod.seqebook
                 inner join tblERefund er
                     on eo.seq = er.seqEOrder
-where er.refunddate is not null and eo.orderstate = '주문환불'
+                        inner join tblMember m
+                            on eo.seqMember = m.seq
+where eo.orderstate = '주문환불'
 order by eo.seq asc;
 -- #### Ebook 주문 (교환/취소/환불) 조회 리스트 뷰
+
+
+
+-- #### 바로드림 주문 (교환/취소/환불) 조회 리스트 뷰
+create or replace view vwBaroRefundList
+as
+select distinct
+    bo.seq,
+    bc.canceldate as applydate,
+    b.title,
+    1 as totalAmount,
+    bo.orderstate,
+    m.seq as seqMember
+from tblBaroOrder bo
+inner join tblBaroOrderDetail bod
+    on bo.seq = bod.seqBaroOrder
+        inner join tblBook b
+            on b.seq = bod.seqbook
+                inner join tblBaroCancel bc
+                    on bo.seq = bc.seqBaroOrder
+                        inner join tblMember m
+                            on bo.seqMember = m.seq
+where bo.orderstate = '주문취소'
+order by bo.seq asc;
+-- #### 바로드림 주문 (교환/취소/환불) 조회 리스트 뷰

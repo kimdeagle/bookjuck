@@ -54,13 +54,7 @@ public class BookOrderDAO {
 				
 			}
 			
-			if (map.get("refundperiod")!= null) {
-				
-				where = String.format(""
-						, map.get("refundperiod"));
-				
-			}
-			
+
 			
 			String sql = String.format("select * from vwBookRefundList %s order by applydate desc", where);
 			
@@ -79,6 +73,7 @@ public class BookOrderDAO {
 				dto.setTitle(rs.getString("title"));
 				dto.setTotalAmount(rs.getString("totalAmount"));
 				dto.setOrderState(rs.getString("orderState"));
+				dto.setSeqMember(rs.getString("seqMember"));
 				
 				list.add(dto);
 				
