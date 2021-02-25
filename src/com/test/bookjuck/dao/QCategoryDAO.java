@@ -39,6 +39,39 @@ public class QCategoryDAO {
 	
 	/**
 	 * 질문카테고리 목록을 가져오는 메서드입니다.
+	 * @return 질문카테고리 정보가 담긴 QCategoryDTO들의 ArrayList를 반환합니다.
+	 */
+	public ArrayList<QCategoryDTO> getList() {
+		
+		try {
+			
+			String sql="select * from tblQCategory";
+			
+			stat=conn.createStatement();
+			rs=stat.executeQuery(sql);
+			
+			ArrayList<QCategoryDTO> list=new ArrayList<QCategoryDTO>();
+			
+			while(rs.next()) {
+				QCategoryDTO dto=new QCategoryDTO();
+				dto.setSeq(rs.getString("seq"));
+				dto.setCategory(rs.getString("category"));
+				
+				list.add(dto);
+			}
+			
+			return list;
+			
+		} catch (Exception e) {
+			System.out.println("QCategoryDAO.getList()");
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * 질문카테고리 목록을 가져오는 메서드입니다.
 	 * @param map 
 	 * @return 질문카테고리 정보가 담긴 DTO들의 ArrayList를 반환합니다.
 	 */
@@ -144,5 +177,5 @@ public class QCategoryDAO {
 	}
 	
 	// ############ (조아라) 끝
-
+	
 }
