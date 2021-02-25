@@ -68,7 +68,7 @@
 				<div class="waybill-number">
 					<span>일반 배송</span>
 					<div>
-						운송장 번호 : <a href="#">123456789</a>
+						운송장 번호 : <a href="#" onclick="popup();">123456789</a>
 					</div>
 				</div>
 
@@ -283,7 +283,7 @@
                 <div class="waybill-number">
 					<span>일반 배송</span>
 					<div>
-						운송장 번호 : <a href="#">123456789</a>
+						운송장 번호 : <a href="#" onclick="popup();">123456789</a>
 					</div>
 				</div>
                 <table class="receiver table tbl-md">
@@ -300,13 +300,13 @@
                         <td>주소</td>
                     </tr>
                 </table>
+                
+                
+                
             </article>
 			
 
 			<div class="orderlistback"><a href="/bookjuck/member/mypage/orderlist.do" class="btn-order">주문/배송조회 가기</a></div>
-
-
-
 
 
 
@@ -330,6 +330,15 @@
 </body>
 
 <script>
+
+	//팝업창 띄우기
+	function popup(){
+	    var url = "/bookjuck/member/mypage/delivery.do";
+	    var name = "popup delivery";
+	    var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+	    window.open(url, name, option);
+	}
+
 	
 </script>
 
