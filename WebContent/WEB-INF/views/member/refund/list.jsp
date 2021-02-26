@@ -131,14 +131,14 @@
                     <tr>
                         <th>기간조회</th>
                         <td class="period" colspan="2">
-                            <input type="button" class="btn btn-sm" value="일주일">
-                            <input type="button" class="btn btn-sm" value="1개월">
-                            <input type="button" class="btn btn-sm" value="3개월">
-                            <input type="button" class="btn btn-sm" value="6개월">
+                            <input type="button" class="btn btn-sm" id="btn1" value="일주일">
+                            <input type="button" class="btn btn-sm" id="btn2" value="1개월">
+                            <input type="button" class="btn btn-sm" id="btn3" value="3개월">
+                            <input type="button" class="btn btn-sm" id="btn4" value="6개월">
                         </td>
                         <td>
-                            <input type="date" class="form-control" id="date_before_month" name="startDate"> ~
-                            <input type="date" class="form-control" id="now_date" name="endDate">
+                            <input type="date" class="form-control" id="startDate" name="startDate" min="2019-03-01"> ~
+                            <input type="date" class="form-control" id="endDate" name="endDate" min="2019-03-01">
                         </td>
                     </tr>
                     <tr>
@@ -225,8 +225,10 @@
             
             <!-- datepicker 현재 날짜로 기본값 설정 -->
             <script>
-                document.getElementById('date_before_month').valueAsDate = new Date();
-                document.getElementById('now_date').valueAsDate = new Date();
+            
+                document.getElementById('startDate').valueAsDate = new Date();
+                document.getElementById('endDate').valueAsDate = new Date();
+                
             </script>
 
 
@@ -256,7 +258,17 @@
 		
 		//분류 고정
 		$("#type").val("${type}").prop("selected",true);
+		
+
+		
+		$("#btn1").click(function() {
+			
+			$("#startDate").valueAsDate("2021-02-19");
+			
+		});
+
 	
+
 	
 	</script>
 
