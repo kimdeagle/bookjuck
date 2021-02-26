@@ -19,7 +19,7 @@ public class Cart extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		//임시로 회원번호 21번 지정
+		//임시 회원번호 21번 지정
 		String seqMember = "21";
 		
 		BookCartDAO dao = new BookCartDAO();
