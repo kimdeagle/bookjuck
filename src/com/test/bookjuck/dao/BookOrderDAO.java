@@ -39,7 +39,11 @@ public class BookOrderDAO {
 	
 	// (다은) 시작 ---------------------
 	
-	//교환/취소/환불 리스트 뽑아오기
+	/**
+	 * 일반배송 주문의 교환/취소/환불 리스트를 가져오는 메서드 입니다.
+	 * @param map
+	 * @return list
+	 */
 	public ArrayList<BookOrderDTO> list(HashMap<String, String> map) {
 
 		

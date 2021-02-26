@@ -38,7 +38,11 @@ public class BaroOrderDAO {
 	
 	// (다은) 시작 ---------------------
 	
-	//교환/취소/환불 리스트 뽑아오기
+	/**
+	 * 바로드림 주문의 교환/취소/환불 리스트를 가져오는 메서드 입니다.
+	 * @param map
+	 * @return list
+	 */
 	public ArrayList<BaroOrderDTO> list(HashMap<String, String> map) {
 
 		
