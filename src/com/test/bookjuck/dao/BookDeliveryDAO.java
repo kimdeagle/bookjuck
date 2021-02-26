@@ -4,8 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import com.test.bookjuck.DBUtil;
+import com.test.bookjuck.dto.BookDeliveryDTO;
 
 public class BookDeliveryDAO {
 
@@ -29,6 +31,46 @@ public class BookDeliveryDAO {
          System.out.println(e);
       }
 
-   }	
+   }
+
+//################# 오수경 ####################
+//################# 시작 ####################
+
+public ArrayList<BookDeliveryDTO> listBookDelivery(String seqBookOrder) {
+	
+	try {
+		
+		String sql = "select * from tblBookDelivery where seqBookOrder = ?";
+		
+		pstat = conn.prepareStatement(sql);
+		pstat.setString(1, seqBookOrder);
+		
+		rs = pstat.executeQuery();
+		
+		ArrayList<BookDeliveryDTO> list = new ArrayList<BookDeliveryDTO>();
+		
+		while(rs.next()) {
+			BookDeliveryDTO dto = new BookDeliveryDTO();
+			
+			dto.setAddress(rs.getString("address"));
+			dto.setDeliveryNumber(rs.getString("deliveryNumber"));
+			dto.setName(rs.getString("name"));
+			dto.setTel(rs.getString("tel"));
+			
+			list.add(dto);
+			
+		}
+		
+		return list;
+		
+	} catch (Exception e) {
+		System.out.println("BookDeliveryDAO listBookDelivery()" + e);
+	}
+	
+	return null;
+}	
+
+//################# 오수경 ####################
+//################# 시작 ####################
 	
 }

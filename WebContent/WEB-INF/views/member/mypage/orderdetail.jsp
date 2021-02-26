@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,13 +51,13 @@
 				<table class="orderer table tbl-md">
 					<tr>
 						<th>주문하신 분</th>
-						<td colspan="3">이름</td>
+						<td colspan="3">${name}</td>
 					</tr>
 					<tr>
 						<th>휴대폰 번호</th>
-						<td>휴대폰 번호</td>
+						<td>${tel}</td>
 						<th style="border-left: 1px solid #DDD;">이메일</th>
-						<td>이메일</td>
+						<td>${email}</td>
 					</tr>
 				</table>
 			</article>
@@ -68,7 +69,7 @@
 				<div class="waybill-number">
 					<b>일반배송</b>
 					<div>
-						운송장 번호 : <a href="#">123456789</a>
+						운송장 번호 : <c:forEach items="${bdlist}" var="bddto"><a href="#">${bddto.deliveryNumber}</a></c:forEach>
 					</div>
 				</div>
 
@@ -81,32 +82,27 @@
 						<th>주문상태</th>
 					</tr>
 					<tr class="olInfo">
-						<td rowspan="2">주문번호<br> (주문일)
+						<td rowspan="${blist.size()}">${seqBookOrder}<br> 
+						(${orderDate})
 						</td>
-						<td>가격</td>
+					<c:forEach items="${blist}" var="bdto">
+						<td style="vertical-align: middle;">${bdto.total}</td>
 						<td class="bookinfo"><img
-							src="/bookjuck/image/달러구트 꿈 백화점.png" class="book-xs"> <a
-							href="/bookjuck/member/book/bookdetail.do">도서명</a></td>
-						<td>0</td>
-						<td>주문상태 <!-- 주문상태가 배송 완료일 때 보임 || 비회원 안 보임 --> <a href="#"
-							class="btn-report">독후감 쓰러 가기</a>
+							src="/bookjuck/image/book/${bdto.image}" class="book-xs"> <a
+							href="/bookjuck/member/book/bookdetail.do?seq=${bdto.seqBook}">${bdto.title}</a></td>
+						<td style="vertical-align: middle;">${bdto.amount}</td>
+						<td style="vertical-align: middle;">${bdto.orderState}
+						 <!-- 주문상태가 배송 완료일 때 보임 || 비회원 안 보임 --> 
+						 <c:if test="">
+						 	<a href="#" class="btn-report">독후감 쓰러 가기</a>
+						 </c:if>
 						</td>
 					</tr>
-
-					<tr class="olInfo">
-						<td>가격</td>
-						<td class="bookinfo"><img
-							src="/bookjuck/image/달러구트 꿈 백화점.png" class="book-xs"> <a
-							href="/bookjuck/member/book/bookdetail.do">도서명</a></td>
-						<td>0</td>
-						<td>주문상태 <!-- 주문상태가 배송 완료일 때 보임 || 비회원 안 보임 --> <a href="#"
-							class="btn-report">독후감 쓰러 가기</a>
-						</td>
-					</tr>
+					</c:forEach>
 				</table>
 
 				<!-- 바로드림, 비회원 안 보임 -->
-				<b>바로드림</b>
+<!-- 				<b>바로드림</b>
 				<table class="orderdetail table tbl-md">
 					<tr>
 						<th>주문번호</th>
@@ -123,7 +119,7 @@
 							src="/bookjuck/image/달러구트 꿈 백화점.png" class="book-xs"> <a
 							href="/bookjuck/member/book/bookdetail.do">도서명</a></td>
 						<td>0</td>
-						<td>주문상태 <!-- 주문상태가 배송 완료일 때 보임 --> <a href="#"
+						<td>주문상태 주문상태가 배송 완료일 때 보임 <a href="#"
 							class="btn-report">독후감 쓰러 가기</a>
 						</td>
 					</tr>
@@ -134,14 +130,14 @@
 							src="/bookjuck/image/달러구트 꿈 백화점.png" class="book-xs"> <a
 							href="/bookjuck/member/book/bookdetail.do">도서명</a></td>
 						<td>0</td>
-						<td>주문상태 <!-- 주문상태가 배송 완료일 때 보임 --> <a href="#"
+						<td>주문상태 주문상태가 배송 완료일 때 보임 <a href="#"
 							class="btn-report">독후감 쓰러 가기</a>
 						</td>
 					</tr>
-				</table>
+				</table> -->
 
 				<!-- e-book 비회원 안 보임-->
-				<b>E-Book</b>
+<!-- 				<b>E-Book</b>
 				<table class="orderdetail table tbl-md">
 					<tr>
 						<th>주문번호</th>
@@ -169,22 +165,24 @@
 						<td>1</td>
 						<td>주문상태</td>
 					</tr>
-				</table>
+				</table> -->
 
 
 				<table class="receiver table tbl-md">
+					<c:forEach items="${bdlist}" var="bddto">
 					<tr>
 						<th>받으실 분</th>
-						<td>이름</td>
+						<td>${bddto.name}</td>
 					</tr>
 					<tr>
 						<th>휴대폰 번호</th>
-						<td>휴대폰 번호</td>
+						<td>${bddto.tel}</td>
 					</tr>
 					<tr>
 						<th>주소</th>
-						<td>주소</td>
+						<td>${bddto.address}</td>
 					</tr>
+					</c:forEach>
 				</table>
 
 
@@ -201,14 +199,16 @@
 						<th>결제금액</th>
 						<th>적립 포인트</th>
 					</tr>
+					<c:forEach items="${bplist}" var="bpdto">
 					<tr>
-						<td>주문금액</td>
+						<td>${bpdto.totalPay}</td>
 						<!-- 비회원일 경우 0 -->
-						<td>사용포인트</td>
-						<td><span>결제방식</span>결제금액</td>
+						<td>${bpdto.usePoint}</td>
+						<td><span>${bpdto.payment}</span>${bpdto.actualPay}</td>
 						<!-- 비회원일 경우 0 -->
-						<td>적립포인트</td>
+						<td>${bpdto.savePoints}</td>
 					</tr>
+					</c:forEach>
 				</table>
 			</article>
 

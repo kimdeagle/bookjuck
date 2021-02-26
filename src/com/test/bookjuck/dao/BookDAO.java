@@ -831,6 +831,86 @@ public class BookDAO {
 	}
 
 
+	//관리자 -> 도서 상세 가져오기
+	public BookDTO getAdminBookDetail(String seq) {
+		
+		try {
+			
+			String sql = "select vb.*, (select amount from tblInventory where seqBook = vb.seq) as amount from vwBook vb where vb.seq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				BookDTO dto = new BookDTO();
+				
+				dto.setSeq(rs.getString("seq"));
+				dto.setTitle(rs.getString("title"));
+				dto.setSeqAuthor(rs.getString("seqAuthor"));
+				dto.setPublisher(rs.getString("publisher"));
+				dto.setPubDate(rs.getString("pubDate"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setSalePrice(rs.getInt("salePrice"));
+				dto.setCopy(rs.getString("copy"));
+				dto.setIsbn(rs.getString("isbn"));
+				dto.setSummary(rs.getString("summary"));
+				dto.setImage(rs.getString("image"));
+				dto.setPage(rs.getInt("page"));
+				dto.setContents(rs.getString("contents"));
+				dto.setAuthor(rs.getString("author"));
+				dto.setAuthorIntro(rs.getString("authorIntro"));
+				dto.setSeqLCategory(rs.getString("seqLCategory"));
+				dto.setSeqMCategory(rs.getString("seqMCategory"));
+				dto.setSeqSCategory(rs.getString("seqSCategory"));
+				dto.setlCategory(rs.getString("lCategory"));
+				dto.setmCategory(rs.getString("mCategory"));
+				dto.setsCategory(rs.getString("sCategory"));
+				dto.setAmount(rs.getInt("amount"));
+				
+				return dto;
+				
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+	}
+
+	//관리자 -> 도서 수정
+	public void edit(BookDTO bdto) {
+		
+		try {
+			
+			String sql = "update tblBook set seqAuthor = ?, seqSCategory = ?, title = ?, publisher = ?, price = ?, salePrice = ?, pubDate = ?, summary = ?, isbn = ?, copy = ?, image = ?, page = ?, contents = ? where seq = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, bdto.getSeqAuthor());
+			pstat.setString(2, bdto.getSeqSCategory());
+			pstat.setString(3, bdto.getTitle());
+			pstat.setString(4, bdto.getPublisher());
+			pstat.setInt(5, bdto.getPrice());
+			pstat.setInt(6, (bdto.getPrice() / 10) * 9);
+			pstat.setString(7, bdto.getPubDate());
+			pstat.setString(8, bdto.getSummary());
+			pstat.setString(9, bdto.getIsbn());
+			pstat.setString(10, bdto.getCopy());
+			pstat.setString(11, bdto.getImage());
+			pstat.setInt(12, bdto.getPage());
+			pstat.setString(13, bdto.getContents());
+			
+			pstat.setString(14, bdto.getSeq());
+			
+			pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}		
+		
+	}
+	
+
 	//주혁 끝
 	
 	// ############ (조아라) 시작

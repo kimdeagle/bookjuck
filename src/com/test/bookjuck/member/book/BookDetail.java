@@ -44,12 +44,15 @@ public class BookDetail extends HttpServlet {
 		sCategory = dto.getsCategory();
 		
 		
-		//줄거리, 목차 변환
+		//줄거리, 목차, 작가 소개 엔터 -> <br> 변환
 		dto.setSummary(dto.getSummary().replace("\r\n", "<br>"));
 		dto.setSummary(dto.getSummary().replace("\n", "<br>"));
 		
 		dto.setContents(dto.getContents().replace("\r\n", "<br>"));
 		dto.setContents(dto.getContents().replace("\n", "<br>"));
+		
+		dto.setAuthorIntro(dto.getAuthorIntro().replace("\r\n", "<br>"));
+		dto.setAuthorIntro(dto.getAuthorIntro().replace("\n", "<br>"));
 		
 		dao.close();
 		

@@ -52,6 +52,25 @@ public class BookInventoryDAO {
 		}
 		
 		return 0;
+	}
+
+	//BookEditOk 서블릿 -> 도서재고 수정
+	public int edit(BookInventoryDTO bidto) {
+		
+		try {
+			
+			String sql = "update tblInventory set amount = ? where seqBook = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, bidto.getAmount());
+			pstat.setString(2, bidto.getSeqBook());
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}		
+		
+		return 0;
 	}	
 	
 	//---------------주혁 끝

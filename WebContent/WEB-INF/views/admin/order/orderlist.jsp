@@ -33,15 +33,18 @@
 
 				<h3>주문/배송 조회</h3>
 
-
+				
+				<form method="GET" action="/bookjuck/member/refund/list.do" id="searchForm">
 				<table class="table tbl-md search-type">
 					<tr>
 						<th>분류</th>
-						<td colspan="4"><select name="category" class="form-control">
-								<option value="자사배송">자사배송</option>
-								<option value="E-Book">E-Book</option>
-								<option value="바로드림">바로드림</option>
-						</select></td>
+						<td colspan="4">
+							<select name="type" id="type" class="form-control">
+									<option value="1">일반배송</option>
+									<option value="2">바로드림</option>
+									<option value="3">E-Book</option>
+							</select>
+						</td>
 						<td rowspan="4"><input type="button" class="btn btn-general"
 							id="btnview" value="조회하기"></td>
 					</tr>
@@ -73,7 +76,7 @@
 						<td colspan="6"></td>
 					</tr>
 				</table>
-
+				</form>
 
 				<b class="subtitle">주문 내역 조회 결과</b>
 				
