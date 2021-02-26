@@ -35,9 +35,22 @@ $(window).load(function() {
 		}
 	});
 	
+	//도서수정 -> 수정 버튼 클릭
+	$("#btnedit").click(function() {
+		if (!($("#imagename").val().toLowerCase().endsWith("jpg") || $("#imagename").val().toLowerCase().endsWith("gif") || $("#imagename").val().toLowerCase().endsWith("png"))) {
+			//이미지가 아니면
+			alert("지원되는 이미지 파일만 첨부할 수 있습니다.");
+			return;
+		} else {		
+			$("#formEdit").submit();
+		}
+	});
+	
 	//작가 새로추가 -> seqAuthor 삭제
 	$("#btnaddauthor").click(function() {
 		$("#seqAuthor").val("");
 	});
+	
+	
 
 });
