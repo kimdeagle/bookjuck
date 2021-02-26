@@ -1,6 +1,7 @@
 package com.test.bookjuck.dao;
 
 import java.sql.Statement;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,6 +12,8 @@ import com.test.bookjuck.DBUtil;
 import com.test.bookjuck.dto.BookDTO;
 import com.test.bookjuck.dto.CategoryDTO;
 
+import oracle.jdbc.OracleTypes;
+
 
 
 
@@ -20,6 +23,7 @@ public class BookDAO {
 	private Connection conn;
 	private Statement stat;
 	private PreparedStatement pstat;
+	private CallableStatement cstat;
 	private ResultSet rs;
 	
 	
@@ -825,8 +829,49 @@ public class BookDAO {
 		
 		return null;
 	}
-	
+
+
 	//주혁 끝
+	
+	// ############ (조아라) 시작
+	
+	/**
+	 * 회원의 독후감을 쓸 수 있는 도서들의 정보를 가져오는 리스트입니다.
+	 * @param 회원번호입니다.
+	 * @return 도서정보들의 정보인 BookDTO들의 ArrayList를 반환합니다.
+	 */
+	public ArrayList<BookDTO> getPossibleBook(String seq) {
+		
+		try {
+			
+			String sql="{ call procShowPossibleBook(?, ?) }";
+			cstat=conn.prepareCall(sql);
+			cstat.setString(1, seq);
+			cstat.registerOutParameter(2, OracleTypes.CURSOR);
+			cstat.execute();
+			
+			ArrayList<BookDTO> list=new ArrayList<BookDTO>();
+			
+			rs=(ResultSet)cstat.getObject(2);
+			
+			while (rs.next()) {
+				BookDTO dto=new BookDTO();
+				dto.setSeq(rs.getString("seq"));
+				dto.setTitle(rs.getString("title"));
+				list.add(dto);
+			}
+			
+			return list;
+			
+		} catch (Exception e) {
+			System.out.println("BookDAO.getPossibleBook()");
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	// ############ (조아라) 끝
 
 } //BookDAO
 

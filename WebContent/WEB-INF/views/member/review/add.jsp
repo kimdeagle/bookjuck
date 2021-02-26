@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,32 +55,28 @@
             <h3>독후감<small>작성하기</small></h3>
 
             
-			<form method="POST" action="">
-	            <table class="table tbl-md" id="reviewtbl">
+			<form method="POST" action="/bookjuck/member/review/addok.do">
+	            <table class="table tbl-md" id="addtbl">
 	            	<tr>
+	            		<th>도서명</th>
 	            		<td>
-		                    <div class="dropdown">
-		                        <button class="btn btn-default dropdown-toggle selected" type="button" data-toggle="dropdown" aria-expanded="true" id="book">
-		                          도서명
-		                          <span class="caret"></span>
-		                        </button>
-		                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="book">
-		                          <li role="presentation"><a role="menuitem" tabindex="-1">책읽고 글쓰기</a></li>
-		                          <li role="presentation"><a role="menuitem" tabindex="-1">일인칭 단수</a></li>
-		                          <li role="presentation"><a role="menuitem" tabindex="-1">어떻게 살 것인가</a></li>
-		                          <li role="presentation"><a role="menuitem" tabindex="-1">정의란 무엇인가</a></li>
-		                        </ul>
-		                    </div>
+		                    <select class="form-control selectpicker medium" id="seqbook" name="seqbook">
+            					<c:forEach items="${blist}" var="bdto">
+            						<option value=${bdto.seq}>${bdto.title}</option>
+            					</c:forEach>
+							</select>
 	                    </td>
 					</tr>
 					<tr>
+						<th>제목</th>
 						<td>
-							<input type="text" id="title" name="title" class="form-control" placeholder="제목을 입력해주세요">
+							<input type="text" id="reviewTitle" name="reviewTitle" class="form-control" placeholder="제목을 입력해주세요">
                     	</td>
                     </tr>
                     <tr>
+                    	<th>내용</th>
                     	<td>
-							<textarea id="content" name="content" class="form-control" cols="40" rows="15" placeholder="내용을 입력해주세요"></textarea>
+							<textarea id="reviewContent" name="reviewContent" class="form-control" cols="40" rows="15" placeholder="내용을 입력해주세요"></textarea>
             			</td>
             		<tr>
             	</table>

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.test.bookjuck.dao.BookDAO;
 import com.test.bookjuck.dao.NoticeDAO;
 import com.test.bookjuck.dao.ReviewDAO;
 import com.test.bookjuck.dto.NoticeDTO;
@@ -58,11 +59,11 @@ public class ReviewList extends HttpServlet {
 		// 회원의 독후감을 가져온다.
 		HttpSession session=req.getSession();
 //		String seq=session.getAttribute("seq").toString(); // 회원번호를 세션에서 가져온다.
-		String seq="21"; // TODO 세션처리할 때 이 부분 지우고 위 주석 살릴 것.
+		String seq="23"; // TODO 세션처리할 때 이 부분 지우고 위 주석 살릴 것.
 		map.put("seq", seq);
 		
 		ReviewDAO rdao=new ReviewDAO();
-		ArrayList<ReviewDTO> rlist=rdao.getAllList(map);
+		ArrayList<ReviewDTO> rlist=rdao.getList(map);
 		
 		// 1.5 페이징
 		totalCount = rdao.getTotalCount(map); //총 게시물 수
@@ -83,7 +84,7 @@ public class ReviewList extends HttpServlet {
 					+ "        </li>");
 		} else {				
 			pagebar += String.format("<li>"
-					+ "            <a href=\"/bookjuck/admin/review/list.do?page=%d\" aria-label=\"Previous\">"
+					+ "            <a href=\"/bookjuck/member/review/list.do?page=%d\" aria-label=\"Previous\">"
 					+ "                <span aria-hidden=\"true\">&laquo;</span>"
 					+ "            </a>"
 					+ "        </li>", n - 1);
@@ -97,7 +98,7 @@ public class ReviewList extends HttpServlet {
 				pagebar += "<li>";
 			}
 			
-			pagebar += String.format("<a href=\"/bookjuck/admin/review/list.do?page=%d\">%d</a></li>", n, n);
+			pagebar += String.format("<a href=\"/bookjuck/member/review/list.do?page=%d\">%d</a></li>", n, n);
 			
 			loop++;
 			n++;
@@ -112,18 +113,28 @@ public class ReviewList extends HttpServlet {
 					+ "        </li>");
 		} else {
 			pagebar += String.format("<li>"
-					+ "            <a href=\"/bookjuck/admin/review/list.do?page=%d\" aria-label=\"Next\">"
+					+ "            <a href=\"/bookjuck/member/review/list.do?page=%d\" aria-label=\"Next\">"
 					+ "                <span aria-hidden=\"true\">&raquo;</span>"
 					+ "            </a>"
 					+ "        </li>", n);
 		}
-
+		
+		// 독후감 작성할 책이 있는지 확인
+		BookDAO dao=new BookDAO();
+		boolean write;
+		if (dao.getPossibleBook(seq).size()==0) { // 독후감 작성할 책이 없다면
+			write=false;
+		} else {
+			write=true;
+		}
+		
 		// 2.
 		req.setAttribute("rlist", rlist);
 		req.setAttribute("pagebar", pagebar);
 		req.setAttribute("nowPage", nowPage);
+		req.setAttribute("write", write);
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/review/list.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/member/review/list.jsp");
 		dispatcher.forward(req, resp);
 	}
 
