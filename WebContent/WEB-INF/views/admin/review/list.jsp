@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,92 +28,45 @@
 	<%@include file="/WEB-INF/views/admin/inc/header.jsp" %>
 
 	<!-- 주요내용! 여기에 작성한 코드 넣을 것! -->
-        <section class="contentsection">
-            <h3>독후감</h3>
+    <section class="contentsection">
+        <h3>독후감</h3>
 
-            <table class="table tbl-md reviewtbl">
-                <tr>
-                    <th class="col-md-1">글번호</th>
-                    <th class="col-md-3">도서명</th>
-                    <th class="col-md-4">제목</th>
-                    <th class="col-md-1">아이디</th>
-                    <th class="col-md-2">작성일</th>
-                    <th class="col-md-1">우수</th>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td class="cell2"><a href="#">책읽고 글쓰기</a></td>
-                    <td class="cell3"><a href="/bookjuck/admin/review/detail.do">초보 서평러를 위한 최고의 글쓰기 실전 가이드</a></td>
-                    <td>aaa111</td>
-                    <td>2021-02-05</td>
-                    <td><input type="checkbox"></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td class="cell2"><a href="#">책읽고 글쓰기</a></td>
-                    <td class="cell3"><a href="/bookjuck/admin/review/detail.do">초보 서평러를 위한 최고의 글쓰기 실전 가이드</a></td>
-                    <td>aaa111</td>
-                    <td>2021-02-05</td>
-                    <td><input type="checkbox"></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td class="cell2"><a href="#">영어회화 무작정 따라하기</a></td>
-                    <td class="cell3"><a href="/bookjuck/admin/review/detail.do">초보 서평러를 위한 최고의 글쓰기 실전 가이드</a></td>
-                    <td>aaa111</td>
-                    <td>2021-02-05</td>
-                    <td><input type="checkbox"></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td class="cell2"><a href="#">책읽고 글쓰기</a></td>
-                    <td class="cell3"><a href="/bookjuck/admin/review/detail.do">초보 서평러를 위한 최고의 글쓰기 실전 가이드</a></td>
-                    <td>aaa111</td>
-                    <td>2021-02-05</td>
-                    <td><input type="checkbox"></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td class="cell2"><a href="#">책읽고 글쓰기</a></td>
-                    <td class="cell3"><a href="/bookjuck/admin/review/detail.do">초보 서평러를 위한 최고의 글쓰기 실전 가이드</a></td>
-                    <td>aaa111</td>
-                    <td>2021-02-05</td>
-                    <td><input type="checkbox"></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td class="cell2"><a href="#">책읽고 글쓰기</a></td>
-                    <td class="cell3"><a href="/bookjuck/admin/review/detail.do">초보 서평러를 위한 최고의 글쓰기 실전 가이드</a></td>
-                    <td>aaa111</td>
-                    <td>2021-02-05</td>
-                    <td><input type="checkbox"></td>
-                </tr>
-            </table>
+        <table class="table tbl-md reviewtbl">
+            <tr>
+                <th class="col-md-1">글번호</th>
+                <th class="col-md-3">도서명</th>
+                <th class="col-md-4">제목</th>
+                <th class="col-md-1">아이디</th>
+                <th class="col-md-2">작성일</th>
+            </tr>
+            <c:forEach items="${rlist}" var="dto">
+            <tr>
+                <td>${dto.seq}</td>
+                <td class="cell2"><a href="#">${dto.bookTitle}</a></td>
+                <td class="cell3">
+                	<a href="/bookjuck/admin/review/detail.do?seq=${dto.seq}&page=${nowPage}">
+               		${dto.reviewTitle}
+                	<c:if test="${(dto.isPrize) eq '1'}">
+                		<span class="label label-danger">우수</span>
+                	</c:if>
+                	</a>
+                </td>
+                <td>${dto.id}</td>
+                <td>${dto.regDate.substring(0, 10)}</td>
+            </tr>
+            </c:forEach>
+        </table>
 
+		<nav class="pagebar">
             <ul class="pagination">
-                <li>
-                <a href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-                </li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li>
-                <a href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-                </li>
+                ${pagebar}
             </ul>
-
-            <div id="btn">
-                <button type="button" class="btn btn-general" id="edit">작성하기</button>
-                <button type="button" class="btn btn-general inline" id="prize">우수독후감 선정하기</button>
-                <button type="button" class="btn btn-general inline" id="back">뒤로가기</button>
-            </div>
-        </section>
+        </nav>
+            
+        <div id="btn">
+            <button type="button" class="btn btn-general inline" id="back">뒤로가기</button>
+        </div>
+    </section>
 	
 	<!-- ########## 하단 시작 -->
 	<%@include file="/WEB-INF/views/common/footer.jsp" %>
@@ -123,8 +77,6 @@
 	<!-- 플로팅 메뉴 -->
 	<%@include file="/WEB-INF/views/admin/bookjuckee.jsp" %>
 	<%@include file="/WEB-INF/views/common/top.jsp" %>
-
-
 
 </body>
 

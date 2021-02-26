@@ -1,4 +1,4 @@
-package com.test.bookjuck.admin.notice;
+package com.test.bookjuck.admin.review;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,26 +11,28 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.test.bookjuck.dao.NoticeDAO;
-import com.test.bookjuck.dto.NoticeDTO;
+import com.test.bookjuck.dao.ReviewDAO;
 
-@WebServlet("/admin/notice/del.do")
+@WebServlet("/admin/review/del.do")
 public class Del extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 		// 쿼리스트링으로 넘어온 seq를 이용해서
-		// 상세정보를 찾아 삭제
+		// 삭제
+		
 		String seq=req.getParameter("seq");
 		
-		NoticeDAO dao=new NoticeDAO();
+		ReviewDAO dao=new ReviewDAO();
 		
 		int result=dao.del(seq);
 		
 		if (result==1) {
-			// 공지사항 삭제 성공 -> 게시판 목록으로 이동
-			resp.sendRedirect("/bookjuck/admin/notice/list.do");
+			// 독후감 삭제 성공 -> 게시판 목록으로 이동
+			resp.sendRedirect("/bookjuck/admin/review/list.do");
 		} else {
-			// 글 삭제 실패 -> 경고 + 뒤로 가기
+			// 독후감 삭제 실패 -> 경고 + 뒤로 가기
 			PrintWriter writer=resp.getWriter();
 			
 			writer.print("<html><body>");

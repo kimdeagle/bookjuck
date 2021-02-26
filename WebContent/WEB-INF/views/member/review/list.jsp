@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,49 +53,21 @@
 		<section class="contentsection">
             <h3>독후감</h3>
 
-            <table class="table tbl-md reviewtbl">
+            <table class="table tbl-md" id="listbl">
                 <tr>
                     <th class="col-md-1">글번호</th>
                     <th class="col-md-3">도서명</th>
                     <th class="col-md-5">제목</th>
                     <th class="col-md-3">작성일</th>
                 </tr>
+                <c:forEach items="${rlist}" var="rdto">
                 <tr>
-                    <td>2</td>
-                    <td class="cell2"><a href="#">책읽고 글쓰기</a></td>
-                    <td class="cell3"><a href="/bookjuck/member/review/detail.do">초보 서평러를 위한 최고의 글쓰기 실전 가이드</a><span class="label label-danger">우수</span></td>
-                    <td>2021-02-05</td>
+                    <td>${rdto.seq}</td>
+                    <td class="cell2"><a href="#">${rdto.BookTitle}</a></td>
+                    <td class="cell3"><a href="/bookjuck/member/review/detail.do?seq=${rdto.seq}">${rdto.ReviewTitle}</a><span class="label label-danger">우수</span></td>
+                    <td>${rdto.regDate}</td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td class="cell2"><a href="#">책읽고 글쓰기</a></td>
-                    <td class="cell3"><a href="/bookjuck/member/review/detail.do">초보 서평러를 위한 최고의 글쓰기 실전 가이드</a><span class="label label-danger">우수</span></td>
-                    <td>2021-02-05</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td class="cell2"><a href="#">영어회화 무작정 따라하기</a></td>
-                    <td class="cell3"><a href="/bookjuck/member/review/detail.do">초보 서평러를 위한 최고의 글쓰기 실전 가이드</a></td>
-                    <td>2021-02-05</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td class="cell2"><a href="#">책읽고 글쓰기</a></td>
-                    <td class="cell3"><a href="/bookjuck/member/review/detail.do">초보 서평러를 위한 최고의 글쓰기 실전 가이드</a></td>
-                   	<td>2021-02-05</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td class="cell2"><a href="#">책읽고 글쓰기</a></td>
-                    <td class="cell3"><a href="/bookjuck/member/review/detail.do">초보 서평러를 위한 최고의 글쓰기 실전 가이드</a></td>
-                    <td>2021-02-05</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td class="cell2"><a href="#">책읽고 글쓰기</a></td>
-                    <td class="cell3"><a href="/bookjuck/member/review/detail.do">초보 서평러를 위한 최고의 글쓰기 실전 가이드</a></td>
-                    <td>2021-02-05</td>
-                </tr>
+                </c:forEach>
             </table>
 
             <ul class="pagination">

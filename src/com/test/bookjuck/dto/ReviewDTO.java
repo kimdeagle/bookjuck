@@ -7,14 +7,15 @@ package com.test.bookjuck.dto;
  */
 public class ReviewDTO {
 	
-	private String seq;			// 번호
-	private String seqMember;	// 회원번호
-	private String seqBook;		// 도서정보번호
-	private String title;		// 제목
-	private String content;		// 내용
-	private String regDate;		// 작성일자
-	private String isPrize;		// 우수독후감여부
-	
+	private String seq;				// 번호
+	private String seqMember;		// 회원번호
+	private String id;				// 회원아이디
+	private String seqBook;			// 도서정보번호
+	private String bookTitle;		// 도서제목
+	private String reviewTitle; 	// 독후감제목
+	private String reviewContent;	// 내용
+	private String regDate;			// 작성일자
+	private String isPrize;			// 우수독후감여부
 	public String getSeq() {
 		return seq;
 	}
@@ -27,23 +28,35 @@ public class ReviewDTO {
 	public void setSeqMember(String seqMember) {
 		this.seqMember = seqMember;
 	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getSeqBook() {
 		return seqBook;
 	}
 	public void setSeqBook(String seqBook) {
 		this.seqBook = seqBook;
 	}
-	public String getTitle() {
-		return title;
+	public String getBookTitle() {
+		return bookTitle;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setBookTitle(String bookTitle) {
+		this.bookTitle = bookTitle;
 	}
-	public String getContent() {
-		return content;
+	public String getReviewTitle() {
+		return reviewTitle;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setReviewTitle(String reviewTitle) {
+		this.reviewTitle = reviewTitle;
+	}
+	public String getReviewContent() {
+		return reviewContent;
+	}
+	public void setReviewContent(String reviewContent) {
+		this.reviewContent = reviewContent;
 	}
 	public String getRegDate() {
 		return regDate;
@@ -57,5 +70,5 @@ public class ReviewDTO {
 	public void setIsPrize(String isPrize) {
 		this.isPrize = isPrize;
 	}
-
+	
 }

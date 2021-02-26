@@ -1,4 +1,4 @@
-package com.test.bookjuck.admin.notice;
+package com.test.bookjuck.admin.review;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,27 +10,30 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.test.bookjuck.dao.NoticeDAO;
-import com.test.bookjuck.dto.NoticeDTO;
+import com.test.bookjuck.dao.ReviewDAO;
 
-@WebServlet("/admin/notice/del.do")
-public class Del extends HttpServlet {
+@WebServlet("/admin/review/prize.do")
+public class Prize extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// 쿼리스트링으로 넘어온 seq를 이용해서
-		// 상세정보를 찾아 삭제
+
+		// 1. 우수독후감으로 선정할 독후감의 번호를 가져온다.
+		// 2. DB 작업
+		
+		// 1.
 		String seq=req.getParameter("seq");
 		
-		NoticeDAO dao=new NoticeDAO();
+		// 2.
+		ReviewDAO dao=new ReviewDAO();
 		
-		int result=dao.del(seq);
+		int result=dao.prize(seq);
 		
 		if (result==1) {
-			// 공지사항 삭제 성공 -> 게시판 목록으로 이동
-			resp.sendRedirect("/bookjuck/admin/notice/list.do");
+			// 우수독후감 선정 성공 -> 게시판 목록으로 이동
+			resp.sendRedirect("/bookjuck/admin/review/list.do");
 		} else {
-			// 글 삭제 실패 -> 경고 + 뒤로 가기
+			// 우수독후감 선정 실패 -> 경고 + 뒤로 가기
 			PrintWriter writer=resp.getWriter();
 			
 			writer.print("<html><body>");
