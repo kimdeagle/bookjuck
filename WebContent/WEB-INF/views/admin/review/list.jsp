@@ -31,7 +31,7 @@
     <section class="contentsection">
         <h3>독후감</h3>
 
-        <table class="table tbl-md reviewtbl">
+        <table class="table tbl-md" id="listtbl">
             <tr>
                 <th class="col-md-1">글번호</th>
                 <th class="col-md-3">도서명</th>

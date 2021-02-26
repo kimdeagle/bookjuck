@@ -5,6 +5,7 @@
 	1. 독후감 목록 조회(관리자)
 	2. 독후감 상세 조회
 	3. 독후감 목록 조회(고객)
+	4. 고객 독후감 작성
 
 */
 
@@ -15,84 +16,29 @@
     text-align:center;
 }
 
-.reviewtbl {
-	margin:0 auto;
-}
-
-.reviewtbl th {
+#listtbl th, td {
 	text-align:center;
-}
-
-.reviewtbl td {
-	text-align:center;
-}
-
-.reviewtbl .cell2, .reviewtbl .cell3 {
-	text-align:left;
 }
 
 /* 2. 독후감 상세 조회 */
 
-#btn {
-    width:100%;
-    text-align:center;
-    margin:20px 0;
+#detailtbl th {
+	text-align:center;
 }
+
+#detailtbl tr:nth-child(3) td {
+	text-align:left;
+}
+
 /* 3. 독후감 목록 조회(고객) */
 
 h3 {
     margin-bottom:30px;
 }
 
-#subtitle {
-    text-align:center;
-    margin-bottom:50px;
-}
 
-#qbox > h5 {
-    border-bottom:1px dashed #ccc;
-}
+/* 4. 고객 독후감 작성 */
 
-#btn {
-    width:100%;
-    text-align:center;
-}
-
-#senddate {
-    margin-bottom:20px;
-}
-
-/* 페이지네이션 설정 -> global로 빠져야 할듯 */
-
-.pagination {
-    display:block;
-    text-align:center;
-    margin:50px 0;
-}
-
-.pagination > li > a {
-    float:none;
-    margin-left:-5px;
-}
-
-table {
-    position:relative;
-}
-
-#writebtn {
-    margin:10px;
-}
-
-#selected {
-	width:200px;
-}/* 2. 독후감 상세 조회 */
-
-#detailtbl th {
+#addtbl th, #edittbl th{
 	text-align:center;
-}
-
-#btn {
-    width:100%;
-    text-align:center;
-    margin:20px 0;
 }

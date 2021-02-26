@@ -75,7 +75,6 @@ public class ReviewDAO {
 			ArrayList<ReviewDTO> list=new ArrayList<ReviewDTO>();
 
 			while (rs.next()) {
-				System.out.println(rs.getString("id"));
 				ReviewDTO dto=new ReviewDTO();
 				dto.setSeq(rs.getString("seq"));
 				dto.setReviewTitle(rs.getString("reviewtitle"));
@@ -330,7 +329,7 @@ public class ReviewDAO {
 	}
 	
 	/**
-	 * 독후감번호로 독후감 작성자의 PK(seq)를 가져오는 메서드입니다.
+	 * 독후감번호로 독후감 작성자의 PK()를 가져오는 메서드입니다.
 	 * @param seq 독후감번호입니다.
 	 * @return 독후감 작성자의 PK(seq)를 반환합니다.
 	 */
@@ -338,16 +337,13 @@ public class ReviewDAO {
 		
 		try {
 			
-			String sql="select m.seq as seq from tblMember m"
-					+ "    inner join tblReview r"
-					+ "        on m.seq=r.seqmember"
-					+ "            where r.seq=?";
+			String sql="select seqmember from tblReview where seq=?";
 			pstat=conn.prepareStatement(sql);
 			pstat.setString(1, seq);
 			rs=pstat.executeQuery();
 			
 			if (rs.next()) {
-				return rs.getString("seq");
+				return rs.getString("seqmember");
 			}
 			
 		} catch (Exception e) {
@@ -358,6 +354,47 @@ public class ReviewDAO {
 		return null;
 		
 	}
+
+	public int add(ReviewDTO dto) {
+		
+		try {
+			
+			String sql="insert into tblReview(seq, seqmember, seqbook, title, content, regdate, isprize) values(seqReview.nextVal, ?, ?, ?, ?, sysdate, 0)";
+			pstat=conn.prepareStatement(sql);
+			pstat.setString(1, dto.getSeqMember());
+			pstat.setString(2, dto.getSeqBook());
+			pstat.setString(3, dto.getReviewTitle());
+			pstat.setString(4, dto.getReviewContent());
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println("ReviewDAO.add()");
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
+	public int edit(ReviewDTO dto) {
 	
-	// ############ (조아라) 시작
+		try {
+			
+			String sql="update tblReview set title=?, content=? where seq=?";
+			pstat=conn.prepareStatement(sql);
+			pstat.setString(1, dto.getReviewTitle());
+			pstat.setString(2, dto.getReviewContent());
+			pstat.setString(3, dto.getSeq());
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println("ReviewDAO.edit()");
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+	
+	// ############ (조아라) 끝
 }
