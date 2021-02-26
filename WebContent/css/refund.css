@@ -92,12 +92,12 @@
 }
 
 /*    datepicker 사이즈 + display : inline-block    */
-.list-form #now_date {
+.list-form #startDate {
     width: 165px;
     display: inline-block;
 }
 
-.list-form #date_before_month {
+.list-form #endDate {
     width: 165px;
     display: inline-block;
 }
