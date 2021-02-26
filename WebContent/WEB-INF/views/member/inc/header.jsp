@@ -13,7 +13,7 @@
             <a href="/bookjuck/member/tos.do" class="headerlink-item">회원가입</a>
             <a href="/bookjuck/member/login.do" class="headerlink-item">장바구니</a>
             <a href="/bookjuck/member/login.do" class="headerlink-item">주문/배송조회</a>
-            <a href="#" class="headerlink-item">고객센터</a>
+            <a href="/bookjuck/memeber/login.do" class="headerlink-item">QnA</a>
             <a href="/bookjuck/member/notice/list.do" class="headerlink-item">공지사항</a>
         </div>
 		</c:if>

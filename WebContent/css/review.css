@@ -33,26 +33,11 @@
 
 /* 2. 독후감 상세 조회 */
 
-#qbox {
-    width:700px;
-    background-color:rgba(91, 142, 125, .2);
-    margin:0 auto;
-    padding:50px;
-}
-
 #btn {
     width:100%;
     text-align:center;
     margin:20px 0;
 }
-
-.label {
-    position:relative;
-    left:5px;
-    top:-2px;
-    margin-left:10px;
-}
-
 /* 3. 독후감 목록 조회(고객) */
 
 h3 {
@@ -62,15 +47,6 @@ h3 {
 #subtitle {
     text-align:center;
     margin-bottom:50px;
-}
-
-#qbox {
-    width:700px;
-    background-color:rgba(91, 142, 125, .2);
-    margin-bottom:50px;
-    margin-left:auto;
-    margin-right:auto;
-    padding:50px;
 }
 
 #qbox > h5 {
@@ -109,4 +85,14 @@ table {
 
 #selected {
 	width:200px;
+}/* 2. 독후감 상세 조회 */
+
+#detailtbl th {
+	text-align:center;
+}
+
+#btn {
+    width:100%;
+    text-align:center;
+    margin:20px 0;
 }
