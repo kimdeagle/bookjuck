@@ -26,6 +26,9 @@ public class BookAdd extends HttpServlet {
 		//2. DB 작업 -> select
 		//3. 결과 + JSP호출
 		
+		//1.
+		String page = req.getParameter("page");
+		
 		//2.
 		//카테고리별 번호, 카테고리명
 		CategoryDAO cdao = new CategoryDAO();
@@ -38,6 +41,7 @@ public class BookAdd extends HttpServlet {
 		AuthorDAO adao = new AuthorDAO();
 		ArrayList<AuthorDTO> alist = adao.getAuthorList();
 		
+		//작가소개 엔터 변환
 		for (AuthorDTO adto : alist) {
 			adto.setIntro(adto.getIntro().replace("\r\n", "<br>"));
 			adto.setIntro(adto.getIntro().replace("\n", "<br>"));
@@ -52,7 +56,7 @@ public class BookAdd extends HttpServlet {
 		req.setAttribute("sCategoryList", sCategoryList);
 		req.setAttribute("alist", alist);
 		
-		
+		req.setAttribute("page", page);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/book/bookadd.jsp");
 		dispatcher.forward(req, resp);
