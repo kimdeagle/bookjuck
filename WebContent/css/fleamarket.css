@@ -276,3 +276,25 @@
 .fleamarket .tbl-delete tr:hover {
     background-color: transparent;
 }
+
+/* 조아라 =========================================================================== */
+
+/* 관리자 상세조회 */
+
+table #admindetailtbl th{
+	text-align:center;
+}
+
+#cmttbl td {
+	text-align:left;
+}
+
+#cmttbl td:nth-child(1) {
+	width:20%;
+}
+
+#btn {
+    width:100%;
+    text-align:center;
+    margin:20px;
+}

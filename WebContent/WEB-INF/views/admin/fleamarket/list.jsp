@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,12 +33,9 @@
                 <h3>중고도서 거래 게시판</h3>
 
                 <div id="topbox1">
-                    <input type="button" class="btn btn-list" value="목록" style="background-color: #F4A259; color: white;">
-                    <input type="button" class="btn btn-pics" value="썸네일">
-
                     <!-- <input type="text" class="form-control" id="search"> -->
 
-                    <form id="searchForm" method="GET" action="/codestudy/board/list.do">
+                    <form id="searchForm" method="GET" action="">
                         <div class="input-group search">
                         
                             <input type="text" class="form-control" id="search" name="search" placeholder="" aria-describedby="basic-addon2" required value="">
@@ -49,72 +47,51 @@
                     <!-- <div style="clear:both;"></div> -->
 
 
-                    <input type="button" class="btn btn-general" value="새 글쓰기">
+               </div>
+                    <!-- 썸네일형 리스트 -->
+                <div class="thumbnail-box">
+                
+                	<c:if test="${list.size() == 0 }">
+                		<div style="text-align:center;">게시물이 없습니다.</div>
+                	</c:if>
+                	
+                	<c:forEach items="${ulist}" var="dto">
+                    <div class="thumbnail-list" onclick="location.href='/bookjuck/admin/fleamarket/view.do?seq=${dto.seq}&fleamarketsearch=${fleamarketsearch}&page=${nowPage}';">
+                        <div class="seq">${dto.seq}</div>
+                        
+                        <c:if test="${not empty dto.image}">
+                        <div class="attach"><img src="/bookjuck/file/${dto.image}" class="book-sm"></div>
+                        </c:if>
+                        
+                        <c:if test="${dto.image == null}">
+                        <div class="attach"><img src="/bookjuck/image/nopic.png" class="book-sm"></div>
+                        </c:if>
+                        
+                        <div class="subject">${dto.title}</div>
+                        <div class="id">${dto.id}</div>
+                        <div class="regdate">${dto.regDate.substring(0, 10)}</div>
+                        
+                        <c:if test="${dto.ccount > 0}">
+                        <div class="cnt">${dto.ccount}</div>
+                        </c:if>
+                        
+                        <c:if test="${dto.ccount == 0 ||dto.ccount == null}">
+                        <div class="cnt">0</div>
+                        </c:if>
+                        
+                    </div>
+					</c:forEach>
+					
+                   
                 </div>
 
-                <table class="table tbl-md">
-                    <tr style="background-color: RGBA(140,179,105,0.2)">
-                        <th id="num">글번호</th>
-                        <th id="title">글제목</th>
-                        <th id="name">작성자</th>
-                        <th id="date">작성일</th>
-                        <th id="cnt">읽음</th>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td class="title"><a href="">테스트입니다. 중고도서지만 깨끗합니다.</a></td>
-                        <td><a href="/bookjuck/admin/fleamarket/detail.do">테스트</a></td>
-                        <td>2021-02-17</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td class="title"><a href="/bookjuck/admin/fleamarket/detail.do">테스트입니다. 중고도서지만 깨끗합니다.</a></td>
-                        <td>테스트</td>
-                        <td>2021-02-17</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td class="title"><a href="/bookjuck/admin/fleamarket/detail.do">테스트입니다. 중고도서지만 깨끗합니다.</a></td>
-                        <td>테스트</td>
-                        <td>2021-02-17</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td class="title"><a href="/bookjuck/admin/fleamarket/detail.do">테스트입니다. 중고도서지만 깨끗합니다.</a></td>
-                        <td>테스트</td>
-                        <td>2021-02-17</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td class="title"><a href="/bookjuck/admin/fleamarket/detail.do">테스트입니다. 중고도서지만 깨끗합니다.</a></td>
-                        <td>테스트</td>
-                        <td>2021-02-17</td>
-                        <td>0</td>
-                    </tr>                   
-                </table>
+				<div style="clear: both;"></div>
 
-
-                <ul class="pagination">
-                    <li>
-                    <a href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                    </li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li>
-                    <a href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                    </li>
-                </ul>
+                <nav class="pagebar">
+	                <ul class="pagination">
+	                    ${pagebar}
+	                </ul>
+            	</nav>
 
             </article>
         </section>
