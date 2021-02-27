@@ -83,6 +83,7 @@ input[type=button]:focus {
 }
 
 /* admin/book/add.jsp */
+
 #title { width: 300px; }
 
 #publisher { width: 300px; }
@@ -97,7 +98,7 @@ input[type=button]:focus {
 
 #isbn { width: 200px; }
 
-#price { width: 100px; text-align: right; }
+#price { width: 80px; text-align: right; }
 
 #amount { width: 80px; text-align: center; }
 
@@ -146,9 +147,9 @@ input[type=button]:focus {
 #searchauthorname { width: 200px; display: inline-block; }
 
 /* modal > 작가 리스트 테이블 */
-#tblauthorlist th:nth-child(1) { width: 50px; }
+#tblauthorlist th:nth-child(1) { width: 50px; text-align: center; }
 #tblauthorlist th:nth-child(2) { width: 100px; }
 #tblauthorlist th:nth-child(3) { width: auto; }
-
+#tblauthorlist td:nth-child(1) { text-align: center; }
 
 
