@@ -1,4 +1,4 @@
-package com.test.bookjuck.member.mypage;
+package com.test.bookjuck.member;
 
 import java.io.IOException;
 import java.io.PrintWriter;
