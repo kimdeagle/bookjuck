@@ -130,7 +130,7 @@
                 <!-- 조회 리스트 -->
                 <!-- 주문 내역이 없으면 보이는 화면 -->
 
-				<c:if test="${bolist.size() == 0}">
+				<c:if test="${blist.size() == 0&&balist.size() == 0}">
                 <div class="noOrderList">
                     <span>주문 내역이 없습니다.</span>
                     
@@ -138,7 +138,7 @@
                 </div>
                 </c:if>
 
-                <c:if test="${bolist.size() > 0}">
+                <c:if test="${blist.size() > 0 || balist.size() > 0}">
                 <!-- 주문 내역 있으면 보이는 리스트 -->
                 <table class="orderList table tbl-md">
                     <tr>
@@ -148,23 +148,75 @@
                         <th>주문상태</th>
                         <th>취소/교환/환불</th>
                     </tr>
-                    <c:forEach items="${bolist}" var="bodto">
+                    <c:forEach items="${blist}" var="bodto">
                     <tr class="olInfo">
                         <td>
-                            <a href="/bookjuck/member/mypage/orderdetail.do?seqBookOrder=${bodto.seqBookOrder}">${bodto.seqBookOrder}</a><br>
+                            <a href="/bookjuck/member/mypage/orderdetail.do?seqBookOrder=${bodto.seqBookOrder}">123456${bodto.seqBookOrder}</a><br>
                             (${bodto.orderDate})<br><br>
                             <a href="/bookjuck/member/mypage/orderdetail.do?seqBookOrder=${bodto.seqBookOrder}" class="btn-order">주문상세보기</a>
                         </td>
                         <td>${bodto.actualPay}</td>
                         <td>
                             <img src="/bookjuck/image/book/${bodto.image}" class="book-xs">
-                            <a href="/bookjuck/member/book/bookdetail.do?">${bodto.title}</a>
+                            <a href="/bookjuck/member/book/bookdetail.do?seq=${bodto.seqBook}">${bodto.title}
+                            
+                            </a>
                         </td>
                         <td>${bodto.orderState}</td>
                         <td>
+                        	<c:if test="${empty not id}">
                             <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/cancelapplication.do';">취 소</button>
                             <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/returnapplication.do';">교 환</button>
                             <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/refundapplication.do';">환 불</button>
+                            </c:if>
+                        </td>
+                    </tr>
+                    </c:forEach>
+                    <c:forEach items="${balist}" var="badto">
+                    <tr class="olInfo">
+                        <td>
+                            <a href="/bookjuck/member/mypage/orderdetail.do?seqBookOrder=${badto.seq}">567891${badto.seq}</a><br>
+                            (${badto.orderDate})<br><br>
+                            <a href="/bookjuck/member/mypage/orderdetail.do?seqBookOrder=${badto.seq}" class="btn-order">주문상세보기</a>
+                        </td>
+                        <td>${badto.actualPay}</td>
+                        <td>
+                            <img src="/bookjuck/image/book/${badto.image}" class="book-xs">
+                            <a href="/bookjuck/member/book/bookdetail.do?seq=${badto.seqBook}">${badto.title}
+                            
+                            </a>
+                        </td>
+                        <td>${badto.orderState}</td>
+                        <td>
+                        	<c:if test="${empty not id}">
+                            <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/cancelapplication.do';">취 소</button>
+                            <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/returnapplication.do';">교 환</button>
+                            <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/refundapplication.do';">환 불</button>
+                            </c:if>
+                        </td>
+                    </tr>
+                    </c:forEach>
+                    <c:forEach items="${elist}" var="edto">
+                    <tr class="olInfo">
+                        <td>
+                            <a href="/bookjuck/member/mypage/orderdetail.do?seqBookOrder=${edto.seq}">987654${edto.seq}</a><br>
+                            (${edto.orderDate})<br><br>
+                            <a href="/bookjuck/member/mypage/orderdetail.do?seqBookOrder=${edto.seq}" class="btn-order">주문상세보기</a>
+                        </td>
+                        <td>${edto.actualPay}</td>
+                        <td>
+                            <img src="/bookjuck/image/book/${edto.image}" class="book-xs">
+                            <a href="/bookjuck/member/book/bookdetail.do?seq=${edto.seqBook}">${edto.title}
+                            
+                            </a>
+                        </td>
+                        <td>${edto.orderState}</td>
+                        <td>
+                        	<c:if test="${empty not id}">
+                            <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/cancelapplication.do';">취 소</button>
+                            <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/returnapplication.do';">교 환</button>
+                            <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/refundapplication.do';">환 불</button>
+                            </c:if>
                         </td>
                     </tr>
                     </c:forEach>

@@ -8,7 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.test.bookjuck.DBUtil;
+import com.test.bookjuck.dto.BaroOrderDTO;
 import com.test.bookjuck.dto.BookOrderDetailDTO;
+import com.test.bookjuck.dto.EBookOrderDTO;
 
 import oracle.jdbc.OracleTypes;
 
@@ -124,7 +126,7 @@ public class OrderListDAO {
 			
 			
 				String sql = String.format("select rownum, b.* from vwbookorderlist b where seqbookorder = %s and rownum = 1", tdto2.getSeqBookOrder());
-	
+				
 				
 				pstat = conn.prepareStatement(sql);
 				
@@ -140,7 +142,7 @@ public class OrderListDAO {
 					dto.setOrderState(rs.getString("orderState"));
 					dto.setOrderDate(rs.getString("orderDate"));
 					dto.setImage(rs.getString("image"));
-					
+					dto.setSeqBook(rs.getString("seqBook"));
 					
 					bolist.add(dto);
 				
@@ -214,6 +216,149 @@ public class OrderListDAO {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
+		return null;
+	}
+
+	public ArrayList<BookOrderDetailDTO> bcntlist(String seq) {
+		try {
+			
+			String sql = "select count(*) as cnt from vwBookOrderList where seqMember = ? group by seqBookOrder";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			rs = pstat.executeQuery();
+			
+			ArrayList<BookOrderDetailDTO> list = new ArrayList<BookOrderDetailDTO>();
+			
+			while(rs.next()) {
+				
+				BookOrderDetailDTO dto = new BookOrderDetailDTO();
+				dto.setCnt(rs.getInt("cnt"));
+				
+				list.add(dto);
+				
+			}
+			
+			return list; 
+			
+		} catch (Exception e) {
+			System.out.println("OrderListDAO getBCnt : "+e);
+		}
+		return null;
+	}
+
+	public ArrayList<BaroOrderDTO> listBaroOrder(String seq) {
+		try {
+
+			String sql2 = "select distinct(seqBaroOrder) from vwbaroorderlist where seqmember = ?";
+			
+			pstat = conn.prepareStatement(sql2);
+			pstat.setString(1, seq);
+			
+			ArrayList<BaroOrderDTO> testlist = new ArrayList<BaroOrderDTO>();
+			
+			rs = pstat.executeQuery();
+			
+			while(rs.next()) {
+				BaroOrderDTO tdto = new BaroOrderDTO();
+				tdto.setSeq(rs.getString("seqBaroOrder"));
+				
+				testlist.add(tdto);
+			}
+			
+			ArrayList<BaroOrderDTO> balist = new ArrayList<BaroOrderDTO>();
+
+			for(BaroOrderDTO tdto2 : testlist) {
+			
+			
+				String sql = String.format("select rownum, b.* from vwbaroorderlist b where seqbaroorder = %s and rownum = 1", tdto2.getSeq());
+				
+				
+				pstat = conn.prepareStatement(sql);
+				
+				rs = pstat.executeQuery();
+				
+				
+				while(rs.next()) {
+					
+					BaroOrderDTO dto = new BaroOrderDTO();
+					dto.setSeq(rs.getString("seqBaroOrder"));
+					dto.setTitle(rs.getString("title"));
+					dto.setActualPay(rs.getInt("actualPay"));
+					dto.setOrderState(rs.getString("orderState"));
+					dto.setOrderDate(rs.getString("orderDate"));
+					dto.setImage(rs.getString("image"));
+					dto.setSeqBook(rs.getString("seqBook"));
+					
+					balist.add(dto);
+				
+				}
+			
+			}
+			return balist;
+			
+		} catch (Exception e) {
+			System.out.println("OrderListDAO listBaroOrder : "+e);
+		}
+		
+		return null;
+	}
+
+	public ArrayList<EBookOrderDTO> listEBookOrder(String seq) {
+		try {
+
+			String sql2 = "select distinct(seqEBookOrder) from vwEBookorderlist where seqmember = ?";
+			
+			pstat = conn.prepareStatement(sql2);
+			pstat.setString(1, seq);
+			
+			ArrayList<EBookOrderDTO> testlist = new ArrayList<EBookOrderDTO>();
+			
+			rs = pstat.executeQuery();
+			
+			while(rs.next()) {
+				EBookOrderDTO tdto = new EBookOrderDTO();
+				tdto.setSeq(rs.getString("seqEBookOrder"));
+				
+				testlist.add(tdto);
+			}
+			
+			ArrayList<EBookOrderDTO> elist = new ArrayList<EBookOrderDTO>();
+
+			for(EBookOrderDTO tdto2 : testlist) {
+			
+			
+				String sql = String.format("select rownum, b.* from vwEBookorderlist b where seqEBookorder = %s and rownum = 1", tdto2.getSeq());
+				
+				
+				pstat = conn.prepareStatement(sql);
+				
+				rs = pstat.executeQuery();
+				
+				
+				while(rs.next()) {
+					
+					EBookOrderDTO dto = new EBookOrderDTO();
+					dto.setSeq(rs.getString("seqEBookOrder"));
+					dto.setTitle(rs.getString("title"));
+					dto.setActualPay(rs.getInt("ActualPay"));
+					dto.setOrderState(rs.getString("orderState"));
+					dto.setOrderDate(rs.getString("orderDate"));
+					dto.setImage(rs.getString("image"));
+					dto.setSeqBook(rs.getString("seqEBook"));
+					
+					elist.add(dto);
+				
+				}
+			
+			}
+			return elist;
+			
+		} catch (Exception e) {
+			System.out.println("OrderListDAO listEBookOrder : "+e);
+		}
+		
 		return null;
 	}
 
