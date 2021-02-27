@@ -75,7 +75,7 @@
 		  	
 			<div class="form-group">
 		    	<label for="authorintro">작가 소개</label>
-		    	<textarea class="form-control" id="authorintro" name="authorIntro" placeholder="작가소개를 입력해주세요." rows="5" readonly>${dto.authorIntro}</textarea>
+		    	<textarea class="form-control" id="authorintro" name="authorIntro" placeholder="작가소개를 입력해주세요." rows="10" maxlength=1500 readonly>${dto.authorIntro}</textarea>
 		  	</div>
 
 			<div class="form-group">
@@ -89,7 +89,7 @@
 		  	</div>
 		  	
 			<div class="form-group">
-		    	<label for="price">정가</label>
+		    	<label for="price">정가 (단위 : 원)</label>
 		    	<input type="text" class="form-control" id="price" name="price" value="${dto.price}" required>
 		  	</div>
 		  	
@@ -110,12 +110,12 @@
 		  	
 			<div class="form-group">
 		    	<label for="bookintro">도서 소개</label>
-		    	<textarea class="form-control" id="bookintro" name="summary" placeholder="도서소개를 입력해주세요." rows="10" required>${dto.summary}</textarea>
+		    	<textarea class="form-control" id="bookintro" name="summary" placeholder="도서소개를 입력해주세요." rows="10" maxlength=1500 required>${dto.summary}</textarea>
 		  	</div>
 		  	
 			<div class="form-group">
 		    	<label for="index">목차</label>
-		    	<textarea class="form-control" id="index" name="contents" placeholder="목차를 입력해주세요." rows="10" required>${dto.contents}</textarea>
+		    	<textarea class="form-control" id="index" name="contents" placeholder="목차를 입력해주세요." rows="10" maxlength=1500 required>${dto.contents}</textarea>
 		  	</div>
 		  	
 		  	<div class="form-group">
