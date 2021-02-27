@@ -24,7 +24,7 @@ public class DeleteOk extends HttpServlet {
 		
 		//1.
 		req.setCharacterEncoding("UTF-8");
-		
+		String path=req.getRealPath("/files/");
 		
 		String seq = req.getParameter("seq");	// 삭제할 글 번호
 		
@@ -33,7 +33,7 @@ public class DeleteOk extends HttpServlet {
 		UsedBoardDAO dao = new UsedBoardDAO();
 
 		
-		int result = dao.del(seq); // 글삭제하기
+		int result = dao.del(seq, path); // 글삭제하기
 		
 		
 		if (result == 1) {
