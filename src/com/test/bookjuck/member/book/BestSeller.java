@@ -25,8 +25,9 @@ public class BestSeller extends HttpServlet {
 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
    
    
-      //String aaa = request.getParameter("aaa");
-      //dao.list(aaa);  //where 
+      String a = request.getParameter("a"); //카테고리
+      System.out.println(a);
+      
       
       String yearStart = request.getParameter("yearStart");
       String monthStart = request.getParameter("monthStart");
@@ -56,10 +57,12 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
          map.put("yearEnd", yearEnd);
          map.put("monthEnd", monthEnd);
          map.put("dayEnd", dayEnd);
+         map.put("a", a);//카테고리
                         
       
       System.out.println(map.get("yearStart"));
       System.out.println(map.get("yearEnd"));
+      System.out.println(map.get("a"));
       
       ArrayList<BookDTO> list = new ArrayList<BookDTO>();
       
@@ -98,7 +101,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
          request.setAttribute("yearEnd", yearEnd);
          request.setAttribute("monthEnd", monthEnd);
          request.setAttribute("dayEnd", dayEnd);
-         
+         request.setAttribute("a", a);
          
          
          ArrayList<BookDTO> list1 = new ArrayList<BookDTO>(); //1위
@@ -111,21 +114,93 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 
          System.out.println("size: " + list.size());
          
-         list1.add(list.get(0));
-         
-         for (int i=1; i<=3; i++) {
-            list2.add(list.get(i));
-         }
-         
-         for (int i=4; i<=9; i++) {
-            list3.add(list.get(i));
-         }
+         if (list.size() < 10) {
+
+				for (int i = 0; i < list.size()-1; i++) {
+					list3.add(list.get(i));
+				}
+				 
+
+			} else {
+
+				list1.add(list.get(0));
+
+				for (int i = 1; i <= 3; i++) {
+					list2.add(list.get(i));
+				}
+
+				for (int i = 4; i <= 9; i++) {
+					list3.add(list.get(i));
+					
+					
+				}
+				
+			  
+				
+				
+			}
          
          request.setAttribute("list1", list1);
          request.setAttribute("list2", list2);
          request.setAttribute("list3", list3);
       
             
+      } else if(!(a == null || a.equals(""))) {
+    	  
+    	  BookDAO dao = new BookDAO();
+    	  list = dao.CategorybestSeller(map);
+    	  System.out.println("확인용" + list);
+    	  for (BookDTO dto : list) {
+              
+              // 날짜에서 시간 잘라내기
+          	dto.setPubDate(dto.getPubDate().substring(0, 10));
+     
+              // 제목, 카피 너무 길면 자르기
+              if (dto.getTitle().length() > 30) {
+                 dto.setTitle(dto.getTitle().substring(0, 30) + "..");
+              }
+     
+              if (dto.getCopy().length() > 80) {
+                 dto.setCopy(dto.getCopy().substring(0, 80) + "..");
+              }
+     
+           }
+           
+           
+           System.out.println("책목록" + list);
+           ArrayList<BookDTO> list1 = new ArrayList<BookDTO>(); //1위
+           ArrayList<BookDTO> list2 = new ArrayList<BookDTO>(); //2~4위
+           ArrayList<BookDTO> list3 = new ArrayList<BookDTO>(); //5~10위
+           
+           System.out.println("size: " + list.size());
+           System.out.println("list(0)" + list.get(0));
+           
+           
+			if (list.size() < 10) {
+
+				for (int i = 0; i <= list.size()-1; i++) {
+					list3.add(list.get(i));
+				}
+
+			} else {
+
+				list1.add(list.get(0));
+
+				for (int i = 1; i <= 3; i++) {
+					list2.add(list.get(i));
+				}
+
+				for (int i = 4; i <= 9; i++) {
+					list3.add(list.get(i));
+				}
+			}
+			
+			
+			request.setAttribute("list1", list1);
+			request.setAttribute("list2", list2);
+			request.setAttribute("list3", list3);
+    	  
+    	  
       } 
       
       else {
@@ -137,7 +212,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
          for (BookDTO dto : list) {
             
             // 날짜에서 시간 잘라내기
-            dto.setPubDate(dto.getPubDate().substring(0, 10));
+        	dto.setPubDate(dto.getPubDate().substring(0, 10));
    
             // 제목, 카피 너무 길면 자르기
             if (dto.getTitle().length() > 30) {
@@ -179,8 +254,8 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
       
       //1
       
-   
-   
+
+      request.setAttribute("a", a);
       
       
       RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/member/book/bestseller.jsp");
