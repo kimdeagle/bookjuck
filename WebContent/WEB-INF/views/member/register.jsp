@@ -277,6 +277,19 @@
             }
         }).open();
     }
+	
+	
+	/*비밀번호 중복 검사*/
+	$("#registerForm").submit(function(evt) {
+			
+		if ($("#pw").val() != $("#cpw").val()) {
+			alert("암호가 일치하지 않습니다.");
+			
+			evt.preventDefault();
+			return false; 
+		}
+		
+	});
 </script>
 </body>
 </html>

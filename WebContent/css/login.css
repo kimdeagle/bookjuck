@@ -74,7 +74,10 @@ html, body {
 /* 비로그인 주문 조회*/
 #nmlogin{
 	position: absolute; 
-	 
+}
+
+#nmLoginForm input{
+	margin-bottom:30px; 	
 }
 
 
@@ -175,14 +178,11 @@ span{
 	width: 300px;
 	margin: auto;
 	text-align: center;
-	
 }
 
 #idFindTbl >td,
-#pwFindTbl >td{
-	
+#pwFindTbl >td{	
 margin: 3px 0px;
-	
 }
 
 #idFindSwitch
@@ -211,7 +211,7 @@ margin: 3px 0px;
 
 .idFindSwitchContent{
 	width: 375px;
-	height: 150px;
+	height: 200px;
 	border: 1px solid #ccc;
 	border-top: none;
 	margin: auto;
@@ -222,9 +222,32 @@ margin: 3px 0px;
 }
 
 
-.idFindSwitchContent > input {
-	margin-top: 15px;	
+.idFindSwitchContent input[type="button"] {
+	position: relative;
+	top: -20px;
+	
 }
+
+#pwFindEmail,
+#pwFindSsn,
+#pwFindTel{
+	position: relative;
+	top: -56px;
+}
+
+.idFindTbl td,
+.pwFindTbl td{
+	text-align: left;
+}
+
+.pwFindTbl{
+	position: relative;
+	top: -30px;
+} 
+
+/* .idFindTb{
+	margin-top: -40px;
+} */
 
 #telContent,
 #emailContent,
@@ -234,13 +257,10 @@ margin: 3px 0px;
 	margin-left: 97px;
 }
 
-/* 아이디, 비밀번호 찾기 hover*/
-/* #ssn:hover, #tel:hover, #email:hover,
-#ssnPw:hover, #telPw:hover, #emailPw:hover{
-	cursor: pointer;
-	background-color: #ccc;
-} */
-#tel, #email, #Pwtel, #email{background-color: #ccc;}
+
+#tel, #email, #Pwtel, #email, #telPw, #emailPw{background-color: #ccc;}
+
+
 
 
 /*비밀번호 찾기 css*/
