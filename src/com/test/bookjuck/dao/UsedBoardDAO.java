@@ -227,7 +227,6 @@ public class UsedBoardDAO {
 			pstat=conn.prepareStatement(sql);
 			pstat.setString(1, seq);
 			pstat.executeUpdate();
-			System.out.println("댓글삭제");
 			
 			// 2. 첨부파일 서버에서 삭제
 			// 직전페이지에서 쿼리스트링으로 파일명 얻어오는 게 제일 좋을 거 같긴 한데
@@ -240,8 +239,6 @@ public class UsedBoardDAO {
 			String filename=rs.getString("image");
 			File file=new File(path+filename);
 			file.delete(); // 서버에서 삭제
-			System.out.println(file.getAbsolutePath());
-			System.out.println("첨부파일삭제");
 			
 			// 3. 글 삭제
 			sql = "delete from tblUsedBoard where seq = ?";
