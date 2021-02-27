@@ -34,6 +34,8 @@ public class BookOrderDetailDTO {
 	
 	private int total;
 	
+	private int cnt;
+	
 	
 	public String getSeqBookOrder() {
 		return seqBookOrder;
@@ -178,6 +180,12 @@ public class BookOrderDetailDTO {
 	}
 	public void setTotal(int total) {
 		this.total = total;
+	}
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
 	}
 
 }
