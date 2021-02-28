@@ -27,6 +27,8 @@ public class RefundList extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		
+		
 		HttpSession session = req.getSession();
 		String id = (String)session.getAttribute("id");
 		
@@ -39,10 +41,15 @@ public class RefundList extends HttpServlet {
 		String booksearch = req.getParameter("booksearch");			//검색하려는 주문상품명 (책 제목)
 		
 				
-		String type = "1";
+		String type = "1"; // 초기 세팅은 일반배송 보기로 고정ㅇ
+		String orderstate = "통합검색"; //초기 세팅은 통합검색으로 고정
 		
 		if (req.getParameter("type") != null) {
 			type = req.getParameter("type");
+		}
+		
+		if (req.getParameter("orderstate") != null) {
+			orderstate = req.getParameter("orderstate");
 		}
 		
 		String startDate = req.getParameter("startDate");
@@ -84,6 +91,10 @@ public class RefundList extends HttpServlet {
 		
 		if ( !(booksearch == null || booksearch.equals("")) ) {
 			map.put("booksearch", booksearch);
+		}	
+		
+		if ( !(orderstate == null || orderstate.equals("")) ) {
+			map.put("orderstate", orderstate);
 		}	
 		
 		
@@ -144,7 +155,7 @@ public class RefundList extends HttpServlet {
 			
 			BookOrderDAO dao = new BookOrderDAO();	
 			
-			String isRefundList = "and orderstate in ('주문취소', '주문환불', '주문교환')";
+			String isRefundList = "where orderstate in ('주문취소', '주문환불', '주문교환') and ";
 			
 			blist = dao.adminlist(map, isRefundList);	
 			
@@ -229,7 +240,7 @@ public class RefundList extends HttpServlet {
 			
 			BaroOrderDAO dao = new BaroOrderDAO();	
 			
-			String isRefundList = "and orderstate = '주문취소'";
+			String isRefundList = "where orderstate = '주문취소' and ";
 			
 			balist = dao.adminlist(map, isRefundList);	
 			
@@ -240,8 +251,8 @@ public class RefundList extends HttpServlet {
 				dto.setOrderDate(dto.getOrderDate().substring(0, 10));
 				
 				//글 제목이 너무 길면 자르기
-				if (dto.getTitle().length() > 32) {
-					dto.setTitle(dto.getTitle().substring(0, 32) + "...");
+				if (dto.getTitle().length() > 30) {
+					dto.setTitle(dto.getTitle().substring(0, 30) + "...");
 				}
 			}
 			
@@ -318,7 +329,7 @@ public class RefundList extends HttpServlet {
 			
 			EBookOrderDAO dao = new EBookOrderDAO();	
 			
-			String isRefundList = "and orderstate = '주문환불'";
+			String isRefundList = "where orderstate = '주문환불' and ";
 			
 			elist = dao.adminlist(map, isRefundList);	
 			
@@ -424,6 +435,7 @@ public class RefundList extends HttpServlet {
 		req.setAttribute("startDate", startDate);
 		req.setAttribute("endDate", endDate);
 		
+		req.setAttribute("orderstate", orderstate);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/order/refundlist.jsp");
 		dispatcher.forward(req, resp);

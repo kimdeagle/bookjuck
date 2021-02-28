@@ -48,9 +48,11 @@
 	                <td>
 	                    <select name="orderstate" id="orderstate" class="form-control">
 	                        <option value="통합검색">통합검색</option>
-	                        <option value="주문취소">주문취소</option>
-	                        <option value="주문교환">주문교환</option>
-	                        <option value="주문환불">주문환불</option>
+	                        <c:if test="${type == 1}">
+		                        <option value="주문취소">주문취소</option>
+		                        <option value="주문교환">주문교환</option>
+		                        <option value="주문환불">주문환불</option>
+	                        </c:if>
 	                    </select>
 	                </td>
 	                <td rowspan="4">

@@ -120,7 +120,7 @@ public class EBookOrderDAO {
 			String idsearch = map.get("idsearch");
 			String ordernumsearch = map.get("ordernumsearch");
 			String booksearch = map.get("booksearch");
-			
+			String orderstate = map.get("orderstate");
 			
 			if (map.get("idsearch") == null) {
 				idsearch = "";
@@ -134,18 +134,22 @@ public class EBookOrderDAO {
 				booksearch = "";
 			} 
 			
+			if (map.get("orderstate") == null || map.get("orderstate").equals("통합검색")) {
+				orderstate = "";
+			} 
 			
-			String where = String.format("where orderdate between '%s' and '%s' and title like '%%%s%%' and seq like '%%%s%%' and id like '%%%s%%'"
+			String where = String.format("orderdate between '%s' and '%s' and title like '%%%s%%' and seq like '%%%s%%' and id like '%%%s%%' and orderstate like '%%%s%%'"
 					, map.get("startDate")
 					, map.get("endDate")
 					, booksearch
 					, ordernumsearch
-					, idsearch);
+					, idsearch
+					, orderstate);
 			
 			
 			String sql = String.format("select * from (select a.*, rownum as rnum from (select * from vwAdminEOrder %s %s order by orderdate desc) a) where rnum between %s and %s"
-					, where
 					, isRefundList
+					, where
 					, map.get("begin")
 					, map.get("end"));
 			

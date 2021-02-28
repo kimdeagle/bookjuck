@@ -145,7 +145,7 @@ public class OrderList extends HttpServlet {
 			
 			BookOrderDAO dao = new BookOrderDAO();	
 			
-			String isRefundList = "";
+			String isRefundList = "where ";
 			
 			blist = dao.adminlist(map, isRefundList);	
 			
@@ -230,7 +230,7 @@ public class OrderList extends HttpServlet {
 			
 			BaroOrderDAO dao = new BaroOrderDAO();
 			
-			String isRefundList = "";
+			String isRefundList = "where ";
 			
 			balist = dao.adminlist(map, isRefundList);	
 			
@@ -319,7 +319,7 @@ public class OrderList extends HttpServlet {
 			
 			EBookOrderDAO dao = new EBookOrderDAO();	
 			
-			String isRefundList = "";
+			String isRefundList = "where ";
 			
 			elist = dao.adminlist(map, isRefundList);	
 			
