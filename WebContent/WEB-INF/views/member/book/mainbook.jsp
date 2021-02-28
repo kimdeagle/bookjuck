@@ -22,7 +22,7 @@
 </head>
 <body>
 
-	<section> 
+	<section style="width:700px;"> 
 			<div class="btns">
                 <input type="button" class="btn btn-default btn-lg btn-general" value="추천도서" id="rec">
                 <input type="button" class="btn btn-default btn-lg btn-general" value="베스트도서" id="best">
@@ -45,7 +45,7 @@
            <div id="bestbook">
             <table id="booktable">
 			  	<c:forEach items="${list3}" var="dto"> <!-- 베스트도서 -->
-                    <td>
+                    <td style="width:400px;">
                         <div class="tblitem">
                             <img src="/bookjuck/image/${dto.image}" class="book-sm">
                             <h6>${dto.title}</h6>
@@ -84,7 +84,7 @@
 	   
 	   <c:if test="${empty id}">
 		$("#rec").click(function() {			
-				alert("회원이 되시면 북적북적의 맞춤 추천도서를 보실 수 있습니다.")
+				alert("회원이 되시면 북적북적의 관심사 추천도서를 보실 수 있습니다.")
 		})
 		</c:if>
 		

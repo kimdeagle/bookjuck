@@ -35,12 +35,12 @@ public class MonthlyBestSeller extends HttpServlet {
 			dto.setPubDate(dto.getPubDate().substring(0, 10));
 
 			// 제목, 카피 너무 길면 자르기
-			if (dto.getTitle().length() > 30) {
-				dto.setTitle(dto.getTitle().substring(0, 30) + "..");
+			if (dto.getTitle().length() > 15) {
+				dto.setTitle(dto.getTitle().substring(0, 15) + "..");
 			}
 
-			if (dto.getCopy().length() > 40) {
-				dto.setCopy(dto.getCopy().substring(0, 40) + "..");
+			if (dto.getCopy().length() > 20) {
+				dto.setCopy(dto.getCopy().substring(0, 20) + "..");
 			}
 
 		}
@@ -50,7 +50,7 @@ public class MonthlyBestSeller extends HttpServlet {
 		System.out.println(list +"mbs");
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/member/book/monthlybestseller.jsp");
-		dispatcher.forward(req, resp);
+		dispatcher.include(req, resp);
 
 	}
 

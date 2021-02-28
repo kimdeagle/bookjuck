@@ -40,15 +40,30 @@
 		RequestDispatcher dheader = request.getRequestDispatcher("/member/inc/header.do");
 		dheader.include(request, response);
 	%>
+	
+	
+	
+	
 	<!-- ########## 상단 헤더 끝 -->
 	
 	
 	<!-- 섹션 메뉴 -->
 	<%@include file="/WEB-INF/views/member/inc/slick.jsp" %>
 	
-	<%@include file="/WEB-INF/views/member/inc/button.jsp" %>
+	<!-- 중단 추천도서, 베스트도서, 화제의신간  -->
+	<%
+		out.flush();
+		RequestDispatcher dmainbook = request.getRequestDispatcher("/member/book/mainbook.do");
+		dmainbook.include(request, response);
+	%>
 	
-	<%@include file="/WEB-INF/views/member/book/monthlybestseller.jsp" %>
+	
+	<!-- 월간베스트  -->
+	<%
+		out.flush();
+		RequestDispatcher dmbs = request.getRequestDispatcher("/member/book/MonthlyBestSeller.do");
+		dmbs.include(request, response);
+	%>
 
 
 	<!-- ########## 하단 시작 -->

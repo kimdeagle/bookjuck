@@ -461,7 +461,7 @@ public class BookDAO {
 		
 		try {
 			
-			//String sql = "select * from vwbestseller where pubdate between trunc(sysdate, 'mm') and last_day(sysdate)"; 이 쿼리가 정석이나.. 빈기간이 너무많다.
+			//String sql = "select * from vwbestseller where pubdate between trunc(sysdate, 'mm') and last_day(sysdate)"; //
 			String sql = "select * from vwbestseller";
 			
 					
