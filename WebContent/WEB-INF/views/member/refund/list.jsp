@@ -166,7 +166,7 @@
                     <c:if test="${not empty blist }">
                     <c:forEach items="${blist}" var="dto">
                     <tr>
-                        <td><a href="/bookjuck/member/mypage/refundorderdetail.do" class="ordernumber">${dto.seq}</a></td>
+                        <td><a href="/bookjuck/member/mypage/refundorderdetail.do" class="ordernumber">${dto.seq + 123456}</a></td>
                         <td>${dto.applyDate}</td>
                         <td class="book">${dto.title}
 	                        <c:if test="${dto.totalAmount > 1}">
@@ -182,7 +182,7 @@
                     <c:if test="${not empty balist }">
                     <c:forEach items="${balist}" var="dto">
                     <tr>
-                        <td><a href="/bookjuck/member/mypage/refundorderdetail.do" class="ordernumber">${dto.seq}</a></td>
+                        <td><a href="/bookjuck/member/mypage/refundorderdetail.do" class="ordernumber">${dto.seq + 567891}</a></td>
                         <td>${dto.applyDate}</td>
                         <td class="book">${dto.title}
 	                        <c:if test="${dto.totalAmount > 1}">
@@ -198,7 +198,7 @@
                     <c:if test="${not empty elist }">
                     <c:forEach items="${elist}" var="dto">
                     <tr>
-                        <td><a href="/bookjuck/member/mypage/refundorderdetail.do" class="ordernumber">${dto.seq}</a></td>
+                        <td><a href="/bookjuck/member/mypage/refundorderdetail.do" class="ordernumber">${dto.seq + 987654}</a></td>
                         <td>${dto.applyDate}</td>
                         <td class="book">${dto.title}</td>
                         <td>${dto.totalAmount}</td>
@@ -210,23 +210,11 @@
                 </table>
 
 
-                <ul class="pagination">
-	                <li>
-	                <a href="#" aria-label="Previous">
-	                    <span aria-hidden="true">&laquo;</span>
-	                </a>
-	                </li>
-	                <li><a href="#">1</a></li>
-	                <li><a href="#">2</a></li>
-	                <li><a href="#">3</a></li>
-	                <li><a href="#">4</a></li>
-	                <li><a href="#">5</a></li>
-	                <li>
-	                <a href="#" aria-label="Next">
-	                    <span aria-hidden="true">&raquo;</span>
-	                </a>
-	                </li>
-            	</ul>
+                <nav class="pagebar">
+                    <ul class="pagination">
+                        ${pagebar}
+                    </ul>
+                </nav>
 
             </article>
 
@@ -266,14 +254,74 @@
 		
 		//분류 고정
 		$("#type").val("${type}").prop("selected",true);
-		
 
 		
+	      
+	    //date 'yyyy-mm-dd'형식으로 formating
+		function formatDate(date) {
+		   
+			var month = date.getMonth() + 1;
+		    var day = date.getDate();
+		    var year = date.getFullYear();
+		   
+		    if (month < 10) 
+		        month = '0' + month;
+		    if (day < 10) 
+		        day = '0' + day; 
+
+		   return year + '-' + month + '-' + day;
+		}
+
+
+		//btn1 일주일 전
 		$("#btn1").click(function() {
 			
-			$("#startDate").valueAsDate("2021-02-19");
+			var nowdate = new Date();
+			var beforedate = new Date();
+			
+			beforedate.setDate(nowdate.getDate() - 7);
+			$("#startDate").val(formatDate(beforedate));
+		});
+		
+		//btn2 한달 전
+		$("#btn2").click(function() {
+			
+			var nowdate = new Date();
+			var beforedate = new Date();
+			
+			beforedate.setMonth(nowdate.getMonth() - 1);
+			$("#startDate").val(formatDate(beforedate));
+		});
+		
+		//btn3 세달 전
+		$("#btn3").click(function() {
+			
+			var nowdate = new Date();
+			var beforedate = new Date();
+			
+			beforedate.setMonth(nowdate.getMonth() - 3);
+			$("#startDate").val(formatDate(beforedate));
+		});
+		
+		//btn4 여섯달 전
+		$("#btn4").click(function() {
+			
+			var nowdate = new Date();
+			var beforedate = new Date();
+			
+			beforedate.setMonth(nowdate.getMonth() - 6);
+			$("#startDate").val(formatDate(beforedate));
+		});
+		
+		
+		
+		$("#btnview").click(function() {
+			
+			$("#startDate").val(${startDate});
 			
 		});
+		
+		
 
 	
 
