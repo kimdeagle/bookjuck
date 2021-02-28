@@ -144,7 +144,10 @@ public class OrderList extends HttpServlet {
 		if (type.equals("1")) {
 			
 			BookOrderDAO dao = new BookOrderDAO();	
-			blist = dao.adminlist(map);	
+			
+			String isRefundList = "";
+			
+			blist = dao.adminlist(map, isRefundList);	
 			
 			//1.5 데이터 조작할 것
 			for (BookOrderDTO dto : blist) {
@@ -225,8 +228,11 @@ public class OrderList extends HttpServlet {
 			
 		} else if (type.equals("2")) {
 			
-			BaroOrderDAO dao = new BaroOrderDAO();	
-			balist = dao.adminlist(map);	
+			BaroOrderDAO dao = new BaroOrderDAO();
+			
+			String isRefundList = "";
+			
+			balist = dao.adminlist(map, isRefundList);	
 			
 			//1.5 데이터 조작할 것
 			for (BaroOrderDTO dto : balist) {
@@ -312,7 +318,10 @@ public class OrderList extends HttpServlet {
 		} else {
 			
 			EBookOrderDAO dao = new EBookOrderDAO();	
-			elist = dao.adminlist(map);	
+			
+			String isRefundList = "";
+			
+			elist = dao.adminlist(map, isRefundList);	
 			
 			//1.5 데이터 조작할 것
 			for (EBookOrderDTO dto : elist) {

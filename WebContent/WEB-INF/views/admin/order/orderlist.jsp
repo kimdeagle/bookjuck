@@ -190,13 +190,13 @@
 
 	    var now = new Date();
 	    
-	    //초기세팅은 과거 1개월 까지 검색
+	    //초기세팅은 과거 3개월 까지 검색
 	    $(document).ready(function(){
 			
 			var nowdate = new Date();
 			var beforedate = new Date();
 			
-			beforedate.setMonth(nowdate.getMonth() - 1);
+			beforedate.setMonth(nowdate.getMonth() - 3);
 			
 	    	$("#startDate").val(formatDate(beforedate));
 	    	$("#endDate").val(formatDate(now));

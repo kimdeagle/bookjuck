@@ -121,9 +121,10 @@ public class BookOrderDAO {
 	/**
 	 * 관리자가 사용하는 일반배송 주문/배송 조회 리스트를 보여주는 메서드입니다.
 	 * @param map
+	 * @param isRefundList 
 	 * @return list
 	 */
-	public ArrayList<BookOrderDTO> adminlist(HashMap<String, String> map) {
+	public ArrayList<BookOrderDTO> adminlist(HashMap<String, String> map, String isRefundList) {
 		
 		try {
 			
@@ -154,8 +155,9 @@ public class BookOrderDAO {
 					, idsearch);
 			
 			
-			String sql = String.format("select * from (select a.*, rownum as rnum from (select * from vwAdminBookOrder %s order by orderdate desc) a) where rnum between %s and %s"
+			String sql = String.format("select * from (select a.*, rownum as rnum from (select * from vwAdminBookOrder %s %s order by orderdate desc) a) where rnum between %s and %s"
 					, where
+					, isRefundList
 					, map.get("begin")
 					, map.get("end"));
 			
