@@ -810,7 +810,7 @@ public class BookDAO {
 			String where = "";
 			
 			if (map.get("seqLCategory") != null) {
-				where = "where seqLCategory = " + map.get("seqLCategory");
+				where = "where vb.seqLCategory = " + map.get("seqLCategory");
 			}
 			
 			String sql = String.format("select * from (select a.*, rownum as rnum from (select vb.*, (select amount from tblInventory where seqBook = vb.seq) as amount from vwBook vb %s) a) where rnum between %s and %s"
@@ -1070,6 +1070,27 @@ public class BookDAO {
 			System.out.println(e);
 		}		
 		
+	}
+	
+	//BookEditOk 서블릿 -> 이미지 수정 안한 경우 이미지 파일명 가져오기
+	public String getImageFileName(String seq) {
+		
+		try {
+			
+			String sql = "select image from tblBook where seq = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				return rs.getString("image");
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
 	}
 	
 

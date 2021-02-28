@@ -1,9 +1,10 @@
 /* bookdetail.jsp > css */
 
-/* 섹션 margin 변경 */
+/* contentsection */
 .contentsection {
 	margin-left: -20px !important;
 	margin-top: -10px !important;
+	max-width: 74%;
 }
 
 .table tbody tr td {
@@ -12,19 +13,13 @@
 }
 
 /* 이미지 셀 */
-table td:nth-child(1) {
-	width: 180px;
-}
+table td:nth-child(1) { width: 180px; }
 
 /* 텍스트 셀 */
-table td:nth-child(2) {
-	width: 520px;
-}
+table td:nth-child(2) { width: 520px; }
 
 /* 텍스트 margin */
-table td:nth-child(2) div {
-	margin: 5px 15px;
-}
+table td:nth-child(2) div { margin: 5px 15px; }
 
 /* 수량 및 버튼 셀 */
 table td:nth-child(3) {
@@ -33,14 +28,10 @@ table td:nth-child(3) {
 }
 
 /* 이미지 */
-table td .image {
-	width: 180px;
-}
+table td .image { width: 180px; }
 
 /* 텍스트 > 제목 */
-table td .title {
-	font-size: 2em;
-}
+table td .title { font-size: 2em; }
 
 /* 텍스트 > 한줄카피 */
 table td .copy {
@@ -50,9 +41,7 @@ table td .copy {
 }
 
 /* 텍스트 > 정가 + 가격 */
-table td .priceinfo .price {
-	font-size: 0.9em;
-}
+table td .priceinfo .price { font-size: 0.9em; }
 
 /* 텍스트 > 판매가 */
 table td .priceinfo .saleprice {
@@ -73,14 +62,10 @@ table td .priceinfo .savepoint {
 }
 
 /* .btns(장바구니, 바로구매 감싸는 div) */
-table td .btns {
-	margin-top: 150px;
-}
+table td .btns { margin-top: 150px; }
 
 /* 수량 > + , - 버튼 */
-table td .amount input[type=button] {
-	outline: none !important;
-}
+table td .amount input[type=button] { outline: none !important; }
 
 /* 수량 > 텍스트박스 */
 table td .amount input[type=text] {

@@ -31,7 +31,6 @@ public class BookView extends HttpServlet {
 		BookDAO dao = new BookDAO();
 		BookDTO dto = dao.getAdminBookDetail(seq);
 		
-		//
 		
 		//날짜 데이터 자르기 -> 시간 삭제
 		dto.setPubDate(dto.getPubDate().substring(0, 10));
