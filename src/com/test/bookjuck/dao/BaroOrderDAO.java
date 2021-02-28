@@ -152,6 +152,11 @@ public class BaroOrderDAO {
 		
 		return null;
 	}
+
+	public int getATotalCount(HashMap<String, String> map) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	// (다은) 끝 ---------------------
 	

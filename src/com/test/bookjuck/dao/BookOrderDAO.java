@@ -10,6 +10,14 @@ import java.util.HashMap;
 import com.test.bookjuck.DBUtil;
 import com.test.bookjuck.dto.BookOrderDTO;
 
+/**
+ * @author Dana
+ *
+ */
+/**
+ * @author Dana
+ *
+ */
 public class BookOrderDAO {
 	
 
@@ -118,7 +126,14 @@ public class BookOrderDAO {
 			}
 			
 			
-			String sql = String.format("select ab.* from vwAdminBookOrder ab %s order by orderdate desc", where);
+			//String sql = String.format("select ab.* from vwAdminBookOrder ab %s order by orderdate desc", where);
+			
+			
+			String sql = String.format("select * from (select a.*, rownum as rnum from (select * from vwAdminBookOrder order by orderdate desc) a) where rnum between %s and %s"
+					
+					, map.get("begin")
+					, map.get("end"));
+			
 			
 			pstat = conn.prepareStatement(sql);
 			rs = pstat.executeQuery();
@@ -149,6 +164,46 @@ public class BookOrderDAO {
 		}
 		
 		return null;
+	}
+
+	
+
+	/**
+	 * 총 주문 수 를 세는 메서드
+	 * @param map
+	 * @return cnt : 총 주문 수
+	 */
+	public int getATotalCount(HashMap<String, String> map) {
+
+		try {
+
+			/*
+			String where = "";
+
+			if (map.get("search") != null) {
+				// 검색중...
+				where = String.format("where name like '%%%s%%' or subject like '%%%s%%' or content like '%%%s%%'",
+						map.get("search"), map.get("search"), map.get("search"));
+			}
+			
+			*/
+			
+			String sql = String.format("select count(*) as cnt from vwadminBookOrder");
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			
+			if (rs.next()) {
+				return rs.getInt("cnt");
+			}
+			
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+		return 0;
 	}
 	
 	// (다은) 끝 ---------------------

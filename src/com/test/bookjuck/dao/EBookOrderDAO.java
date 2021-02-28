@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.test.bookjuck.DBUtil;
+import com.test.bookjuck.dto.BaroOrderDTO;
 import com.test.bookjuck.dto.EBookOrderDTO;
 
 public class EBookOrderDAO {
@@ -96,6 +97,64 @@ public class EBookOrderDAO {
 		}
 		
 		return null;
+	}
+
+	
+	/**
+	 * 관리자가 사용하는 바로드림 주문/배송 조회 리스트를 보여주는 메서드입니다.
+	 * @param map
+	 * @return list
+	 */
+	public ArrayList<EBookOrderDTO> adminlist(HashMap<String, String> map) {
+		
+		try {
+			
+			String where = "";
+			
+			if (map.get("refundsearch")!= null) {
+				
+				where = String.format(""
+						, map.get("refundsearch"));
+				
+			}
+			
+			
+			String sql = String.format("select ab.* from vwAdminEOrder ab %s order by orderdate desc", where);
+			
+			pstat = conn.prepareStatement(sql);
+			rs = pstat.executeQuery();
+			
+			ArrayList<EBookOrderDTO> list = new ArrayList<EBookOrderDTO>();
+			
+			
+			while (rs.next()) {
+				
+				EBookOrderDTO dto = new EBookOrderDTO();
+				
+				dto.setSeq(rs.getString("seq"));
+				dto.setId(rs.getString("id"));
+				dto.setTitle(rs.getString("title"));
+				dto.setOrderDate(rs.getString("orderDate"));
+				dto.setTotalAmount(rs.getString("totalamount"));
+				dto.setOrderState(rs.getString("orderstate"));
+				
+				list.add(dto);
+				
+			}
+			
+			return list;
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+	}
+
+	public int getATotalCount(HashMap<String, String> map) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 	// (다은) 끝 ---------------------
