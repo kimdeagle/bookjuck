@@ -58,7 +58,7 @@
 
             <div id="btn">
                 <button type="button" class="btn btn-general" id="edit" onclick="location.href='/bookjuck/admin/curationletter/add.do'">작성하기</button>
-                <button type="button" class="btn btn-general inline" id="back">뒤로가기</button>
+                <button type="button" class="btn btn-general inline" id="back"  onclick="location.href='/bookjuck/admin/index.do'">뒤로가기</button>
             </div>
         </section>
 	

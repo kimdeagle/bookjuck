@@ -53,7 +53,7 @@
 				<input type="hidden" id="seq" name="seq" value=${dto.seq}>
 				<div id="btn">
 				    <input type="submit" class="btn btn-general inline" value="저장하기" id="save">
-				    <button type="button" class="btn btn-general" value="뒤로가기" id="back" onclick="location.href='/bookjuck/admin/faq/list.do'">뒤로가기</button>
+				    <button type="button" class="btn btn-general" id="back" onclick="location.href='/bookjuck/admin/faq/list.do'">뒤로가기</button>
 				</div>
            	</form>
     </section>

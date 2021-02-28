@@ -70,6 +70,7 @@
 			<div id="btn">
                 <button type="button" class="btn btn-general" id="qcategory"  onclick="location.href='/bookjuck/admin/qcategory/list.do'">질문카테고리 관리하기</button>
                 <button type="button" class="btn btn-general inline" id="add" onclick="location.href='/bookjuck/admin/faq/add.do'">작성하기</button>
+            	<button type="button" class="btn btn-general" id="back" onclick="location.href='/bookjuck/admin/index.do'">뒤로가기</button>
             </div>
         </section>
 	

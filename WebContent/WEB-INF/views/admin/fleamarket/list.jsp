@@ -92,7 +92,11 @@
 	                    ${pagebar}
 	                </ul>
             	</nav>
-
+	
+				<div id="btn">
+            		<button type="button" class="btn btn-general inline" id="back" onclick="location.href='/bookjuck/admin/index.do'">뒤로가기</button>
+        		</div>
+        
             </article>
         </section>
 	

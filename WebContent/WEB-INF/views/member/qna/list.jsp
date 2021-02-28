@@ -77,7 +77,7 @@
             
             <div id="btn">
                 <button type="submit" class="btn btn-general inline" id="add" onclick="location.href='/bookjuck/member/qna/add.do'">작성하기</button>
-                <button type="button" class="btn btn-general" id="back" onclick="location.href='/bookjuck/member/qna/list.do'">뒤로가기</button>
+                <button type="button" class="btn btn-general" id="back" onclick="location.href='/bookjuck/member/mypage.do'">뒤로가기</button>
             </div>
         </section>
 
