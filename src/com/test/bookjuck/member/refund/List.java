@@ -1,6 +1,7 @@
 package com.test.bookjuck.member.refund;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -33,8 +34,12 @@ public class List extends HttpServlet {
 		//목록 or 검색
 		// - 단순 목록 : list.do
 		// - 검색한 결과 목록 : list.do?search=
+		HttpSession session = req.getSession();
+		String id = (String)session.getAttribute("id");
 		
 		HashMap<String,String> map = new HashMap<String,String>();
+		
+		map.put("id", id);
 		
 		String refundsearch = req.getParameter("refundsearch");
 		String type = "1";	//일반배송 : 1, 바로드림 : 2, eBook : 3 
@@ -78,7 +83,9 @@ public class List extends HttpServlet {
 		//1. DB 작업 -> select
 		//2. 목록 반환 + JSP 전달 후 호출하기
 		
-		HttpSession session = req.getSession();
+		
+		
+
 
 		
 		

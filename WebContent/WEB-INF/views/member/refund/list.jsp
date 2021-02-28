@@ -69,15 +69,15 @@
 
                         <th rowspan="2" class="line"></th>
 
-                        <th>반품신청<b>(0)</b></th>
+                        <th>환불신청<b>(0)</b></th>
                         <th rowspan="2" class="next">
                             <span class="glyphicon glyphicon-menu-right"></span>
                         </th>
-                        <th>반품회수중<b>(0)</b></th>
+                        <th>환불회수중<b>(0)</b></th>
                         <th rowspan="2" class="next">
                             <span class="glyphicon glyphicon-menu-right"></span>
                         </th>
-                        <th class="outline-r">반품완료<b>(0)</b></th>
+                        <th class="outline-r">환불완료<b>(0)</b></th>
                     </tr>
                     <tr>
                         <td class="outline-l">
@@ -162,6 +162,8 @@
                         <th id="totalamount">수량</th>
                         <th id="process">상태</th>
                     </tr>
+                    
+
                     
                     <c:if test="${not empty blist }">
                     <c:forEach items="${blist}" var="dto">

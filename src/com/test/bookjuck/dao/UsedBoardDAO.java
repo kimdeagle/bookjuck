@@ -12,6 +12,11 @@ import com.test.bookjuck.DBUtil;
 import com.test.bookjuck.dto.CommentDTO;
 import com.test.bookjuck.dto.UsedBoardDTO;
 
+/**
+ * 중고게시판 관련 메서드들이 있는 DAO입니다.
+ * @author 김다은
+ *
+ */
 public class UsedBoardDAO {
 
 	private Connection conn;
@@ -78,8 +83,6 @@ public class UsedBoardDAO {
 				where = String.format("where id like '%%%s%%' or title like '%%%s%%' or content like '%%%s%%'", map.get("fleamarketsearch"), map.get("fleamarketsearch"), map.get("fleamarketsearch"));
 			}
 			
-			
-			//String sql = String.format("select * from vwUsedBoard %s order by seq desc", where);
 			
 			String sql = String.format("select * from (select a.*, rownum as rnum from (select * from vwUsedBoard %s order by seq desc) a) where rnum between %s and %s"
 					, where

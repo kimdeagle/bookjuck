@@ -65,10 +65,13 @@ public class BookOrderDAO {
 				refundsearch = "";
 			} 
 			
-			String where = String.format("where applydate between '%s' and '%s' and title like '%%%s%%'"
+			//System.out.println(map.get("id"));
+			
+			String where = String.format("where applydate between '%s' and '%s' and title like '%%%s%%' and id='%s'"
 					, map.get("startDate")
 					, map.get("endDate")
-					, refundsearch);
+					, refundsearch
+					, map.get("id"));
 			
 			//Paging
 			String sql = String.format("select * from (select a.*, rownum as rnum from (select * from vwBookRefundList %s order by applydate desc) a) where rnum between %s and %s"
@@ -234,10 +237,11 @@ public class BookOrderDAO {
 				refundsearch = "";
 			} 
 			
-			String where = String.format("where applydate between '%s' and '%s' and title like '%%%s%%'"
+			String where = String.format("where applydate between '%s' and '%s' and title like '%%%s%%' and id='%s'"
 					, map.get("startDate")
 					, map.get("endDate")
-					, refundsearch);
+					, refundsearch
+					, map.get("id"));
 			
 			
 			String sql = String.format("select count(*) as cnt from vwBookRefundList %s", where);

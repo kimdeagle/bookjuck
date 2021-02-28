@@ -52,7 +52,12 @@ from tblbookorderdetail a
     bo.orderstate,
     m.seq as seqMember,
     m.id as id,
-    bo.orderdate
+    bo.orderdate,
+        case
+        when br.refundstate is not null then br.refundstate
+        when bc.cancelstate is not null then bc.cancelstate
+        when bch.changestate is not null then bch.changestate
+    end as process
 from tblBookOrder bo
 inner join tblBookOrderDetail bod
     on bo.seq = bod.seqBookOrder
@@ -83,7 +88,8 @@ select distinct
     eo.orderstate,
     m.seq as seqMember,
     m.id as id,
-    eo.orderdate
+    eo.orderdate,
+    er.refundstate as process
 from tblEOrder eo
 inner join tblEOrderDetail eod
     on eo.seq = eod.seqEOrder
@@ -116,7 +122,8 @@ from tblBaroorderdetail a
     bo.orderstate,
     m.seq as seqMember,
     m.id as id,
-    bo.orderdate
+    bo.orderdate,
+    bc.cancelstate as process
 from tblBaroOrder bo
 inner join tblBaroOrderDetail bod
     on bo.seq = bod.seqBaroOrder
