@@ -83,7 +83,7 @@
 					</tr>
 					<tr class="olInfo">
 						<td rowspan="${blist.size()}">${seqBookOrder}<br> 
-						(${orderDate})
+						(${orderDate.substring(0, 10)})
 						</td>
 					<c:forEach items="${blist}" var="bdto">
 						<td style="vertical-align: middle;">${bdto.total}</td>
@@ -218,9 +218,122 @@
 				</table>
 			</article>
 
+
+			<!-- ######## 이 이후 다은 추가 - 교환/취소/환불 정보 -->
+			<article>
+				<h5>환불정보</h5>
+				<table class="tbl-pay table tbl-md">
+					<tr>
+						<th>주문금액</th>
+						<th>사용 포인트</th>
+						<th>환불금액</th>
+						<th>환불 포인트</th>
+					</tr>
+					<tr>
+						<td>주문금액</td>
+						<!-- 비회원일 경우 0 -->
+						<td>사용포인트</td>
+						<td><span>결제방식</span>- 환불금액</td>
+						<!-- 비회원일 경우 0 -->
+						<td>환불포인트</td>
+					</tr>
+				</table>
+			</article>
+			
+			
+			<!-- 무통장 입금으로 결제한 고객 환불해줄 환불 계좌 정보 -->
+			<article>
+                <h5>환불 계좌 정보 <small>(무통장 입금 고객)</small></h5>
+                <table class="receiver table tbl-md">
+                    <tr>
+                        <th>예금주</th>
+                        <td>예금주 이름</td>
+                        <th>은행명</th>
+                        <td>은행이름</td>                        
+                    </tr>
+                    <tr>
+                        <th>계좌번호</th>
+                        <td colspan="3">계조ㅏ번호적으세요</td>
+                    </tr>
+                </table>
+                
+            </article>
+			
+			
+			<article>
+				<h5>취소/교환/환불 정보</h5>
+                <table class="table tbl-md tbl-refundinfo">
+                    <tr>
+                        <th>사유</th>
+                        <td>단순변심</td>
+                        <th>신청일</th>
+                        <td>2021-02-20</td>
+                    </tr>
+                    <tr>
+                        <th>상세사유</th>
+                        <td colspan="3"> - </td>
+                    </tr>
+                    <tr>
+                        <th>처리상태</th>
+                        <td>환불완료</td>
+                        <th>처리날짜</th>
+                        <td>2021-02-20</td>
+                    </tr>
+                </table>
+			</article>
+
+
+
+            <!-- ####### 종이책 -->
+            <!-- 교환/ 환불일때만 -->
+            <article>
+                <h5>회수지 정보</h5>
+                <table class="receiver table tbl-md">
+                    <tr>
+                        <th>주소</th>
+                        <td>주소</td>
+                    </tr>
+                </table>
+            </article>
+
+
+            <!-- 교환일때만 -->
+            <article>
+                <h5>교환상품 배송정보</h5>
+                <div class="waybill-number">
+					<span>일반 배송</span>
+					<div>
+						운송장 번호 : <a href="#" onclick="popup();">123456789</a>
+					</div>
+				</div>
+                <table class="receiver table tbl-md">
+                    <tr>
+                        <th>받으실 분</th>
+                        <td>이름</td>
+                    </tr>
+                    <tr>
+                        <th>휴대폰 번호</th>
+                        <td>휴대폰 번호</td>
+                    </tr>
+                    <tr>
+                        <th>주소</th>
+                        <td>주소</td>
+                    </tr>
+                </table>
+                
+                
+                
+            </article>
+			<!-- ######## 이 이전 다은 추가 - 교환/취소/환불 정보 -->
+
 			<div class="orderlistback"><a href="/bookjuck/member/mypage/orderlist.do" class="btn-order">주문/배송조회 가기</a></div>
 
+
+
 		</section>
+
+
+
 
 
 

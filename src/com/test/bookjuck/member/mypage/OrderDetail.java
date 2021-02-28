@@ -51,7 +51,6 @@ public class OrderDetail extends HttpServlet {
 		//주문일 가져오기
 		String orderDate = dao.getOrderDate(seqBookOrder,"b");
 		
-		orderDate = orderDate.substring(0,10);
 		
 		//결제 정보 조회
 		BookPayDAO bpdao = new BookPayDAO();
