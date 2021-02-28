@@ -53,7 +53,7 @@
 
             <div id="normalbtn">
                 <button type="button" class="btn btn-general" data-toggle="modal" href="#addModal" data-seq="${cdto.seq}">추가하기</button>
-                <button type="button" class="btn btn-general" id="back">뒤로가기</button>
+                <button type="button" class="btn btn-general" id="back" onclick="location.href='/bookjuck/admin/faq/list.do'">뒤로가기</button>
             </div>
         </section>
 	
