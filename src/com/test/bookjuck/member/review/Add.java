@@ -50,8 +50,6 @@ public class Add extends HttpServlet {
 		// 1. 배송완료이면서 2. 독후감을 아직 안 쓴 책
 
 		// 현재 로그인한 고객의 번호로 독후감 쓸 수 있는 책들을 가져온다.
-		HttpSession session=req.getSession();
-
 		String seq=session.getAttribute("seq").toString();
 		BookDAO bdao=new BookDAO();
 		ArrayList<BookDTO> blist=bdao.getPossibleBook(seq);
