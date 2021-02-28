@@ -261,7 +261,43 @@ public class BookOrderDAO {
 
 		return 0;
 	}
+
 	
+	/**
+	 * 
+	 * @param map
+	 * @param string
+	 * @return
+	 */
+	public String process(HashMap<String, String> map, String processState) {
+
+
+		try {
+			
+			String sql = "select count(*) as cnt from vwBookRefundList where id = ? and process = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, map.get("id"));
+			pstat.setString(2, processState);
+			
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				return rs.getString("cnt");
+			}
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	
+		
+		return null;
+	}
+
+	
+
+	
+
 	
 	
 	// (다은) 끝 ---------------------

@@ -55,30 +55,33 @@
 
                 <h3>교환/환불/취소 조회</h3>
 
+
                 <table class="table tbl-md tbl-process">
+
                     <tr>
-                        <th class="outline-l">교환신청<b>(0)</b></th>
+                        <th class="outline-l">교환신청<b>(${cnt1})</b></th>
                         <th rowspan="2" class="next">
                             <span class="glyphicon glyphicon-menu-right"></span>
                         </th>
-                        <th>교환접수중<b>(0)</b></th>
+                        <th>교환접수중<b>(${cnt2})</b></th>
                         <th rowspan="2" class="next">
                             <span class="glyphicon glyphicon-menu-right"></span>
                         </th>
-                        <th >교환완료<b>(0)</b></th>
+                        <th >교환완료<b>(${cnt3})</b></th>
 
                         <th rowspan="2" class="line"></th>
 
-                        <th>환불신청<b>(0)</b></th>
+                        <th>환불신청<b>(${cnt4})</b></th>
                         <th rowspan="2" class="next">
                             <span class="glyphicon glyphicon-menu-right"></span>
                         </th>
-                        <th>환불회수중<b>(0)</b></th>
+                        <th>환불회수중<b>(${cnt5})</b></th>
                         <th rowspan="2" class="next">
                             <span class="glyphicon glyphicon-menu-right"></span>
                         </th>
-                        <th class="outline-r">환불완료<b>(0)</b></th>
+                        <th class="outline-r">환불완료<b>(${cnt6})</b></th>
                     </tr>
+
                     <tr>
                         <td class="outline-l">
                             <div class="crop"><img src="/bookjuck/image/orderprocess/return.jpg" class="order-process"></div>

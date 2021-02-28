@@ -135,12 +135,22 @@ public class List extends HttpServlet {
 		ArrayList<EBookOrderDTO> elist = new ArrayList<EBookOrderDTO>();
 		
 		
+		
 		String pagebar = "";
 		
 		
 		if (type.equals("1")) {
 			
 			BookOrderDAO dao = new BookOrderDAO();	
+			
+			String cnt1 = dao.process(map,"교환신청");
+			String cnt2 = dao.process(map,"교환처리중");
+			String cnt3 = dao.process(map,"교환완료");
+			String cnt4 = dao.process(map,"환불신청");
+			String cnt5 = dao.process(map,"환불처리중");
+			String cnt6 = dao.process(map,"환불완료");
+			
+			
 			blist = dao.list(map);	
 			
 			//1.5 데이터 조작할 것
@@ -217,11 +227,26 @@ public class List extends HttpServlet {
 			req.setAttribute("pagebar", pagebar);
 			req.setAttribute("nowPage", nowPage);
 			
-
+			req.setAttribute("cnt1", cnt1); //교환신청
+			req.setAttribute("cnt2", cnt2); //처리중
+			req.setAttribute("cnt3", cnt3); //교환완료
+			req.setAttribute("cnt4", cnt4); //환불신청
+			req.setAttribute("cnt5", cnt5); //처리중
+			req.setAttribute("cnt6", cnt6); //환불완료
+			
 			
 		} else if (type.equals("2")) {
 			
 			BaroOrderDAO dao = new BaroOrderDAO();	
+			
+			String cnt1 = dao.process(map,"교환신청");
+			String cnt2 = dao.process(map,"교환처리중");
+			String cnt3 = dao.process(map,"교환완료");
+			String cnt4 = dao.process(map,"환불신청");
+			String cnt5 = dao.process(map,"환불처리중");
+			String cnt6 = dao.process(map,"환불완료");
+			
+			
 			balist = dao.list(map);	
 			
 			//1.5 데이터 조작할 것
@@ -298,12 +323,25 @@ public class List extends HttpServlet {
 			req.setAttribute("pagebar", pagebar);
 			req.setAttribute("nowPage", nowPage);
 			
-			
+			req.setAttribute("cnt1", cnt1); //교환신청
+			req.setAttribute("cnt2", cnt2); //처리중
+			req.setAttribute("cnt3", cnt3); //교환완료
+			req.setAttribute("cnt4", cnt4); //환불신청
+			req.setAttribute("cnt5", cnt5); //처리중
+			req.setAttribute("cnt6", cnt6); //환불완료
 			
 			
 		} else {
 			
 			EBookOrderDAO dao = new EBookOrderDAO();	
+			
+			String cnt1 = dao.process(map,"교환신청");
+			String cnt2 = dao.process(map,"교환처리중");
+			String cnt3 = dao.process(map,"교환완료");
+			String cnt4 = dao.process(map,"환불신청");
+			String cnt5 = dao.process(map,"환불처리중");
+			String cnt6 = dao.process(map,"환불완료");
+			
 			elist = dao.list(map);	
 			
 			//1.5 데이터 조작할 것
@@ -381,7 +419,12 @@ public class List extends HttpServlet {
 			req.setAttribute("pagebar", pagebar);
 			req.setAttribute("nowPage", nowPage);
 			
-			
+			req.setAttribute("cnt1", cnt1); //교환신청
+			req.setAttribute("cnt2", cnt2); //처리중
+			req.setAttribute("cnt3", cnt3); //교환완료
+			req.setAttribute("cnt4", cnt4); //환불신청
+			req.setAttribute("cnt5", cnt5); //처리중
+			req.setAttribute("cnt6", cnt6); //환불완료
 			
 			
 			
@@ -409,6 +452,9 @@ public class List extends HttpServlet {
 		dispatcher.forward(req, resp);
 
 	}
+
+	
+
 
 }
 
