@@ -69,7 +69,7 @@
 				<div class="waybill-number">
 					<b>일반배송</b>
 					<div>
-						운송장 번호 : <c:forEach items="${bdlist}" var="bddto"><a href="#">${bddto.deliveryNumber}</a></c:forEach>
+						운송장 번호 : <c:forEach items="${bdlist}" var="bddto"><a href="#"  onclick="popup();">${bddto.deliveryNumber}</a></c:forEach>
 					</div>
 				</div>
 
@@ -321,8 +321,6 @@
                     </tr>
                 </table>
                 
-                
-                
             </article>
 			<!-- ######## 이 이전 다은 추가 - 교환/취소/환불 정보 -->
 
@@ -331,13 +329,6 @@
 
 
 		</section>
-
-
-
-
-
-
-
 
 
 
@@ -353,6 +344,15 @@
 </body>
 
 <script>
+
+	//팝업창 띄우기
+	function popup(){
+	    var url = "/bookjuck/member/mypage/delivery.do";
+	    var name = "popup delivery";
+	    var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+	    window.open(url, name, option);
+	}
+
 	
 </script>
 
