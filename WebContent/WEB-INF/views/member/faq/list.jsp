@@ -43,13 +43,31 @@
 		<!-- @@@@@여기에 개인작업 페이지 넣을 것 -->
 		<section class="contentsection">
     	<h3>자주 하는 질문</h3>
+    	
+    			<%-- <c:if test="${not empty search}">
+        	        <div class="message well well-sm">
+                    '${search}'(으)로 ${list.size()}건의 게시물을 검색했습니다.
+                	</div>
+                </c:if> --%>
+                
+                
+            <!-- 검색창 -->
+            <form id="searchForm" method="GET" action="/bookjuck/member/faq/list.do">
+            <div class="input-group search">
+            
+                <input type="text" class="form-control" placeholder="검색어를 입력해주세요." aria-describedby="basic-addon2" id="search" name="search" required value="${search}">
+                
+                <span class="input-group-addon" id="basic-addon2" style="cursor:pointer;" onclick="$('#searchForm').submit();"><span class="glyphicon glyphicon-search"></span></span>
+            </div>
+            </form>
+            <div style="clear:both;"></div>
             <table class="table tbl-md" id="listtbl">
                 <tr>
                     <th>카테고리</th>
                     <th>결제</th>
                 </tr>
                 
-                <c:if test="${nlist.size()==0}">
+                <c:if test="${flist.size()==0}">
 			        <tr>
 			        	<td colspan="3" style="text-align:center;">게시물이 없습니다.</td>
 			        </tr>

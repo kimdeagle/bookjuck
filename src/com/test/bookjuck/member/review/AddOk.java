@@ -20,6 +20,25 @@ public class AddOk extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		// 1. 1차적으로 로그인 접속이 맞는지 확인
+		HttpSession session=req.getSession();
+		
+		if (session.getAttribute("id")==null) {
+			
+			// 접근 권한 없음
+			PrintWriter writer=resp.getWriter();
+			
+			writer.print("<html><body>");
+			writer.print("<script>");
+			writer.print("alert('access denied');");
+			writer.print("history.back();");
+			writer.print("</script>");
+			writer.print("</body></html>");
+			
+			writer.close();
+			
+		}
+		
 		// 1. 인코딩처리
 		// 2. 데이터가져오기
 		// 3. DB 작업
@@ -39,11 +58,8 @@ public class AddOk extends HttpServlet {
 		dto.setReviewContent(reviewContent);
 		
 		// 회원번호 가져와서 같이 넣기
-//		HttpSession session=req.getSession();
-//		String mseq=session.getAttribute("seq").toString();
-//		dto.setSeqMember(mseq);
-		// TODO 현재는 임의로 23번으로 넣는다.
-		dto.setSeqMember("23");
+		String mseq=session.getAttribute("seq").toString();
+		dto.setSeqMember(mseq);
 		
 		ReviewDAO dao=new ReviewDAO();
 		

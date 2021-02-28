@@ -1,6 +1,7 @@
 package com.test.bookjuck.admin.notice;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -10,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.test.bookjuck.dao.NoticeDAO;
 import com.test.bookjuck.dto.NoticeDTO;
@@ -20,8 +22,29 @@ public class NoticeList extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		HashMap<String,String> map = new HashMap<String,String>();
+		// 1. 1차적으로 관리자 접속이 맞는지 확인
+		HttpSession session=req.getSession();
 		
+		if (!session.getAttribute("id").equals("adm00")) {
+			
+			// 접근 권한 없음
+			PrintWriter writer=resp.getWriter();
+			
+			writer.print("<html><body>");
+			writer.print("<script>");
+			writer.print("alert('access denied');");
+			writer.print("history.back();");
+			writer.print("</script>");
+			writer.print("</body></html>");
+			
+			writer.close();
+			
+			return;
+			
+		}
+		
+		HashMap<String,String> map = new HashMap<String,String>();
+	
 		//페이징
 		int nowPage = 0;		//현재 페이지 번호
 		int totalCount = 0;		//총 게시물 수
@@ -108,7 +131,7 @@ public class NoticeList extends HttpServlet {
 					+ "            </a>"
 					+ "        </li>", n);
 		}
-
+	
 		// 2.
 		req.setAttribute("nlist", nlist);
 		req.setAttribute("pagebar", pagebar);
@@ -116,6 +139,7 @@ public class NoticeList extends HttpServlet {
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/notice/list.jsp");
 		dispatcher.forward(req, resp);
+		
 	}
 
 }

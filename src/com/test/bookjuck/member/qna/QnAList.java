@@ -1,6 +1,7 @@
 package com.test.bookjuck.member.qna;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -10,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.test.bookjuck.dao.FAQDAO;
 import com.test.bookjuck.dao.QuestionDAO;
@@ -22,6 +24,24 @@ public class QnAList extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
+		HttpSession session=req.getSession();
+		
+		if (session.getAttribute("id")==null) {
+			
+			// 접근 권한 없음
+			PrintWriter writer=resp.getWriter();
+			
+			writer.print("<html><body>");
+			writer.print("<script>");
+			writer.print("alert('access denied');");
+			writer.print("history.back();");
+			writer.print("</script>");
+			writer.print("</body></html>");
+			
+			writer.close();
+			
+		}
+		
 		HashMap<String,String> map = new HashMap<String,String>();
 		
 		//페이징
@@ -54,8 +74,8 @@ public class QnAList extends HttpServlet {
 		// 2. JSP에게 넘겨주기
 		
 		// 1.
-		// TODO 고객번호를 맵에 같이 넣어서 보낸다. 임의로 21번.
-		map.put("seq", "21");
+		String seq=session.getAttribute("seq").toString();
+		map.put("seq", seq);
 		QuestionDAO dao=new QuestionDAO();
 		ArrayList<QuestionDTO> qlist=dao.getList(map);
 		

@@ -56,6 +56,7 @@ public class ReviewDAO {
 					+ "        r.content as reviewcontent,"
 					+ "        r.regdate as regdate,"
 					+ "        r.isprize as isprize,"
+					+ "        m.seq as seqmember,"
 					+ "        m.id as id,"
 					+ "        b.title as booktitle"
 					+ "    from tblReview r"
@@ -84,6 +85,7 @@ public class ReviewDAO {
 				dto.setIsPrize(rs.getString("isprize"));
 				dto.setBookTitle(rs.getString("booktitle"));
 				dto.setId(rs.getString("id"));
+				dto.setSeqMember(rs.getString("seqmember"));
 				
 				list.add(dto);
 				
@@ -225,6 +227,7 @@ public class ReviewDAO {
 					+ "    r.regdate as regdate,\n"
 					+ "    r.isprize as isprize,\n"
 					+ "    b.title as booktitle,\n"
+					+ "    m.seq as seqmember,\n"
 					+ "    m.id as id\n"
 					+ "    from tblReview r\n"
 					+ "    inner join tblBook b\n"
@@ -249,6 +252,7 @@ public class ReviewDAO {
 				dto.setIsPrize(rs.getString("isprize"));
 				dto.setBookTitle(rs.getString("booktitle"));
 				dto.setId(rs.getString("id"));
+				dto.setSeqMember(rs.getString("seqmember"));
 			}
 			
 			return dto;

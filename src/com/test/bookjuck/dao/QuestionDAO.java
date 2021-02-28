@@ -168,6 +168,7 @@ public class QuestionDAO {
 			
 			String sql="select"
 					+ "    q.seq as seq,"
+					+ "    m.seq as seqmember,"
 					+ "    m.id as id,"
 					+ "    c.seq as seqqcategory,"
 					+ "    c.category as category,"
@@ -188,6 +189,7 @@ public class QuestionDAO {
 			
 			if (rs.next()) {
 				dto.setSeq(rs.getString("seq"));
+				dto.setSeqMember(rs.getString("seqMember"));
 				dto.setId(rs.getString("id"));
 				dto.setSeqQCategory(rs.getString("seqqcategory"));
 				dto.setqCategory(rs.getString("category"));
