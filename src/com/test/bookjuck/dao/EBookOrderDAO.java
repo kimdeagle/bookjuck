@@ -40,6 +40,7 @@ public class EBookOrderDAO {
 	
 	/**
 	 * Ebook 주문의 교환/취소/환불 리스트를 가져오는 메서드 입니다.
+	 * 추가) Ebook 주문 관리자 - 주문조회 리스트를 가져올 수 있습니다.
 	 * @param map
 	 * @return list
 	 */
@@ -78,6 +79,10 @@ public class EBookOrderDAO {
 				dto.setTotalAmount(rs.getString("totalAmount"));
 				dto.setOrderState(rs.getString("orderState"));
 				dto.setSeqMember(rs.getString("seqMember"));
+				
+				//관리자 - 리스트 조회시 필요한 요소
+				dto.setId(rs.getString("id"));
+				dto.setOrderDate(rs.getString("orderDate"));
 				
 				list.add(dto);
 				

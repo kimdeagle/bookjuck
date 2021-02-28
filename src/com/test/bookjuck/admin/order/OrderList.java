@@ -61,26 +61,26 @@ public class OrderList extends HttpServlet {
 		if (type.equals("1")) {
 			
 			BookOrderDAO dao = new BookOrderDAO();	
-			blist = dao.list(map);	
+			blist = dao.adminlist(map);	
 			
 			//1.5 데이터 조작할 것
 			for (BookOrderDTO dto : blist) {
 				
 				//날짜에서 시간 잘라내기 yyyy-mm-dd로 표기 
-				dto.setApplyDate(dto.getApplyDate().substring(0, 10));
+				dto.setOrderDate(dto.getOrderDate().substring(0, 10));
 				
 			}
 			
 		} else if (type.equals("2")) {
 			
 			BaroOrderDAO dao = new BaroOrderDAO();	
-			balist = dao.list(map);	
+			balist = dao.adminlist(map);	
 			
 			//1.5 데이터 조작할 것
 			for (BaroOrderDTO dto : balist) {
 				
 				//날짜에서 시간 잘라내기 yyyy-mm-dd로 표기 
-				dto.setApplyDate(dto.getApplyDate().substring(0, 10));
+				dto.setOrderDate(dto.getOrderDate().substring(0, 10));
 				
 			}
 			
@@ -94,7 +94,7 @@ public class OrderList extends HttpServlet {
 			for (EBookOrderDTO dto : elist) {
 				
 				//날짜에서 시간 잘라내기 yyyy-mm-dd로 표기 
-				dto.setApplyDate(dto.getApplyDate().substring(0, 10));
+				dto.setOrderDate(dto.getOrderDate().substring(0, 10));
 				
 			}
 		}
