@@ -392,9 +392,17 @@ public class UsedBoardDAO {
 		
 		try {
 			
-			String sql=String.format("select * from (select a.*, (select count(*) from tblComment cm where cm.seq=a.seq group by seq) as ccount, rownum as rnum from (select ub.seq, m.id, ub.title, ub.regdate, ub.readcnt from tblUsedBoard ub\n"
-					+ "    inner join tblMember m\n"
-					+ "        on ub.seqmember=m.seq order by ub.seq desc) a) where rnum between %s and %s", map.get("begin"), map.get("end"));
+			String where = "";
+			
+			if (map.get("fleamarketsearch")!= null) {
+				
+				where = String.format("where ub.title like '%%%s%%' or ub.content like '%%%s%%' or m.id like '%%%s%%'", map.get("fleamarketsearch"), map.get("fleamarketsearch"), map.get("fleamarketsearch"));
+			}
+			
+			String sql=String.format("select * from (select a.*, (select count(*) from tblComment cm where cm.seq=a.seq"
+					+ "    group by seq) as ccount, rownum as rnum from (select ub.seq, m.id, ub.title, ub.regdate, ub.readcnt from tblUsedBoard ub\n"
+					+ "        inner join tblMember m\n"
+					+ "            on ub.seqmember=m.seq %s order by ub.seq desc) a) where rnum between %s and %s", where, map.get("begin"), map.get("end"));
 			
 			stat=conn.createStatement();
 			rs=stat.executeQuery(sql);

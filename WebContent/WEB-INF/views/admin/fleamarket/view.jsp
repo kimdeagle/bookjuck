@@ -39,7 +39,7 @@
 					</tr>
 					<tr>
 	                 	<th>작성자</th>
-	                 	<td>${dto.id}<span class="label label-danger">게시물 더보기</span></td>
+	                 	<td>${dto.id}<button class="btn btn-xs" onclick="location.href='/bookjuck/admin/fleamarket/list.do?fleamarketsearch=${dto.id}'">게시물더보기</button></td>
 	                 	<th>작성일</th>
 	                 	<td>${dto.regDate}</td>
 					</tr>
@@ -73,7 +73,7 @@
 
             	<div id="btn">
 				    <input type="button" class="btn btn-general" value="삭제하기" id="delete" data-toggle="modal" data-target="#ubdelModal" data-image=${dto.image}>
-				    <button type="button" class="btn btn-general inline" id="back" onclick="location.href='/bookjuck/admin/fleamarket/list.do?page=${page}'">뒤로가기</button>
+				    <button type="button" class="btn btn-general inline" id="back" onclick="location.href='/bookjuck/admin/fleamarket/list.do?page=${page}&fleamarketsearch=${fleamarketsearch}'">뒤로가기</button>
 				</div>
 
             </article>
