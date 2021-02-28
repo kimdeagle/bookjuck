@@ -85,10 +85,6 @@ public class List extends HttpServlet {
 		
 		
 		
-
-
-		
-		
 		//페이징
 		int nowPage = 0;		//현재 페이지 번호
 		int totalCount = 0;		//총 게시물 수 
@@ -163,11 +159,7 @@ public class List extends HttpServlet {
 			
 			
 			totalCount = dao.getTotalCount(map); //총 게시물 수
-			System.out.println(totalCount);		//269개
-			
-			//totalPage = totalCount / pageSize + 1; //총 페이지 수
 			totalPage = (int)Math.ceil((double)totalCount / pageSize); //총 페이지 수
-			System.out.println(totalPage);		//26페이지 -(ceil)-> 27페이지
 			
 			
 			loop = 1;

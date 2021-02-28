@@ -206,10 +206,10 @@ public class EBookOrderDAO {
 
 	
 	/**
-	 * 
-	 * @param map
-	 * @param string
-	 * @return
+	 * 로그인한 사용자의 process(교환, 환불, 취소 처리상태)를 세어주는 메서드 입니다.
+	 * @param map 세션을 담아올 map입니다.
+	 * @param proceeState 각 처리상태의 컬럼값입니다.
+	 * @return cnt 처리상태의 count 입니다.
 	 */
 	public String process(HashMap<String, String> map, String processState) {
 

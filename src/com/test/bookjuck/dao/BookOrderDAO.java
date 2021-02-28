@@ -188,20 +188,25 @@ public class BookOrderDAO {
 
 		try {
 			
-			/*
-			String refundsearch = map.get("refundsearch");
+			//refundsearch 가 null 일 때 (상품정보 검색창에 아무런 입력도 하지 않았을 때) null -> ""로 변환
+			String idsearch = map.get("disearch");
+			String ordernumsearch = map.get("ordernumsearch");
+			String booksearch = map.get("booksearch");
 			
-			if (map.get("refundsearch") == null) {
-				refundsearch = "";
+			
+			if (map.get("booksearch") == null) {
+				booksearch = "";
 			} 
 			
-			String where = String.format("where applydate between '%s' and '%s' and title like '%%%s%%'"
+			String where = String.format("where orderdate between '%s' and '%s' and title like '%%%s%%' seq = '%s' and id = '%s' and "
 					, map.get("startDate")
 					, map.get("endDate")
-					, refundsearch);
-			*/
+					, booksearch
+					, ordernumsearch
+					, idsearch);
 			
-			String sql = String.format("select count(*) as cnt from vwadminBookOrder");
+			
+			String sql = String.format("select count(*) as cnt from vwadminBookOrder %s", where);
 			
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);
@@ -264,10 +269,10 @@ public class BookOrderDAO {
 
 	
 	/**
-	 * 
-	 * @param map
-	 * @param string
-	 * @return
+	 * 로그인한 사용자의 process(교환, 환불, 취소 처리상태)를 세어주는 메서드 입니다.
+	 * @param map 세션을 담아올 map입니다.
+	 * @param proceeState 각 처리상태의 컬럼값입니다.
+	 * @return cnt 처리상태의 count 입니다.
 	 */
 	public String process(HashMap<String, String> map, String processState) {
 
