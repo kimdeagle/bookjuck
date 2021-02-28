@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.test.bookjuck.dao.EBookDAO;
+import com.test.bookjuck.dto.BookDTO;
 import com.test.bookjuck.dto.EBookDTO;
 
 
@@ -79,6 +80,13 @@ public class EBookList extends HttpServlet {
 			String temp = "";
 			temp = ebdto.getPubDate().substring(0, 4) + "년 " + ebdto.getPubDate().substring(5, 7) + "월 " + ebdto.getPubDate().substring(8) + "일";
 			ebdto.setPubDate(temp);
+		}
+		
+		//summary 데이터 자르기
+		for (EBookDTO ebdto : eblist) {
+			if (ebdto.getIntro().length() > 100) {
+				ebdto.setIntro(ebdto.getIntro().substring(0, 100));
+			}
 		}
 		
 		

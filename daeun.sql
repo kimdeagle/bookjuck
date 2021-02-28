@@ -2,7 +2,7 @@
 	
  	1. 중고게시판 관련
  	2. 교환/취소/환불 (사용자) 관련
- 	3. 교환/취소/환불 (관리자) 관련   
+ 	3. 주문/배송 + 교환/취소/환불 (관리자) 관련   
  	
 */
 
@@ -50,7 +50,9 @@ from tblbookorderdetail a
             group by b.seq
                 having b.seq = bo.seq) as totalamount,
     bo.orderstate,
-    m.seq as seqMember
+    m.seq as seqMember,
+    m.id as id,
+    bo.orderdate
 from tblBookOrder bo
 inner join tblBookOrderDetail bod
     on bo.seq = bod.seqBookOrder
@@ -79,7 +81,9 @@ select distinct
     b.title,
     1 as totalAmount,
     eo.orderstate,
-    m.seq as seqMember
+    m.seq as seqMember,
+    m.id as id,
+    eo.orderdate
 from tblEOrder eo
 inner join tblEOrderDetail eod
     on eo.seq = eod.seqEOrder
@@ -102,9 +106,17 @@ select distinct
     bo.seq,
     bc.canceldate as applydate,
     b.title,
-    1 as totalAmount,
+    (select 
+    sum(a.amount)
+from tblBaroorderdetail a
+    inner join tblBaroOrder b
+        on a.seqBaroorder = b.seq
+            group by b.seq
+                having b.seq = bo.seq) as totalamount,
     bo.orderstate,
-    m.seq as seqMember
+    m.seq as seqMember,
+    m.id as id,
+    bo.orderdate
 from tblBaroOrder bo
 inner join tblBaroOrderDetail bod
     on bo.seq = bod.seqBaroOrder
@@ -117,3 +129,33 @@ inner join tblBaroOrderDetail bod
 where bo.orderstate = '주문취소'
 order by bo.seq asc;
 -- #### 바로드림 주문 (교환/취소/환불) 조회 리스트 뷰
+
+
+
+
+-- 3.
+-- #### 관리자 일반배송 주문조회 리스트 뷰
+create or replace view vwAdminBookOrder
+as
+select distinct
+    bo.seq,
+    m.id as id,
+    b.title,
+    bo.orderdate,
+    (select 
+    sum(a.amount)
+from tblbookorderdetail a
+    inner join tblBookOrder b
+        on a.seqbookorder = b.seq
+            group by b.seq
+                having b.seq = bo.seq) as totalamount,
+    bo.orderstate
+from tblBookOrder bo
+    inner join tblBookOrderDetail bod
+        on bo.seq = bod.seqbookorder
+            inner join tblBook b
+                on b.seq = bod.seqBook
+                    inner join tblMember m
+                        on bo.seqMember = m.seq
+order by bo.seq asc;
+-- #### 관리자 일반배송 주문조회 리스트 뷰

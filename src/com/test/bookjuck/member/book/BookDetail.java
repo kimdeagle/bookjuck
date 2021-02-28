@@ -34,6 +34,14 @@ public class BookDetail extends HttpServlet {
 		BookDAO dao = new BookDAO();
 		BookDTO dto = dao.getBookDetail(seq);
 		
+		seqLCategory = dto.getSeqLCategory();
+		seqMCategory = dto.getSeqMCategory();
+		seqSCategory = dto.getSeqSCategory();
+		
+		lCategory = dto.getlCategory();
+		mCategory = dto.getmCategory();
+		sCategory = dto.getsCategory();
+		
 		//날짜 데이터 자르기 -> 년 월 일로 변환
 		dto.setPubDate(dto.getPubDate().substring(0, 10));
 		String temp = "";
@@ -41,7 +49,6 @@ public class BookDetail extends HttpServlet {
 		dto.setPubDate(temp);
 
 		
-		sCategory = dto.getsCategory();
 		
 		
 		//줄거리, 목차, 작가 소개 엔터 -> <br> 변환
