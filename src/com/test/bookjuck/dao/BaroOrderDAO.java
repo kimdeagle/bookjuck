@@ -50,19 +50,24 @@ public class BaroOrderDAO {
 		
 		try {
 			
-			String where = "";
+			//refundsearch 가 null 일 때 (상품정보 검색창에 아무런 입력도 하지 않았을 때) null -> ""로 변환
+			String refundsearch = map.get("refundsearch");
 			
-			if (map.get("refundsearch")!= null) {
-				
-				where = String.format(""
-						, map.get("refundsearch"));
-				
+			if (map.get("refundsearch") == null) {
+				refundsearch = "";
 			}
-			
 
+			String where = String.format("where applydate between '%s' and '%s' and title like '%%%s%%' and id='%s'"
+					, map.get("startDate")
+					, map.get("endDate")
+					, refundsearch
+					, map.get("id"));
 			
-			
-			String sql = String.format("select * from vwBaroRefundList %s order by applydate desc", where);
+			//Paging
+			String sql = String.format("select * from (select a.*, rownum as rnum from (select * from vwBaroRefundList %s order by applydate desc) a) where rnum between %s and %s"
+					, where
+					, map.get("begin")
+					, map.get("end"));
 			
 			pstat = conn.prepareStatement(sql);
 			rs = pstat.executeQuery();
@@ -151,6 +156,54 @@ public class BaroOrderDAO {
 		}
 		
 		return null;
+	}
+
+	public int getATotalCount(HashMap<String, String> map) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	
+	
+	/**
+	 * 사용자 측, 총 교환/환불/취소 수 를 세는 메서드
+	 * @param map
+	 * @return cnt : 총 교환/환불/취소 수
+	 */
+	public int getTotalCount(HashMap<String, String> map) {
+
+		try {
+
+			//refundsearch 가 null 일 때 (상품정보 검색창에 아무런 입력도 하지 않았을 때) null -> ""로 변환
+			String refundsearch = map.get("refundsearch");
+			
+			if (map.get("refundsearch") == null) {
+				refundsearch = "";
+			} 
+			
+			String where = String.format("where applydate between '%s' and '%s' and title like '%%%s%%' and id='%s'"
+					, map.get("startDate")
+					, map.get("endDate")
+					, refundsearch
+					, map.get("id"));
+			
+			
+			String sql = String.format("select count(*) as cnt from vwBaroRefundList %s", where);
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			
+			if (rs.next()) {
+				return rs.getInt("cnt");
+			}
+			
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+		return 0;
 	}
 	
 	// (다은) 끝 ---------------------

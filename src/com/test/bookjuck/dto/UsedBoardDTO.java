@@ -1,5 +1,10 @@
 package com.test.bookjuck.dto;
 
+/**
+ * 중고거래 게시판 관련 생성자들이 있는 DTO입니다.
+ * @author 김다은
+ *
+ */
 public class UsedBoardDTO {
 	
 	//DTO 멤버
