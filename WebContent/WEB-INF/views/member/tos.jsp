@@ -78,7 +78,7 @@
 				<tr>
 					<th>이름:</th>
 					<td>
-						<input type="text" class="log-md" required id ="name" name="name" maxlength="">	
+						<input type="text" class="log-md" required id="name" name="name" maxlength="">	
 					</td>
 
 					<!-- <td>성별: 
@@ -114,10 +114,11 @@
 				<tr>
 					<th>이메일:</th>
 					<td>
-						<input type="text" class="log-sm" id="email1" name="email1" required><span>@</span><input type="text" class="log-md" id="email2" name="email2" required>
+						<input type="text" class="log-sm" id="email1" name="email1" required><span>@</span><input type="text" class="log-md" id="email2" name="email2" required><br>
+						<span id="result"></span>
 					</td>
 					<td>
-						<input type="button" class="btn-general" value="보내기">
+						<input type="button" class="btn-general" id="emailBtn" value="보내기">
 					<!-- 	<select class="selectpicker">
 							<option>구글</option>
 							<option>네이버</option>
@@ -130,18 +131,19 @@
 				<tr>
 					<th>인증번호:</th>
 					<td>
-						<input type="text" class="log-md" required>
+						<input type="text" class="log-md" id="auth" maxlength="6" required>
 					</td>
 					<td>
-						<input type="submit" class="btn btn-general" id="loginbtn" value="인증">
+						<!-- <input type="submit" id="loginbtn" value="인  증"> --> 
+						<button class="btn btn-general" id="loginbtn" value="인  증" onclick="authcheck()">인 증</button>
 					</td>
 					
 				</tr>
 			</table>
+		</form>
 			<!-- 세번째 테이블 끝 -->
 
 
-		</form>
 		<address>
 
 			<p>
@@ -544,6 +546,61 @@ YP e-money 총 금액의 100분의 60(1만원 이하 금액은 100분의 80) 이
 		$("#container").height($(document).height());
 	});
 	$("#container").height($(document).height());
+	
+	
+	/*인증 번호*/
+	var authnum = Math.floor(Math.random() * 1000000)+100000;
+		if(authnum>1000000){
+			authnum = authnum - 100000;
+		}
+		
+	/*이메일 인증*/
+	$("#emailBtn").click(function() {
+	
+			$.ajax({
+				type: "GET",
+				url: "/bookjuck/member/mailauth.do",
+				data: { 
+					    name: $("#name").val(),
+					    email1: $("#email1").val(),
+						email2: $("#email2").val(),
+						rnd : authnum,	
+				      },
+				success: function(result) {
+					
+					if(result==1){
+						$("#result").css("color", "blue");
+						$("#result").text("인증번호 전송에 성공했습니다.");
+						document.getElementById('emailBtn').disabled = true;
+					}else{
+						$("#result").css("color", "red");
+						$("#result").text("인증번호 정송에 실패했습니다.");
+					}
+				},
+				error: function(a,b,c) {
+					console.log(a,b,c);
+				}
+			});
+	}); 
+	
+	/*인증번호 검사*/
+	 /* $("#loginbtn").button(function(evt) {  */
+	 function authcheck(evt){ 	
+				
+		if ($("#auth").val() == null) {
+			alert("인증번호를 입력해주세요.");
+			evt.preventDefault();
+			return false; 
+		}else if($("#auth").val() != authnum){
+			alert("인증번호가 일치하지 않습니다.");
+			evt.preventDefault();
+			return false; 
+		}else{
+			alert("인증번호가 일치합니다.");		
+		}
+		
+	}
+	 /* }); */
 	</script>
 </body>
 </html>

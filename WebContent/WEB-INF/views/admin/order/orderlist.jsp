@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +35,7 @@
 				<h3>주문/배송 조회</h3>
 
 				
-				<form method="GET" action="/bookjuck/member/refund/list.do" id="searchForm">
+				<form method="GET" action="/bookjuck/admin/order/orderlist.do" id="searchForm">
 				<table class="table tbl-md search-type">
 					<tr>
 						<th>분류</th>
@@ -46,31 +47,33 @@
 							</select>
 						</td>
 						<td rowspan="4"><input type="button" class="btn btn-general"
-							id="btnview" value="조회하기"></td>
+							id="btnview" value="조회하기" onclick="$('#searchForm').submit();"></td>
 					</tr>
 					<tr>
 						<th>주문기간</th>
-						<td class="period" colspan="2"><input type="button"
-							class="btn btn-sm" value="일주일"> <input type="button"
-							class="btn btn-sm" value="1개월"> <input type="button"
-							class="btn btn-sm" value="3개월"> <input type="button"
-							class="btn btn-sm" value="6개월"></td>
-						<td colspan="2"><input type="date" class="form-control"
-							id="date_before_month"> ~ <input type="date"
-							class="form-control" id="now_date"></td>
+						<td class="period" colspan="2">
+                            <input type="button" class="btn btn-sm" id="btn1" value="일주일">
+                            <input type="button" class="btn btn-sm" id="btn2" value="1개월">
+                            <input type="button" class="btn btn-sm" id="btn3" value="3개월">
+                            <input type="button" class="btn btn-sm" id="btn4" value="6개월">
+						</td>
+						<td colspan="2">
+						    <input type="date" class="form-control" id="startDate" name="startDate" min="2019-03-01"> ~
+                            <input type="date" class="form-control" id="endDate" name="endDate" min="2019-03-01">
+						</td>
 					</tr>
 					<tr>
 						<th>주문번호</th>
 						<td colspan="2"><input type="text" class="form-control"
-							placeholder="주문번호를 입력하세요."></td>
+							placeholder="주문번호를 입력하세요." id="ordernumsearch" name="ordernumsearch"></td>
 						<th>주문자ID</th>
 						<td><input type="text" class="form-control"
-							placeholder="주문자ID를 입력하세요."></td>
+							placeholder="주문자ID를 입력하세요." id="idsearch" name="idsearch"></td>
 					</tr>
 					<tr>
 						<th>주문상품</th>
 						<td colspan="4"><input type="text" class="form-control"
-							placeholder="상품명을 입력하세요."></td>
+							placeholder="상품명을 입력하세요." id="booksearch" name="booksearch" ></td>
 					</tr>
 					<tr>
 						<td colspan="6"></td>
@@ -82,45 +85,72 @@
 				
 				<table class="table tbl-md tbl-result">
 					<tr>
-						<th>분류</th>
 						<th>주문번호</th>
 						<th>주문자ID</th>
 						<th>상품정보</th>
 						<th>주문일자</th>
+						<th>수량</th>
 						<th>주문상태</th>
 					</tr>
+					
+					
+					<c:if test="${not empty blist }">
+					<c:forEach items="${blist}" var="dto">
 					<tr>
-						<td>자사배송</td>
-						<td><a href="/bookjuck/admin/order/view.do">00000000</a></td>
-						<td>test0123</td>
-						<td>자바의 정석<span class="amount">외 3</span></td>
-						<td>2021-02-20</td>
-						<td>배송완료</td>
+						<td><a href="/bookjuck/admin/order/view.do">${dto.seq + 123456}</a></td>
+						<td>${dto.id}</td>
+						<td>${dto.title}
+							<c:if test="${dto.totalAmount > 1}">
+							<span class="amount">외 ${dto.totalAmount - 1}</span>
+							</c:if>
+						</td>
+						<td>${dto.orderDate}</td>
+						<td>${dto.totalAmount}</td>
+						<td>${dto.orderState}</td>
 					</tr>
+					</c:forEach>
+					</c:if>
+					
+					<c:if test="${not empty balist }">
+					<c:forEach items="${balist}" var="dto">
 					<tr>
-						<td>E-Book</td>
-						<td><a href="/bookjuck/admin/order/view.do">00001111</a></td>
-						<td>test0123</td>
-						<td>개인주의자 선언</td>
-						<td>2021-02-20</td>
-						<td>다운로드완료</td>
+						<td><a href="/bookjuck/admin/order/view.do">${dto.seq + 567891}</a></td>
+						<td>${dto.id}</td>
+						<td>${dto.title}
+							<c:if test="${dto.totalAmount > 1}">
+							<span class="amount">외 ${dto.totalAmount - 1}</span>
+							</c:if>
+						</td>
+						<td>${dto.orderDate}</td>
+						<td>${dto.totalAmount}</td>
+						<td>${dto.orderState}</td>
 					</tr>
+					</c:forEach>
+					</c:if>
+					
+					<c:if test="${not empty elist }">
+					<c:forEach items="${elist}" var="dto">
+					<tr>
+						<td><a href="/bookjuck/admin/order/view.do">${dto.seq + 987654}</a></td>
+						<td>${dto.id}</td>
+						<td>${dto.title}</td>
+						<td>${dto.orderDate}</td>
+						<td>${dto.totalAmount}</td>
+						<td>${dto.orderState}</td>
+					</tr>
+					</c:forEach>
+					</c:if>
+					
+
 				</table>
 
 
-				<ul class="pagination">
-					<li><a href="#" aria-label="Previous"> <span
-							aria-hidden="true">&laquo;</span>
-					</a></li>
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li><a href="#" aria-label="Next"> <span
-							aria-hidden="true">&raquo;</span>
-					</a></li>
-				</ul>
+                <nav class="pagebar">
+                    <ul class="pagination">
+                        ${pagebar}
+                    </ul>
+                </nav>
+                
 
 			</article>
 		</section>
@@ -128,8 +158,8 @@
 
 		<!-- datepicker 현재 날짜로 기본값 설정 -->
 		<script>
-        document.getElementById('date_before_month').valueAsDate = new Date();
-        document.getElementById('now_date').valueAsDate = new Date();
+        document.getElementById('startDate').valueAsDate = new Date();
+        document.getElementById('endDate').valueAsDate = new Date();
     	</script>
 
 
@@ -144,6 +174,17 @@
 	<!-- 플로팅 메뉴 -->
 	<%@include file="/WEB-INF/views/admin/bookjuckee.jsp" %>
 	<%@include file="/WEB-INF/views/common/top.jsp"%>
+	
+	
+	
+	<script>
+	
+	//분류 고정
+	$("#type").val("${type}").prop("selected",true);
+	
+
+
+	</script>
 		
 		
 </body>

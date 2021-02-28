@@ -83,15 +83,15 @@
 				<c:forEach items="${eblist}" var="dto">
 				<tr>
 					<td>
-						<a href="/bookjuck/member/book/ebookdetail.do?seqLCategory=${seqLCategory}&lCategory=${lCategory}&seqMCategory=${seqMCategory}&mCategory=${mCategory}&seqSCategory=${seqSCategory}&sCategory=${sCategory}&seq=${dto.seq}">
+						<a href="/bookjuck/member/book/ebookdetail.do?seqLCategory=${dto.seqLCategory}&lCategory=${dto.lCategory}&seqMCategory=${dto.seqMCategory}&mCategory=${dto.mCategory}&seqSCategory=${dto.seqSCategory}&sCategory=${dto.sCategory}&seq=${dto.seq}">
 							<img src="/bookjuck/image/book/${dto.image}" class="image">
 						</a>
 					</td>
 					<td>
-						<div><a href="/bookjuck/member/book/ebookdetail.do?seqLCategory=${seqLCategory}&lCategory=${lCategory}&seqMCategory=${seqMCategory}&mCategory=${mCategory}&seqSCategory=${seqSCategory}&sCategory=${sCategory}&seq=${dto.seq}" class="title">${dto.title}</a></div>
+						<div><a href="/bookjuck/member/book/ebookdetail.do?seqLCategory=${dto.seqLCategory}&lCategory=${dto.lCategory}&seqMCategory=${dto.seqMCategory}&mCategory=${dto.mCategory}&seqSCategory=${dto.seqSCategory}&sCategory=${dto.sCategory}&seq=${dto.seq}" class="title">${dto.title}</a></div>
 						<div class="info">${dto.author} | ${dto.publisher}</div>
 						<div class="subinfo">${dto.pubDate}</div>
-						<div class="intro">${dto.intro.substring(0, 100)}</div>
+						<div class="intro">${dto.intro}</div>
 						<div class="priceinfo">
 							<span class="price"><s>정가 ${String.format('%,d원', dto.price)}</s></span>
 							<span class="saleprice">판매가 <strong>${String.format('%,d', dto.salePrice)}</strong>원</span>

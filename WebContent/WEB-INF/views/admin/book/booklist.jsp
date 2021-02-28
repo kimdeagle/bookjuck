@@ -63,7 +63,7 @@
 			</c:if>
 			도서 목록
 			</h5>
-			<input type="button" class="btn btn-primary btn-lg" value="도서추가" onclick="location.href='/bookjuck/admin/book/bookadd.do?page=${nowPage}';">
+			<input type="button" class="btn btn-primary btn-lg" value="추가" onclick="location.href='/bookjuck/admin/book/bookadd.do?page=${nowPage}';">
 			<div style="clear:both;"></div>
 		</div>
 		<table class="table table-hover table-condensed tblbooklist">

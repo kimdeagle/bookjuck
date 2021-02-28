@@ -92,10 +92,16 @@
 							href="/bookjuck/member/book/bookdetail.do?seq=${bdto.seqBook}">${bdto.title}</a></td>
 						<td style="vertical-align: middle;">${bdto.amount}</td>
 						<td style="vertical-align: middle;">${bdto.orderState}
-						 <!-- 주문상태가 배송 완료일 때 보임 || 비회원 안 보임 --> 
-						 <c:if test="">
-						 	<a href="#" class="btn-report">독후감 쓰러 가기</a>
-						 </c:if>
+						 <!-- 주문상태가 배송 완료일 때 보임 || 비회원 안 보임 -->
+						 <!-- ############ (조아라) 시작 -->
+						 <c:set var="loop_flag" value="true" />
+						 <c:forEach items="${plist}" var="pdto">
+							 <c:if test="${bdto.title eq pdto.title}">
+							 	<a href="/bookjuck/member/review/add.do?seq=${pdto.seq}" class="btn-report">독후감 쓰러 가기</a>
+							 	<c:set var="loop_flag" value="true" />
+							 </c:if>
+						 </c:forEach>
+ 						 <!-- ############ (조아라) 끝 -->
 						</td>
 					</tr>
 					</c:forEach>

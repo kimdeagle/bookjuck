@@ -1,5 +1,6 @@
 package com.test.bookjuck.dao;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,6 +12,11 @@ import com.test.bookjuck.DBUtil;
 import com.test.bookjuck.dto.CommentDTO;
 import com.test.bookjuck.dto.UsedBoardDTO;
 
+/**
+ * 중고게시판 관련 메서드들이 있는 DAO입니다.
+ * @author 김다은
+ *
+ */
 public class UsedBoardDAO {
 
 	private Connection conn;
@@ -34,6 +40,8 @@ public class UsedBoardDAO {
 		}
 
 	}
+	
+	// ############ (김다은) 시작
 
 	// WriteOk 서블릿이 글쓰기를 위임
 	public int write(UsedBoardDTO dto) {
@@ -75,8 +83,6 @@ public class UsedBoardDAO {
 				where = String.format("where id like '%%%s%%' or title like '%%%s%%' or content like '%%%s%%'", map.get("fleamarketsearch"), map.get("fleamarketsearch"), map.get("fleamarketsearch"));
 			}
 			
-			
-			//String sql = String.format("select * from vwUsedBoard %s order by seq desc", where);
 			
 			String sql = String.format("select * from (select a.*, rownum as rnum from (select * from vwUsedBoard %s order by seq desc) a) where rnum between %s and %s"
 					, where
@@ -210,12 +216,35 @@ public class UsedBoardDAO {
 	}
 	
 	
-	//DeleteOk 서블릿 -> 글 삭제하기
-	public int del(String seq) {
+	//DeleteOk 서블릿 -> 글 삭제하기(다은)
+	// 아라) 중고거래게시판 글 삭제는 아래의 세 단계에 따라 이루어져야 한다.
+	// 1. 댓글 삭제
+	// 2. 글의 첨부파일 서버에서 삭제
+	// 3. 글삭제
+	public int del(String seq, String path) {
 		
 		try {
-
-			String sql = "delete from tblUsedBoard where seq = ?";
+			
+			// 1. 댓글 삭제(댓글이 없는 경우는 0개 삭제로 그냥 지나갈 수 있도록 따로 분기하지 않는다.)
+			String sql="delete from tblComment where sequsedboard=?";
+			pstat=conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			pstat.executeUpdate();
+			
+			// 2. 첨부파일 서버에서 삭제
+			// 직전페이지에서 쿼리스트링으로 파일명 얻어오는 게 제일 좋을 거 같긴 한데
+			// 그럼 다은님 코드도 바꿔야 해서 그냥 여기서 파일명 얻어오는 걸로.
+			sql="select image from tblUsedBoard where seq=?";
+			pstat=conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			rs=pstat.executeQuery();
+			rs.next();
+			String filename=rs.getString("image");
+			File file=new File(path+filename);
+			file.delete(); // 서버에서 삭제
+			
+			// 3. 글 삭제
+			sql = "delete from tblUsedBoard where seq = ?";
 
 			pstat = conn.prepareStatement(sql);	
 			pstat.setString(1, seq);	//글 번호
@@ -349,8 +378,51 @@ public class UsedBoardDAO {
 		return 0;
 	}
 
+	// ############ (김다은) 끝
 	
-
 	
+	// ############ (조아라) 시작
+	
+	/**
+	 * 관리자가 목록조회할 용도로 중고거래게시판의 전체 게시물 정보을 가져오는 메서드입니다.
+	 * @param map pagination을 위한 시작 글번호와 끝 글번호가 담긴 HashMap입니다.
+	 * @return 중고거래게시판 게시물의 정보를 담고 있는 UsedBoardDTO의 ArrayList를 반환합니다.
+	 */
+	public ArrayList<UsedBoardDTO> getAllList(HashMap<String, String> map) {
+		
+		try {
+			
+			String sql=String.format("select * from (select a.*, (select count(*) from tblComment cm where cm.seq=a.seq group by seq) as ccount, rownum as rnum from (select ub.seq, m.id, ub.title, ub.regdate, ub.readcnt from tblUsedBoard ub\n"
+					+ "    inner join tblMember m\n"
+					+ "        on ub.seqmember=m.seq order by ub.seq desc) a) where rnum between %s and %s", map.get("begin"), map.get("end"));
+			
+			stat=conn.createStatement();
+			rs=stat.executeQuery(sql);
+			
+			ArrayList<UsedBoardDTO> list=new ArrayList<UsedBoardDTO>();
+			
+			while (rs.next()) {
+				UsedBoardDTO dto=new UsedBoardDTO();
+				dto.setSeq(rs.getString("seq"));
+				dto.setId(rs.getString("id"));
+				dto.setTitle(rs.getString("title"));
+				dto.setRegDate(rs.getString("regdate"));
+				dto.setReadcnt(rs.getInt("readcnt"));
+				dto.setCcount(rs.getString("ccount"));
+				
+				list.add(dto);
+			}
+			
+			return list;
+			
+		} catch (Exception e) {
+			System.out.println("UsedBoardDAO.getAllList()");
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	// ############ (조아라) 끝
 
 }

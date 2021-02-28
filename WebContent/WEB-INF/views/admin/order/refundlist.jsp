@@ -66,8 +66,8 @@
 	                    <input type="button" class="btn btn-sm" value="6개월">
 	                </td>
 	                <td colspan="2">
-	                    <input type="date"class="form-control" id="date_before_month"> ~
-	                    <input type="date"class="form-control" id="now_date">
+						<input type="date" class="form-control" id="startDate" name="startDate" min="2019-03-01"> ~
+                        <input type="date" class="form-control" id="endDate" name="endDate" min="2019-03-01">
 	                </td>
 	            </tr>
 	            <tr>
@@ -93,36 +93,36 @@
 	
 	        <b class="subtitle">취소/교환/환불 조회 결과</b>
 	        <table class="table tbl-md tbl-result">
+				<tr>
+					<th>주문번호</th>
+					<th>주문자ID</th>
+					<th>상품정보</th>
+					<th>주문일자</th>
+					<th>수량</th>
+					<th>주문상태</th>
+				</tr>
 	            <tr>
-	                <th>분류</th>
-	                <th>주문번호</th>
-	                <th>주문자ID</th>
-	                <th>상품정보</th>
-	                <th>주문일자</th>
-	                <th>주문상태</th>
-	            </tr>
-	            <tr>
-	                <td>자사배송</td>
 	                <td><a href="/bookjuck/admin/order/view.do">00002222</a></td>
 	                <td>test0123</td>
 	                <td>자바의 정석<span class="amount">외 3</span></td>
 	                <td>2021-02-20</td>
+	                <td>1</td>
 	                <td>주문교환</td>
 	            </tr>
 	            <tr>
-	                <td>자사배송</td>
 	                <td><a href="/bookjuck/admin/order/view.do">00003333</a></td>
 	                <td>test0123</td>
 	                <td>자바의 정석</td>
 	                <td>2021-02-20</td>
+	                <td>1</td>
 	                <td>주문환불</td>
 	            </tr>
 	            <tr>
-	                <td>E-Book</td>
 	                <td><a href="/bookjuck/admin/order/view.do">00004444</a></td>
 	                <td>test0123</td>
 	                <td>개인주의자 선언</td>
 	                <td>2021-02-20</td>
+	                <td>1</td>
 	                <td>주문취소</td>
 	            </tr>
 	        </table>
@@ -152,8 +152,8 @@
 
 		<!-- datepicker 현재 날짜로 기본값 설정 -->
 		<script>
-        document.getElementById('date_before_month').valueAsDate = new Date();
-        document.getElementById('now_date').valueAsDate = new Date();
+        document.getElementById('startDate').valueAsDate = new Date();
+        document.getElementById('endDate').valueAsDate = new Date();
     	</script>
 
 

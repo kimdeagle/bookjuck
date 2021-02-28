@@ -158,7 +158,7 @@ th{
     border-right: 1px solid #ddd;
 }
 
-.orderList th:nth-child(6),.orderList td:nth-child(6){
+.orderList th:nth-child(5),.orderList td:nth-child(5){
     border-right: 0;
 }
 

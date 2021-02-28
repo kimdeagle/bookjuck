@@ -12,12 +12,27 @@ public class EBookOrderDTO {
 	private String orderDate; //주문일
 	private String orderState; //주문상태
 	
+	private int actualPay;
+	private String image;
+	private String seqBook;
+	
+	
 	//교/취/환 추가
 	private String applyDate;		//교환/취소/환불 접수일자
 	private String title;			//상품 정보 (책이름)
 	private String totalAmount;		//주문 총 수량
 	
+	private String id;				//주문자 id
 	
+	
+	
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getSeq() {
 		return seq;
 	}
@@ -59,6 +74,24 @@ public class EBookOrderDTO {
 	}
 	public void setTotalAmount(String totalAmount) {
 		this.totalAmount = totalAmount;
+	}
+	public int getActualPay() {
+		return actualPay;
+	}
+	public void setActualPay(int actualPay) {
+		this.actualPay = actualPay;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
+	public String getSeqBook() {
+		return seqBook;
+	}
+	public void setSeqBook(String seqBook) {
+		this.seqBook = seqBook;
 	}
 	
 	

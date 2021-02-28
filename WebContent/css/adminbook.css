@@ -1,83 +1,71 @@
 /* admin/book/list.jsp */
 
 [readonly] { background-color: transparent !important; }
+
 button { outline:none !important; }
 
-.contentsection { margin-left: 5px !important; }
+.contentsection {
+	margin-left: 5px !important;
+	max-width: 74%;
+}
 
 .tblbookcount, .tblebookcount {
 	margin-top: 20px;
 	margin-bottom: 100px;
 }
 
-.tblbookcount th, .tblbookcount td, .tblebookcount th, .tblebookcount td {
-	text-align: center;
-}
+.tblbookcount th, .tblbookcount td, .tblebookcount th, .tblebookcount td { text-align: center; }
 
 .tblbookcount .label, .tblebookcount .label {
 	font-size: 1em;
 	opacity: 0.7;
 }
 
-.tblbooklist, .tblebooklist {
-	margin-top: 20px;
-}
+.tblbooklist, .tblebooklist { margin-top: 20px; }
 
-.tblbooklist th, .tblbooklist td, .tblebooklist th, .tblebooklist td {
-	text-align: center;
-}
+.tblbooklist th, .tblbooklist td, .tblebooklist th, .tblebooklist td { text-align: center; }
 
-.tblbooklist th:nth-child(1) {
-	width: 210px;
-}
+/* 도서명 */
+.tblbooklist th:nth-child(1) { width: 30%; }
 
-.tblbooklist th:nth-child(2) {
-	width: 240px;
-}
+/* 카테고리 */
+.tblbooklist th:nth-child(2) { width: 30%; }
 
-.tblbooklist th:nth-child(3) {
-	width: 160px;
-}
+/* 저자 */
+.tblbooklist th:nth-child(3) { width: 13%; }
 
-.tblbooklist th:nth-child(4) {
-	width: 50px;
-}
+/* 수량 */
+.tblbooklist th:nth-child(4) { width: 5%; }
 
-.tblbooklist th:nth-child(5) {
-	width: 190px;
-}
+/* 버튼 */
+.tblbooklist th:nth-child(5) { width: 22%; }
 
-.tblebooklist th:nth-child(1) {
-	width: 250px;
-}
+/* 도서명 */
+.tblebooklist th:nth-child(1) { width: 32%; }
 
-.tblebooklist th:nth-child(2) {
-	width: 220px;
-}
+/* 카테고리 */
+.tblebooklist th:nth-child(2) { width: 32%; }
 
-.tblebooklist th:nth-child(3) {
-	width: 170px;
-}
+/* 저자 */
+.tblebooklist th:nth-child(3) { width: 14%; }
 
-.tblbooklist td input[type=button], .tblebooklist td input[type=button] {
-	margin-right: 5px;
-}
+/* 버튼 */
+.tblebooklist th:nth-child(4) { width: 22%; }
 
-input[type=button]:focus {
-	outline: none !important;
-}
+.tblbooklist td input[type=button], .tblebooklist td input[type=button] { margin-right: 5px; }
 
-.listheader {
-	margin-top: 50px;
-}
+input[type=button]:focus { outline: none !important; }
+
+.listheader { margin-top: 50px; }
 
 .listheader h5 {
 	margin-top: 20px;
 	float: left;
 }
 
+/* 리스트 -> 추가 버튼 */
 .listheader input[type=button] {
-	width: 130px;
+	width: 90px;
 	float: right;
 	margin-right: 30px;
 }
@@ -98,7 +86,7 @@ input[type=button]:focus {
 
 #isbn { width: 200px; }
 
-#price { width: 80px; text-align: right; }
+#price { width: 80px; text-align: center; }
 
 #amount { width: 80px; text-align: center; }
 
@@ -131,20 +119,19 @@ input[type=button]:focus {
 /* 취소, 목록 버튼 */
 #btncancel, #btnlist { background-color: lightgray; }
 
-
-
 /* modal */
 
 /* modal > 카테고리 선택 */
-#tblcategory th {
-	text-align: center;
-}
+#tblcategory th { text-align: center; }
 
 /* 작가명 검색어 입력 텍스트박스 + 검색 버튼 -> 우측 정렬 */
 .searchbar { text-align: right; }
 
 /* modal > 작가명 검색창 */
-#searchauthorname { width: 200px; display: inline-block; }
+#searchauthorname {
+	width: 200px;
+	display: inline-block;
+}
 
 /* modal > 작가 리스트 테이블 */
 #tblauthorlist th:nth-child(1) { width: 50px; text-align: center; }

@@ -33,6 +33,7 @@
 	
 		<h4>도서관리 > 상세</h4>
 		
+
 			<div class="form-group">
 		    	<label for="title">도서명</label>
 		    	<input type="text" class="form-control" id="title" name="title" placeholder="도서명을 입력해주세요." maxlength=50 readonly value="${dto.title}">
@@ -50,11 +51,9 @@
 						&gt; 
 						<input type="text" class="form-control category" id="secondcategory" placeholder="2차 카테고리" readonly value="${dto.mCategory}"> 
 						&gt;
-						<input type="text" class="form-control category" id="thirdcategory" placeholder="3차 카테고리" readonly value="${dto.sCategory}">
-							
+						<input type="text" class="form-control category" id="thirdcategory" placeholder="3차 카테고리" readonly value="${dto.sCategory}">	
 					</div>
 			</div>
-		  	
 		  	
 			<div class="form-group">
 		    	<label for="authorname">작가명</label>
@@ -63,7 +62,7 @@
 		  	
 			<div class="form-group">
 		    	<label for="authorintro">작가 소개</label>
-		    	<textarea class="form-control" id="authorintro" name="authorIntro" placeholder="작가소개를 입력해주세요." rows="5" readonly>${dto.authorIntro}</textarea>
+		    	<textarea class="form-control" id="authorintro" name="authorIntro" placeholder="작가소개를 입력해주세요." rows="10" maxlength=1500 readonly>${dto.authorIntro}</textarea>
 		  	</div>
 
 			<div class="form-group">
@@ -77,7 +76,7 @@
 		  	</div>
 		  	
 			<div class="form-group">
-		    	<label for="price">정가</label>
+		    	<label for="price">정가 (단위 : 원)</label>
 		    	<input type="text" class="form-control" id="price" name="price" value="${dto.price}" readonly>
 		  	</div>
 		  	
@@ -98,12 +97,12 @@
 		  	
 			<div class="form-group">
 		    	<label for="bookintro">도서 소개</label>
-		    	<textarea class="form-control" id="bookintro" name="summary" placeholder="도서소개를 입력해주세요." rows="10" readonly>${dto.summary}</textarea>
+		    	<textarea class="form-control" id="bookintro" name="summary" placeholder="도서소개를 입력해주세요." rows="10" maxlength=1500 readonly>${dto.summary}</textarea>
 		  	</div>
 		  	
 			<div class="form-group">
 		    	<label for="index">목차</label>
-		    	<textarea class="form-control" id="index" name="contents" placeholder="목차를 입력해주세요." rows="10" readonly>${dto.contents}</textarea>
+		    	<textarea class="form-control" id="index" name="contents" placeholder="목차를 입력해주세요." rows="10" maxlength=1500 readonly>${dto.contents}</textarea>
 		  	</div>
 		  	
 		  	<div class="form-group">
@@ -116,8 +115,7 @@
 			  	<input type="button" class="btn btn-success" id="btneditpage" value="수정" onclick="location.href='/bookjuck/admin/book/bookedit.do?seq=${dto.seq}&page=${page}';">
 			  	<button type="button" class="btn btn-danger" id="btndel" value="${dto.seq}">삭제</button>
 			  	<input type="button" class="btn btn-default" id="btnlist" value="목록" onclick="location.href='/bookjuck/admin/book/booklist.do?page=${page}';">
-		  	</div>	  	
-	  	
+		  	</div>
 
 		
 		<!-- 이미지 미리보기 클릭 > 모달 -->
@@ -139,8 +137,7 @@
 				</div>
 			</div>
 		</div>
-
-	
+		
 		<!-- 삭제 클릭 > 모달 -->
 		<div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -158,7 +155,6 @@
 				</div>
 			</div>
 		</div>
-
 	
 	</section>
 	
@@ -175,12 +171,27 @@
 
 	<script>
 	
-	/* 미리보기 모달 열기 */
-	$("#btnpreviewimage").click(function() {
+	/* 이미지 미리보기 모달 열기 */
+	$("#btnpreviewimage").click(function() {	
 		$("#previewimagemodal").modal('show');	
 	});
 	
-	//상세보기 -> 삭제 버튼 클릭
+	//이미지 미리보기
+	$('#image').change(function() {
+	    setImageFromFile(this, '#previmg');
+	});
+
+	function setImageFromFile(input, expression) {
+	    if (input.files && input.files[0]) {
+	        var imgreader = new FileReader();
+	        imgreader.onload = function (e) {
+	            $(expression).attr('src', e.target.result);
+	        }
+	        imgreader.readAsDataURL(input.files[0]);
+	    }
+	}
+	
+	//상세 -> 삭제 버튼 클릭
 	$("#btndel").click(function() {
 		seq = $(this).val();
 		$("#deletemodal").modal('show');
@@ -190,7 +201,7 @@
 	//삭제 모달 -> 삭제 버튼 클릭
 	$("#delok").click(function() {
 		location.href = "/bookjuck/admin/book/delok.do?seq=" + seq;
-	});
+	});	
 	
 		
 	</script>

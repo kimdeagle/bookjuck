@@ -78,7 +78,7 @@ public class NonMemberDAO {
 			pstat.setString(1, email);
 			
 			rs = pstat.executeQuery();
-			System.out.println("여기까지 오나??");
+			
 			if(rs.next()) {
 				NonMemberDTO dto = new NonMemberDTO();
 				

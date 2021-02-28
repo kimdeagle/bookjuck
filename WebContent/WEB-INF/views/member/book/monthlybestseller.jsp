@@ -1,25 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
-<%
    
-%>
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<%@include file="/WEB-INF/views/member/inc/asset.jsp"%>
-<link rel="stylesheet" href="/bookjuck/css/global.css">
-<style>
-</style>
-
-</head>
-<body>
-   
-   
-   <section class="mainsection" style="width:1250px; position:relative; top:-100px; left:-30px;">
+<section class="mainsection" style="width:1250px; position:relative; top:-100px; left:-30px;">
   <!--  <section class="mainsection"> -->
    <!--  <h3 id="bestmonthtitle" style="text-align:center;">월간베스트</h3> -->
    <h3 id="bestmonthtitle">월간베스트</h3>
@@ -37,17 +20,3 @@
     </table>
     </c:forEach>
 </section>
-   
-   
-   
-   
-   
-   
-   
-
-   <script>
-      
-   </script>
-
-</body>
-</html>

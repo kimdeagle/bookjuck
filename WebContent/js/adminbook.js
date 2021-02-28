@@ -26,25 +26,63 @@ $(window).load(function() {
 	
 	//도서추가 -> 추가 버튼 클릭
 	$("#btnadd").click(function() {
+		//이미지가 아니면
 		if (!($("#imagename").val().toLowerCase().endsWith("jpg") || $("#imagename").val().toLowerCase().endsWith("gif") || $("#imagename").val().toLowerCase().endsWith("png"))) {
-			//이미지가 아니면
 			alert("지원되는 이미지 파일만 첨부할 수 있습니다.");
 			return;
-		} else {		
-			$("#formAdd").submit();
 		}
+		
+		$("#formAdd").submit();
+		
 	});
 	
 	//도서수정 -> 수정 버튼 클릭
 	$("#btnedit").click(function() {
+		//이미지가 아니면
 		if (!($("#imagename").val().toLowerCase().endsWith("jpg") || $("#imagename").val().toLowerCase().endsWith("gif") || $("#imagename").val().toLowerCase().endsWith("png"))) {
-			//이미지가 아니면
 			alert("지원되는 이미지 파일만 첨부할 수 있습니다.");
 			return;
-		} else {		
-			$("#formEdit").submit();
 		}
+			
+		$("#formEdit").submit();
+
 	});
+	
+	//E-Book추가 -> 추가 버튼 클릭
+	$("#btnEadd").click(function() {
+		//이미지가 아니면
+		if (!($("#imagename").val().toLowerCase().endsWith("jpg") || $("#imagename").val().toLowerCase().endsWith("gif") || $("#imagename").val().toLowerCase().endsWith("png"))) {
+			alert("지원되는 이미지 파일만 첨부할 수 있습니다.");
+			return;
+		}
+		
+		//pdf가 아니면
+		if (!($("#ebookname").val().toLowerCase().endsWith("pdf"))) {
+			alert("지원되는 E-Book 파일만 첨부할 수 있습니다.");
+			return;
+		}
+		
+		$("#formAdd").submit();
+		
+	});
+	
+	//E-Book수정 -> 수정 버튼 클릭
+	$("#btnEedit").click(function() {
+		//이미지가 아니면
+		if (!($("#imagename").val().toLowerCase().endsWith("jpg") || $("#imagename").val().toLowerCase().endsWith("gif") || $("#imagename").val().toLowerCase().endsWith("png"))) {
+			alert("지원되는 이미지 파일만 첨부할 수 있습니다.");
+			return;
+		}
+		
+		//pdf가 아니면
+		if (!($("#ebookname").val().toLowerCase().endsWith("pdf"))) {
+			alert("지원되는 E-Book 파일만 첨부할 수 있습니다.");
+			return;
+		}
+			
+		$("#formEdit").submit();
+
+	});	
 	
 	//작가 새로추가 -> seqAuthor 삭제
 	$("#btnaddauthor").click(function() {

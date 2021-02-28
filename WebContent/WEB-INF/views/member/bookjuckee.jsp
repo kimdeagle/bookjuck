@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@include file="/WEB-INF/views/member/inc/asset.jsp" %>
 <link rel="stylesheet" href="/bookjuck/css/global.css">
     
 <!-- 북적이에게 문의하기 -->

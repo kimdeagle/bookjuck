@@ -69,11 +69,11 @@
 }
 
 .slick-dots li button:before {
-    color:#F4A259;
+    color:#F4A259 !important;
 }
 
-.slick-dots li.slick-active button:before {
-    color:#BC4B51;
+.slick-dots li.slick-active {
+    color:#BC4B51 !important;
 }
 
 

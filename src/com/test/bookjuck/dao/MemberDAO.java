@@ -194,8 +194,7 @@ public class MemberDAO {
 			pstat.setString(2, ssn);
 			
 			rs = pstat.executeQuery();
-			System.out.println(ssn);
-			System.out.println(name);
+
 			
 			if(rs.next()) {
 				return rs.getString("id");
@@ -246,7 +245,126 @@ public class MemberDAO {
 		return null;
 		
 	}
-	
-	// ############ (조아라) 시작
+	// ############ (조아라) 끝
 
+	
+	// ############ (최진영) 시작
+	public String findIdEmail(String email, String name) {
+		try {
+			
+			String sql = "select id from tblMember where name=? and email = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, name);
+			pstat.setString(2, email);
+			
+			rs = pstat.executeQuery();
+			
+			
+			if(rs.next()) {
+				return rs.getString("id");
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}	
+		return null;
+	}
+	// ############ (최진영) 종료
+
+	
+	// ############ (최진영) 시작
+	public String findIdTel(int tel, String name) {
+		
+		try {
+			
+			String sql = "select id from tblMember where name=? and tel = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, name);
+			pstat.setInt(2, tel);
+			
+			rs = pstat.executeQuery();
+			
+			
+			if(rs.next()) {
+				return rs.getString("id");
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}	
+		return null;
+	}
+	// ############ (최진영) 종료
+
+	
+	// ############ (최진영) 시작
+	public String findPwEmail(String email, String name, String id) {
+		try {
+			
+			String sql = "select pw from tblMember where name=? and email = ? and id=?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, name);
+			pstat.setString(2, email);
+			pstat.setString(3, id);
+			
+			rs = pstat.executeQuery();
+			
+			
+			if(rs.next()) {
+				return rs.getString("pw");
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}	
+		return null;
+	}
+	// ############ (최진영) 종료
+
+	// ############ (최진영) 시작
+	public String findPwSsn(String ssn, String name, String id) {
+		try {
+			
+			String sql = "select pw from tblMember where name=? and ssn = ? and id=?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, name);
+			pstat.setString(2, ssn);
+			pstat.setString(3, id);
+			
+			rs = pstat.executeQuery();
+			
+			
+			if(rs.next()) {
+				return rs.getString("pw");
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}	
+		return null;
+	}
+	// ############ (최진영) 종료
+
+	
+	public String findPwTel(int tel, String name, String id) {
+		try {
+			
+			String sql = "select pw from tblMember where name=? and tel = ? and id=?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, name);
+			pstat.setInt(2, tel);
+			pstat.setString(3, id);
+			
+			rs = pstat.executeQuery();
+			
+			
+			if(rs.next()) {
+				return rs.getString("pw");
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}	
+		return null;
+	}
 }

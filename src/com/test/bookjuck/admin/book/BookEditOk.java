@@ -76,7 +76,6 @@ public class BookEditOk extends HttpServlet {
 			copy = multi.getParameter("copy");
 			summary = multi.getParameter("summary");
 			contents = multi.getParameter("contents");
-			image = multi.getFilesystemName("image");
 			
 			seq = multi.getParameter("seq"); //수정할 도서번호
 			
@@ -97,6 +96,13 @@ public class BookEditOk extends HttpServlet {
 			
 			BookDAO bdao = new BookDAO();
 			BookDTO bdto = new BookDTO();
+			
+			if (multi.getFilesystemName("image") == null || multi.getFilesystemName("image").equals("")) {
+				image = bdao.getImageFileName(seq);
+			} else {
+				image = multi.getFilesystemName("image");				
+			}
+			
 			
 			bdto.setTitle(title);
 			bdto.setPublisher(publisher);

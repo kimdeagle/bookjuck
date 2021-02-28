@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.test.bookjuck.dao.BookDAO;
 import com.test.bookjuck.dao.BookDeliveryDAO;
 import com.test.bookjuck.dao.BookPayDAO;
 import com.test.bookjuck.dao.OrderListDAO;
+import com.test.bookjuck.dto.BookDTO;
 import com.test.bookjuck.dto.BookDeliveryDTO;
 import com.test.bookjuck.dto.BookOrderDetailDTO;
 import com.test.bookjuck.dto.BookPayDTO;
@@ -59,12 +61,20 @@ public class OrderDetail extends HttpServlet {
 		BookDeliveryDAO bddao = new BookDeliveryDAO();
 		ArrayList<BookDeliveryDTO> bdlist = bddao.listBookDelivery(seqBookOrder);
 		
+		// 조아라 시작) 주문상세 페이지에서 독후감 쓸 수 있는 책은 독후감 작성하기 버튼이 보이도록 하는 기능 추가
+		// 독후감 쓸 수 있는 책 가져오기
+		// 1. 배송완료이면서 2. 독후감을 아직 안 쓴 책
+		BookDAO pdao=new BookDAO();
+		ArrayList<BookDTO> plist=pdao.getPossibleBook(session.getAttribute("seq").toString());
+		// 조아라 끝)
 		
 		req.setAttribute("blist",blist);
 		req.setAttribute("bplist", bplist);
 		req.setAttribute("bdlist", bdlist);
 		req.setAttribute("seqBookOrder", seqBookOrder);
 		req.setAttribute("orderDate", orderDate);
+		req.setAttribute("plist", plist); // 조아라) 독후감쓸 수 있는 책 리스트도 보내기
+		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/member/mypage/orderdetail.jsp");
 		dispatcher.forward(req, resp);
 
