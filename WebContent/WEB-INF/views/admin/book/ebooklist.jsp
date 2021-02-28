@@ -50,7 +50,7 @@
 		
 		<div class="listheader">
 			<h5>전체 E-Book 목록</h5>
-			<input type="button" class="btn btn-primary btn-lg" value="E-Book추가" onclick="location.href='/bookjuck/admin/book/ebookadd.do';">
+			<input type="button" class="btn btn-primary btn-lg" value="추가" onclick="location.href='/bookjuck/admin/book/ebookadd.do';">
 			<div style="clear:both;"></div>
 		</div>
 		<table class="table table-hover table-condensed tblebooklist">
@@ -108,15 +108,7 @@
 		  </ul>
 		</nav>
 		
-	  	<!-- modal -->
-		<%@include file="/WEB-INF/views/admin/book/bookmodal.jsp" %>
-		<%--
-		<%
-			out.flush();
-			RequestDispatcher dmodal = request.getRequestDispatcher("/admin/book/bookmodal.do");
-			dmodal.include(request, response);
-		%>
-		--%>
+
 	
 	</section>
 	

@@ -1,19 +1,15 @@
 /* booklist.jsp > css */
 
+.contentsection { max-width: 74%; }
+
 /* 이미지 셀 */
-table td:nth-child(1) {
-	width: 130px;
-}
+table td:nth-child(1) { width: 130px; }
 
 /* 텍스트 셀 */
-table td:nth-child(2) {
-	width: 500px;
-}
+table td:nth-child(2) { width: 500px; }
 
 /* 텍스트 margin */
-table td:nth-child(2) div {
-	margin: 5px 15px;
-}
+table td:nth-child(2) div { margin: 5px 15px; }
 
 /* 수량 및 버튼 셀 */
 table td:nth-child(3) {
@@ -22,22 +18,10 @@ table td:nth-child(3) {
 }
 
 /* 이미지 */
-table td .image {
-	width: 130px;
-}
+table td .image { width: 130px; }
 
 /* 텍스트 > 제목 */
-table td .title {
-	font-size: 2em;
-}
-
-table td .info {
-	
-}
-
-table td .subinfo {
-
-}
+table td .title { font-size: 2em; }
 
 /* 도서 소개 */
 table td .intro {
@@ -45,14 +29,8 @@ table td .intro {
 	overflow: hidden;
 }
 
-table td .priceinfo {
-
-}
-
 /* 텍스트 > 정가 + 가격 */
-table td .priceinfo .price {
-	font-size: 0.9em;
-}
+table td .priceinfo .price { font-size: 0.9em; }
 
 /* 텍스트 > 판매가 */
 table td .priceinfo .saleprice {
@@ -67,9 +45,7 @@ table td .priceinfo .saleprice strong {
 }
 
 /* 수량 > + , - 버튼 */
-table td .amount input[type=button] {
-	outline: none !important;
-}
+table td .amount input[type=button] { outline: none !important; }
 
 /* 수량 > 텍스트박스 */
 table td .amount input[type=text] {

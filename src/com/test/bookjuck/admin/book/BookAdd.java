@@ -41,10 +41,13 @@ public class BookAdd extends HttpServlet {
 		AuthorDAO adao = new AuthorDAO();
 		ArrayList<AuthorDTO> alist = adao.getAuthorList();
 		
-		//작가소개 엔터 변환
+		//작가소개 엔터, (), " 변환
 		for (AuthorDTO adto : alist) {
 			adto.setIntro(adto.getIntro().replace("\r\n", "<br>"));
 			adto.setIntro(adto.getIntro().replace("\n", "<br>"));
+			adto.setIntro(adto.getIntro().replace("(", "&#40;"));
+			adto.setIntro(adto.getIntro().replace(")", "&#41;"));
+			adto.setIntro(adto.getIntro().replace("\"", "&quot;"));
 		}
 		
 		cdao.close();
