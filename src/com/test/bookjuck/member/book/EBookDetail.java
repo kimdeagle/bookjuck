@@ -35,28 +35,36 @@ public class EBookDetail extends HttpServlet {
 		EBookDAO dao = new EBookDAO();
 		EBookDTO dto = dao.getEBookDetail(seq);
 		
-		//날짜 데이터 자르기 -> 년 월 일로 변환
-
-		dto.setPubDate(dto.getPubDate().substring(0, 10));
-		String temp = "";
-		temp = dto.getPubDate().substring(0, 4) + "년 " + dto.getPubDate().substring(5, 7) + "월 " + dto.getPubDate().substring(8) + "일";
-		dto.setPubDate(temp);
-		
-		
-		
-		dao.close();
-		
+		seqLCategory = dto.getSeqLCategory();
+		seqMCategory = dto.getSeqMCategory();
+		seqSCategory = dto.getSeqSCategory();
 		
 		lCategory = dto.getlCategory();
 		mCategory = dto.getmCategory();
 		sCategory = dto.getsCategory();
 		
+		//날짜 데이터 자르기 -> 년 월 일로 변환
+		dto.setPubDate(dto.getPubDate().substring(0, 10));
+		String temp = "";
+		temp = dto.getPubDate().substring(0, 4) + "년 " + dto.getPubDate().substring(5, 7) + "월 " + dto.getPubDate().substring(8) + "일";
+		dto.setPubDate(temp);
 		
+
+		lCategory = dto.getlCategory();
+		mCategory = dto.getmCategory();
+		sCategory = dto.getsCategory();
+		
+		//줄거리, 목차, 작가 소개 엔터 -> <br> 변환
 		dto.setIntro(dto.getIntro().replace("\r\n", "<br>"));
 		dto.setIntro(dto.getIntro().replace("\n", "<br>"));
 		
 		dto.setContents(dto.getContents().replace("\r\n", "<br>"));
 		dto.setContents(dto.getContents().replace("\n", "<br>"));
+		
+		dto.setAuthorIntro(dto.getAuthorIntro().replace("\r\n", "<br>"));
+		dto.setAuthorIntro(dto.getAuthorIntro().replace("\n", "<br>"));
+		
+		dao.close();
 		
 		request.setAttribute("seqLCategory", seqLCategory);
 		request.setAttribute("seqMCategory", seqMCategory);

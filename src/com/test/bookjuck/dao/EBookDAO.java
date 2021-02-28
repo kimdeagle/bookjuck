@@ -46,11 +46,11 @@ public class EBookDAO {
 			
 			if (map.get("seqSCategory") == null) {
 				//E-Book 리스트 첫 화면
-				innerSql = "select eb.*, (select name from tblAuthor where seq = eb.seqAuthor) as author from tblEbook eb order by eb.pubDate desc, eb.title asc";
+				innerSql = "select eb.*, lc.seq as seqLCategory, mc.seq as seqMCategory, lc.lCategory as lCategory, mc.mCategory as mCategory, sc.sCategory as sCategory, (select name from tblAuthor where seq = eb.seqAuthor) as author from tblEbook eb inner join tblSCategory sc on eb.seqSCategory = sc.seq inner join tblMCategory mc on sc.seqMCategory = mc.seq inner join tblLCategory lc on mc.seqLCategory = lc.seq order by eb.pubDate desc, eb.title asc";
 
 			} else {
 				//도서 리스트 좌측 소분류 선택
-				innerSql = String.format("select eb.*, (select name from tblAuthor where seq = eb.seqAuthor) as author from tblEbook eb where eb.seqSCategory = %s order by eb.pubDate desc, eb.title asc", map.get("seqSCategory"));
+				innerSql = String.format("select eb.*, lc.seq as seqLCategory, mc.seq as seqMCategory, lc.lCategory as lCategory, mc.mCategory as mCategory, sc.sCategory as sCategory, (select name from tblAuthor where seq = eb.seqAuthor) as author from tblEbook eb inner join tblSCategory sc on eb.seqSCategory = sc.seq inner join tblMCategory mc on sc.seqMCategory = mc.seq inner join tblLCategory lc on mc.seqLCategory = lc.seq where eb.seqSCategory = %s order by eb.pubDate desc, eb.title asc", map.get("seqSCategory"));
 
 			}
 			
@@ -74,6 +74,14 @@ public class EBookDAO {
 				dto.setPrice(rs.getInt("price"));
 				dto.setSalePrice(rs.getInt("salePrice"));
 				
+				dto.setSeqLCategory(rs.getString("seqLCategory"));
+				dto.setSeqMCategory(rs.getString("seqMCategory"));
+				dto.setSeqSCategory(rs.getString("seqSCategory"));
+				
+				dto.setlCategory(rs.getString("lCategory"));
+				dto.setmCategory(rs.getString("mCategory"));
+				dto.setsCategory(rs.getString("sCategory"));
+				
 				eblist.add(dto);
 			}
 			
@@ -92,7 +100,7 @@ public class EBookDAO {
 		
 		try {
 			
-			String sql = "select eb.*, (select name from tblAuthor where seq = eb.seqAuthor) as author, (select intro from tblAuthor where seq = eb.seqAuthor) as authorIntro, sc.sCategory as sCategory, mc.mCategory as mCategory, lc.lCategory as lCategory from tblEBook eb inner join tblSCategory sc on eb.seqSCategory = sc.seq inner join tblMCategory mc on sc.seqMCategory = mc.seq inner join tblLCategory lc on mc.seqLCategory = lc.seq where eb.seq = ?";
+			String sql = "select eb.*, lc.seq as seqLCategory, mc.seq as seqMCategory, lc.lCategory as lCategory, mc.mCategory as mCategory, sc.sCategory as sCategory, (select name from tblAuthor where seq = eb.seqAuthor) as author, (select intro from tblAuthor where seq = eb.seqAuthor) as authorIntro from tblEBook eb inner join tblSCategory sc on eb.seqSCategory = sc.seq inner join tblMCategory mc on sc.seqMCategory = mc.seq inner join tblLCategory lc on mc.seqLCategory = lc.seq where eb.seq = ?";
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, seq);
@@ -118,6 +126,9 @@ public class EBookDAO {
 				
 				dto.setAuthor(rs.getString("author"));
 				dto.setAuthorIntro(rs.getString("authorIntro"));
+				
+				dto.setSeqLCategory(rs.getString("seqLCategory"));
+				dto.setSeqMCategory(rs.getString("seqMCategory"));
 				
 				dto.setsCategory(rs.getString("sCategory"));
 				dto.setmCategory(rs.getString("mCategory"));

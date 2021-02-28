@@ -21,6 +21,9 @@ public class EBookDTO {
 	
 	private String authorIntro; //작가 소개
 	
+	private String seqLCategory; //카테고리번호(대)
+	private String seqMCategory; //카테고리번호(중)
+	
 	private String sCategory; //카테고리명(소)
 	private String mCategory; //카테고리명(중)
 	private String lCategory; //카테고리명(대)
@@ -139,6 +142,18 @@ public class EBookDTO {
 	}
 	public void setlCategory(String lCategory) {
 		this.lCategory = lCategory;
+	}
+	public String getSeqLCategory() {
+		return seqLCategory;
+	}
+	public void setSeqLCategory(String seqLCategory) {
+		this.seqLCategory = seqLCategory;
+	}
+	public String getSeqMCategory() {
+		return seqMCategory;
+	}
+	public void setSeqMCategory(String seqMCategory) {
+		this.seqMCategory = seqMCategory;
 	}
 	
 	

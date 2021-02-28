@@ -81,12 +81,12 @@
 				<c:forEach items="${blist}" var="dto">
 				<tr>
 					<td>
-						<a href="/bookjuck/member/book/bookdetail.do?seqLCategory=${seqLCategory}&lCategory=${lCategory}&seqMCategory=${seqMCategory}&mCategory=${mCategory}&seqSCategory=${seqSCategory}&sCategory=${sCategory}&seq=${dto.seq}">
+						<a href="/bookjuck/member/book/bookdetail.do?seqLCategory=${seqLCategory}&lCategory=${lCategory}&seqMCategory=${seqMCategory}&mCategory=${mCategory}&seqSCategory=${dto.seqSCategory}&sCategory=${dto.sCategory}&seq=${dto.seq}">
 							<img src="/bookjuck/image/book/${dto.image}" class="image">
 						</a>
 					</td>
 					<td>
-						<div><a href="/bookjuck/member/book/bookdetail.do?seqLCategory=${seqLCategory}&lCategory=${lCategory}&seqMCategory=${seqMCategory}&mCategory=${mCategory}&seqSCategory=${seqSCategory}&sCategory=${sCategory}&seq=${dto.seq}" class="title">${dto.title}</a></div>
+						<div><a href="/bookjuck/member/book/bookdetail.do?seqLCategory=${seqLCategory}&lCategory=${lCategory}&seqMCategory=${seqMCategory}&mCategory=${mCategory}&seqSCategory=${dto.seqSCategory}&sCategory=${dto.sCategory}&seq=${dto.seq}" class="title">${dto.title}</a></div>
 						<div class="info">${dto.author} | ${dto.publisher}</div>
 						<div class="subinfo">${dto.pubDate} | ${dto.page}쪽</div>
 						<div class="intro">${dto.summary}</div>
