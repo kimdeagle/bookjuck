@@ -678,11 +678,11 @@ public class BookDAO {
 			
 			if (map.get("seqSCategory") == null) {
 				//도서 리스트 첫 화면
-				innerSql = String.format("select b.*, mc.seq as seqMCategory, (select name from tblAuthor where seq = b.seqAuthor) as author from tblBook b inner join tblSCategory sc on b.seqSCategory = sc.seq inner join tblMCategory mc on sc.seqMCategory = mc.seq where mc.seq = %s order by b.pubDate desc, b.title", map.get("seqMCategory"));
+				innerSql = String.format("select b.*, sc.sCategory as sCategory, (select name from tblAuthor where seq = b.seqAuthor) as author from tblBook b inner join tblSCategory sc on b.seqSCategory = sc.seq inner join tblMCategory mc on sc.seqMCategory = mc.seq where mc.seq = %s order by b.pubDate desc, b.title", map.get("seqMCategory"));
 
 			} else {
 				//도서 리스트 좌측 소분류 선택
-				innerSql = String.format("select b.*, (select name from tblAuthor where seq = b.seqAuthor) as author from tblBook b where seqSCategory = %s order by b.pubDate desc, b.title", map.get("seqSCategory"));
+				innerSql = String.format("select b.*, (select sCategory from tblSCategory where seq = b.seqSCategory) as sCategory, (select name from tblAuthor where seq = b.seqAuthor) as author from tblBook b where b.seqSCategory = %s order by b.pubDate desc, b.title", map.get("seqSCategory"));
 			}
 			
 			sql = String.format("select * from (select a.*, rownum as rnum from (%s) a) where rnum between %s and %s", innerSql, map.get("begin"), map.get("end"));
@@ -706,6 +706,9 @@ public class BookDAO {
 				bdto.setSalePrice(rs.getInt("salePrice"));
 				bdto.setSeq(rs.getString("seq"));
 				
+				bdto.setSeqSCategory(rs.getString("seqSCategory"));
+				bdto.setsCategory(rs.getString("sCategory"));
+				
 				blist.add(bdto);
 				
 			}
@@ -724,7 +727,7 @@ public class BookDAO {
 		
 		try {
 			
-			String sql = "select b.*, (select name from tblAuthor where seq = b.seqAuthor) as author, (select intro from tblAuthor where seq = b.seqAuthor) as authorIntro, (select sCategory from tblSCategory where seq = b.seqSCategory) as sCategory from tblBook b where seq = ?";
+			String sql = "select b.*, lc.seq as seqLCategory, mc.seq as seqMCategory, lc.lCategory as lCategory, mc.mCategory as mCategory, sc.sCategory as sCategory, (select name from tblAuthor where seq = b.seqAuthor) as author, (select intro from tblAuthor where seq = b.seqAuthor) as authorIntro from tblBook b inner join tblSCategory sc on b.seqScategory = sc.seq inner join tblMCategory mc on sc.seqMCategory = mc.seq inner join tblLcategory lc on mc.seqLCategory = lc.seq where b.seq = ?";
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, seq);
@@ -751,6 +754,11 @@ public class BookDAO {
 				dto.setAuthor(rs.getString("author"));
 				dto.setAuthorIntro(rs.getString("authorIntro"));
 				
+				dto.setSeqLCategory(rs.getString("seqLCategory"));
+				dto.setSeqMCategory(rs.getString("seqMCategory"));
+				
+				dto.setlCategory(rs.getString("lCategory"));
+				dto.setmCategory(rs.getString("mCategory"));
 				dto.setsCategory(rs.getString("sCategory"));
 				
 				return dto;
