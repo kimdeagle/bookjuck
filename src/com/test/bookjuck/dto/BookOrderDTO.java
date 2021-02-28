@@ -19,7 +19,16 @@ public class BookOrderDTO {
 	private String title;			//상품 정보 (책이름)
 	private String totalAmount;		//주문 총 수량
 	
+	private String id;				//주문자 id
 	
+	
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getApplyDate() {
 		return applyDate;
 	}

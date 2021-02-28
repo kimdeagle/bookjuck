@@ -168,7 +168,11 @@
                     <tr>
                         <td><a href="/bookjuck/member/mypage/refundorderdetail.do" class="ordernumber">${dto.seq}</a></td>
                         <td>${dto.applyDate}</td>
-                        <td class="book">${dto.title}<span class="amount">외 ${dto.totalAmount - 1}</span></td>
+                        <td class="book">${dto.title}
+	                        <c:if test="${dto.totalAmount > 1}">
+	                        <span class="amount">외 ${dto.totalAmount - 1}</span>
+	                        </c:if>
+                        </td>
                         <td>${dto.totalAmount}</td>
                         <td>${dto.orderState}</td>
                     </tr>
@@ -180,7 +184,11 @@
                     <tr>
                         <td><a href="/bookjuck/member/mypage/refundorderdetail.do" class="ordernumber">${dto.seq}</a></td>
                         <td>${dto.applyDate}</td>
-                        <td class="book">${dto.title}<span class="amount">외 ${dto.totalAmount - 1}</span></td>
+                        <td class="book">${dto.title}
+	                        <c:if test="${dto.totalAmount > 1}">
+	                        <span class="amount">외 ${dto.totalAmount - 1}</span>
+	                        </c:if>
+                        </td>
                         <td>${dto.totalAmount}</td>
                         <td>${dto.orderState}</td>
                     </tr>
@@ -192,7 +200,7 @@
                     <tr>
                         <td><a href="/bookjuck/member/mypage/refundorderdetail.do" class="ordernumber">${dto.seq}</a></td>
                         <td>${dto.applyDate}</td>
-                        <td class="book">${dto.title}<span class="amount">외 ${dto.totalAmount - 1}</span></td>
+                        <td class="book">${dto.title}</td>
                         <td>${dto.totalAmount}</td>
                         <td>${dto.orderState}</td>
                     </tr>

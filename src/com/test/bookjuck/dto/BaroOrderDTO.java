@@ -23,6 +23,10 @@ public class BaroOrderDTO {
 	private String title;			//상품 정보 (책이름)
 	private String totalAmount;		//주문 총 수량
 	
+
+	private String id;				//주문자 id
+
+  
 	public int getActualPay() {
 		return actualPay;
 	}
@@ -41,8 +45,12 @@ public class BaroOrderDTO {
 	public void setSeqBook(String seqBook) {
 		this.seqBook = seqBook;
 	}
-	
-	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getSeq() {
 		return seq;
 	}
