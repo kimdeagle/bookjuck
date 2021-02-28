@@ -25,7 +25,7 @@ public class SearchView extends HttpServlet {
 		
 	
 
-
+		
 		String sv = req.getParameter("sv"); //검색창 입력값
 		String sk = req.getParameter("sk");	//검색 카테고리 입력값
 		
@@ -85,7 +85,7 @@ public class SearchView extends HttpServlet {
 		
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/common/searchview.jsp");
-		dispatcher.include(req, resp);
+		dispatcher.forward(req, resp);
 
 	}
 

@@ -35,7 +35,7 @@
 	<%-- <%@include file="/WEB-INF/views/member/inc/header.jsp" %> --%>
 	
 	<!-- 변경 후 -->
-	<%
+	<%	
 		out.flush();
 		RequestDispatcher dheader = request.getRequestDispatcher("/member/inc/header.do");
 		dheader.include(request, response);
