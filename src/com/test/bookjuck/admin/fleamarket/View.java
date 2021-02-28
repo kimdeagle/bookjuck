@@ -32,6 +32,7 @@ public class View extends HttpServlet {
 			// 1.
 			String seq=req.getParameter("seq"); // 중고게시판 글번호
 			String page=req.getParameter("page"); // 몇번째 페이지에서 들어왔는지
+			String fleamarketsearch=req.getParameter("fleamarketsearch");
 			
 			// 2-1. 글정보 가져오기
 			UsedBoardDAO dao=new UsedBoardDAO();
@@ -44,6 +45,7 @@ public class View extends HttpServlet {
 			req.setAttribute("dto", dto);
 			req.setAttribute("clist", clist);
 			req.setAttribute("page", page);
+			req.setAttribute("fleamarketsearch", fleamarketsearch);
 			
 			RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/fleamarket/view.jsp");
 			dispatcher.forward(req, resp);

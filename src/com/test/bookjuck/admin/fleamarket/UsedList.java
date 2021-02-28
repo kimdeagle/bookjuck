@@ -30,6 +30,13 @@ public class UsedList extends HttpServlet {
 			
 			HashMap<String,String> map = new HashMap<String,String>();
 			
+			// 검색어가 넘어왔다면 검색어를 HashMap에 넣는다.
+			String fleamarketsearch = req.getParameter("fleamarketsearch");
+			
+			if (!(fleamarketsearch == null || fleamarketsearch.equals(""))) {
+				map.put("fleamarketsearch", fleamarketsearch);
+			}
+			
 			//페이징
 			int nowPage = 0;		//현재 페이지 번호
 			int totalCount = 0;		//총 게시물 수
@@ -120,7 +127,8 @@ public class UsedList extends HttpServlet {
 			// 2.
 			req.setAttribute("ulist", ulist);
 			req.setAttribute("pagebar", pagebar);
-			req.setAttribute("nowPage", nowPage);	
+			req.setAttribute("nowPage", nowPage);
+			req.setAttribute("fleamarketsearch", fleamarketsearch);
 			
 			RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/fleamarket/list.jsp");
 			dispatcher.forward(req, resp);
