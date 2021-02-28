@@ -48,6 +48,7 @@ public class BookEditOk extends HttpServlet {
 		String contents = "";
 		String image = "";
 		String seq = "";
+		String nowPage = "";
 		
 		int result = 0; //업무 결과
 		
@@ -76,6 +77,7 @@ public class BookEditOk extends HttpServlet {
 			copy = multi.getParameter("copy");
 			summary = multi.getParameter("summary");
 			contents = multi.getParameter("contents");
+			nowPage = multi.getParameter("nowPage");
 			
 			seq = multi.getParameter("seq"); //수정할 도서번호
 			
@@ -137,7 +139,7 @@ public class BookEditOk extends HttpServlet {
 				writer.print("<html><body>");
 				writer.print("<script>");
 				writer.print("alert('success!');");
-				writer.print("location.href='/bookjuck/admin/book/bookview.do?seq="+ seq +"';");
+				writer.print(String.format("location.href='/bookjuck/admin/book/bookview.do?seq=%s&page=%s'", seq, nowPage));
 				writer.print("</script>");
 				writer.print("</body></html>");
 				

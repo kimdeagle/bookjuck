@@ -112,9 +112,16 @@
 		  	</div>
 		  	
 		  	<div class="form-group actionbtns">
-			  	<input type="button" class="btn btn-success" id="btneditpage" value="수정" onclick="location.href='/bookjuck/admin/book/bookedit.do?seq=${dto.seq}&page=${page}';">
-			  	<button type="button" class="btn btn-danger" id="btndel" value="${dto.seq}">삭제</button>
-			  	<input type="button" class="btn btn-default" id="btnlist" value="목록" onclick="location.href='/bookjuck/admin/book/booklist.do?page=${page}';">
+		  		<c:if test="${empty seqLCategory}">
+				  	<input type="button" class="btn btn-success" id="btneditpage" value="수정" onclick="location.href='/bookjuck/admin/book/bookedit.do?page=${page}&seq=${dto.seq}';">
+				  	<button type="button" class="btn btn-danger" id="btndel" value="${dto.seq}">삭제</button>
+				  	<input type="button" class="btn btn-default" id="btnlist" value="목록" onclick="location.href='/bookjuck/admin/book/booklist.do?page=${page}';">
+		  		</c:if>
+		  		<c:if test="${not empty seqLCategory}">
+				  	<input type="button" class="btn btn-success" id="btneditpage" value="수정" onclick="location.href='/bookjuck/admin/book/bookedit.do?seqLCategory=${seqLCategory}&page=${page}&seq=${dto.seq}';">
+				  	<button type="button" class="btn btn-danger" id="btndel" value="${dto.seq}">삭제</button>
+				  	<input type="button" class="btn btn-default" id="btnlist" value="목록" onclick="location.href='/bookjuck/admin/book/booklist.do?seqLCategory=${seqLCategory}&page=${page}';">
+		  		</c:if>
 		  	</div>
 
 		
@@ -190,6 +197,8 @@
 	        imgreader.readAsDataURL(input.files[0]);
 	    }
 	}
+	
+	var seq;
 	
 	//상세 -> 삭제 버튼 클릭
 	$("#btndel").click(function() {

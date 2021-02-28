@@ -31,6 +31,7 @@ public class BookEdit extends HttpServlet {
 		//1.
 		String seq = req.getParameter("seq");
 		String page = req.getParameter("page");
+		String seqLCategory = req.getParameter("seqLCategory");
 		
 		//2.
 		BookDAO dao = new BookDAO();
@@ -76,6 +77,7 @@ public class BookEdit extends HttpServlet {
 		
 		req.setAttribute("dto", dto);
 		req.setAttribute("page", page);
+		req.setAttribute("seqLCategory", seqLCategory);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/book/bookedit.jsp");
 		dispatcher.forward(req, resp);

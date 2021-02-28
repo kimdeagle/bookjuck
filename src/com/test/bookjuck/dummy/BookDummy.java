@@ -2,7 +2,8 @@ package com.test.bookjuck.dummy;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.util.Calendar;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Random;
@@ -14,6 +15,7 @@ public class BookDummy {
 	public static void main(String[] args) {
 		
 		//도서더미
+		//소분류별 20개씩 (국내-소설-외국소설 제외)
 		
 		//작가 1~15 (랜덤)
 		//(소)카테고리번호 1~120 (랜덤)
@@ -387,12 +389,16 @@ public class BookDummy {
 			
 			Connection conn = DBUtil.open();
 			PreparedStatement pstat;
+			PreparedStatement pstat2;
+			Statement stat;
+			ResultSet rs = null;
 			Random rnd = new Random();
 			
+			String sql = "";
+			String sql2 = "";
+			String sql3 = "";
+			String seqBook = "";
 			
-			String sql = "insert into tblBook(seq, seqAuthor, seqSCategory, title, publisher, price, salePrice, pubDate, summary, isbn, copy, image, page, contents) values(seqBook.nextVal, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-			
-			pstat = conn.prepareStatement(sql);
 			
 			while (isbn.size() < 2400) {
 				isbn.add((3330000000000L + rnd.nextInt(1000000000) + 1000000000) + "");
@@ -400,12 +406,22 @@ public class BookDummy {
 			
 			Iterator<String> iter = isbn.iterator();
 			
+			sql = "insert into tblBook(seq, seqAuthor, seqSCategory, title, publisher, price, salePrice, pubDate, summary, isbn, copy, image, page, contents) values(seqBook.nextVal, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			pstat = conn.prepareStatement(sql);
+			
+			sql2 = "select max(seq) as seq from tblBook";
+			stat = conn.createStatement();
+			
+			sql3 = "insert into tblInventory (seq, seqBook, amount) values (seqInventory.nextVal, ?, ?)";
+			pstat2 = conn.prepareStatement(sql3);
+			
 			for (int i=1; i<=120; i++) {
 				if (i == 2) {
 					//국내 - 소설 - 외국소설 제외 (해리포터)
 					continue;
 				}
 				for (int j=0; j<20; j++) {
+
 					int temp = price[rnd.nextInt(price.length)];
 					pstat.setString(1, (rnd.nextInt(15) + 1) + "");
 					pstat.setString(2, i + "");
@@ -424,10 +440,26 @@ public class BookDummy {
 					pstat.setString(13, contents[rnd.nextInt(contents.length)]);
 					
 					System.out.println("소분류번호 : " + i + " | 결과 : " + pstat.executeUpdate());
+					
+					//도서재고 테이블 추가
+					rs = stat.executeQuery(sql2);
+					
+					if (rs.next()) {
+						seqBook = rs.getString("seq");
+					}
+					
+					pstat2.setString(1, seqBook);
+					pstat2.setInt(2, rnd.nextInt(10) + 1);
+					
+					System.out.println("도서번호 : " + seqBook + " | 결과 : " + pstat2.executeUpdate());
+					
 				}
 			}
-			
+
+			stat.close();
 			pstat.close();
+			pstat2.close();
+			rs.close();
 			conn.close();
 			
 		} catch (Exception e) {
