@@ -50,11 +50,21 @@ public class FAQDAO {
 	public ArrayList<FAQDTO> getList(HashMap<String, String> map) {
 		try {
 			
+			// 검색어 처리
+			String where = "";
+			
+			if (map.get("search") != null) {
+				//검색 중..
+				where = String.format("where category like '%%%s%%' or title like '%%%s%%' or content like '%%%s%%'", map.get("search"), map.get("search"), map.get("search"));
+			}
+			
 			// 자주하는 질문을 최신순으로 가져오는 쿼리
 			String sql = String.format("select * from (select a.*, rownum as rnum from (select * from tblFAQ f\n"
 					+ "    inner join tblQCategory c\n"
-					+ "        on  f.seqqcategory=c.seq\n"
-					+ "            order by f.seq desc) a) where rnum between %s and %s"
+					+ "        on  f.seqqcategory=c.seq"
+					+ "            %s\n"
+					+ "                order by f.seq desc) a) where rnum between %s and %s"
+					, where
 					, map.get("begin")
 					, map.get("end"));
 			
@@ -75,7 +85,7 @@ public class FAQDAO {
 			return flist;
 			
 		} catch (Exception e) {
-			System.out.println("NoticeDAO.getList()");
+			System.out.println("FAQDAO.getList()");
 			e.printStackTrace();
 		}
 		
@@ -114,9 +124,18 @@ public class FAQDAO {
 	 * @return 총 게시물 수를 반환합니다.
 	 */
 	public int getTotalCount(HashMap<String, String> map) {
+		
 		try {
 			
-			String sql="select count(*) as cnt from tblFAQ";
+			String where = "";
+			
+			if (map.get("search") != null) {
+				where = String.format("where c.category like '%%%s%%' or f.title like '%%%s%%' or f.content like '%%%s%%'", map.get("search"), map.get("search"), map.get("search"));
+			}
+			
+			String sql=String.format("select count(*) as cnt from tblFAQ f\n"
+					+ "    inner join tblQCategory c\n"
+					+ "        on f.seqqcategory=c.seq %s", where);
 			stat=conn.createStatement();
 			rs=stat.executeQuery(sql);
 			

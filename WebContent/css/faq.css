@@ -28,3 +28,11 @@
 #listtbl th, td {
 	text-align:center;
 }
+
+/* 고객 검색창 */
+
+.search {
+	width:300px;
+	margin:20px;
+	float:right;
+}

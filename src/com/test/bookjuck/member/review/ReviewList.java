@@ -1,6 +1,7 @@
 package com.test.bookjuck.member.review;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -23,7 +24,25 @@ public class ReviewList extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-						
+		
+		HttpSession session=req.getSession();
+		
+		if (session.getAttribute("id")==null) {
+			
+			// 접근 권한 없음
+			PrintWriter writer=resp.getWriter();
+			
+			writer.print("<html><body>");
+			writer.print("<script>");
+			writer.print("alert('access denied');");
+			writer.print("history.back();");
+			writer.print("</script>");
+			writer.print("</body></html>");
+			
+			writer.close();
+			
+		}
+		
 		HashMap<String,String> map = new HashMap<String,String>();
 		
 		//페이징
@@ -57,9 +76,7 @@ public class ReviewList extends HttpServlet {
 		
 		// 1.
 		// 회원의 독후감을 가져온다.
-		HttpSession session=req.getSession();
-//		String seq=session.getAttribute("seq").toString(); // 회원번호를 세션에서 가져온다.
-		String seq="23"; // TODO 세션처리할 때 이 부분 지우고 위 주석 살릴 것.
+		String seq=session.getAttribute("seq").toString(); // 회원번호를 세션에서 가져온다.
 		map.put("seq", seq);
 		
 		ReviewDAO rdao=new ReviewDAO();

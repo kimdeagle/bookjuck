@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.test.bookjuck.dao.QuestionDAO;
 import com.test.bookjuck.dto.QuestionDTO;
@@ -18,6 +19,27 @@ public class EditOk extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		// 로그인했는지 확인
+		HttpSession session=req.getSession();
+						
+		if (session.getAttribute("id")==null) {
+			
+			// 접근 권한 없음
+			PrintWriter writer=resp.getWriter();
+			
+			writer.print("<html><body>");
+			writer.print("<script>");
+			writer.print("alert('access denied');");
+			writer.print("history.back();");
+			writer.print("</script>");
+			writer.print("</body></html>");
+			
+			writer.close();
+			
+			return;
+			
+		}
+		
 		// 인코딩
 		req.setCharacterEncoding("UTF-8");
 		
