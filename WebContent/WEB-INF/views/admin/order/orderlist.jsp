@@ -65,15 +65,15 @@
 					<tr>
 						<th>주문번호</th>
 						<td colspan="2"><input type="text" class="form-control"
-							placeholder="주문번호를 입력하세요." id="ordernumsearch" name="ordernumsearch"></td>
+							placeholder="주문번호를 입력하세요." id="ordernumsearch" name="ordernumsearch" value="${ordernumsearch}"></td>
 						<th>주문자ID</th>
 						<td><input type="text" class="form-control"
-							placeholder="주문자ID를 입력하세요." id="idsearch" name="idsearch"></td>
+							placeholder="주문자ID를 입력하세요." id="idsearch" name="idsearch" value="${idsearch}"></td>
 					</tr>
 					<tr>
 						<th>주문상품</th>
 						<td colspan="4"><input type="text" class="form-control"
-							placeholder="상품명을 입력하세요." id="booksearch" name="booksearch" ></td>
+							placeholder="상품명을 입력하세요." id="booksearch" name="booksearch" value="${booksearch}" ></td>
 					</tr>
 					<tr>
 						<td colspan="6"></td>
@@ -219,6 +219,7 @@
 			
 			beforedate.setDate(nowdate.getDate() - 7);
 			$("#startDate").val(formatDate(beforedate));
+			
 		});
 		
 		//btn2 한달 전

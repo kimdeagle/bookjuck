@@ -112,19 +112,41 @@ public class EBookOrderDAO {
 	 */
 	public ArrayList<EBookOrderDTO> adminlist(HashMap<String, String> map) {
 		
+		
 		try {
 			
-			String where = "";
-			
-			if (map.get("refundsearch")!= null) {
-				
-				where = String.format(""
-						, map.get("refundsearch"));
-				
-			}
+			//--search 가 null 일 때 (상품정보 검색창에 아무런 입력도 하지 않았을 때) null -> ""로 변환
+			String idsearch = map.get("idsearch");
+			String ordernumsearch = map.get("ordernumsearch");
+			String booksearch = map.get("booksearch");
 			
 			
-			String sql = String.format("select ab.* from vwAdminEOrder ab %s order by orderdate desc", where);
+			if (map.get("idsearch") == null) {
+				idsearch = "";
+			} 
+			
+			if (map.get("ordernumsearch") == null) {
+				ordernumsearch = "";
+			} 
+			
+			if (map.get("booksearch") == null) {
+				booksearch = "";
+			} 
+			
+			
+			String where = String.format("where orderdate between '%s' and '%s' and title like '%%%s%%' and seq like '%%%s%%' and id like '%%%s%%'"
+					, map.get("startDate")
+					, map.get("endDate")
+					, booksearch
+					, ordernumsearch
+					, idsearch);
+			
+			
+			String sql = String.format("select * from (select a.*, rownum as rnum from (select * from vwAdminEOrder %s order by orderdate desc) a) where rnum between %s and %s"
+					, where
+					, map.get("begin")
+					, map.get("end"));
+			
 			
 			pstat = conn.prepareStatement(sql);
 			rs = pstat.executeQuery();
@@ -156,9 +178,61 @@ public class EBookOrderDAO {
 		
 		return null;
 	}
+	
 
+	/**
+	 * 관리자가 사용하는 총 주문 수 를 세는 메서드
+	 * @param map
+	 * @return cnt : 총 주문 수
+	 */
 	public int getATotalCount(HashMap<String, String> map) {
-		// TODO Auto-generated method stub
+
+		try {
+			
+			//--search 가 null 일 때 (상품정보 검색창에 아무런 입력도 하지 않았을 때) null -> ""로 변환
+			String idsearch = map.get("idsearch");
+			String ordernumsearch = map.get("ordernumsearch");
+			String booksearch = map.get("booksearch");
+			
+			
+			if (map.get("idsearch") == null) {
+				idsearch = "";
+			} 
+			
+			if (map.get("ordernumsearch") == null) {
+				ordernumsearch = "";
+			} 
+			
+			if (map.get("booksearch") == null) {
+				booksearch = "";
+			} 
+			
+			
+			String where = String.format("where orderdate between '%s' and '%s' and title like '%%%s%%' and seq like '%%%s%%' and id like '%%%s%%'"
+					, map.get("startDate")
+					, map.get("endDate")
+					, booksearch
+					, ordernumsearch
+					, idsearch);
+			
+			
+			String sql = String.format("select count(*) as cnt from vwadminEOrder %s", where);
+			
+			System.out.println(sql);
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			
+			if (rs.next()) {
+				return rs.getInt("cnt");
+			}
+			
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
 		return 0;
 	}
 

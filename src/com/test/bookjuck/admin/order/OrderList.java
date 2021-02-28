@@ -177,10 +177,11 @@ public class OrderList extends HttpServlet {
 							+ "         </li>");
 			} else {
 				pagebar += String.format("<li>"
-							+ "            <a href=\"/bookjuck/admin/order/orderlist.do?page=%d\" aria-label=\"Previous\">"
+							+ "            <a href=\"/bookjuck/admin/order/orderlist.do?type=%d&page=%d&startDate=%s&endDate=%s&ordernumsearch=%s&idsearch=%s&booksearch=%s\" aria-label=\"Previous\">"
 							+ "                <span aria-hidden=\"true\">&laquo;</span>"
 							+ "            </a>"
-							+ "         </li>", n - 1);			
+							+ "         </li>", 1, n - 1, startDate, endDate, ordernumsearch, idsearch, booksearch);
+				
 			}
 			
 			
@@ -192,8 +193,8 @@ public class OrderList extends HttpServlet {
 				} else {
 					pagebar += "<li>";
 				}
-				pagebar += String.format("<a href=\"/bookjuck/admin/order/orderlist.do?page=%d\">%d</a></li> ", n, n);
-
+				pagebar += String.format("<a href=\"/bookjuck/admin/order/orderlist.do?type=%d&page=%d&startDate=%s&endDate=%s&ordernumsearch=%s&idsearch=%s&booksearch=%s\">%d</a></li> ", 1, n, startDate, endDate, ordernumsearch, idsearch, booksearch, n);
+				
 				loop++;
 				n++;
 
@@ -210,10 +211,10 @@ public class OrderList extends HttpServlet {
 				//a href = "#" 본인 페이지 항상 위, "#!" 위로 올라가는 현상 사라짐
 			} else {
 				pagebar += String.format("<li>"
-						+ "            <a href=\"/bookjuck/admin/order/orderlist.do?page=%d\" aria-label=\"Next\">"
+						+ "            <a href=\"/bookjuck/admin/order/orderlist.do?type=%d&page=%d&startDate=%s&endDate=%s&ordernumsearch=%s&idsearch=%s&booksearch=%s\" aria-label=\"Next\">"
 						+ "                <span aria-hidden=\"true\">&raquo;</span>"
 						+ "            </a>"
-						+ "          </li> ", n);
+						+ "          </li> ", 1, n, startDate, endDate, ordernumsearch, idsearch, booksearch);
 			}
 			
 			
@@ -263,10 +264,11 @@ public class OrderList extends HttpServlet {
 							+ "         </li>");
 			} else {
 				pagebar += String.format("<li>"
-							+ "            <a href=\"/codestudy/board/list.do?page=%d\" aria-label=\"Previous\">"
+							+ "            <a href=\"/bookjuck/admin/order/orderlist.do?type=%d&page=%d&startDate=%s&endDate=%s&ordernumsearch=%s&idsearch=%s&booksearch=%s\" aria-label=\"Previous\">"
 							+ "                <span aria-hidden=\"true\">&laquo;</span>"
 							+ "            </a>"
-							+ "         </li>", n - 1);			
+							+ "         </li>", 2, n - 1, startDate, endDate, ordernumsearch, idsearch, booksearch);
+				
 			}
 			
 			
@@ -278,8 +280,8 @@ public class OrderList extends HttpServlet {
 				} else {
 					pagebar += "<li>";
 				}
-				pagebar += String.format("<a href=\"/codestudy/board/list.do?page=%d\">%d</a></li> ", n, n);
-
+				pagebar += String.format("<a href=\"/bookjuck/admin/order/orderlist.do?type=%d&page=%d&startDate=%s&endDate=%s&ordernumsearch=%s&idsearch=%s&booksearch=%s\">%d</a></li> ", 2, n, startDate, endDate, ordernumsearch, idsearch, booksearch, n);
+				
 				loop++;
 				n++;
 
@@ -296,12 +298,14 @@ public class OrderList extends HttpServlet {
 				//a href = "#" 본인 페이지 항상 위, "#!" 위로 올라가는 현상 사라짐
 			} else {
 				pagebar += String.format("<li>"
-						+ "            <a href=\"/codestudy/board/list.do?page=%d\" aria-label=\"Next\">"
+						+ "            <a href=\"/bookjuck/admin/order/orderlist.do?type=%d&page=%d&startDate=%s&endDate=%s&ordernumsearch=%s&idsearch=%s&booksearch=%s\" aria-label=\"Next\">"
 						+ "                <span aria-hidden=\"true\">&raquo;</span>"
 						+ "            </a>"
-						+ "          </li> ", n);
+						+ "          </li> ", 2, n, startDate, endDate, ordernumsearch, idsearch, booksearch);
 			}
 			
+			req.setAttribute("pagebar", pagebar);
+			req.setAttribute("nowPage", nowPage);
 			
 			
 			
@@ -347,10 +351,11 @@ public class OrderList extends HttpServlet {
 							+ "         </li>");
 			} else {
 				pagebar += String.format("<li>"
-							+ "            <a href=\"/codestudy/board/list.do?page=%d\" aria-label=\"Previous\">"
+							+ "            <a href=\"/bookjuck/admin/order/orderlist.do?type=%d&page=%d&startDate=%s&endDate=%s&ordernumsearch=%s&idsearch=%s&booksearch=%s\" aria-label=\"Previous\">"
 							+ "                <span aria-hidden=\"true\">&laquo;</span>"
 							+ "            </a>"
-							+ "         </li>", n - 1);			
+							+ "         </li>", 3, n - 1, startDate, endDate, ordernumsearch, idsearch, booksearch);
+				
 			}
 			
 			
@@ -362,8 +367,8 @@ public class OrderList extends HttpServlet {
 				} else {
 					pagebar += "<li>";
 				}
-				pagebar += String.format("<a href=\"/codestudy/board/list.do?page=%d\">%d</a></li> ", n, n);
-
+				pagebar += String.format("<a href=\"/bookjuck/admin/order/orderlist.do?type=%d&page=%d&startDate=%s&endDate=%s&ordernumsearch=%s&idsearch=%s&booksearch=%s\">%d</a></li> ", 3, n, startDate, endDate, ordernumsearch, idsearch, booksearch, n);
+				
 				loop++;
 				n++;
 
@@ -380,12 +385,15 @@ public class OrderList extends HttpServlet {
 				//a href = "#" 본인 페이지 항상 위, "#!" 위로 올라가는 현상 사라짐
 			} else {
 				pagebar += String.format("<li>"
-						+ "            <a href=\"/codestudy/board/list.do?page=%d\" aria-label=\"Next\">"
+						+ "            <a href=\"/bookjuck/admin/order/orderlist.do?type=%d&page=%d&startDate=%s&endDate=%s&ordernumsearch=%s&idsearch=%s&booksearch=%s\" aria-label=\"Next\">"
 						+ "                <span aria-hidden=\"true\">&raquo;</span>"
 						+ "            </a>"
-						+ "          </li> ", n);
+						+ "          </li> ", 3, n, startDate, endDate, ordernumsearch, idsearch, booksearch);
 			}
 			
+
+			req.setAttribute("pagebar", pagebar);
+			req.setAttribute("nowPage", nowPage);
 			
 			
 		}
