@@ -75,7 +75,7 @@
 		  	
 			<div class="form-group">
 		    	<label for="authorintro">작가 소개</label>
-		    	<textarea class="form-control" id="authorintro" name="authorIntro" placeholder="작가소개를 입력해주세요." rows="5" readonly></textarea>
+		    	<textarea class="form-control" id="authorintro" name="authorIntro" placeholder="작가소개를 입력해주세요." rows="10" maxlength=1500 readonly></textarea>
 		  	</div>
 
 			<div class="form-group">
@@ -89,7 +89,7 @@
 		  	</div>
 		  	
 			<div class="form-group">
-		    	<label for="price">정가</label>
+		    	<label for="price">정가 (단위 : 원)</label>
 		    	<input type="text" class="form-control" id="price" name="price" value="0" required>
 		  	</div>
 		  	
@@ -110,12 +110,12 @@
 		  	
 			<div class="form-group">
 		    	<label for="bookintro">도서 소개</label>
-		    	<textarea class="form-control" id="bookintro" name="summary" placeholder="도서소개를 입력해주세요." rows="10" required></textarea>
+		    	<textarea class="form-control" id="bookintro" name="summary" placeholder="도서소개를 입력해주세요." rows="10" maxlength=1500 required></textarea>
 		  	</div>
 		  	
 			<div class="form-group">
 		    	<label for="index">목차</label>
-		    	<textarea class="form-control" id="index" name="contents" placeholder="목차를 입력해주세요." rows="10" required></textarea>
+		    	<textarea class="form-control" id="index" name="contents" placeholder="목차를 입력해주세요." rows="10" maxlength=1500 required></textarea>
 		  	</div>
 		  	
 		  	<div class="form-group">
@@ -123,12 +123,13 @@
 		  		<label for="image" class="btn btn-info">이미지 선택</label>
 		  		<input type="file" id="image" name="image" style="display: none;">
 		  		<input type="text" class="form-control" id="imagename" placeholder="파일 선택" readonly>
+		  		<input type="button" class="btn btn-warning" value="미리보기" id="btnpreviewimage">
 		  		<p class="help-block">※하나의 이미지만 등록 가능합니다.</p>
 		  	</div>
 		  	
 		  	<div class="form-group actionbtns">
 			  	<input type="button" class="btn btn-primary" id="btnadd" value="추가">
-			  	<input type="button" class="btn btn-default" id="btncancel" value="취소" onclick="location.href='/bookjuck/admin/book/booklist.do';">
+			  	<input type="button" class="btn btn-default" id="btncancel" value="취소" onclick="location.href='/bookjuck/admin/book/booklist.do?page=${page}';">
 		  	</div>
 		  	
 	  	</form>
@@ -228,7 +229,25 @@
 			</div>
 		</div>
 		
-
+		<!-- 이미지 미리보기 클릭 > 모달 -->
+		<div class="modal fade" id="previewimagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+			    <div class="modal-content">
+					<div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">미리보기</h4>
+					</div>
+					<div class="modal-body" style="text-align: center;">
+					
+						<img src="/bookjuck/image/book/${dto.image}" id="previmg" style="width: 300px;">
+						
+					</div>
+					<div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		
 	
 	</section>
@@ -355,6 +374,27 @@
 		}		
 		
 	});
+	
+	/* 미리보기 모달 열기 */
+	$("#btnpreviewimage").click(function() {
+		$("#previewimagemodal").modal('show');	
+	});
+	
+	
+	//이미지 미리보기
+	$('#image').change(function() {
+	    setImageFromFile(this, '#previmg');
+	});
+
+	function setImageFromFile(input, expression) {
+	    if (input.files && input.files[0]) {
+	        var reader = new FileReader();
+	        reader.onload = function (e) {
+	            $(expression).attr('src', e.target.result);
+	        }
+	        reader.readAsDataURL(input.files[0]);
+	    }
+	}
 		
 	</script>
 

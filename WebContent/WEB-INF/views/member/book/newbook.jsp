@@ -26,82 +26,52 @@
 			<div id="menuname1">신간도서</div>
 			<nav id="leftmenu">
 				<div>
-					<a href="" ; class="list1"><strong>종합</strong></a></strong>
+					<a href="/bookjuck/member/book/newbook.do" class="list1"><strong>종합</strong></a></strong>
 				</div>
 				<div>
-					<a href="" ; class="list1">소설종합</a>
+					<a href="/bookjuck/member/book/newbook.do?a=소설" class="list1">소설</a>
 				</div>
 				<div>
-					<a href="/bookjuck/member/book/bestseller.do?aaa=111" class="list1">국내소설</a>
+					<a href="/bookjuck/member/book/newbook.do?a=시/에세이" class="list1">시/에세이</a>
 				</div>
 				<div>
-					<a href="/bookjuck/member/book/bestseller.do?aaa=222" class="list1">외국소설</a>
+					<a href="/bookjuck/member/book/newbook.do?a=경제/경영" class="list1">경제/경영</a>
 				</div>
 				<div>
-					<a href="/bookjuck/member/book/bestseller.do?aaa=333" class="list1">비소설</a>
+					<a href="/bookjuck/member/book/newbook.do?a=인문" class="list1">인문</a>
 				</div>
 				<div>
-					<a href="" ; class="list1">시</a>
+					<a href="/bookjuck/member/book/newbook.do?a=역사/문화" class="list1">역사/문화</a>
 				</div>
 				<div>
-					<a href="" ; class="list1">경제경영</a>
+					<a href="/bookjuck/member/book/newbook.do?a=종교" class="list1">종교</a>
 				</div>
 				<div>
-					<a href="" ; class="list1">인문과학</a>
+					<a href="/bookjuck/member/book/newbook.do?a=정치/사회" class="list1">정치/사회</a>
 				</div>
 				<div>
-					<a href="" ; class="list1">어린이</a>
+					<a href="/bookjuck/member/book/newbook.do?a=예술/대중문화" class="list1">예술/대중문화</a>
 				</div>
 				<div>
-					<a href="" ; class="list1">외국어</a>
+					<a href="/bookjuck/member/book/newbook.do?a=과학" class="list1">과학</a>
 				</div>
 				<div>
-					<a href="" ; class="list1">컴퓨터</a>
+					<a href="/bookjuck/member/book/newbook.do?a=기술/공학" class="list1">기술/공학</a>
 				</div>
 				<div>
-					<a href="" ; class="list1">여성,취미</a>
+					<a href="/bookjuck/member/book/bnewbook.do?a=컴퓨터/IT" class="list1">컴퓨터/IT</a>
 				</div>
 				<div>
-					<a href="" ; class="list1">예술</a>
+					<a href="/bookjuck/member/book/newbook.do?a=유아/어린이" class="list1">유아/어린이/청소년</a>
 				</div>
 				<div>
-					<a href="" ; class="list1">자연</a>
+					<a href="/bookjuck/member/book/newbook.do?a=참고서/교재" class="list1">참고서/교재</a>
 				</div>
 				<div>
-					<a href="" ; class="list1">정치법률</a>
+					<a href="/bookjuck/member/book/newbook.do?a=취업/수험서" class="list1">취업/수험서</a>
 				</div>
 				<div>
-					<a href="" ; class="list1">자기계발</a>
-				</div>
-				<div>
-					<a href="" ; class="list1">역사문화</a>
-				</div>
-				<div>
-					<a href="" ; class="list1">유아</a>
-				</div>
-				<div>
-					<a href="" ; class="list1">가정생활</a>
-				</div>
-				<div>
-					<a href="" ; class="list1">건강</a>
-				</div>
-				<div>
-					<a href="" ; class="list1">취미레져</a>
-				</div>
-				<div>
-					<a href="" ; class="list1">여행</a>
-				</div>
-				<div>
-					<a href="" ; class="list1">청소년</a>
-				</div>
-				<div>
-					<a href="" ; class="list1">학습서</a>
-				</div>
-				<div>
-					<a href="" ; class="list1">수험서</a>
-				</div>
-				<div>
-					<a href="" ; class="list1">만화</a>
+					<a href="/bookjuck/member/book/newbook.do?a=외국어" class="list1">외국어</a>
 				</div>
 			</nav>
 			
@@ -120,8 +90,11 @@
 						<input type="text" name="yearEnd" id="yearEnd" style="width: 50px;" placeholder="YYYY" class="datebtn" value="${yearEnd}">
 						<input type="text" name="monthEnd" id="monthEnd" style="width: 50px;" placeholder="MM" class="datebtn" value="${monthEnd}"> 
 						<input type="text" name="dayEnd" id="dayEnd" style="width: 50px;" placeholder="DD" class="datebtn" value="${dayEnd}">
-						<input type="submit" value="기간검색" class="dateselect">
+						<input type="submit" value="기간검색" class="dateselect" id="searchbutton">
 					</div>
+					<c:if test="${not empty a}">
+					<input type="hidden" name="a" id="a" value="${a}">
+					</c:if>
 				</form>
 				<br>
 				<c:if test="${not empty yearStart}">
@@ -185,52 +158,7 @@
 							</div>
 						</div>
 					</div>
-					<%-- <div class="bookbox3">
-						<div class="bestrank3">
-							<img src="../image/${dto.image}">
-							<div class="bookname">
-								<strong>${dto.title}</strong>
-							</div>
-							<div class="bookinfo">${dto.author}| ${dto.publisher} |
-								${dto.pubdate}</div>
-							<div class="bookcopy">${dto.copy}</div>
-							<div class="price">가격: ${dto.price}원</div>
-							<div class="rank2to4">
-								<div>
-									<input type="button" class="btn btn-default" value="바로결제">
-								</div>
-								<div>
-									<input type="button" class="btn btn-danger" value="바로드림">
-								</div>
-								<div>
-									<input type="button" class="btn btn-warning" value="장바구니 담기">
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="bookbox4">
-						<div class="bestrank4">
-							<img src="../image/${dto.image}">
-							<div class="bookname">
-								<strong>${dto.title}</strong>
-							</div>
-							<div class="bookinfo">${dto.author}| ${dto.publisher} |
-								${dto.pubdate}</div>
-							<div class="bookcopy">${dto.copy}</div>
-							<div class="price">가격: ${dto.price}원</div>
-							<div class="rank2to4">
-								<div>
-									<input type="button" class="btn btn-default" value="바로결제">
-								</div>
-								<div>
-									<input type="button" class="btn btn-danger" value="바로드림">
-								</div>
-								<div>
-									<input type="button" class="btn btn-warning" value="장바구니 담기">
-								</div>
-							</div>
-						</div>
-					</div> --%>
+
 					</c:forEach>
 					</c:if>
 				</div>
@@ -262,111 +190,7 @@
 							</div>
 						</div>
 					</div>
-					<%-- <div class="bookbox6">
-						<div class="bestrank5">
-							<img src="../image/${dto.image}">
-							<div class="bookname">
-								<strong>${dto.title}</strong>
-							</div>
-							<div class="bookinfo">${dto.author}| ${dto.publisher} |
-								${dto.pubdate}</div>
-							<div class="bookcopy">${dto.copy}</div>
-							<div class="price">가격: ${dto.price}원</div>
-							<div>
-								<input type="button" class="btn btn-default" value="바로결제">
-							</div>
-							<div>
-								<input type="button" class="btn btn-danger" value="바로드림">
-							</div>
-							<div>
-								<input type="button" class="btn btn-warning" value="장바구니 담기">
-							</div>
-						</div>
-					</div>
-					<div class="bookbox7">
-						<div class="bestrank5">
-							<img src="../image/${dto.image}">
-							<div class="bookname">
-								<strong>${dto.title}</strong>
-							</div>
-							<div class="bookinfo">${dto.author}| ${dto.publisher} |
-								${dto.pubdate}</div>
-							<div class="bookcopy">${dto.copy}</div>
-							<div class="price">가격: ${dto.price}원</div>
-							<div>
-								<input type="button" class="btn btn-default" value="바로결제">
-							</div>
-							<div>
-								<input type="button" class="btn btn-danger" value="바로드림">
-							</div>
-							<div>
-								<input type="button" class="btn btn-warning" value="장바구니 담기">
-							</div>
-						</div>
-					</div>
-					<div class="bookbox8">
-						<div class="bestrank5">
-							<img src="../image/${dto.image}">
-							<div class="bookname">
-								<strong>${dto.title}</strong>
-							</div>
-							<div class="bookinfo">${dto.author}| ${dto.publisher} |
-								${dto.pubdate}</div>
-							<div class="bookcopy">${dto.copy}</div>
-							<div class="price">가격: ${dto.price}원</div>
-							<div>
-								<input type="button" class="btn btn-default" value="바로결제">
-							</div>
-							<div>
-								<input type="button" class="btn btn-danger" value="바로드림">
-							</div>
-							<div>
-								<input type="button" class="btn btn-warning" value="장바구니 담기">
-							</div>
-						</div>
-					</div>
-					<div class="bookbox9">
-						<div class="bestrank5">
-							<img src="../image/${dto.image}">
-							<div class="bookname">
-								<strong>${dto.title}</strong>
-							</div>
-							<div class="bookinfo">${dto.author}| ${dto.publisher} |
-								${dto.pubdate}</div>
-							<div class="bookcopy">${dto.copy}</div>
-							<div class="price">가격: ${dto.price}원</div>
-							<div>
-								<input type="button" class="btn btn-default" value="바로결제">
-							</div>
-							<div>
-								<input type="button" class="btn btn-danger" value="바로드림">
-							</div>
-							<div>
-								<input type="button" class="btn btn-warning" value="장바구니 담기">
-							</div>
-						</div>
-					</div>
-					<div class="bookbox10">
-						<div class="bestrank5">
-							<img src="../image/${dto.image}">
-							<div class="bookname">
-								<strong>${dto.title}</strong>
-							</div>
-							<div class="bookinfo">${dto.author}|${dto.publisher} |
-								${dto.pubdate}</div>
-							<div class="bookcopy">${dto.copy}</div>
-							<div class="price">가격: ${dto.price}원</div>
-							<div>
-								<input type="button" class="btn btn-default" value="바로결제">
-							</div>
-							<div>
-								<input type="button" class="btn btn-danger" value="바로드림">
-							</div>
-							<div>
-								<input type="button" class="btn btn-warning" value="장바구니 담기">
-							</div>
-						</div>
-					</div>  --%>
+
 					</c:forEach>
 					</c:if>			
 				
@@ -384,7 +208,22 @@
 
 
 	<script>
-      
+     
+	
+	$(document).ready(function(){
+	<c:if test="${empty list3}"> 
+	$("#searchbutton").click(function(){
+		
+		alert("해당기간의 검색결과가 없습니다.")
+		
+	})
+	</c:if>		
+	
+	})
+	
+	
+	
+	
    </script>
 
 </body>

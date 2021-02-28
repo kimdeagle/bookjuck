@@ -1,6 +1,7 @@
 package com.test.bookjuck.dao;
 
 import java.sql.Statement;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,6 +12,8 @@ import com.test.bookjuck.DBUtil;
 import com.test.bookjuck.dto.BookDTO;
 import com.test.bookjuck.dto.CategoryDTO;
 
+import oracle.jdbc.OracleTypes;
+
 
 
 
@@ -20,6 +23,7 @@ public class BookDAO {
 	private Connection conn;
 	private Statement stat;
 	private PreparedStatement pstat;
+	private CallableStatement cstat;
 	private ResultSet rs;
 	
 	
@@ -115,6 +119,7 @@ public class BookDAO {
 			
 			String where ="";
 			String sql = "";
+			String category ="";
 			
 			
 			if (map.get("yearStart") != null && map.get("yearEnd") != null
@@ -123,9 +128,15 @@ public class BookDAO {
 			{
 				String start = "'" + map.get("yearStart") + map.get("monthStart") + map.get("dayStart") +"'";
 				String end = "'" + map.get("yearEnd") + map.get("monthEnd") + map.get("dayEnd") +"'";
+				category = "'" + map.get("a") + "'";
 				
-				where = String.format("where seq between 1 and 10 and pubdate between %s and %s", start, end);
+				//where = String.format("where seq between 1 and 10 and pubdate between %s and %s", start, end);
+				//sql = String.format("select * from vwbestseller %s order by salerank asc", where);
+				
+				where = String.format("where pubdate between %s and %s and mcategory=%s and rownum < 11", start, end, category);
 				sql = String.format("select * from vwbestseller %s order by salerank asc", where);
+				
+				
 				System.out.println(sql); 
 				System.out.println(start);
 				System.out.println(end);
@@ -177,6 +188,80 @@ public class BookDAO {
 		
 	} 
 	
+	//m카테고리 적용 베스트셀러 list -- 이현우
+		public ArrayList<BookDTO> CategorybestSeller (HashMap<String, String> map){
+			
+			System.out.println("select");
+			
+			try {
+				
+				String where ="";
+				String sql = "";
+				String category ="";
+				
+				
+				if (map.get("a") != null) 
+				{
+
+					category = "'" + map.get("a") + "'";
+					
+					//where = String.format("where seq between 1 and 10 and pubdate between %s and %s", start, end);
+					//sql = String.format("select * from vwbestseller %s order by salerank asc", where);
+					
+					where = String.format("where mcategory=%s and rownum < 11", category);
+					sql = String.format("select * from vwbestseller %s order by salerank asc", where);
+					
+					
+					System.out.println(sql); 
+
+					
+					
+				}
+				
+				System.out.println(where);
+				System.out.println(sql);
+						
+				
+				pstat = conn.prepareStatement(sql);
+				rs = pstat.executeQuery();
+				
+				//ResultSet -> ArrayList<DTO>
+				ArrayList<BookDTO> list = new ArrayList<BookDTO>();
+				
+				while(rs.next()) {
+					
+					BookDTO dto = new BookDTO();
+					
+					dto.setSeq(rs.getString("seq"));
+					dto.setTitle(rs.getString("title"));
+					dto.setPublisher(rs.getString("publisher"));
+					dto.setPrice(rs.getInt("price"));
+					dto.setPubDate(rs.getString("pubdate"));
+					dto.setCopy(rs.getString("copy"));
+					dto.setImage(rs.getString("image"));
+					dto.setTotalSale(rs.getString("totalsale"));
+					dto.setSaleRank(rs.getString("salerank"));
+					dto.setAuthor(rs.getString("author"));
+					System.out.println(rs.getString("title"));
+					
+					
+					list.add(dto);
+					
+					
+				}
+				
+				return list;
+						
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+			
+			
+			
+			return null;
+			
+		} 
+	
 	
 	//(날짜 입력 전)신간도서 list --이현우 
 	public ArrayList<BookDTO> defaultNewBook(){
@@ -184,7 +269,7 @@ public class BookDAO {
 		
 		try {
 			
-			String sql = "select * from vwnewbook where rank between 1 and 10";
+			String sql = "select * from vwnewbook where rownum < 11 order by rank asc";
 			
 			
 			
@@ -238,6 +323,7 @@ public class BookDAO {
 			
 			String where ="";
 			String sql = "";
+			String category = "";
 			
 			
 			if (map.get("yearStart") != null && map.get("yearEnd") != null
@@ -246,9 +332,81 @@ public class BookDAO {
 			{
 				String start = "'" + map.get("yearStart") + map.get("monthStart") + map.get("dayStart") +"'";
 				String end = "'" + map.get("yearEnd") + map.get("monthEnd") + map.get("dayEnd") +"'";
+				category = "'" + map.get("a") + "'";
 				
-				where = String.format("where rank between 1 and 10 and pubdate between %s and %s", start, end);
-				sql = String.format("select * from vwnewbook %s", where);
+				where = String.format("where pubdate between %s and %s and mcategory=%s and rownum < 11", start, end, category);
+				sql = String.format("select * from vwnewbook %s order by rank asc", where);
+				System.out.println(sql); 
+				System.out.println(start);
+				System.out.println(end);
+							
+			}
+			
+			System.out.println(where);
+			System.out.println(sql);
+					
+			
+			pstat = conn.prepareStatement(sql);
+			rs = pstat.executeQuery();
+			
+			//ResultSet -> ArrayList<DTO>
+			ArrayList<BookDTO> list = new ArrayList<BookDTO>();
+			
+			while(rs.next()) {
+				
+				BookDTO dto = new BookDTO();
+				
+				dto.setSeq(rs.getString("seq"));
+				dto.setTitle(rs.getString("title"));
+				dto.setPublisher(rs.getString("publisher"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setPubDate(rs.getString("pubdate"));
+				dto.setCopy(rs.getString("copy"));
+				dto.setImage(rs.getString("image"));
+				dto.setAuthor(rs.getString("author"));
+				dto.setRank(rs.getString("rank"));
+				System.out.println(rs.getString("title"));
+				
+				
+				list.add(dto);
+				
+				
+			}
+			
+			return list;
+					
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		
+		
+		return null;
+		
+	} 
+	
+	//카테고리 적용 신간도서 -- 이현우
+	public ArrayList<BookDTO> CategroyNewBook (HashMap<String, String> map){
+		
+		try {
+			
+			String where ="";
+			String sql = "";			
+			String category ="";
+			
+			
+	
+			
+			
+			if (map.get("a") != null) 
+			{
+				String start = "'" + map.get("yearStart") + map.get("monthStart") + map.get("dayStart") +"'";
+				String end = "'" + map.get("yearEnd") + map.get("monthEnd") + map.get("dayEnd") +"'";
+				category = "'" + map.get("a") + "'";
+				
+				where = String.format("where mcategory=%s and rownum < 11", category);
+				sql = String.format("select * from vwnewbook %s order by rank asc", where);
+				
 				System.out.println(sql); 
 				System.out.println(start);
 				System.out.println(end);
@@ -303,7 +461,7 @@ public class BookDAO {
 		
 		try {
 			
-			//String sql = "select * from vwbestseller where pubdate between trunc(sysdate, 'mm') and last_day(sysdate)";
+			//String sql = "select * from vwbestseller where pubdate between trunc(sysdate, 'mm') and last_day(sysdate)"; 이 쿼리가 정석이나.. 빈기간이 너무많다.
 			String sql = "select * from vwbestseller";
 			
 					
@@ -825,8 +983,129 @@ public class BookDAO {
 		
 		return null;
 	}
+
+
+	//관리자 -> 도서 상세 가져오기
+	public BookDTO getAdminBookDetail(String seq) {
+		
+		try {
+			
+			String sql = "select vb.*, (select amount from tblInventory where seqBook = vb.seq) as amount from vwBook vb where vb.seq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				BookDTO dto = new BookDTO();
+				
+				dto.setSeq(rs.getString("seq"));
+				dto.setTitle(rs.getString("title"));
+				dto.setSeqAuthor(rs.getString("seqAuthor"));
+				dto.setPublisher(rs.getString("publisher"));
+				dto.setPubDate(rs.getString("pubDate"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setSalePrice(rs.getInt("salePrice"));
+				dto.setCopy(rs.getString("copy"));
+				dto.setIsbn(rs.getString("isbn"));
+				dto.setSummary(rs.getString("summary"));
+				dto.setImage(rs.getString("image"));
+				dto.setPage(rs.getInt("page"));
+				dto.setContents(rs.getString("contents"));
+				dto.setAuthor(rs.getString("author"));
+				dto.setAuthorIntro(rs.getString("authorIntro"));
+				dto.setSeqLCategory(rs.getString("seqLCategory"));
+				dto.setSeqMCategory(rs.getString("seqMCategory"));
+				dto.setSeqSCategory(rs.getString("seqSCategory"));
+				dto.setlCategory(rs.getString("lCategory"));
+				dto.setmCategory(rs.getString("mCategory"));
+				dto.setsCategory(rs.getString("sCategory"));
+				dto.setAmount(rs.getInt("amount"));
+				
+				return dto;
+				
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+	}
+
+	//관리자 -> 도서 수정
+	public void edit(BookDTO bdto) {
+		
+		try {
+			
+			String sql = "update tblBook set seqAuthor = ?, seqSCategory = ?, title = ?, publisher = ?, price = ?, salePrice = ?, pubDate = ?, summary = ?, isbn = ?, copy = ?, image = ?, page = ?, contents = ? where seq = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, bdto.getSeqAuthor());
+			pstat.setString(2, bdto.getSeqSCategory());
+			pstat.setString(3, bdto.getTitle());
+			pstat.setString(4, bdto.getPublisher());
+			pstat.setInt(5, bdto.getPrice());
+			pstat.setInt(6, (bdto.getPrice() / 10) * 9);
+			pstat.setString(7, bdto.getPubDate());
+			pstat.setString(8, bdto.getSummary());
+			pstat.setString(9, bdto.getIsbn());
+			pstat.setString(10, bdto.getCopy());
+			pstat.setString(11, bdto.getImage());
+			pstat.setInt(12, bdto.getPage());
+			pstat.setString(13, bdto.getContents());
+			
+			pstat.setString(14, bdto.getSeq());
+			
+			pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}		
+		
+	}
 	
+
 	//주혁 끝
+	
+	// ############ (조아라) 시작
+	
+	/**
+	 * 회원의 독후감을 쓸 수 있는 도서들의 정보를 가져오는 리스트입니다.
+	 * @param 회원번호입니다.
+	 * @return 도서정보들의 정보인 BookDTO들의 ArrayList를 반환합니다.
+	 */
+	public ArrayList<BookDTO> getPossibleBook(String seq) {
+		
+		try {
+			
+			String sql="{ call procShowPossibleBook(?, ?) }";
+			cstat=conn.prepareCall(sql);
+			cstat.setString(1, seq);
+			cstat.registerOutParameter(2, OracleTypes.CURSOR);
+			cstat.execute();
+			
+			ArrayList<BookDTO> list=new ArrayList<BookDTO>();
+			
+			rs=(ResultSet)cstat.getObject(2);
+			
+			while (rs.next()) {
+				BookDTO dto=new BookDTO();
+				dto.setSeq(rs.getString("seq"));
+				dto.setTitle(rs.getString("title"));
+				list.add(dto);
+			}
+			
+			return list;
+			
+		} catch (Exception e) {
+			System.out.println("BookDAO.getPossibleBook()");
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	// ############ (조아라) 끝
 
 } //BookDAO
 

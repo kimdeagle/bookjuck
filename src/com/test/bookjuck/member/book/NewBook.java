@@ -21,7 +21,9 @@ public class NewBook extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		
+		String a = req.getParameter("a"); //카테고리
+	    System.out.println(a);
 		
 		String yearStart = req.getParameter("yearStart");
 		String monthStart = req.getParameter("monthStart");
@@ -55,10 +57,11 @@ public class NewBook extends HttpServlet {
 			map.put("yearEnd", yearEnd);
 			map.put("monthEnd", monthEnd);
 			map.put("dayEnd", dayEnd);
-								
+			map.put("a", a);					
 		
 		System.out.println(map.get("yearStart"));
 		System.out.println(map.get("yearEnd"));
+		System.out.println(map.get("a"));
 		
 		ArrayList<BookDTO> list = new ArrayList<BookDTO>();
 		
@@ -97,6 +100,7 @@ public class NewBook extends HttpServlet {
 			req.setAttribute("yearEnd", yearEnd);
 			req.setAttribute("monthEnd", monthEnd);
 			req.setAttribute("dayEnd", dayEnd);
+			req.setAttribute("a", a);
 			
 			
 			
@@ -110,25 +114,42 @@ public class NewBook extends HttpServlet {
 
 			System.out.println("size: " + list.size());
 			
-			list1.add(list.get(0));
-			
-			for (int i=1; i<=3; i++) {
-				list2.add(list.get(i));
-			}
-			
-			for (int i=4; i<=9; i++) {
-				list3.add(list.get(i));
-			}
+			 if (list.size() < 10) {
+
+					for (int i = 0; i < list.size()-1; i++) {
+						list3.add(list.get(i));
+					}
+					 
+
+				} else {
+
+					list1.add(list.get(0));
+
+					for (int i = 1; i <= 3; i++) {
+						list2.add(list.get(i));
+					}
+
+					for (int i = 4; i <= 9; i++) {
+						list3.add(list.get(i));
+						
+						
+					}
+					
+				  
+					
+					
+				}
 			
 			req.setAttribute("list1", list1);
 			req.setAttribute("list2", list2);
 			req.setAttribute("list3", list3);
 		
 				
-		} else {
+		} else if(!(a == null || a.equals("")))  {
 			
 			BookDAO dao = new BookDAO();
-			list = dao.defaultNewBook();
+			list = dao.CategroyNewBook(map);
+			System.out.println("확인용" + list);
 			
 			for (BookDTO dto : list) {
 				
@@ -153,15 +174,25 @@ public class NewBook extends HttpServlet {
 			ArrayList<BookDTO> list3 = new ArrayList<BookDTO>(); //5~10위
 			
 			System.out.println("size: " + list.size());
+			System.out.println("list(0)" + list.get(0));
 			
-			list1.add(list.get(0));
-			
-			for (int i=1; i<=3; i++) {
-				list2.add(list.get(i));
-			}
-			
-			for (int i=4; i<=9; i++) {
-				list3.add(list.get(i));
+			if (list.size() < 10) {
+
+				for (int i = 0; i <= list.size()-1; i++) {
+					list3.add(list.get(i));
+				}
+
+			} else {
+
+				list1.add(list.get(0));
+
+				for (int i = 1; i <= 3; i++) {
+					list2.add(list.get(i));
+				}
+
+				for (int i = 4; i <= 9; i++) {
+					list3.add(list.get(i));
+				}
 			}
 			
 			req.setAttribute("list1", list1);
@@ -170,10 +201,56 @@ public class NewBook extends HttpServlet {
 			
 			
 			
+		} else {
+			
+			 BookDAO dao = new BookDAO();
+	         list = dao.defaultNewBook();
+	         
+	         for (BookDTO dto : list) {
+	            
+	            // 날짜에서 시간 잘라내기
+	        	dto.setPubDate(dto.getPubDate().substring(0, 10));
+	   
+	            // 제목, 카피 너무 길면 자르기
+	            if (dto.getTitle().length() > 30) {
+	               dto.setTitle(dto.getTitle().substring(0, 30) + "..");
+	            }
+	   
+	            if (dto.getCopy().length() > 80) {
+	               dto.setCopy(dto.getCopy().substring(0, 80) + "..");
+	            }
+	   
+	         }
+	         
+	         
+	         System.out.println(list);
+	         ArrayList<BookDTO> list1 = new ArrayList<BookDTO>(); //1위
+	         ArrayList<BookDTO> list2 = new ArrayList<BookDTO>(); //2~4위
+	         ArrayList<BookDTO> list3 = new ArrayList<BookDTO>(); //5~10위
+	         
+	         System.out.println("size: " + list.size());
+	         
+	         list1.add(list.get(0));
+	         
+	         for (int i=1; i<=3; i++) {
+	            list2.add(list.get(i));
+	         }
+	         
+	         for (int i=4; i<=9; i++) {
+	            list3.add(list.get(i));
+	         }
+	         
+	         req.setAttribute("list1", list1);
+	         req.setAttribute("list2", list2);
+	         req.setAttribute("list3", list3);
+			
+			
+			
+			
 		}
 		
 	
-		
+		 req.setAttribute("a", a);
 		
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/member/book/newbook.jsp");

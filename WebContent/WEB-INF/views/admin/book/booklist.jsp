@@ -14,7 +14,7 @@
 
 <link rel="stylesheet" href="/bookjuck/css/global.css">
 <link rel= "stylesheet" href="/bookjuck/css/adminbook.css">
-<script src="/bookjuck/js/adminbooklist.js"></script>
+<script src="/bookjuck/js/adminbook.js"></script>
 
 <style>
 	
@@ -63,7 +63,7 @@
 			</c:if>
 			도서 목록
 			</h5>
-			<input type="button" class="btn btn-primary btn-lg" value="도서추가" onclick="location.href='/bookjuck/admin/book/bookadd.do';">
+			<input type="button" class="btn btn-primary btn-lg" value="도서추가" onclick="location.href='/bookjuck/admin/book/bookadd.do?page=${nowPage}';">
 			<div style="clear:both;"></div>
 		</div>
 		<table class="table table-hover table-condensed tblbooklist">
@@ -89,9 +89,9 @@
 						<td>0</td>
 					</c:if>
 					<td>
-						<input type="button" class="btn btn-warning" value="상세" onclick="location.href='/bookjuck/admin/book/bookview.do?seqSCategory=${dto.seqSCategory}';">
-						<input type="button" class="btn btn-success" value="수정" onclick="location.href='/bookjuck/admin/book/bookedit.do?seqSCategory=${dto.seqSCategory}';">
-						<button type="button" class="btn btn-danger btnDel" value="${dto.seq}" data-toggle="modal" data-target="#deletemodal">삭제</button>
+						<input type="button" class="btn btn-warning" value="상세" onclick="location.href='/bookjuck/admin/book/bookview.do?seq=${dto.seq}&page=${nowPage}';">
+						<input type="button" class="btn btn-success" value="수정" onclick="location.href='/bookjuck/admin/book/bookedit.do?seq=${dto.seq}&page=${nowPage}';">
+						<button type="button" class="btn btn-danger btnDel" value="${dto.seq}">삭제</button>
 						
 					</td>
 				</tr>
@@ -138,6 +138,24 @@
 	<%@include file="/WEB-INF/views/admin/bookjuckee.jsp" %>
 	<%@include file="/WEB-INF/views/common/top.jsp" %>
 
+	
+	<script>
+	
+		var seq;
+		
+		//도서 리스트 -> 삭제 버튼 클릭
+		$(".btnDel").click(function() {
+			seq = $(this).val();
+			$("#deletemodal").modal('show');
+			
+		});
+		
+		//삭제 모달 -> 삭제 버튼 클릭
+		$("#delok").click(function() {
+			location.href = "/bookjuck/admin/book/delok.do?seq=" + seq;
+		});
+	
+	</script>
 
 </body>
 

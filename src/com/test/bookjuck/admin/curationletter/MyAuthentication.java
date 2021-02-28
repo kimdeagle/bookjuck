@@ -8,7 +8,7 @@ public class MyAuthentication extends Authenticator {
 		PasswordAuthentication pa;
 		
 		public MyAuthentication(){
-    		pa=new PasswordAuthentication("bookjuckbookjuck@gmail.com","iwjhnmgdcpfxzqet");        
+    		pa=new PasswordAuthentication("bookjuck2@gmail.com","qnrwjrdl1234");        
   		}
   
 		@Override

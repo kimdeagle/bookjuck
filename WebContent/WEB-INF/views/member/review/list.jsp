@@ -53,7 +53,7 @@
 		<section class="contentsection">
             <h3>독후감</h3>
 
-            <table class="table tbl-md" id="listbl">
+            <table class="table tbl-md" id="listtbl">
                 <tr>
                     <th class="col-md-1">글번호</th>
                     <th class="col-md-3">도서명</th>
@@ -63,33 +63,28 @@
                 <c:forEach items="${rlist}" var="rdto">
                 <tr>
                     <td>${rdto.seq}</td>
-                    <td class="cell2"><a href="#">${rdto.BookTitle}</a></td>
-                    <td class="cell3"><a href="/bookjuck/member/review/detail.do?seq=${rdto.seq}">${rdto.ReviewTitle}</a><span class="label label-danger">우수</span></td>
-                    <td>${rdto.regDate}</td>
+                    <td class="cell2"><a href="#">${rdto.bookTitle}</a></td>
+                    <td class="cell3"><a href="/bookjuck/member/review/detail.do?seq=${rdto.seq}&page=${nowPage}">${rdto.reviewTitle}</a>
+                    	<c:if test="${rdto.isPrize eq '1' }">
+                    		<span class="label label-danger">우수</span>
+                    	</c:if>
+                    </td>
+                    <td>${rdto.regDate.substring(0, 10)}</td>
                 </tr>
                 </c:forEach>
             </table>
 
-            <ul class="pagination">
-                <li>
-                <a href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-                </li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li>
-                <a href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-                </li>
-            </ul>
+            <nav class="pagebar">
+				<ul class="pagination">
+					${pagebar}
+				</ul>
+			</nav>
 
             <div id="btn">
-                <button type="button" class="btn btn-general inline" id="back">뒤로가기</button>
+            	<c:if test="${write==true }">
+            	<button type="button" class="btn btn-general inline" id="add" onclick="location.href='/bookjuck/member/review/add.do'">작성하기</button>
+            	</c:if>
+                <button type="button" class="btn btn-general inline" id="back"  onclick="location.href='/bookjuck/member/review/list.do?seq=${page}'">뒤로가기</button>
             </div>
         </section>
 

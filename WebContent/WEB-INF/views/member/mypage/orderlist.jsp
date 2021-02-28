@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!DOCTYPE html>
 <html lang="en">
 
@@ -121,14 +122,15 @@
         
                 <div>※ 최근1개월이 기본으로 조회 되며, 기간 변경시 기간 선택 후 조회 버튼을 클릭해 주세요.</div>
                 <div>※ 최근 2년부터 조회가 가능합니다.</div>
-          		</c:if>
+                </c:if>
 
                 <!-- 조회 기간 ol:orderList-->
                 <div class="olDate">yyyy-mm-dd ~ yyyy-mm-dd 까지의 주문 총 00건</div>
 
                 <!-- 조회 리스트 -->
                 <!-- 주문 내역이 없으면 보이는 화면 -->
-                <c:if test="${list.size == 0}">
+
+				<c:if test="${blist.size() == 0&&balist.size() == 0}">
                 <div class="noOrderList">
                     <span>주문 내역이 없습니다.</span>
                     
@@ -136,37 +138,88 @@
                 </div>
                 </c:if>
 
-                
+                <c:if test="${blist.size() > 0 || balist.size() > 0}">
                 <!-- 주문 내역 있으면 보이는 리스트 -->
-                <c:if test="${list.size > 0}">
                 <table class="orderList table tbl-md">
                     <tr>
                         <th>주문번호</th>
                         <th>주문금액</th>
                         <th>상품정보</th>
-                        <th>수량</th>
                         <th>주문상태</th>
                         <th>취소/교환/환불</th>
                     </tr>
+                    <c:forEach items="${blist}" var="bodto">
                     <tr class="olInfo">
                         <td>
-                            <a href="/bookjuck/member/mypage/orderdetail.do">주문번호</a><br>
-                            (주문일)<br><br>
-                            <a href="/bookjuck/member/mypage/orderdetail.do" onclick="" class="btn-order">주문상세보기</a>
+                            <a href="/bookjuck/member/mypage/orderdetail.do?seqBookOrder=${bodto.seqBookOrder}">123456${bodto.seqBookOrder}</a><br>
+                            (${bodto.orderDate})<br><br>
+                            <a href="/bookjuck/member/mypage/orderdetail.do?seqBookOrder=${bodto.seqBookOrder}" class="btn-order">주문상세보기</a>
                         </td>
-                        <td>가격</td>
+                        <td>${bodto.actualPay}</td>
                         <td>
-                            <img src="/bookjuck/image/달러구트 꿈 백화점.png" class="book-xs">
-                            <a href="/bookjuck/member/book/bookdetail.do">도서명</a>
+                            <img src="/bookjuck/image/book/${bodto.image}" class="book-xs">
+                            <a href="/bookjuck/member/book/bookdetail.do?seq=${bodto.seqBook}">${bodto.title}
+                            
+                            </a>
                         </td>
-                        <td>0</td>
-                        <td>주문상태</td>
+                        <td>${bodto.orderState}</td>
                         <td>
+                        	<c:if test="${empty not id}">
                             <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/cancelapplication.do';">취 소</button>
                             <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/returnapplication.do';">교 환</button>
                             <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/refundapplication.do';">환 불</button>
+                            </c:if>
                         </td>
                     </tr>
+                    </c:forEach>
+                    <c:forEach items="${balist}" var="badto">
+                    <tr class="olInfo">
+                        <td>
+                            <a href="/bookjuck/member/mypage/orderdetail.do?seqBookOrder=${badto.seq}">567891${badto.seq}</a><br>
+                            (${badto.orderDate})<br><br>
+                            <a href="/bookjuck/member/mypage/orderdetail.do?seqBookOrder=${badto.seq}" class="btn-order">주문상세보기</a>
+                        </td>
+                        <td>${badto.actualPay}</td>
+                        <td>
+                            <img src="/bookjuck/image/book/${badto.image}" class="book-xs">
+                            <a href="/bookjuck/member/book/bookdetail.do?seq=${badto.seqBook}">${badto.title}
+                            
+                            </a>
+                        </td>
+                        <td>${badto.orderState}</td>
+                        <td>
+                        	<c:if test="${empty not id}">
+                            <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/cancelapplication.do';">취 소</button>
+                            <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/returnapplication.do';">교 환</button>
+                            <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/refundapplication.do';">환 불</button>
+                            </c:if>
+                        </td>
+                    </tr>
+                    </c:forEach>
+                    <c:forEach items="${elist}" var="edto">
+                    <tr class="olInfo">
+                        <td>
+                            <a href="/bookjuck/member/mypage/orderdetail.do?seqBookOrder=${edto.seq}">987654${edto.seq}</a><br>
+                            (${edto.orderDate})<br><br>
+                            <a href="/bookjuck/member/mypage/orderdetail.do?seqBookOrder=${edto.seq}" class="btn-order">주문상세보기</a>
+                        </td>
+                        <td>${edto.actualPay}</td>
+                        <td>
+                            <img src="/bookjuck/image/book/${edto.image}" class="book-xs">
+                            <a href="/bookjuck/member/book/bookdetail.do?seq=${edto.seqBook}">${edto.title}
+                            
+                            </a>
+                        </td>
+                        <td>${edto.orderState}</td>
+                        <td>
+                        	<c:if test="${empty not id}">
+                            <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/cancelapplication.do';">취 소</button>
+                            <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/returnapplication.do';">교 환</button>
+                            <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/refundapplication.do';">환 불</button>
+                            </c:if>
+                        </td>
+                    </tr>
+                    </c:forEach>
                 </table>
 
                 <!-- 페이지 바 -->
@@ -187,7 +240,6 @@
                     </a>
                     </li>
                 </ul>
-                
                 </c:if>
                               
 
@@ -213,28 +265,33 @@
 
 </body>
 
-	<script>
-	$(function(){
-		   $("#strDate").datepicker({
-		      format:'yyyy-mm-dd',
-		      startDate:'-2y',
-		      endDate : '0',
-		      language: "ko"
-		   
-		   })
-		});
+
+<script>
+
 	
-	$(function(){
-		   $("#endDate").datepicker({
-		      format:'yyyy-mm-dd',
-		      defaultDate:'2021-02-23',
-		      startDate:'-2y',
-		      endDate : '0',
-		      language: "ko"
-		   })
-		});
-	
-	
+		$(function(){
+			   $("#strDate").datepicker({
+			      format:'yyyy-mm-dd',
+			      startDate:'-2y',
+			      endDate : '0',
+			      language: "ko"
+			   
+			   })
+			});
+		
+		$(function(){
+			   $("#endDate").datepicker({
+			      format:'yyyy-mm-dd',
+			      defaultDate:'2021-02-23',
+			      startDate:'-2y',
+			      endDate : '0',
+			      language: "ko"
+			   })
+			});
+
+		
+		
+		
 	
 	
 	function periodChange(id) {
@@ -242,9 +299,7 @@
 		$(".sort_option a").attr('class','');
 		$("#"+id).attr('class','on');
 	}
-	
-	
-	
-	</script>
+
+</script>
 
 </html>

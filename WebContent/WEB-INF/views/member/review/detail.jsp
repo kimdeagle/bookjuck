@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,19 +51,35 @@
 		
 		<!-- @@@@@여기에 개인작업 페이지 넣을 것 -->
 		<section class="contentsection">
-			<h3>독후감</h3>
-			<div id="qbox">
-			    <h5>독후감 독후감독후감 독후감독후감<span class="label label-danger">우수</span></h5>
-			    <div id="qinfo">abcd1234 &verbar; 2021-02-10</div>
-			    <div>독후감 독후감 독후감 독후감 독후감</div>
-			</div>
-			
-			<div id="btn">
-				<button type="button" class="btn btn-general" id="edit" onclick="location.href='/bookjuck/member/review/edit.do'">수정하기</button>
-			    <button type="button" class="btn btn-general" id="del" onclick="location.href='/bookjuck/member/review/del.do'">삭제하기</button>
-			    <button type="button" class="btn btn-general inline" id="back" onclick="location.href='/bookjuck/member/review/list.do'">뒤로가기</button>
-			</div>
-		</section>
+		<h3>독후감<small style="margin-left:15px;">상세조회</small></h3>
+		<table class="table tbl-md" id="detailtbl">
+			<tr>
+				<th class="col-md-1">도서명</th>
+				<td class="col-md-10" colspan="3">${dto.bookTitle}
+			</tr>
+			<tr>
+				<th class="col-md-1">글제목</th>
+				<td class="col-md-6">
+				${dto.reviewTitle}
+				<c:if test="${dto.isPrize eq '1' }">
+					<span class="label label-danger">우수</span>
+				</c:if>
+				</td>
+				<th class="col-md-1">작성일</th>
+				<td class="col-md-4">${dto.regDate}</td>
+			</tr>
+			<tr>
+				<th class="col-md-1">내용</th>
+				<td class="col-md-10" colspan="3">${dto.reviewContent}</td>
+			</tr>
+		</table>
+		
+		<div id="btn">
+			<input type="button" class="btn btn-general" value="삭제하기" id="delete" data-toggle="modal" data-target="#myModal">
+			<input type="button" class="btn btn-general" value="수정하기"  onclick="location.href='/bookjuck/member/review/edit.do?seq=${dto.seq}&page=${page}'">
+		    <button type="button" class="btn btn-general inline" id="back" onclick="location.href='/bookjuck/member/review/list.do?page=${page}'">뒤로가기</button>
+		</div>
+	</section>
 
 
 		<!-- ########## 하단 시작 -->
@@ -71,7 +88,26 @@
 		
 	</div>
 	
-	
+	<!-- 삭제 확인 모달 -->
+	<div class="modal fade" id="myModal" role="dialog">
+       <div class="modal-dialog modal-md">
+         <div class="modal-content">
+           <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal">&times;</button>
+             <h4 class="modal-title"></h4>
+           </div>
+           <div class="modal-body">
+            <p>정말 삭제하시겠습니까?</p>
+           </div>
+           <div id="btn">
+               <button type="button" class="btn btn-general inline" id="del" onclick="location.href='/bookjuck/member/review/del.do?seq=${dto.seq}'">삭제하기</button>
+           </div>
+       <!-- <div class="modal-footer">
+         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       </div> -->
+       	</div>
+       </div>
+   </div>
 
 </body>
 
