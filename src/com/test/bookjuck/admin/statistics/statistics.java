@@ -45,6 +45,7 @@ public class statistics extends HttpServlet {
 	      ArrayList<StatisticsBarDTO> list2 = new ArrayList<StatisticsBarDTO>();  
 	      ArrayList<StatisticsBarDTO> list3 = new ArrayList<StatisticsBarDTO>();  
 	      ArrayList<StatisticsPiDTO> list4 = new ArrayList<StatisticsPiDTO>();
+	      ArrayList<StatisticsPiDTO> list5 = new ArrayList<StatisticsPiDTO>();
 	  
 	      
 	      
@@ -63,6 +64,7 @@ public class statistics extends HttpServlet {
 	          
 	          StatisticsPiDAO dao2 = new StatisticsPiDAO();
 	          list4 = dao2.getAgeCnt(map);//원형그래프
+	          list5 = dao2.getGenderCnt(map);
 	          
 	                 
 	          request.setAttribute("yearStart", yearStart);
@@ -76,6 +78,7 @@ public class statistics extends HttpServlet {
 	          request.setAttribute("list2", list2);
 			  request.setAttribute("list3", list3);
 			  request.setAttribute("list4", list4);
+			  request.setAttribute("list5", list5);
 	          
 	              
 	        } else {
@@ -87,7 +90,7 @@ public class statistics extends HttpServlet {
 		        
 		        StatisticsPiDAO dao2 = new StatisticsPiDAO();
 		        list4 = dao2.defaultGetAgeCnt();
-		       
+		        list5 = dao2.defaultGetGenderCnt();
 		        
 		        
 	        	
@@ -96,6 +99,7 @@ public class statistics extends HttpServlet {
 		        request.setAttribute("list2", list2);
 				request.setAttribute("list3", list3);
 				request.setAttribute("list4", list4);
+				request.setAttribute("list5", list5);
 	        	
 	        }
 		

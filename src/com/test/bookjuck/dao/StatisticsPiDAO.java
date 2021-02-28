@@ -36,7 +36,7 @@ public class StatisticsPiDAO {
 		}
 	}
 	
-public ArrayList<StatisticsPiDTO> defaultGetAgeCnt() {//날짜입력전
+public ArrayList<StatisticsPiDTO> defaultGetAgeCnt() {//날짜입력전 연령대별 
 	
 	
 try {
@@ -73,7 +73,7 @@ try {
 		
 
 }	
-	public ArrayList<StatisticsPiDTO> getAgeCnt(HashMap<String, String> map) {//날짜입력후
+	public ArrayList<StatisticsPiDTO> getAgeCnt(HashMap<String, String> map) {//날짜입력후 연령대별
 		
 		try { 	String sql = "";
 				String start = "";
@@ -120,6 +120,108 @@ try {
 					
 					dto.setAge(rs.getString("age"));
 					dto.setAgecnt(rs.getInt("agecnt"));
+					
+					list.add(dto);
+					
+				}
+				
+				return list;
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+		
+		
+		
+	}
+	
+	public ArrayList<StatisticsPiDTO> defaultGetGenderCnt() {//날짜입력전 성별 
+		
+		
+		try {
+				
+				
+				String sql = "select * from vwdefaultStatGenderCnt";
+				
+				pstat = conn.prepareStatement(sql);
+				rs = pstat.executeQuery();
+				
+				ArrayList<StatisticsPiDTO> list = new ArrayList<StatisticsPiDTO>();
+				
+				while(rs.next()) {
+					
+					StatisticsPiDTO dto = new StatisticsPiDTO();
+					
+					dto.setGender(rs.getString("gender"));
+					dto.setGendercnt(rs.getInt("gendercnt"));
+					
+					list.add(dto);
+					
+				}
+				
+				return list;
+				
+				
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+			
+			
+			
+			return null;
+				
+
+		}	
+	
+	public ArrayList<StatisticsPiDTO> getGenderCnt(HashMap<String, String> map) {//날짜입력후 성별
+		
+		try { 	String sql = "";
+				String start = "";
+				String end ="";
+		
+		
+		
+		if (map.get("yearStart") != null && map.get("yearEnd") != null
+				&& map.get("monthStart") != null && map.get("monthEnd") != null
+				&& map.get("dayStart") != null && map.get("dayEnd") != null) 
+			{
+				start = map.get("yearStart") + map.get("monthStart") + map.get("dayStart");
+				end = map.get("yearEnd") + map.get("monthEnd") + map.get("dayEnd");
+				
+				sql = "{ call proc_StatGenderCnt(?,?,?) }";
+				
+//				{ call proc_StatAgeCnt(?,?,?) }
+//				'19900429'
+//				'20220421'
+				System.out.println(sql); 
+				System.out.println(start);
+				System.out.println(end);
+				
+				
+				
+			}
+		
+		
+				cstat = conn.prepareCall(sql);
+				cstat.setString(1, start);	
+				cstat.setString(2, end);
+				cstat.registerOutParameter(3, OracleTypes.CURSOR);
+				
+				cstat.executeQuery();
+				
+				rs = (ResultSet) cstat.getObject(3);
+				
+				
+				ArrayList<StatisticsPiDTO> list = new ArrayList<StatisticsPiDTO>();
+				
+				while(rs.next()) {
+					
+					StatisticsPiDTO dto = new StatisticsPiDTO();
+					
+					dto.setGender(rs.getString("gender"));
+					dto.setGendercnt(rs.getInt("gendercnt"));
 					
 					list.add(dto);
 					

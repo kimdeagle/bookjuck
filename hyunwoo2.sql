@@ -57,7 +57,7 @@ inner join tbllcategory l
 on m.seqLCategory = l.seq;
 
 
-
+select * from vwbestseller where pubdate between trunc(sysdate, 'mm') and last_day(sysdate)
 create or replace view vwnewbook --신간도서 view
 as
 select * from(
@@ -70,7 +70,7 @@ select * from(
     inner join tblmcategory m
     on s.seqMCategory = m.seq
     inner join tbllcategory l
-    on m.seqLCategory = l.seq) where pubdate;
+    on m.seqLCategory = l.seq);
     
 
 create or replace view vwrealtimesearch --실시간 검색순위 view
@@ -79,7 +79,7 @@ select * from (select searchword, count(searchword) as searchcount, row_number()
 where rank between 1 and 10;
 
 
-
+select * from vwbestseller
 --select * from vwbestseller where pubdate between trunc(sysdate, 'mm') and last_day(sysdate) --월간베스트 select 
 
 
@@ -105,7 +105,7 @@ from tblmember a
     on c.seq = d.seqSCategory;
 
 
-
+select * from vwrecommendbook
 
 
 
@@ -317,6 +317,139 @@ select
 END proc_StatAgeCnt;    
  
  
+create or replace view vwdefaultStatGenderCnt -- 고객성별통계(주문건수기준) default view
+as
+select gender, sum(gendercnt) as gendercnt from(
+select gender, sum(gendercnt) as gendercnt from(
+select 
+    to_char(a.paydate, 'yyyy-mm-dd') as 기간, 
+    case
+        when substr(c.ssn, 8, 1) = '1' then '남자'
+        when substr(c.ssn, 8, 1) = '2' then '여자'
+    end as gender,
+    count(a.totalpay) as gendercnt
+    from tblepay a
+    inner join tblEOrder b
+        on a.seqEOrder = b.seq
+            inner join tblMember c
+                on b.seqMember = c.seq
+                 --where to_char(a.paydate, 'yyyymmdd') between startdate and enddate
+                    group by to_char(a.paydate, 'yyyy-mm-dd'), c.ssn) group by gender
+ 
+ union all
+ 
+select gender, sum(gendercnt) as gendercnt from(
+select 
+    to_char(a.paydate, 'yyyy-mm-dd') as 기간, 
+    case
+        when substr(c.ssn, 8, 1) = '1' then '남자'
+        when substr(c.ssn, 8, 1) = '2' then '여자'
+    end as gender,
+    count(a.totalpay) as gendercnt
+    from tblbookpay a
+    inner join tblbookOrder b
+        on a.seqbookOrder = b.seq
+            inner join tblMember c
+                on b.seqMember = c.seq
+                 --where to_char(a.paydate, 'yyyymmdd') between startdate and enddate
+                    --inner join tblBookOrderDetail d
+                        -- b.seq = d.seqBookOrder                               
+                    group by to_char(a.paydate, 'yyyy-mm-dd'), c.ssn) group by gender       
+ 
+union all
+
+select gender, sum(gendercnt) as gendercnt from(
+select 
+    to_char(a.paydate, 'yyyy-mm-dd') as paydate, 
+    case
+        when substr(c.ssn, 8, 1) = '1' then '남자'
+        when substr(c.ssn, 8, 1) = '2' then '여자'
+    end as gender,
+    count(a.totalpay) as gendercnt
+    from tblBaroPay a
+    inner join tblbaroOrder b
+        on a.seqBaroOrder = b.seq
+            inner join tblMember c
+                on b.seqMember = c.seq
+                --where to_char(a.paydate, 'yyyymmdd') between startdate and enddate
+                    group by to_char(a.paydate, 'yyyy-mm-dd'), c.ssn) group by gender) group by gender
+ 
+ 
+ 
+ 
+ 
+
+CREATE OR REPLACE PROCEDURE proc_StatGenderCnt --고객 성별통계 프로시저(주문건수기준) (날짜입력 view)
+(
+   startdate IN NUMBER,
+   enddate IN NUMBER, 
+   pcursor OUT sys_refcursor
+)
+IS
+BEGIN 
+   OPEN pcursor FOR 
+   
+select gender, sum(gendercnt) as gendercnt from(
+select gender, sum(gendercnt) as gendercnt from(
+select 
+    to_char(a.paydate, 'yyyy-mm-dd') as 기간, 
+    case
+        when substr(c.ssn, 8, 1) = '1' then '남자'
+        when substr(c.ssn, 8, 1) = '2' then '여자'
+    end as gender,
+    count(a.totalpay) as gendercnt
+    from tblepay a
+    inner join tblEOrder b
+        on a.seqEOrder = b.seq
+            inner join tblMember c
+                on b.seqMember = c.seq
+                    where to_char(a.paydate, 'yyyymmdd') between startdate and enddate
+                    group by to_char(a.paydate, 'yyyy-mm-dd'), c.ssn) group by gender
+ 
+union all
+
+select gender, sum(gendercnt) as gendercnt from(
+select 
+    to_char(a.paydate, 'yyyy-mm-dd') as 기간, 
+    case
+        when substr(c.ssn, 8, 1) = '1' then '남자'
+        when substr(c.ssn, 8, 1) = '2' then '여자'
+    end as gender,
+    count(a.totalpay) as gendercnt
+    from tblbookpay a
+    inner join tblbookOrder b
+        on a.seqbookOrder = b.seq
+            inner join tblMember c
+                on b.seqMember = c.seq
+                    --inner join tblBookOrderDetail d
+                        --on b.seq = d.seqBookOrder  
+                            where to_char(a.paydate, 'yyyymmdd') between startdate and enddate
+                            group by to_char(a.paydate, 'yyyy-mm-dd'), c.ssn) group by gender       
+ 
+union all
+
+select gender, sum(gendercnt) as gendercnt from(
+select 
+    to_char(a.paydate, 'yyyy-mm-dd') as paydate, 
+    case
+        when substr(c.ssn, 8, 1) = '1' then '남자'
+        when substr(c.ssn, 8, 1) = '2' then '여자'
+    end as gender,
+    count(a.totalpay) as gendercnt
+    from tblBaroPay a
+    inner join tblbaroOrder b
+        on a.seqBaroOrder = b.seq
+            inner join tblMember c
+                on b.seqMember = c.seq
+                    where to_char(a.paydate, 'yyyymmdd') between startdate and enddate
+                    group by to_char(a.paydate, 'yyyy-mm-dd'), c.ssn) group by gender) group by gender;
+ 
+ END proc_StatGenderCnt;    
+ 
+ 
+ 
+ 
+
  
  
  
@@ -334,7 +467,53 @@ END proc_StatAgeCnt;
  
  
  
- --테스트 이하무시하시면됨
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ -- 테스트 (무시하시면됩니당)
  select * from tblbook a
     inner join tblsCategory b
         on a.seqSCategory = b.seq
@@ -343,26 +522,43 @@ END proc_StatAgeCnt;
                     where mcategory = '유아/어린이/청소년'
                     
 
+--연령 - book
+select age, agecnt from(
+select age, sum(agecnt) as agecnt from(
+select 
+   to_char(a.paydate, 'yyyy-mm-dd') as paydate, 
+   trunc((to_char(sysdate,'yyyy') + 1 -(substr(c.ssn,0,2)+
+    (case
+    when substr(c.ssn,8,1) < 3 then 1900
+    when substr(c.ssn,8,1) >= 3 then 2000
+    end)))/10*10, -1) as age,
+    count(a.totalpay) as agecnt  
+   from tblbookpay a
+    inner join tblbookOrder b
+        on a.seqbookOrder = b.seq
+            inner join tblMember c
+                on b.seqMember = c.seq
+                    group by to_char(a.paydate, 'yyyy-mm-dd'), c.ssn) group by age)   
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+select gender, sum(gendercnt) as gendercnt from(
+select 
+    to_char(a.paydate, 'yyyy-mm-dd') as 기간, 
+    case
+        when substr(c.ssn, 8, 1) = '1' then '남자'
+        when substr(c.ssn, 8, 1) = '2' then '여자'
+    end as gender,
+    count(a.totalpay) as gendercnt
+    from tblbookpay a
+    inner join tblbookOrder b
+        on a.seqbookOrder = b.seq
+            inner join tblMember c
+                on b.seqMember = c.seq
+                 --where to_char(a.paydate, 'yyyymmdd') between startdate and enddate
+                    --inner join tblBookOrderDetail d
+                        --on b.seq = d.seqBookOrder                               
+                    group by to_char(a.paydate, 'yyyy-mm-dd'), c.ssn) group by gender       
  
  
  
@@ -370,7 +566,7 @@ select * from vwbestseller where seq between 1 and 10 and pubdate between '20190
  
 
  
-
-
+select * from vwdefaultStatGenderCnt
+select * from vwdefaultStatAgeCnt
 
 
