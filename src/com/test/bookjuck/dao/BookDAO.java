@@ -813,7 +813,7 @@ public class BookDAO {
 				where = "where vb.seqLCategory = " + map.get("seqLCategory");
 			}
 			
-			String sql = String.format("select * from (select a.*, rownum as rnum from (select vb.*, (select amount from tblInventory where seqBook = vb.seq) as amount from vwBook vb %s) a) where rnum between %s and %s"
+			String sql = String.format("select * from (select a.*, rownum as rnum from (select vb.*, (select amount from tblInventory where seqBook = vb.seq) as amount from viewBook vb %s) a) where rnum between %s and %s"
 					, where
 					, map.get("begin")
 					, map.get("end"));
@@ -867,7 +867,7 @@ public class BookDAO {
 		
 		try {
 			
-			String sql = "select count(*) as cnt from vwBook";
+			String sql = "select count(*) as cnt from viewBook";
 			
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);
@@ -888,7 +888,7 @@ public class BookDAO {
 
 		try {
 			
-			String sql = "select count(*) as cnt from vwBook where seqLCategory = 1";
+			String sql = "select count(*) as cnt from viewBook where seqLCategory = 1";
 			
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);
@@ -909,7 +909,7 @@ public class BookDAO {
 
 		try {
 			
-			String sql = "select count(*) as cnt from vwBook where seqLCategory = 2";
+			String sql = "select count(*) as cnt from viewBook where seqLCategory = 2";
 			
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);
@@ -925,6 +925,7 @@ public class BookDAO {
 		return 0;
 	}
 
+	//admin -> BookList 서블릿 -> (페이징) 도서 수 반환
 	public int getAdminBookCount(HashMap<String, String> map) {
 		
 		try {
@@ -936,7 +937,7 @@ public class BookDAO {
 				where = String.format("where seqLCategory = %s", map.get("seqLCategory"));
 			}
 			
-			String sql = String.format("select count(*) as cnt from vwBook %s", where);
+			String sql = String.format("select count(*) as cnt from viewBook %s", where);
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);
 			
@@ -998,7 +999,7 @@ public class BookDAO {
 		
 		try {
 			
-			String sql = "select vb.*, (select amount from tblInventory where seqBook = vb.seq) as amount from vwBook vb where vb.seq = ?";
+			String sql = "select vb.*, (select amount from tblInventory where seqBook = vb.seq) as amount from viewBook vb where vb.seq = ?";
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, seq);

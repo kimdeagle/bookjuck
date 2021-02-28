@@ -28,6 +28,7 @@ public class BookAdd extends HttpServlet {
 		
 		//1.
 		String page = req.getParameter("page");
+		String seqLCategory = req.getParameter("seqLCategory");
 		
 		//2.
 		//카테고리별 번호, 카테고리명
@@ -60,6 +61,8 @@ public class BookAdd extends HttpServlet {
 		req.setAttribute("alist", alist);
 		
 		req.setAttribute("page", page);
+		req.setAttribute("seqLCategory", seqLCategory);
+		
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/book/bookadd.jsp");
 		dispatcher.forward(req, resp);
