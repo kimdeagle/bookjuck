@@ -122,7 +122,7 @@
                         </td>
                         <th>상품조회</th>
                         <td>
-                            <input type="text" class="form-control" id="refundsearch" name="refundsearch" placeholder="상품명을 입력하세요.">
+                            <input type="text" class="form-control" id="refundsearch" name="refundsearch" placeholder="상품명을 입력하세요." value="${refundsearch}">
                         </td>
                         <td rowspan="2">
                             <input type="button" class="btn btn-general" id="btnview" value="조회하기" onclick="$('#searchForm').submit();">
@@ -218,14 +218,7 @@
 
             </article>
 
-            
-            <!-- datepicker 현재 날짜로 기본값 설정 -->
-            <script>
-            
-                document.getElementById('startDate').valueAsDate = new Date();
-                document.getElementById('endDate').valueAsDate = new Date();
-                
-            </script>
+
 
 
 
@@ -251,12 +244,7 @@
 	</div>
 	
 	<script>
-		
-		//분류 고정
-		$("#type").val("${type}").prop("selected",true);
-
-		
-	      
+	
 	    //date 'yyyy-mm-dd'형식으로 formating
 		function formatDate(date) {
 		   
@@ -268,9 +256,31 @@
 		        month = '0' + month;
 		    if (day < 10) 
 		        day = '0' + day; 
-
+	
 		   return year + '-' + month + '-' + day;
 		}
+
+	    var now = new Date();
+	    
+	    //초기세팅은 과거 1개월 까지 검색
+	    $(document).ready(function(){
+			
+			var nowdate = new Date();
+			var beforedate = new Date();
+			
+			beforedate.setMonth(nowdate.getMonth() - 1);
+			
+	    	$("#startDate").val(formatDate(beforedate));
+	    	$("#endDate").val(formatDate(now));
+	    	
+	    });
+
+		
+		//분류 고정
+		$("#type").val("${type}").prop("selected",true);
+
+		
+	      
 
 
 		//btn1 일주일 전
@@ -311,14 +321,6 @@
 			
 			beforedate.setMonth(nowdate.getMonth() - 6);
 			$("#startDate").val(formatDate(beforedate));
-		});
-		
-		
-		
-		$("#btnview").click(function() {
-			
-			$("#startDate").val(${startDate});
-			
 		});
 		
 		

@@ -1,7 +1,9 @@
 package com.test.bookjuck.member.refund;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
@@ -43,6 +45,22 @@ public class List extends HttpServlet {
 				
 		String startDate = req.getParameter("startDate");
 		String endDate = req.getParameter("endDate");
+		
+		//초기검색 상태 기간 조회 : 1달전 ~ 현재 까지로 만들기
+		if (startDate == null) {
+			Date date = new Date();
+			Date caldate = new Date();
+			caldate.setMonth(date.getMonth() - 1); 
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); // yyyy-MM-dd HH:mm:ss 
+			startDate = formatter.format(caldate);
+		}
+		
+		if (endDate == null) {
+			Date date = new Date();
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); // yyyy-MM-dd HH:mm:ss 
+			endDate = formatter.format(date);
+		}
+		
 		
 		
 		if ( !(startDate == null || startDate.equals("")) ) {
@@ -148,10 +166,10 @@ public class List extends HttpServlet {
 							+ "         </li>");
 			} else {
 				pagebar += String.format("<li>"
-							+ "            <a href=\"/bookjuck/member/refund/list.do?page=%d&refundsearch=%s&startDate=%s&endDate=%s\" aria-label=\"Previous\">"
+							+ "            <a href=\"/bookjuck/member/refund/list.do?type=%d&page=%d&refundsearch=%s&startDate=%s&endDate=%s\" aria-label=\"Previous\">"
 							+ "                <span aria-hidden=\"true\">&laquo;</span>"
 							+ "            </a>"
-							+ "         </li>", n - 1, refundsearch, startDate, endDate);			
+							+ "         </li>", 1, n - 1, refundsearch, startDate, endDate);			
 			}
 			
 			
@@ -163,7 +181,7 @@ public class List extends HttpServlet {
 				} else {
 					pagebar += "<li>";
 				}
-				pagebar += String.format("<a href=\"/bookjuck/member/refund/list.do?page=%d&refundsearch=%s&startDate=%s&endDate=%s\">%d</a></li> ", n, refundsearch, startDate, endDate, n);
+				pagebar += String.format("<a href=\"/bookjuck/member/refund/list.do?type=%d&page=%d&refundsearch=%s&startDate=%s&endDate=%s\">%d</a></li> ", 1, n, refundsearch, startDate, endDate, n);
 
 				loop++;
 				n++;
@@ -181,10 +199,10 @@ public class List extends HttpServlet {
 				//a href = "#" 본인 페이지 항상 위, "#!" 위로 올라가는 현상 사라짐
 			} else {
 				pagebar += String.format("<li>"
-						+ "            <a href=\"/bookjuck/member/refund/list.do?page=%d&refundsearch=%s&startDate=%s&endDate=%s\" aria-label=\"Next\">"
+						+ "            <a href=\"/bookjuck/member/refund/list.do?type=%d&page=%d&refundsearch=%s&startDate=%s&endDate=%s\" aria-label=\"Next\">"
 						+ "                <span aria-hidden=\"true\">&raquo;</span>"
 						+ "            </a>"
-						+ "          </li> ", n, refundsearch, startDate, endDate);
+						+ "          </li> ", 1, n, refundsearch, startDate, endDate);
 			}
 			
 			
@@ -192,7 +210,7 @@ public class List extends HttpServlet {
 			req.setAttribute("pagebar", pagebar);
 			req.setAttribute("nowPage", nowPage);
 			
-			
+
 			
 		} else if (type.equals("2")) {
 			
@@ -208,7 +226,70 @@ public class List extends HttpServlet {
 			}
 			
 			
+			totalCount = dao.getTotalCount(map); //총 게시물 수
+			System.out.println(totalCount);		//269개
 			
+			//totalPage = totalCount / pageSize + 1; //총 페이지 수
+			totalPage = (int)Math.ceil((double)totalCount / pageSize); //총 페이지 수
+			System.out.println(totalPage);		//26페이지 -(ceil)-> 27페이지
+			
+			
+			loop = 1;
+			n = ((nowPage - 1) / blockSize) * blockSize + 1;
+			
+			
+			//이전 10페이지로
+			if(n == 1) {
+				pagebar += String.format("<li class='disabled'>"
+							+ "            <a href=\"#!\" aria-label=\"Previous\">"
+							+ "                <span aria-hidden=\"true\">&laquo;</span>"
+							+ "            </a>"
+							+ "         </li>");
+			} else {
+				pagebar += String.format("<li>"
+							+ "            <a href=\"/bookjuck/member/refund/list.do?type=%d&page=%d&refundsearch=%s&startDate=%s&endDate=%s\" aria-label=\"Previous\">"
+							+ "                <span aria-hidden=\"true\">&laquo;</span>"
+							+ "            </a>"
+							+ "         </li>", 2, n - 1, refundsearch, startDate, endDate);			
+			}
+			
+			
+			
+			while (!(loop > blockSize || n > totalPage)) {
+
+				if (nowPage == n) {
+					pagebar += "<li class='active'>";
+				} else {
+					pagebar += "<li>";
+				}
+				pagebar += String.format("<a href=\"/bookjuck/member/refund/list.do?type=%d&page=%d&refundsearch=%s&startDate=%s&endDate=%s\">%d</a></li> ", 2, n, refundsearch, startDate, endDate, n);
+
+				loop++;
+				n++;
+
+			}
+			
+			
+			//다음 10페이지로 이동
+			if (n > totalPage) {
+				pagebar += String.format("<li class='disabled'>"
+							+ "            <a href=\"#!\" aria-label=\"Next\">"
+							+ "                <span aria-hidden=\"true\">&raquo;</span>"
+							+ "            </a>"
+							+ "          </li> ");
+				//a href = "#" 본인 페이지 항상 위, "#!" 위로 올라가는 현상 사라짐
+			} else {
+				pagebar += String.format("<li>"
+						+ "            <a href=\"/bookjuck/member/refund/list.do?type=%d&page=%d&refundsearch=%s&startDate=%s&endDate=%s\" aria-label=\"Next\">"
+						+ "                <span aria-hidden=\"true\">&raquo;</span>"
+						+ "            </a>"
+						+ "          </li> ", 2, n, refundsearch, startDate, endDate);
+			}
+			
+			
+			
+			req.setAttribute("pagebar", pagebar);
+			req.setAttribute("nowPage", nowPage);
 			
 			
 			
@@ -228,11 +309,70 @@ public class List extends HttpServlet {
 			
 			
 			
+			totalCount = dao.getTotalCount(map); //총 게시물 수
+			System.out.println(totalCount);		//269개
+			
+			//totalPage = totalCount / pageSize + 1; //총 페이지 수
+			totalPage = (int)Math.ceil((double)totalCount / pageSize); //총 페이지 수
+			System.out.println(totalPage);		//26페이지 -(ceil)-> 27페이지
+			
+			
+			loop = 1;
+			n = ((nowPage - 1) / blockSize) * blockSize + 1;
+			
+			
+			//이전 10페이지로
+			if(n == 1) {
+				pagebar += String.format("<li class='disabled'>"
+							+ "            <a href=\"#!\" aria-label=\"Previous\">"
+							+ "                <span aria-hidden=\"true\">&laquo;</span>"
+							+ "            </a>"
+							+ "         </li>");
+			} else {
+				pagebar += String.format("<li>"
+							+ "            <a href=\"/bookjuck/member/refund/list.do?type=%d&page=%d&refundsearch=%s&startDate=%s&endDate=%s\" aria-label=\"Previous\">"
+							+ "                <span aria-hidden=\"true\">&laquo;</span>"
+							+ "            </a>"
+							+ "         </li>", 3, n - 1, refundsearch, startDate, endDate);			
+			}
 			
 			
 			
+			while (!(loop > blockSize || n > totalPage)) {
+
+				if (nowPage == n) {
+					pagebar += "<li class='active'>";
+				} else {
+					pagebar += "<li>";
+				}
+				pagebar += String.format("<a href=\"/bookjuck/member/refund/list.do?type=%d&page=%d&refundsearch=%s&startDate=%s&endDate=%s\">%d</a></li> ", 3, n, refundsearch, startDate, endDate, n);
+
+				loop++;
+				n++;
+
+			}
 			
 			
+			//다음 10페이지로 이동
+			if (n > totalPage) {
+				pagebar += String.format("<li class='disabled'>"
+							+ "            <a href=\"#!\" aria-label=\"Next\">"
+							+ "                <span aria-hidden=\"true\">&raquo;</span>"
+							+ "            </a>"
+							+ "          </li> ");
+				//a href = "#" 본인 페이지 항상 위, "#!" 위로 올라가는 현상 사라짐
+			} else {
+				pagebar += String.format("<li>"
+						+ "            <a href=\"/bookjuck/member/refund/list.do?type=%d&page=%d&refundsearch=%s&startDate=%s&endDate=%s\" aria-label=\"Next\">"
+						+ "                <span aria-hidden=\"true\">&raquo;</span>"
+						+ "            </a>"
+						+ "          </li> ", 3, n, refundsearch, startDate, endDate);
+			}
+			
+			
+			
+			req.setAttribute("pagebar", pagebar);
+			req.setAttribute("nowPage", nowPage);
 			
 			
 			
@@ -249,7 +389,13 @@ public class List extends HttpServlet {
 		req.setAttribute("balist", balist);
 		req.setAttribute("elist", elist);
 		
+		req.setAttribute("refundsearch", refundsearch);
+		
 		req.setAttribute("type", type);
+
+		
+		req.setAttribute("startDate", startDate);
+		req.setAttribute("endDate", endDate);
 		
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/member/refund/list.jsp");

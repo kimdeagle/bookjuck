@@ -59,11 +59,11 @@ public class BookOrderDAO {
 		try {
 			
 			//refundsearch 가 null 일 때 (상품정보 검색창에 아무런 입력도 하지 않았을 때) null -> ""로 변환
-			String refundsearch = "";
+			String refundsearch = map.get("refundsearch");
 			
 			if (map.get("refundsearch") == null) {
 				refundsearch = "";
-			}
+			} 
 			
 			String where = String.format("where applydate between '%s' and '%s' and title like '%%%s%%'"
 					, map.get("startDate")
@@ -79,7 +79,7 @@ public class BookOrderDAO {
 			pstat = conn.prepareStatement(sql);
 			rs = pstat.executeQuery();
 			
-			System.out.println("일반배송 검색 조회 쿼리 : " + sql);
+			//System.out.println("일반배송 검색 조회 쿼리 : " + sql);
 			
 			ArrayList<BookOrderDTO> list = new ArrayList<BookOrderDTO>();
 			
@@ -177,23 +177,25 @@ public class BookOrderDAO {
 	
 
 	/**
-	 * 총 주문 수 를 세는 메서드
+	 * 관리자가 사용하는 총 주문 수 를 세는 메서드
 	 * @param map
 	 * @return cnt : 총 주문 수
 	 */
 	public int getATotalCount(HashMap<String, String> map) {
 
 		try {
-
-			/*
-			String where = "";
-
-			if (map.get("search") != null) {
-				// 검색중...
-				where = String.format("where name like '%%%s%%' or subject like '%%%s%%' or content like '%%%s%%'",
-						map.get("search"), map.get("search"), map.get("search"));
-			}
 			
+			/*
+			String refundsearch = map.get("refundsearch");
+			
+			if (map.get("refundsearch") == null) {
+				refundsearch = "";
+			} 
+			
+			String where = String.format("where applydate between '%s' and '%s' and title like '%%%s%%'"
+					, map.get("startDate")
+					, map.get("endDate")
+					, refundsearch);
 			*/
 			
 			String sql = String.format("select count(*) as cnt from vwadminBookOrder");
@@ -226,18 +228,17 @@ public class BookOrderDAO {
 		try {
 
 			//refundsearch 가 null 일 때 (상품정보 검색창에 아무런 입력도 하지 않았을 때) null -> ""로 변환
-			String refundsearch = "";
+			String refundsearch = map.get("refundsearch");
 			
 			if (map.get("refundsearch") == null) {
 				refundsearch = "";
-			}
+			} 
 			
 			String where = String.format("where applydate between '%s' and '%s' and title like '%%%s%%'"
 					, map.get("startDate")
 					, map.get("endDate")
 					, refundsearch);
 			
-			System.out.println(where);
 			
 			String sql = String.format("select count(*) as cnt from vwBookRefundList %s", where);
 			
