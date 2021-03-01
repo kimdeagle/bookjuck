@@ -60,10 +60,17 @@
                     <th class="col-md-5">제목</th>
                     <th class="col-md-3">작성일</th>
                 </tr>
+                
+                <c:if test="${rlist.size()==0}">
+			        <tr>
+			        	<td colspan="4" style="text-align:center;">게시물이 없습니다.</td>
+			        </tr>
+			    </c:if>
+			    
                 <c:forEach items="${rlist}" var="rdto">
                 <tr>
                     <td>${rdto.seq}</td>
-                    <td class="cell2"><a href="#">${rdto.bookTitle}</a></td>
+                    <td class="cell2"><a href="/bookjuck/member/book/bookdetail.do?seq=${rdto.seqBook}">${rdto.bookTitle}</a></td>
                     <td class="cell3"><a href="/bookjuck/member/review/detail.do?seq=${rdto.seq}&page=${nowPage}">${rdto.reviewTitle}</a>
                     	<c:if test="${rdto.isPrize eq '1' }">
                     		<span class="label label-danger">우수</span>

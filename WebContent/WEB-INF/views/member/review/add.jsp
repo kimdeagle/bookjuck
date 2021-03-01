@@ -52,7 +52,7 @@
 		
 		<!-- @@@@@여기에 개인작업 페이지 넣을 것 -->
         <section class="contentsection">
-            <h3>독후감<small>작성하기</small></h3>
+            <h3>독후감<small style="margin-left:15px;">작성하기</small></h3>
 
             
 			<form method="POST" action="/bookjuck/member/review/addok.do">
@@ -93,15 +93,6 @@
 		<!-- ########## 하단 끝 -->
 		
 	</div>
-	
-    <script>
-
-       $('#book li > a').on('click', function() {
-           // 버튼에 선택된 항목 텍스트 넣기 
-           $('#book').text($(this).text());
-       });
-
-    </script>
 
 </body>
 
