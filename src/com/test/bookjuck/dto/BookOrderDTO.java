@@ -87,6 +87,7 @@ public class BookOrderDTO {
 	}
 	public void setTotalPay(int totalPay) {
 		this.totalPay = totalPay;
+	}
 
 	public String getProcess() {
 		return process;
