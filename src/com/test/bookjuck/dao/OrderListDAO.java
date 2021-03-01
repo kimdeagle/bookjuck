@@ -361,10 +361,44 @@ public class OrderListDAO {
 		return null;
 	}
 
+
+
 	
 	
 	
 	// ###################### 오수경 ############################
 	// ####################### 끝 #############################
+	
+	
+	
+	
+	
+	// ################ 다은 시작
+	
+	
+	public String getMemberSeq(String id) {
+		
+		try {
+			
+			String sql = "select seq from tblMember where id = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, id);
+			
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				
+				return rs.getString("seq");
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+	}
+	
+	// ################ 다은 끝
 
 }

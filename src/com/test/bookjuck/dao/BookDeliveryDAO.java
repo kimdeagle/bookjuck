@@ -54,6 +54,7 @@ public ArrayList<BookDeliveryDTO> listBookDelivery(String seqBookOrder) {
 			
 			dto.setAddress(rs.getString("address"));
 			dto.setDeliveryNumber(rs.getString("deliveryNumber"));
+			dto.setDeliveryCompany(rs.getString("deliveryCompany"));
 			dto.setName(rs.getString("name"));
 			dto.setTel(rs.getString("tel"));
 			
