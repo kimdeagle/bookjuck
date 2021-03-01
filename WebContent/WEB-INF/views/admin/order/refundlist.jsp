@@ -38,7 +38,7 @@
 	            <tr>
 	                <th>분류</th>
 	                <td colspan="2">
-	                    <select name="type" id="type" class="form-control">
+	                    <select name="type" id="type" class="form-control" onchange="typeChange(this)">
 	                        <option value="1">일반배송</option>
 	                        <option value="2">바로드림</option>
 	                        <option value="3">E-Book</option>
@@ -47,12 +47,10 @@
 	                <th>주문상태</th>
 	                <td>
 	                    <select name="orderstate" id="orderstate" class="form-control">
-	                        <option value="통합검색">통합검색</option>
-	                        <c:if test="${type == 1}">
-		                        <option value="주문취소">주문취소</option>
-		                        <option value="주문교환">주문교환</option>
-		                        <option value="주문환불">주문환불</option>
-	                        </c:if>
+	                        <option value="통합검색" id="all">통합검색</option>
+	                        <option value="주문취소" id="cancel">주문취소</option>
+	                        <option value="주문교환" id="return">주문교환</option>
+	                        <option value="주문환불" id="refund">주문환불</option>
 	                    </select>
 	                </td>
 	                <td rowspan="4">
@@ -266,8 +264,37 @@
 		
 		
 
-	
+		//type이 바뀔 때 마다 orderstate select box의 option값도 접근 상태 바꿔주기
+		// type : 1 - 일반배송, 2 - 바로드림, 3 - E-book
+		// 일반배송 : 전체 선택가능 / 바로드림 : 통합검색, 주문취소 / eBook : 통합검색, 주문환불만 가능
+		function typeChange(e) {
+			
+			var all = document.getElementById("all");
+			var cancels = document.getElementById("cancel");
+			var returns = document.getElementById("return");
+			var refunds = document.getElementById("refund");
+			
+			if (e.value == 1) {	//일반배송
+				all.disabled = false;
+				cancels.disabled = false;
+				returns.disabled = false;
+				refunds.disabled = false;
+				
+			} else if (e.value == 2) {  //바로드림
+				all.disabled = false;
+				cancels.disabled = false;
+				returns.disabled = true;
+				refunds.disabled = true;
+				
+			} else if (e.value == 3) {  //E-book
+				all.disabled = false;
+				cancels.disabled = true;
+				returns.disabled = true;
+				refunds.disabled = false;
+			}
 
+		}
+	
 	
 	</script>		
 		

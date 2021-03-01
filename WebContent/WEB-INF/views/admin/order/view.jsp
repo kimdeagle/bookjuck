@@ -190,6 +190,25 @@
 	        <div style="clear: both;"></div>
 	
 	
+			<!-- 무통장 입금으로 결제한 고객 환불해줄 환불 계좌 정보 -->
+			<b class="subtitle">환불 계좌 정보 <small>(무통장 입금 고객)</small></b>
+            <table class="receiver table tbl-md">
+                <tr>
+                    <th>예금주</th>
+                    <td>예금주 이름</td>
+                    <th>은행명</th>
+                    <td>은행이름</td>                        
+                </tr>
+                <tr>
+                    <th>계좌번호</th>
+                    <td colspan="3">계조ㅏ번호적으세요</td>
+                </tr>
+                <tr>
+                	<td colspan="4"></td>
+                </tr>
+            </table>
+                
+	
 	
 	        <!-- 취소/교환/환불 정보 -->
 	        <b class="subtitle">취소/교환/환불 정보</b>
