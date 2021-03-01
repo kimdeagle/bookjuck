@@ -50,7 +50,6 @@ public class OrderDetail extends HttpServlet {
 
 		BookPayDAO bpdao = new BookPayDAO();
 		ArrayList<BookPayDTO> bplist = bpdao.listBookPay(seqBookOrder);
-	
 
 		// 배송 정보 가져오기
 		BookDeliveryDAO bddao = new BookDeliveryDAO();
@@ -65,7 +64,8 @@ public class OrderDetail extends HttpServlet {
 		ArrayList<BookDTO> plist = pdao.getPossibleBook(session.getAttribute("seq").toString());
 		// 조아라 끝)
 
-		req.setAttribute("blist", blist);
+		req.setAttribute("blist", blist);		
+		req.setAttribute("bdlist", bdlist);
 		req.setAttribute("bplist", bplist);
 		req.setAttribute("seqBookOrder", seqBookOrder);
 		req.setAttribute("orderDate", orderDate);
