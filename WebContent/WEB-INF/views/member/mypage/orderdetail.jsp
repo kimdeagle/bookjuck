@@ -169,7 +169,6 @@
          <!-- ######## 이 이후 다은 추가 - 교환/취소/환불 정보 -->
         <c:if test="${ordertype != 'other'}"> <!-- other:일반주문 -->
 
-
 		<article>
 			<h5>환불정보</h5>
 			<table class="tbl-pay table tbl-md">
@@ -190,8 +189,8 @@
 					</tr>
 				</c:forEach>
 			</table>
-			<div>
-				<small>환불 포인트가 마이너스 금액인 경우 포인트가 차감됩니다.</small>
+			<div style="margin-top: -16px;">
+				<small>⚠ 환불 포인트가 마이너스 금액인 경우 포인트가 차감됩니다.</small>
 			</div>
 		</article>
 

@@ -45,7 +45,7 @@ public class BookOrderDetailDAO {
 	/**
 	 * 해당 주문번호를 가지고 일반 주문인지 또는 교환/ 취소/ 환불 중 어떤 주문인지를 알아내는 메서드입니다. 
 	 * @param seqBookOrder
-	 * @return dto
+	 * @return orderType
 	 */
 	public String getType(String seqBookOrder) {
 		
