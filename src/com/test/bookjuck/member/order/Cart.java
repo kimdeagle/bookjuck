@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.test.bookjuck.dao.BookCartDAO;
 import com.test.bookjuck.dto.BookCartDTO;
@@ -19,8 +20,9 @@ public class Cart extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		//임시 회원번호 21번 지정
-		String seqMember = "21";
+		HttpSession session = req.getSession();
+		
+		String seqMember = (String)session.getAttribute("seq");
 		
 		BookCartDAO dao = new BookCartDAO();
 		

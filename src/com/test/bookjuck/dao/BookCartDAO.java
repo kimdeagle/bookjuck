@@ -68,7 +68,7 @@ public class BookCartDAO {
 				dto.setTitle(rs.getString("title"));
 				dto.setPrice(rs.getInt("price"));
 				dto.setSalePrice(rs.getInt("salePrice"));
-				dto.setAmount(rs.getInt("amount"));
+				dto.setAmount(rs.getString("amount"));
 				dto.setTotal(rs.getInt("total"));
 				list.add(dto);
 				
@@ -81,6 +81,23 @@ public class BookCartDAO {
 		}
 		
 		return null;
+	}
+
+	public int add(BookCartDTO dto) {
+		try {
+			
+			String sql = "insert into tblBookCart(seq, seqMember, seqBook, amount) values (SEQBOOKCART.nextval, ?, ?, ?)";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getSeqMember());
+			pstat.setString(2, dto.getSeqBook());
+			pstat.setString(3, dto.getAmount());
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println("BookCartDAO add : "+e);
+		}
+		return 0;
 	}
 	
 }

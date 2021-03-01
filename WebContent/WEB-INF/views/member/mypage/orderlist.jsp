@@ -76,10 +76,10 @@
             <article>
             	<div class="order-state-box">
             		<ul class="order-state">
-            			<li class="cell1"><b>주문완료 0</b></li>
-            			<li class="cell2"><b>결제완료 0</b></li>
-            			<li class="cell3"> <b> 배송중 0</b></li>
-            			<li class="cell4" style="width: 80px;"><b>배송완료 0</b></li>
+            			<li class="cell1"><b>주문완료 (${cnt1})</b></li>
+            			<li class="cell2"><b>결제완료 (${cnt2})</b></li>
+            			<li class="cell3"> <b> 배송중 (${cnt3})</b></li>
+            			<li class="cell4" style="width: 80px;"><b>배송완료 (${cnt4})</b></li>
             		</ul>
             		<div class="total-order">
             			<ul>
