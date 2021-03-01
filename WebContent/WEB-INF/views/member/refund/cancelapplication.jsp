@@ -58,7 +58,7 @@
                 <table class="table tbl-md">
                     <tr style="background-color: RGBA(140,179,105,0.2)">
                         <th>주문번호</th>
-                        <td><input type="text" class="form-control" name="seqOrder" name="seqOrder" value="0000"></td>
+                        <td><input type="text" class="form-control" name="seqOrder" id="seqOrder" value="0000"></td>
                         <th>상품정보</th>
                         <td><input type="text" class="form-control" name="title" id="title" value="자바의 정석 외 1"></td>
                         <th>도서 총 수량</th>
@@ -97,7 +97,7 @@
                 <ul>
                     <li>교환신청은 상품의 결함 및 계약내용과 다를 경우 문제점 발견 후 30일 이내 가능합니다.</li>
                     <li>변심반품의 경우 수령 후 7일 이내, 상품의 결함 및 계약내용과 다를 경우 문제점 발견 후 30일 이내 가능합니다.</li>
-                    <li>오픈마켓, 기프트, 중고장터, 해외배송주문, 바로드림주문건은 <b>[1:1 상담]</b>으로 문의 바랍니다. <a href="/bookjuck/member/mypage/servicecenter.do""><input type="button" class="btn btn-xs btn-general" value="1:1 상담 문의"></a></li>
+                    <li>오픈마켓, 기프트, 중고장터, 해외배송주문, 바로드림주문건은 <b>[1:1 상담]</b>으로 문의 바랍니다. <a href="/bookjuck/member/mypage/servicecenter.do"><input type="button" class="btn btn-xs btn-general" value="1:1 상담 문의"></a></li>
                     <li><b>반품처리 절차 : 반품신청 > 접수 > 반품회수 > 회수완료 > 반품완료</b></li>
                     <li><b>교환처리 절차 : 교환신청 > 접수 > 처리중 > 교환완료</b></li>
                     <li>반품/교환신청건은 접수 이전 상태에서 신청취소가 가능합니다.

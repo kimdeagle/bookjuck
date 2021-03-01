@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.test.bookjuck.dao.BookCancelDAO;
+import com.test.bookjuck.dao.BookChangeDAO;
 
-@WebServlet("/member/refund/cancelapplicationok.do")
-public class CancelApplicationOk extends HttpServlet {
+@WebServlet("/member/refund/returnapplicationok.do")
+public class ReturnApplicationOk extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -24,32 +24,19 @@ public class CancelApplicationOk extends HttpServlet {
 		//UTF-8 한글 인코딩
 		req.setCharacterEncoding("UTF-8");
 		
-		// 1: 일반배송
-		// 2: 바로드림
-		String type = "1";
+
 		
 		String seqOrder = req.getParameter("seqOrder");
-		String cancelReason = req.getParameter("cancelReason");
-		String cancelReasonDetail = req.getParameter("cancelReasonDetail");
-
-		System.out.println(cancelReason);
-		BookCancelDAO dao = new BookCancelDAO();
+		String changeReason = req.getParameter("changeReason");
+		String changeReasonDetail = req.getParameter("changeReasonDetail");
+		String returnAddress = req.getParameter("returnAddress");
 		
-		int result;
 		
-		if (type.equals("1")) {
-			// 일반배송 주문 취소
+		BookChangeDAO dao = new BookChangeDAO();
+		
+		//주문 교환은 일반배송만 가능함
+		int result = dao.bookreturn(seqOrder, changeReason, changeReasonDetail, returnAddress); 
 			
-			System.out.println("ok서블릿" + seqOrder + "," + cancelReason + "," + cancelReasonDetail);
-			result = dao.bookcancel(seqOrder, cancelReason, cancelReasonDetail); 
-			
-		} else {
-			// 바로드림 주문 취소
-			result = dao.barocancel(seqOrder, cancelReason, cancelReasonDetail);
-			
-		}
-		
-		
 		
 		if (result == 1) {
 			//신청 성공 -> 주문 내역 리스트로 가기

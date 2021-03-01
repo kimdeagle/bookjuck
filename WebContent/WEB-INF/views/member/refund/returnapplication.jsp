@@ -56,30 +56,23 @@
 
                 <h3>교환 신청</h3>
 
+				<form method="POST" action="/bookjuck/member/refund/returnapplicationok.do">
                 <table class="table tbl-md">
                     <tr style="background-color: RGBA(140,179,105,0.2)">
                         <th>주문번호</th>
-                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" name="seqOrder" id="seqOrder" class="form-control"></td>
                         <th>상품정보</th>
-                        <td>
-                            <select name="book-title" class="form-control">
-                                <option value="">자바의 정석</option>
-                            </select>
-                        </td>
+                        <td><input type="text" class="form-control" name="title" id="title" value="자바의 정석 외 1"></td>
                         <th>수량</th>
-                        <td>
-                            <select name="book-amount" class="form-control">
-                                <option value="">1</option>
-                            </select>                            
-                        </td>
+                        <td><input type="text" class="form-control" name="amount" id="amount" value="2"></td>
                     </tr>
                     <tr>
                         <th>교환 사유</th>
                         <td colspan="5">
-                            <select name="refund-reason" class="form-control" onchange="reasonChange(this)">
+                            <select id="changeReason" name="changeReason" class="form-control" onchange="reasonChange(this)">
                             <option value="상품 하자">상품 하자</option>
                             <option value="상품 오배송">상품 오배송</option>
-                            <option value="0">기타</option>
+                            <option value="기타">기타</option>
                             </select>
                         </td>
                     </tr>
@@ -94,19 +87,10 @@
                         <td colspan="5">
 							<input type="text" id="sample2_postcode" placeholder="우편번호" class="form-control">
 							<input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기" class="btn btn-default">
-							<input type="text" id="sample2_address" placeholder="주소" class="form-control">
+							<input type="text" id="sample2_address" name="returnAddress" placeholder="주소" class="form-control">
 							<input type="text" id="sample2_detailAddress" placeholder="상세주소" class="form-control">
 							<input type="text" id="sample2_extraAddress" placeholder="참고항목" class="form-control">
 							<div style="clear: both;"></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>배송지 정보</th>
-                        <td colspan="5">
-                            <select name="deliveryInfo" class="form-control">
-                                <option value="주문 배송지로">주문 배송지로</option>
-                                <option value="회수지로">회수지로</option>
-                            </select>
                         </td>
                     </tr>
                     <tr>
@@ -114,7 +98,8 @@
                     </tr>
                 </table>
 
-                <input type="button" class="btn btn-general" id="btnapply" value="신청하기">
+                <input type="submit" class="btn btn-general" id="btnapply" value="신청하기">
+                </form>
 
 
 				<div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
@@ -130,7 +115,7 @@
                 <ul>
                     <li>교환신청은 상품의 결함 및 계약내용과 다를 경우 문제점 발견 후 30일 이내 가능합니다.</li>
                     <li>변심반품의 경우 수령 후 7일 이내, 상품의 결함 및 계약내용과 다를 경우 문제점 발견 후 30일 이내 가능합니다.</li>
-                    <li>오픈마켓, 기프트, 중고장터, 해외배송주문, 바로드림주문건은 <b>[1:1 상담]</b>으로 문의 바랍니다. <a href="/bookjuck/member/mypage/servicecenter.do""><input type="button" class="btn btn-xs btn-general" value="1:1 상담 문의"></a></li>
+                    <li>오픈마켓, 기프트, 중고장터, 해외배송주문, 바로드림주문건은 <b>[1:1 상담]</b>으로 문의 바랍니다. <a href="/bookjuck/member/mypage/servicecenter.do"><input type="button" class="btn btn-xs btn-general" value="1:1 상담 문의"></a></li>
                     <li><b>반품처리 절차 : 반품신청 > 접수 > 반품회수 > 회수완료 > 반품완료</b></li>
                     <li><b>교환처리 절차 : 교환신청 > 접수 > 처리중 > 교환완료</b></li>
                     <li>반품/교환신청건은 접수 이전 상태에서 신청취소가 가능합니다.
@@ -242,13 +227,12 @@
 	    
 	    
 	    
-		//value 0 : 기타 
 		//reson이 기타가 아닐 때는 reasonDetail textbox를 disabled 처리한다.
 		function reasonChange(e) {
 			
 			var detail = document.getElementById("changeReasonDetail");
 
-			if (e.value == 0) {
+			if (e.value == '기타') {
 				detail.disabled = false;
 			} else {
 				detail.disabled = true;
