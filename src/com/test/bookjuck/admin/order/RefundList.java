@@ -173,7 +173,7 @@ public class RefundList extends HttpServlet {
 			}
 			
 			//페이징
-			totalCount = dao.getATotalCount(map); //총 게시물 수
+			totalCount = dao.getATotalCount(map, isRefundList); //총 게시물 수
 			totalPage = (int)Math.ceil((double)totalCount / pageSize); //총 페이지 수
 
 			
@@ -258,7 +258,7 @@ public class RefundList extends HttpServlet {
 			
 			
 			//페이징
-			totalCount = dao.getATotalCount(map); //총 게시물 수
+			totalCount = dao.getATotalCount(map, isRefundList); //총 게시물 수
 			System.out.println(totalCount);		//269개
 			
 			//totalPage = totalCount / pageSize + 1; //총 페이지 수
@@ -346,7 +346,7 @@ public class RefundList extends HttpServlet {
 			}
 			
 			//페이징
-			totalCount = dao.getATotalCount(map); //총 게시물 수
+			totalCount = dao.getATotalCount(map, isRefundList); //총 게시물 수
 			System.out.println(totalCount);		//269개
 			
 			//totalPage = totalCount / pageSize + 1; //총 페이지 수

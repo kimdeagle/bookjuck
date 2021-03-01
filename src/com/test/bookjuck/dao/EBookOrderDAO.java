@@ -189,9 +189,10 @@ public class EBookOrderDAO {
 	/**
 	 * 관리자가 사용하는 총 주문 수 를 세는 메서드
 	 * @param map
+	 * @param isRefundList 
 	 * @return cnt : 총 주문 수
 	 */
-	public int getATotalCount(HashMap<String, String> map) {
+	public int getATotalCount(HashMap<String, String> map, String isRefundList) {
 
 		try {
 			
@@ -199,7 +200,7 @@ public class EBookOrderDAO {
 			String idsearch = map.get("idsearch");
 			String ordernumsearch = map.get("ordernumsearch");
 			String booksearch = map.get("booksearch");
-			
+			String orderstate = map.get("orderstate");
 			
 			if (map.get("idsearch") == null) {
 				idsearch = "";
@@ -213,16 +214,20 @@ public class EBookOrderDAO {
 				booksearch = "";
 			} 
 			
+			if (map.get("orderstate") == null || map.get("orderstate").equals("통합검색")) {
+				orderstate = "";
+			} 
 			
-			String where = String.format("where orderdate between '%s' and '%s' and title like '%%%s%%' and seq like '%%%s%%' and id like '%%%s%%'"
+			String where = String.format("orderdate between '%s' and '%s' and title like '%%%s%%' and seq like '%%%s%%' and id like '%%%s%%' and orderstate like '%%%s%%'"
 					, map.get("startDate")
 					, map.get("endDate")
 					, booksearch
 					, ordernumsearch
-					, idsearch);
+					, idsearch
+					, orderstate);
 			
 			
-			String sql = String.format("select count(*) as cnt from vwadminEOrder %s", where);
+			String sql = String.format("select count(*) as cnt from vwadminEOrder %s %s", isRefundList, where);
 			
 			System.out.println(sql);
 			
