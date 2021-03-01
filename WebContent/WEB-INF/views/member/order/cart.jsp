@@ -132,8 +132,11 @@
 		    
 			<div class="btn-box">
 				<!-- 회원은 안보이기 -->
+				<c:if test="${empty id}">
 				<a href="/bookjuck/member/order/orderpaynon.do" onclick="" class="btn1">비회원 주문하기</a>
-				<c:if test="${empty not id}">
+				<a href="/bookjuck/member/login.do" onclick="" class="btn-order">주문하기</a>				
+				</c:if>
+				<c:if test="${not empty id}">
 				<a href="/bookjuck/member/order/orderpaymem.do" onclick="" class="btn-order">주문하기</a>
 				</c:if>
 			</div>

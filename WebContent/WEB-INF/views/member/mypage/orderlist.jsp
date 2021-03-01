@@ -62,7 +62,7 @@
                 <table class="orderer table tbl-md">
                     <tr>
                         <th>주문자</th>
-                        <td>이름 | 연락처 | 이메일</td>
+                        <td>${name}&nbsp |&nbsp ${tel}&nbsp |&nbsp ${email}</td>
                     </tr>
                 </table>
                 <!-- 비회원일때 회원가입 유도 -->
@@ -177,9 +177,9 @@
                     <c:forEach items="${balist}" var="badto">
                     <tr class="olInfo">
                         <td>
-                            <a href="/bookjuck/member/mypage/orderdetail.do?seqBaroOrder=${badto.seq}">567891${badto.seq}</a><br>
+                            <a href="/bookjuck/member/mypage/baroorderdetail.do?seqBaroOrder=${badto.seq}">567891${badto.seq}</a><br>
                             (${badto.orderDate})<br><br>
-                            <a href="/bookjuck/member/mypage/orderdetail.do?seqBaroOrder=${badto.seq}" class="btn-order">주문상세보기</a>
+                            <a href="/bookjuck/member/mypage/baroorderdetail.do?seqBaroOrder=${badto.seq}" class="btn-order">주문상세보기</a>
                         </td>
                         <td>${badto.actualPay}</td>
                         <td>
@@ -202,9 +202,9 @@
                     <c:forEach items="${elist}" var="edto">
                     <tr class="olInfo">
                         <td>
-                            <a href="/bookjuck/member/mypage/orderdetail.do?seqEBookOrder=${edto.seq}">987654${edto.seq}</a><br>
+                            <a href="/bookjuck/member/mypage/ebookorderdetail.do?seqEBookOrder=${edto.seq}">987654${edto.seq}</a><br>
                             (${edto.orderDate})<br><br>
-                            <a href="/bookjuck/member/mypage/orderdetail.do?seqEBookOrder=${edto.seq}" class="btn-order">주문상세보기</a>
+                            <a href="/bookjuck/member/mypage/ebookorderdetail.do?seqEBookOrder=${edto.seq}" class="btn-order">주문상세보기</a>
                         </td>
                         <td>${edto.actualPay}</td>
                         <td>

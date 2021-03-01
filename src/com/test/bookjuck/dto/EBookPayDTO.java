@@ -10,7 +10,7 @@ public class EBookPayDTO {
 	private String seq;// 이북결제번호
 	private String seqEOrder; //이북 주문번호
 	private String payment; //결제방법
-	private int totalpay; //총결제액
+	private int totalPay; //총결제액
 	private int usePoint; //사용포인트
 	private int actualPay; //실결제액
 	private int savePoints; //적립 포인트
@@ -33,11 +33,11 @@ public class EBookPayDTO {
 	public void setPayment(String payment) {
 		this.payment = payment;
 	}
-	public int getTotalpay() {
-		return totalpay;
+	public int getTotalPay() {
+		return totalPay;
 	}
-	public void setTotalpay(int totalpay) {
-		this.totalpay = totalpay;
+	public void setTotalPay(int totalPay) {
+		this.totalPay = totalPay;
 	}
 	public int getUsePoint() {
 		return usePoint;

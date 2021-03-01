@@ -72,10 +72,7 @@
 
          <article>
             <h5>주문/배송정보</h5>
-
-            <!-- 일반 배송시 -->
-            <div class="waybill-number">
-
+            
             <b>E-Book</b>
             <table class="orderdetail table tbl-md">
                <tr>
@@ -86,29 +83,21 @@
                   <th>주문상태</th>
                </tr>
                <tr class="olInfo">
-                  <td rowspan="2">주문번호<br> (주문일)
+                  <td rowspan="${elist.size()}">${seqEBookOrder}<br> (${orderDate.substring(0, 10)})
                   </td>
-                  <td>가격</td>
+                  <c:forEach items="${elist}" var="edto">
+                  <td style="vertical-align: middle;">${edto.actualPay}</td>
                   <td class="bookinfo"><img
-                     src="/bookjuck/image/달러구트 꿈 백화점.png" class="book-xs"> <a
-                     href="/bookjuck/member/book/ebooklist.do">도서명</a></td>
+                     src="/bookjuck/image/book/${edto.image}" class="book-xs"> <a
+                     href="/bookjuck/member/book/ebooklist.do?seq=${edto.seqEBook}">${edto.title}</a></td>
                   <td>1</td>
-                  <td>주문상태</td>
+                  <td>
+                  ${edto.orderState}
+                  <a href="#" class="btn-report">독후감 쓰러 가기</a>
+                  </td>
                </tr>
-
-               <tr class="olInfo">
-                  <td>가격</td>
-                  <td class="bookinfo"><img
-                     src="/bookjuck/image/달러구트 꿈 백화점.png" class="book-xs"> <a
-                     href="/bookjuck/member/book/ebooklist.do">도서명</a></td>
-                  <td>1</td>
-                  <td>주문상태</td>
-               </tr>
+                  </c:forEach>
             </table>
-			
-
-
-         </article>
 
 
          <article>
