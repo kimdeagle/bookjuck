@@ -45,6 +45,8 @@ public class BookOrderDAO {
 
 	
 	
+	
+	
 	// (다은) 시작 ---------------------
 	
 	/**
@@ -309,7 +311,6 @@ public class BookOrderDAO {
 		return 0;
 	}
 
-	
 	/**
 	 * 로그인한 사용자의 process(교환, 환불, 취소 처리상태)를 세어주는 메서드 입니다.
 	 * @param map 세션을 담아올 map입니다.
@@ -341,13 +342,17 @@ public class BookOrderDAO {
 		return null;
 	}
 
-	
 
 	
 
 	
 	
 	// (다은) 끝 ---------------------
+	
+	
+	
+	
+	// (수경) 시작 #####################
 	
 
 }

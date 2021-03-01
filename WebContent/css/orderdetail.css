@@ -63,10 +63,9 @@ article{
 }
 
 
-.orderdetail .bookinfo a{
-	position: relative;
-	top: -50px;
-	
+.orderdetail .bookinfo div{
+	width: 220px;
+	float: right;	
 }
 
 .orderdetail>.olInfo:last-child>td{

@@ -27,15 +27,7 @@ public class OrderList extends HttpServlet {
 		
 		OrderListDAO dao = new OrderListDAO();
 
-		HttpSession session = req.getSession();
-		
-		//임시 회원 번호
-		//String seq = "1";
-				
-		
-		//ArrayList<BaroOrderDetailDTO> balist = dao.listBaro(session.getAttribute("seq").toString());
-		//ArrayList<EBookOrderDetailDTO> elist = dao.listEBook(session.getAttribute("seq").toString());
-		
+		HttpSession session = req.getSession();	
 		
 		
 		//종이책 기본 주문 조회

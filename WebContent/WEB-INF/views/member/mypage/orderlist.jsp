@@ -16,9 +16,9 @@
 <link rel="stylesheet" href="/bookjuck/css/orderlist.css">
 
 <!-- datepicker -->
-<link rel="stylesheet" href="/bookjuck/node_modules/bootstrap/dist/css/bootstrap-datepicker.min.css">
-<script src="/bookjuck/node_modules/bootstrap/dist/js/bootstrap-datepicker.js"></script>
-<script src="/bookjuck/node_modules/bootstrap/dist/js/bootstrap-datepicker.ko.min.js"></script>
+<!-- <link rel="stylesheet" href="/bookjuck/node_modules/bootstrap/dist/css/bootstrap-datepicker.min.css"> -->
+<!-- <script src="/bookjuck/node_modules/bootstrap/dist/js/bootstrap-datepicker.js"></script> -->
+<!-- <script src="/bookjuck/node_modules/bootstrap/dist/js/bootstrap-datepicker.ko.min.js"></script> -->
 
 
 <style>
@@ -101,22 +101,18 @@
                 <div class="periodbox">
                     <table class="periodtbl table tbl-md">
                         <tr>
-                            <th style="padding-top:16px;">기간 조회</th>
-                            <td>
-                                <span class="sort_option">
-                                <a id="period_1week"             href="javascript:;" onclick="periodChange(id)" >1주일</a>
-                                <a id="period_1month"            href="javascript:;" onclick="periodChange(id)" class="on">1개월</a>
-                                <a id="period_3month"            href="javascript:;" onclick="periodChange(id)" >3개월</a>
-                                <a id="period_6month"            href="javascript:;" onclick="periodChange(id)" >6개월</a>
-                                </span>
-                                
-                                <input id="strDate" class="form-control" readonly="readonly" style="margin-left: 20px;">
-                                ~
-                                <input id="endDate" class="form-control" readonly="readonly">
-                                <a href="javascript:void(0);" id="periodbtn" class="btn-order" onclick="" >조 회</a>
-                                
-                            </td>
-                        </tr>
+                        <th>기간조회</th>
+                        <td class="period" colspan="2">
+                            <input type="button" class="btn btn-sm" id="btn1" value="일주일">
+                            <input type="button" class="btn btn-sm" id="btn2" value="1개월">
+                            <input type="button" class="btn btn-sm" id="btn3" value="3개월">
+                            <input type="button" class="btn btn-sm" id="btn4" value="6개월">
+                        </td>
+                        <td>
+                            <input type="date" class="form-control" id="startDate" name="startDate" min="2019-03-01"> ~
+                            <input type="date" class="form-control" id="endDate" name="endDate" min="2019-03-01">
+                        </td>
+                    </tr>
                     </table>
                 </div>
         
@@ -130,7 +126,7 @@
                 <!-- 조회 리스트 -->
                 <!-- 주문 내역이 없으면 보이는 화면 -->
 
-				<c:if test="${blist.size() == 0&&balist.size() == 0}">
+				<c:if test="${empty blist && empty balist && empty elist}">
                 <div class="noOrderList">
                     <span>주문 내역이 없습니다.</span>
                     
@@ -138,8 +134,8 @@
                 </div>
                 </c:if>
 
-                <c:if test="${blist.size() > 0 || balist.size() > 0}">
                 <!-- 주문 내역 있으면 보이는 리스트 -->
+                <c:if test="${not empty blist || not empty balist || not empty elist}">
                 <table class="orderList table tbl-md">
                     <tr>
                         <th>주문번호</th>
@@ -148,6 +144,8 @@
                         <th>주문상태</th>
                         <th>취소/교환/환불</th>
                     </tr>
+                    
+	                <c:if test="${not empty blist}">
                     <c:forEach items="${blist}" var="bodto">
                     <tr class="olInfo">
                         <td>
@@ -158,13 +156,14 @@
                         <td>${bodto.actualPay}</td>
                         <td>
                             <img src="/bookjuck/image/book/${bodto.image}" class="book-xs">
+                            <div>
                             <a href="/bookjuck/member/book/bookdetail.do?seq=${bodto.seqBook}">${bodto.title}
-                            
                             </a>
+                            </div>
                         </td>
                         <td>${bodto.orderState}</td>
                         <td>
-                        	<c:if test="${empty not id}">
+                        	<c:if test="${not empty id}">
                             <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/cancelapplication.do';">취 소</button>
                             <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/returnapplication.do';">교 환</button>
                             <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/refundapplication.do';">환 불</button>
@@ -172,12 +171,15 @@
                         </td>
                     </tr>
                     </c:forEach>
+                    </c:if>
+                    
+                    <c:if test="${not empty balist}">
                     <c:forEach items="${balist}" var="badto">
                     <tr class="olInfo">
                         <td>
-                            <a href="/bookjuck/member/mypage/orderdetail.do?seqBookOrder=${badto.seq}">567891${badto.seq}</a><br>
+                            <a href="/bookjuck/member/mypage/orderdetail.do?seqBaroOrder=${badto.seq}">567891${badto.seq}</a><br>
                             (${badto.orderDate})<br><br>
-                            <a href="/bookjuck/member/mypage/orderdetail.do?seqBookOrder=${badto.seq}" class="btn-order">주문상세보기</a>
+                            <a href="/bookjuck/member/mypage/orderdetail.do?seqBaroOrder=${badto.seq}" class="btn-order">주문상세보기</a>
                         </td>
                         <td>${badto.actualPay}</td>
                         <td>
@@ -190,18 +192,19 @@
                         <td>
                         	<c:if test="${empty not id}">
                             <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/cancelapplication.do';">취 소</button>
-                            <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/returnapplication.do';">교 환</button>
-                            <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/refundapplication.do';">환 불</button>
                             </c:if>
                         </td>
                     </tr>
                     </c:forEach>
+                   	</c:if>
+                   	
+                   	<c:if test="${not empty elist}">
                     <c:forEach items="${elist}" var="edto">
                     <tr class="olInfo">
                         <td>
-                            <a href="/bookjuck/member/mypage/orderdetail.do?seqBookOrder=${edto.seq}">987654${edto.seq}</a><br>
+                            <a href="/bookjuck/member/mypage/orderdetail.do?seqEBookOrder=${edto.seq}">987654${edto.seq}</a><br>
                             (${edto.orderDate})<br><br>
-                            <a href="/bookjuck/member/mypage/orderdetail.do?seqBookOrder=${edto.seq}" class="btn-order">주문상세보기</a>
+                            <a href="/bookjuck/member/mypage/orderdetail.do?seqEBookOrder=${edto.seq}" class="btn-order">주문상세보기</a>
                         </td>
                         <td>${edto.actualPay}</td>
                         <td>
@@ -212,36 +215,15 @@
                         </td>
                         <td>${edto.orderState}</td>
                         <td>
-                        	<c:if test="${empty not id}">
-                            <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/cancelapplication.do';">취 소</button>
-                            <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/returnapplication.do';">교 환</button>
+                        	<c:if test="${not empty id}">
                             <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/refundapplication.do';">환 불</button>
                             </c:if>
                         </td>
                     </tr>
                     </c:forEach>
+                    </c:if>
                 </table>
-
-                <!-- 페이지 바 -->
-                <ul class="pagination">
-                    <li>
-                    <a href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                    </li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li>
-                    <a href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                    </li>
-                </ul>
-                </c:if>
-                              
+                </c:if>   
 
             </article>
 
@@ -269,36 +251,85 @@
 <script>
 
 	
-		$(function(){
-			   $("#strDate").datepicker({
-			      format:'yyyy-mm-dd',
-			      startDate:'-2y',
-			      endDate : '0',
-			      language: "ko"
-			   
-			   })
-			});
-		
-		$(function(){
-			   $("#endDate").datepicker({
-			      format:'yyyy-mm-dd',
-			      defaultDate:'2021-02-23',
-			      startDate:'-2y',
-			      endDate : '0',
-			      language: "ko"
-			   })
-			});
+//date 'yyyy-mm-dd'형식으로 formating
+function formatDate(date) {
+   
+	var month = date.getMonth() + 1;
+    var day = date.getDate();
+    var year = date.getFullYear();
+   
+    if (month < 10) 
+        month = '0' + month;
+    if (day < 10) 
+        day = '0' + day; 
 
-		
-		
-		
+   return year + '-' + month + '-' + day;
+}
+
+var now = new Date();
+
+//초기세팅은 과거 1개월 까지 검색
+$(document).ready(function(){
 	
+	var nowdate = new Date();
+	var beforedate = new Date();
 	
-	function periodChange(id) {
-		console.log($(id));
-		$(".sort_option a").attr('class','');
-		$("#"+id).attr('class','on');
-	}
+	beforedate.setMonth(nowdate.getMonth() - 1);
+	
+	$("#startDate").val(formatDate(beforedate));
+	$("#endDate").val(formatDate(now));
+	
+});
+
+
+//분류 고정
+$("#type").val("${type}").prop("selected",true);
+
+
+  
+
+
+//btn1 일주일 전
+$("#btn1").click(function() {
+	
+	var nowdate = new Date();
+	var beforedate = new Date();
+	
+	beforedate.setDate(nowdate.getDate() - 7);
+	$("#startDate").val(formatDate(beforedate));
+});
+
+//btn2 한달 전
+$("#btn2").click(function() {
+	
+	var nowdate = new Date();
+	var beforedate = new Date();
+	
+	beforedate.setMonth(nowdate.getMonth() - 1);
+	$("#startDate").val(formatDate(beforedate));
+});
+
+//btn3 세달 전
+$("#btn3").click(function() {
+	
+	var nowdate = new Date();
+	var beforedate = new Date();
+	
+	beforedate.setMonth(nowdate.getMonth() - 3);
+	$("#startDate").val(formatDate(beforedate));
+});
+
+//btn4 여섯달 전
+$("#btn4").click(function() {
+	
+	var nowdate = new Date();
+	var beforedate = new Date();
+	
+	beforedate.setMonth(nowdate.getMonth() - 6);
+	$("#startDate").val(formatDate(beforedate));
+});
+
+
 
 </script>
 

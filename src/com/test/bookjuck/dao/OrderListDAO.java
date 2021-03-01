@@ -47,16 +47,26 @@ public class OrderListDAO {
 	public ArrayList<BookOrderDetailDTO> listBookDetail(String seq, String seqBookOrder) {
 		try {
 			
-			String sql = "{ call procbookOrderList(?, ?, ?) }";
-			cstat = conn.prepareCall(sql);
+//			String sql = "{ call procbookOrderList(?, ?, ?) }";
+//			cstat = conn.prepareCall(sql);
+//			
+//			cstat.setString(1, seq);
+//			cstat.setString(2, seqBookOrder);
+//			cstat.registerOutParameter(3, OracleTypes.CURSOR);
+//			
+//			cstat.executeQuery();
+//			
+//			rs = (ResultSet)cstat.getObject(3);
 			
-			cstat.setString(1, seq);
-			cstat.setString(2, seqBookOrder);
-			cstat.registerOutParameter(3, OracleTypes.CURSOR);
 			
-			cstat.executeQuery();
+			String sql="select * from vwbookOrderList where seqMember = ? and seqBookOrder =? order by orderdate, seqbookorder, title";
 			
-			rs = (ResultSet)cstat.getObject(3);
+			pstat=conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			pstat.setString(2, seqBookOrder);
+			
+			rs=pstat.executeQuery();
+			
 			
 			ArrayList<BookOrderDetailDTO> blist = new ArrayList<BookOrderDetailDTO>();
 			
@@ -185,22 +195,11 @@ public class OrderListDAO {
 		return null;
 	}
 
-	public String getOrderDate(String seqBookOrder, String type) {
-		
-		//type b - book, ba - baro, e - ebook
+	public String getOrderDate(String seqBookOrder) {
 		
 		try {
 			
-			String sql = "";
-			
-			if(type.equals("b")) {
-				sql = "select orderDate from tblBookOrder where seq = ?";
-			}else if(type.equals("ba")) {
-				sql = "select orderDate from tblBaroOrder where seq = ?";				
-			}else if(type.equals("e")) {
-				sql = "select orderDate from tblEOrder where seq = ?";
-			}
-			
+			String sql = "select orderDate from tblBookOrder where seq = ?";
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, seqBookOrder);
 			
