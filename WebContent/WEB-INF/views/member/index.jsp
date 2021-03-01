@@ -55,7 +55,7 @@
 		out.flush();
 		RequestDispatcher dmainbook = request.getRequestDispatcher("/member/book/mainbook.do");
 		dmainbook.include(request, response);
-	%>
+	%> 
 	
 	
 	<!-- 월간베스트  -->
@@ -63,7 +63,7 @@
 		out.flush();
 		RequestDispatcher dmbs = request.getRequestDispatcher("/member/book/MonthlyBestSeller.do");
 		dmbs.include(request, response);
-	%>
+	%> 
 
 
 	<!-- ########## 하단 시작 -->
