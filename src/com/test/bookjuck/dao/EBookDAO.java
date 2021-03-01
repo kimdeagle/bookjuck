@@ -47,11 +47,13 @@ public class EBookDAO {
 			
 			if (map.get("seqSCategory") == null) {
 				//E-Book 리스트 첫 화면
-				innerSql = "select eb.*, lc.seq as seqLCategory, mc.seq as seqMCategory, lc.lCategory as lCategory, mc.mCategory as mCategory, sc.sCategory as sCategory, (select name from tblAuthor where seq = eb.seqAuthor) as author from tblEbook eb inner join tblSCategory sc on eb.seqSCategory = sc.seq inner join tblMCategory mc on sc.seqMCategory = mc.seq inner join tblLCategory lc on mc.seqLCategory = lc.seq order by eb.pubDate desc, eb.title asc";
+				//innerSql = "select eb.*, lc.seq as seqLCategory, mc.seq as seqMCategory, lc.lCategory as lCategory, mc.mCategory as mCategory, sc.sCategory as sCategory, (select name from tblAuthor where seq = eb.seqAuthor) as author from tblEbook eb inner join tblSCategory sc on eb.seqSCategory = sc.seq inner join tblMCategory mc on sc.seqMCategory = mc.seq inner join tblLCategory lc on mc.seqLCategory = lc.seq order by eb.pubDate desc, eb.title asc";
+				innerSql = "select * from viewEBook order by pubDate desc, title asc";
 
 			} else {
 				//도서 리스트 좌측 소분류 선택
-				innerSql = String.format("select eb.*, lc.seq as seqLCategory, mc.seq as seqMCategory, lc.lCategory as lCategory, mc.mCategory as mCategory, sc.sCategory as sCategory, (select name from tblAuthor where seq = eb.seqAuthor) as author from tblEbook eb inner join tblSCategory sc on eb.seqSCategory = sc.seq inner join tblMCategory mc on sc.seqMCategory = mc.seq inner join tblLCategory lc on mc.seqLCategory = lc.seq where eb.seqSCategory = %s order by eb.pubDate desc, eb.title asc", map.get("seqSCategory"));
+				//innerSql = String.format("select eb.*, lc.seq as seqLCategory, mc.seq as seqMCategory, lc.lCategory as lCategory, mc.mCategory as mCategory, sc.sCategory as sCategory, (select name from tblAuthor where seq = eb.seqAuthor) as author from tblEbook eb inner join tblSCategory sc on eb.seqSCategory = sc.seq inner join tblMCategory mc on sc.seqMCategory = mc.seq inner join tblLCategory lc on mc.seqLCategory = lc.seq where eb.seqSCategory = %s order by eb.pubDate desc, eb.title asc", map.get("seqSCategory"));
+				innerSql = String.format("select * from viewEBook where seqSCategory = %s order by pubDate desc, title asc", map.get("seqSCategory"));
 
 			}
 			

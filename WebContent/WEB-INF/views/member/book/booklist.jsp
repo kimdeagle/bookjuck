@@ -58,17 +58,20 @@
 	<section class="contentsection">
 		<table class="table">
 			<thead>
+				<c:forEach items="${sCategoryList}" var="scdto">
 				<c:if test="${not empty seqSCategory}">
-				<tr>
-					<th colspan="3"><h6>${lCategory} > ${mCategory} > ${sCategory}</h6></th>
-				</tr>
+					<c:if test="${seqSCategory.equals(scdto.seqSCategory)}">
+						<th colspan="3"><h6>${scdto.lCategory} > ${scdto.mCategory} > ${scdto.sCategory}</h6></th>
+					</c:if>
 				</c:if>
-				
+				</c:forEach>
+				<c:forEach items="${mCategoryList}" var="mcdto">
 				<c:if test="${empty seqSCategory}">
-				<tr>
-					<th colspan="3"><h6>${lCategory} > ${mCategory}</h6></th>
-				</tr>
+					<c:if test="${seqMCategory.equals(mcdto.seqMCategory)}">
+						<th colspan="3"><h6>${mcdto.lCategory} > ${mcdto.mCategory}</h6></th>
+					</c:if>
 				</c:if>
+				</c:forEach>
 				
 			</thead>
 			<tbody>
@@ -81,12 +84,12 @@
 				<c:forEach items="${blist}" var="dto">
 				<tr>
 					<td>
-						<a href="/bookjuck/member/book/bookdetail.do?seqLCategory=${seqLCategory}&lCategory=${lCategory}&seqMCategory=${seqMCategory}&mCategory=${mCategory}&seqSCategory=${dto.seqSCategory}&sCategory=${dto.sCategory}&seq=${dto.seq}">
+						<a href="/bookjuck/member/book/bookdetail.do?seqLCategory=${seqLCategory}&seqMCategory=${seqMCategory}&seqSCategory=${dto.seqSCategory}&seq=${dto.seq}">
 							<img src="/bookjuck/image/book/${dto.image}" class="image">
 						</a>
 					</td>
 					<td>
-						<div><a href="/bookjuck/member/book/bookdetail.do?seqLCategory=${seqLCategory}&lCategory=${lCategory}&seqMCategory=${seqMCategory}&mCategory=${mCategory}&seqSCategory=${dto.seqSCategory}&sCategory=${dto.sCategory}&seq=${dto.seq}" class="title">${dto.title}</a></div>
+						<div><a href="/bookjuck/member/book/bookdetail.do?seqLCategory=${seqLCategory}&seqMCategory=${seqMCategory}&seqSCategory=${dto.seqSCategory}&seq=${dto.seq}" class="title">${dto.title}</a></div>
 						<div class="info">${dto.author} | ${dto.publisher}</div>
 						<div class="subinfo">${dto.pubDate} | ${dto.page}쪽</div>
 						<div class="intro">${dto.summary}</div>
