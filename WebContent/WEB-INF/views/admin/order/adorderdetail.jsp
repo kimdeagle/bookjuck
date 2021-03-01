@@ -89,7 +89,9 @@
                      </div>
                   </td>
                   <td style="vertical-align: middle;">${bdto.amount}</td>
-                  <td style="vertical-align: middle;">${bdto.orderState}
+                  <td style="vertical-align: middle;">
+				  <button class="btn btn-general btn-sm"  data-toggle="modal" data-target="#orderstate">상태수정</button>
+                  ${bdto.orderState}
                    <!-- 주문상태가 배송 완료일 때 보임 || 비회원 안 보임 -->
                   </td>
                </tr>
@@ -267,7 +269,9 @@
 		<c:if test="${not empty refundinfo}">
 			<article>
 				<h5>주문 환불 정보</h5>
-	
+		        <button class="btn btn-general process btn-sm"  data-toggle="modal" data-target="#processstate">
+	            처리상태 수정
+	        	</button>
 				<table class="table tbl-md tbl-refundinfo">
 					<tr>
 						<th>사유</th>
@@ -351,7 +355,14 @@
 
 		</c:if>
 			<!-- ######## 이 이전 다은 추가 - 교환/취소/환불 정보 -->
-
+        <hr>
+        <div class="btns"> 
+        	<!-- 목록으로 버튼 링크 연결 시 주의할 것 -->
+            <input type="button" value="목록으로" class="btn back" onclick="location.href='/bookjuck/admin/order/orderlist.do';">
+            <button class="btn btn-general"  data-toggle="modal" data-target="#ordercancel">
+                주문취소
+            </button>
+        </div>
 
 		</section>
 
@@ -364,6 +375,182 @@
 	</div>
 
 
+	<!-- ######### Modal 자사배송 도서 주문상태 모달 -->
+    <div class="modal fade" id="orderstate" role="dialog" aria-labelledby="orderstateHeader" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">주문 상태 수정</h5>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <table class="table">
+                            <tr>
+                                <th>주문번호</th>
+                                <td>00000000</td>
+                            </tr>
+                            <tr>
+                                <th>주문상태</th>
+                                <td>
+                                    <select class="form-control">
+                                        <option value="주문완료">주문완료</option>
+                                        <option value="결제완료">결제완료</option>
+                                        <option value="배송중">배송중</option>
+                                        <option value="배송완료">배송완료</option>
+                                        <option value="주문취소">주문취소</option>
+                                        <option value="주문교환">주문교환</option>
+                                        <option value="주문환불">주문환불</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+                    <button type="button" class="btn btn-general" data-dismiss="modal">수정</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+	<!-- 처리상태 수정 모달 창 --> 
+    <!-- 주문 취소일 경우 -->
+    <div class="modal fade" id="processstate" role="dialog" aria-labelledby="processstateHeader" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">처리상태 수정</h5>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <table class="table">
+                            <tr>
+                                <th>주문번호</th>
+                                <td>00000000</td>
+                            </tr>
+                            <tr>
+                                <th>처리상태</th>
+                                <td>
+                                    <select class="form-control">
+                                        <option value="취소신청">취소신청</option>
+                                        <option value="취소완료">취소완료</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+                    <button type="button" class="btn btn-general" data-dismiss="modal">수정</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 주문 교환일 경우 -->
+    <!-- 
+    <div class="modal fade" id="processstate" role="dialog" aria-labelledby="processstateHeader" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">처리상태 수정</h5>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <table class="table">
+                            <tr>
+                                <th>주문번호</th>
+                                <td>00000000</td>
+                            </tr>
+                            <tr>
+                                <th>처리상태</th>
+                                <td>
+                                    <select class="form-control">
+                                        <option value="교환신청">환불신청</option>
+                                        <option value="처리중">처리중</option>
+                                        <option value="교환완료">교환완료</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+                    <button type="button" class="btn btn-general" data-dismiss="modal">수정</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 주문 환불일 경우 -->
+    <!-- 
+    <div class="modal fade" id="processstate" role="dialog" aria-labelledby="processstateHeader" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">처리상태 수정</h5>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <table class="table">
+                            <tr>
+                                <th>주문번호</th>
+                                <td>00000000</td>
+                            </tr>
+                            <tr>
+                                <th>처리상태</th>
+                                <td>
+                                    <select class="form-control">
+                                        <option value="환불신청">환불신청</option>
+                                        <option value="처리중">처리중</option>
+                                        <option value="환불완료">환불완료</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+                    <button type="button" class="btn btn-general" data-dismiss="modal">수정</button>
+                </div>
+            </div>
+        </div>
+    </div>	
+	-->
+
+
+	<!-- 주문 취소 모달창 (하단 오른쪽 관리자 주문취소 버튼 누를 때) -->
+    <div class="modal fade" id="ordercancel" role="dialog" aria-labelledby="ordercancelHeader" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">주문 취소</h5>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <table class="table">
+                            <tr>
+                                <th>주문번호</th>
+                                <td>00000000</td>
+                            </tr>
+                            <tr>
+                                <th colspan="2" style="text-align: center; font-size: 1.7em;">해당 주문을 취소하시겠습니까?</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+                    <button type="button" class="btn btn-general" data-dismiss="modal">주문취소</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
