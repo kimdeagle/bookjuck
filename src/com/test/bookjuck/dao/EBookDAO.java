@@ -473,6 +473,56 @@ public class EBookDAO {
 		
 		return 0;
 	}
+
+	//EBookDelOk 서블릿 -> 주문 있는지 확인
+	public boolean isOrder(String seq) {
+		
+		try {
+			
+			String sql = "select distinct seqEBook from tblEOrderDetail where seqEBook = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				//주문내역 있으면
+				return true;
+			}
+			
+		} catch (Exception e) {
+			System.out.println("EBookDAO.isOrder()");
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+
+	//EBookDelOk 서블릿 -> EBook 삭제
+	public int del(String seq) {
+
+		try {
+			
+			//EBook 장바구니에서 삭제 (장바구니에 없을 수도 있음)
+			String sql = "delete from tblECart where seqEBook = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			pstat.executeUpdate();
+					
+			//E-Book테이블에서 삭제
+			sql = "delete from tblEBook where seq = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println("EBookDAO.del()");
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
 	
 	//############# 주혁 끝
 	

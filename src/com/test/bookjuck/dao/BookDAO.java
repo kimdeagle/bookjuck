@@ -1269,6 +1269,78 @@ public ArrayList<BookDTO> mBestSeller() {
 		return null;
 	}
 	
+	//BookDelOk 서블릿 -> 주문 또는 독후감 있는지 확인
+	public boolean isOrderOrReview(String seq) {
+		
+		try {
+			
+			String sql = "select seqBook as seq from (select distinct seqBook from tblBookOrderDetail union all select distinct seqBook from tblBaroOrderDetail union all select distinct seqBook from tblReview) where seqBook = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				//종이책 상세주문 + 바로드림 상세주문 + 독후감 > 번호 있으면
+				return true;
+			}
+			
+		} catch (Exception e) {
+			System.out.println("BookDAO.isOrderOrReview()");
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	
+	//BookDelOk 서블릿 -> 도서 삭제
+	public int del(String seq) {
+		
+		try {
+			// - tblInventory, tblBookCart, tblBaroCart, tblBook 순차 삭제
+			
+			String sql = "delete from tblInventory where seqBook = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			int result = pstat.executeUpdate();
+			
+			if (result == 1) {
+				//도서재고 테이블에서 삭제 성공
+				// -> 종이책 장바구니에서 삭제 (장바구니에 없을 수도 있음)
+				sql = "delete from tblBookCart where seqBook = ?";
+				pstat = conn.prepareStatement(sql);
+				pstat.setString(1, seq);
+				
+				pstat.executeUpdate();
+				
+				//바로드림 장바구니에서 삭제 (장바구니에 없을 수도 있음)
+				sql = "delete from tblBaroCart where seqBook = ?";
+				pstat = conn.prepareStatement(sql);
+				pstat.setString(1, seq);
+					
+				pstat.executeUpdate();
+					
+				//도서테이블에서 삭제
+				sql = "delete from tblBook where seq = ?";
+				pstat = conn.prepareStatement(sql);
+				pstat.setString(1, seq);
+				
+				return pstat.executeUpdate();
+
+			} else {
+				//삭제 실패
+				return 0;
+			}
+			
+			
+		} catch (Exception e) {
+			System.out.println("BookDAO.del()");
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+	
 
 	//############# 주혁 끝
 	
@@ -1309,8 +1381,6 @@ public ArrayList<BookDTO> mBestSeller() {
 		
 		return null;
 	}
-
-
 	
 	// ############ (조아라) 끝
 
