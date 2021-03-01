@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.test.bookjuck.DBUtil;
+import com.test.bookjuck.dto.BookDTO;
 import com.test.bookjuck.dto.EBookDTO;
 
 public class EBookDAO {
@@ -34,7 +35,7 @@ public class EBookDAO {
 
 	}
 
-	//주혁 시작
+	//############# 주혁 시작
 	
 	//EBookList 서블릿 -> ebooklist 반환
 	public ArrayList<EBookDTO> getEBookList(HashMap<String, String> map) {
@@ -171,7 +172,308 @@ public class EBookDAO {
 		
 		return 0;
 	}
+
+	//EBookList 서블릿 -> EBook 리스트 반환
+	public ArrayList<EBookDTO> getAdminEBookList(HashMap<String, String> map) {
+		
+		try {
+			
+			String where = "";
+			
+			if (map.get("seqLCategory") != null) {
+				where = "where veb.seqLCategory = " + map.get("seqLCategory");
+			}
+			
+			String sql = String.format("select * from (select a.*, rownum as rnum from (select veb.* from viewEBook veb %s) a) where rnum between %s and %s"
+					, where
+					, map.get("begin")
+					, map.get("end"));
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			ArrayList<EBookDTO> list = new ArrayList<EBookDTO>();
+			
+			while (rs.next()) {
+				EBookDTO dto = new EBookDTO();
+				
+				dto.setSeq(rs.getString("seq"));
+				dto.setTitle(rs.getString("title"));
+				dto.setSeqAuthor(rs.getString("seqAuthor"));
+				dto.setPublisher(rs.getString("publisher"));
+				dto.setPubDate(rs.getString("pubDate"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setSalePrice(rs.getInt("salePrice"));
+				dto.setCopy(rs.getString("copy"));
+				dto.setIsbn(rs.getString("isbn"));
+				dto.setIntro(rs.getString("intro"));
+				dto.setImage(rs.getString("image"));
+				dto.seteFile(rs.getString("eFile"));
+				dto.setContents(rs.getString("contents"));
+				dto.setAuthor(rs.getString("author"));
+				dto.setAuthorIntro(rs.getString("authorIntro"));
+				dto.setSeqLCategory(rs.getString("seqLCategory"));
+				dto.setlCategory(rs.getString("lCategory"));
+				dto.setSeqMCategory(rs.getString("seqMCategory"));
+				dto.setmCategory(rs.getString("mCategory"));
+				dto.setSeqSCategory(rs.getString("seqSCategory"));
+				dto.setsCategory(rs.getString("sCategory"));
+				
+				list.add(dto);
+				
+			}
+			
+			return list;
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}		
+		
+		return null;
+	}
+
+	//EBookList 서블릿 -> (페이징) E-Book 수 반환
+	public int getAdminEBookCount(HashMap<String, String> map) {
+		
+		try {
+			
+			String where = "";
+			
+			if (map.get("seqLCategory") != null) {
+				//대분류 선택
+				where = String.format("where seqLCategory = %s", map.get("seqLCategory"));
+			}
+			
+			String sql = String.format("select count(*) as cnt from viewEBook %s", where);
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			if (rs.next()) {
+				return rs.getInt("cnt");
+			}
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}		
+		
+		return 0;
+	}
+
+	//EBookList 서블릿 -> 총 E-Book 수
+	public int getWholeEBookCount() {
+		
+		try {
+			
+			String sql = "select count(*) as cnt from viewEBook";
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			if (rs.next()) {
+				return rs.getInt("cnt");
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}		
+		
+		return 0;
+	}
+
+	//EBookList 서블릿 -> 국내E-Book 수
+	public int getInternalEBookCount() {
+		
+		try {
+			
+			String sql = "select count(*) as cnt from viewEBook where seqLCategory = 1";
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			if (rs.next()) {
+				return rs.getInt("cnt");
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}			
+		
+		return 0;
+	}
+
+	//EBookList 서블릿 -> 해외E-Book 수
+	public int getExternalEBookCount() {
+		
+		try {
+			
+			String sql = "select count(*) as cnt from viewEBook where seqLCategory = 2";
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			if (rs.next()) {
+				return rs.getInt("cnt");
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}				
+		
+		return 0;
+	}
+
+	//EBookAddOk 서블릿 -> EBook 추가
+	public int add(EBookDTO ebdto) {
+		
+		try {
+			
+			String sql = "insert into tblEBook (seq, seqAuthor, seqSCategory, title, publisher, price, salePrice, pubDate, intro, isbn, copy, image, eFile, contents) values (seqBook.nextVal, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, ebdto.getSeqAuthor());
+			pstat.setString(2, ebdto.getSeqSCategory());
+			pstat.setString(3, ebdto.getTitle());
+			pstat.setString(4, ebdto.getPublisher());
+			pstat.setInt(5, ebdto.getPrice());
+			pstat.setInt(6, (ebdto.getPrice() / 10) * 9);
+			pstat.setString(7, ebdto.getPubDate());
+			pstat.setString(8, ebdto.getIntro());
+			pstat.setString(9, ebdto.getIsbn());
+			pstat.setString(10, ebdto.getCopy());
+			pstat.setString(11, ebdto.getImage());
+			pstat.setString(12, ebdto.geteFile());
+			pstat.setString(13, ebdto.getContents());
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}		
+		
+		return 0;
+	}
+
+	//EBookEdit 서블릿 -> EBook 상세
+	public EBookDTO getAdminEBookDetail(String seq) {
+		
+		try {
+			
+			String sql = "select * from viewEBook where seq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				EBookDTO dto = new EBookDTO();
+				
+				dto.setSeq(rs.getString("seq"));
+				dto.setTitle(rs.getString("title"));
+				dto.setSeqAuthor(rs.getString("seqAuthor"));
+				dto.setPublisher(rs.getString("publisher"));
+				dto.setPubDate(rs.getString("pubDate"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setSalePrice(rs.getInt("salePrice"));
+				dto.setCopy(rs.getString("copy"));
+				dto.setIsbn(rs.getString("isbn"));
+				dto.setIntro(rs.getString("intro"));
+				dto.setImage(rs.getString("image"));
+				dto.seteFile(rs.getString("eFile"));
+				dto.setContents(rs.getString("contents"));
+				dto.setAuthor(rs.getString("author"));
+				dto.setAuthorIntro(rs.getString("authorIntro"));
+				dto.setSeqLCategory(rs.getString("seqLCategory"));
+				dto.setSeqMCategory(rs.getString("seqMCategory"));
+				dto.setSeqSCategory(rs.getString("seqSCategory"));
+				dto.setlCategory(rs.getString("lCategory"));
+				dto.setmCategory(rs.getString("mCategory"));
+				dto.setsCategory(rs.getString("sCategory"));
+				
+				return dto;
+				
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}		
+		
+		return null;
+	}
+
+	//EBookEditOk 서블릿 -> 이미지 수정 안한 경우 이미지 파일명 가져오기
+	public String getImageFileName(String seq) {
+
+		try {
+			
+			String sql = "select image from tblEBook where seq = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				return rs.getString("image");
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}		
+		
+		return null;
+	}
+
+	//EBookEditOk 서블릿 -> eFile 수정 안한 경우 EBook 파일명 가져오기
+	public String getEBookFileName(String seq) {
+
+		try {
+			
+			String sql = "select eFile from tblEBook where seq = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				return rs.getString("eFile");
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}		
+		
+		return null;
+	}
+
+	//EBookEditOk 서블릿 -> 도서 수정
+	public int edit(EBookDTO ebdto) {
+
+		try {
+			
+			String sql = "update tblEBook set seqAuthor = ?, seqSCategory = ?, title = ?, publisher = ?, price = ?, salePrice = ?, pubDate = ?, intro = ?, isbn = ?, copy = ?, image = ?, eFile = ?, contents = ? where seq = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, ebdto.getSeqAuthor());
+			pstat.setString(2, ebdto.getSeqSCategory());
+			pstat.setString(3, ebdto.getTitle());
+			pstat.setString(4, ebdto.getPublisher());
+			pstat.setInt(5, ebdto.getPrice());
+			pstat.setInt(6, (ebdto.getPrice() / 10) * 9);
+			pstat.setString(7, ebdto.getPubDate());
+			pstat.setString(8, ebdto.getIntro());
+			pstat.setString(9, ebdto.getIsbn());
+			pstat.setString(10, ebdto.getCopy());
+			pstat.setString(11, ebdto.getImage());
+			pstat.setString(12, ebdto.geteFile());
+			pstat.setString(13, ebdto.getContents());
+			
+			pstat.setString(14, ebdto.getSeq());
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}		
+		
+		return 0;
+	}
 	
-	//주혁 끝
+	//############# 주혁 끝
 	
 } //EBookDAO

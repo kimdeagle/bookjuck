@@ -156,7 +156,7 @@ public class BookList extends HttpServlet {
 				
 			} else {
 				pagebar += String.format("<li>" + 
-						"		    <a href=\"/bookjuck/member/book/booklist.do?page=%d\" aria-label=\"Next\">" + 
+						"		    <a href=\"/bookjuck/admin/book/booklist.do?page=%d\" aria-label=\"Next\">" + 
 						"		        <span aria-hidden=\"true\">&raquo;</span>" + 
 						"		    </a>" + 
 						"		</li>"
