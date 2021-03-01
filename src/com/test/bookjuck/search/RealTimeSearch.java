@@ -29,7 +29,7 @@ public class RealTimeSearch extends HttpServlet {
 		RealTimeSearchDAO dao = new RealTimeSearchDAO();
 		list = dao.getSearchRank();
 		
-		System.out.println(list +"realtimesearch.java");
+		
 		
 
 		req.setAttribute("list", list);
