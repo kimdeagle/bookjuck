@@ -144,8 +144,8 @@
 			<!-- 세번째 테이블 끝 -->
 
 
-		<address>
 
+		<address>
 			<p>
 				Copyright ©<b>BookJuck</b>Corp. All Rights Reserved.
 			</p>

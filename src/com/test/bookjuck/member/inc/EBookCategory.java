@@ -24,10 +24,10 @@ public class EBookCategory extends HttpServlet {
 		//2.
 		CategoryDAO dao = new CategoryDAO();
 		ArrayList<CategoryDTO> mCategoryList = dao.mCategoryList();
-		ArrayList<CategoryDTO> categoryList = dao.eBookCategoryList();
+		ArrayList<CategoryDTO> sCategoryList = dao.eBookCategoryList();
 		
 		request.setAttribute("mCategoryList", mCategoryList);
-		request.setAttribute("categoryList", categoryList);
+		request.setAttribute("sCategoryList", sCategoryList);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/member/inc/ebookcategory.jsp");
 		dispatcher.include(request, response);

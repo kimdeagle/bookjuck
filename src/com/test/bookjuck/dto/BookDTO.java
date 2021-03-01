@@ -16,6 +16,8 @@ public class BookDTO {
 	private String image;
 	private String contents; 
 	private int page;
+	private String paydate;
+	
 	
 	private String author; //작가명
 	private String authorIntro; //작가 소개
@@ -192,6 +194,12 @@ public class BookDTO {
 	}
 	public void setAmount(int amount) {
 		this.amount = amount;
+	}
+	public String getPaydate() {
+		return paydate;
+	}
+	public void setPaydate(String paydate) {
+		this.paydate = paydate;
 	}
 	
 	

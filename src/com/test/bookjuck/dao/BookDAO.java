@@ -636,6 +636,52 @@ public ArrayList<BookDTO> NoCategoryNewBook (HashMap<String, String> map){
 		return null;
 		
 	}
+	
+public ArrayList<BookDTO> mBestSeller() {
+		
+		
+		try {
+			
+			
+			String sql = "select * from vwmainbestseller";
+			
+					
+			
+			pstat = conn.prepareStatement(sql);
+			rs = pstat.executeQuery();
+			
+			
+			ArrayList<BookDTO> list = new ArrayList<BookDTO>();
+			
+			while (rs.next()) {
+				
+				BookDTO dto = new BookDTO();
+				
+				dto.setSeq(rs.getString("seq"));
+				dto.setTitle(rs.getString("title"));
+				dto.setAmount(rs.getInt("amount"));	
+				dto.setCopy(rs.getString("copy"));
+				dto.setImage(rs.getString("image"));
+				dto.setPaydate(rs.getString("paydate"));
+				
+							
+				
+				list.add(dto);
+			
+				
+			}
+			
+			return list;
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		
+		return null;
+		
+	}
 	//메인 베스트셀러 --이현우
 	public ArrayList<BookDTO> mainBestSeller(){
 		
@@ -807,11 +853,13 @@ public ArrayList<BookDTO> NoCategoryNewBook (HashMap<String, String> map){
 			
 			if (map.get("seqSCategory") == null) {
 				//도서 리스트 첫 화면
-				innerSql = String.format("select b.*, sc.sCategory as sCategory, (select name from tblAuthor where seq = b.seqAuthor) as author from tblBook b inner join tblSCategory sc on b.seqSCategory = sc.seq inner join tblMCategory mc on sc.seqMCategory = mc.seq where mc.seq = %s order by b.pubDate desc, b.title", map.get("seqMCategory"));
+				//innerSql = String.format("select b.*, sc.sCategory as sCategory, (select name from tblAuthor where seq = b.seqAuthor) as author from tblBook b inner join tblSCategory sc on b.seqSCategory = sc.seq inner join tblMCategory mc on sc.seqMCategory = mc.seq where mc.seq = %s order by b.pubDate desc, b.title", map.get("seqMCategory"));
+				innerSql = String.format("select * from viewBook where seqMCategory = %s order by pubDate desc, title asc", map.get("seqMCategory"));
 
 			} else {
 				//도서 리스트 좌측 소분류 선택
-				innerSql = String.format("select b.*, (select sCategory from tblSCategory where seq = b.seqSCategory) as sCategory, (select name from tblAuthor where seq = b.seqAuthor) as author from tblBook b where b.seqSCategory = %s order by b.pubDate desc, b.title", map.get("seqSCategory"));
+				//innerSql = String.format("select b.*, (select sCategory from tblSCategory where seq = b.seqSCategory) as sCategory, (select name from tblAuthor where seq = b.seqAuthor) as author from tblBook b where b.seqSCategory = %s order by b.pubDate desc, b.title", map.get("seqSCategory"));
+				innerSql = String.format("select * from viewBook where seqSCategory = %s order by pubDate desc, title asc", map.get("seqSCategory"));
 			}
 			
 			sql = String.format("select * from (select a.*, rownum as rnum from (%s) a) where rnum between %s and %s", innerSql, map.get("begin"), map.get("end"));
@@ -835,6 +883,10 @@ public ArrayList<BookDTO> NoCategoryNewBook (HashMap<String, String> map){
 				bdto.setSalePrice(rs.getInt("salePrice"));
 				bdto.setSeq(rs.getString("seq"));
 				
+				bdto.setSeqLCategory(rs.getString("seqLCategory"));
+				bdto.setlCategory(rs.getString("lCategory"));
+				bdto.setSeqMCategory(rs.getString("seqMCategory"));
+				bdto.setmCategory(rs.getString("mCategory"));
 				bdto.setSeqSCategory(rs.getString("seqSCategory"));
 				bdto.setsCategory(rs.getString("sCategory"));
 				
@@ -856,7 +908,7 @@ public ArrayList<BookDTO> NoCategoryNewBook (HashMap<String, String> map){
 		
 		try {
 			
-			String sql = "select b.*, lc.seq as seqLCategory, mc.seq as seqMCategory, lc.lCategory as lCategory, mc.mCategory as mCategory, sc.sCategory as sCategory, (select name from tblAuthor where seq = b.seqAuthor) as author, (select intro from tblAuthor where seq = b.seqAuthor) as authorIntro from tblBook b inner join tblSCategory sc on b.seqScategory = sc.seq inner join tblMCategory mc on sc.seqMCategory = mc.seq inner join tblLcategory lc on mc.seqLCategory = lc.seq where b.seq = ?";
+			String sql = "select * from viewBook where seq = ?";
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, seq);
@@ -1223,6 +1275,78 @@ public ArrayList<BookDTO> NoCategoryNewBook (HashMap<String, String> map){
 		return null;
 	}
 	
+	//BookDelOk 서블릿 -> 주문 또는 독후감 있는지 확인
+	public boolean isOrderOrReview(String seq) {
+		
+		try {
+			
+			String sql = "select seqBook as seq from (select distinct seqBook from tblBookOrderDetail union all select distinct seqBook from tblBaroOrderDetail union all select distinct seqBook from tblReview) where seqBook = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				//종이책 상세주문 + 바로드림 상세주문 + 독후감 > 번호 있으면
+				return true;
+			}
+			
+		} catch (Exception e) {
+			System.out.println("BookDAO.isOrderOrReview()");
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	
+	//BookDelOk 서블릿 -> 도서 삭제
+	public int del(String seq) {
+		
+		try {
+			// - tblInventory, tblBookCart, tblBaroCart, tblBook 순차 삭제
+			
+			String sql = "delete from tblInventory where seqBook = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			int result = pstat.executeUpdate();
+			
+			if (result == 1) {
+				//도서재고 테이블에서 삭제 성공
+				// -> 종이책 장바구니에서 삭제 (장바구니에 없을 수도 있음)
+				sql = "delete from tblBookCart where seqBook = ?";
+				pstat = conn.prepareStatement(sql);
+				pstat.setString(1, seq);
+				
+				pstat.executeUpdate();
+				
+				//바로드림 장바구니에서 삭제 (장바구니에 없을 수도 있음)
+				sql = "delete from tblBaroCart where seqBook = ?";
+				pstat = conn.prepareStatement(sql);
+				pstat.setString(1, seq);
+					
+				pstat.executeUpdate();
+					
+				//도서테이블에서 삭제
+				sql = "delete from tblBook where seq = ?";
+				pstat = conn.prepareStatement(sql);
+				pstat.setString(1, seq);
+				
+				return pstat.executeUpdate();
+
+			} else {
+				//삭제 실패
+				return 0;
+			}
+			
+			
+		} catch (Exception e) {
+			System.out.println("BookDAO.del()");
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+	
 
 	//############# 주혁 끝
 	
@@ -1263,8 +1387,6 @@ public ArrayList<BookDTO> NoCategoryNewBook (HashMap<String, String> map){
 		
 		return null;
 	}
-
-
 	
 	// ############ (조아라) 끝
 

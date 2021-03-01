@@ -58,6 +58,7 @@ public class ReviewDAO {
 					+ "        r.isprize as isprize,"
 					+ "        m.seq as seqmember,"
 					+ "        m.id as id,"
+					+ "        b.seq as seqbook,"
 					+ "        b.title as booktitle"
 					+ "    from tblReview r"
 					+ "        inner join tblBook b"
@@ -86,6 +87,7 @@ public class ReviewDAO {
 				dto.setBookTitle(rs.getString("booktitle"));
 				dto.setId(rs.getString("id"));
 				dto.setSeqMember(rs.getString("seqmember"));
+				dto.setSeqBook(rs.getString("seqbook"));
 				
 				list.add(dto);
 				

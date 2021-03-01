@@ -29,13 +29,12 @@ public class BookList extends HttpServlet {
 		//1.
 		String seqLCategory = request.getParameter("seqLCategory");
 		String seqMCategory = request.getParameter("seqMCategory");
-		
 		String seqSCategory = request.getParameter("seqSCategory");
 		
-		String lCategory = request.getParameter("lCategory");
-		String mCategory = request.getParameter("mCategory");
+		//String lCategory = request.getParameter("lCategory");
+		//String mCategory = request.getParameter("mCategory");
 
-		String sCategory = request.getParameter("sCategory");
+		//String sCategory = request.getParameter("sCategory");
 		
 		HashMap<String, String> map = new HashMap<String, String>();
 		
@@ -67,6 +66,7 @@ public class BookList extends HttpServlet {
 		map.put("begin", begin + "");
 		map.put("end", end + "");
 		
+		map.put("seqLCategory", seqLCategory);
 		map.put("seqMCategory", seqMCategory);
 		map.put("seqSCategory", seqSCategory);
 		
@@ -113,27 +113,22 @@ public class BookList extends HttpServlet {
 		} else {
 			if (seqSCategory != null) {
 				pagebar += String.format("<li>" + 
-						"		    <a href=\"/bookjuck/member/book/booklist.do?seqLCategory=%s&lCategory=%s&seqMCategory=%s&mCategory=%s&seqSCategory=%s&sCategory=%s&page=%d\" aria-label=\"Previous\">" + 
+						"		    <a href=\"/bookjuck/member/book/booklist.do?seqLCategory=%s&seqMCategory=%s&seqSCategory=%s&page=%d\" aria-label=\"Previous\">" + 
 						"		        <span aria-hidden=\"true\">&laquo;</span>" + 
 						"		    </a>" + 
 						"		</li>"
 						, seqLCategory
-						, lCategory
 						, seqMCategory
-						, mCategory
 						, seqSCategory
-						, sCategory
 						, n - 1);
 			} else {
 				pagebar += String.format("<li>" + 
-						"		    <a href=\"/bookjuck/member/book/booklist.do?seqLCategory=%s&lCategory=%s&seqMCategory=%s&mCategory=%s&page=%d\" aria-label=\"Previous\">" + 
+						"		    <a href=\"/bookjuck/member/book/booklist.do?seqLCategory=%s&seqMCategory=%s&page=%d\" aria-label=\"Previous\">" + 
 						"		        <span aria-hidden=\"true\">&laquo;</span>" + 
 						"		    </a>" + 
 						"		</li>"
 						, seqLCategory
-						, lCategory
 						, seqMCategory
-						, mCategory
 						, n - 1);			
 
 			}
@@ -150,22 +145,17 @@ public class BookList extends HttpServlet {
 				
 			}
 			if (seqSCategory != null) {
-				pagebar += String.format("<a href=\"/bookjuck/member/book/booklist.do?seqLCategory=%s&lCategory=%s&seqMCategory=%s&mCategory=%s&seqSCategory=%s&sCategory=%s&page=%d\">%d</a></li> "
+				pagebar += String.format("<a href=\"/bookjuck/member/book/booklist.do?seqLCategory=%s&seqMCategory=%s&seqSCategory=%s&page=%d\">%d</a></li> "
 						, seqLCategory
-						, lCategory
 						, seqMCategory
-						, mCategory
 						, seqSCategory
-						, sCategory
 						, n
 						, n);
 				
 			} else {
-				pagebar += String.format("<a href=\"/bookjuck/member/book/booklist.do?seqLCategory=%s&lCategory=%s&seqMCategory=%s&mCategory=%s&page=%d\">%d</a></li> "
+				pagebar += String.format("<a href=\"/bookjuck/member/book/booklist.do?seqLCategory=%s&seqMCategory=%s&page=%d\">%d</a></li> "
 						, seqLCategory
-						, lCategory
 						, seqMCategory
-						, mCategory
 						, n
 						, n);
 
@@ -185,28 +175,23 @@ public class BookList extends HttpServlet {
 		} else {
 			if (seqSCategory != null) {
 				pagebar += String.format("<li>" + 
-						"		    <a href=\"/bookjuck/member/book/booklist.do?seqLCategory=%s&lCategory=%s&seqMCategory=%s&mCategory=%s&seqSCategory=%s&sCategory=%s&page=%d\" aria-label=\"Next\">" + 
+						"		    <a href=\"/bookjuck/member/book/booklist.do?seqLCategory=%s&seqMCategory=%s&seqSCategory=%s&page=%d\" aria-label=\"Next\">" + 
 						"		        <span aria-hidden=\"true\">&raquo;</span>" + 
 						"		    </a>" + 
 						"		</li>"
 						, seqLCategory
-						, lCategory
 						, seqMCategory
-						, mCategory
 						, seqSCategory
-						, sCategory
 						, n);			
 				
 			} else {
 				pagebar += String.format("<li>" + 
-						"		    <a href=\"/bookjuck/member/book/booklist.do?seqLCategory=%s&lCategory=%s&seqMCategory=%s&mCategory=%s&page=%d\" aria-label=\"Next\">" + 
+						"		    <a href=\"/bookjuck/member/book/booklist.do?seqLCategory=%s&seqMCategory=%s&page=%d\" aria-label=\"Next\">" + 
 						"		        <span aria-hidden=\"true\">&raquo;</span>" + 
 						"		    </a>" + 
 						"		</li>"
 						, seqLCategory
-						, lCategory
 						, seqMCategory
-						, mCategory
 						, n);			
 
 			}
@@ -217,13 +202,11 @@ public class BookList extends HttpServlet {
 		//3.
 		request.setAttribute("seqLCategory", seqLCategory);
 		request.setAttribute("seqMCategory", seqMCategory);
-		
 		request.setAttribute("seqSCategory", seqSCategory);
 		
-		request.setAttribute("lCategory", lCategory);
-		request.setAttribute("mCategory", mCategory);
-		
-		request.setAttribute("sCategory", sCategory);
+		//request.setAttribute("lCategory", lCategory);
+		//request.setAttribute("mCategory", mCategory);
+		//request.setAttribute("sCategory", sCategory);
 		
 		request.setAttribute("blist", blist);
 		

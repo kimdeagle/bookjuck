@@ -11,14 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.test.bookjuck.dao.BaroOrderDetailDAO;
-import com.test.bookjuck.dao.BaroPayDAO;
 import com.test.bookjuck.dao.BookDAO;
 import com.test.bookjuck.dao.BookDeliveryDAO;
+import com.test.bookjuck.dao.BookOrderDetailDAO;
 import com.test.bookjuck.dao.BookPayDAO;
 import com.test.bookjuck.dao.OrderListDAO;
-import com.test.bookjuck.dto.BaroOrderDetailDTO;
-import com.test.bookjuck.dto.BaroPayDTO;
 import com.test.bookjuck.dto.BookDTO;
 import com.test.bookjuck.dto.BookDeliveryDTO;
 import com.test.bookjuck.dto.BookOrderDetailDTO;
@@ -63,6 +60,38 @@ public class OrderDetail extends HttpServlet {
 		BookDAO pdao = new BookDAO();
 		ArrayList<BookDTO> plist = pdao.getPossibleBook(session.getAttribute("seq").toString());
 		// 조아라 끝)
+		
+		
+		// 다은 시작) 주문 상세정보에 교/취/환 정보 추가하기
+		BookOrderDetailDAO boddao = new BookOrderDetailDAO();
+		
+		//주문이 일반주문인지 교환/취소/환불인지 알아내기
+		String ordertype = boddao.getType(seqBookOrder);
+		
+		BookOrderDetailDTO cancelinfo;
+		BookOrderDetailDTO returninfo;
+		BookOrderDetailDTO refundinfo;
+		
+		
+		if (ordertype.equals("cancel")) {
+			//취소정보 가져오기
+			cancelinfo = boddao.getCancelInfo(seqBookOrder);	
+			req.setAttribute("cancelinfo", cancelinfo);
+			
+		} else if (ordertype.equals("return")) {
+			//교환정보 가져오기
+			returninfo = boddao.getReturnInfo(seqBookOrder);	
+			req.setAttribute("returninfo", returninfo);
+			
+		} else if (ordertype.equals("refund")) {
+			//환불정보 가져오기
+			refundinfo = boddao.getRefundInfo(seqBookOrder);	
+			req.setAttribute("refundinfo", refundinfo);
+		
+		}
+		
+		// 다은 끝
+		
 
 		req.setAttribute("blist", blist);		
 		req.setAttribute("bdlist", bdlist);
@@ -70,6 +99,8 @@ public class OrderDetail extends HttpServlet {
 		req.setAttribute("seqBookOrder", seqBookOrder);
 		req.setAttribute("orderDate", orderDate);
 		req.setAttribute("plist", plist); // 조아라) 독후감쓸 수 있는 책 리스트도 보내기
+		
+		req.setAttribute("ordertype", ordertype); // 다은) 주문 타입보내기
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/member/mypage/orderdetail.jsp");
 		dispatcher.forward(req, resp);

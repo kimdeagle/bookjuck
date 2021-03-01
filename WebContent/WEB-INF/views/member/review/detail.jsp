@@ -99,7 +99,7 @@
            <div class="modal-body">
             <p>정말 삭제하시겠습니까?</p>
            </div>
-           <div id="btn">
+           <div id="btn" style="margin-bottom:20px;">
                <button type="button" class="btn btn-general inline" id="del" onclick="location.href='/bookjuck/member/review/del.do?seq=${dto.seq}'">삭제하기</button>
            </div>
        <!-- <div class="modal-footer">

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,25 +56,19 @@
 				<h3>회원정보 조회</h3>
 
 				<h5>아이디 정보</h5>
-				<form action="" method="GET">
-				<table class="createId table" id="idtbl">
+				<form action="/bookjuck/member/mypage/custinfoedit.do" method="GET">
+				<table class="createId table tbl-md" id="idtbl">
 
 
 					<tr>
-						<th width="300">아이디:</th>
-						<td colspan="1">
-							TEST001
-						</td>
+						<th width="290">아이디:</th>
+						<td colspan="1">${id}</td>
 						<td></td>
 					</tr>
 					<tr>
 						<th>비밀번호:</th>
-						<td>
-							********
-						</td>
-						<td>
-							<a>[비밀번호 보기]</a>
-						</td>
+						<td>${pw}</td>
+						<td></td>
 					</tr>
 					
 				<!-- 	<tr>
@@ -87,37 +82,44 @@
 				<table class="createId table" id="test001">
 			<tr>
 				<th>이름:</th>
-				<td>홍길동</td>
+				<td>${name}</td>
 			</tr>
 			<tr>
 				<th>성별:</th>
-				<td>남자</td>
-			</tr>
-			<tr>
-				<th>주민번호:</th>
 				<td>
-					940123-1122345
+					
+					<c:if test="${ssn.substring(7,8) eq '1'}">
+						남자
+					</c:if>
+					
+					<c:if test="${ssn.substring(7,8) eq '2'}">
+						여자
+					</c:if> 
 				</td>
 			</tr>
 			<tr>
+				<th>주민번호:</th>
+				<td>${ssn}</td>
+			</tr>
+			<tr>
 				<th>주소:</th>
-				<td>서울특별시 강남구 역삼동 테헤란로 132</td>
+				<td>${address}</td>
 			</tr>
 			<tr>
 				<th>E-Mail:</th>
-				<td>TEST001@gmail.com</td>
+				<td>${email}</td>
 			</tr>
 			<tr>
 				<th>연락처:</th>
-				<td>010<span>-</span>1111<span>-</span>1111</td>
+				<td>0${tel}</td>
 			</tr>
 			<tr>
 				<th>큐레이션레터 서비스:</th>
-				<td> 구독</label></td>
+				<td>${curation}</label></td>
 			</tr>
 			<tr>
 				<th>개인정보 유효 기간</th>
-				<td> 1년</td>
+				<td>${privacy}년</td>
 			</tr>		
 		</table>
 		<input type="submit" class="btn btn-general" id="submit-btn" value="수정">

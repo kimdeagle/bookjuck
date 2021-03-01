@@ -27,14 +27,17 @@ public class MainBook extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		
 		
+
 		//session.setAttribute("id", "test004"); // 추천도서 비회원 접근 제한 테스트용 세션
 
 		//session.setAttribute("seq", "24"); // 추천도서 적용여부 테스트용 세션
 
 		
+
 		ArrayList<BookDTO> list1 = new ArrayList<BookDTO>(); //추천도서
 		ArrayList<BookDTO> list2 = new ArrayList<BookDTO>(); //베스트도서
 		ArrayList<BookDTO> list3 = new ArrayList<BookDTO>(); //화제의신간
+	
 		
 		
 		if (session.getAttribute("seq") == null) {
@@ -45,9 +48,8 @@ public class MainBook extends HttpServlet {
 			
 			BookDAO dao = new BookDAO();
 			
-			list2 = dao.mainNewBook();//메인신간도서
-			list3 = dao.mainBestSeller();//메인베스트셀러
-			
+			list3 = dao.mainNewBook();//메인신간도서
+			list2 = dao.mainBestSeller();//메인베스트셀러
 			
 			//메인신간도서
 			for (BookDTO dto : list2) {
@@ -80,12 +82,38 @@ public class MainBook extends HttpServlet {
 					dto.setCopy(dto.getCopy().substring(0, 80) + "..");
 				}
 	
-			}
+			}     
+				
+			
+				ArrayList<BookDTO> list33 = new ArrayList<BookDTO>(); 
+				ArrayList<BookDTO> list44 = new ArrayList<BookDTO>(); //베스트도서 -두번째줄
+				ArrayList<BookDTO> list55 = new ArrayList<BookDTO>(); 
+				ArrayList<BookDTO> list66 = new ArrayList<BookDTO>(); //화제의신간 -두번째줄
+				
+				
+				for (int i = 0; i <= 2; i++) {
+					list33.add(list2.get(i));
+				}
+
+				for (int i = 3; i <= 5; i++) {
+					list44.add(list2.get(i));
+					
+					
+				}
+				
+				for (int i = 0; i <= 2; i++) {
+					list55.add(list3.get(i));
+				}
+
+				for (int i = 3; i <= 5; i++) {
+					list66.add(list3.get(i));
+				}
 				
 
-				req.setAttribute("list2", list2);
-				req.setAttribute("list3", list3);
-				
+				req.setAttribute("list33", list33);
+				req.setAttribute("list44", list44);
+				req.setAttribute("list55", list55);
+				req.setAttribute("list66", list66);
 				
 		
 			
@@ -94,8 +122,8 @@ public class MainBook extends HttpServlet {
 			
 			BookDAO dao = new BookDAO();
 			list1 = dao.mainRecommendBook(session.getAttribute("seq").toString());
-			list2 = dao.mainNewBook();
-			list3 = dao.mainBestSeller();
+			list3 = dao.mainNewBook();
+			list2 = dao.mainBestSeller();
 			
 			
 			
@@ -148,9 +176,50 @@ public class MainBook extends HttpServlet {
 		
 				}
 					
-					req.setAttribute("list1", list1);
-					req.setAttribute("list2", list2);
-					req.setAttribute("list3", list3);
+					
+					ArrayList<BookDTO> list11 = new ArrayList<BookDTO>(); 
+					ArrayList<BookDTO> list22 = new ArrayList<BookDTO>(); 
+					ArrayList<BookDTO> list33 = new ArrayList<BookDTO>(); 
+					ArrayList<BookDTO> list44 = new ArrayList<BookDTO>(); 
+					ArrayList<BookDTO> list55 = new ArrayList<BookDTO>(); 
+					ArrayList<BookDTO> list66 = new ArrayList<BookDTO>();
+					
+					
+					
+					for (int i = 0; i <= 2; i++) {
+						list11.add(list1.get(i));
+					}
+
+					for (int i = 3; i <= 5; i++) {
+						list22.add(list1.get(i));
+			
+					}
+					for (int i = 0; i <= 2; i++) {
+						list33.add(list2.get(i));
+					}
+
+					for (int i = 3; i <= 5; i++) {
+						list44.add(list2.get(i));
+						
+						
+					}
+					
+					for (int i = 0; i <= 2; i++) {
+						list55.add(list3.get(i));
+					}
+
+					for (int i = 3; i <= 5; i++) {
+						list66.add(list3.get(i));
+					}
+					
+					
+					
+					req.setAttribute("list11", list11);
+					req.setAttribute("list22", list22);
+					req.setAttribute("list33", list33);
+					req.setAttribute("list44", list44);
+					req.setAttribute("list55", list55);
+					req.setAttribute("list66", list66);
 					
 							
 			

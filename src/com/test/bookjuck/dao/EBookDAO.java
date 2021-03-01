@@ -47,11 +47,13 @@ public class EBookDAO {
 			
 			if (map.get("seqSCategory") == null) {
 				//E-Book 리스트 첫 화면
-				innerSql = "select eb.*, lc.seq as seqLCategory, mc.seq as seqMCategory, lc.lCategory as lCategory, mc.mCategory as mCategory, sc.sCategory as sCategory, (select name from tblAuthor where seq = eb.seqAuthor) as author from tblEbook eb inner join tblSCategory sc on eb.seqSCategory = sc.seq inner join tblMCategory mc on sc.seqMCategory = mc.seq inner join tblLCategory lc on mc.seqLCategory = lc.seq order by eb.pubDate desc, eb.title asc";
+				//innerSql = "select eb.*, lc.seq as seqLCategory, mc.seq as seqMCategory, lc.lCategory as lCategory, mc.mCategory as mCategory, sc.sCategory as sCategory, (select name from tblAuthor where seq = eb.seqAuthor) as author from tblEbook eb inner join tblSCategory sc on eb.seqSCategory = sc.seq inner join tblMCategory mc on sc.seqMCategory = mc.seq inner join tblLCategory lc on mc.seqLCategory = lc.seq order by eb.pubDate desc, eb.title asc";
+				innerSql = "select * from viewEBook order by pubDate desc, title asc";
 
 			} else {
 				//도서 리스트 좌측 소분류 선택
-				innerSql = String.format("select eb.*, lc.seq as seqLCategory, mc.seq as seqMCategory, lc.lCategory as lCategory, mc.mCategory as mCategory, sc.sCategory as sCategory, (select name from tblAuthor where seq = eb.seqAuthor) as author from tblEbook eb inner join tblSCategory sc on eb.seqSCategory = sc.seq inner join tblMCategory mc on sc.seqMCategory = mc.seq inner join tblLCategory lc on mc.seqLCategory = lc.seq where eb.seqSCategory = %s order by eb.pubDate desc, eb.title asc", map.get("seqSCategory"));
+				//innerSql = String.format("select eb.*, lc.seq as seqLCategory, mc.seq as seqMCategory, lc.lCategory as lCategory, mc.mCategory as mCategory, sc.sCategory as sCategory, (select name from tblAuthor where seq = eb.seqAuthor) as author from tblEbook eb inner join tblSCategory sc on eb.seqSCategory = sc.seq inner join tblMCategory mc on sc.seqMCategory = mc.seq inner join tblLCategory lc on mc.seqLCategory = lc.seq where eb.seqSCategory = %s order by eb.pubDate desc, eb.title asc", map.get("seqSCategory"));
+				innerSql = String.format("select * from viewEBook where seqSCategory = %s order by pubDate desc, title asc", map.get("seqSCategory"));
 
 			}
 			
@@ -470,6 +472,56 @@ public class EBookDAO {
 		} catch (Exception e) {
 			System.out.println(e);
 		}		
+		
+		return 0;
+	}
+
+	//EBookDelOk 서블릿 -> 주문 있는지 확인
+	public boolean isOrder(String seq) {
+		
+		try {
+			
+			String sql = "select distinct seqEBook from tblEOrderDetail where seqEBook = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				//주문내역 있으면
+				return true;
+			}
+			
+		} catch (Exception e) {
+			System.out.println("EBookDAO.isOrder()");
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+
+	//EBookDelOk 서블릿 -> EBook 삭제
+	public int del(String seq) {
+
+		try {
+			
+			//EBook 장바구니에서 삭제 (장바구니에 없을 수도 있음)
+			String sql = "delete from tblECart where seqEBook = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			pstat.executeUpdate();
+					
+			//E-Book테이블에서 삭제
+			sql = "delete from tblEBook where seq = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println("EBookDAO.del()");
+			e.printStackTrace();
+		}
 		
 		return 0;
 	}

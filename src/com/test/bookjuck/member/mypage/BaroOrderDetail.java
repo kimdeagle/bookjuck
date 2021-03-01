@@ -13,9 +13,11 @@ import javax.servlet.http.HttpSession;
 
 import com.test.bookjuck.dao.BaroOrderDetailDAO;
 import com.test.bookjuck.dao.BaroPayDAO;
+import com.test.bookjuck.dao.BookOrderDetailDAO;
 import com.test.bookjuck.dao.OrderListDAO;
 import com.test.bookjuck.dto.BaroOrderDetailDTO;
 import com.test.bookjuck.dto.BaroPayDTO;
+import com.test.bookjuck.dto.BookOrderDetailDTO;
 
 @WebServlet("/member/mypage/baroorderdetail.do")
 public class BaroOrderDetail extends HttpServlet {
@@ -47,6 +49,22 @@ public class BaroOrderDetail extends HttpServlet {
 		// 수경 끝
 		
 		
+		// 다은 시작) 주문 상세정보에 교/취/환 정보 추가하기
+		BaroOrderDetailDAO boddao = new BaroOrderDetailDAO();
+		
+		//주문이 일반주문인지 교환/취소/환불인지 알아내기
+		String ordertype = boddao.getType(seqBaroOrder);
+		
+		BaroOrderDetailDTO cancelinfo;
+		
+		if (ordertype.equals("cancel")) {
+			//취소정보 가져오기
+			cancelinfo = boddao.getCancelInfo(seqBaroOrder);	
+			req.setAttribute("cancelinfo", cancelinfo);
+		} 
+		
+		// 다은 끝
+		
 		
 		
 		
@@ -54,6 +72,8 @@ public class BaroOrderDetail extends HttpServlet {
 		req.setAttribute("plist", plist);
 		req.setAttribute("seqBaroOrder", seqBaroOrder);
 		req.setAttribute("orderDate", orderDate);
+		
+		req.setAttribute("ordertype", ordertype); // 다은) 주문 타입보내기
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/member/mypage/baroorderdetail.jsp");
 		dispatcher.forward(req, resp);

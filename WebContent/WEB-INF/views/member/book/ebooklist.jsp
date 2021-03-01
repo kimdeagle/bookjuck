@@ -59,16 +59,15 @@
 	<section class="contentsection">
 		<table class="table">
 			<thead>
-				<c:if test="${not empty sCategory}">
-				<tr>
-					<th colspan="3"><h6>${lCategory.substring(0, 2)}E-Book > ${mCategory} > ${sCategory}</h6></th>
-				</tr>
+				<c:forEach items="${sCategoryList}" var="scdto">
+				<c:if test="${not empty seqSCategory}">
+					<c:if test="${seqSCategory.equals(scdto.seqSCategory)}">
+						<th colspan="3"><h6>${scdto.lCategory} > ${scdto.mCategory} > ${scdto.sCategory}</h6></th>
+					</c:if>
 				</c:if>
-				
-				<c:if test="${empty sCategory}">
-				<tr>
-					<th colspan="3"><h6>${lCategory.substring(0, 2)}E-Book</h6></th>
-				</tr>
+				</c:forEach>
+				<c:if test="${empty seqSCategory}">
+					<th colspan="3"><h6>E-Book</h6></th>
 				</c:if>
 			</thead>
 			<tbody>
@@ -83,12 +82,12 @@
 				<c:forEach items="${eblist}" var="dto">
 				<tr>
 					<td>
-						<a href="/bookjuck/member/book/ebookdetail.do?seqLCategory=${dto.seqLCategory}&lCategory=${dto.lCategory}&seqMCategory=${dto.seqMCategory}&mCategory=${dto.mCategory}&seqSCategory=${dto.seqSCategory}&sCategory=${dto.sCategory}&seq=${dto.seq}">
+						<a href="/bookjuck/member/book/ebookdetail.do?seqLCategory=${dto.seqLCategory}&seqMCategory=${dto.seqMCategory}&seqSCategory=${dto.seqSCategory}&seq=${dto.seq}">
 							<img src="/bookjuck/image/book/${dto.image}" class="image">
 						</a>
 					</td>
 					<td>
-						<div><a href="/bookjuck/member/book/ebookdetail.do?seqLCategory=${dto.seqLCategory}&lCategory=${dto.lCategory}&seqMCategory=${dto.seqMCategory}&mCategory=${dto.mCategory}&seqSCategory=${dto.seqSCategory}&sCategory=${dto.sCategory}&seq=${dto.seq}" class="title">${dto.title}</a></div>
+						<div><a href="/bookjuck/member/book/ebookdetail.do?seqLCategory=${dto.seqLCategory}&seqMCategory=${dto.seqMCategory}&seqSCategory=${dto.seqSCategory}&seq=${dto.seq}" class="title">${dto.title}</a></div>
 						<div class="info">${dto.author} | ${dto.publisher}</div>
 						<div class="subinfo">${dto.pubDate}</div>
 						<div class="intro">${dto.intro}</div>
