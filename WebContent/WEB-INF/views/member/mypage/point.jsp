@@ -52,41 +52,6 @@
 					</ul>
 				</div>
 
-				<!-- 
-				<div class="form-check" id ="box2">
-					<div id="searchBtn" class="float-left">
-						<input type="button" value="1개월">
-						<input type="button" value="3개월">
-						<input type="button" value="6개월">
-					</div>
-					<div id="dateBox" class="float-left">
-						<div class="datePick">
-							<input type="date" class="form-control">
-						</div>
-						<span>~</span>
-						<div class="datePick">
-							<input type="date" class="form-control">
-						</div>
-					</div>
-				</div>
- -->
-				<!-- 
-				<div class="pointContents" id="box2">
-					<div id="searchBtn" class="float-left">
-						<input type="button" value="1개월">
-						<input type="button" value="3개월">
-						<input type="button" value="6개월">
-					</div>
-					<div id="dateBox">
-						<div class="datePick float-left">
-							<input type="date" class="form-control">
-						</div>
-						<span>~</span>
-						<div class="datePick">
-							<input type="date" class="form-control">
-						</div>
-					</div>
-				</div> -->
 
 				<div class="pointContents" id="box2">
 

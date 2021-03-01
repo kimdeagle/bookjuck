@@ -67,6 +67,7 @@ public class LoginOk extends HttpServlet {
 			session.setAttribute("privacy", rdto.getPrivacy());
 			session.setAttribute("lastDate", rdto.getLastDate());
 			
+			session.setAttribute("curation", rdto.getCuration());
 			
 			//시작 페이지로 이동
 			resp.sendRedirect("http://localhost:8090/bookjuck/index.do");

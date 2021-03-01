@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -76,25 +78,26 @@
 본인인증 문의 없이 탈퇴할 경우, 30일 이내 재가입(인증)이 불가능합니다.<br>
 			</div>
 			<div id="pwBox">
+				<form action="/bookjuck/member/mypage/withdrawalok.do" method="get" id="withDrawalForm">
 				<table id="pwtable">
 					<tr height="50">
-						<th width="130">
-							비밀번호: 
-						</th>
+						<th width="130">비밀번호:</th>
 						<td>
-							<input type="password" placeholder="비밀번호를 입력해주세요">
+							<input type="password" id="pw" name="pw" placeholder="비밀번호를 입력해주세요">
 						</td>
 					</tr>
 					<tr>
-						<th>
-							비밀번호 재확인:
-						</th>
+						<th>비밀번호 재확인: </th>
 						<td>
-							<input type="password" placeholder="비밀번호를 입력해주세요">
+							
+							<input type="password" id="cpw" name="cpw" placeholder="비밀번호를 입력해주세요">
 						</td>
 					</tr>
 				</table>
-				<input type="button" class="btn-general" value=" 회원탈퇴 ">
+				<input type="submit" class="btn-general" value=" 회원탈퇴 ">
+				<input type="hidden" name="id" value="${id}">
+				<input type="hidden" name="seq" value="${seq}">
+				</form>
 			</div>
       </article>
 		</section>
@@ -106,7 +109,29 @@
 		
 	</div>
 	
+	<script type="text/javascript">
 	
+	/*비밀번호 중복 검사*/
+	$("#withDrawalForm").submit(function(evt) {
+		
+		//계정 비밀번호
+		var rpw = "${pw}";
+		
+		//비밀번호 재확인 중복 검사
+		if ($("#pw").val() != $("#cpw").val()) {
+			alert("암호가 일치하지 않습니다.");
+			evt.preventDefault();
+			return false; 
+		//계정 비밀번호 검사
+		}else if($("#pw").val() != rpw){
+			alert("현재 비밀번호가 틀렸습니다.");
+			evt.preventDefault();
+			return false;
+			
+		}		
+	});	
+	
+	</script>
 
 </body>
 

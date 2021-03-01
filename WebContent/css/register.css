@@ -8,6 +8,12 @@
 	padding: 30px;
 }
 
+#idCheck{
+	margin-top: 12px;
+}
+#id{
+	margin-left: -0.5px; 
+}
 
 .createId{
 	margin: 10px auto;
@@ -46,5 +52,10 @@
 .nminput{
 	margin-top: 10px;
 	border: 1px solid red;
+}
+
+#footer{
+	margin-top: 30px;
+	text-align: center;
 }
 
