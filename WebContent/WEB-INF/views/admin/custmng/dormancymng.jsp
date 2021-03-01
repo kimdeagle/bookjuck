@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	
 %>
@@ -6,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>북적북적_Admin::Welcome</title>
+<title>북적북적_Admin::휴면 계정관리</title>
 <%@include file="/WEB-INF/views/admin/inc/asset.jsp"%>
 <link rel="stylesheet" href="/bookjuck/css/global.css">
 <link rel="stylesheet" href="/bookjuck/css/dormancymng.css">
@@ -23,7 +24,7 @@
 
 
 		<section class="contentsection">
-			<h3>고객 관리</h3>
+			<h3>휴면 계정 관리</h3>
 
 			<!-- 검색 테이블  시작-->
 			<table class="table table-bordered" id="tbl1">
@@ -33,10 +34,10 @@
 
 						<select id="selbox1" name="selbox1">
 							<option value="">선택</option>
-							<option value="1">하나</option>
-							<option value="2">둘</option>
-							<option value="3">셋</option>
-							<option value="direct">직접입력</option>
+							<option value="1">이름</option>
+							<option value="2">아이디</option>
+							<option value="3">번호</option>
+							<option value="4">연락처</option>
 						</select>
 						<input type="text" name="selboxDirect">
 					</td>
@@ -82,109 +83,52 @@
 			
 			
 			<hr>
-			<select id="selbox2" name="selbox2">
+			<select id="selbox2" name="selbox2" onchange="chageLangSelect()">
+							<option value="">개수</option>
 							<option value="10">10</option>
-							<option value="25">25</option>
-							<option value="50">50</option>
+							<option value="20">20</option>
+							<option value="30">30</option>
 			</select>
 			
 			<!-- 리스트 테이블 시작 -->
-			<table class="talbe table-bordered tbl-md" id="tbl2">
+			<table class="talbe table tbl-md" id="tbl2">
 			<tr>
-				<th>
-					<input  type="checkbox" id="allCheck" name="chk">
-				</th>
-				<th>
-					번호
-				</th>
-				<th>
-					이름
-				</th>
-				<th>
-					아이디
-				</th>
-				<th>
-					연락처
-				</th>
-				<th>
-					가입일
-				</th>
-				<th>
-					회원구분
-				</th>
-				<th>
-					휴면 전환일
-				</th>
-				<th>
-					전환 경과일
-				</th>
-				<th width="150">
-					
-				</th>
+				<!-- <th><input  type="checkbox" id="allCheck" name="chk"></th> -->
+				<th width="50">번호</th>
+				<th width="80">이름</th>
+				<th>아이디</th>
+				<th>연락처</th>
+				<th width="120">가입일</th>
+				<th>회원구분</th>
+				<th>휴면 전환일</th>
+				<th>전환 경과일</th>
+				<th width="150"></th>
 			</tr>
-			<tr>
-				<td><input  type="checkbox"id="Check1" name="chk"></td>
-				<td>1</td>
-				<td>홍길동</td>
-				<td>TEST001</td>
-				<td>010-5125-0577</td>
-				<td>2021-01-01</td>
-				<td>일반</td>
-				<td>2021-01-01</td>
-				<td>30일</td>
-				<td>
-					<input type="button" value="조회" id="#custSearch" href="#custSearch" data-toggle="modal">
-					<input type="button" value="탈퇴" id="#custWithdrawal" href="#custWithdrawal" data-toggle="modal">
-					<input type="button" value="휴면" id="#custdormancy" href="#custdormancy" data-toggle="modal">
-				</td>
-			</tr>
-			<tr>
-				<td><input  type="checkbox" id="Check1" name="chk"></td>
-				<td>2</td>
-				<td>마석동</td>
-				<td>TEST002</td>
-				<td>010-7723-0341</td>
-				<td>2021-01-10</td>
-				<td>카카오</td>
-				<td>2021-02-01</td>
-				<td>21일</td>
-				<td>
-					<input type="button" value="조회" id="#custSearch" href="#custSearch" data-toggle="modal">
-					<input type="button" value="탈퇴">
-					<input type="button" value="휴면">
-				</td>
-			</tr>
+			<c:forEach items="${dlist}" var="dto">
+				<tr>
+					<!-- <td><input  type="checkbox" id="Check1" name="chk"></td> -->
+					<td>${dto.seq}</td>
+					<td>${dto.name}</td>
+					<td>${dto.id}</td>
+					<td>0${dto.tel}</td>
+					<td>${dto.regDate}</td>
+					<td>${dto.login}</td>
+					<td>${dto.trsdate}</td>
+					<td>${dto.regdate_d}일</td>
+					<td>
+						<a href="/bookjuck/admin/custmng/custview.do?seq=${dto.seq}&name=${dto.name}&ssn=${dto.ssn}&address=${dto.address}&email=${dto.email}&tel=${dto.tel}&curation=${dto.curation}&privacy=${dto.privacy}&seq=${dto.seq}&id=${dto.id}&pw=${dto.pw}&nowpage=${nowPage}"><b>[조회]</b> </a>
+						<a href="/bookjuck/admin/custmng/custadd.do?seq=${dto.seq}&name=${dto.name}&ssn=${dto.ssn}&address=${dto.address}&email=${dto.email}&tel=${dto.tel}&curation=${dto.curation}&privacy=${dto.privacy}&seq=${dto.seq}&id=${dto.id}&pw=${dto.pw}&nowpage=${nowPage}"><b>[일반]</b></a>
+						<a href="/bookjuck/admin/custmng/custdel.do?seq=${dto.seq}&name=${dto.name}&ssn=${dto.ssn}&address=${dto.address}&email=${dto.email}&tel=${dto.tel}&curation=${dto.curation}&privacy=${dto.privacy}&seq=${dto.seq}&id=${dto.id}&pw=${dto.pw}&nowpage=${nowPage}"><b>[탈퇴]</b></a>
+						<!-- <input type="button" value="조회" id="#custSearch" href="#custSearch" data-toggle="modal">
+						<input type="button" value="탈퇴">
+						<input type="button" value="휴면"> -->
+					</td>
+				</tr>
+			</c:forEach>
 			</table>
-
-			<div>
-					<ul class="pagination">
-						<li>
-							<a href="#" aria-label="Previous">
-								<span aria-hidden="true">&laquo;</span>
-							</a>
-						</li>
-						<li>
-							<a href="#">1</a>
-						</li>
-						<li>
-							<a href="#">2</a>
-						</li>
-						<li>
-							<a href="#">3</a>
-						</li>
-						<li>
-							<a href="#">4</a>
-						</li>
-						<li>
-							<a href="#">5</a>
-						</li>
-						<li>
-							<a href="#" aria-label="Next">
-								<span aria-hidden="true">&raquo;</span>
-							</a>
-						</li>
-					</ul>
-			</div>			
+			<nav class="pagebar">
+				<ul class="pagination">${pagebar}</ul>
+			</nav>		
 			
 			
 
@@ -348,32 +292,49 @@
 	
 	
 	<script>
-	$(document).ready(function() {
-		//최상단 체크박스 클릭
-		$("#allCheck").click(function() {
-			//클릭되었으면
-			if ($("#allCheck").prop("checked")) {
-				//input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
-				$("input[name=chk]").prop("checked", true);
-
-				//클릭이 안되있으면
-			} else {
-				//input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
-				$("input[name=chk]").prop("checked", false);
-			}
-		})
-	})
+		$(document).ready(function() {
+			//최상단 체크박스 클릭
+			$("#allCheck").click(function() {
+				//클릭되었으면
+				if ($("#allCheck").prop("checked")) {
+					//input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
+					$("input[name=chk]").prop("checked", true);
 	
-
-	/* $(function(){
-	$("#selbox").change(function() {
-			if($("#selbox").val() == "direct") {
-				$("#selboxDirect").show();
-			}  else {
-				$("#selboxDirect").hide();
-			}
-		}) 
-	}); */
+					//클릭이 안되있으면
+				} else {
+					//input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
+					$("input[name=chk]").prop("checked", false);
+				}
+			})
+		})
+		
+		
+		//페이지 리스트 개수
+		function chageLangSelect(){
+			
+		    var langSelect = document.getElementById("selbox2");
+		     
+		    // select element에서 선택된 option의 value가 저장된다.
+		    var selectValue = langSelect.options[langSelect.selectedIndex].value;
+		 
+		    // select element에서 선택된 option의 text가 저장된다.
+		    var selectText = langSelect.options[langSelect.selectedIndex].text;
+		    location.href="/bookjuck/admin/custmng/dmcchagelangsel.do?nowpage=1&pageSize="+selectValue; 
+		}
+		
+		$('#search1').click(function() {
+			location.reload();
+			});
+		
+		/* $(function(){
+		$("#selbox").change(function() {
+				if($("#selbox").val() == "direct") {
+					$("#selboxDirect").show();
+				}  else {
+					$("#selboxDirect").hide();
+				}
+			}) 
+		}); */
 	</script>
 </body>
 </html>

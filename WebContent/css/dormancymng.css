@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+b:hover{
+	color: #F4A259;
+}
 /*tbl1 css*/
 #tbl1 th{
 	background-color:  #8CB369;
@@ -40,6 +43,7 @@
 /*tbl2 css*/
 #tbl2 th{
 	text-align: center;
+	background-color: #E8F0E1;
 }
 
 #tbl2 td:nth-child(10){

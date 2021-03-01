@@ -3,10 +3,12 @@ package com.test.bookjuck.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 
 import com.test.bookjuck.DBUtil;
 import com.test.bookjuck.dto.MemberDTO;
@@ -345,7 +347,7 @@ public class MemberDAO {
 	}
 	// ############ (최진영) 종료
 
-	
+	// ############ (최진영) 시작
 	public String findPwTel(int tel, String name, String id) {
 		try {
 			
@@ -367,4 +369,122 @@ public class MemberDAO {
 		}	
 		return null;
 	}
+	// ############ (최진영) 종료
+
+	
+	// ############ (최진영) 시작	
+	public ArrayList<MemberDTO> custMngList(HashMap<String, String> map) {
+		
+		try {
+			
+			String sql = String.format("select * from vwCustMng where rnum between %s and %s", map.get("begin"), map.get("end"));
+			
+			pstat =conn.prepareStatement(sql);
+			
+			rs = pstat.executeQuery();
+			
+			ArrayList<MemberDTO> mlist = new ArrayList<MemberDTO>();
+			
+			while(rs.next()){
+				MemberDTO dto = new MemberDTO();
+				dto.setSeq(rs.getString("seq"));
+				dto.setName(rs.getString("name"));
+				dto.setId(rs.getString("id"));
+				dto.setRegDate(rs.getString("regdate"));
+				dto.setTel(rs.getInt("tel"));				
+				dto.setLogin(rs.getString("login"));
+				dto.setLastDate(rs.getString("lastdate"));
+				dto.setCuration(rs.getString("curation"));
+				dto.setPrivacy(rs.getInt("privacy"));
+				
+				dto.setSsn(rs.getString("ssn"));
+				dto.setPw(rs.getString("pw"));
+				dto.setAddress(rs.getString("address"));
+				dto.setEmail(rs.getString("email"));
+				
+				
+				mlist.add(dto);
+			}
+				return mlist;
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+	// ############ (최진영) 종료
+	
+	
+	// ############ (최진영) 시작
+	public int getTotalCount(HashMap<String, String> map) {
+		
+		try {
+			
+			
+			String sql = String.format("select count(*) as cnt from tblMember");
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			
+			if (rs.next()) {
+				
+				return rs.getInt("cnt");
+			}
+			
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return 0;
+	}
+	// ############ (최진영) 종료
+
+	
+	// ############ (최진영) 시작
+	public int del(MemberDTO dto) {
+		
+		try {
+			String sql = "DELETE FROM tblMember where seq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getSeq());
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return 0;
+   }
+   // ############ (최진영) 종료
+
+	
+	
+	// ############ (최진영) 시작
+	public int check(MemberDTO dto_m) {
+		try {
+			String sql ="select count(*) as cnt from vwCustMng where id=? and pw=?";
+			
+			pstat = conn.prepareStatement(sql);
+			
+			pstat.setString(1, dto_m.getId());
+			pstat.setString(2, dto_m.getPw());
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				
+				return rs.getInt("cnt");
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return 0;
+	}
+   // ############ (최진영) 종료
+	
 }

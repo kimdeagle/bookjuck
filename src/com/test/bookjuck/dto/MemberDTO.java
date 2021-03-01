@@ -17,8 +17,16 @@ public class MemberDTO {
 	private String lastDate;	//최종접속일
 	
 	private int subscript;		//큐레이션 서비스
+	private String curation;    //큐레이션 구독여부
 	
 	
+	
+	public String getCuration() {
+		return curation;
+	}
+	public void setCuration(String curation) {
+		this.curation = curation;
+	}
 	public int getSubscript() {
 		return subscript;
 	}

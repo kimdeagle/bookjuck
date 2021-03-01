@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.test.bookjuck.dao.GhostMemberDAO;
-import com.test.bookjuck.dto.GhostMemberDTO;
+import com.test.bookjuck.dao.MemberDAO;
+import com.test.bookjuck.dto.MemberDTO;
 
-//http://localhost:8090/bookjuck/admin/custmng/dormancymng.do
-@WebServlet("/admin/custmng/dormancymng.do")
-public class DormancyMng extends HttpServlet {
-
+@WebServlet("/admin/custmng/custsearch.do")
+public class CustSearch extends HttpServlet {
+	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		HashMap<String,String> map = new HashMap<String,String>();
 		
 		//검색
@@ -27,7 +27,7 @@ public class DormancyMng extends HttpServlet {
 		//페이징
 		int nowPage = 0;		//현재 페이지 번호
 		int totalCount = 0;		//총 게시물 수
-		int pageSize = 10;		//한페이지 당 출력 개수
+		int pageSize = 20;		//한페이지 당 출력 개수
 		int totalPage = 0;		//총 페이지 수
 		int begin = 0;			//rnum 시작 번호
 		int end = 0;			//rnum 끝 번호
@@ -58,17 +58,15 @@ public class DormancyMng extends HttpServlet {
 		// 2. JSP에게 넘겨주기
 				
 		// 1.고객정보 가져오기
-		GhostMemberDAO dao = new GhostMemberDAO();
-		ArrayList<GhostMemberDTO> dlist = dao.custDmcList(map);
-		
+		MemberDAO dao=new MemberDAO();
+		ArrayList<MemberDTO> mlist = dao.custMngList(map);
+
 		// 1.5 페이징
-		
 		totalCount = dao.getTotalCount(map); //총 게시물 수
-		/* System.out.println("총 게시물 수:"+totalCount ); */
 		
 		
 		totalPage = (int)Math.ceil((double)totalCount / pageSize); //총 페이지 수
-		/* System.out.println("총 페이지 수:"+totalPage ); */
+		
 		
 		String pagebar = "";
 		
@@ -98,7 +96,7 @@ public class DormancyMng extends HttpServlet {
 				pagebar += "<li>";
 			}
 			
-			pagebar += String.format("<a href=\"/bookjuck/admin/custmng/dormancymng.do?page=%d\">%d</a></li>", n, n);
+			pagebar += String.format("<a href=\"/bookjuck/admin/custmng/custmng.do?page=%d\">%d</a></li>", n, n);
 			
 			loop++;
 			n++;
@@ -113,7 +111,7 @@ public class DormancyMng extends HttpServlet {
 					+ "        </li>");
 		} else {
 			pagebar += String.format("<li>"
-					+ "            <a href=\"/bookjuck/admin/custmng/dormancymng.do?page=%d\" aria-label=\"Next\">"
+					+ "            <a href=\"/bookjuck/admin/custmng/custmng.do?page=%d\" aria-label=\"Next\">"
 					+ "                <span aria-hidden=\"true\">&raquo;</span>"
 					+ "            </a>"
 					+ "        </li>", n);
@@ -123,13 +121,14 @@ public class DormancyMng extends HttpServlet {
 		
 		
 		//2. 
-		req.setAttribute("dlist", dlist);
+		req.setAttribute("mlist", mlist);
+		req.setAttribute("search", search);
 		req.setAttribute("pagebar", pagebar);
 		req.setAttribute("nowPage", nowPage);
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/custmng/dormancymng.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/custmng/custmng.jsp");
 		dispatcher.forward(req, resp);
-
+		
 	}
 
 }
