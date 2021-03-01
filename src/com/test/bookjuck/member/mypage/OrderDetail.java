@@ -11,14 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.test.bookjuck.dao.BaroOrderDetailDAO;
-import com.test.bookjuck.dao.BaroPayDAO;
 import com.test.bookjuck.dao.BookDAO;
 import com.test.bookjuck.dao.BookDeliveryDAO;
+import com.test.bookjuck.dao.BookOrderDetailDAO;
 import com.test.bookjuck.dao.BookPayDAO;
 import com.test.bookjuck.dao.OrderListDAO;
-import com.test.bookjuck.dto.BaroOrderDetailDTO;
-import com.test.bookjuck.dto.BaroPayDTO;
 import com.test.bookjuck.dto.BookDTO;
 import com.test.bookjuck.dto.BookDeliveryDTO;
 import com.test.bookjuck.dto.BookOrderDetailDTO;
@@ -63,6 +60,16 @@ public class OrderDetail extends HttpServlet {
 		BookDAO pdao = new BookDAO();
 		ArrayList<BookDTO> plist = pdao.getPossibleBook(session.getAttribute("seq").toString());
 		// 조아라 끝)
+		
+		
+		// 다은 시작) 주문 상세정보에 교/취/환 정보 추가하기
+		
+		//1. 교환/취소/환불 정보 - 교환사유, 상태, 일자 등
+		BookOrderDetailDAO boddao = new BookOrderDetailDAO();
+		ArrayList<BookOrderDetailDTO> bodlist = boddao.getRefundInfo(seqBookOrder);
+		
+		// 다은 끝
+		
 
 		req.setAttribute("blist", blist);		
 		req.setAttribute("bdlist", bdlist);
@@ -70,6 +77,8 @@ public class OrderDetail extends HttpServlet {
 		req.setAttribute("seqBookOrder", seqBookOrder);
 		req.setAttribute("orderDate", orderDate);
 		req.setAttribute("plist", plist); // 조아라) 독후감쓸 수 있는 책 리스트도 보내기
+		
+		req.setAttribute("bodlist", bodlist); // 다은) 교/취/환 정보 보내기
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/member/mypage/orderdetail.jsp");
 		dispatcher.forward(req, resp);
