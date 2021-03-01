@@ -183,10 +183,11 @@
                   <td>${bpdto.usePoint}</td>
                   <td><span>${bpdto.payment}</span>${bpdto.actualPay}</td>
                   <!-- 비회원일 경우 0 -->
-                  <td style="color:red;">${bpdto.usePoint}</td>
+                  <td style="color:red;">${bpdto.usePoint - bpdto.savePoints}</td>
                </tr>
                </c:forEach>
             </table>
+               <div><small>환불 포인트가 마이너스 금액인 경우 포인트가 차감됩니다.</small></div>
          </article>
          
 

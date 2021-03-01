@@ -28,6 +28,49 @@ public class BaroOrderDetailDTO {
 	private int savePoints;//적립 포인트
 	private String payDate;//결제일
 	
+	
+	//다은 추가 ) 주문 취소/환불/교환 관련 추가
+	//1. 취소관련
+	private String cancelReason;		//취소사유
+	private String cancelReasonDetail;	//취소상세사유
+	private String cancelState;			//취소상태
+	private String cancelDate;			//취소날짜
+	
+	
+	
+	
+	public String getCancelReason() {
+		return cancelReason;
+	}
+
+	public void setCancelReason(String cancelReason) {
+		this.cancelReason = cancelReason;
+	}
+
+	public String getCancelReasonDetail() {
+		return cancelReasonDetail;
+	}
+
+	public void setCancelReasonDetail(String cancelReasonDetail) {
+		this.cancelReasonDetail = cancelReasonDetail;
+	}
+
+	public String getCancelState() {
+		return cancelState;
+	}
+
+	public void setCancelState(String cancelState) {
+		this.cancelState = cancelState;
+	}
+
+	public String getCancelDate() {
+		return cancelDate;
+	}
+
+	public void setCancelDate(String cancelDate) {
+		this.cancelDate = cancelDate;
+	}
+
 	private int total;
 
 	public String getSeq() {

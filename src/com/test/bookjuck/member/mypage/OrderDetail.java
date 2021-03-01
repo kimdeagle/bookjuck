@@ -66,7 +66,7 @@ public class OrderDetail extends HttpServlet {
 		
 		//1. 교환/취소/환불 정보 - 교환사유, 상태, 일자 등
 		BookOrderDetailDAO boddao = new BookOrderDetailDAO();
-		ArrayList<BookOrderDetailDTO> bodlist = boddao.getRefundInfo(seqBookOrder);
+		BookOrderDetailDTO cancelinfo = boddao.getCancelInfo(seqBookOrder);
 		
 		// 다은 끝
 		
@@ -78,7 +78,7 @@ public class OrderDetail extends HttpServlet {
 		req.setAttribute("orderDate", orderDate);
 		req.setAttribute("plist", plist); // 조아라) 독후감쓸 수 있는 책 리스트도 보내기
 		
-		req.setAttribute("bodlist", bodlist); // 다은) 교/취/환 정보 보내기
+		req.setAttribute("cancelinfo", cancelinfo); // 다은) 교/취/환 정보 보내기
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/member/mypage/orderdetail.jsp");
 		dispatcher.forward(req, resp);

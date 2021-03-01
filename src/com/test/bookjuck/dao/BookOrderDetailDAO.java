@@ -46,7 +46,7 @@ public class BookOrderDetailDAO {
 	 * @param seqBookOrder
 	 * @return
 	 */
-	public ArrayList<BookOrderDetailDTO> getRefundInfo(String seqBookOrder) {
+	public BookOrderDetailDTO getCancelInfo(String seqBookOrder) {
 
 		try {
 			
@@ -55,25 +55,20 @@ public class BookOrderDetailDAO {
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);
 			
-			ArrayList<BookOrderDetailDTO> list = new ArrayList<BookOrderDetailDTO>();
 			
-			
-			while (rs.next()) {
+			if (rs.next()) {
 				
-				EBookOrderDTO dto = new EBookOrderDTO();
+				BookOrderDetailDTO dto = new BookOrderDetailDTO();
 				
-				dto.setSeq(rs.getString("seq"));
-				dto.setId(rs.getString("id"));
-				dto.setTitle(rs.getString("title"));
-				dto.setOrderDate(rs.getString("orderDate"));
-				dto.setTotalAmount(rs.getString("totalamount"));
-				dto.setOrderState(rs.getString("orderstate"));
+				dto.setCancelReason(rs.getString("cancelReason"));
+				dto.setCancelDate(rs.getString("cancelDate"));
+				dto.setCancelReasonDetail(rs.getString("cancelReasonDetail"));
+				dto.setCancelState(rs.getString("cancelState"));
+				dto.setEndDate(rs.getString("endDate"));
 				
-				list.add(dto);
+				return dto;
 				
 			}
-			
-			return list;
 			
 			
 		} catch (Exception e) {
