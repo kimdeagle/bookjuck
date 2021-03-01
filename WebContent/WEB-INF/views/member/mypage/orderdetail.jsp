@@ -149,6 +149,7 @@
          <article>
             <h5>환불정보</h5>
             <table class="tbl-pay table tbl-md">
+               <c:forEach items="${bplist}" var="bpdto">
                <tr>
                   <th>주문금액</th>
                   <th>사용 포인트</th>
@@ -156,17 +157,20 @@
                   <th>환불 포인트</th>
                </tr>
                <tr>
-                  <td>주문금액</td>
+                  <td>${bpdto.totalPay}</td>
                   <!-- 비회원일 경우 0 -->
-                  <td>사용포인트</td>
-                  <td><span>결제방식</span>- 환불금액</td>
+                  <td>${bpdto.usePoint}</td>
+                  <td><span>${bpdto.payment}</span>${bpdto.actualPay}</td>
                   <!-- 비회원일 경우 0 -->
-                  <td>환불포인트</td>
+                  <td style="color:red;">${bpdto.usePoint}</td>
                </tr>
+               </c:forEach>
             </table>
          </article>
          
- 			<!-- 무통장 입금으로 결제한 고객 환불해줄 환불 계좌 정보 -->
+
+			<!--
+  			무통장 입금으로 결제한 고객 환불해줄 환불 계좌 정보
 			<article>
 
                 <h5>환불 계좌 정보 <small>(무통장 입금 고객)</small></h5>
@@ -185,8 +189,8 @@
                     </tr>
                 </table>
                 
-            </article>
-
+            </article> 
+            -->
 			
 			<article>
 				<h5>취소/교환/환불 정보</h5>
