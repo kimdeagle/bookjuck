@@ -25,6 +25,7 @@
 <body>
 
 
+
    <!-- 플로팅 메뉴 (북적이& top) -->
    <%@include file="/WEB-INF/views/member/bookjuckee.jsp" %>
    <%@include file="/WEB-INF/views/common/top.jsp"%>
@@ -111,63 +112,7 @@
                </c:forEach>
             </table>
 
-
-            
-
-
-            <!-- e-book 비회원 안 보임-->
-<!--             <b>E-Book</b>
-            <table class="orderdetail table tbl-md">
-               <tr>
-                  <th>주문번호</th>
-                  <th>주문금액</th>
-                  <th>상품정보</th>
-                  <th>수량</th>
-                  <th>주문상태</th>
-               </tr>
-               <tr class="olInfo">
-                  <td rowspan="2">주문번호<br> (주문일)
-                  </td>
-                  <td>가격</td>
-                  <td class="bookinfo"><img
-                     src="/bookjuck/image/달러구트 꿈 백화점.png" class="book-xs"> <a
-                     href="/bookjuck/member/book/ebooklist.do">도서명</a></td>
-                  <td>1</td>
-                  <td>주문상태</td>
-               </tr>
-
-               <tr class="olInfo">
-                  <td>가격</td>
-                  <td class="bookinfo"><img
-                     src="/bookjuck/image/달러구트 꿈 백화점.png" class="book-xs"> <a
-                     href="/bookjuck/member/book/ebooklist.do">도서명</a></td>
-                  <td>1</td>
-                  <td>주문상태</td>
-               </tr>
-            </table> -->
-			
-			<c:if test="${not empty dblist}">
-            <table class="receiver table tbl-md">
-               <c:forEach items="${bdlist}" var="bddto">
-               <tr>
-                  <th>받으실 분</th>
-                  <td>${bddto.name}</td>
-               </tr>
-               <tr>
-                  <th>휴대폰 번호</th>
-                  <td>${bddto.tel}</td>
-               </tr>
-               <tr>
-                  <th>주소</th>
-                  <td>${bddto.address}</td>
-               </tr>
-               </c:forEach>
-            </table>
-			</c:if>
-
-
-         </article>
-
+     
 
          <article>
             <h5>결제정보</h5>
@@ -216,6 +161,161 @@
          
          <!-- 무통장 입금으로 결제한 고객 환불해줄 환불 계좌 정보 -->
          <article>
+
+	<!-- 플로팅 메뉴 (북적이& top) -->
+	<%@include file="/WEB-INF/views/member/bookjuckee.jsp" %>
+	<%@include file="/WEB-INF/views/common/top.jsp"%>
+
+
+	<div class="container">
+
+		<!-- ########## 상단 헤더 시작 -->
+		<%@include file="/WEB-INF/views/member/inc/header.jsp"%>
+		<!-- ########## 상단 헤더 끝 -->
+
+		<!-- 마이페이지 -->
+		<%@include file="/WEB-INF/views/member/inc/mypage.jsp"%>
+
+
+
+		<!-- 주문자 정보 영역 -->
+		<section class="contentsection">
+			<h3>
+				주문/결제 조회<span style="font-size: 18px;"> | 상세 조회</span>
+			</h3>
+			<article>
+				<h5>주문자 정보</h5>
+				<table class="orderer table tbl-md">
+					<tr>
+						<th>주문하신 분</th>
+						<td colspan="3">${name}</td>
+					</tr>
+					<tr>
+						<th>휴대폰 번호</th>
+						<td>${tel}</td>
+						<th style="border-left: 1px solid #DDD;">이메일</th>
+						<td>${email}</td>
+					</tr>
+				</table>
+			</article>
+
+			<article>
+				<h5>주문/배송정보</h5>
+
+				<!-- 일반 배송시 -->
+				<div class="waybill-number">
+					<b>일반배송</b>
+					<div>
+						운송장 번호 : <c:forEach items="${bdlist}" var="bddto"><a href="#"  onclick="popup();">${bddto.deliveryNumber}</a></c:forEach>
+					</div>
+				</div>
+
+				<table class="orderdetail table tbl-md">
+					<tr>
+						<th>주문번호</th>
+						<th>주문금액</th>
+						<th>상품정보</th>
+						<th>수량</th>
+						<th>주문상태</th>
+					</tr>
+					<tr class="olInfo">
+						<td rowspan="${blist.size()}">${seqBookOrder}<br> 
+						(${orderDate.substring(0, 10)})
+						</td>
+					<c:forEach items="${blist}" var="bdto">
+						<td style="vertical-align: middle;">${bdto.total}</td>
+						<td class="bookinfo"><img
+							src="/bookjuck/image/book/${bdto.image}" class="book-xs"> <a
+							href="/bookjuck/member/book/bookdetail.do?seq=${bdto.seqBook}">${bdto.title}</a></td>
+						<td style="vertical-align: middle;">${bdto.amount}</td>
+						<td style="vertical-align: middle;">${bdto.orderState}
+						 <!-- 주문상태가 배송 완료일 때 보임 || 비회원 안 보임 -->
+						 <!-- ############ (조아라) 시작 -->
+						 <c:set var="loop_flag" value="true" />
+						 <c:forEach items="${plist}" var="pdto">
+							 <c:if test="${bdto.title eq pdto.title}">
+							 	<a href="/bookjuck/member/review/add.do?seq=${pdto.seq}" class="btn-report">독후감 쓰러 가기</a>
+							 	<c:set var="loop_flag" value="true" />
+							 </c:if>
+						 </c:forEach>
+ 						 <!-- ############ (조아라) 끝 -->
+						</td>
+					</tr>
+					</c:forEach>
+				</table>
+
+	
+
+				<table class="receiver table tbl-md">
+					<c:forEach items="${bdlist}" var="bddto">
+					<tr>
+						<th>받으실 분</th>
+						<td>${bddto.name}</td>
+					</tr>
+					<tr>
+						<th>휴대폰 번호</th>
+						<td>${bddto.tel}</td>
+					</tr>
+					<tr>
+						<th>주소</th>
+						<td>${bddto.address}</td>
+					</tr>
+					</c:forEach>
+				</table>
+
+
+
+			</article>
+
+
+			<article>
+				<h5>결제정보</h5>
+				<table class="tbl-pay table tbl-md">
+					<tr>
+						<th>주문금액</th>
+						<th>사용 포인트</th>
+						<th>결제금액</th>
+						<th>적립 포인트</th>
+					</tr>
+					<c:forEach items="${bplist}" var="bpdto">
+					<tr>
+						<td>${bpdto.totalPay}</td>
+						<!-- 비회원일 경우 0 -->
+						<td>${bpdto.usePoint}</td>
+						<td><span>${bpdto.payment}</span>${bpdto.actualPay}</td>
+						<!-- 비회원일 경우 0 -->
+						<td>${bpdto.savePoints}</td>
+					</tr>
+					</c:forEach>
+				</table>
+			</article>
+
+
+			<!-- ######## 이 이후 다은 추가 - 교환/취소/환불 정보 -->
+			<article>
+				<h5>환불정보</h5>
+				<table class="tbl-pay table tbl-md">
+					<tr>
+						<th>주문금액</th>
+						<th>사용 포인트</th>
+						<th>환불금액</th>
+						<th>환불 포인트</th>
+					</tr>
+					<tr>
+						<td>주문금액</td>
+						<!-- 비회원일 경우 0 -->
+						<td>사용포인트</td>
+						<td><span>결제방식</span>- 환불금액</td>
+						<!-- 비회원일 경우 0 -->
+						<td>환불포인트</td>
+					</tr>
+				</table>
+			</article>
+			
+			
+			<!-- 무통장 입금으로 결제한 고객 환불해줄 환불 계좌 정보 -->
+			<article>
+
                 <h5>환불 계좌 정보 <small>(무통장 입금 고객)</small></h5>
                 <table class="receiver table tbl-md">
                     <tr>
@@ -226,15 +326,18 @@
                     </tr>
                     <tr>
                         <th>계좌번호</th>
+
                         <td colspan="3">계좌번호적으세요</td>
+
                     </tr>
                 </table>
                 
             </article>
-         
-         
-         <article>
-            <h5>취소/교환/환불 정보</h5>
+
+			
+			<article>
+				<h5>취소/교환/환불 정보</h5>
+
                 <table class="table tbl-md tbl-refundinfo">
                     <tr>
                         <th>사유</th>
@@ -253,7 +356,9 @@
                         <td>2021-02-20</td>
                     </tr>
                 </table>
+
          </article>
+
 
 
 
@@ -274,11 +379,13 @@
             <article>
                 <h5>교환상품 배송정보</h5>
                 <div class="waybill-number">
+
                <span>일반 배송</span>
                <div>
                   운송장 번호 : <a href="#" onclick="popup();">123456789</a>
                </div>
             </div>
+
                 <table class="receiver table tbl-md">
                     <tr>
                         <th>받으실 분</th>
@@ -295,21 +402,23 @@
                 </table>
                 
             </article>
-         <!-- ######## 이 이전 다은 추가 - 교환/취소/환불 정보 -->
 
-         <div class="orderlistback"><a href="/bookjuck/member/mypage/orderlist.do" class="btn-order">주문/배송조회 가기</a></div>
+			<!-- ######## 이 이전 다은 추가 - 교환/취소/환불 정보 -->
 
-
-
-      </section>
+			<div class="orderlistback"><a href="/bookjuck/member/mypage/orderlist.do" class="btn-order">주문/배송조회 가기</a></div>
 
 
 
-      <!-- ########## 하단 시작 -->
-      <%@include file="/WEB-INF/views/common/footer.jsp"%>
-      <!-- ########## 하단 끝 -->
+		</section>
 
-   </div>
+
+
+		<!-- ########## 하단 시작 -->
+		<%@include file="/WEB-INF/views/common/footer.jsp"%>
+		<!-- ########## 하단 끝 -->
+
+	</div>
+
 
 
 
@@ -318,15 +427,15 @@
 
 <script>
 
-   //팝업창 띄우기
-   function popup(){
-       var url = "/bookjuck/member/mypage/delivery.do";
-       var name = "popup delivery";
-       var option = "width = 500, height = 500, top = 100, left = 200, location = no"
-       window.open(url, name, option);
-   }
+	//팝업창 띄우기
+	function popup(){
+	    var url = "/bookjuck/member/mypage/delivery.do";
+	    var name = "popup delivery";
+	    var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+	    window.open(url, name, option);
+	}
 
-   
+
 </script>
 
 </html>

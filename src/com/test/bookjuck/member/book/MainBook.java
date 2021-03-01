@@ -26,8 +26,8 @@ public class MainBook extends HttpServlet {
 		HttpSession session = req.getSession();
 		req.setCharacterEncoding("UTF-8");
 		
-
-		session.setAttribute("id", "hong"); // 추천도서 비회원 접근 제한 테스트용 세션
+		
+		//session.setAttribute("id", "test004"); // 추천도서 비회원 접근 제한 테스트용 세션
 		session.setAttribute("seq", "24"); // 추천도서 적용여부 테스트용 세션
 		
 		ArrayList<BookDTO> list1 = new ArrayList<BookDTO>(); //추천도서
@@ -35,7 +35,7 @@ public class MainBook extends HttpServlet {
 		ArrayList<BookDTO> list3 = new ArrayList<BookDTO>(); //화제의신간
 		
 		
-		if (session.getAttribute("id") == null) {
+		if (session.getAttribute("seq") == null) {
 			
 			
 			
@@ -162,7 +162,7 @@ public class MainBook extends HttpServlet {
 		
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/member/book/mainbook.jsp");
-		dispatcher.forward(req, resp);
+		dispatcher.include(req, resp);
 
 	}
 

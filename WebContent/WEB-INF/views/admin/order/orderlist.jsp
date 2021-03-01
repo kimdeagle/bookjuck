@@ -65,15 +65,15 @@
 					<tr>
 						<th>주문번호</th>
 						<td colspan="2"><input type="text" class="form-control"
-							placeholder="주문번호를 입력하세요." id="ordernumsearch" name="ordernumsearch"></td>
+							placeholder="주문번호를 입력하세요." id="ordernumsearch" name="ordernumsearch" value="${ordernumsearch}"></td>
 						<th>주문자ID</th>
 						<td><input type="text" class="form-control"
-							placeholder="주문자ID를 입력하세요." id="idsearch" name="idsearch"></td>
+							placeholder="주문자ID를 입력하세요." id="idsearch" name="idsearch" value="${idsearch}"></td>
 					</tr>
 					<tr>
 						<th>주문상품</th>
 						<td colspan="4"><input type="text" class="form-control"
-							placeholder="상품명을 입력하세요." id="booksearch" name="booksearch" ></td>
+							placeholder="상품명을 입력하세요." id="booksearch" name="booksearch" value="${booksearch}" ></td>
 					</tr>
 					<tr>
 						<td colspan="6"></td>
@@ -156,12 +156,6 @@
 		</section>
 
 
-		<!-- datepicker 현재 날짜로 기본값 설정 -->
-		<script>
-        document.getElementById('startDate').valueAsDate = new Date();
-        document.getElementById('endDate').valueAsDate = new Date();
-    	</script>
-
 
 
 		<!-- ########## 하단 시작 -->
@@ -179,11 +173,90 @@
 	
 	<script>
 	
-	//분류 고정
-	$("#type").val("${type}").prop("selected",true);
+	    //date 'yyyy-mm-dd'형식으로 formating
+		function formatDate(date) {
+		   
+			var month = date.getMonth() + 1;
+		    var day = date.getDate();
+		    var year = date.getFullYear();
+		   
+		    if (month < 10) 
+		        month = '0' + month;
+		    if (day < 10) 
+		        day = '0' + day; 
+	
+		   return year + '-' + month + '-' + day;
+		}
+
+	    var now = new Date();
+	    
+	    //초기세팅은 과거 3개월 까지 검색
+	    $(document).ready(function(){
+			
+			var nowdate = new Date();
+			var beforedate = new Date();
+			
+			beforedate.setMonth(nowdate.getMonth() - 3);
+			
+	    	$("#startDate").val(formatDate(beforedate));
+	    	$("#endDate").val(formatDate(now));
+	    	
+	    });
+
+		
+		//분류 고정
+		$("#type").val("${type}").prop("selected",true);
+
+		
+	      
+
+
+		//btn1 일주일 전
+		$("#btn1").click(function() {
+			
+			var nowdate = new Date();
+			var beforedate = new Date();
+			
+			beforedate.setDate(nowdate.getDate() - 7);
+			$("#startDate").val(formatDate(beforedate));
+			
+		});
+		
+		//btn2 한달 전
+		$("#btn2").click(function() {
+			
+			var nowdate = new Date();
+			var beforedate = new Date();
+			
+			beforedate.setMonth(nowdate.getMonth() - 1);
+			$("#startDate").val(formatDate(beforedate));
+		});
+		
+		//btn3 세달 전
+		$("#btn3").click(function() {
+			
+			var nowdate = new Date();
+			var beforedate = new Date();
+			
+			beforedate.setMonth(nowdate.getMonth() - 3);
+			$("#startDate").val(formatDate(beforedate));
+		});
+		
+		//btn4 여섯달 전
+		$("#btn4").click(function() {
+			
+			var nowdate = new Date();
+			var beforedate = new Date();
+			
+			beforedate.setMonth(nowdate.getMonth() - 6);
+			$("#startDate").val(formatDate(beforedate));
+		});
+		
+		
+
 	
 
-
+	
 	</script>
 		
 		

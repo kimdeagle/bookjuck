@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +14,7 @@
 
 <link rel="stylesheet" href="/bookjuck/css/global.css">
 <link rel= "stylesheet" href="/bookjuck/css/adminbook.css">
+<script src="/bookjuck/js/adminbook.js"></script>
 
 <style>
 	
@@ -40,17 +42,34 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><a href="/bookjuck/admin/book/ebooklist.do"><span class="label label-success">1560</span></a></td>
-					<td><a href="/bookjuck/admin/book/ebooklist.do"><span class="label label-success">975</span></a></td>
-					<td><a href="/bookjuck/admin/book/ebooklist.do"><span class="label label-success">585</span></a></td>
+					<td><a href="/bookjuck/admin/book/ebooklist.do"><span class="label label-success">${wholeCnt}</span></a></td>
+					<td><a href="/bookjuck/admin/book/ebooklist.do?seqLCategory=1"><span class="label label-success">${inCnt}</span></a></td>
+					<td><a href="/bookjuck/admin/book/ebooklist.do?seqLCategory=2"><span class="label label-success">${exCnt}</span></a></td>
 
 				</tr>
 			</tbody>
 		</table>
 		
 		<div class="listheader">
-			<h5>전체 E-Book 목록</h5>
-			<input type="button" class="btn btn-primary btn-lg" value="E-Book추가" onclick="location.href='/bookjuck/admin/book/ebookadd.do';">
+			<h5>
+			<c:if test="${empty seqLCategory}">
+				전체
+			</c:if>
+			<c:if test="${seqLCategory == 1}">
+				국내
+			</c:if>
+			<c:if test="${seqLCategory == 2}">
+				해외
+			</c:if>
+			E-Book 목록
+			</h5>
+			<c:if test="${empty seqLCategory}">
+				<input type="button" class="btn btn-primary btn-lg" value="추가" onclick="location.href='/bookjuck/admin/book/ebookadd.do?page=${nowPage}';">
+			</c:if>
+			<c:if test="${not empty seqLCategory}">
+				<input type="button" class="btn btn-primary btn-lg" value="추가" onclick="location.href='/bookjuck/admin/book/ebookadd.do?seqLCategory=${seqLCategory}&page=${nowPage}';">
+			</c:if>
+			
 			<div style="clear:both;"></div>
 		</div>
 		<table class="table table-hover table-condensed tblebooklist">
@@ -63,60 +82,54 @@
 				</tr>
 			</thead>
 			<tbody>
+				<c:forEach items="${list}" var="dto">
 				<tr>
-					<td>해리포터와 불의 잔 1</td>
-					<td>국내도서-소설-외국소설</td>
-					<td>J.K.Rowling</td>
+					<td>${dto.title}</td>
+					<td>${dto.lCategory} > ${dto.mCategory} > ${dto.sCategory}</td>
+					<td>${dto.author}</td>
 					<td>
-						<input type="button" class="btn btn-warning" value="상세" onclick="location.href='/bookjuck/admin/book/ebookview.do';">
-						<input type="button" class="btn btn-success" value="수정" onclick="location.href='/bookjuck/admin/book/ebookedit.do';">
-						<input type="button" class="btn btn-danger" value="삭제" data-toggle="modal" data-target="#deletemodal">
+						<c:if test="${empty seqLCategory}">
+							<input type="button" class="btn btn-warning" value="상세" onclick="location.href='/bookjuck/admin/book/ebookview.do?seq=${dto.seq}&page=${nowPage}';">
+							<input type="button" class="btn btn-success" value="수정" onclick="location.href='/bookjuck/admin/book/ebookedit.do?seq=${dto.seq}&page=${nowPage}';">						
+						</c:if>
+						<c:if test="${not empty seqLCategory}">
+							<input type="button" class="btn btn-warning" value="상세" onclick="location.href='/bookjuck/admin/book/ebookview.do?seqLCategory=${seqLCategory}&page=${nowPage}&seq=${dto.seq}';">
+							<input type="button" class="btn btn-success" value="수정" onclick="location.href='/bookjuck/admin/book/ebookedit.do?seqLCategory=${seqLCategory}&page=${nowPage}&seq=${dto.seq}';">						
+						</c:if>
+						<button type="button" class="btn btn-danger btnDel" value="${dto.seq}">삭제</button>
+						
 					</td>
 				</tr>
-				<tr>
-					<td>해리포터와 불의 잔 2</td>
-					<td>국내도서-소설-외국소설</td>
-					<td>J.K.Rowling</td>
-					<td>
-						<input type="button" class="btn btn-warning" value="상세">
-						<input type="button" class="btn btn-success" value="수정">
-						<input type="button" class="btn btn-danger" value="삭제">
-					</td>
-				</tr>
+				</c:forEach>
 			</tbody>
 			
 		</table>
 
 		<!-- paging -->
-		<nav>
-		  <ul class="pagination">
-		    <li>
-		      <a href="#" aria-label="Previous">
-		        <span aria-hidden="true">&laquo;</span>
-		      </a>
-		    </li>
-		    <li class="active"><a href="#">1</a></li>
-		    <li><a href="#">2</a></li>
-		    <li><a href="#">3</a></li>
-		    <li><a href="#">4</a></li>
-		    <li><a href="#">5</a></li>
-		    <li>
-		      <a href="#" aria-label="Next">
-		        <span aria-hidden="true">&raquo;</span>
-		      </a>
-		    </li>
-		  </ul>
+		<c:if test="${not empty list}">
+		<nav class="pagebar">
+			<ul class="pagination">${pagebar}
+			</ul>
 		</nav>
+		</c:if>
 		
-	  	<!-- modal -->
-		<%@include file="/WEB-INF/views/admin/book/bookmodal.jsp" %>
-		<%--
-		<%
-			out.flush();
-			RequestDispatcher dmodal = request.getRequestDispatcher("/admin/book/bookmodal.do");
-			dmodal.include(request, response);
-		%>
-		--%>
+		<!-- 삭제 클릭 > 모달 -->
+		<div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+			    <div class="modal-content">
+					<div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">삭제하시겠습니까?</h4>
+					</div>
+					<div class="modal-body" style="text-align: center;">
+					
+						<button type="button" class="btn btn-danger" id="delok">예</button>
+				        <button type="button" class="btn btn-default" data-dismiss="modal">아니오</button>
+						
+					</div>
+				</div>
+			</div>
+		</div>
 	
 	</section>
 	
@@ -130,7 +143,24 @@
 	<%@include file="/WEB-INF/views/admin/bookjuckee.jsp" %>
 	<%@include file="/WEB-INF/views/common/top.jsp" %>
 
-
+	
+	<script>
+	
+		var seq;
+		
+		//도서 리스트 -> 삭제 버튼 클릭
+		$(".btnDel").click(function() {
+			seq = $(this).val();
+			$("#deletemodal").modal('show');
+			
+		});
+		
+		//삭제 모달 -> 삭제 버튼 클릭
+		$("#delok").click(function() {
+			location.href = "/bookjuck/admin/book/ebookdelok.do?seq=" + seq;
+		});
+	
+	</script>
 
 </body>
 

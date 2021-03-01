@@ -48,6 +48,7 @@ public class BookEditOk extends HttpServlet {
 		String contents = "";
 		String image = "";
 		String seq = "";
+		String nowPage = "";
 		
 		int result = 0; //업무 결과
 		
@@ -76,7 +77,7 @@ public class BookEditOk extends HttpServlet {
 			copy = multi.getParameter("copy");
 			summary = multi.getParameter("summary");
 			contents = multi.getParameter("contents");
-			image = multi.getFilesystemName("image");
+			nowPage = multi.getParameter("nowPage");
 			
 			seq = multi.getParameter("seq"); //수정할 도서번호
 			
@@ -97,6 +98,13 @@ public class BookEditOk extends HttpServlet {
 			
 			BookDAO bdao = new BookDAO();
 			BookDTO bdto = new BookDTO();
+			
+			if (multi.getFilesystemName("image") == null || multi.getFilesystemName("image").equals("")) {
+				image = bdao.getImageFileName(seq);
+			} else {
+				image = multi.getFilesystemName("image");				
+			}
+			
 			
 			bdto.setTitle(title);
 			bdto.setPublisher(publisher);
@@ -126,22 +134,26 @@ public class BookEditOk extends HttpServlet {
 			result = bidao.edit(bidto); //도서재고 수정
 			
 			if (result == 1) {
+				resp.setCharacterEncoding("UTF-8");
+				
 				PrintWriter writer = resp.getWriter();
 				
-				writer.print("<html><body>");
+				writer.print("<html><head><meta charset='UTF-8' /></head><body>");
 				writer.print("<script>");
-				writer.print("alert('success!');");
-				writer.print("location.href='/bookjuck/admin/book/bookview.do?seq="+ seq +"';");
+				writer.print("alert('도서 수정 성공!\\n도서 상세로 이동합니다.');");
+				writer.print(String.format("location.href='/bookjuck/admin/book/bookview.do?seq=%s&page=%s'", seq, nowPage));
 				writer.print("</script>");
 				writer.print("</body></html>");
 				
 				writer.close();
 			} else {
+				resp.setCharacterEncoding("UTF-8");
+				
 				PrintWriter writer = resp.getWriter();
 				
-				writer.print("<html><body>");
+				writer.print("<html><head><meta charset='UTF-8' /></head><body>");
 				writer.print("<script>");
-				writer.print("alert('failed');");
+				writer.print("alert('도서 수정 실패..\\n이전 화면으로 이동합니다.');");
 				writer.print("history.back();");
 				writer.print("</script>");
 				writer.print("</body></html>");

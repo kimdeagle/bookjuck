@@ -84,7 +84,7 @@
             	<c:if test="${write==true }">
             	<button type="button" class="btn btn-general inline" id="add" onclick="location.href='/bookjuck/member/review/add.do'">작성하기</button>
             	</c:if>
-                <button type="button" class="btn btn-general inline" id="back"  onclick="location.href='/bookjuck/member/review/list.do?seq=${page}'">뒤로가기</button>
+                <button type="button" class="btn btn-general inline" id="back" onclick="location.href='/bookjuck/member/mypage.do'">뒤로가기</button>
             </div>
         </section>
 

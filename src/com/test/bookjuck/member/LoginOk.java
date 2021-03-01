@@ -3,7 +3,6 @@ package com.test.bookjuck.member;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.test.bookjuck.dao.GhostMemberDAO;
 import com.test.bookjuck.dao.MemberDAO;
 import com.test.bookjuck.dto.MemberDTO;
 
@@ -25,18 +25,25 @@ public class LoginOk extends HttpServlet {
 		String pw = req.getParameter("pw");
 		
 		
-		// 2.
+		//일반 회원 
 		MemberDAO dao = new MemberDAO();
 		MemberDTO dto = new MemberDTO();
-
+		
+		//휴면 회원 
+		GhostMemberDAO dao_h = new GhostMemberDAO();
+		
+		
+		
 		dto.setId(id);
 		dto.setPw(pw);
 		
+		//로그인 
 		int result = dao.login(dto);
+		//휴면계정 찾기
+		int result_h = dao_h.check(dto);
 		
 		
-		
-		if (result == 1) {
+		if (result == 1 && result_h == 0) {
 
 			HttpSession session = req.getSession();
 			
@@ -63,13 +70,25 @@ public class LoginOk extends HttpServlet {
 			
 			//시작 페이지로 이동
 			resp.sendRedirect("http://localhost:8090/bookjuck/index.do");
+		}else if(result_h > 0) {
+			//휴면 계정 로그인 실패
+			PrintWriter writer = resp.getWriter();
+			
+			writer.print("<html><head><meta charset='utf-8'></head><body>");			
+			writer.print("<script>");
+			writer.print("alert('Dormancy ID');");
+			writer.print("history.back();");
+			writer.print("</script>");
+			writer.print("</body></html>");
+			
+			writer.close();
 		}else {
 			//로그인 실패
 			PrintWriter writer = resp.getWriter();
 			
-			writer.print("<html><body>");
+			writer.print("<html><head><meta charset='utf-8'></head><body>");
 			writer.print("<script>");
-			writer.print("alert('failed');");
+			writer.print("alert('Login Failed');");
 			writer.print("history.back();");
 			writer.print("</script>");
 			writer.print("</body></html>");

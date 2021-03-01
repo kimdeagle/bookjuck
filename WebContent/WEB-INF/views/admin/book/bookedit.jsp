@@ -124,15 +124,21 @@
 		  		<input type="file" id="image" name="image" style="display: none;">
 		  		<input type="text" class="form-control" id="imagename" placeholder="파일 선택" readonly value="${dto.image}">
 		  		<input type="button" class="btn btn-warning" value="미리보기" id="btnpreviewimage">
-		  		<p class="help-block">※하나의 이미지만 등록 가능합니다.</p>
+		  		<p class="help-block">※하나의 이미지만 등록 가능합니다. (등록 가능한 이미지 확장자 : <mark>png</mark>, <mark>jpg</mark>, <mark>gif</mark>)</p>
 		  	</div>
 		  	
 		  	<div class="form-group actionbtns">
 			  	<input type="button" class="btn btn-success" id="btnedit" value="수정">
-			  	<input type="button" class="btn btn-default" id="btncancel" value="취소" onclick="location.href='/bookjuck/admin/book/booklist.do?page=${page}';">
+			  	<c:if test="${empty seqLCategory}">
+				  	<input type="button" class="btn btn-default" id="btncancel" value="취소" onclick="location.href='/bookjuck/admin/book/booklist.do?page=${page}';">			  	
+			  	</c:if>
+			  	<c:if test="${not empty seqLCategory}">
+				  	<input type="button" class="btn btn-default" id="btncancel" value="취소" onclick="location.href='/bookjuck/admin/book/booklist.do?seqLCategory=${seqLCategory}&page=${page}';">			  	
+			  	</c:if>
 		  	</div>
 		  	
 		  	<input type="hidden" id="seq" name="seq" value="${dto.seq}">
+		  	<input type="hidden" id="nowPage" name="nowPage" value="${page}">
 		  	
 	  	</form>
 	  	
@@ -210,15 +216,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${alist}" var="adto" varStatus="status">
-								<tr>
-									<td>
-										<input type="radio" name="authorlist" id="authorlistname${status.index}">
-									</td>
-									<td><label for="authorlistname${status.index}">${adto.name}</label></td>
-									<td>${adto.intro}</td>
-								</tr>
-								</c:forEach>
+
 							</tbody>
 							
 						</table>
@@ -329,9 +327,10 @@
 		
 		//작가 리스트 초기화
 		$("#tblauthorlist tbody").html("");
-		<c:forEach items="${alist}" var="adto" varStatus="status">
+		<c:forEach items="${alist}" var="adto" varStatus="status" begin="0" end="9">
 			$("#tblauthorlist tbody").append("<tr><td><input type='radio' name='authorlist' id='authorlistname${status.index}'></td><td><label for='authorlistname${status.index}'>${adto.name}</label></td><td>${adto.intro}</td></tr>");
 		</c:forEach>
+		$("#tblauthorlist tbody").append("<tr><td colspan='3'>...</td></tr>");
 		$("#authormodal").modal('show');
 	});
 	
@@ -380,11 +379,11 @@
 		
 	});
 	
-	/* 미리보기 모달 열기 */
+	/* 이미지 미리보기 모달 열기 */
 	$("#btnpreviewimage").click(function() {
+		
 		$("#previewimagemodal").modal('show');	
 	});
-	
 	
 	//이미지 미리보기
 	$('#image').change(function() {
@@ -393,11 +392,11 @@
 
 	function setImageFromFile(input, expression) {
 	    if (input.files && input.files[0]) {
-	        var reader = new FileReader();
-	        reader.onload = function (e) {
+	        var imgreader = new FileReader();
+	        imgreader.onload = function (e) {
 	            $(expression).attr('src', e.target.result);
 	        }
-	        reader.readAsDataURL(input.files[0]);
+	        imgreader.readAsDataURL(input.files[0]);
 	    }
 	}
 	

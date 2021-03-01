@@ -134,8 +134,8 @@
 						<input type="text" class="log-md" id="auth" maxlength="6" required>
 					</td>
 					<td>
-						<!-- <input type="submit" id="loginbtn" value="인  증"> --> 
-						<button class="btn btn-general" id="loginbtn" value="인  증" onclick="authcheck()">인 증</button>
+						<input type="submit" id="loginbtn" value="인  증">  
+						<!-- <button class="btn btn-general" id="loginbtn" value="인  증" onclick="authcheck()">인 증</button> -->
 					</td>
 					
 				</tr>
@@ -584,8 +584,8 @@ YP e-money 총 금액의 100분의 60(1만원 이하 금액은 100분의 80) 이
 	}); 
 	
 	/*인증번호 검사*/
-	 /* $("#loginbtn").button(function(evt) {  */
-	 function authcheck(evt){ 	
+	$("#tosForm").submit(function(evt) {
+	 /* function authcheck(evt){ 	 */
 				
 		if ($("#auth").val() == null) {
 			alert("인증번호를 입력해주세요.");
@@ -599,8 +599,8 @@ YP e-money 총 금액의 100분의 60(1만원 이하 금액은 100분의 80) 이
 			alert("인증번호가 일치합니다.");		
 		}
 		
-	}
-	 /* }); */
+	/* } */
+	}); 
 	</script>
 </body>
 </html>

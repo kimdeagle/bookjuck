@@ -1,16 +1,16 @@
 package com.test.bookjuck.dao;
 
-import java.sql.Statement;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.test.bookjuck.DBUtil;
 import com.test.bookjuck.dto.BookDTO;
-import com.test.bookjuck.dto.CategoryDTO;
+import com.test.bookjuck.dto.EBookDTO;
 
 import oracle.jdbc.OracleTypes;
 
@@ -461,7 +461,7 @@ public class BookDAO {
 		
 		try {
 			
-			//String sql = "select * from vwbestseller where pubdate between trunc(sysdate, 'mm') and last_day(sysdate)"; 이 쿼리가 정석이나.. 빈기간이 너무많다.
+			//String sql = "select * from vwbestseller where pubdate between trunc(sysdate, 'mm') and last_day(sysdate)"; //
 			String sql = "select * from vwbestseller";
 			
 					
@@ -666,7 +666,7 @@ public class BookDAO {
   //----- 현우 끝 
   
 
-	//주혁 시작
+	//############# 주혁 시작
 	
 	//BookList 서블릿 -> 도서 리스트 반환
 	public ArrayList<BookDTO> getBookList(HashMap<String, String> map) {
@@ -810,10 +810,10 @@ public class BookDAO {
 			String where = "";
 			
 			if (map.get("seqLCategory") != null) {
-				where = "where seqLCategory = " + map.get("seqLCategory");
+				where = "where vb.seqLCategory = " + map.get("seqLCategory");
 			}
 			
-			String sql = String.format("select * from (select a.*, rownum as rnum from (select vb.*, (select amount from tblInventory where seqBook = vb.seq) as amount from vwBook vb %s) a) where rnum between %s and %s"
+			String sql = String.format("select * from (select a.*, rownum as rnum from (select vb.*, (select amount from tblInventory where seqBook = vb.seq) as amount from viewBook vb %s) a) where rnum between %s and %s"
 					, where
 					, map.get("begin")
 					, map.get("end"));
@@ -867,7 +867,7 @@ public class BookDAO {
 		
 		try {
 			
-			String sql = "select count(*) as cnt from vwBook";
+			String sql = "select count(*) as cnt from viewBook";
 			
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);
@@ -888,7 +888,7 @@ public class BookDAO {
 
 		try {
 			
-			String sql = "select count(*) as cnt from vwBook where seqLCategory = 1";
+			String sql = "select count(*) as cnt from viewBook where seqLCategory = 1";
 			
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);
@@ -909,7 +909,7 @@ public class BookDAO {
 
 		try {
 			
-			String sql = "select count(*) as cnt from vwBook where seqLCategory = 2";
+			String sql = "select count(*) as cnt from viewBook where seqLCategory = 2";
 			
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);
@@ -925,6 +925,7 @@ public class BookDAO {
 		return 0;
 	}
 
+	//admin -> BookList 서블릿 -> (페이징) 도서 수 반환
 	public int getAdminBookCount(HashMap<String, String> map) {
 		
 		try {
@@ -936,7 +937,7 @@ public class BookDAO {
 				where = String.format("where seqLCategory = %s", map.get("seqLCategory"));
 			}
 			
-			String sql = String.format("select count(*) as cnt from vwBook %s", where);
+			String sql = String.format("select count(*) as cnt from viewBook %s", where);
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);
 			
@@ -998,7 +999,7 @@ public class BookDAO {
 		
 		try {
 			
-			String sql = "select vb.*, (select amount from tblInventory where seqBook = vb.seq) as amount from vwBook vb where vb.seq = ?";
+			String sql = "select vb.*, (select amount from tblInventory where seqBook = vb.seq) as amount from viewBook vb where vb.seq = ?";
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, seq);
@@ -1072,8 +1073,29 @@ public class BookDAO {
 		
 	}
 	
+	//BookEditOk 서블릿 -> 이미지 수정 안한 경우 이미지 파일명 가져오기
+	public String getImageFileName(String seq) {
+		
+		try {
+			
+			String sql = "select image from tblBook where seq = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				return rs.getString("image");
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+	}
+	
 
-	//주혁 끝
+	//############# 주혁 끝
 	
 	// ############ (조아라) 시작
 	
@@ -1112,6 +1134,8 @@ public class BookDAO {
 		
 		return null;
 	}
+
+
 	
 	// ############ (조아라) 끝
 

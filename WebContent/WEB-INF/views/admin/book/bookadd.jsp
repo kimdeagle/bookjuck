@@ -124,12 +124,17 @@
 		  		<input type="file" id="image" name="image" style="display: none;">
 		  		<input type="text" class="form-control" id="imagename" placeholder="파일 선택" readonly>
 		  		<input type="button" class="btn btn-warning" value="미리보기" id="btnpreviewimage">
-		  		<p class="help-block">※하나의 이미지만 등록 가능합니다.</p>
+				<p class="help-block">※하나의 이미지만 등록 가능합니다. (등록 가능한 이미지 확장자 : <mark>png</mark>, <mark>jpg</mark>, <mark>gif</mark>)</p>
 		  	</div>
 		  	
 		  	<div class="form-group actionbtns">
 			  	<input type="button" class="btn btn-primary" id="btnadd" value="추가">
-			  	<input type="button" class="btn btn-default" id="btncancel" value="취소" onclick="location.href='/bookjuck/admin/book/booklist.do?page=${page}';">
+			  	<c:if test="${empty seqLCategory}">
+				  	<input type="button" class="btn btn-default" id="btncancel" value="취소" onclick="location.href='/bookjuck/admin/book/booklist.do?page=${page}';">			  	
+			  	</c:if>
+			  	<c:if test="${not empty seqLCategory}">
+				  	<input type="button" class="btn btn-default" id="btncancel" value="취소" onclick="location.href='/bookjuck/admin/book/booklist.do?seqLCategory=${seqLCategory}&page=${page}';">			  	
+			  	</c:if>
 		  	</div>
 		  	
 	  	</form>
@@ -208,15 +213,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${alist}" var="adto" varStatus="status">
-								<tr>
-									<td>
-										<input type="radio" name="authorlist" id="authorlistname${status.index}">
-									</td>
-									<td><label for="authorlistname${status.index}">${adto.name}</label></td>
-									<td>${adto.intro}</td>
-								</tr>
-								</c:forEach>
+
 							</tbody>
 							
 						</table>
@@ -239,7 +236,7 @@
 					</div>
 					<div class="modal-body" style="text-align: center;">
 					
-						<img src="/bookjuck/image/book/${dto.image}" id="previmg" style="width: 300px;">
+						<img id="previmg" style="width: 300px;">
 						
 					</div>
 					<div class="modal-footer">
@@ -324,9 +321,10 @@
 		
 		//작가 리스트 초기화
 		$("#tblauthorlist tbody").html("");
-		<c:forEach items="${alist}" var="adto" varStatus="status">
+		<c:forEach items="${alist}" var="adto" varStatus="status" begin="0" end="9">
 			$("#tblauthorlist tbody").append("<tr><td><input type='radio' name='authorlist' id='authorlistname${status.index}'></td><td><label for='authorlistname${status.index}'>${adto.name}</label></td><td>${adto.intro}</td></tr>");
 		</c:forEach>
+		$("#tblauthorlist tbody").append("<tr><td colspan='3'>...</td></tr>");
 		$("#authormodal").modal('show');
 	});
 	
@@ -357,11 +355,17 @@
 	//검색 버튼 클릭
 	$("#btnsearch").click(function() {
 		
+		if ($("#searchauthorname").val().trim() == "") {
+			alert("검색어를 입력해주세요.");
+			return;
+		}
+		
 		$("#tblauthorlist tbody").html("");
 		
 		//검색 결과 넣기
 		<c:forEach items="${alist}" var="adto" varStatus="status">
 
+		
 			if ('${adto.name.toLowerCase()}'.indexOf($("#searchauthorname").val().toLowerCase()) > -1) {
 				$("#tblauthorlist tbody").append("<tr><td><input type='radio' name='authorlist' id='authorlistname${status.index}'></td><td><label for='authorlistname${status.index}'>${adto.name}</label></td><td>${adto.intro}</td></tr>");
 			}
@@ -375,11 +379,24 @@
 		
 	});
 	
-	/* 미리보기 모달 열기 */
+	
+	/* 이미지 미리보기 모달 열기 */
 	$("#btnpreviewimage").click(function() {
+
+		//파일을 선택하지 않은 경우
+		if ($("#previmg").attr("src") == null) {
+			alert("파일을 선택해주세요.");
+			return;
+		}
+		
+		//이미지가 아니면
+		if (!($("#imagename").val().toLowerCase().endsWith("jpg") || $("#imagename").val().toLowerCase().endsWith("gif") || $("#imagename").val().toLowerCase().endsWith("png"))) {
+			alert("이미지 파일을 선택해주세요.");
+			return;
+		}
+		
 		$("#previewimagemodal").modal('show');	
 	});
-	
 	
 	//이미지 미리보기
 	$('#image').change(function() {
@@ -388,11 +405,11 @@
 
 	function setImageFromFile(input, expression) {
 	    if (input.files && input.files[0]) {
-	        var reader = new FileReader();
-	        reader.onload = function (e) {
+	        var imgreader = new FileReader();
+	        imgreader.onload = function (e) {
 	            $(expression).attr('src', e.target.result);
 	        }
-	        reader.readAsDataURL(input.files[0]);
+	        imgreader.readAsDataURL(input.files[0]);
 	    }
 	}
 		

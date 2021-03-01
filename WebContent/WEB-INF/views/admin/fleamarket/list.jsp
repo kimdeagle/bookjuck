@@ -35,10 +35,10 @@
                 <div id="topbox1">
                     <!-- <input type="text" class="form-control" id="search"> -->
 
-                    <form id="searchForm" method="GET" action="">
+                    <form id="searchForm" method="GET" action="/bookjuck/admin/fleamarket/list.do">
                         <div class="input-group search">
                         
-                            <input type="text" class="form-control" id="search" name="search" placeholder="" aria-describedby="basic-addon2" required value="">
+                            <input type="text" class="form-control" id="fleamarketsearch" name="fleamarketsearch" placeholder="검색어를 입력해주세요." aria-describedby="basic-addon2" required value="${fleamarketsearch}">
                             
                             <span class="input-group-addon" id="basic-addon2" style="cursor:pointer;" onclick=""><span class="glyphicon glyphicon-search"></span></span>
                         </div>
@@ -92,7 +92,11 @@
 	                    ${pagebar}
 	                </ul>
             	</nav>
-
+	
+				<div id="btn">
+            		<button type="button" class="btn btn-general inline" id="back" onclick="location.href='/bookjuck/admin/index.do'">뒤로가기</button>
+        		</div>
+        
             </article>
         </section>
 	

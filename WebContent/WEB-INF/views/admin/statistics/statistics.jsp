@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,12 +54,12 @@
     			</c:if>
     			<br>
     			<table class="table table-bordered" style="width:500px;">
-						<tr>
-							<th>구분</th>
-							<th>종이책</th>
-							<th>E-BOOK</th>
-							<th>바로드림</th>
-							<th>TOTAL</th>
+						<tr style="background-color:#5B8E7D;" >
+							<th style="text-align: center; color:white;">구분</th>
+							<th style="text-align: center; color:white;">종이책</th>
+							<th style="text-align: center; color:white;">E-BOOK</th>
+							<th style="text-align: center; color:white;">바로드림</th>
+							<th style="text-align: center; color:white;">TOTAL</th>
 						</tr>
     					<tr>
     						<td>매출액</td>
@@ -79,12 +80,13 @@
 	
 				<hr>
 					
-				<div id="chart1" style="width: 550px; height: 400px; margin: 0 auto"></div>
+				<div id="chart1" style="width: 400px; height: 400px; margin: 0 auto; position:relative; left:-250px; top:100px;"></div>
+				<div id="chart2" style="width: 350px; height: 350px; margin: 0 auto; position:relative; left:200px; top:-400px;"></div>
+				<div id="chart3" style="width: 350px; height: 350px; margin: 0 auto; position:relative; left:200px; top:-400px;"></div>
 				
 				<hr>
 				
-				<div id="chart2" style="width: 550px; height: 400px; margin: 0 auto"></div>
-				<div id="chart3" style="width: 550px; height: 400px; margin: 0 auto"></div>
+
 				
 	
 	
@@ -133,7 +135,7 @@
 	      type: 'column'
 	   },
 	   title: {
-	      text: '북적이 매출 DATA'   
+	      text: '[매출 Data]'   
 	   },
 	   subtitle: {
 	      
@@ -216,7 +218,7 @@
 	        type: 'pie'
 	    },
 	    title: {
-	        text: '구매고객 연령별 DATA'
+	        text: '[연령대별 주문건수]'
 	    },
 	    tooltip: {
 	        pointFormat: '{series.name}: <b>{point.y:.0f}건</b>'
@@ -257,7 +259,8 @@
 	
 	
 	
-	Highcharts.chart('chart3', {
+	  Highcharts.chart('chart3', {
+		  colors: ['yellow','orange'],
 	    chart: {
 	        plotBackgroundColor: null,
 	        plotBorderWidth: null,
@@ -265,10 +268,10 @@
 	        type: 'pie'
 	    },
 	    title: {
-	        text: '고객성별'
+	        text: '[고객 성별 비중]'
 	    },
 	    tooltip: {
-	        pointFormat: '{series.name}: <b>{point.y:.0f}개</b>'
+	        pointFormat: '{series.name}: <b>{point.y:.0f}건</b>'
 	    },
 	    accessibility: {
 	        point: {
@@ -281,19 +284,19 @@
 	            cursor: 'pointer',
 	            dataLabels: {
 	                enabled: true,
-	                format: '<b>{point.name}</b>: {y:.0f}개'
+	                format: '<b>{point.name}</b>: {y:.0f}명'
 	            }
 	        }
 	    },
 	    series: [{
-	        name: '게시물수',
+	        name: '연령대',
 	        colorByPoint: true,
 	        data: [
 	        	
-	        <c:forEach items="${blist}" var="bdto">	
+	        <c:forEach items="${list5}" var="dto">	
 	        {
-	            name: '${bdto.name}',
-	            y: ${bdto.cnt}    
+	            name: '${dto.gender}',
+	            y: ${dto.gendercnt}    
 	        }
 	        	        
 	        ,
@@ -302,7 +305,7 @@
 	        
 	        ]
 	    }]
-	});
+	});  
 
 </script>
 

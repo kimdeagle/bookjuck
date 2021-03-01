@@ -30,7 +30,7 @@ from tblLCategory lc
 order by seqSCategory asc;
 
 --도서 조회 뷰
-create or replace view vwBook
+create or replace view viewBook
 as
 select
     b.seq as seq,
@@ -66,7 +66,7 @@ from tblBook b
 
 
 --E-Book 조회 뷰
-create or replace view vwEBook
+create or replace view viewEBook
 as
 select
     eb.seq as seq,

@@ -11,7 +11,7 @@
 
 #leftmenu>div {
 	margin: 15px;
-	margin-right: 100px;
+	
 }
 
 .list1 {
@@ -22,7 +22,7 @@
 
 #menuname1 {
 	border: 1px solid #f4e285;
-	width: 193px;
+	width: 172px;
 	height: 50px;
 	text-align: center;
 	font-weight: bold;
@@ -48,6 +48,9 @@
 	float: left;
 }
 
+
+
+
 .bookbox5, .bookbox6, .bookbox7, .bookbox8, .bookbox9, .bookbox10 {
 	border: 1px solid #E5E5E5;
 	width: 900px;
@@ -58,7 +61,17 @@
 	float: left;
 	margin-left: 15px;
 	margin-right: 15px;
+	width:148px;
+	height:217px;
 }
+
+.bookbox2 img {
+	width:148px;
+	height:217px;
+	
+}
+
+
 
 #rank2to4 img {
 	margin-top: 10px;

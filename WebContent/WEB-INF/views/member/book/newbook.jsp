@@ -62,7 +62,7 @@
 					<a href="/bookjuck/member/book/bnewbook.do?a=컴퓨터/IT" class="list1">컴퓨터/IT</a>
 				</div>
 				<div>
-					<a href="/bookjuck/member/book/newbook.do?a=유아/어린이" class="list1">유아/어린이/청소년</a>
+					<a href="/bookjuck/member/book/newbook.do?a=유아/어린이/청소년" class="list1">유아/어린이/청소년</a>
 				</div>
 				<div>
 					<a href="/bookjuck/member/book/newbook.do?a=참고서/교재" class="list1">참고서/교재</a>

@@ -20,8 +20,12 @@ public class BookOrderDTO {
 	
 	private String id;				//주문자 id
 	
+
 	//수경 추가
 	private int totalPay; // 총 결제액
+
+	private String process;			//처리상태
+
 	
 	public String getId() {
 		return id;
@@ -77,11 +81,19 @@ public class BookOrderDTO {
 	public void setOrderState(String orderState) {
 		this.orderState = orderState;
 	}
+
 	public int getTotalPay() {
 		return totalPay;
 	}
 	public void setTotalPay(int totalPay) {
 		this.totalPay = totalPay;
+
+	public String getProcess() {
+		return process;
+	}
+	public void setProcess(String process) {
+		this.process = process;
+
 	}
 	
 	

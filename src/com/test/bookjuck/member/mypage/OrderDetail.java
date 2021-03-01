@@ -34,12 +34,10 @@ public class OrderDetail extends HttpServlet {
 
 		HttpSession session = req.getSession();
 
-		// ArrayList<EBookOrderDetailDTO> elist =
-		// dao.listEBook(session.getAttribute("seq").toString());
-
 		// 수경 시작
 		// 종이책 상세 주문 조회
 		String seqBookOrder = req.getParameter("seqBookOrder");
+
 
 		ArrayList<BookOrderDetailDTO> blist = dao.listBookDetail(session.getAttribute("seq").toString(), seqBookOrder);
 
@@ -47,7 +45,9 @@ public class OrderDetail extends HttpServlet {
 		String orderDate = dao.getOrderDate(seqBookOrder);
 		orderDate = orderDate.substring(0, 10);
 
-		// 결제 정보 조회
+		
+		//결제 정보 조회
+
 		BookPayDAO bpdao = new BookPayDAO();
 		ArrayList<BookPayDTO> bplist = bpdao.listBookPay(seqBookOrder);
 	

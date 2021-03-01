@@ -122,22 +122,26 @@ public class BookAddOk extends HttpServlet {
 			result = bidao.add(bidto); //도서재고 추가
 			
 			if (result == 1) {
+				resp.setCharacterEncoding("UTF-8");
+				
 				PrintWriter writer = resp.getWriter();
 				
-				writer.print("<html><body>");
+				writer.print("<html><head><meta charset='UTF-8' /></head><body>");
 				writer.print("<script>");
-				writer.print("alert('success!');");
+				writer.print("alert('도서 추가 성공!\\n도서 리스트로 이동합니다.');");
 				writer.print("location.href='/bookjuck/admin/book/booklist.do';");
 				writer.print("</script>");
 				writer.print("</body></html>");
 				
 				writer.close();
 			} else {
+				resp.setCharacterEncoding("UTF-8");
+				
 				PrintWriter writer = resp.getWriter();
 				
-				writer.print("<html><body>");
+				writer.print("<html><head><meta charset='UTF-8' /></head><body>");
 				writer.print("<script>");
-				writer.print("alert('failed');");
+				writer.print("alert('도서 추가 실패..\\n이전 화면으로 이동합니다.');");
 				writer.print("history.back();");
 				writer.print("</script>");
 				writer.print("</body></html>");

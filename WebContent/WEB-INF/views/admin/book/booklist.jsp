@@ -63,7 +63,13 @@
 			</c:if>
 			도서 목록
 			</h5>
-			<input type="button" class="btn btn-primary btn-lg" value="도서추가" onclick="location.href='/bookjuck/admin/book/bookadd.do?page=${nowPage}';">
+			<c:if test="${empty seqLCategory}">
+				<input type="button" class="btn btn-primary btn-lg" value="추가" onclick="location.href='/bookjuck/admin/book/bookadd.do?page=${nowPage}';">
+			</c:if>
+			<c:if test="${not empty seqLCategory}">
+				<input type="button" class="btn btn-primary btn-lg" value="추가" onclick="location.href='/bookjuck/admin/book/bookadd.do?seqLCategory=${seqLCategory}&page=${nowPage}';">
+			</c:if>
+			
 			<div style="clear:both;"></div>
 		</div>
 		<table class="table table-hover table-condensed tblbooklist">
@@ -89,8 +95,14 @@
 						<td>0</td>
 					</c:if>
 					<td>
-						<input type="button" class="btn btn-warning" value="상세" onclick="location.href='/bookjuck/admin/book/bookview.do?seq=${dto.seq}&page=${nowPage}';">
-						<input type="button" class="btn btn-success" value="수정" onclick="location.href='/bookjuck/admin/book/bookedit.do?seq=${dto.seq}&page=${nowPage}';">
+						<c:if test="${empty seqLCategory}">
+							<input type="button" class="btn btn-warning" value="상세" onclick="location.href='/bookjuck/admin/book/bookview.do?seq=${dto.seq}&page=${nowPage}';">
+							<input type="button" class="btn btn-success" value="수정" onclick="location.href='/bookjuck/admin/book/bookedit.do?seq=${dto.seq}&page=${nowPage}';">						
+						</c:if>
+						<c:if test="${not empty seqLCategory}">
+							<input type="button" class="btn btn-warning" value="상세" onclick="location.href='/bookjuck/admin/book/bookview.do?seqLCategory=${seqLCategory}&page=${nowPage}&seq=${dto.seq}';">
+							<input type="button" class="btn btn-success" value="수정" onclick="location.href='/bookjuck/admin/book/bookedit.do?seqLCategory=${seqLCategory}&page=${nowPage}&seq=${dto.seq}';">						
+						</c:if>
 						<button type="button" class="btn btn-danger btnDel" value="${dto.seq}">삭제</button>
 						
 					</td>
@@ -152,7 +164,7 @@
 		
 		//삭제 모달 -> 삭제 버튼 클릭
 		$("#delok").click(function() {
-			location.href = "/bookjuck/admin/book/delok.do?seq=" + seq;
+			location.href = "/bookjuck/admin/book/bookdelok.do?seq=" + seq;
 		});
 	
 	</script>
