@@ -636,6 +636,52 @@ public ArrayList<BookDTO> NoCategoryNewBook (HashMap<String, String> map){
 		return null;
 		
 	}
+	
+public ArrayList<BookDTO> mBestSeller() {
+		
+		
+		try {
+			
+			
+			String sql = "select * from vwmainbestseller";
+			
+					
+			
+			pstat = conn.prepareStatement(sql);
+			rs = pstat.executeQuery();
+			
+			
+			ArrayList<BookDTO> list = new ArrayList<BookDTO>();
+			
+			while (rs.next()) {
+				
+				BookDTO dto = new BookDTO();
+				
+				dto.setSeq(rs.getString("seq"));
+				dto.setTitle(rs.getString("title"));
+				dto.setAmount(rs.getInt("amount"));	
+				dto.setCopy(rs.getString("copy"));
+				dto.setImage(rs.getString("image"));
+				dto.setPaydate(rs.getString("paydate"));
+				
+							
+				
+				list.add(dto);
+			
+				
+			}
+			
+			return list;
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		
+		return null;
+		
+	}
 	//메인 베스트셀러 --이현우
 	public ArrayList<BookDTO> mainBestSeller(){
 		

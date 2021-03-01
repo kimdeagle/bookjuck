@@ -5,33 +5,25 @@
    
 %>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<%@include file="/WEB-INF/views/member/inc/asset.jsp"%>
-<link rel="stylesheet" href="/bookjuck/css/global.css">
-<link rel="stylesheet" href="/bookjuck/css/mainbook.css">
+
+<%-- <%@include file="/WEB-INF/views/member/inc/asset.jsp"%> --%>
+<!-- <link rel="stylesheet" href="/bookjuck/css/global.css"> -->
+<!-- <link rel="stylesheet" href="/bookjuck/css/mainbook.css"> -->
 
 
-<style>
 
-</style>
 
-</head>
-<body>
-
-	<section style="width:700px;"> 
+	<section> 
 			<div class="btns">
                 <input type="button" class="btn btn-default btn-lg btn-general" value="추천도서" id="rec">
                 <input type="button" class="btn btn-default btn-lg btn-general" value="베스트도서" id="best">
                 <input type="button" class="btn btn-default btn-lg btn-general" value="화제의 신간" id="new">
             </div>
-            
+            <div>
   			<div id="recbook" style="display:none;"> <!-- default는 베스트도서  -->
    			<table id="booktable">
-   				<c:forEach items="${list1}" var="dto"> <!--추천도서 비회원 사용불가 -->
+   			<tr>
+   				<c:forEach items="${list11}" var="dto"> <!--추천도서-->
                     <td>
                         <div class="tblitem">
                             <a href="http://localhost:8090/bookjuck/member/book/bookdetail.do?seq=${dto.seq}"><img src="/bookjuck/image/${dto.image}" class="book-sm"></a>
@@ -40,25 +32,9 @@
                         </div>
                     </td>
             </c:forEach>
-            </table>
-            </div>
-           <div id="bestbook" style="width:600px;">
-            <table id="booktable">
-			  	<c:forEach items="${list3}" var="dto"> <!-- 베스트도서 -->
-                    <td style="width:400px;">
-                        <div class="tblitem">
-                            <a href="http://localhost:8090/bookjuck/member/book/bookdetail.do?seq=${dto.seq}"><img src="/bookjuck/image/${dto.image}" class="book-sm"></a>
-                            <a href="http://localhost:8090/bookjuck/member/book/bookdetail.do?seq=${dto.seq}"><h6>${dto.title}</h6></a>
-                            <p>${dto.copy}</p>
-                        </div>
-                    </td>
-                 </c:forEach>
-            </table>
-           </div>
-           
-            <div id="newbook" style="display:none;"> <!-- default는 베스트도서  -->
-            	<table id="booktable">           	
-					<c:forEach items="${list2}" var="dto"> <!--화제의신간 -->					
+            </tr>
+            <tr>
+   				<c:forEach items="${list22}" var="dto"> <!--추천도서 2번째줄-->
                     <td>
                         <div class="tblitem">
                             <a href="http://localhost:8090/bookjuck/member/book/bookdetail.do?seq=${dto.seq}"><img src="/bookjuck/image/${dto.image}" class="book-sm"></a>
@@ -66,7 +42,62 @@
                             <p>${dto.copy}</p>
                         </div>
                     </td>
-                    </c:forEach>                
+            </c:forEach>
+            </tr>
+            </table>
+            </div>
+            </div>
+           <div id="bestbook">
+            <table id="booktable">
+            <tr>
+			  	<c:forEach items="${list33}" var="dto"> <!-- 베스트도서 -->
+                    <td>
+                        <div class="tblitem">
+                            <a href="http://localhost:8090/bookjuck/member/book/bookdetail.do?seq=${dto.seq}"><img src="/bookjuck/image/${dto.image}" class="book-sm"></a>
+                            <a href="http://localhost:8090/bookjuck/member/book/bookdetail.do?seq=${dto.seq}"><h6>${dto.title}</h6></a>
+                            <p>${dto.copy}</p>
+                        </div>
+                    </td>
+                 </c:forEach>
+            </tr>
+            <tr>
+			  	<c:forEach items="${list44}" var="dto"> <!-- 베스트도서  2번째줄-->
+                    <td>
+                        <div class="tblitem">
+                            <a href="http://localhost:8090/bookjuck/member/book/bookdetail.do?seq=${dto.seq}"><img src="/bookjuck/image/${dto.image}" class="book-sm"></a>
+                            <a href="http://localhost:8090/bookjuck/member/book/bookdetail.do?seq=${dto.seq}"><h6>${dto.title}</h6></a>
+                            <p>${dto.copy}</p>
+                        </div>
+                    </td>
+                 </c:forEach>
+            </tr>
+            </table>
+           </div>
+           
+            <div id="newbook" style="display:none;"> <!-- default는 베스트도서  -->
+            	<table id="booktable"> 
+            	<tr>          	
+					<c:forEach items="${list55}" var="dto"> <!--화제의신간 -->					
+                    <td>
+                        <div class="tblitem">
+                            <a href="http://localhost:8090/bookjuck/member/book/bookdetail.do?seq=${dto.seq}"><img src="/bookjuck/image/${dto.image}" class="book-sm"></a>
+                            <a href="http://localhost:8090/bookjuck/member/book/bookdetail.do?seq=${dto.seq}"><h6>${dto.title}</h6></a>
+                            <p>${dto.copy}</p>
+                        </div>
+                    </td>
+                    </c:forEach>
+                </tr>
+                <tr>          	
+					<c:forEach items="${list66}" var="dto"> <!--화제의신간 2번째줄 -->					
+                    <td>
+                        <div class="tblitem">
+                            <a href="http://localhost:8090/bookjuck/member/book/bookdetail.do?seq=${dto.seq}"><img src="/bookjuck/image/${dto.image}" class="book-sm"></a>
+                            <a href="http://localhost:8090/bookjuck/member/book/bookdetail.do?seq=${dto.seq}"><h6>${dto.title}</h6></a>
+                            <p>${dto.copy}</p>
+                        </div>
+                    </td>
+                    </c:forEach>
+                </tr>                            
             </table>
             </div>
          
@@ -119,5 +150,3 @@
       
    </script>
 
-</body>
-</html>
