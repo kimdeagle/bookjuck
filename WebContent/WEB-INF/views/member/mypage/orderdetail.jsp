@@ -319,7 +319,7 @@
 
 		<!-- ####### 종이책 -->
         <!-- 교환/ 환불일때만 -->
-        <c:if test="${(ordertype == 'return' && not empty returninfo) || (ordertype == 'refund' && not empty refundinfo)}">    
+        <c:if test="${(ordertype == 'return' && not empty seqBookOrder) || (ordertype == 'refund' && not empty seqBookOrder)}">    
             <article>
                 <h5>회수지 정보</h5>
                 <table class="receiver table tbl-md">
@@ -327,7 +327,7 @@
                         <th>주소</th>
                         <td>
                         <c:if test="${ordertype == 'return'}">${returninfo.returnAddress}</c:if>
-                        <c:if test="${ordertype == 'refund'}">${refundinfo.returnAdress}</c:if>
+                        <c:if test="${ordertype == 'refund'}">${refundinfo.returnAddress}</c:if>
                         </td>
                     </tr>
                 </table>

@@ -123,9 +123,6 @@ public class List extends HttpServlet {
 		
 		
 		//1.
-		//BookOrderDAO dao = new BookOrderDAO();	
-		//EBookOrderDAO dao = new EBookOrderDAO();	
-		//BaroOrderDAO dao = new BaroOrderDAO();	
 		ArrayList<BookOrderDTO> blist = new ArrayList<BookOrderDTO>();
 		ArrayList<BaroOrderDTO> balist = new ArrayList<BaroOrderDTO>();
 		ArrayList<EBookOrderDTO> elist = new ArrayList<EBookOrderDTO>();

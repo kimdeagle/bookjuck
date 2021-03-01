@@ -37,8 +37,7 @@ public class WriteOk extends HttpServlet {
 		String image = "";
 		String orgimage = "";	
 		
-		//TODO 추후에 수정해야함!
-		String seqMember = "21";
+		String seqMember = session.getAttribute("seq").toString();
 		
 		try {
 			
