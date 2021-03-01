@@ -93,8 +93,7 @@
                      src="/bookjuck/image/book/${badto.image}" class="book-xs"> <a
                      href="/bookjuck/member/book/bookdetail.do?seq=${badto.seqBook}">${badto.title}</a></td>
                   <td>${badto.amount}</td>
-                  <td>${badto.orderState} <a href="#"
-                     class="btn-report">독후감 쓰러 가기</a>
+                  <td>${badto.orderState}
                   </td>
                </tr>
                	</c:forEach>

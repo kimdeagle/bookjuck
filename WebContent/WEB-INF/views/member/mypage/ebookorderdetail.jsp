@@ -93,7 +93,6 @@
                   <td>1</td>
                   <td>
                   ${edto.orderState}
-                  <a href="#" class="btn-report">독후감 쓰러 가기</a>
                   </td>
                </tr>
                   </c:forEach>

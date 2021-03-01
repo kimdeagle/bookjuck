@@ -67,7 +67,7 @@
 					<tr>
 						<th>제목</th>
 						<td>
-							<input type="text" id="reviewTitle" name="reviewTitle" class="form-control" value=${dto.reviewTitle}>
+							<input type="text" id="reviewTitle" name="reviewTitle" class="form-control" value="${dto.reviewTitle}">
                     	</td>
                     </tr>
                     <tr>
