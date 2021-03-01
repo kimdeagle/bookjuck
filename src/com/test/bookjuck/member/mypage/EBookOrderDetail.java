@@ -29,9 +29,9 @@ public class EBookOrderDetail extends HttpServlet {
 		
 		//수경 시작
 	
-//		//바로드림 상세주문 조회
+//		//이북 상세주문 조회
 		EBookOrderDetailDAO ebookdao = new EBookOrderDetailDAO();
-		String seqEBookOrder = req.getParameter("seqBaroOrder");
+		String seqEBookOrder = req.getParameter("seqEBookOrder");
 		ArrayList<EBookOrderDetailDTO> elist = ebookdao.listEBookDetail(session.getAttribute("seq").toString(),seqEBookOrder);
 //		
 		//주문일 가져오기

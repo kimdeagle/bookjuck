@@ -50,6 +50,7 @@ public class EBookPayDAO {
 				EBookPayDTO dto = new EBookPayDTO();
 
 				dto.setPayment(rs.getString("payment"));
+				dto.setTotalPay(rs.getInt("totalPay"));
 				dto.setActualPay(rs.getInt("actualPay"));
 				dto.setSavePoints(rs.getInt("savePoints"));
 				dto.setUsePoint(rs.getInt("usePoint"));

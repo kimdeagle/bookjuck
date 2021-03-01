@@ -71,7 +71,7 @@
 				<table class="tbl-mem-orderer table tbl-lg">
 					<tr>
 						<td>주문자</td>
-						<td>이름 | 전화번호</td>
+						<td>${name}&nbsp; |&nbsp; ${tel}</td>
 					</tr>
 
 				</table>

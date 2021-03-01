@@ -102,7 +102,7 @@
 							<input type="button" value="+" class="plus btn btn-default btn-sm">
 						</div>
 						<div class="btns">
-							<button class="btn btn-success btn-lg btn-block cart">장바구니</button>
+							<button class="btn btn-success btn-lg btn-block cart" onclick="fnCart()">장바구니</button>
 							<button class="btn btn-primary btn-lg btn-block buy">바로구매</button>
 							<button class="btn btn-warning btn-lg btn-block baro">바로드림</button>
 						</div>
@@ -136,6 +136,17 @@
 
 
 	<script>
+	
+	function fnCart() {
+		var flag = confirm("장바구니에 담겼습니다. 장바구니로 이동하시겠습니까?");
+		if(flag){
+			//장바구니로 이동
+			
+			
+		} else {
+			//현재 페이지에 남기
+		}
+	}
 
 	</script>
 

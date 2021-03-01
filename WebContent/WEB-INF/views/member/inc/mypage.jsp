@@ -28,7 +28,7 @@
                 </ul>
             <li class="menuitem"><h6>기타</h6></li>
                 <ul>
-                    <li class="menusubitem"><a href="/bookjuck/member/order/cart.do">장바구니</li>
+                    <li class="menusubitem"><a href="/bookjuck/member/order/cart.do">장바구니</a></li>
                     <li class="menusubitem"><a href="/bookjuck/member/fleamarket/list.do">중고게시판</a></li>
                     <li class="menusubitem"><a href="/bookjuck/member/review/list.do">나의 독후감</a></li>
                 </ul>
