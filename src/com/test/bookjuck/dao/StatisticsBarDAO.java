@@ -53,16 +53,13 @@ public ArrayList<StatisticsBarDTO> getBookStat(HashMap<String, String> map) {
 			
 			where = String.format("where paydate between %s and %s", start, end);
 			sql = String.format("select sales from(select sum(sales) as sales from (select sum(totalpay) as sales from tblbookpay %s group by totalpay))", where);
-			System.out.println(sql); 
-			System.out.println(start);
-			System.out.println(end);
+			
 			
 			
 			
 		}
 		
-		System.out.println(where);
-		System.out.println(sql);
+		
 				
 		
 		pstat = conn.prepareStatement(sql);
@@ -115,15 +112,12 @@ public ArrayList<StatisticsBarDTO> getEBookStat(HashMap<String, String> map) {
 			
 			where = String.format("where paydate between %s and %s", start, end);
 			sql = String.format("select sales from(select sum(sales) as sales from (select sum(totalpay) as sales from tblepay %s group by totalpay))", where);
-			System.out.println(sql); 
-			System.out.println(start);
-			System.out.println(end);
+			
 			
 			
 		}
 		
-		System.out.println(where);
-		System.out.println(sql);
+
 				
 		
 		pstat = conn.prepareStatement(sql);
@@ -176,15 +170,12 @@ public ArrayList<StatisticsBarDTO> getBaroBookStat(HashMap<String, String> map) 
 			
 			where = String.format("where paydate between %s and %s", start, end);
 			sql = String.format("select sales from(select sum(sales) as sales from (select sum(totalpay) as sales from tblbaropay %s group by totalpay))", where);
-			System.out.println(sql); 
-			System.out.println(start);
-			System.out.println(end);
+
 			
 			
 		}
 		
-		System.out.println(where);
-		System.out.println(sql);
+
 				
 		
 		pstat = conn.prepareStatement(sql);

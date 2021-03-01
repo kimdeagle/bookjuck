@@ -67,9 +67,7 @@ public class BookDAO {
 				
 			} 
 			
-			System.out.println(where);
-						
-			System.out.println(sql);
+			
 		
 			pstat = conn.prepareStatement(sql);
 			rs = pstat.executeQuery();
@@ -97,7 +95,7 @@ public class BookDAO {
 				
 			}
 			
-			System.out.println(list.size());
+			
 			return list;
 			 
 					
@@ -136,16 +134,12 @@ public class BookDAO {
 				where = String.format("where pubdate between %s and %s and mcategory=%s and rownum < 11", start, end, category);
 				sql = String.format("select * from vwbestseller %s order by salerank asc", where);
 				
-				
-				System.out.println(sql); 
-				System.out.println(start);
-				System.out.println(end);
+			
 				
 				
 			}
 			
-			System.out.println(where);
-			System.out.println(sql);
+			
 					
 			
 			pstat = conn.prepareStatement(sql);
@@ -168,7 +162,7 @@ public class BookDAO {
 				dto.setTotalSale(rs.getString("totalsale"));
 				dto.setSaleRank(rs.getString("salerank"));
 				dto.setAuthor(rs.getString("author"));
-				System.out.println(rs.getString("title"));
+				
 				
 				
 				list.add(dto);
@@ -214,15 +208,12 @@ public ArrayList<BookDTO> NoCategorybestSeller (HashMap<String, String> map){
 				sql = String.format("select * from vwbestseller %s order by salerank asc", where);
 				
 				
-				System.out.println(sql); 
-				System.out.println(start);
-				System.out.println(end);
+				
 				
 				
 			}
 			
-			System.out.println(where);
-			System.out.println(sql);
+			
 					
 			
 			pstat = conn.prepareStatement(sql);
@@ -245,7 +236,7 @@ public ArrayList<BookDTO> NoCategorybestSeller (HashMap<String, String> map){
 				dto.setTotalSale(rs.getString("totalsale"));
 				dto.setSaleRank(rs.getString("salerank"));
 				dto.setAuthor(rs.getString("author"));
-				System.out.println(rs.getString("title"));
+				
 				
 				
 				list.add(dto);
@@ -268,7 +259,7 @@ public ArrayList<BookDTO> NoCategorybestSeller (HashMap<String, String> map){
 	//m카테고리 적용 베스트셀러 list -- 이현우
 		public ArrayList<BookDTO> CategorybestSeller (HashMap<String, String> map){
 			
-			System.out.println("select");
+			
 			
 			try {
 				
@@ -289,14 +280,13 @@ public ArrayList<BookDTO> NoCategorybestSeller (HashMap<String, String> map){
 					sql = String.format("select * from vwbestseller %s order by salerank asc", where);
 					
 					
-					System.out.println(sql); 
+					
 
 					
 					
 				}
 				
-				System.out.println(where);
-				System.out.println(sql);
+			
 						
 				
 				pstat = conn.prepareStatement(sql);
@@ -319,7 +309,7 @@ public ArrayList<BookDTO> NoCategorybestSeller (HashMap<String, String> map){
 					dto.setTotalSale(rs.getString("totalsale"));
 					dto.setSaleRank(rs.getString("salerank"));
 					dto.setAuthor(rs.getString("author"));
-					System.out.println(rs.getString("title"));
+					
 					
 					
 					list.add(dto);
@@ -368,7 +358,6 @@ public ArrayList<BookDTO> NoCategorybestSeller (HashMap<String, String> map){
 				dto.setImage(rs.getString("image"));
 				dto.setAuthor(rs.getString("author"));
 				dto.setRank(rs.getString("rank"));
-				System.out.println(rs.getString("title"));
 				
 				
 				list.add(dto);
@@ -413,14 +402,11 @@ public ArrayList<BookDTO> NoCategorybestSeller (HashMap<String, String> map){
 				
 				where = String.format("where pubdate between %s and %s and mcategory=%s and rownum < 11", start, end, category);
 				sql = String.format("select * from vwnewbook %s order by rank asc", where);
-				System.out.println(sql); 
-				System.out.println(start);
-				System.out.println(end);
+				
 							
 			}
 			
-			System.out.println(where);
-			System.out.println(sql);
+			
 					
 			
 			pstat = conn.prepareStatement(sql);
@@ -442,7 +428,7 @@ public ArrayList<BookDTO> NoCategorybestSeller (HashMap<String, String> map){
 				dto.setImage(rs.getString("image"));
 				dto.setAuthor(rs.getString("author"));
 				dto.setRank(rs.getString("rank"));
-				System.out.println(rs.getString("title"));
+				
 				
 				
 				list.add(dto);
@@ -484,14 +470,11 @@ public ArrayList<BookDTO> NoCategorybestSeller (HashMap<String, String> map){
 				where = String.format("where mcategory=%s and rownum < 11", category);
 				sql = String.format("select * from vwnewbook %s order by rank asc", where);
 				
-				System.out.println(sql); 
-				System.out.println(start);
-				System.out.println(end);
+				
 							
 			}
 			
-			System.out.println(where);
-			System.out.println(sql);
+			
 					
 			
 			pstat = conn.prepareStatement(sql);
@@ -513,7 +496,7 @@ public ArrayList<BookDTO> NoCategorybestSeller (HashMap<String, String> map){
 				dto.setImage(rs.getString("image"));
 				dto.setAuthor(rs.getString("author"));
 				dto.setRank(rs.getString("rank"));
-				System.out.println(rs.getString("title"));
+				
 				
 				
 				list.add(dto);
@@ -557,15 +540,12 @@ public ArrayList<BookDTO> NoCategoryNewBook (HashMap<String, String> map){
 				sql = String.format("select * from vwnewbook %s order by rank asc", where);
 				
 				
-				System.out.println(sql); 
-				System.out.println(start);
-				System.out.println(end);
+				
 				
 				
 			}
 			
-			System.out.println(where);
-			System.out.println(sql);
+			
 					
 			
 			pstat = conn.prepareStatement(sql);
@@ -587,7 +567,7 @@ public ArrayList<BookDTO> NoCategoryNewBook (HashMap<String, String> map){
 				dto.setImage(rs.getString("image"));
 				dto.setAuthor(rs.getString("author"));
 				dto.setRank(rs.getString("rank"));
-				System.out.println(rs.getString("title"));
+				
 				
 				
 				list.add(dto);
@@ -637,12 +617,11 @@ public ArrayList<BookDTO> NoCategoryNewBook (HashMap<String, String> map){
 				dto.setTotalSale(rs.getString("totalsale"));
 				dto.setSaleRank(rs.getString("salerank"));
 				dto.setAuthor(rs.getString("author"));
-				System.out.println(rs.getString("title"));
+				
 							
 				
 				list.add(dto);
-				System.out.println(list);
-				System.out.println(list.size());
+			
 				
 			}
 			
@@ -684,12 +663,11 @@ public ArrayList<BookDTO> NoCategoryNewBook (HashMap<String, String> map){
 				dto.setSaleRank(rs.getString("salerank"));
 				dto.setAuthor(rs.getString("author"));
 				dto.setSaleRank(rs.getString("salerank"));
-				System.out.println(rs.getString("title"));
+				
 							
 				
 				list.add(dto);
-				System.out.println(list);
-				System.out.println(list.size());
+				
 				
 			}
 			
@@ -736,7 +714,7 @@ public ArrayList<BookDTO> NoCategoryNewBook (HashMap<String, String> map){
 				dto.setImage(rs.getString("image"));
 				dto.setAuthor(rs.getString("author"));
 				dto.setRank(rs.getString("rank"));
-				System.out.println(rs.getString("title"));
+			
 				
 				
 				list.add(dto);
@@ -789,11 +767,11 @@ public ArrayList<BookDTO> NoCategoryNewBook (HashMap<String, String> map){
 				dto.setImage(rs.getString("image"));
 				//dto.setAuthor(rs.getString("author"));
 				dto.setRank(rs.getString("rank"));
-				System.out.println(rs.getString("title"));
+				
 				
 				
 				list.add(dto);
-				System.out.println(list);
+				
 				
 			}
 			

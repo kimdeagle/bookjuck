@@ -23,7 +23,7 @@ public class NewBook extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String a = req.getParameter("a"); //카테고리
-	    System.out.println(a);
+	   
 		
 		String yearStart = req.getParameter("yearStart");
 		String monthStart = req.getParameter("monthStart");
@@ -35,9 +35,7 @@ public class NewBook extends HttpServlet {
 		String dayEnd = req.getParameter("dayEnd");
 		
 		
-		//System.out.println(yearStart + monthStart + dayStart);
 		
-		//System.out.println(yearEnd + monthEnd + dayEnd);
 		
 		HashMap<String,String> map = new HashMap<String,String>();
 		/*
@@ -59,9 +57,7 @@ public class NewBook extends HttpServlet {
 			map.put("dayEnd", dayEnd);
 			map.put("a", a);					
 		
-		System.out.println(map.get("yearStart"));
-		System.out.println(map.get("yearEnd"));
-		System.out.println(map.get("a"));
+		
 		
 		ArrayList<BookDTO> list = new ArrayList<BookDTO>();
 		
@@ -113,7 +109,7 @@ public class NewBook extends HttpServlet {
 			 for (int i=0; i<=0; i++) { list1.add(list.get(i)); }
 			 */
 
-			System.out.println("size: " + list.size());
+			
 			
 			 if (list.size() < 10) {
 
@@ -156,7 +152,7 @@ public class NewBook extends HttpServlet {
 			
 			BookDAO dao = new BookDAO();
 			list = dao.CategroyNewBook(map);
-			System.out.println("확인용" + list);
+			
 			
 			for (BookDTO dto : list) {
 				
@@ -175,13 +171,11 @@ public class NewBook extends HttpServlet {
 			}
 			
 			
-			System.out.println(list);
+			
 			ArrayList<BookDTO> list1 = new ArrayList<BookDTO>(); //1위
 			ArrayList<BookDTO> list2 = new ArrayList<BookDTO>(); //2~4위
 			ArrayList<BookDTO> list3 = new ArrayList<BookDTO>(); //5~10위
 			
-			System.out.println("size: " + list.size());
-			System.out.println("list(0)" + list.get(0));
 			
 			if (list.size() < 10) {
 
@@ -250,11 +244,9 @@ public class NewBook extends HttpServlet {
 	        ArrayList<BookDTO> list2 = new ArrayList<BookDTO>(); //2~4위
 	        ArrayList<BookDTO> list3 = new ArrayList<BookDTO>(); //5~10위
 	        
-	        /*
-	         for (int i=0; i<=0; i++) { list1.add(list.get(i)); }
-	         */
+	        
 
-	        System.out.println("size: " + list.size());
+	        
 	        
 	        if (list.size() < 10) {
 
@@ -311,12 +303,12 @@ public class NewBook extends HttpServlet {
 	         }
 	         
 	         
-	         System.out.println(list);
+	        
 	         ArrayList<BookDTO> list1 = new ArrayList<BookDTO>(); //1위
 	         ArrayList<BookDTO> list2 = new ArrayList<BookDTO>(); //2~4위
 	         ArrayList<BookDTO> list3 = new ArrayList<BookDTO>(); //5~10위
 	         
-	         System.out.println("size: " + list.size());
+	        
 	         
 	         list1.add(list.get(0));
 	         

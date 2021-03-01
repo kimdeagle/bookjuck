@@ -28,7 +28,7 @@ public class MainBook extends HttpServlet {
 		
 		
 		//session.setAttribute("id", "test004"); // 추천도서 비회원 접근 제한 테스트용 세션
-		session.setAttribute("seq", "24"); // 추천도서 적용여부 테스트용 세션
+		//session.setAttribute("seq", "24"); // 추천도서 적용여부 테스트용 세션
 		
 		ArrayList<BookDTO> list1 = new ArrayList<BookDTO>(); //추천도서
 		ArrayList<BookDTO> list2 = new ArrayList<BookDTO>(); //베스트도서
@@ -39,7 +39,7 @@ public class MainBook extends HttpServlet {
 			
 			
 			
-			System.out.println("아이디없는상태");
+			
 			
 			BookDAO dao = new BookDAO();
 			
@@ -95,7 +95,7 @@ public class MainBook extends HttpServlet {
 			list2 = dao.mainNewBook();
 			list3 = dao.mainBestSeller();
 			
-			System.out.println(list1.size());
+			
 			
 					//메인추천도서
 					for (BookDTO dto : list1) {

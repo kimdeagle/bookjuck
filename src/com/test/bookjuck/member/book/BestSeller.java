@@ -26,7 +26,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
    
    
       String a = request.getParameter("a"); //카테고리
-      System.out.println(a);
+     
       
       
       String yearStart = request.getParameter("yearStart");
@@ -60,9 +60,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
          map.put("a", a);//카테고리
                         
       
-      System.out.println(map.get("yearStart"));
-      System.out.println(map.get("yearEnd"));
-      System.out.println(map.get("a"));
+      
       
       ArrayList<BookDTO> list = new ArrayList<BookDTO>();
       
@@ -113,7 +111,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
           for (int i=0; i<=0; i++) { list1.add(list.get(i)); }
           */
 
-         System.out.println("size: " + list.size());
+        
          
          if (list.size() < 10) {
 
@@ -156,7 +154,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
     	  
     	  BookDAO dao = new BookDAO();
     	  list = dao.CategorybestSeller(map);
-    	  System.out.println("확인용" + list);
+    	  
     	  for (BookDTO dto : list) {
               
               // 날짜에서 시간 잘라내기
@@ -174,13 +172,12 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
            }
            
            
-           System.out.println("책목록" + list);
+           
            ArrayList<BookDTO> list1 = new ArrayList<BookDTO>(); //1위
            ArrayList<BookDTO> list2 = new ArrayList<BookDTO>(); //2~4위
            ArrayList<BookDTO> list3 = new ArrayList<BookDTO>(); //5~10위
            
-           System.out.println("size: " + list.size());
-           System.out.println("list(0)" + list.get(0));
+         
            
            
 			if (list.size() < 10) {
@@ -218,7 +215,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
         {		
     	  BookDAO dao = new BookDAO();
     	  list = dao.bestSeller(map);
-          System.out.println(a);
+          
         
         for (BookDTO dto : list) {
   
@@ -254,7 +251,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
          for (int i=0; i<=0; i++) { list1.add(list.get(i)); }
          */
 
-        System.out.println("size: " + list.size());
+        
         
         if (list.size() < 10) {
 
@@ -314,12 +311,12 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
          }
          
          
-         System.out.println(list);
+         
          ArrayList<BookDTO> list1 = new ArrayList<BookDTO>(); //1위
          ArrayList<BookDTO> list2 = new ArrayList<BookDTO>(); //2~4위
          ArrayList<BookDTO> list3 = new ArrayList<BookDTO>(); //5~10위
          
-         System.out.println("size: " + list.size());
+        
          
          list1.add(list.get(0));
          
