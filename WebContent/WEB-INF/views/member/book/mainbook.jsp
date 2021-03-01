@@ -42,7 +42,7 @@
             </c:forEach>
             </table>
             </div>
-           <div id="bestbook">
+           <div id="bestbook" style="width:600px;">
             <table id="booktable">
 			  	<c:forEach items="${list3}" var="dto"> <!-- 베스트도서 -->
                     <td style="width:400px;">
