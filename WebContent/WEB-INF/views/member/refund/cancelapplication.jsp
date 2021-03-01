@@ -58,11 +58,11 @@
                 <table class="table tbl-md">
                     <tr style="background-color: RGBA(140,179,105,0.2)">
                         <th>주문번호</th>
-                        <td><input type="text" class="form-control" name="seqOrder" id="seqOrder" value="0000"></td>
+                        <td><input disabled type="text" class="form-control" name="seqOrder" id="seqOrder" value="${seqOrder}"></td>
                         <th>상품정보</th>
-                        <td><input type="text" class="form-control" name="title" id="title" value="자바의 정석 외 1"></td>
+                        <td><input disabled type="text" class="form-control" name="title" id="title" value="${dto.title}"></td>
                         <th>도서 총 수량</th>
-                        <td><input type="text" class="form-control" name="amount" id="amount" value="2"></td>
+                        <td><input disabled type="text" class="form-control" name="amount" id="amount" value="${dto.amount}"></td>
                     </tr>
                     <tr>
                         <th>취소 사유</th>
