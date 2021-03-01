@@ -9,14 +9,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//http://localhost:8090/bookjuck/member/mypage/custinfoedit.do
-@WebServlet("/member/mypage/custinfoedit.do")
-public class CustInfoEdit extends HttpServlet {
-	
+//http://localhost:8090/bookjuck/member/mypage/pwedit.do
+
+@WebServlet("/member/mypage/pwedit.do")
+public class PwEdit extends HttpServlet {
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/member/mypage/custinfoedit.jsp");
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/member/mypage/pwedit.jsp");
 		dispatcher.forward(request, response);
-		
+
 	}
+
 }

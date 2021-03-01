@@ -103,22 +103,23 @@ public class RegisterOK extends HttpServlet {
 			if (result == 1) {
 				writer.print("<html><body>");
 				writer.print("<script>");
-				writer.print("alert('회원가입에 '성공'하셨습니다.');");
+				writer.print("alert('success');");
 				writer.print("history.back();");
 				writer.print("</script>");
 				writer.print("</body></html>");
 
 				resp.sendRedirect("http://localhost:8090/bookjuck/member/login.do");
-			}
+			}else {
 
-			writer.print("<html><body>");
-			writer.print("<script>");
-			writer.print("alert('failed');");
-			writer.print("history.back();");
-			writer.print("</script>");
-			writer.print("</body></html>");
+				writer.print("<html><body>");
+				writer.print("<script>");
+				writer.print("alert('failed');");
+				writer.print("history.back();");
+				writer.print("</script>");
+				writer.print("</body></html>");
 
 			writer.close();
+			}
 		} catch (Exception e) {
 			System.out.println(e);
 		}

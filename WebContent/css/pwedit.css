@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+#contentBox{
+	width: 500px;
+	height: 400px;
+	background-color: #ccc;
+	border:1px solid black;
+}
+
+#tbl1{
+	margin-top: 50px;
+}
+
+#tbl1 th{
+	background-color: #E8F0E1;
+}

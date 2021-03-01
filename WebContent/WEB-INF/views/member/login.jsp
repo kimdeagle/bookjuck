@@ -85,7 +85,7 @@
 						<!-- <div class="socialBtn" onclick="document.getElementByID(naver_id_login').click;"></div> -->
 						<div id="naver_id_login"></div>
 						
-						<input type="button" value="로그아웃" onclick="location.href='/logout'">
+						<!-- <input type="button" value="로그아웃" onclick="location.href='/logout'"> -->
 
 					</div>
 
