@@ -31,6 +31,67 @@ public class EBookOrderDetailDTO {
 	
 	private int total;
 
+	
+	//다은 추가 ) 주문 취소/환불/교환 관련 추가
+	//2. 환불관련
+	private String refundReason;		//환불사유
+	private String refundReasonDetail;	//환불상세사유
+	private String refundState;			//환불상태
+	private String refundDate;			//환불날짜
+	
+	//4. 통합
+	private String returnAddress;		//회수지주소 -> 교환/환불일 때
+	private String endDate;				//처리날짜 -> 교환/환불일 때
+	
+	
+	public String getRefundReason() {
+		return refundReason;
+	}
+
+	public void setRefundReason(String refundReason) {
+		this.refundReason = refundReason;
+	}
+
+	public String getRefundReasonDetail() {
+		return refundReasonDetail;
+	}
+
+	public void setRefundReasonDetail(String refundReasonDetail) {
+		this.refundReasonDetail = refundReasonDetail;
+	}
+
+	public String getRefundState() {
+		return refundState;
+	}
+
+	public void setRefundState(String refundState) {
+		this.refundState = refundState;
+	}
+
+	public String getRefundDate() {
+		return refundDate;
+	}
+
+	public void setRefundDate(String refundDate) {
+		this.refundDate = refundDate;
+	}
+
+	public String getReturnAddress() {
+		return returnAddress;
+	}
+
+	public void setReturnAddress(String returnAddress) {
+		this.returnAddress = returnAddress;
+	}
+
+	public String getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
+
 	public String getSeq() {
 		return seq;
 	}

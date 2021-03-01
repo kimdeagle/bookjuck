@@ -27,11 +27,13 @@ public class MainBook extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		
 		
+
 		//session.setAttribute("id", "test004"); // 추천도서 비회원 접근 제한 테스트용 세션
 
 		//session.setAttribute("seq", "24"); // 추천도서 적용여부 테스트용 세션
 
 		
+
 		ArrayList<BookDTO> list1 = new ArrayList<BookDTO>(); //추천도서
 		ArrayList<BookDTO> list2 = new ArrayList<BookDTO>(); //베스트도서
 		ArrayList<BookDTO> list3 = new ArrayList<BookDTO>(); //화제의신간

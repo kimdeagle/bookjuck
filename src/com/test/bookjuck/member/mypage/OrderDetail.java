@@ -63,10 +63,32 @@ public class OrderDetail extends HttpServlet {
 		
 		
 		// 다은 시작) 주문 상세정보에 교/취/환 정보 추가하기
-		
-		//1. 교환/취소/환불 정보 - 교환사유, 상태, 일자 등
 		BookOrderDetailDAO boddao = new BookOrderDetailDAO();
-		ArrayList<BookOrderDetailDTO> bodlist = boddao.getRefundInfo(seqBookOrder);
+		
+		//주문이 일반주문인지 교환/취소/환불인지 알아내기
+		String ordertype = boddao.getType(seqBookOrder);
+		
+		BookOrderDetailDTO cancelinfo;
+		BookOrderDetailDTO returninfo;
+		BookOrderDetailDTO refundinfo;
+		
+		
+		if (ordertype.equals("cancel")) {
+			//취소정보 가져오기
+			cancelinfo = boddao.getCancelInfo(seqBookOrder);	
+			req.setAttribute("cancelinfo", cancelinfo);
+			
+		} else if (ordertype.equals("return")) {
+			//교환정보 가져오기
+			returninfo = boddao.getReturnInfo(seqBookOrder);	
+			req.setAttribute("returninfo", returninfo);
+			
+		} else if (ordertype.equals("refund")) {
+			//환불정보 가져오기
+			refundinfo = boddao.getRefundInfo(seqBookOrder);	
+			req.setAttribute("refundinfo", refundinfo);
+		
+		}
 		
 		// 다은 끝
 		
@@ -78,7 +100,7 @@ public class OrderDetail extends HttpServlet {
 		req.setAttribute("orderDate", orderDate);
 		req.setAttribute("plist", plist); // 조아라) 독후감쓸 수 있는 책 리스트도 보내기
 		
-		req.setAttribute("bodlist", bodlist); // 다은) 교/취/환 정보 보내기
+		req.setAttribute("ordertype", ordertype); // 다은) 주문 타입보내기
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/member/mypage/orderdetail.jsp");
 		dispatcher.forward(req, resp);

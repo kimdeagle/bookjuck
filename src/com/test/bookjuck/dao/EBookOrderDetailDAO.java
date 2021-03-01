@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.test.bookjuck.DBUtil;
+import com.test.bookjuck.dto.BookOrderDetailDTO;
 import com.test.bookjuck.dto.EBookOrderDetailDTO;
 
 public class EBookOrderDetailDAO {
@@ -101,5 +102,83 @@ public class EBookOrderDetailDAO {
 		}
 		return null;
 	}
+
+	
+	
+	// ################### 다은 시작
+	
+	
+	/**
+	 * 해당 주문번호를 가지고 일반 주문인지 또는 취소 주문인지를 알아내는 메서드입니다. 
+	 * @param seqBaroOrder
+	 * @return ordertype
+	 */
+	public String getType(String seqEBookOrder) {
+		
+		try {
+			
+			String sql = String.format("select case when er.seq is not null then 'refund' when er.seq is null then 'other' end as ordertype from tblEOrder o left outer join tblErefund er on o.seq = er.seqEorder where o.seq = %s", seqEBookOrder);
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			
+			if (rs.next()) {
+				
+				return rs.getString("orderType");
+				
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+	}
+
+	
+	
+	/**
+	 * 환불 정보를 가져오는 메서드입니다.
+	 * @param seqBookOrder
+	 * @return dto
+	 */
+	public EBookOrderDetailDTO getRefundInfo(String seqEBookOrder) {
+
+		try {
+			
+			String sql = String.format("select * from tbleRefund br inner join tbleOrder bo on bo.seq = br.seqeorder where bo.seq = %s", seqEBookOrder);
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			
+			if (rs.next()) {
+				
+				EBookOrderDetailDTO dto = new EBookOrderDetailDTO();
+				
+				dto.setRefundReason(rs.getString("refundReason"));
+				dto.setRefundDate(rs.getString("refundDate"));
+				dto.setRefundReasonDetail(rs.getString("refundReasonDetail"));
+				dto.setRefundState(rs.getString("refundState"));
+				
+				dto.setEndDate(rs.getString("endDate")); 
+				
+				return dto;
+			}
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+	}
+	
+	
+	
+	
+	
+	// ################### 다은 끝
 	
 }

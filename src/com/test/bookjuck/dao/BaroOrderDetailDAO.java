@@ -111,4 +111,77 @@ public class BaroOrderDetailDAO {
 		}
 		return null;
 	}
+
+	// 수경 끝
+	
+	
+	// ####################################### 다은 시작
+	
+	/**
+	 * 해당 주문번호를 가지고 일반 주문인지 또는 취소 주문인지를 알아내는 메서드입니다. 
+	 * @param seqBaroOrder
+	 * @return ordertype
+	 */
+	public String getType(String seqBaroOrder) {
+		
+		try {
+			
+			String sql = String.format("select case when bc.seq is not null then 'cancel' when bc.seq is null then 'other' end as ordertype from tblBaroOrder o left outer join tblBaroCancel bc on o.seq = bc.seqbaroorder where o.seq = %s", seqBaroOrder);
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			
+			if (rs.next()) {
+				
+				return rs.getString("orderType");
+				
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+	}
+
+	
+	/**
+	 * 취소 정보를 가져오는 메서드입니다.
+	 * @param seqBookOrder
+	 * @return dto
+	 */
+	public BaroOrderDetailDTO getCancelInfo(String seqBaroOrder) {
+		
+
+		try {
+			
+			String sql = String.format("select * from tblBaroCancel bc inner join tblBaroOrder bo on bo.seq = bc.seqbaroorder where bo.seq = %s", seqBaroOrder);
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			
+			if (rs.next()) {
+				
+				BaroOrderDetailDTO dto = new BaroOrderDetailDTO();
+				
+				dto.setCancelReason(rs.getString("cancelReason"));
+				dto.setCancelDate(rs.getString("cancelDate"));
+				dto.setCancelReasonDetail(rs.getString("cancelReasonDetail"));
+				dto.setCancelState(rs.getString("cancelState"));
+				
+				
+				return dto;
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		
+		return null;
+	}
+	
+	// ###################################### 다은 끝
 }

@@ -2,7 +2,10 @@
 	
  	1. 중고게시판 관련
  	2. 교환/취소/환불 (사용자) 관련
- 	3. 주문/배송 + 교환/취소/환불 (관리자) 관련   
+ 	3. 주문/배송 + 교환/취소/환불 (관리자) 관련 
+ 	
+ 	2021.03.01추가
+ 	4. (사용자) 주문 타입을 알아보는 뷰
  	
 */
 
@@ -217,3 +220,26 @@ from tblEOrder eo
                         on eo.seqMember = m.seq
 order by eo.seq asc;
 -- #### 관리자 Ebook 주문조회 리스트 뷰
+
+
+
+-- 4.
+-- ##### 주문이 일반주문인지 취소, 교환, 환불인지를 알아내는 뷰
+create or replace view vwOrderType
+as
+select
+    bo.seq as seqOrder,
+    case
+        when bc.seq is not null then 'cancel'
+        when bch.seq is not null then 'return'
+        when br.seq is not null then 'refund'
+        when bc.seq is null and bch.seq is null and br.seq is null then 'other'
+    end as ordertype
+from tblBookOrder bo
+    left outer join tblBookCancel bc
+        on bo.seq = bc.seqbookorder
+            left outer join tblBookChange bch
+                on bo.seq = bch.seqbookorder
+                    left outer join tblbookrefund br
+                        on bo.seq = br.seqbookorder;
+-- ##### 주문이 일반주문인지 취소, 교환, 환불인지를 알아내는 뷰
