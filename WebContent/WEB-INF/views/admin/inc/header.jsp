@@ -32,6 +32,8 @@
 	            	<ul class="menusubitem">
 		                <li class="contents">고객정보조회</a></li>
 		                <li class="contents"><a href="/bookjuck/admin/curationletter/list.do">큐레이션레터</a></li>
+		                <li class="contents"><a href="/bookjuck/admin/custmng/custmng.do">고객 계정 관리</a></li>
+		                <li class="contents"><a href="/bookjuck/admin/custmng/dormancymng.do">휴면 계정 관리</a></li>
 	            	</ul>
 	            <li class="menuitem"><a href="#!"><h6>게시판 관리</h6></a></li>
 		           	<ul class="menusubitem">
