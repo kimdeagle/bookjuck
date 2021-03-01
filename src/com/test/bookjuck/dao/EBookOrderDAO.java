@@ -9,6 +9,7 @@ import java.util.HashMap;
 
 import com.test.bookjuck.DBUtil;
 import com.test.bookjuck.dto.BaroOrderDTO;
+import com.test.bookjuck.dto.BookOrderDetailDTO;
 import com.test.bookjuck.dto.EBookOrderDTO;
 
 public class EBookOrderDAO {
@@ -312,6 +313,40 @@ public class EBookOrderDAO {
 				return rs.getString("cnt");
 			}
 			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	
+		
+		return null;
+	}
+
+	
+	/**
+	 * 교환/취소/환불 신청을 위해 seqOrder입력시 주문한 책 제목과 수량을 받아오는 메서드입니다.
+	 * @param seqOrder
+	 * @return dto
+	 */
+	public BookOrderDetailDTO getOrder(String seqOrder) {
+
+		try {
+			
+			String sql = String.format("select rownum, eo.seq, b.title from tbleBook b inner join tbleOrderDetail eod on eod.seqeBook = b.seq inner join tbleOrder eo on eo.seq = eod.seqeorder where eo.seq = %s and rownum = 1", seqOrder);
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			
+			if (rs.next()) {
+				
+				BookOrderDetailDTO dto = new BookOrderDetailDTO();
+				
+				dto.setTitle(rs.getString("title"));
+				dto.setAmount(1);
+				
+				return dto;
+			}
 			
 		} catch (Exception e) {
 			System.out.println(e);

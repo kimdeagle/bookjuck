@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.test.bookjuck.dao.BaroOrderDAO;
 import com.test.bookjuck.dao.BookOrderDAO;
+import com.test.bookjuck.dao.EBookOrderDAO;
 import com.test.bookjuck.dto.BookOrderDetailDTO;
-
-import sun.awt.RepaintArea;
 
 @WebServlet("/member/refund/cancelapplication.do")
 public class CancelApplication extends HttpServlet {
@@ -26,8 +26,22 @@ public class CancelApplication extends HttpServlet {
 		String type = req.getParameter("type");
 		String seqOrder = req.getParameter("seqOrder");
 		
-		BookOrderDAO dao = new BookOrderDAO();
-		BookOrderDetailDTO dto = dao.getOrder(seqOrder); 
+		
+		BookOrderDetailDTO dto;
+		
+		if (type.equals("1")) {
+			BookOrderDAO bdao = new BookOrderDAO();
+			dto = bdao.getOrder(seqOrder); 
+			
+		} else if (type.equals("2")) {
+			BaroOrderDAO badao = new BaroOrderDAO();
+			dto = badao.getOrder(seqOrder); 
+			
+		} else {
+			EBookOrderDAO edao = new EBookOrderDAO();
+			dto = edao.getOrder(seqOrder); 
+		}
+		
 		
 
 		//로그인 안한 사람이 접근할 때 내 쫓기
