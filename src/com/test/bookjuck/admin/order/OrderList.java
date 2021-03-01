@@ -1,7 +1,9 @@
 package com.test.bookjuck.admin.order;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
@@ -26,14 +28,17 @@ public class OrderList extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		
+		HttpSession session = req.getSession();
+		String id = (String)session.getAttribute("id");
 		
 		HashMap<String,String> map = new HashMap<String,String>();
+
+		map.put("id", id);		//session id 담기
 		
 		String ordernumsearch = req.getParameter("ordernumsearch");	//검색하려는 주문번호
 		String idsearch = req.getParameter("idsearch");				//검색하려는 주문자id
 		String booksearch = req.getParameter("booksearch");			//검색하려는 주문상품명 (책 제목)
 		
-				
 				
 		String type = "1";
 		
@@ -41,18 +46,53 @@ public class OrderList extends HttpServlet {
 			type = req.getParameter("type");
 		}
 		
-		
 		String startDate = req.getParameter("startDate");
 		String endDate = req.getParameter("endDate");
 	
-		System.out.println(type + startDate  + endDate );
+
+		//관리자] 초기검색 상태 기간 조회 : 3달전 ~ 현재 까지로 만들기
+		if (startDate == null) {
+			Date date = new Date();
+			Date caldate = new Date();
+			caldate.setMonth(date.getMonth() - 3); 
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); // yyyy-MM-dd HH:mm:ss 
+			startDate = formatter.format(caldate);
+		}
+		
+		if (endDate == null) {
+			Date date = new Date();
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); // yyyy-MM-dd HH:mm:ss 
+			endDate = formatter.format(date);
+		}
+		
+		
+		//where절을 구성할 검색어들 map에 넣기
+		if ( !(startDate == null || startDate.equals("")) ) {
+			map.put("startDate", startDate);
+		}
+		
+		if ( !(endDate == null || endDate.equals("")) ) {
+			map.put("endDate", endDate);
+		}	
+		
+		if ( !(ordernumsearch == null || ordernumsearch.equals("")) ) {
+			map.put("ordernumsearch", ordernumsearch);
+		}	
+		
+		if ( !(idsearch == null || idsearch.equals("")) ) {
+			map.put("idsearch", idsearch);
+		}	
+		
+		if ( !(booksearch == null || booksearch.equals("")) ) {
+			map.put("booksearch", booksearch);
+		}	
+		
 		
 		
 		
 		//1. DB 작업 -> select
 		//2. 목록 반환 + JSP 전달 후 호출하기
 		
-		HttpSession session = req.getSession();
 		
 		
 		//페이징
@@ -104,7 +144,10 @@ public class OrderList extends HttpServlet {
 		if (type.equals("1")) {
 			
 			BookOrderDAO dao = new BookOrderDAO();	
-			blist = dao.adminlist(map);	
+			
+			String isRefundList = "where ";
+			
+			blist = dao.adminlist(map, isRefundList);	
 			
 			//1.5 데이터 조작할 것
 			for (BookOrderDTO dto : blist) {
@@ -120,15 +163,9 @@ public class OrderList extends HttpServlet {
 			}
 			
 			//페이징
-			totalCount = dao.getATotalCount(map); //총 게시물 수
-			System.out.println(totalCount);		//269개
-			
-			//totalPage = totalCount / pageSize + 1; //총 페이지 수
+			totalCount = dao.getATotalCount(map, isRefundList); //총 게시물 수
 			totalPage = (int)Math.ceil((double)totalCount / pageSize); //총 페이지 수
-			System.out.println(totalPage);		//26페이지 -(ceil)-> 27페이지
-			
-			
-			
+
 			
 			loop = 1;
 			n = ((nowPage - 1) / blockSize) * blockSize + 1;
@@ -143,10 +180,11 @@ public class OrderList extends HttpServlet {
 							+ "         </li>");
 			} else {
 				pagebar += String.format("<li>"
-							+ "            <a href=\"/bookjuck/admin/order/orderlist.do?page=%d\" aria-label=\"Previous\">"
+							+ "            <a href=\"/bookjuck/admin/order/orderlist.do?type=%d&page=%d&startDate=%s&endDate=%s&ordernumsearch=%s&idsearch=%s&booksearch=%s\" aria-label=\"Previous\">"
 							+ "                <span aria-hidden=\"true\">&laquo;</span>"
 							+ "            </a>"
-							+ "         </li>", n - 1);			
+							+ "         </li>", 1, n - 1, startDate, endDate, ordernumsearch, idsearch, booksearch);
+				
 			}
 			
 			
@@ -158,8 +196,8 @@ public class OrderList extends HttpServlet {
 				} else {
 					pagebar += "<li>";
 				}
-				pagebar += String.format("<a href=\"/bookjuck/admin/order/orderlist.do?page=%d\">%d</a></li> ", n, n);
-
+				pagebar += String.format("<a href=\"/bookjuck/admin/order/orderlist.do?type=%d&page=%d&startDate=%s&endDate=%s&ordernumsearch=%s&idsearch=%s&booksearch=%s\">%d</a></li> ", 1, n, startDate, endDate, ordernumsearch, idsearch, booksearch, n);
+				
 				loop++;
 				n++;
 
@@ -176,10 +214,10 @@ public class OrderList extends HttpServlet {
 				//a href = "#" 본인 페이지 항상 위, "#!" 위로 올라가는 현상 사라짐
 			} else {
 				pagebar += String.format("<li>"
-						+ "            <a href=\"/bookjuck/admin/order/orderlist.do?page=%d\" aria-label=\"Next\">"
+						+ "            <a href=\"/bookjuck/admin/order/orderlist.do?type=%d&page=%d&startDate=%s&endDate=%s&ordernumsearch=%s&idsearch=%s&booksearch=%s\" aria-label=\"Next\">"
 						+ "                <span aria-hidden=\"true\">&raquo;</span>"
 						+ "            </a>"
-						+ "          </li> ", n);
+						+ "          </li> ", 1, n, startDate, endDate, ordernumsearch, idsearch, booksearch);
 			}
 			
 			
@@ -190,8 +228,11 @@ public class OrderList extends HttpServlet {
 			
 		} else if (type.equals("2")) {
 			
-			BaroOrderDAO dao = new BaroOrderDAO();	
-			balist = dao.adminlist(map);	
+			BaroOrderDAO dao = new BaroOrderDAO();
+			
+			String isRefundList = "where ";
+			
+			balist = dao.adminlist(map, isRefundList);	
 			
 			//1.5 데이터 조작할 것
 			for (BaroOrderDTO dto : balist) {
@@ -207,7 +248,7 @@ public class OrderList extends HttpServlet {
 			
 			
 			//페이징
-			totalCount = dao.getATotalCount(map); //총 게시물 수
+			totalCount = dao.getATotalCount(map, isRefundList); //총 게시물 수
 			System.out.println(totalCount);		//269개
 			
 			//totalPage = totalCount / pageSize + 1; //총 페이지 수
@@ -229,10 +270,11 @@ public class OrderList extends HttpServlet {
 							+ "         </li>");
 			} else {
 				pagebar += String.format("<li>"
-							+ "            <a href=\"/codestudy/board/list.do?page=%d\" aria-label=\"Previous\">"
+							+ "            <a href=\"/bookjuck/admin/order/orderlist.do?type=%d&page=%d&startDate=%s&endDate=%s&ordernumsearch=%s&idsearch=%s&booksearch=%s\" aria-label=\"Previous\">"
 							+ "                <span aria-hidden=\"true\">&laquo;</span>"
 							+ "            </a>"
-							+ "         </li>", n - 1);			
+							+ "         </li>", 2, n - 1, startDate, endDate, ordernumsearch, idsearch, booksearch);
+				
 			}
 			
 			
@@ -244,8 +286,8 @@ public class OrderList extends HttpServlet {
 				} else {
 					pagebar += "<li>";
 				}
-				pagebar += String.format("<a href=\"/codestudy/board/list.do?page=%d\">%d</a></li> ", n, n);
-
+				pagebar += String.format("<a href=\"/bookjuck/admin/order/orderlist.do?type=%d&page=%d&startDate=%s&endDate=%s&ordernumsearch=%s&idsearch=%s&booksearch=%s\">%d</a></li> ", 2, n, startDate, endDate, ordernumsearch, idsearch, booksearch, n);
+				
 				loop++;
 				n++;
 
@@ -262,19 +304,24 @@ public class OrderList extends HttpServlet {
 				//a href = "#" 본인 페이지 항상 위, "#!" 위로 올라가는 현상 사라짐
 			} else {
 				pagebar += String.format("<li>"
-						+ "            <a href=\"/codestudy/board/list.do?page=%d\" aria-label=\"Next\">"
+						+ "            <a href=\"/bookjuck/admin/order/orderlist.do?type=%d&page=%d&startDate=%s&endDate=%s&ordernumsearch=%s&idsearch=%s&booksearch=%s\" aria-label=\"Next\">"
 						+ "                <span aria-hidden=\"true\">&raquo;</span>"
 						+ "            </a>"
-						+ "          </li> ", n);
+						+ "          </li> ", 2, n, startDate, endDate, ordernumsearch, idsearch, booksearch);
 			}
 			
+			req.setAttribute("pagebar", pagebar);
+			req.setAttribute("nowPage", nowPage);
 			
 			
 			
 		} else {
 			
 			EBookOrderDAO dao = new EBookOrderDAO();	
-			elist = dao.adminlist(map);	
+			
+			String isRefundList = "where ";
+			
+			elist = dao.adminlist(map, isRefundList);	
 			
 			//1.5 데이터 조작할 것
 			for (EBookOrderDTO dto : elist) {
@@ -289,7 +336,7 @@ public class OrderList extends HttpServlet {
 			}
 			
 			//페이징
-			totalCount = dao.getATotalCount(map); //총 게시물 수
+			totalCount = dao.getATotalCount(map, isRefundList); //총 게시물 수
 			System.out.println(totalCount);		//269개
 			
 			//totalPage = totalCount / pageSize + 1; //총 페이지 수
@@ -313,10 +360,11 @@ public class OrderList extends HttpServlet {
 							+ "         </li>");
 			} else {
 				pagebar += String.format("<li>"
-							+ "            <a href=\"/codestudy/board/list.do?page=%d\" aria-label=\"Previous\">"
+							+ "            <a href=\"/bookjuck/admin/order/orderlist.do?type=%d&page=%d&startDate=%s&endDate=%s&ordernumsearch=%s&idsearch=%s&booksearch=%s\" aria-label=\"Previous\">"
 							+ "                <span aria-hidden=\"true\">&laquo;</span>"
 							+ "            </a>"
-							+ "         </li>", n - 1);			
+							+ "         </li>", 3, n - 1, startDate, endDate, ordernumsearch, idsearch, booksearch);
+				
 			}
 			
 			
@@ -328,8 +376,8 @@ public class OrderList extends HttpServlet {
 				} else {
 					pagebar += "<li>";
 				}
-				pagebar += String.format("<a href=\"/codestudy/board/list.do?page=%d\">%d</a></li> ", n, n);
-
+				pagebar += String.format("<a href=\"/bookjuck/admin/order/orderlist.do?type=%d&page=%d&startDate=%s&endDate=%s&ordernumsearch=%s&idsearch=%s&booksearch=%s\">%d</a></li> ", 3, n, startDate, endDate, ordernumsearch, idsearch, booksearch, n);
+				
 				loop++;
 				n++;
 
@@ -346,12 +394,15 @@ public class OrderList extends HttpServlet {
 				//a href = "#" 본인 페이지 항상 위, "#!" 위로 올라가는 현상 사라짐
 			} else {
 				pagebar += String.format("<li>"
-						+ "            <a href=\"/codestudy/board/list.do?page=%d\" aria-label=\"Next\">"
+						+ "            <a href=\"/bookjuck/admin/order/orderlist.do?type=%d&page=%d&startDate=%s&endDate=%s&ordernumsearch=%s&idsearch=%s&booksearch=%s\" aria-label=\"Next\">"
 						+ "                <span aria-hidden=\"true\">&raquo;</span>"
 						+ "            </a>"
-						+ "          </li> ", n);
+						+ "          </li> ", 3, n, startDate, endDate, ordernumsearch, idsearch, booksearch);
 			}
 			
+
+			req.setAttribute("pagebar", pagebar);
+			req.setAttribute("nowPage", nowPage);
 			
 			
 		}
@@ -367,10 +418,12 @@ public class OrderList extends HttpServlet {
 		
 		req.setAttribute("type", type);
 		
-
-
+		req.setAttribute("booksearch", booksearch);
+		req.setAttribute("idsearch", idsearch);
+		req.setAttribute("ordernumsearch", ordernumsearch);
 		
-		System.out.println(pagebar + nowPage);
+		req.setAttribute("startDate", startDate);
+		req.setAttribute("endDate", endDate);
 		
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/order/orderlist.jsp");
