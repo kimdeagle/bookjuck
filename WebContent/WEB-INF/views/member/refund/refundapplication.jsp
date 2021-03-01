@@ -57,13 +57,9 @@
                 <table class="table tbl-md">
                     <tr style="background-color: RGBA(140,179,105,0.2)">
                         <th>주문번호</th>
-                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control" name="seqOrder" name="seqOrder" value="0000"></td>
                         <th>상품정보</th>
-                        <td>
-                            <select name="book-title" class="form-control">
-                                <option value="">자바의 정석</option>
-                            </select>
-                        </td>
+                        <td><input type="text" class="form-control" name="title" id="title" value="자바의 정석 외 1"></td>
                         <th>수량</th>
                         <td>
                             <select name="book-amount" class="form-control">
@@ -74,18 +70,18 @@
                     <tr>
                         <th>환불 사유</th>
                         <td colspan="5">
-                            <select name="refund-reason" class="form-control">
+                            <select name="refund-reason" class="form-control" id="refundReason" name="refundReason" onchange="reasonChange(this)">
                             <option value="단순 변심">단순 변심</option>
                             <option value="상품 하자">상품 하자</option>
                             <option value="상품 오배송">상품 오배송</option>
-                            <option value="기타">기타</option>
+                            <option value="0">기타</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <th>상세 사유</th>
                         <td colspan="5">
-                            <textarea class="form-control" placeholder="사유를 자세히 적어주세요."></textarea>
+                            <textarea class="form-control" disabled id="refundReasonDetail" name="refundReasonDetail" placeholder="사유를 자세히 적어주세요."></textarea>
                         </td>
                     </tr>
                     <tr>
@@ -227,6 +223,24 @@
 	        element_layer.style.left = (((window.innerWidth || document.documentElement.clientWidth) - width)/2 - borderWidth) + 'px';
 	        element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
 	    }
+	    
+	    
+	    
+	    
+		
+		//value 0 : 기타 
+		//reson이 기타가 아닐 때는 reasonDetail textbox를 disabled 처리한다.
+		function reasonChange(e) {
+			
+			var detail = document.getElementById("refundReasonDetail");
+
+			if (e.value == 0) {
+				detail.disabled = false;
+			} else {
+				detail.disabled = true;
+			}
+
+		}
 	</script>
 	
 

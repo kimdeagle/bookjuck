@@ -53,31 +53,32 @@
             <article class="application-form">
 
                 <h3>취소 신청</h3>
-
+                
+				<form method="POST" action="/bookjuck/member/refund/cancelapplicationok.do">
                 <table class="table tbl-md">
                     <tr style="background-color: RGBA(140,179,105,0.2)">
                         <th>주문번호</th>
-                        <td><input type="text" class="form-control" value="0000"></td>
+                        <td><input type="text" class="form-control" name="seqOrder" name="seqOrder" value="0000"></td>
                         <th>상품정보</th>
-                        <td><input type="text" class="form-control" value="자바의 정석 외 1"></td>
+                        <td><input type="text" class="form-control" name="title" id="title" value="자바의 정석 외 1"></td>
                         <th>도서 총 수량</th>
-                        <td><input type="text" class="form-control" value="2"></td>
+                        <td><input type="text" class="form-control" name="amount" id="amount" value="2"></td>
                     </tr>
                     <tr>
                         <th>취소 사유</th>
                         <td colspan="5">
-                            <select name="refund-reason" class="form-control">
-                            <option value="단순 변심">단순 변심</option>
-                            <option value="상품 하자">더 저렴한 사이트를 찾음</option>
-                            <option value="상품 오배송">주문을 잘못 신청함</option>
-                            <option value="기타">기타</option>
+                            <select id="cancelReason" name="cancelReason" class="form-control" onchange="reasonChange(this)">
+	                            <option value="단순변심">단순변심</option>
+	                            <option value="더 저렴한 사이트를 찾음">더 저렴한 사이트를 찾음</option>
+	                            <option value="주문을 잘못 신청">주문을 잘못 신청함</option>
+	                            <option value="기타">기타</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <th>상세 사유</th>
                         <td colspan="5">
-                            <textarea class="form-control" placeholder="사유를 자세히 적어주세요."></textarea>
+                            <textarea class="form-control" id="cancelReasonDetail" name="cancelReasonDetail" placeholder="사유를 자세히 적어주세요." disabled></textarea>
                         </td>
                     </tr>
                     <tr>
@@ -85,8 +86,9 @@
                     </tr>
                 </table>
 
-                <input type="button" class="btn btn-general" id="btnapply" value="신청하기">
-
+                <input type="submit" class="btn btn-general" id="btnapply" value="신청하기">
+				</form>
+				
             </article>
 
 
@@ -111,6 +113,24 @@
 		
 	</div>
 	
+	<script>
+	
+	
+	//reson이 기타가 아닐 때는 reasonDetail textbox를 disabled 처리한다.
+	function reasonChange(e) {
+		
+		var detail = document.getElementById("cancelReasonDetail");
+
+		if (e.value == '기타') {
+			detail.disabled = false;
+		} else {
+			detail.disabled = true;
+		}
+
+	}
+	
+	
+	</script>
 
 
 </body>
