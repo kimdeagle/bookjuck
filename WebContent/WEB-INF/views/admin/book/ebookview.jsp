@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,103 +31,152 @@
 
 	<section class="contentsection">
 	
-		<h4>E-Book관리 > 상세보기</h4>
+		<h4>E-Book관리 > 상세</h4>
 		
-		<form>
 			<div class="form-group">
 		    	<label for="title">도서명</label>
-		    	<input type="text" class="form-control" id="title" placeholder="도서명을 입력해주세요." maxlength=50 value="해리포터와 불의 잔 1" readonly>
+		    	<input type="text" class="form-control" id="title" name="title" placeholder="도서명을 입력해주세요." maxlength=50 readonly value="${dto.title}">
 		  	</div>
 		  	
 			<div class="form-group">
 		    	<label for="publisher">출판사</label>
-		    	<input type="text" class="form-control" id="publisher" placeholder="출판사를 입력해주세요." maxlength=20 value="호그와트" readonly>
+		    	<input type="text" class="form-control" id="publisher" name="publisher" placeholder="출판사를 입력해주세요." maxlength=20 readonly value="${dto.publisher}">
 		  	</div>
 		  	
 		  	<div class="form-group">
 		    	<label>카테고리</label>
-		    	<div class="form-inline">
-			    	<input type="text" class="form-control category" id="firstcategory" placeholder="1차 카테고리" value="국내도서" readonly>
-			    	&gt;
-			    	<input type="text" class="form-control category" id="secondcategory" placeholder="2차 카테고리" value="소설" readonly>
-			    	&gt;
-			    	<input type="text" class="form-control category" id="thirdcategory" placeholder="3차 카테고리" value="외국소설" readonly>
-		    	</div>	
-		  	</div>
+					<div class="form-inline">
+						<input type="text" class="form-control category" id="firstcategory" placeholder="1차 카테고리" readonly value="${dto.lCategory}">
+						&gt; 
+						<input type="text" class="form-control category" id="secondcategory" placeholder="2차 카테고리" readonly value="${dto.mCategory}"> 
+						&gt;
+						<input type="text" class="form-control category" id="thirdcategory" placeholder="3차 카테고리" readonly value="${dto.sCategory}">
+							
+					</div>
+			</div>
 		  	
 			<div class="form-group">
-		    	<label>작가</label>
 		    	<label for="authorname">작가명</label>
-		    	<input type="text" class="form-control" id="authorname" placeholder="작가명을 입력해주세요." maxlength=20 value="덤블도어" readonly>
+		    	<input type="text" class="form-control" id="authorname" name="author" placeholder="작가명을 입력해주세요." maxlength=20 readonly value="${dto.author}">
 		  	</div>
 		  	
 			<div class="form-group">
 		    	<label for="authorintro">작가 소개</label>
-		    	<textarea class="form-control" id="authorintro" placeholder="작가소개를 입력해주세요." rows="5" readonly>유명한 마법사이시다...</textarea>
+		    	<textarea class="form-control" id="authorintro" name="authorIntro" placeholder="작가소개를 입력해주세요." rows="10" maxlength=1500 readonly>${dto.authorIntro}</textarea>
 		  	</div>
 
 			<div class="form-group">
 		    	<label for="pubdate">출간일</label>
-		    	<input type="date" class="form-control" id="pubdate" required value="2021-02-07" readonly>
+		    	<input type="date" class="form-control" id="pubdate" name="pubDate" readonly value="${dto.pubDate}">
 		  	</div>
 		  	
 			<div class="form-group">
 		    	<label for="isbn">ISBN</label>
-		    	<input type="text" class="form-control" id="isbn" placeholder="ISBN을 입력해주세요." maxlength=13 value="1234561234567" readonly>
+		    	<input type="text" class="form-control" id="isbn" name="isbn" placeholder="ISBN을 입력해주세요." maxlength=13 readonly value="${dto.isbn}">
 		  	</div>
 		  	
 			<div class="form-group">
-		    	<label for="price">정가</label>
-		    	<input type="text" class="form-control" id="price" value="20000" readonly>
-		  	</div>
-		  	
-		  	<div class="form-group">
-		    	<label for="page">페이지 수</label>
-		    	<input type="number" class="form-control" id="page" min="0" value="200" readonly>
+		    	<label for="price">정가 (단위 : 원)</label>
+		    	<input type="text" class="form-control" id="price" name="price" value="0" readonly value="${dto.price}">
 		  	</div>
 		  	
 			<div class="form-group">
 		    	<label for="copy">한줄카피</label>
-		    	<input type="text" class="form-control" id="copy" placeholder="한줄카피를 입력해주세요." maxlength=50 value="해리포터는 과연 불의 잔에 쪽지를 넣었을까?" readonly>
+		    	<input type="text" class="form-control" id="copy" name="copy" placeholder="한줄카피를 입력해주세요." maxlength=50 readonly value="${dto.copy}">
 		  	</div>
 		  	
 			<div class="form-group">
 		    	<label for="bookintro">도서 소개</label>
-		    	<textarea class="form-control" id="bookintro" placeholder="도서소개를 입력해주세요." rows="10" readonly>해리포터 시리즈 중 5번째인 '해리포터와 불의 잔' 1부.
-해리포터는 자신이 불의 잔에 쪽지를 넣지 않았지만 어떤 이유로 자신의 이름이 적힌 쪽지가 불의 잔에 들어갔는지 모른다.</textarea>
+		    	<textarea class="form-control" id="bookintro" name="intro" placeholder="도서소개를 입력해주세요." rows="10" maxlength=1500 readonly>${dto.intro}</textarea>
 		  	</div>
 		  	
 			<div class="form-group">
 		    	<label for="index">목차</label>
-		    	<textarea class="form-control" id="index" placeholder="목차를 입력해주세요." rows="10" readonly>1. 소개
-2. 누가 쪽지를 넣었을까?
-3. 어둠을 먹는자
-4. 포트키를 집어선 안 돼!</textarea>
+		    	<textarea class="form-control" id="index" name="contents" placeholder="목차를 입력해주세요." rows="10" maxlength=1500 readonly>${dto.contents}</textarea>
 		  	</div>
 		  	
 		  	<div class="form-group">
 		  		<label style="display: block;">이미지</label>
-		  		<input type="text" class="form-control" id="imagename" placeholder="파일 선택" readonly value="해리포터와 혼혈 왕자 1.png">
-		  		<input type="button" class="btn btn-warning" value="미리보기" data-toggle="modal" data-target="#previewimagemodal">
+		  		<input type="text" class="form-control" id="imagename" placeholder="파일 선택" readonly value="${dto.image}">
+		  		<input type="button" class="btn btn-warning" value="미리보기" id="btnpreviewimage">
 		  	</div>
 		  	
 		  	<div class="form-group">
 		  		<label style="display: block;">E-Book</label>
-		  		<input type="text" class="form-control" id="ebookname" placeholder="파일 선택" readonly value="test.pdf">
-		  		<input type="button" class="btn btn-warning" value="미리보기" data-toggle="modal" data-target="#previewebookmodal">
+		  		<input type="text" class="form-control" id="ebookname" placeholder="파일 선택" readonly value="${dto.eFile}">
+		  		<input type="button" class="btn btn-warning" value="미리보기" id="btnpreviewebook">
 		  	</div>
 		  	
 		  	<div class="form-group actionbtns">
-			  	<input type="button" class="btn btn-success" id="btnedit" value="수정" onclick="location.href='/bookjuck/admin/book/ebookedit.do';">
-			  	<input type="button" class="btn btn-danger" id="btndel" value="삭제" data-toggle="modal" data-target="#deletemodal">
-			  	<input type="button" class="btn btn-default" id="btnlist" value="목록" onclick="location.href='/bookjuck/admin/book/ebooklist.do';">
+		  		<c:if test="${empty seqLCategory}">
+				  	<input type="button" class="btn btn-success" id="btneditpage" value="수정" onclick="location.href='/bookjuck/admin/book/ebookedit.do?page=${page}&seq=${dto.seq}';">
+				  	<button type="button" class="btn btn-danger" id="btndel" value="${dto.seq}">삭제</button>
+				  	<input type="button" class="btn btn-default" id="btnlist" value="목록" onclick="location.href='/bookjuck/admin/book/ebooklist.do?page=${page}';">
+		  		</c:if>
+		  		<c:if test="${not empty seqLCategory}">
+				  	<input type="button" class="btn btn-success" id="btneditpage" value="수정" onclick="location.href='/bookjuck/admin/book/ebookedit.do?seqLCategory=${seqLCategory}&page=${page}&seq=${dto.seq}';">
+				  	<button type="button" class="btn btn-danger" id="btndel" value="${dto.seq}">삭제</button>
+				  	<input type="button" class="btn btn-default" id="btnlist" value="목록" onclick="location.href='/bookjuck/admin/book/ebooklist.do?seqLCategory=${seqLCategory}&page=${page}';">
+		  		</c:if>
 		  	</div>
-		  	
-	  	</form>
-	  	
-
 		
+		<!-- 이미지 미리보기 클릭 > 모달 -->
+		<div class="modal fade" id="previewimagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+			    <div class="modal-content">
+					<div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">미리보기</h4>
+					</div>
+					<div class="modal-body" style="text-align: center;">
+					
+						<img src="/bookjuck/image/book/${dto.image}" id="previmg" style="width: 300px;">
+						
+					</div>
+					<div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		
+		<!-- E-Book 미리보기 클릭 > 모달 -->
+		<div class="modal fade" id="previewebookmodal" tabindex="-1" role="dialog" aria-labelledby="previewEBookLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+			    <div class="modal-content">
+					<div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="previewEBookLabel">미리보기</h4>
+					</div>
+					<div class="modal-body" style="text-align: center;">
+						<iframe src="/bookjuck/file/ebook/${dto.eFile}" width="100%" height="600" id="prevebook"></iframe>
+					</div>
+					<div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 삭제 클릭 > 모달 -->
+		<div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+			    <div class="modal-content">
+					<div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">삭제하시겠습니까?</h4>
+					</div>
+					<div class="modal-body" style="text-align: center;">
+					
+						<button type="button" class="btn btn-danger" id="delok">예</button>
+				        <button type="button" class="btn btn-default" data-dismiss="modal">아니오</button>
+						
+					</div>
+				</div>
+			</div>
+		</div>			
+		
+	
 	</section>
 	
 	<!-- ########## 하단 시작 -->
@@ -139,10 +189,90 @@
 	<%@include file="/WEB-INF/views/admin/bookjuckee.jsp" %>
 	<%@include file="/WEB-INF/views/common/top.jsp" %>
 
+
 	<script>
 	
+	/* 이미지 미리보기 모달 열기 */
+	$("#btnpreviewimage").click(function() {
 
+		//파일을 선택하지 않은 경우
+		if ($("#previmg").attr("src") == null) {
+			alert("파일을 선택해주세요.");
+			return;
+		}
+		
+		//이미지가 아니면
+		if (!($("#imagename").val().toLowerCase().endsWith("jpg") || $("#imagename").val().toLowerCase().endsWith("gif") || $("#imagename").val().toLowerCase().endsWith("png"))) {
+			alert("이미지 파일을 선택해주세요.");
+			return;
+		}
+		
+		$("#previewimagemodal").modal('show');	
+	});
 	
+	//이미지 미리보기
+	$('#image').change(function() {
+	    setImageFromFile(this, '#previmg');
+	});
+
+	function setImageFromFile(input, expression) {
+	    if (input.files && input.files[0]) {
+	        var imgreader = new FileReader();
+	        imgreader.onload = function (e) {
+	            $(expression).attr('src', e.target.result);
+	        }
+	        imgreader.readAsDataURL(input.files[0]);
+	    }
+	}
+	
+	
+	//E-Book 미리보기 모달 열기
+	$("#btnpreviewebook").click(function() {
+		
+		//파일을 선택하지 않은 경우
+		if ($("#prevebook").attr("src") == null) {
+			alert("파일을 선택해주세요.");
+			return;
+		}
+		
+		//pdf가 아니면
+		if (!($("#ebookname").val().toLowerCase().endsWith("pdf"))) {
+			alert("PDF 파일을 선택해주세요.");
+			return;
+		}		
+		
+		$("#previewebookmodal").modal('show');
+	});
+
+	//PDF 미리보기
+	$('#ebook').change(function() {
+	    setPdfFromFile(this, '#prevebook');
+	});
+
+	function setPdfFromFile(input, expression) {
+	    if (input.files && input.files[0]) {
+	        var pdfreader = new FileReader();
+	        pdfreader.onload = function (e) {
+	            $(expression).attr('src', e.target.result);
+	        }
+	        pdfreader.readAsDataURL(input.files[0]);
+	    }
+	}
+	
+	var seq;
+	
+	//상세 -> 삭제 버튼 클릭
+	$("#btndel").click(function() {
+		seq = $(this).val();
+		$("#deletemodal").modal('show');
+		
+	});
+	
+	//삭제 모달 -> 삭제 버튼 클릭
+	$("#delok").click(function() {
+		location.href = "/bookjuck/admin/book/ebookdelok.do?seq=" + seq;
+	});		
+		
 	</script>
 
 </body>

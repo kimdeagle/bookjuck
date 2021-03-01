@@ -1,6 +1,7 @@
 package com.test.bookjuck.admin.book;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -9,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.test.bookjuck.dao.AuthorDAO;
 import com.test.bookjuck.dao.CategoryDAO;
@@ -26,8 +28,33 @@ public class EBookAdd extends HttpServlet {
 		//2. DB 작업 -> select
 		//3. 결과 + JSP호출
 		
+		
+		HttpSession session = req.getSession();
+		
+		//관리자가 아니면
+		if (!"adm00".equals((String)session.getAttribute("id"))) {
+
+			resp.setCharacterEncoding("UTF-8");
+			
+			PrintWriter writer = resp.getWriter();
+			
+			writer.print("<html><head><meta charset='UTF-8' /></head><body>");
+			writer.print("<script>");
+			writer.print("alert('접근할 수 없습니다.\\n이전 화면으로 이동합니다.');");
+			writer.print("history.back();");
+			writer.print("</script>");
+			writer.print("</body></html>");
+			
+			writer.close();
+			
+			return;
+			
+		}
+		
+		
 		//1.
 		String page = req.getParameter("page");
+		String seqLCategory = req.getParameter("seqLCategory");
 		
 		//2.
 		//카테고리별 번호, 카테고리명
@@ -60,6 +87,8 @@ public class EBookAdd extends HttpServlet {
 		req.setAttribute("alist", alist);
 		
 		req.setAttribute("page", page);
+		req.setAttribute("seqLCategory", seqLCategory);
+		
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/book/ebookadd.jsp");
 		dispatcher.forward(req, resp);

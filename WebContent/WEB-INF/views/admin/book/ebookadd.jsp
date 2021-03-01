@@ -128,7 +128,12 @@
 		  	
 		  	<div class="form-group actionbtns">
 			  	<input type="button" class="btn btn-primary" id="btnEadd" value="추가">
-			  	<input type="button" class="btn btn-default" id="btncancel" value="취소" onclick="location.href='/bookjuck/admin/book/ebooklist.do?page=${page}';">
+			  	<c:if test="${empty seqLCategory}">
+				  	<input type="button" class="btn btn-default" id="btncancel" value="취소" onclick="location.href='/bookjuck/admin/book/ebooklist.do?page=${page}';">			  	
+			  	</c:if>
+			  	<c:if test="${not empty seqLCategory}">
+				  	<input type="button" class="btn btn-default" id="btncancel" value="취소" onclick="location.href='/bookjuck/admin/book/ebooklist.do?seqLCategory=${seqLCategory}&page=${page}';">			  	
+			  	</c:if>
 		  	</div>
 		  	
 	  	</form>

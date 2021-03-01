@@ -209,7 +209,7 @@
 	
 	//삭제 모달 -> 삭제 버튼 클릭
 	$("#delok").click(function() {
-		location.href = "/bookjuck/admin/book/delok.do?seq=" + seq;
+		location.href = "/bookjuck/admin/book/bookdelok.do?seq=" + seq;
 	});	
 	
 		
