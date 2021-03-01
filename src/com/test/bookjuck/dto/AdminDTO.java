@@ -1,15 +1,17 @@
 package com.test.bookjuck.dto;
 
 public class AdminDTO {
-	private int seq; 			//번호
+	
+	private String seq; 		//번호
 	private String id;  		//아이디
 	private String pw;			//비밀번호
 	
 	
-	public int getSeq() {
+	
+	public String getSeq() {
 		return seq;
 	}
-	public void setSeq(int seq) {
+	public void setSeq(String seq) {
 		this.seq = seq;
 	}
 	public String getId() {
