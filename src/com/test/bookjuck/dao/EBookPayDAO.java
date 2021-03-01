@@ -4,11 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import com.test.bookjuck.DBUtil;
+import com.test.bookjuck.dto.BookPayDTO;
+import com.test.bookjuck.dto.EBookPayDTO;
 
 public class EBookPayDAO {
-	
 
 	private Connection conn;
 	private Statement stat;
@@ -21,15 +23,46 @@ public class EBookPayDAO {
 	}
 
 	public void close() {
-      
+
 		try {
-         
+
 			conn.close();
 
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 
-   }
+	}
 
+	public ArrayList<EBookPayDTO> listEBookPay(String seqEBookOrder) {
+		try {
+
+			String sql = "select * from tblEPay where seqEOrder = ?";
+
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seqEBookOrder);
+
+			rs = pstat.executeQuery();
+
+			ArrayList<EBookPayDTO> list = new ArrayList<EBookPayDTO>();
+
+			while (rs.next()) {
+				EBookPayDTO dto = new EBookPayDTO();
+
+				dto.setPayment(rs.getString("payment"));
+				dto.setActualPay(rs.getInt("actualPay"));
+				dto.setSavePoints(rs.getInt("savePoints"));
+				dto.setUsePoint(rs.getInt("usePoint"));
+
+				list.add(dto);
+			}
+
+			return list;
+
+		} catch (Exception e) {
+			System.out.println("EBookPayDAO listEBookPay()" + e);
+		}
+		return null;
+
+	}
 }

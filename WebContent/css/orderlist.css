@@ -86,9 +86,6 @@ th{
 	background: #FFF;
 	display: inline-block;
 	cursor: pointer;
-	background-image: url(/bookjuck/image/calendar1.png);
-	background-repeat: no-repeat;
-	background-position: 116px;
 }
 
 .datepicker th{
@@ -188,6 +185,7 @@ th{
 
 }
 .orderList tr td:nth-child(3){
+	vertical-align: middle;
     text-align: left;
 }
 
@@ -204,9 +202,12 @@ th{
 	color: #F4A259;
 }
 
-.orderList tr td:nth-child(3) a{
-    position: relative;
-    top: -50px;
+.orderList tr td:nth-child(3) div{
+/*     position: relative; */
+/*     top: -50px; */
+width: 200px;
+float: right;
+
 }
 
 .orderList tr td:nth-child(5) button{

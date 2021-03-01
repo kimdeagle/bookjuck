@@ -13,7 +13,6 @@ public class BookOrderDTO {
 	private String orderDate;		//주문일
 	private String orderState;		//주문상태
 	
-	
 	//다은 추가
 	private String applyDate;		//교환/취소/환불 접수일자
 	private String title;			//상품 정보 (책이름)
@@ -21,7 +20,8 @@ public class BookOrderDTO {
 	
 	private String id;				//주문자 id
 	
-	
+	//수경 추가
+	private int totalPay; // 총 결제액
 	
 	public String getId() {
 		return id;
@@ -76,6 +76,12 @@ public class BookOrderDTO {
 	}
 	public void setOrderState(String orderState) {
 		this.orderState = orderState;
+	}
+	public int getTotalPay() {
+		return totalPay;
+	}
+	public void setTotalPay(int totalPay) {
+		this.totalPay = totalPay;
 	}
 	
 	

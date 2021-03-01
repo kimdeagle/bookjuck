@@ -170,3 +170,48 @@ begin
             where seqMember = pseqMember and seqEBookOrder = pseqEBookOrder
             order by orderdate, seqEBookorder, title;
 end;
+
+
+-- 종이책 장바구니 뷰
+-- 회원번호
+-- 책 번호, 이미지, 제목, 가격, 수량, 수량 포함 가격
+create or replace view vwBookcart
+as
+select
+    bc.seqmember as seqMember, -- 회원 번호
+    b.seq as seqBook, -- 책 번호
+    b.image as image,-- 책 이미지
+    b.title as title,--책 제목
+    bc.amount as amount, -- 책 수량
+    b.price as price, --책 정가
+    b.salePrice as salePrice, --책 판매가
+    amount * salePrice as total -- 수량 포함 가격
+from tblBookCart bc
+    inner join tblmember m
+    on bc.seqMember = m.seq
+        inner join tblBook b
+        on bc.seqbook = b.seq;
+        
+
+create or replace view vwBookcart as select bc.seqmember as seqMember, b.seq as seqBook, b.image as image, b.title as title, bc.amount as amount,
+    b.price as price, --책 가격
+    amount * price as total -- 수량 포함 가격
+from tblBookCart bc
+    inner join tblmember m
+    on bc.seqMember = m.seq
+        inner join tblBook b
+        on bc.seqbook = b.seq;
+
+
+
+-- 장바구니 조회 프로시저
+create or replace PROCEDURE procCartList(
+    pseqMember number, -- 회원번호
+    pcursor out SYS_REFCURSOR
+)
+is
+begin
+    open pcursor
+        for select * from vwBookCart
+            where seqMember = pseqMember;
+end;

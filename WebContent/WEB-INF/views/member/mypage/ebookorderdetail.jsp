@@ -68,55 +68,7 @@
             <!-- 일반 배송시 -->
             <div class="waybill-number">
 
-               <b>일반배송</b>
-               <div>
-                  운송장 번호 : <c:forEach items="${bdlist}" var="bddto"><a href="#"  onclick="popup();">${bddto.deliveryNumber}</a></c:forEach>
-               </div>
-            </div>
-			
-            <table class="orderdetail table tbl-md">
-               <tr>
-                  <th>주문번호</th>
-                  <th>주문금액</th>
-                  <th>상품정보</th>
-                  <th>수량</th>
-                  <th>주문상태</th>
-               </tr>
-               <tr class="olInfo">
-                  <td rowspan="${blist.size()}">${seqBookOrder}<br> 
-                  (${orderDate.substring(0, 10)}) 
-                  </td>
-               <c:forEach items="${blist}" var="bdto">
-                  <td style="vertical-align: middle;">${bdto.total}</td>
-                  <td class="bookinfo"><img
-                     src="/bookjuck/image/book/${bdto.image}" class="book-xs">
-                     <div>
-                     <a href="/bookjuck/member/book/bookdetail.do?seq=${bdto.seqBook}">${bdto.title}</a>
-                     </div>
-                  </td>
-                  <td style="vertical-align: middle;">${bdto.amount}</td>
-                  <td style="vertical-align: middle;">${bdto.orderState}
-                   <!-- 주문상태가 배송 완료일 때 보임 || 비회원 안 보임 -->
-                   <!-- ############ (조아라) 시작 -->
-                   <c:set var="loop_flag" value="true" />
-                   <c:forEach items="${plist}" var="pdto">
-                      <c:if test="${bdto.title eq pdto.title}">
-                         <a href="/bookjuck/member/review/add.do?seq=${pdto.seq}" class="btn-report">독후감 쓰러 가기</a>
-                         <c:set var="loop_flag" value="true" />
-                      </c:if>
-                   </c:forEach>
-                    <!-- ############ (조아라) 끝 -->
-                  </td>
-               </tr>
-               </c:forEach>
-            </table>
-
-
-            
-
-
-            <!-- e-book 비회원 안 보임-->
-<!--             <b>E-Book</b>
+            <b>E-Book</b>
             <table class="orderdetail table tbl-md">
                <tr>
                   <th>주문번호</th>
@@ -144,26 +96,8 @@
                   <td>1</td>
                   <td>주문상태</td>
                </tr>
-            </table> -->
-			
-			<c:if test="${not empty dblist}">
-            <table class="receiver table tbl-md">
-               <c:forEach items="${bdlist}" var="bddto">
-               <tr>
-                  <th>받으실 분</th>
-                  <td>${bddto.name}</td>
-               </tr>
-               <tr>
-                  <th>휴대폰 번호</th>
-                  <td>${bddto.tel}</td>
-               </tr>
-               <tr>
-                  <th>주소</th>
-                  <td>${bddto.address}</td>
-               </tr>
-               </c:forEach>
             </table>
-			</c:if>
+			
 
 
          </article>
@@ -178,14 +112,14 @@
                   <th>결제금액</th>
                   <th>적립 포인트</th>
                </tr>
-               <c:forEach items="${bplist}" var="bpdto">
+               <c:forEach items="${plist}" var="pdto">
                <tr>
-                  <td>${bpdto.totalPay}</td>
+                  <td>${pdto.totalPay}</td>
                   <!-- 비회원일 경우 0 -->
-                  <td>${bpdto.usePoint}</td>
-                  <td><span>${bpdto.payment}</span>${bpdto.actualPay}</td>
+                  <td>${pdto.usePoint}</td>
+                  <td><span>${pdto.payment}</span>${bpdto.actualPay}</td>
                   <!-- 비회원일 경우 0 -->
-                  <td>${bpdto.savePoints}</td>
+                  <td>${pdto.savePoints}</td>
                </tr>
                </c:forEach>
             </table>
