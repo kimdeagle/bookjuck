@@ -37,7 +37,6 @@ public class AdOrderDetail extends HttpServlet {
 		String seqBookOrder = req.getParameter("seqBookOrder");
 		String id = req.getParameter("id");
 
-		
 		String seq = dao.getMemberSeq(id);
 
 

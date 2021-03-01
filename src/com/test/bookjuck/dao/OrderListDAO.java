@@ -375,7 +375,11 @@ public class OrderListDAO {
 	
 	// ################ 다은 시작
 	
-	
+	/**
+	 * 주문자 id로 seq를 얻어내는 메서드입니다.
+	 * @param id 주문한 사람의 id
+	 * @return seq 주문한 사람의 seq
+	 */
 	public String getMemberSeq(String id) {
 		
 		try {

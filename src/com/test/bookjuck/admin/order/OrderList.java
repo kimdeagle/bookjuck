@@ -249,12 +249,10 @@ public class OrderList extends HttpServlet {
 			
 			//페이징
 			totalCount = dao.getATotalCount(map, isRefundList); //총 게시물 수
-			System.out.println(totalCount);		//269개
-			
+
 			//totalPage = totalCount / pageSize + 1; //총 페이지 수
 			totalPage = (int)Math.ceil((double)totalCount / pageSize); //총 페이지 수
-			System.out.println(totalPage);		//26페이지 -(ceil)-> 27페이지
-			
+
 			
 			//String pagebar = "";
 			
@@ -337,12 +335,9 @@ public class OrderList extends HttpServlet {
 			
 			//페이징
 			totalCount = dao.getATotalCount(map, isRefundList); //총 게시물 수
-			System.out.println(totalCount);		//269개
 			
 			//totalPage = totalCount / pageSize + 1; //총 페이지 수
 			totalPage = (int)Math.ceil((double)totalCount / pageSize); //총 페이지 수
-			System.out.println(totalPage);		//26페이지 -(ceil)-> 27페이지
-			
 			
 			//String pagebar = "";
 			

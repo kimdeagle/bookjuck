@@ -114,7 +114,7 @@
 					<c:if test="${not empty balist }">
 					<c:forEach items="${balist}" var="dto">
 					<tr>
-						<td><a href="/bookjuck/admin/order/view.do?seqBaroOrder=${dto.seq}">567891${dto.seq}</a></td>
+						<td><a href="/bookjuck/admin/order/adbaroorderdetail.do?seqBaroOrder=${dto.seq}&id=${dto.id}">567891${dto.seq}</a></td>
 						<td>${dto.id}</td>
 						<td>${dto.title}
 							<c:if test="${dto.totalAmount > 1}">
@@ -131,7 +131,7 @@
 					<c:if test="${not empty elist }">
 					<c:forEach items="${elist}" var="dto">
 					<tr>
-						<td><a href="/bookjuck/admin/order/view.do?seqEBookOrder=${dto.seq}">987654${dto.seq}</a></td>
+						<td><a href="/bookjuck/admin/order/adebookorderdetail.do?seqEBookOrder=${dto.seq}&id=${dto.id}">987654${dto.seq}</a></td>
 						<td>${dto.id}</td>
 						<td>${dto.title}</td>
 						<td>${dto.orderDate}</td>
