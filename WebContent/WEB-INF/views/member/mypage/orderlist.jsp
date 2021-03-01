@@ -164,9 +164,9 @@
                         <td>${bodto.orderState}</td>
                         <td>
                         	<c:if test="${not empty id}">
-                            <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/cancelapplication.do';">취 소</button>
-                            <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/returnapplication.do';">교 환</button>
-                            <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/refundapplication.do';">환 불</button>
+                            <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/cancelapplication.do?type=1&seqOrder=${bodto.seqBookOrder}';">취 소</button>
+                            <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/returnapplication.do?type=1&seqOrder=${bodto.seqBookOrder}';">교 환</button>
+                            <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/refundapplication.do?type=1&seqOrder=${bodto.seqBookOrder}';">환 불</button>
                             </c:if>
                         </td>
                     </tr>
@@ -191,7 +191,7 @@
                         <td>${badto.orderState}</td>
                         <td>
                         	<c:if test="${empty not id}">
-                            <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/cancelapplication.do';">취 소</button>
+                            <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/cancelapplication.do?type=2&seqOrder=${badto.seq}';">취 소</button>
                             </c:if>
                         </td>
                     </tr>
@@ -216,7 +216,7 @@
                         <td>${edto.orderState}</td>
                         <td>
                         	<c:if test="${not empty id}">
-                            <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/refundapplication.do';">환 불</button>
+                            <button type="submit" class="btn" onclick="location.href='/bookjuck/member/refund/refundapplication.do?type=3&seqOrder=${edto.seq}';">환 불</button>
                             </c:if>
                         </td>
                     </tr>

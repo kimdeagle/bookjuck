@@ -11,13 +11,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.test.bookjuck.dao.BookOrderDAO;
+import com.test.bookjuck.dto.BookOrderDetailDTO;
+
+import sun.awt.RepaintArea;
+
 @WebServlet("/member/refund/cancelapplication.do")
 public class CancelApplication extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		/*
+		//type - 1 : 일반배송, 2 : 바로드림, 3 : E-book
+		String type = req.getParameter("type");
+		String seqOrder = req.getParameter("seqOrder");
+		
+		BookOrderDAO dao = new BookOrderDAO();
+		BookOrderDetailDTO dto = dao.getOrder(seqOrder); 
+		
+
 		//로그인 안한 사람이 접근할 때 내 쫓기
 		HttpSession session = req.getSession();
 		
@@ -38,8 +50,10 @@ public class CancelApplication extends HttpServlet {
 			
 			
 		}
-		*/
 		
+		req.setAttribute("dto", dto);
+		req.setAttribute("type", type);
+		req.setAttribute("seqOrder", seqOrder);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/member/refund/cancelapplication.jsp");
 		dispatcher.forward(req, resp);

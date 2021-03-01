@@ -9,14 +9,11 @@ import java.util.HashMap;
 
 import com.test.bookjuck.DBUtil;
 import com.test.bookjuck.dto.BookOrderDTO;
+import com.test.bookjuck.dto.BookOrderDetailDTO;
 
 /**
- * @author Dana
- *
- */
-/**
- * @author Dana
- *
+ * @author 김다은
+ * 일반배송 주문과 관련된 메서드를 담고있는 DAO입니다.
  */
 public class BookOrderDAO {
 	
@@ -204,7 +201,7 @@ public class BookOrderDAO {
 	
 
 	/**
-	 * 관리자가 사용하는 총 주문 수 를 세는 메서드
+	 * 관리자가 사용하는 총 주문 수 를 세는 메서드입니다.
 	 * @param map
 	 * @param isRefundList 
 	 * @return cnt : 총 주문 수
@@ -271,7 +268,7 @@ public class BookOrderDAO {
 	
 	
 	/**
-	 * 사용자 측, 총 교환/환불/취소 수 를 세는 메서드
+	 * 사용자 측, 총 교환/환불/취소 수 를 세는 메서드입니다.
 	 * @param map
 	 * @return cnt : 총 교환/환불/취소 수
 	 */
@@ -333,6 +330,40 @@ public class BookOrderDAO {
 				return rs.getString("cnt");
 			}
 			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	
+		
+		return null;
+	}
+
+	
+	/**
+	 * 교환/취소/환불 신청을 위해 seqOrder입력시 주문한 책 제목과 수량을 받아오는 메서드입니다.
+	 * @param seqOrder
+	 * @return dto
+	 */
+	public BookOrderDetailDTO getOrder(String seqOrder) {
+
+		try {
+			
+			String sql = String.format("select rownum, bo.seq, b.title as title, bod.amount as amount from tblBook b inner join tblBookOrderDetail bod on bod.seqBook = b.seq inner join tblBookOrder bo on bo.seq = bod.seqbookorder where bo.seq = %s and rownum = 1", seqOrder);
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			
+			if (rs.next()) {
+				
+				BookOrderDetailDTO dto = new BookOrderDetailDTO();
+				
+				dto.setTitle(rs.getString("title"));
+				dto.setAmount(rs.getInt("amount"));
+				
+				return dto;
+			}
 			
 		} catch (Exception e) {
 			System.out.println(e);

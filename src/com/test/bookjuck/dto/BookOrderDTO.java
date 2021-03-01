@@ -19,12 +19,12 @@ public class BookOrderDTO {
 	private String totalAmount;		//주문 총 수량
 	
 	private String id;				//주문자 id
+	private String process;			//처리상태
 	
 
 	//수경 추가
 	private int totalPay; // 총 결제액
 
-	private String process;			//처리상태
 
 	
 	public String getId() {

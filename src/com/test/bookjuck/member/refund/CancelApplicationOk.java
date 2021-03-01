@@ -38,7 +38,6 @@ public class CancelApplicationOk extends HttpServlet {
 		
 		if (type.equals("1")) {
 			// 일반배송 주문 취소
-			System.out.println("ok서블릿" + seqOrder + "," + cancelReason + "," + cancelReasonDetail);
 			result = dao.bookcancel(seqOrder, cancelReason, cancelReasonDetail); 
 			
 		} else {
