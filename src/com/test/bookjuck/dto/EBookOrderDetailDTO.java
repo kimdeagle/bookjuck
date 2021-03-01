@@ -9,8 +9,8 @@ package com.test.bookjuck.dto;
 public class EBookOrderDetailDTO {
 	
 	private String seq; // 이북 상세주문 번호
-	private String seqEOrder; // 이북 주문번호
-	private String seqEbook; //이북 번호
+	private String seqEBookOrder; // 이북 주문번호
+	private String seqEBook; //이북 번호
 	private String seqMember;//회원번호
 	
 	private String orderDate;//주문일자
@@ -39,20 +39,20 @@ public class EBookOrderDetailDTO {
 		this.seq = seq;
 	}
 
-	public String getSeqEOrder() {
-		return seqEOrder;
+	public String getSeqEBookOrder() {
+		return seqEBookOrder;
 	}
 
-	public void setSeqEOrder(String seqEOrder) {
-		this.seqEOrder = seqEOrder;
+	public void setSeqEBookOrder(String seqEBookOrder) {
+		this.seqEBookOrder = seqEBookOrder;
 	}
 
-	public String getSeqEbook() {
-		return seqEbook;
+	public String getSeqEBook() {
+		return seqEBook;
 	}
 
-	public void setSeqEbook(String seqEbook) {
-		this.seqEbook = seqEbook;
+	public void setSeqEBook(String seqEBook) {
+		this.seqEBook = seqEBook;
 	}
 
 	public String getSeqMember() {

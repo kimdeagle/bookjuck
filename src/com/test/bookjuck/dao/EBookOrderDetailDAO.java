@@ -7,7 +7,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.test.bookjuck.DBUtil;
-import com.test.bookjuck.dto.BaroOrderDetailDTO;
 import com.test.bookjuck.dto.EBookOrderDetailDTO;
 
 public class EBookOrderDetailDAO {
@@ -60,7 +59,7 @@ public class EBookOrderDetailDAO {
 	public ArrayList<EBookOrderDetailDTO> listEBookDetail(String seq, String seqEBookOrder) {
 		try {
 
-			String sql="select * from vwbaroOrderList where seqMember = ? and seqBaroOrder =? order by orderdate, seqbookorder, title";
+			String sql="select * from vwebookOrderList where seqMember = ? and seqebookOrder =? order by orderdate, seqebookorder, title";
 			
 			pstat=conn.prepareStatement(sql);
 			pstat.setString(1, seq);
@@ -75,13 +74,13 @@ public class EBookOrderDetailDAO {
 
 				EBookOrderDetailDTO dto = new EBookOrderDetailDTO();
 
-				dto.setSeqEOrder(rs.getString("seqEOrder"));
+				dto.setSeqEBookOrder(rs.getString("seqEBookOrder"));
 				dto.setSeqMember(rs.getString("seqMember"));
 				dto.setOrderDate(rs.getString("orderDate"));
 				dto.setOrderState(rs.getString("orderState"));
 				dto.setOrderName(rs.getString("orderName"));
 				dto.setOrderTel(rs.getString("orderTel"));
-				dto.setSeqEbook(rs.getString("seqEbook"));
+				dto.setSeqEBook(rs.getString("seqEBook"));
 				dto.setIsbn(rs.getString("isbn"));
 				dto.setImage(rs.getString("image"));
 				dto.setTitle(rs.getString("title"));
@@ -91,8 +90,7 @@ public class EBookOrderDetailDAO {
 				dto.setActualPay(rs.getInt("actualPay"));
 				dto.setSavePoints(rs.getInt("savePoints"));
 				dto.setPayDate(rs.getString("payDate"));
-				dto.setTotal(rs.getInt("total"));
-
+				
 				elist.add(dto);
 			}
 

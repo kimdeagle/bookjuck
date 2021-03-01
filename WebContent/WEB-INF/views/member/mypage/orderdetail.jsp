@@ -119,7 +119,28 @@
                </tr>
                </c:forEach>
             </table>
+         
+        <article>
+		<table class="receiver table tbl-md">
+					<c:forEach items="${bdlist}" var="bddto">
+					<tr>
+						<th>받으실 분</th>
+						<td>${bddto.name}</td>
+					</tr>
+					<tr>
+						<th>휴대폰 번호</th>
+						<td>${bddto.tel}</td>
+					</tr>
+					<tr>
+						<th>주소</th>
+						<td>${bddto.address}</td>
+					</tr>
+					</c:forEach>
+				</table>
 
+
+
+			</article>
      
 
          <article>

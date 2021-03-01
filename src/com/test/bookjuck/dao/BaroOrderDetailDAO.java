@@ -44,7 +44,7 @@ public class BaroOrderDetailDAO {
 	public ArrayList<BaroOrderDetailDTO> listBaroDetail(String seq, String seqBaroOrder) {
 		try {
 
-			String sql="select * from vwbaroOrderList where seqMember = ? and seqBaroOrder =? order by orderdate, seqbookorder, title";
+			String sql="select * from vwbaroOrderList where seqMember = ? and seqBaroOrder =? order by orderdate, seqbaroorder, title";
 			
 			pstat=conn.prepareStatement(sql);
 			pstat.setString(1, seq);

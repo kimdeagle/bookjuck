@@ -62,9 +62,9 @@
 							<div>주문완료</div>
 						</div>
 					</div>
-					<div class="not-login"">
+					<div class="not-login">
 						회원가입을 하시면 포인트 적립/사용, 바로드림/E-Book 서비스 이용 등 다양한 혜택이 가능합니다.
-						&nbsp&nbsp&nbsp<a href="#" class="btn1" style="font-weight: bold;">회원가입</a>
+						&nbsp&nbsp&nbsp<a href="/bookjuck/member/tos.do" class="btn1" style="font-weight: bold;">회원가입</a>
 					</div>
 				</div>
 			</article>
