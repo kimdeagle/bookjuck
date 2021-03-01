@@ -71,10 +71,10 @@
             </div> -->
 
             <!-- 실시간검색어(현우님이 나중에 수정해주셔야 함! id랑 class는 CSS때문에 주의!) -->
-            <!-- <div id="realtime" class="inline">
+        	<div id="realtime" class="inline">
             
           	
-            </div>  -->
+            </div>  
             
             
             

@@ -4,13 +4,13 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 
 
-     <section> 
+ 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
 <%--         <link rel="stylesheet" href="/bookjuck/css/global.css">
         <%@include file="/WEB-INF/views/member/inc/asset.jsp" %> --%>
         
    
-    
+    <section> 
         <div id="content">
             <dl id="rank-list">
                 <dt>실시간 급상승 검색어</dt>

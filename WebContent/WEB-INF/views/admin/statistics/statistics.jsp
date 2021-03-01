@@ -82,7 +82,7 @@
 					
 				<div id="chart1" style="width: 400px; height: 400px; margin: 0 auto; position:relative; left:-250px; top:100px;"></div>
 				<div id="chart2" style="width: 400px; height: 400px; margin: 0 auto; position:relative; left:200px; top:-400px;"></div>
-				<div id="chart3" style="width: 400px; height: 400px; margin: 0 auto; position:relative; left:200px; top:-400px;"></div>
+				<div id="chart3" style="width: 400px; height: 400px; margin: 0 auto; position:relative; left:340px; top:-400px;"></div>
 				
 				<hr>
 				
