@@ -15,10 +15,10 @@
         
         <!-- 로그인/로그아웃(임시) -->
         <c:if test="${empty id}">
-			<input type="button" id="login" class="btn btn-default" value="로그인" onclick="location.href='/bookjuck/admin/login.do';">        
+			<input type="button" id="btnLogin" class="btn btn-default" value="로그인" onclick="location.href='/bookjuck/admin/login.do';">        
         </c:if>
         <c:if test="${not empty id}">
-			<input type="button" id="logout" class="btn btn-default" value="로그아웃" onclick="location.href='/bookjuck/admin/logout.do';">        
+			<input type="button" id="btnLogout" class="btn btn-default" value="로그아웃" onclick="location.href='/bookjuck/admin/logout.do';">        
         </c:if>
 		
     </header>

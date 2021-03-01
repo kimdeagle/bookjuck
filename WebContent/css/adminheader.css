@@ -12,12 +12,12 @@ header {
 
 
 /* header > 로그인, 로그아웃 버튼 */
-#login, #logout {
+#btnLogin, #btnLogout {
 	display: block;
 	float: right;
 }
 
-#login:focus, #logout:focus { outline: none !important; }
+#btnLogin:focus, #btnLogout:focus { outline: none !important; }
 
 
 /* 사이드메뉴 21.02.14 추가 */
