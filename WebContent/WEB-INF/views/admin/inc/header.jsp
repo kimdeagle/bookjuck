@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
     <header>
         <!-- 로고 및 캐릭터 -->
@@ -11,6 +12,15 @@
             <input type="text" id="search" class="form-control noline large inline">
             <input type="button" id="searchbtn" value="검색" class="btn btn-general noline">
         </div>
+        
+        <!-- 로그인/로그아웃(임시) -->
+        <c:if test="${empty id}">
+			<input type="button" id="login" class="btn btn-default" value="로그인" onclick="location.href='/bookjuck/admin/login.do';">        
+        </c:if>
+        <c:if test="${not empty id}">
+			<input type="button" id="logout" class="btn btn-default" value="로그아웃" onclick="location.href='/bookjuck/admin/logout.do';">        
+        </c:if>
+		
     </header>
 
 	<aside>
