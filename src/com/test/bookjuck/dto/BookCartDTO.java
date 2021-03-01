@@ -13,7 +13,7 @@ public class BookCartDTO {
 	private String title;//책 제목
 	private int price;//정가
 	private int salePrice;//판매가
-	private int amount; //수량
+	private String amount; //수량
 	private String pick; //선택여부
 	
 	private String image; //책 이미지
@@ -38,10 +38,10 @@ public class BookCartDTO {
 	public void setSeqBook(String seqBook) {
 		this.seqBook = seqBook;
 	}
-	public int getAmount() {
+	public String getAmount() {
 		return amount;
 	}
-	public void setAmount(int amount) {
+	public void setAmount(String amount) {
 		this.amount = amount;
 	}
 	public String getPick() {

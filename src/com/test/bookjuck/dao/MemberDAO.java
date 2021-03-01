@@ -486,5 +486,26 @@ public class MemberDAO {
 		return 0;
 	}
    // ############ (최진영) 종료
+
+	//############ 수경 시작
+	public int getPoint(String id) {
+		try {
+			
+			String sql = "select points from tblMember where id=?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, id);
+			rs = pstat.executeQuery();
+			
+			if(rs.next()) {
+				return rs.getInt("points");
+			}
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
 	
 }

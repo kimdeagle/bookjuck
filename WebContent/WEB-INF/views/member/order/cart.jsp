@@ -105,7 +105,7 @@
 			            <td>${dto.salePrice}</td>
 			            <td>
 			            	<input type="text" id="amount${rs.index}" class="cartcount" value="${dto.amount}">
-			            	<a href="#!" onclick="" class="btn1">변경</a>
+			            	<a href="#!" onclick="amountChange('${rs.index}')" id="amountChange${rs.index}" class="btn1">변경</a>
 			            </td>
 			            <td><span id="totalpay${rs.index}">${dto.total}</span></td>
 			        </tr>
@@ -116,10 +116,10 @@
 		    <div class="carttotalpaybox">
 		    	<table class="carttotalpay table tbl-lg">
 		    		<tr>
-		    			<th>상품 금액</th>
-		    			<th>배송비</th>
-		    			<th>결제 예정금액</th>
-		    			<th>적립예정 포인트</th>
+		    			<th id="totalPay">상품 금액</th>
+		    			<th id="deliveryPay"></th>
+		    			<th id="actualPay">결제 예정금액</th>
+		    			<th id="savePoints">적립예정 포인트</th>
 		    		</tr>
 		    		<tr>
 		    			<td><span id="totalpay">원</span></td>
@@ -194,7 +194,23 @@
 				
 			});
 			
-			
+			/* function amountChange(index) {
+				$.ajax({
+					type:"GET",
+					url:"/bookjuck/member/order/cart.do",
+					data:{
+						$("#amount"index).val()
+					},
+					success: function(result) {
+						
+						${"#amount"index}.val
+						
+					}
+					error: function(a,b,c) {
+						console.log("amountChange() : "a,b,c);
+					}
+				});
+			} */
 			
 		
 	

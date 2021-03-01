@@ -79,6 +79,7 @@
 				</c:if>
 			
 				<c:forEach items="${blist}" var="dto">
+				<form name="buy" method="POST">
 				<tr>
 					<td>
 						<a href="/bookjuck/member/book/bookdetail.do?seqLCategory=${seqLCategory}&lCategory=${lCategory}&seqMCategory=${seqMCategory}&mCategory=${mCategory}&seqSCategory=${dto.seqSCategory}&sCategory=${dto.sCategory}&seq=${dto.seq}">
@@ -86,7 +87,8 @@
 						</a>
 					</td>
 					<td>
-						<div><a href="/bookjuck/member/book/bookdetail.do?seqLCategory=${seqLCategory}&lCategory=${lCategory}&seqMCategory=${seqMCategory}&mCategory=${mCategory}&seqSCategory=${dto.seqSCategory}&sCategory=${dto.sCategory}&seq=${dto.seq}" class="title">${dto.title}</a></div>
+						<div><a href="/bookjuck/member/book/bookdetail.do?seqLCategory=${seqLCategory}&lCategory=${lCategory}&seqMCategory=${seqMCategory}&mCategory=${mCategory}&seqSCategory=${dto.seqSCategory}&sCategory=${dto.sCategory}&seq=${dto.seq}" class="title" name="title">${dto.title}</a></div>
+						
 						<div class="info">${dto.author} | ${dto.publisher}</div>
 						<div class="subinfo">${dto.pubDate} | ${dto.page}쪽</div>
 						<div class="intro">${dto.summary}</div>
@@ -98,20 +100,25 @@
 					<td>
 						<div class="form-inline amount">
 							<input type="button" value="-" class="minus btn btn-default btn-sm">
-							<input type="text" value="1" class="cnt form-control">
+							<input name="amount" type="text" value="1" class="cnt form-control">
 							<input type="button" value="+" class="plus btn btn-default btn-sm">
 						</div>
+						<input type="hidden" id="seqBook" name="seqBook" value="${dto.seq}">
+						<input type="hidden" id="id" name="id" value="${id}">
 						<div class="btns">
-							<button class="btn btn-success btn-lg btn-block cart" onclick="fnCart()">장바구니</button>
-							<button class="btn btn-primary btn-lg btn-block buy">바로구매</button>
-							<button class="btn btn-warning btn-lg btn-block baro">바로드림</button>
+							<button class="btn btn-success btn-lg btn-block cart" id="cart" type="submit" formaction="/bookjuck/member/order/cartaddok.do"> 장바구니</button>
+							<button class="btn btn-primary btn-lg btn-block buy" id="direct" onclick="getPost('direct')" formaction="/bookjuck/member/order/orderpaymem.do">바로구매</button>
+							<button class="btn btn-warning btn-lg btn-block baro" id="baro" onclick="getPost('baro')">바로드림</button>
 						</div>
 					</td>
 				</tr>
+				</form>
 				</c:forEach>
 				
 			</tbody>
 		</table>
+		
+		
 		
 		<!-- paging -->
 		<c:if test="${not empty blist}">
@@ -137,16 +144,105 @@
 
 	<script>
 	
-	function fnCart() {
-		var flag = confirm("장바구니에 담겼습니다. 장바구니로 이동하시겠습니까?");
-		if(flag){
-			//장바구니로 이동
-			
-			
-		} else {
-			//현재 페이지에 남기
+	/* function getPost(mode) {
+		var theForm = document.buy;
+		if(mode=="cart"){
+			theForm.method = "post";
+			theForm.action = "/bookjuck/member/order/cartaddok.do";
+		}else if(mode=="direct"){
+			theForm.method = "get";
+			theForm.action = "/bookjuck/member/order/orderpaymem.do";
+		}else if(mode=="baro"){
+			theForm.method = "post";
+			theForm.action = "/bookjuck/member/order/barocartok.do";
 		}
+		theForm.submit();
+	} */
+	
+	/* 
+	//장바구니 담기
+	function cartAdd() {
+		if(!$("#id").val()){
+			//비회원
+			var flag = confirm("로그인 하시겠습니까?");
+			
+			if(flag){
+				//로그인하러 가기
+				location.href = "/bookjuck/member/login.do";
+			}else{
+				//비회원 장바구니에 담기
+				var flag = confirm("장바구니에 담겼습니다. 장바구니로 이동하시겠습니까?");
+				if(flag){
+					//장바구니에 담고 장바구니로 이동
+					
+					
+				} else {
+					//장바구니에 담고 현재 페이지에 남기
+				}				
+			}
+		}else{
+			//회원
+			var flag = confirm("장바구니에 담겼습니다. 장바구니로 이동하시겠습니까?");
+			if(flag){
+				//장바구니에 담고 장바구니로 이동
+				location.href = "/bookjuck/member/order/cart.do";
+				
+			} else {
+				//장바구니에 담고 현재 페이지에 남기
+				
+			}
+			
+		}
+		
 	}
+
+	//바로 구매하기
+	function direct() {
+		
+		if(!$("#id").val()){
+			//비회원
+			var flag = confirm("로그인 하시겠습니까?");
+			
+			if(flag){
+				//로그인하러 가기
+				location.href = "/bookjuck/member/login.do";
+			}else{
+				//비회원 바로구매 하기
+				location.href = "/bookjuck/member/order/orderpaynon.do";			
+			}
+		}
+		
+		var flag = confirm("바로구매 하시겠습니까?");
+		if(flag){
+			//바로구매하는 페이지로 이동
+			location.href = "/bookjuck/member/order/orderpaymem.do";
+		}else{
+			//현재 페이지에 남기
+			
+		}
+		
+	}
+	
+	//바로드림 구매하기
+	function baro() {
+		if(!$("#id").val()){
+			//비회원
+			alert("바로드림은 회원만 이용하실 수 있습니다.");	
+			location.href="/bookjuck/member/login.do";
+			
+		}else{
+			
+			var flag = confirm("바로드림 장바구니에 담겼습니다. 장바구니로 이동하시겠습니까?");
+			
+			if(flag){
+				//바로드림 장바구니에 담고 장바구니로 이동
+				location.href = "/bookjuck/member/order/barocart.do"
+			}else{
+				//바로드림 장바구니에 담고 현재 페이지에 남기
+				
+			}
+		}
+	} */
 
 	</script>
 

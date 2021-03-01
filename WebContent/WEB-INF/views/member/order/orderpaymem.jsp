@@ -66,6 +66,7 @@
 			</article>
 
 
+			<form method="POST" name="payform" action="bookjuck/member/order/orderpaymemok.do">
 			<article class="mem-orderder-infobox">
 				<h4>주문자 정보</h4>
 				<table class="tbl-mem-orderer table tbl-lg">
@@ -98,12 +99,14 @@
 
 							<div class="latest-address" style="display: block;">
 								<div class="default-info">
+									<c:forEach items="${dlist}" var="ddto">
 									<div>
-										<strong>[최근 배송지]</strong> 이름 <a href="javascript:void(0);"
+										<strong>[최근 배송지]</strong> ${ddto.name} <a href="javascript:void(0);"
 											onclick="changeAddress()" class="btn1">배송지 변경</a>
 									</div>
-									<div>(우편번호) 주소, 상세주소</div>
-									<div>핸드폰 번호</div>
+									<div name="deliveryAddress">${ddto.address}</div>
+									<div name="deliveryTel">${ddto.tel}</div>
+									</c:forEach>
 								</div>
 							</div>
 
@@ -137,8 +140,7 @@
 											readonly="readonly" style="width: 200px;"></td>
 									</tr>
 								</table>
-								<a href="javascript:void(0);" onclick="changeAddress()"><
-									최근배송지로 변경</a>
+								<a href="javascript:void(0);" onclick="changeAddress()">< 최근배송지로 변경</a>
 							</div>
 						</div>
 
@@ -202,7 +204,7 @@
 						<td>
 							<div>
 								<img src="/bookjuck/image/달러구트 꿈 백화점.png" class="book-xs">
-								<a href="/bookjuck/member/book/bookdetail.do">도서명</a>
+								<a href="/bookjuck/member/book/bookdetail.do">${seqBook}</a>
 							</div>
 						</td>
 						<td>판매가x수량 | 수량<br>판매가
@@ -232,7 +234,7 @@
 						</tr>
 						<tr>
 							<th>최종금액</th>
-							<td style="color: #BC4B51">원</td>
+							<td style="color: #BC4B51"><span name="actualpay">원</span></td>
 						</tr>
 						<tr>
 							<td>적립예정 포인트</td>
@@ -247,7 +249,7 @@
 				
 				<div class="pointbox">
 				<h4>할인/적립</h4>
-					<div>보유 포인트 : </div>
+					<div>보유 포인트 : ${points}</div>
 					<div><input type="text" id="point" name="point" value="0" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"> 원<a href="javascript:void(0);" class="btn1" onclick="" style="margin-left: 10px;">사용</a></div>
 				
 				
@@ -270,13 +272,12 @@
 						</div>
 						<div id="btn-account-type" style="display: none">
 							<a href="/bookjuck/member/order/cart.do" class="btn-back"
-								onclick="">장바구니 가기</a> <a
-								href="/bookjuck/member/order/orderfinish.do" onclick=""
+								onclick="">장바구니 가기</a> <a href="#" onclick="javascripts:document.payform.submit();"
 								class="btn-pay">결제하기</a>
 						</div>
 					</div>
 				</div>
-				
+				</form>
 				<div style="clear: both;"></div>
 			</article>
 

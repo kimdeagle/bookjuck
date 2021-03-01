@@ -2,6 +2,7 @@ package com.test.bookjuck.member.mypage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -60,7 +61,21 @@ public class OrderList extends HttpServlet {
 			//주문일 자르기,
 			dto.setOrderDate(dto.getOrderDate().substring(0,10));
 
-		}	
+		}
+		
+		//주문상태 count
+		
+		String seq = session.getAttribute("seq").toString();
+		
+		int cnt1 = dao.getCount(seq,"주문완료");
+		int cnt2 = dao.getCount(seq,"결제완료");
+		int cnt3 = dao.getCount(seq,"배송중");
+		int cnt4 = dao.getCount(seq,"배송완료");
+		
+		req.setAttribute("cnt1", cnt1);
+		req.setAttribute("cnt2", cnt2);
+		req.setAttribute("cnt3", cnt3);
+		req.setAttribute("cnt4", cnt4);
 		
 		req.setAttribute("blist", blist);
 		req.setAttribute("balist", balist);
