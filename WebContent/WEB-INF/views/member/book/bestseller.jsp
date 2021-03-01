@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>북적북적::Welcome</title>
 <%@include file="/WEB-INF/views/member/inc/asset.jsp"%>
 <link rel="stylesheet" href="/bookjuck/css/bestseller.css">
 <link rel="stylesheet" href="/bookjuck/css/global.css">
@@ -21,6 +21,11 @@
 <body>
 
 	<div class="container">
+	<%	
+		out.flush();
+		RequestDispatcher dheader = request.getRequestDispatcher("/member/inc/header.do");
+		dheader.include(request, response);
+	%>
 		<%-- <%@include file="/WEB-INF/views/common/searchview.jsp"%> --%>
 		<div class="bestSellerList">
 			<div id="menuname1">베스트도서</div>
@@ -77,10 +82,10 @@
 			
 		
 			<div class="bestSellerListRight">
-			<span class="intro" style="font-weight: bold;">북적북적의 베스트셀러를
+			<span class="intro" style="font-weight: bold; position:absolute; left:200px; top:30px;">북적북적의 베스트셀러를
 					소개합니다.</span>
 				<br>
-				<form id="searchform" method="GET" action="/bookjuck/member/book/bestseller.do">
+				<form id="searchform" method="GET" action="/bookjuck/member/book/bestseller.do" style="position:absolute; left:200px;">
 					<div id="choicedate">
 						<!-- 기간 선택 -->
 						<input type="text" name="yearStart" id="yearStart" style="width: 50px;" placeholder="YYYY" class="datebtn" value="${yearStart}">
@@ -98,25 +103,34 @@
 				</form>
 				<br>
 				<c:if test="${not empty yearStart}">
-				<div>
-    			'${yearStart}-${monthStart}-${dayStart} ~ ${yearEnd}-${monthEnd}-${dayEnd}' 기간의 베스트셀러 조회결과 입니다.
+				<div style="font-weight: bold; position:absolute; left:200px; top:120px;">
+    			'${yearStart}-${monthStart}-${dayStart}' ~ '${yearEnd}-${monthEnd}-${dayEnd}' 기간의 베스트셀러 조회결과 입니다.
+				
     			</div>
+    			<br>
     			</c:if>
 				<br>
+				<br>
+				<c:if test="${list3.size() == 0}">
+
+						<div style="position:absolute; left:200px; top:150px;"><b style="font-size: 1.5em;">해당 기간의 도서 목록이 없습니다.</b></div>
+
+				</c:if>
+				
 				
 				
 				
 				<c:forEach items="${list1}" var="dto">
 				<div class="bookbox">
 					<div class="bestrank1">
-						<img src="/bookjuck/image/${dto.image}">
+						<a href="http://localhost:8090/bookjuck/member/book/bookdetail.do?seq=${dto.seq}"><img src="/bookjuck/image/${dto.image}"></a>
 						<div class="bookname">
-							<strong>${dto.title}</strong>
+							<a href="http://localhost:8090/bookjuck/member/book/bookdetail.do?seq=${dto.seq}"><strong style="font-size: 1.3em;">${dto.title}</strong></a>
 						</div>
 						<div class="bookinfo">${dto.author}| ${dto.publisher} |
 							${dto.pubDate}</div>
 						<div class="bookcopy">${dto.copy}</div>
-						<div class="price">가격: ${dto.price}원</div>
+						<div class="price">가격:${String.format('%,d', dto.price)}원</div>
 						<div class="rank1btn">
 							<div>
 								<input type="button" class="btn btn-default" value="바로결제">
@@ -139,14 +153,14 @@
 					<c:forEach items="${list2}" var="dto">
 					<div class="bookbox2">
 						<div class="bestrank2">
-							<img src="/bookjuck/image/${dto.image}">
+							<a href="http://localhost:8090/bookjuck/member/book/bookdetail.do?seq=${dto.seq}"><img src="/bookjuck/image/${dto.image}"></a>
 							<div class="bookname">
-								<strong>${dto.title}</strong>
+								<a href="http://localhost:8090/bookjuck/member/book/bookdetail.do?seq=${dto.seq}"><strong style="font-size: 1.3em;">${dto.title}</strong></a>
 							</div>
 							<div class="bookinfo">${dto.author}| ${dto.publisher} |
-								${dto.pubDate}</div>
+								<br>${dto.pubDate}</div>
 							<div class="bookcopy">${dto.copy}</div>
-							<div class="price">가격: ${dto.price}원</div>
+							<div class="price">가격:${String.format('%,d', dto.price)}원</div>
 							<div class="rank2to4">
 								<div>
 									<input type="button" class="btn btn-default" value="바로결제">
@@ -173,14 +187,14 @@
 					<c:forEach items="${list3}" var="dto">
 					<div class="bookbox5">
 						<div class="bestrank5">
-							<img src="/bookjuck/image/${dto.image}">
+							<a href="http://localhost:8090/bookjuck/member/book/bookdetail.do?seq=${dto.seq}"><img src="/bookjuck/image/${dto.image}"></a>
 							<div class="bookname">
-								<strong>${dto.title}</strong>
+								<a href="http://localhost:8090/bookjuck/member/book/bookdetail.do?seq=${dto.seq}"><strong style="font-size: 1.3em;">${dto.title}</strong></a>
 							</div>
 							<div class="bookinfo">${dto.author}| ${dto.publisher} |
 								${dto.pubDate}</div>
 							<div class="bookcopy">${dto.copy}</div>
-							<div class="price">가격: ${dto.price}원</div>
+							<div class="price">가격: ${String.format('%,d', dto.price)}원</div>
 							<div>
 								<input type="button" class="btn btn-default" value="바로결제">
 							</div>
@@ -199,10 +213,10 @@
 			
 			</div>
 		</div>
-		<%-- <%@include file="/WEB-INF/views/common/footer.jsp"%> --%>
+		<%@include file="/WEB-INF/views/common/footer.jsp"%>
 	</div>
 	<!-- 플로팅 메뉴 -->
-<%-- 	<%@include file="/WEB-INF/views/member/bookjuckee.jsp"%>"%>
+	<%@include file="/WEB-INF/views/member/bookjuckee.jsp"%>
 	<%@include file="/WEB-INF/views/common/top.jsp"%> --%>
 
 

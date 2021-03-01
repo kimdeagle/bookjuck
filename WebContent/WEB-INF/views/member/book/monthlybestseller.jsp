@@ -11,8 +11,8 @@
         <tr>
             <td>
                 <div class="monthitem">
-                    <img src="/bookjuck/image/${dto.image}" class="book-sm" style="width:150px; height:172px; display: block; margin: 0px auto;">                
-                    <h6>${dto.title}</h6>
+                    <a href="http://localhost:8090/bookjuck/member/book/bookdetail.do?seq=${dto.seq}"><img src="/bookjuck/image/${dto.image}" class="book-sm" style="width:150px; height:172px; display: block; margin: 0px auto;"></a>                
+                    <a href="http://localhost:8090/bookjuck/member/book/bookdetail.do?seq=${dto.seq}"><h6>${dto.title}</h6></a>
                     <p>${dto.copy}</p>
                 </div>
             </td>

@@ -34,8 +34,8 @@
    				<c:forEach items="${list1}" var="dto"> <!--추천도서 비회원 사용불가 -->
                     <td>
                         <div class="tblitem">
-                            <img src="/bookjuck/image/${dto.image}" class="book-sm">
-                            <h6>${dto.title}</h6>
+                            <a href="http://localhost:8090/bookjuck/member/book/bookdetail.do?seq=${dto.seq}"><img src="/bookjuck/image/${dto.image}" class="book-sm"></a>
+                            <a href="http://localhost:8090/bookjuck/member/book/bookdetail.do?seq=${dto.seq}"><h6>${dto.title}</h6></a>
                             <p>${dto.copy}</p>
                         </div>
                     </td>
@@ -47,8 +47,8 @@
 			  	<c:forEach items="${list3}" var="dto"> <!-- 베스트도서 -->
                     <td style="width:400px;">
                         <div class="tblitem">
-                            <img src="/bookjuck/image/${dto.image}" class="book-sm">
-                            <h6>${dto.title}</h6>
+                            <a href="http://localhost:8090/bookjuck/member/book/bookdetail.do?seq=${dto.seq}"><img src="/bookjuck/image/${dto.image}" class="book-sm"></a>
+                            <a href="http://localhost:8090/bookjuck/member/book/bookdetail.do?seq=${dto.seq}"><h6>${dto.title}</h6></a>
                             <p>${dto.copy}</p>
                         </div>
                     </td>
@@ -61,8 +61,8 @@
 					<c:forEach items="${list2}" var="dto"> <!--화제의신간 -->					
                     <td>
                         <div class="tblitem">
-                            <img src="/bookjuck/image/${dto.image}" class="book-sm">
-                            <h6>${dto.title}</h6>
+                            <a href="http://localhost:8090/bookjuck/member/book/bookdetail.do?seq=${dto.seq}"><img src="/bookjuck/image/${dto.image}" class="book-sm"></a>
+                            <a href="http://localhost:8090/bookjuck/member/book/bookdetail.do?seq=${dto.seq}"><h6>${dto.title}</h6></a>
                             <p>${dto.copy}</p>
                         </div>
                     </td>
