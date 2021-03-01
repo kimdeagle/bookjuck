@@ -100,7 +100,7 @@ public class EBookAddOk extends HttpServlet {
 			}
 			
 			
-			title = map.get("title");
+			title = "[eBook]" + map.get("title");
 			publisher = map.get("publisher");
 			seqSCategory = map.get("seqSCategory");
 			seqAuthor = map.get("seqAuthor");
