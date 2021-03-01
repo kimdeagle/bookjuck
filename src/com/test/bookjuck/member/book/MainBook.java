@@ -44,8 +44,8 @@ public class MainBook extends HttpServlet {
 			
 			BookDAO dao = new BookDAO();
 			
-			list2 = dao.mainNewBook();//메인신간도서
-			list3 = dao.mainBestSeller();//메인베스트셀러
+			list3 = dao.mainNewBook();//메인신간도서
+			list2 = dao.mainBestSeller();//메인베스트셀러
 			
 			//메인신간도서
 			for (BookDTO dto : list2) {
@@ -118,8 +118,8 @@ public class MainBook extends HttpServlet {
 			
 			BookDAO dao = new BookDAO();
 			list1 = dao.mainRecommendBook(session.getAttribute("seq").toString());
-			list2 = dao.mainNewBook();
-			list3 = dao.mainBestSeller();
+			list3 = dao.mainNewBook();
+			list2 = dao.mainBestSeller();
 			
 			
 			

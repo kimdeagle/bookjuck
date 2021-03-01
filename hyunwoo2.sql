@@ -446,8 +446,42 @@ select
  
  END proc_StatGenderCnt;    
  
- 
- 
+
+create or replace view vwmainbestseller --메인페이지 월간베스트 view
+as
+select e.seq as seq, e.title as title, e.copy as copy, e.image as image, e.paydate as paydate, sum(e.amount) as amount  from
+(select 
+            a.seq,
+            a.title,
+            a.copy,
+            a.image,
+            b.amount as amount,
+            d.paydate
+            from tblBook a
+            inner join tblBookOrderDetail b
+            on a.seq = b.seqBook
+            inner join tblBookOrder c
+            on b.seqBookOrder = c.seq
+            inner join tblBookPay d
+            on c.seq = d.seqBookOrder
+                   
+union all
+        
+select 
+            a.seq,
+            a.title,
+            a.copy,
+            a.image,
+            b.amount as amount,
+            d.paydate
+            from tblBook a
+            inner join tblBaroOrderDetail b
+            on a.seq = b.seqBook
+            inner join tblBaroOrder c
+            on b.seqBaroOrder = c.seq
+            inner join tblBaroPay d
+            on c.seq = d.seqBaroOrder)e
+              where e.paydate between trunc(sysdate, 'mm') and last_day(sysdate) group by e.seq, e.paydate, e.amount, e.title, e.copy, e.image order by amount desc;
  
 
  

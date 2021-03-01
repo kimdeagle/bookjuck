@@ -27,12 +27,11 @@ public class MonthlyBestSeller extends HttpServlet {
 		
 		
 		BookDAO dao = new BookDAO();
-		list = dao.monthlyBestSeller();
+		list = dao.mBestSeller();
 	
 		for (BookDTO dto : list) {
 
-			// 날짜에서 시간 잘라내기
-			dto.setPubDate(dto.getPubDate().substring(0, 10));
+		
 
 			// 제목, 카피 너무 길면 자르기
 			if (dto.getTitle().length() > 15) {
