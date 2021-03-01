@@ -53,7 +53,8 @@
             <article class="application-form">
 
                 <h3>환불 신청</h3>
-
+				
+				<form method="POST" action="/bookjuck/member/refund/refundapplicationok.do">
                 <table class="table tbl-md">
                     <tr style="background-color: RGBA(140,179,105,0.2)">
                         <th>주문번호</th>
@@ -61,20 +62,16 @@
                         <th>상품정보</th>
                         <td><input type="text" class="form-control" name="title" id="title" value="자바의 정석 외 1"></td>
                         <th>수량</th>
-                        <td>
-                            <select name="book-amount" class="form-control">
-                                <option value="">1</option>
-                            </select>                            
-                        </td>
+                        <td><input type="text" class="form-control" name="amount" id="amount" value="2"></td>
                     </tr>
                     <tr>
                         <th>환불 사유</th>
                         <td colspan="5">
-                            <select name="refund-reason" class="form-control" id="refundReason" name="refundReason" onchange="reasonChange(this)">
+                            <select class="form-control" id="refundReason" name="refundReason" onchange="reasonChange(this)">
                             <option value="단순 변심">단순 변심</option>
                             <option value="상품 하자">상품 하자</option>
                             <option value="상품 오배송">상품 오배송</option>
-                            <option value="0">기타</option>
+                            <option value="기타">기타</option>
                             </select>
                         </td>
                     </tr>
@@ -89,7 +86,7 @@
                         <td colspan="5">
 							<input type="text" id="sample2_postcode" placeholder="우편번호" class="form-control">
 							<input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기" class="btn btn-default">
-							<input type="text" id="sample2_address" placeholder="주소" class="form-control">
+							<input type="text" id="sample2_address" name="returnAddress" placeholder="주소" class="form-control">
 							<input type="text" id="sample2_detailAddress" placeholder="상세주소" class="form-control">
 							<input type="text" id="sample2_extraAddress" placeholder="참고항목" class="form-control">
 							<div style="clear: both;"></div>
@@ -100,7 +97,8 @@
                     </tr>
                 </table>
 
-                <input type="button" class="btn btn-general" id="btnapply" value="신청하기">
+                <input type="submit" class="btn btn-general" id="btnapply" value="신청하기">
+                </form>
 
 				<div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
 				<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
@@ -234,7 +232,7 @@
 			
 			var detail = document.getElementById("refundReasonDetail");
 
-			if (e.value == 0) {
+			if (e.value == '기타') {
 				detail.disabled = false;
 			} else {
 				detail.disabled = true;

@@ -10,10 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.test.bookjuck.dao.BookCancelDAO;
+import com.test.bookjuck.dao.BookChangeDAO;
+import com.test.bookjuck.dao.BookRefundDAO;
 
-@WebServlet("/member/refund/cancelapplicationok.do")
-public class CancelApplicationOk extends HttpServlet {
+@WebServlet("/member/refund/refundapplicationok.do")
+public class RefundApplicationOk extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -25,29 +26,30 @@ public class CancelApplicationOk extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		
 		// 1: 일반배송
-		// 2: 바로드림
+		// 3: eBook
 		String type = "1";
 		
 		String seqOrder = req.getParameter("seqOrder");
-		String cancelReason = req.getParameter("cancelReason");
-		String cancelReasonDetail = req.getParameter("cancelReasonDetail");
-
-		BookCancelDAO dao = new BookCancelDAO();
+		String refundReason = req.getParameter("refundReason");
+		String refundReasonDetail = req.getParameter("refundReasonDetail");
+		String returnAddress = req.getParameter("returnAddress");
+		
+		BookRefundDAO dao = new BookRefundDAO();
 		
 		int result;
 		
 		if (type.equals("1")) {
-			// 일반배송 주문 취소
-			System.out.println("ok서블릿" + seqOrder + "," + cancelReason + "," + cancelReasonDetail);
-			result = dao.bookcancel(seqOrder, cancelReason, cancelReasonDetail); 
+			//일반배송 주문환불
+			result = dao.bookrefund(seqOrder, refundReason, refundReasonDetail, returnAddress); 
 			
 		} else {
-			// 바로드림 주문 취소
-			result = dao.barocancel(seqOrder, cancelReason, cancelReasonDetail);
+			//E-book 주문 취소
+			result = dao.ebookrefund(seqOrder, refundReason, refundReasonDetail, returnAddress); 
 			
 		}
 		
-		
+
+			
 		
 		if (result == 1) {
 			//신청 성공 -> 주문 내역 리스트로 가기

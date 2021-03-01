@@ -43,7 +43,6 @@ public class BookCancelDAO {
 
 		try {
 			
-			System.out.println(seqOrder + "," + cancelReason + "," + cancelReasonDetail);
 
 			String sql = "insert into tblBookCancel (seq, seqBookOrder, cancelReason, cancelReasonDetail, cancelState, cancelDate) values (seqBookCancel.nextVal, ?, ?, ?, '취소신청', sysdate)";
 
