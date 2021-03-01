@@ -60,7 +60,7 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th colspan="3"><h6>${lCategory} > ${mCategory} > ${sCategory}</h6></th>
+					<th colspan="3"><h6>${dto.lCategory} > ${dto.mCategory} > ${dto.sCategory}</h6></th>
 				</tr>
 			</thead>
 			<tbody>

@@ -26,21 +26,23 @@ public class Category extends HttpServlet {
 		String seqLCategory = request.getParameter("seqLCategory");
 		String seqMCategory = request.getParameter("seqMCategory");
 		
-		String lCategory = request.getParameter("lCategory");
-		String mCategory = request.getParameter("mCategory");
+		//String lCategory = request.getParameter("lCategory");
+		//String mCategory = request.getParameter("mCategory");
 		
 		//2.
 		CategoryDAO dao = new CategoryDAO();
 		
+		ArrayList<CategoryDTO> mCategoryList = dao.mCategoryList();
 		ArrayList<CategoryDTO> sCategoryList = dao.sCategoryList(seqLCategory, seqMCategory);
 		
 		
 		request.setAttribute("seqLCategory", seqLCategory);
 		request.setAttribute("seqMCategory", seqMCategory);
 		
-		request.setAttribute("lCategory", lCategory);
-		request.setAttribute("mCategory", mCategory);
+		//request.setAttribute("lCategory", lCategory);
+		//request.setAttribute("mCategory", mCategory);
 		
+		request.setAttribute("mCategoryList", mCategoryList);
 		request.setAttribute("sCategoryList", sCategoryList);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/member/inc/category.jsp");

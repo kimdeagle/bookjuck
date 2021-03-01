@@ -26,22 +26,14 @@ public class EBookDetail extends HttpServlet {
 		String seqLCategory = request.getParameter("seqLCategory");
 		String seqMCategory = request.getParameter("seqMCategory");
 		String seqSCategory = request.getParameter("seqSCategory");
-		String lCategory = request.getParameter("lCategory");
-		String mCategory = request.getParameter("mCategory");
-		String sCategory = request.getParameter("sCategory");
+		//String lCategory = request.getParameter("lCategory");
+		//String mCategory = request.getParameter("mCategory");
+		//String sCategory = request.getParameter("sCategory");
 		String seq = request.getParameter("seq");
 		
 		//2.
 		EBookDAO dao = new EBookDAO();
 		EBookDTO dto = dao.getEBookDetail(seq);
-		
-		seqLCategory = dto.getSeqLCategory();
-		seqMCategory = dto.getSeqMCategory();
-		seqSCategory = dto.getSeqSCategory();
-		
-		lCategory = dto.getlCategory();
-		mCategory = dto.getmCategory();
-		sCategory = dto.getsCategory();
 		
 		//날짜 데이터 자르기 -> 년 월 일로 변환
 		dto.setPubDate(dto.getPubDate().substring(0, 10));
@@ -49,10 +41,7 @@ public class EBookDetail extends HttpServlet {
 		temp = dto.getPubDate().substring(0, 4) + "년 " + dto.getPubDate().substring(5, 7) + "월 " + dto.getPubDate().substring(8) + "일";
 		dto.setPubDate(temp);
 		
-
-		lCategory = dto.getlCategory();
-		mCategory = dto.getmCategory();
-		sCategory = dto.getsCategory();
+		
 		
 		//줄거리, 목차, 작가 소개 엔터 -> <br> 변환
 		dto.setIntro(dto.getIntro().replace("\r\n", "<br>"));
@@ -69,9 +58,9 @@ public class EBookDetail extends HttpServlet {
 		request.setAttribute("seqLCategory", seqLCategory);
 		request.setAttribute("seqMCategory", seqMCategory);
 		request.setAttribute("seqSCategory", seqSCategory);
-		request.setAttribute("lCategory", lCategory);
-		request.setAttribute("mCategory", mCategory);
-		request.setAttribute("sCategory", sCategory);
+		//request.setAttribute("lCategory", lCategory);
+		//request.setAttribute("mCategory", mCategory);
+		//request.setAttribute("sCategory", sCategory);
 		
 		request.setAttribute("dto", dto);
 		
