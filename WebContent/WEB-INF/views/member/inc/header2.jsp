@@ -29,32 +29,14 @@
         </div>
 		</c:if>
         <!-- 로고, 캐릭터, 검색창 -->
-		
+
         <div id="searchmenu">
 
             <!-- 로고 및 캐릭터 -->
             <a href="/bookjuck/index.do"><img src="/bookjuck/image/bookjeok/logo.png" class="logo"></a>
-            <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">통합검색<span class="caret"></span></a> --> 
-       
-             <form id="searchform" method="GET" action="/bookjuck/common/searchview.do" style="display:inline;">
-            <!-- 통합검색창(검색분류선택창) -->
-            <select name="sk" class="form-control noline small inline" style="width:100px"> <!-- 검색키: search key  -->
-		   		<option value="">전체도서</option>
-		   		<option value="해외도서">해외도서</option>
-		   		<option value="국내도서">국내도서</option>
-		   		<option value="EBOOK">EBOOK</option>   	
-   			</select>
-   			
-   			       	   	
-		   	<input type="text" id ="searchBox"name="sv" class="form-control noline small inline" value="${sv}" placeholder ="2021년 3월 해리포터 신작출간"><!-- 검색값: search value -->
-		   	<input type="submit" id="searchButton" value="검색" class="btn btn-general noline">   
-		   </form>
-			
-			
-
-            <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">통합검색<span class="caret"></span></a> -->
-             
             
+            <!-- 통합검색창(검색분류선택창) -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">통합검색<span class="caret"></span></a>
             <!-- <ul class="dropdown-menu" role="menu">
                 <li><a href="#">Action</a></li>
                 <li><a href="#">Another action</a></li>
@@ -65,22 +47,16 @@
                 <li><a href="#">One more separated link</a></li>
             </ul> -->
 
-           <!--  <div class="searchdiv inline">
+            <div class="searchdiv inline">
                 <input type="text" id="search" class="form-control noline small inline">
                 <input type="button" id="searchbtn" value="검색" class="btn btn-general noline">
-            </div> -->
+            </div>
 
             <!-- 실시간검색어(현우님이 나중에 수정해주셔야 함! id랑 class는 CSS때문에 주의!) -->
-            <!-- <div id="realtime" class="inline">
-            
-          	
-            </div>  -->
-            
-            
-            
+            <div id="realtime" class="inline">실시간검색어</div>
 
         </div>
-		<!--검색영여  -->
+
         <!-- 도서분류메뉴(navbar) -->
         <nav class="navbar">
             <div class="container-fluid">

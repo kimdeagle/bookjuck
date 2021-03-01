@@ -113,7 +113,7 @@ public class BookDAO {
 	//베스트셀러 list -- 이현우
 	public ArrayList<BookDTO> bestSeller (HashMap<String, String> map){
 		
-		System.out.println("select");
+		
 		
 		try {
 			
@@ -134,6 +134,83 @@ public class BookDAO {
 				//sql = String.format("select * from vwbestseller %s order by salerank asc", where);
 				
 				where = String.format("where pubdate between %s and %s and mcategory=%s and rownum < 11", start, end, category);
+				sql = String.format("select * from vwbestseller %s order by salerank asc", where);
+				
+				
+				System.out.println(sql); 
+				System.out.println(start);
+				System.out.println(end);
+				
+				
+			}
+			
+			System.out.println(where);
+			System.out.println(sql);
+					
+			
+			pstat = conn.prepareStatement(sql);
+			rs = pstat.executeQuery();
+			
+			//ResultSet -> ArrayList<DTO>
+			ArrayList<BookDTO> list = new ArrayList<BookDTO>();
+			
+			while(rs.next()) {
+				
+				BookDTO dto = new BookDTO();
+				
+				dto.setSeq(rs.getString("seq"));
+				dto.setTitle(rs.getString("title"));
+				dto.setPublisher(rs.getString("publisher"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setPubDate(rs.getString("pubdate"));
+				dto.setCopy(rs.getString("copy"));
+				dto.setImage(rs.getString("image"));
+				dto.setTotalSale(rs.getString("totalsale"));
+				dto.setSaleRank(rs.getString("salerank"));
+				dto.setAuthor(rs.getString("author"));
+				System.out.println(rs.getString("title"));
+				
+				
+				list.add(dto);
+				
+				
+			}
+			
+			return list;
+					
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		
+		
+		return null;
+		
+	} 
+//no카테고리 날짜만 적용
+public ArrayList<BookDTO> NoCategorybestSeller (HashMap<String, String> map){
+		
+		
+		
+		try {
+			
+			String where ="";
+			String sql = "";
+		
+			
+			
+			if (map.get("yearStart") != null && map.get("yearEnd") != null
+				&& map.get("monthStart") != null && map.get("monthEnd") != null
+				&& map.get("dayStart") != null && map.get("dayEnd") != null) 
+			{
+				String start = "'" + map.get("yearStart") + map.get("monthStart") + map.get("dayStart") +"'";
+				String end = "'" + map.get("yearEnd") + map.get("monthEnd") + map.get("dayEnd") +"'";
+				
+				
+				//where = String.format("where seq between 1 and 10 and pubdate between %s and %s", start, end);
+				//sql = String.format("select * from vwbestseller %s order by salerank asc", where);
+				
+				where = String.format("where pubdate between %s and %s and rownum < 11", start, end);
 				sql = String.format("select * from vwbestseller %s order by salerank asc", where);
 				
 				
@@ -411,6 +488,80 @@ public class BookDAO {
 				System.out.println(start);
 				System.out.println(end);
 							
+			}
+			
+			System.out.println(where);
+			System.out.println(sql);
+					
+			
+			pstat = conn.prepareStatement(sql);
+			rs = pstat.executeQuery();
+			
+			//ResultSet -> ArrayList<DTO>
+			ArrayList<BookDTO> list = new ArrayList<BookDTO>();
+			
+			while(rs.next()) {
+				
+				BookDTO dto = new BookDTO();
+				
+				dto.setSeq(rs.getString("seq"));
+				dto.setTitle(rs.getString("title"));
+				dto.setPublisher(rs.getString("publisher"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setPubDate(rs.getString("pubdate"));
+				dto.setCopy(rs.getString("copy"));
+				dto.setImage(rs.getString("image"));
+				dto.setAuthor(rs.getString("author"));
+				dto.setRank(rs.getString("rank"));
+				System.out.println(rs.getString("title"));
+				
+				
+				list.add(dto);
+				
+				
+			}
+			
+			return list;
+					
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		
+		
+		return null;
+		
+	} 
+	
+public ArrayList<BookDTO> NoCategoryNewBook (HashMap<String, String> map){
+		
+		
+		
+		try {
+			
+			String where ="";
+			String sql = "";
+		
+			
+			
+			if (map.get("yearStart") != null && map.get("yearEnd") != null
+				&& map.get("monthStart") != null && map.get("monthEnd") != null
+				&& map.get("dayStart") != null && map.get("dayEnd") != null) 
+			{
+				String start = "'" + map.get("yearStart") + map.get("monthStart") + map.get("dayStart") +"'";
+				String end = "'" + map.get("yearEnd") + map.get("monthEnd") + map.get("dayEnd") +"'";
+				
+				
+				
+				where = String.format("where pubdate between %s and %s and rownum < 11", start, end);
+				sql = String.format("select * from vwnewbook %s order by rank asc", where);
+				
+				
+				System.out.println(sql); 
+				System.out.println(start);
+				System.out.println(end);
+				
+				
 			}
 			
 			System.out.println(where);
