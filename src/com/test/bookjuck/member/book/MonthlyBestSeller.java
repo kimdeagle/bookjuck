@@ -28,7 +28,7 @@ public class MonthlyBestSeller extends HttpServlet {
 		
 		BookDAO dao = new BookDAO();
 		list = dao.monthlyBestSeller();
-
+	
 		for (BookDTO dto : list) {
 
 			// 날짜에서 시간 잘라내기
@@ -47,7 +47,7 @@ public class MonthlyBestSeller extends HttpServlet {
 		
 		
 		req.setAttribute("list", list);
-		System.out.println(list +"mbs");
+		
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/member/book/monthlybestseller.jsp");
 		dispatcher.include(req, resp);

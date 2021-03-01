@@ -45,7 +45,7 @@ public class RealTimeSearchDAO {
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, dto.getSearchword());
 			
-			System.out.println(sql);
+			
 			return pstat.executeUpdate();
 			
 		} catch (Exception e) {
@@ -80,14 +80,12 @@ public class RealTimeSearchDAO {
 				dto.setSearchword(rs.getString("searchword"));
 				dto.setRank(rs.getString("rank"));
 				dto.setSearchcount(rs.getInt("searchcount"));
-				System.out.println(rs.getString("searchword"));
+				
 				list.add(dto);
 				
 			}
 			
-			System.out.println(sql);
-			System.out.println(list);
-			System.out.println(list.size());
+			
 			return list;
 			
 		} catch (Exception e) {
