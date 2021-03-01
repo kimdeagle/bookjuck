@@ -230,10 +230,10 @@ as
 select
     bo.seq as seqOrder,
     case
-        when bc.seq is not null then '주문취소'
-        when bch.seq is not null then '주문교환'
-        when br.seq is not null then '주문환불'
-        when bc.seq is null and bch.seq is null and br.seq is null then '일반주문'
+        when bc.seq is not null then 'cancel'
+        when bch.seq is not null then 'return'
+        when br.seq is not null then 'refund'
+        when bc.seq is null and bch.seq is null and br.seq is null then 'other'
     end as ordertype
 from tblBookOrder bo
     left outer join tblBookCancel bc

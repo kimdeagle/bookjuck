@@ -37,6 +37,9 @@ public class BookOrderDetailDTO {
 	private int cnt;
 	
 	//다은 추가 ) 주문 취소/환불/교환 관련 추가
+	//0. 주문타입
+	private String orderType;			//주문타입
+	
 	//1. 취소관련
 	private String cancelReason;		//취소사유
 	private String cancelReasonDetail;	//취소상세사유
@@ -55,12 +58,49 @@ public class BookOrderDetailDTO {
 	private String changeState;			//교환상태
 	private String changeDate;			//교환날짜
 	
+	//3.2. 교환 새 배송지관련
+	private String name;				//교환배송 수취인
+	private String address;				//교환배송지
+	private String tel;					//교환배송 수취인번호
+	private String deliveryCom;			//교환배송 배송회사
+	private String deliveryNum;			//교환배송 운송장번호
+	
 	//4. 통합
 	private String returnAddress;		//회수지주소 -> 교환/환불일 때
 	private String endDate;				//처리날짜 -> 교환/환불일 때
 	
 	
 	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getTel() {
+		return tel;
+	}
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+	public String getDeliveryCom() {
+		return deliveryCom;
+	}
+	public void setDeliveryCom(String deliveryCom) {
+		this.deliveryCom = deliveryCom;
+	}
+	public String getDeliveryNum() {
+		return deliveryNum;
+	}
+	public void setDeliveryNum(String deliveryNum) {
+		this.deliveryNum = deliveryNum;
+	}
 	public String getCancelReason() {
 		return cancelReason;
 	}
@@ -294,6 +334,12 @@ public class BookOrderDetailDTO {
 	}
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
+	}
+	public String getOrderType() {
+		return orderType;
+	}
+	public void setOrderType(String orderType) {
+		this.orderType = orderType;
 	}
 
 }
