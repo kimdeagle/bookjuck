@@ -25,6 +25,7 @@ public class Category extends HttpServlet {
 		//1.
 		String seqLCategory = request.getParameter("seqLCategory");
 		String seqMCategory = request.getParameter("seqMCategory");
+		String seqBook = request.getParameter("seq");
 		
 		//String lCategory = request.getParameter("lCategory");
 		//String mCategory = request.getParameter("mCategory");
@@ -33,7 +34,17 @@ public class Category extends HttpServlet {
 		CategoryDAO dao = new CategoryDAO();
 		
 		ArrayList<CategoryDTO> mCategoryList = dao.mCategoryList();
-		ArrayList<CategoryDTO> sCategoryList = dao.sCategoryList(seqLCategory, seqMCategory);
+		ArrayList<CategoryDTO> sCategoryList = new ArrayList<CategoryDTO>();
+		
+		if (seqMCategory != null) {
+			sCategoryList = dao.sCategoryList(seqLCategory, seqMCategory);			
+		} else {
+			//도서번호를 이용하여 소분류 카테고리 리스트 가져오기
+			sCategoryList = dao.sCategoryList(seqBook);
+			seqLCategory = sCategoryList.get(0).getSeqLCategory();
+			seqMCategory = sCategoryList.get(0).getSeqMCategory();
+		}
+		
 		
 		
 		request.setAttribute("seqLCategory", seqLCategory);
