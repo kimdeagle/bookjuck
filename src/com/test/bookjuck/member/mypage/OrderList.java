@@ -23,6 +23,7 @@ public class OrderList extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		
 		//1. DB 작업
 		//2. 결과 JSP호출
 		
@@ -63,18 +64,24 @@ public class OrderList extends HttpServlet {
 		
 		//주문상태 count
 		
-//		String seq = session.getAttribute("seq").toString();
-//		
-//		int cnt1 = dao.getCount(seq,"주문완료");
-//		int cnt2 = dao.getCount(seq,"결제완료");
-//		int cnt3 = dao.getCount(seq,"배송중");
-//		int cnt4 = dao.getCount(seq,"배송완료");
-//		
-//		req.setAttribute("cnt1", cnt1);
-//		req.setAttribute("cnt2", cnt2);
-//		req.setAttribute("cnt3", cnt3);
-//		req.setAttribute("cnt4", cnt4);
-//		
+		String seq = session.getAttribute("seq").toString();
+		
+		int cnt1 = dao.getCount(seq,"주문완료");
+		int cnt2 = dao.getCount(seq,"결제완료");
+		int cnt3 = dao.getCount(seq,"배송중");
+		int cnt4 = dao.getCount(seq,"배송완료");
+		int cnt5 = dao.getCount(seq, "결제취소");
+		int cnt6 = dao.getCount(seq, "주문교환");
+		int cnt7 = dao.getCount(seq, "주문환불");
+		
+		req.setAttribute("cnt1", cnt1);
+		req.setAttribute("cnt2", cnt2);
+		req.setAttribute("cnt3", cnt3);
+		req.setAttribute("cnt4", cnt4);
+		req.setAttribute("cnt5", cnt5);
+		req.setAttribute("cnt6", cnt6);
+		req.setAttribute("cnt7", cnt7);
+		
 		req.setAttribute("blist", blist);
 		req.setAttribute("balist", balist);
 		req.setAttribute("elist", elist);

@@ -82,7 +82,7 @@ th{
 #strDate,
 #endDate
 {
-	width: 150px;
+	
 	background: #FFF;
 	display: inline-block;
 	cursor: pointer;
@@ -123,6 +123,10 @@ th{
 
 .order-state-box li:nth-child(4){
 	background-position: -350px 6px;
+}
+
+.order-state span{
+	width: 60px;
 }
 
 .total-order{

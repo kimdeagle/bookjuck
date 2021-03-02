@@ -76,16 +76,16 @@
             <article>
             	<div class="order-state-box">
             		<ul class="order-state">
-            			<li class="cell1"><b>주문완료 (${cnt1})</b></li>
-            			<li class="cell2"><b>결제완료 (${cnt2})</b></li>
-            			<li class="cell3"> <b> 배송중 (${cnt3})</b></li>
-            			<li class="cell4" style="width: 80px;"><b>배송완료 (${cnt4})</b></li>
+            			<li class="cell1"><span><b>주문완료 (${cnt1})</b></span></li>
+            			<li class="cell2"><span><b>결제완료 (${cnt2})</b></span></li>
+            			<li class="cell3"><span><b> 배송중 (${cnt3})</b></span></li>
+            			<li class="cell4" style="width: 100px;"><span><b>배송완료 (${cnt4})</b></span></li>
             		</ul>
             		<div class="total-order">
             			<ul>
-            				<li>취소 <span>0건</span></li>
-            				<li>교환 <span>0건</span></li>
-            				<li>환불 <span>0건</span></li>            				
+            				<li>취소 <span>${cnt5}건</span></li>
+            				<li>교환 <span>${cnt6}건</span></li>
+            				<li>환불 <span>${cnt7}건</span></li>            				
             			</ul>
             		</div>
             	</div>
@@ -97,6 +97,7 @@
             <article>
                 <!-- 조회 기간 설정 -->
                 <!-- 로그인한 회원만 보임 -->
+                <form method="GET" action="/bookjuck/member/mypage/orderlist.do" id="#searchForm"></form>
                 <c:if test="${not empty id}">
                 <div class="periodbox">
                     <table class="periodtbl table tbl-md">
@@ -111,6 +112,7 @@
                         <td>
                             <input type="date" class="form-control" id="startDate" name="startDate" min="2019-03-01"> ~
                             <input type="date" class="form-control" id="endDate" name="endDate" min="2019-03-01">
+                            <input type="button" class="btn btn-general" id="btnview" value="조회하기" onclick="$('#searchForm').submit();">
                         </td>
                     </tr>
                     </table>
