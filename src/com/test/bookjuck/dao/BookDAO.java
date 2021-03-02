@@ -791,8 +791,10 @@ public ArrayList<BookDTO> mBestSeller() {
 			
 			
 			String sql = "";
-			sql = String.format("select * from vwrecommendbook where seq = %s and rank between 1 and 6 order by rank", seq);
+			//sql = String.format("select * from vwrecommendbook where seq = %s and rank between 1 and 6 order by rank", seq);
 			//sql = String.format("select * from vwrecommendbook where seq = 24 and rank between 1 and 6 order by rank");
+			sql = String.format("select * from vwrecommendbook where seq = %s", seq);
+			
 			
 			pstat = conn.prepareStatement(sql);
 			rs = pstat.executeQuery();
