@@ -1,10 +1,21 @@
 package com.test.bookjuck.dto;
 
+/**
+ * 통계 성별, 연령대별 정보를 저장하는 클래스
+ * @author 이현우
+ *
+ */
 public class StatisticsPiDTO {
 	
+
 	private int agecnt;
+	
+
 	private String age;
+	
+
 	private int gendercnt;
+	
 	private String gender;
 	
 	

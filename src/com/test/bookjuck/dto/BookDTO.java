@@ -1,5 +1,11 @@
 package com.test.bookjuck.dto;
+	
 
+/**
+ * 도서의 정보를 저장하고, 이외 관련기능을 구현하기 위한 클래스
+ * @author 4조
+ *
+ */
 public class BookDTO {
 	
 	private String seq;

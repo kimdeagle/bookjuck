@@ -1,12 +1,25 @@
 package com.test.bookjuck.dto;
 
+
+/**
+ * 실시간 검색어 정보를 저장하는 클래스
+ * @author 이현우
+ *
+ */
 public class RealTimeSearchDTO {
 	
+
 	private String seq;
+	
+
 	private String searchdate;
+	
+
 	private String searchword;
 	
+
 	private String rank;
+	
 	private int searchcount;
 	
 	

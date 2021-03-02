@@ -34,7 +34,13 @@ public class RealTimeSearchDAO {
 		}
 	}
 	
-	//검색어 DB 삽입 --이현우
+	
+	
+	/**
+	 * 
+	 * @param dto 검색어 DB 삽입 
+	 * @return
+	 */
 	public int insertWord(RealTimeSearchDTO dto) {
 		
 		
@@ -61,7 +67,12 @@ public class RealTimeSearchDAO {
 	
 	
 	
-	//검색어 순위 - 이현우
+
+	
+	/**
+	 * 
+	 * @return 검색어 순위
+	 */
 	public ArrayList<RealTimeSearchDTO> getSearchRank() {
 		
 		try {

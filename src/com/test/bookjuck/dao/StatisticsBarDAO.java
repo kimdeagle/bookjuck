@@ -36,6 +36,12 @@ public class StatisticsBarDAO {
 	
 //--------------시작 (이현우)	
 //날짜입력 후 종이책차트
+	
+/**
+ * 종이책 매출조회
+ * @param 조회날짜
+ * @return
+ */
 public ArrayList<StatisticsBarDTO> getBookStat(HashMap<String, String> map) {
 	
 	try {
@@ -95,6 +101,11 @@ public ArrayList<StatisticsBarDTO> getBookStat(HashMap<String, String> map) {
 	
 	}
 //날짜입력 후 이북차트
+/**
+ * E북 매출조회
+ * @param map 조회기간
+ * @return
+ */
 public ArrayList<StatisticsBarDTO> getEBookStat(HashMap<String, String> map) {
 	
 	try {
@@ -153,6 +164,11 @@ public ArrayList<StatisticsBarDTO> getEBookStat(HashMap<String, String> map) {
 	
 	}
 //날짜입력후 바로차트
+/**
+ * 바로드림 매출조회
+ * @param map 조회기간
+ * @return
+ */
 public ArrayList<StatisticsBarDTO> getBaroBookStat(HashMap<String, String> map) {
 	
 	try {
@@ -215,7 +231,11 @@ public ArrayList<StatisticsBarDTO> getBaroBookStat(HashMap<String, String> map) 
 
 
 
-//날짜입력전 default 종이책차트 (누적값)
+
+/**
+ * 종이책 매출
+ * @return 날짜입력전 default 종이책차트 (누적값)
+ */
 public ArrayList<StatisticsBarDTO> defBookStat() {
 	
 	try {
@@ -250,7 +270,11 @@ public ArrayList<StatisticsBarDTO> defBookStat() {
 	
 	}
 
-//날짜입력전 default E차트 (누적값)
+
+/**
+ * E북 매출
+ * @return 날짜입력전 default E차트 (누적값)
+ */
 public ArrayList<StatisticsBarDTO> defEBookStat() {
 	
 	try {
@@ -284,7 +308,10 @@ public ArrayList<StatisticsBarDTO> defEBookStat() {
 	return null;
 	
 	}
-//날짜입력전 default 바로드림 차트 (누적값)
+/**
+ * 바로드림 매출
+ * @return 날짜입력전 default 바로드림 차트 (누적값)
+ */
 public ArrayList<StatisticsBarDTO> defBaroBookStat() {
 	
 	try {

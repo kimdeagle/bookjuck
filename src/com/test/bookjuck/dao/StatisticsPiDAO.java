@@ -35,8 +35,11 @@ public class StatisticsPiDAO {
 			System.out.println(e);
 		}
 	}
-	
-public ArrayList<StatisticsPiDTO> defaultGetAgeCnt() {//날짜입력전 연령대별 
+/**
+ * 	
+ * @return 날짜입력전 연령대별 주문건수
+ */
+public ArrayList<StatisticsPiDTO> defaultGetAgeCnt() {
 	
 	
 try {
@@ -73,7 +76,12 @@ try {
 		
 
 }	
-	public ArrayList<StatisticsPiDTO> getAgeCnt(HashMap<String, String> map) {//날짜입력후 연령대별
+	/**
+	 * 
+	 * @param map 조회기간
+	 * @return 날짜입력후 연령대별 주문건수
+	 */
+	public ArrayList<StatisticsPiDTO> getAgeCnt(HashMap<String, String> map) {
 		
 		try { 	String sql = "";
 				String start = "";
@@ -136,8 +144,11 @@ try {
 		
 		
 	}
-	
-	public ArrayList<StatisticsPiDTO> defaultGetGenderCnt() {//날짜입력전 성별 
+	/**
+	 * 
+	 * @return 날짜입력전 성별 주문건수
+	 */
+	public ArrayList<StatisticsPiDTO> defaultGetGenderCnt() { 
 		
 		
 		try {
@@ -175,7 +186,13 @@ try {
 
 		}	
 	
-	public ArrayList<StatisticsPiDTO> getGenderCnt(HashMap<String, String> map) {//날짜입력후 성별
+	
+	/**
+	 * 
+	 * @param map 조회기간
+	 * @return 날짜입력후 성별 주문건수
+	 */
+	public ArrayList<StatisticsPiDTO> getGenderCnt(HashMap<String, String> map) {
 		
 		try { 	String sql = "";
 				String start = "";
