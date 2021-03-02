@@ -124,7 +124,7 @@ public class MainBook extends HttpServlet {
 			list1 = dao.mainRecommendBook(session.getAttribute("seq").toString());
 			list3 = dao.mainNewBook();
 			list2 = dao.mainBestSeller();
-			
+			System.out.println(session.getAttribute("seq").toString());
 			
 			
 					//메인추천도서

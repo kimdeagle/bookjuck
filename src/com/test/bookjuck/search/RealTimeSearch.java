@@ -24,18 +24,20 @@ public class RealTimeSearch extends HttpServlet {
 		
 		
 		
-		ArrayList<RealTimeSearchDTO> list = new ArrayList<RealTimeSearchDTO>();
+		ArrayList<RealTimeSearchDTO> list7 = new ArrayList<RealTimeSearchDTO>();
 		
 		RealTimeSearchDAO dao = new RealTimeSearchDAO();
-		list = dao.getSearchRank();
+		list7 = dao.getSearchRank();
 		
 		
 		
 
-		req.setAttribute("list", list);
+		req.setAttribute("list7", list7);
 		
+		//RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/common/realtimesearch.jsp");
+		//dispatcher.forward(req, resp);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/common/realtimesearch.jsp");
-		dispatcher.forward(req, resp);
+		dispatcher.include(req, resp);
 		
 	}
 

@@ -10,8 +10,9 @@ body {
 #content {
     margin: 20px;
     padding: 10px;
-    background: #393;
+    background: #5B8E7D;
     width:200px;
+    border-radius: 10px;
   
 }
 
@@ -26,7 +27,7 @@ body {
 
 #rank-list {
     overflow: hidden;
-    width: 160px;
+    width: 130px;
     height: 20px;
     margin: 0;
 }
@@ -41,15 +42,17 @@ body {
 }
 
 #rank-list ol {
-    position: absolute;
-    top: 0;
+  	position: absolute;
+/*     top: 0;
     left: 0;
     margin: 0;
-    padding: 0;
-    list-style-type: none;
+    padding: 0;  */
+    list-style-type: none; 
+    
 }
 
 #rank-list li {
     height: 20px;
     line-height: 20px;
+    text-align:center;
 }

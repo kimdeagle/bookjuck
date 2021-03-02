@@ -28,6 +28,9 @@
             <a href="/bookjuck/member/notice/list.do" class="headerlink-item">공지사항</a>
         </div>
 		</c:if>
+		
+
+
         <!-- 로고, 캐릭터, 검색창 -->
 		
         <div id="searchmenu">
@@ -49,8 +52,7 @@
 		   	<input type="text" id ="searchBox" name="sv" class="form-control noline small inline" value="${sv}" placeholder ="2021년 3월 해리포터 신작출간"><!-- 검색값: search value -->
 		   	<input type="submit" id="searchButton" value="검색" class="btn btn-general noline">   
 		   </form>
-			
-			
+
 
             <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">통합검색<span class="caret"></span></a> -->
              
@@ -74,6 +76,14 @@
         	<!-- <div id="realtime" class="inline">
             	
             </div>   -->
+            
+
+           
+            <%
+			      out.flush();
+			       RequestDispatcher drealtime = request.getRequestDispatcher("/common/realtimesearch.do");
+			       drealtime.include(request, response);
+			   %>
        
             
             
