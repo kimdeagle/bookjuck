@@ -29,8 +29,10 @@ public class CustDel extends HttpServlet{
 			MemberDAO dao = new MemberDAO();
 			MemberDTO dto = new MemberDTO();
 			
+			
 			dto.setSeq(seq);
 			result= dao.del(dto);
+		
 			
 			if(result == 1) {
 				PrintWriter writer = resp.getWriter();

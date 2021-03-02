@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.test.bookjuck.dao.MemberDAO;
 import com.test.bookjuck.dto.MemberDTO;
@@ -19,6 +20,7 @@ public class WithdrawalOK extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		HttpSession session = req.getSession();
 		String id="";
 		String seq = "";
 		int result = 0;
@@ -34,24 +36,26 @@ public class WithdrawalOK extends HttpServlet {
 			dto.setId(id);
 			dto.setSeq(seq);
 			
-			
+			session.invalidate(); // 세션 초기화
+
 			result = dao.del(dto);
 			
 			
 
-			PrintWriter writer = resp.getWriter();
+			
 
 			if (result == 1) {
+				PrintWriter writer = resp.getWriter();
 				writer.print("<html><body>");
 				writer.print("<script>");
 				writer.print("alert('success');");
 				writer.print("history.back();");
 				writer.print("</script>");
 				writer.print("</body></html>");
-
-				resp.sendRedirect("http://localhost:8090/bookjuck/member/login.do");
+				writer.close();
+				resp.sendRedirect("http://localhost:8090/bookjuck/index.do");
 			}else {
-
+				PrintWriter writer = resp.getWriter();
 				writer.print("<html><body>");
 				writer.print("<script>");
 				writer.print("alert('failed');");

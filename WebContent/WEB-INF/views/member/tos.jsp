@@ -144,12 +144,13 @@
 			<!-- 세번째 테이블 끝 -->
 
 
-
-		<address>
-			<p>
-				Copyright ©<b>BookJuck</b>Corp. All Rights Reserved.
-			</p>
-		</address>
+		<div id="foot">
+			<address>
+				<p>
+					Copyright ©<b>BookJuck</b>Corp. All Rights Reserved.
+				</p>
+			</address>
+		</div>
 	</div>
 	<!-- container 종료 -->
 
