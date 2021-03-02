@@ -189,7 +189,7 @@ public class MainBook extends HttpServlet {
 					ArrayList<BookDTO> list66 = new ArrayList<BookDTO>();
 					
 
-					
+					/*
 					for (int i = 0; i<list1.size(); i++) {
 						if (list1.get(i).getTitle() != null) {
 							list11.add(list1.get(i));
@@ -199,6 +199,16 @@ public class MainBook extends HttpServlet {
 					for (int i = 3; i<list1.size(); i++) {
 						list22.add(list1.get(i));
 			
+					}
+					*/
+					
+					for (int i = 0; i <= 2; i++) {
+						list11.add(list1.get(i));
+					}
+					
+					for (int i = 3; i <= 5; i++) {
+						list22.add(list1.get(i));
+												
 					}
 					for (int i = 0; i <= 2; i++) {
 						list33.add(list2.get(i));
