@@ -35,21 +35,23 @@
 	
 	        <b class="subtitle">주문자 정보</b>
 	        <table class="table tbl-md customerinfo">
+	        <c:forEach items="${blist}" var="dto">
 	            <tr>
 	                <th>주문자</th>
-	                <td>테스트</td>
+	                <td>${dto.orderName}</td>
 	                <th>주문자ID</th>
-	                <td>test0123</td>
+	                <td>${dto.id}</td>
 	            </tr>
 	            <tr>
 	                <th>연락처</th>
-	                <td>010-1111-1111</td>
+	                <td>${dto.orderName}</td>
 	                <th>e-mail</th>
-	                <td>test0123@google.com</td>
+	                <td>이메일</td>
 	            </tr>
 	            <tr>
 	                <td colspan="4"></td>
 	            </tr>
+	        </c:forEach>
 	        </table>
 	
 	        <!-- ##### 자사배송 주문정보 ##### -->
@@ -57,23 +59,27 @@
 	        <b class="subtitle">주문 정보</b>
 	        <table class="table tbl-md orderinfo">
 	            <tr>
+	            	<c:forEach items="${blist}" var="dto">
 	                <th>주문번호</th>
 	                <td>
-	                    0000000
+	                    123456${seqBookOrder}
 	                </td>
 	                <th>주문날짜</th>
-	                <td>2021-02-20</td>
+	                <td>${dto.orderDate}</td>
 	                <th>주문상태</th>
 	                <td>
-	                    배송완료
+	                    ${dto.orderState}
 	                    <button class="btn btn-general btn-sm"  data-toggle="modal" data-target="#orderstate">
 	                        상태수정
 	                    </button>
 	                </td>
+	                </c:forEach>
 	                <th>배송정보</th>
 	                <td>
-	                    CJ대한통운
-	                    <div>(20210223120)</div>
+	                    <c:forEach items="${bdlist}" var="bddto">
+	                    ${bddto.deliveryCompany}
+	                    <div>(${bddto.deliveryNumber})</div>
+	                    </c:forEach>
 	                </td>
 	            </tr>
 	            <tr>
@@ -85,53 +91,55 @@
 	        <!-- 주문 상품 정보 -->
 	        <table class="table tbl-md detailinfo">
 	            <tr>
-	                <th>상품분류</th>
 	                <th>도서명</th>
 	                <th>작가</th>
 	                <th>출판사</th>
 	                <th>수량</th>
 	                <th>판매가</th>
 	            </tr>
+	            <c:forEach items="${blist}" var="bdto">
 	            <tr>
-	                <td>[국내도서]</td>
 	                <td>
-	                    <img src="/bookjuck/image/바이러스 X.png">
-	                    <span>책제목</span>
+	                    <img src="/bookjuck/image/book/${bdto.image}">
+	                    <span>${bdto.title}</span>
 	                </td>
 	                <td>작가명</td>
 	                <td>출판사명</td>
 	                <td>
-	                    1
+	                    ${bdto.amount}
 	                </td>
 	                <td>
 	                    8,550
 	                </td>
 	            </tr>
+	            </c:forEach>
 	            <tr>
-	                <td colspan="6"></td>
+	                <td colspan="5"></td>
 	            </tr>
 	        </table>
 	
 	
 	        <b class="subtitle">배송 정보</b>
 	        <table class="table tbl-md deliveryinfo">
+	            <c:forEach items="${bdlist}" var="bddto">
 	            <tr>
 	                <th>받으시는 분</th>
-	                <td>테스트</td>
+	                <td>${bddto.name}</td>
 	                <th>연락처</th>
-	                <td>010-1111-1111</td>
+	                <td>${bddto.tel}</td>
 	                <th>운송장번호</th>
 	                <td>
-	                    <a href>한진택배 01010239</a>
+	                    <a href>${bddto.deliveryCompany}(${bddto.deliveryNumber})</a>
 	                </td>
 	            </tr>
 	            <tr>
 	                <th>주소</th>
-	                <td colspan="5">서울특별시 강남구 역삼동 한독빌딩</td>
+	                <td colspan="5">${bddto.address}</td>
 	            </tr>
 	            <tr>
 	                <td colspan="5"></td>
 	            </tr>
+	            </c:forEach>
 	        </table>
 	
 	
@@ -139,33 +147,37 @@
 	        <div class="pay">
 	            <b class="subtitle">결제 정보</b>
 	            <table class="table tbl-xs">
+	            <c:forEach items="${bplist}" var="bpdto">
 	                <tr>
 	                    <th>상품합계</th>
-	                    <td>8,550원</td>
+	                    <td>${bpdto.totalPay}</td>
 	                </tr>
 	                <tr>
 	                    <th>사용포인트</th>
-	                    <td>-1,000P</td>
+	                    <td>${bpdto.usePoint}</td>
 	                </tr>
 	                <tr>
 	                    <th>최종결제금액</th>
-	                    <td>7,550원</td>
+	                    <td>${bpdto.actualPay}</td>
 	                </tr>
 	                <tr>
 	                    <th>적립포인트</th>
-	                    <td>850P</td>
+	                    <td>${bpdto.savePoints}</td>
 	                </tr>
 	                <tr>
 	                    <th>결제수단</th>
-	                    <td>카드+적립금</td>
+	                    <td>${bpdto.payment}</td>
 	                </tr>
 	                <tr>
 	                    <td colspan="2"></td>
 	                </tr>
+	            </c:forEach>
 	            </table>
 	        </div>
 	
 	        <!-- 취소/교환/환불일때만 보여주기 -->
+	        <c:if test="${ordertype != 'other'}"> <!-- other:일반주문 -->
+	        
 	        <div class="pay-refund">
 	            <b class="subtitle">환불 정보</b>
 	            <table class="table tbl-xs">
@@ -272,7 +284,8 @@
 	            </tr>
 	        </table>
 	
-	
+			</c:if>
+			
 	        <!-- 주문 상세보기 하단 (라인 + 버튼) -->
 	        <hr>
 	        <div class="btns"> 
@@ -285,7 +298,7 @@
 	
 	       </article>
 	    </section>
-
+		
 
 
 		<!-- ########## 하단 시작 -->

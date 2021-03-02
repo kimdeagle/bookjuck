@@ -362,6 +362,7 @@ public class OrderListDAO {
 		return null;
 	}
 
+
 	//컬럼명 as cnt로 바꿨는데 안 가져와짐, 주문상태에 따라 카운트하기
 	public int getCount(String seq, String orderState) {
 				
@@ -386,10 +387,47 @@ public class OrderListDAO {
 	}
 
 
+
 	
 	
 	
 	// ###################### 오수경 ############################
 	// ####################### 끝 #############################
+	
+	
+	
+	
+	
+	// ################ 다은 시작
+	
+	/**
+	 * 주문자 id로 seq를 얻어내는 메서드입니다.
+	 * @param id 주문한 사람의 id
+	 * @return seq 주문한 사람의 seq
+	 */
+	public String getMemberSeq(String id) {
+		
+		try {
+			
+			String sql = "select seq from tblMember where id = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, id);
+			
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				
+				return rs.getString("seq");
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+	}
+	
+	// ################ 다은 끝
 
 }

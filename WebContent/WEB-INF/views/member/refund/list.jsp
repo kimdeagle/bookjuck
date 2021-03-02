@@ -169,7 +169,7 @@
                     <c:if test="${not empty blist }">
                     <c:forEach items="${blist}" var="dto">
                     <tr>
-                        <td><a href="/bookjuck/member/mypage/refundorderdetail.do" class="ordernumber">${dto.seq + 123456}</a></td>
+                        <td><a href="/bookjuck/member/mypage/orderdetail.do?seqBookOrder=${dto.seq}" class="ordernumber">123456${dto.seq}</a></td>
                         <td>${dto.applyDate}</td>
                         <td class="book">${dto.title}
 	                        <c:if test="${dto.totalAmount > 1}">
@@ -185,7 +185,7 @@
                     <c:if test="${not empty balist }">
                     <c:forEach items="${balist}" var="dto">
                     <tr>
-                        <td><a href="/bookjuck/member/mypage/refundorderdetail.do" class="ordernumber">${dto.seq + 567891}</a></td>
+                        <td><a href="/bookjuck/member/mypage/baroorderdetail.do?seqBaroOrder=${dto.seq}" class="ordernumber">567891${dto.seq}</a></td>
                         <td>${dto.applyDate}</td>
                         <td class="book">${dto.title}
 	                        <c:if test="${dto.totalAmount > 1}">
@@ -201,7 +201,7 @@
                     <c:if test="${not empty elist }">
                     <c:forEach items="${elist}" var="dto">
                     <tr>
-                        <td><a href="/bookjuck/member/mypage/refundorderdetail.do" class="ordernumber">${dto.seq + 987654}</a></td>
+                        <td><a href="/bookjuck/member/mypage/ebookorderdetail.do?seqEBookOrder=${dto.seq}" class="ordernumber">987654${dto.seq}</a></td>
                         <td>${dto.applyDate}</td>
                         <td class="book">${dto.title}</td>
                         <td>${dto.totalAmount}</td>

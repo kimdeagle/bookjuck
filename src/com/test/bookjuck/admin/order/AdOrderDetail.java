@@ -21,8 +21,8 @@ import com.test.bookjuck.dto.BookDeliveryDTO;
 import com.test.bookjuck.dto.BookOrderDetailDTO;
 import com.test.bookjuck.dto.BookPayDTO;
 
-@WebServlet("/admin/order/view.do")
-public class View extends HttpServlet {
+@WebServlet("/admin/order/adorderdetail.do")
+public class AdOrderDetail extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -36,7 +36,7 @@ public class View extends HttpServlet {
 		// 종이책 상세 주문 조회
 		String seqBookOrder = req.getParameter("seqBookOrder");
 		String id = req.getParameter("id");
-		
+
 		String seq = dao.getMemberSeq(id);
 
 
@@ -44,6 +44,7 @@ public class View extends HttpServlet {
 
 		// 주문일 가져오기
 		String orderDate = dao.getOrderDate(seqBookOrder);
+
 
 		
 		//결제 정보 조회
@@ -70,6 +71,7 @@ public class View extends HttpServlet {
 		
 		//주문이 일반주문인지 교환/취소/환불인지 알아내기
 		String ordertype = boddao.getType(seqBookOrder);
+
 		
 		BookOrderDetailDTO cancelinfo;
 		BookOrderDetailDTO returninfo;
@@ -105,9 +107,8 @@ public class View extends HttpServlet {
 		
 		req.setAttribute("ordertype", ordertype); // 다은) 주문 타입보내기
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/order/view.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/order/adorderdetail.jsp");
 		dispatcher.forward(req, resp);
 
 	}
-
 }
