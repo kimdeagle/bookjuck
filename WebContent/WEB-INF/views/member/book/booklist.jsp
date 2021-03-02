@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>북적북적::Welcome</title>
+<title>북적북적::도서목록</title>
 
 <%@include file="/WEB-INF/views/member/inc/asset.jsp" %>
 
@@ -61,14 +61,14 @@
 				<c:forEach items="${sCategoryList}" var="scdto">
 				<c:if test="${not empty seqSCategory}">
 					<c:if test="${seqSCategory.equals(scdto.seqSCategory)}">
-						<th colspan="3"><h6>${scdto.lCategory} > ${scdto.mCategory} > ${scdto.sCategory}</h6></th>
+						<tr><th colspan="3"><h6>${scdto.lCategory} > ${scdto.mCategory} > ${scdto.sCategory}</h6></th></tr>
 					</c:if>
 				</c:if>
 				</c:forEach>
 				<c:forEach items="${mCategoryList}" var="mcdto">
 				<c:if test="${empty seqSCategory}">
 					<c:if test="${seqMCategory.equals(mcdto.seqMCategory)}">
-						<th colspan="3"><h6>${mcdto.lCategory} > ${mcdto.mCategory}</h6></th>
+						<tr><th colspan="3"><h6>${mcdto.lCategory} > ${mcdto.mCategory}</h6></th></tr>
 					</c:if>
 				</c:if>
 				</c:forEach>

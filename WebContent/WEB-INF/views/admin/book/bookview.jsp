@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>북적북적_Admin::Welcome</title>
+<title>북적북적_Admin::도서상세</title>
 
 <%@include file="/WEB-INF/views/admin/inc/asset.jsp" %>
 

@@ -128,21 +128,25 @@ public class MainBook extends HttpServlet {
 			
 			
 					//메인추천도서
-					for (BookDTO dto : list1) {
+				for (BookDTO dto : list1) {
+					
+					if (dto.getTitle() != null) {
+						// 날짜에서 시간 잘라내기
+						//dto.setPubDate(dto.getPubDate().substring(0, 10));
 						
-					// 날짜에서 시간 잘라내기
-					//dto.setPubDate(dto.getPubDate().substring(0, 10));
-	
-					// 제목, 카피 너무 길면 자르기
-				if (dto.getTitle().length() > 30) {
-					dto.setTitle(dto.getTitle().substring(0, 30) + "..");
-					}
-	
+						// 제목, 카피 너무 길면 자르기
+						if (dto.getTitle().length() > 30) {
+							dto.setTitle(dto.getTitle().substring(0, 30) + "..");
+						}
+						
 						if (dto.getCopy().length() > 80) {
-					dto.setCopy(dto.getCopy().substring(0, 80) + "..");
+							dto.setCopy(dto.getCopy().substring(0, 80) + "..");
+						}						
+					} else {
+						
 					}
-	
-			}
+					
+				}
 					//메인신간도서
 				for (BookDTO dto : list2) {
 						
@@ -176,21 +180,23 @@ public class MainBook extends HttpServlet {
 		
 				}
 					
-					
-					ArrayList<BookDTO> list11 = new ArrayList<BookDTO>(); 
+					 
+					ArrayList<BookDTO> list11 = new ArrayList<BookDTO>();
 					ArrayList<BookDTO> list22 = new ArrayList<BookDTO>(); 
 					ArrayList<BookDTO> list33 = new ArrayList<BookDTO>(); 
 					ArrayList<BookDTO> list44 = new ArrayList<BookDTO>(); 
 					ArrayList<BookDTO> list55 = new ArrayList<BookDTO>(); 
 					ArrayList<BookDTO> list66 = new ArrayList<BookDTO>();
 					
+
 					
-					
-					for (int i = 0; i <= 2; i++) {
-						list11.add(list1.get(i));
+					for (int i = 0; i<list1.size(); i++) {
+						if (list1.get(i).getTitle() != null) {
+							list11.add(list1.get(i));
+						}
 					}
 
-					for (int i = 3; i <= 5; i++) {
+					for (int i = 3; i<list1.size(); i++) {
 						list22.add(list1.get(i));
 			
 					}

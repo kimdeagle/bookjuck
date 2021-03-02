@@ -46,7 +46,7 @@
    			</select>
    			
    			       	   	
-		   	<input type="text" id ="searchBox"name="sv" class="form-control noline small inline" value="${sv}" placeholder ="2021년 3월 해리포터 신작출간"><!-- 검색값: search value -->
+		   	<input type="text" id ="searchBox" name="sv" class="form-control noline small inline" value="${sv}" placeholder ="2021년 3월 해리포터 신작출간"><!-- 검색값: search value -->
 		   	<input type="submit" id="searchButton" value="검색" class="btn btn-general noline">   
 		   </form>
 			
