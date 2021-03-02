@@ -90,8 +90,8 @@
                   </td>
                   <td style="vertical-align: middle;">${bdto.amount}</td>
                   <td style="vertical-align: middle;">
-				  <button class="btn btn-general btn-sm"  data-toggle="modal" data-target="#orderstate">상태수정</button>
                   ${bdto.orderState}
+				  <button class="btn btn-general btn-sm"  data-toggle="modal" data-target="#orderstate" id="btnOrderState" style="display:block; margin-left: 35px;">상태수정</button>
                    <!-- 주문상태가 배송 완료일 때 보임 || 비회원 안 보임 -->
                   </td>
                </tr>
@@ -198,8 +198,10 @@
 
 		<c:if test="${not empty cancelinfo}">
 			<article>
-				<h5>주문 취소 정보</h5>
-	
+				<h5 style="display:inline-block; margin-bottom: 10px;">주문 취소 정보</h5>
+				<button class="btn btn-general process btn-sm" id="btnCancelState" data-toggle="modal" data-target="#processstate" style="display:inline-block; margin: 0px 0px 10px 625px;">
+	            처리상태 수정
+	        	</button>
 				<table class="table tbl-md tbl-refundinfo">
 					<tr>
 						<th>사유</th>
@@ -233,8 +235,10 @@
 	
 		<c:if test="${not empty returninfo}">
 			<article>
-				<h5>주문 교환 정보</h5>
-	
+				<h5 style="display:inline-block; margin-bottom: 10px;">주문 교환 정보</h5>
+			    <button class="btn btn-general process btn-sm" id="btnReturnState" data-toggle="modal" data-target="#processstate" style="display:inline-block; margin: 0px 0px 10px 625px;">
+	            처리상태 수정
+	        	</button>
 				<table class="table tbl-md tbl-refundinfo">
 					<tr>
 						<th>사유</th>
@@ -268,8 +272,8 @@
 	
 		<c:if test="${not empty refundinfo}">
 			<article>
-				<h5>주문 환불 정보</h5>
-		        <button class="btn btn-general process btn-sm"  data-toggle="modal" data-target="#processstate">
+				<h5 style="display:inline-block; margin-bottom: 10px;">주문 환불 정보</h5>
+		        <button class="btn btn-general process btn-sm" id="btnRefundState" data-toggle="modal" data-target="#processstate" style="display:inline-block; margin: 0px 0px 10px 625px;">
 	            처리상태 수정
 	        	</button>
 				<table class="table tbl-md tbl-refundinfo">
@@ -355,11 +359,11 @@
 
 		</c:if>
 			<!-- ######## 이 이전 다은 추가 - 교환/취소/환불 정보 -->
-        <hr>
+        <hr style="margin-top: -50px;">
         <div class="btns"> 
         	<!-- 목록으로 버튼 링크 연결 시 주의할 것 -->
             <input type="button" value="목록으로" class="btn back" onclick="location.href='/bookjuck/admin/order/orderlist.do';">
-            <button class="btn btn-general"  data-toggle="modal" data-target="#ordercancel">
+            <button class="btn btn-general" id="btnAdminCancel" data-toggle="modal" data-target="#ordercancel" style="margin-left: 690px;">
                 주문취소
             </button>
         </div>
