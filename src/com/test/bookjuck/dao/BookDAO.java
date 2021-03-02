@@ -17,7 +17,11 @@ import oracle.jdbc.OracleTypes;
 
 
 
-
+/**
+ * 도서 관련 DB 작업 담당 클래스
+ * @author 김주혁, 이현우
+ *
+ */
 public class BookDAO {
 	
 	private Connection conn;
@@ -37,7 +41,8 @@ public class BookDAO {
 		try {
 			conn.close();
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("BookDAO.close()");
+			e.printStackTrace();
 		}
 	}
 	
@@ -845,7 +850,12 @@ public ArrayList<BookDTO> mBestSeller() {
 
 	//############# 주혁 시작
 	
-	//BookList 서블릿 -> 도서 리스트 반환
+	
+	/**
+	 * (사용자) 도서 리스트 반환 메서드
+	 * @param map 카테고리 및 페이징 관련 데이터를 담은 객체
+	 * @return 도서 리스트
+	 */
 	public ArrayList<BookDTO> getBookList(HashMap<String, String> map) {
 		
 		try {
@@ -896,16 +906,22 @@ public ArrayList<BookDTO> mBestSeller() {
 				
 			}
 			
-			return blist;
+			return blist;			
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("BookDAO.getBookList()");
+			e.printStackTrace();
 		}
 		
 		return null;
 	}
 
-	//BookDetail 서블릿 -> 도서 상세정보 호출
+	
+	/**
+	 * (사용자) 도서 상세정보 반환 메서드
+	 * @param seq 도서번호
+	 * @return 도서 상세정보
+	 */
 	public BookDTO getBookDetail(String seq) {
 		
 		try {
@@ -945,17 +961,22 @@ public ArrayList<BookDTO> mBestSeller() {
 				dto.setsCategory(rs.getString("sCategory"));
 				
 				return dto;
-			}
+			}			
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("BookDAO.getBookDetail()");
+			e.printStackTrace();
 		}
 		
 		return null;
 	}
 	
 	
-	//BookList 서블릿 -> 도서 수 반환
+	/**
+	 * (사용자) 도서 수 반환 메서드
+	 * @param map 카테고리 및 페이징 관련 데이터를 담은 객체
+	 * @return 도서 수
+	 */
 	public int getBookCount(HashMap<String, String> map) {
 		
 		try {
@@ -975,17 +996,22 @@ public ArrayList<BookDTO> mBestSeller() {
 			
 			if (rs.next()) {
 				return rs.getInt("cnt");
-			}
-			
+			}			
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("BookDAO.getBookCount()");
+			e.printStackTrace();
 		}
 		
 		return 0;
 	}
 
-	//admin -> BookList 서블릿 -> 목록 반환
+	
+	/**
+	 * (관리자) 도서 목록 반환 메서드
+	 * @param map 카테고리 및 페이징 관련 데이터를 담은 객체
+	 * @return 도서 목록
+	 */
 	public ArrayList<BookDTO> getAdminBookList(HashMap<String, String> map) {
 		
 		try {
@@ -1036,16 +1062,21 @@ public ArrayList<BookDTO> mBestSeller() {
 				
 			}
 			
-			return list;
+			return list;			
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("BookDAO.getAdminBookList()");
+			e.printStackTrace();
 		}
 		
 		return null;
 	}
 
-	//admin -> BookList 서블릿 -> 전체도서 수
+	
+	/**
+	 * (관리자) 전체 도서 수 반환 메서드
+	 * @return 전체 도서 수
+	 */
 	public int getWholeBookCount() {
 		
 		try {
@@ -1057,16 +1088,21 @@ public ArrayList<BookDTO> mBestSeller() {
 			
 			if (rs.next()) {
 				return rs.getInt("cnt");
-			}
+			}			
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("BookDAO.getWholeBookCount()");
+			e.printStackTrace();
 		}
 		
 		return 0;
 	}
 
-	//admin -> BookList 서블릿 -> 국내도서 수
+	
+	/**
+	 * (관리자) 국내 도서 수 반환 메서드
+	 * @return 국내 도서 수
+	 */
 	public int getInternalBookCount() {
 
 		try {
@@ -1078,16 +1114,21 @@ public ArrayList<BookDTO> mBestSeller() {
 			
 			if (rs.next()) {
 				return rs.getInt("cnt");
-			}
+			}			
 			
 		} catch (Exception e) {
-			System.out.println(e);
-		}		
+			System.out.println("BookDAO.getInternalBookCount()");
+			e.printStackTrace();
+		}	
 		
 		return 0;
 	}
 
-	//admin -> BookList 서블릿 -> 해외도서 수
+	
+	/**
+	 * (관리자) 해외 도서 수 반환 메서드
+	 * @return 해외 도서 수
+	 */
 	public int getExternalBookCount() {
 
 		try {
@@ -1099,16 +1140,22 @@ public ArrayList<BookDTO> mBestSeller() {
 			
 			if (rs.next()) {
 				return rs.getInt("cnt");
-			}
+			}			
 			
 		} catch (Exception e) {
-			System.out.println(e);
-		}		
+			System.out.println("BookDAO.getExternalBookCount()");
+			e.printStackTrace();
+		}	
 		
 		return 0;
 	}
 
-	//admin -> BookList 서블릿 -> (페이징) 도서 수 반환
+	
+	/**
+	 * (관리자) 페이징에 사용할 도서 수 반환 메서드
+	 * @param map 카테고리 및 페이징 관련 데이터를 담은 객체
+	 * @return 도서 수
+	 */
 	public int getAdminBookCount(HashMap<String, String> map) {
 		
 		try {
@@ -1126,17 +1173,22 @@ public ArrayList<BookDTO> mBestSeller() {
 			
 			if (rs.next()) {
 				return rs.getInt("cnt");
-			}
-			
+			}			
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("BookDAO.getAdminBookCount()");
+			e.printStackTrace();
 		}
 		
 		return 0;
 	}
 
-	//BookAddOk 서블릿 -> 도서 추가
+	
+	/**
+	 * (관리자) 도서 추가 메서드
+	 * @param bdto 도서 정보를 담은 객체
+	 * @return 도서 번호
+	 */
 	public String add(BookDTO bdto) {
 		
 		try {
@@ -1167,17 +1219,22 @@ public ArrayList<BookDTO> mBestSeller() {
 				if (rs.next()) {
 					return rs.getString("seq");
 				}
-			}
+			}			
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("BookDAO.add()");
+			e.printStackTrace();
 		}
 		
 		return null;
 	}
 
 
-	//관리자 -> 도서 상세 가져오기
+	/**
+	 * (관리자) 도서 상세 정보 반환 메서드
+	 * @param seq 도서 번호
+	 * @return 도서 상세 정보
+	 */
 	public BookDTO getAdminBookDetail(String seq) {
 		
 		try {
@@ -1216,16 +1273,21 @@ public ArrayList<BookDTO> mBestSeller() {
 				
 				return dto;
 				
-			}
+			}			
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("BookDAO.getAdminBookDetail()");
+			e.printStackTrace();
 		}
 		
 		return null;
 	}
 
-	//관리자 -> 도서 수정
+	
+	/**
+	 * (관리자) 도서 수정 메서드
+	 * @param bdto 수정할 도서 정보
+	 */
 	public void edit(BookDTO bdto) {
 		
 		try {
@@ -1248,15 +1310,21 @@ public ArrayList<BookDTO> mBestSeller() {
 			
 			pstat.setString(14, bdto.getSeq());
 			
-			pstat.executeUpdate();
+			pstat.executeUpdate();			
 			
 		} catch (Exception e) {
-			System.out.println(e);
-		}		
+			System.out.println("BookDAO.edit()");
+			e.printStackTrace();
+		}	
 		
 	}
 	
-	//BookEditOk 서블릿 -> 이미지 수정 안한 경우 이미지 파일명 가져오기
+	
+	/**
+	 * (관리자) 도서 수정 시 이미지 수정 안 한 경우 이미지 파일명 반환 메서드
+	 * @param seq 도서 번호
+	 * @return 이미지 파일명
+	 */
 	public String getImageFileName(String seq) {
 		
 		try {
@@ -1268,16 +1336,22 @@ public ArrayList<BookDTO> mBestSeller() {
 			
 			if (rs.next()) {
 				return rs.getString("image");
-			}
+			}			
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("BookDAO.getImageFileName()");
+			e.printStackTrace();
 		}
 		
 		return null;
 	}
 	
-	//BookDelOk 서블릿 -> 주문 또는 독후감 있는지 확인
+	
+	/**
+	 * (관리자) 도서 삭제 시 주문 또는 독후감 내역 확인 메서드
+	 * @param seq 도서 번호
+	 * @return 주문 또는 독후감 내역 존재 여부
+	 */
 	public boolean isOrderOrReview(String seq) {
 		
 		try {
@@ -1300,7 +1374,12 @@ public ArrayList<BookDTO> mBestSeller() {
 		return false;
 	}
 	
-	//BookDelOk 서블릿 -> 도서 삭제
+	
+	/**
+	 * (관리자) 도서 삭제 메서드
+	 * @param seq 도서 번호
+	 * @return 도서 삭제 성공 여부
+	 */
 	public int del(String seq) {
 		
 		try {

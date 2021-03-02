@@ -11,6 +11,11 @@ import com.test.bookjuck.DBUtil;
 import com.test.bookjuck.dto.BookDTO;
 import com.test.bookjuck.dto.EBookDTO;
 
+/**
+ * EBook 관련 DB 작업 담당 클래스
+ * @author 김주혁
+ *
+ */
 public class EBookDAO {
 
 	private Connection conn;
@@ -26,20 +31,23 @@ public class EBookDAO {
 	public void close() {
 
 		try {
-
 			conn.close();
-
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("EBookDAO.close()");
+			e.printStackTrace();
 		}
 
 	}
 
 	//############# 주혁 시작
 	
-	//EBookList 서블릿 -> ebooklist 반환
+	
+	/**
+	 * (사용자) EBook 리스트 반환 메서드
+	 * @param map 카테고리 및 페이징 관련 데이터를 담은 객체
+	 * @return EBook 리스트
+	 */
 	public ArrayList<EBookDTO> getEBookList(HashMap<String, String> map) {
-		
 		try {
 			
 			String sql = "";
@@ -88,17 +96,22 @@ public class EBookDAO {
 				eblist.add(dto);
 			}
 			
-			return eblist;
-			
+			return eblist;			
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("EBookDAO.getEBookList()");
+			e.printStackTrace();
 		}
 		
 		return null;
 	}
 	
-	//EBookDetail 서블릿 -> E-Book 상세정보 호출
+	
+	/**
+	 * (사용자) EBook 상세 정보 반환 메서드
+	 * @param seq EBook 번호
+	 * @return EBook 상세 정보
+	 */
 	public EBookDTO getEBookDetail(String seq) {
 		
 		try {
@@ -138,16 +151,22 @@ public class EBookDAO {
 				dto.setlCategory(rs.getString("lCategory"));
 				
 				return dto;
-			}
+			}			
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("EBookDAO.getEBookDetail()");
+			e.printStackTrace();
 		}
 		
 		return null;
 	}
 
-	//EBookList 서블릿 -> E-Book 수 반환
+	
+	/**
+	 * (사용자) EBook 수 반환 메서드
+	 * @param map 카테고리 및 페이징 관련 데이터를 담은 객체
+	 * @return EBook 수
+	 */
 	public int getEBookCount(HashMap<String, String> map) {
 		
 		try {
@@ -165,17 +184,22 @@ public class EBookDAO {
 			
 			if (rs.next()) {
 				return rs.getInt("cnt");
-			}
-			
+			}			
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("EBookDAO.getEBookCount()");
+			e.printStackTrace();
 		}
 		
 		return 0;
 	}
 
-	//EBookList 서블릿 -> EBook 리스트 반환
+	
+	/**
+	 * (관리자) EBook 리스트 반환 메서드
+	 * @param map 카테고리 및 페이징 관련 데이터를 담은 객체
+	 * @return EBook 리스트
+	 */
 	public ArrayList<EBookDTO> getAdminEBookList(HashMap<String, String> map) {
 		
 		try {
@@ -225,16 +249,22 @@ public class EBookDAO {
 				
 			}
 			
-			return list;
+			return list;			
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("EBookDAO.getAdminEBookList()");
+			e.printStackTrace();
 		}		
 		
 		return null;
 	}
 
-	//EBookList 서블릿 -> (페이징) E-Book 수 반환
+	
+	/**
+	 * (관리자) 페이징을 위한 EBook 수 반환 메서드
+	 * @param map 카테고리 및 페이징 관련 데이터를 담은 객체
+	 * @return EBook 수
+	 */
 	public int getAdminEBookCount(HashMap<String, String> map) {
 		
 		try {
@@ -252,17 +282,21 @@ public class EBookDAO {
 			
 			if (rs.next()) {
 				return rs.getInt("cnt");
-			}
-			
+			}			
 			
 		} catch (Exception e) {
-			System.out.println(e);
-		}		
+			System.out.println("EBookDAO.getAdminEBookCount()");
+			e.printStackTrace();
+		}	
 		
 		return 0;
 	}
 
-	//EBookList 서블릿 -> 총 E-Book 수
+	
+	/**
+	 * (관리자) 총 EBook 수 반환 메서드
+	 * @return 총 EBook 수
+	 */
 	public int getWholeEBookCount() {
 		
 		try {
@@ -274,16 +308,21 @@ public class EBookDAO {
 			
 			if (rs.next()) {
 				return rs.getInt("cnt");
-			}
+			}			
 			
 		} catch (Exception e) {
-			System.out.println(e);
-		}		
+			System.out.println("EBookDAO.getWholeEBookCount()");
+			e.printStackTrace();
+		}	
 		
 		return 0;
 	}
 
-	//EBookList 서블릿 -> 국내E-Book 수
+	
+	/**
+	 * (관리자) 국내 EBook 수 반환 메서드
+	 * @return 국내 EBook 수
+	 */
 	public int getInternalEBookCount() {
 		
 		try {
@@ -295,16 +334,21 @@ public class EBookDAO {
 			
 			if (rs.next()) {
 				return rs.getInt("cnt");
-			}
+			}			
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("EBookDAO.getInternalEBookCount()");
+			e.printStackTrace();
 		}			
 		
 		return 0;
 	}
 
-	//EBookList 서블릿 -> 해외E-Book 수
+	
+	/**
+	 * (관리자) 해외 EBook 수 반환 메서드
+	 * @return 해외 EBook 수
+	 */
 	public int getExternalEBookCount() {
 		
 		try {
@@ -316,16 +360,22 @@ public class EBookDAO {
 			
 			if (rs.next()) {
 				return rs.getInt("cnt");
-			}
+			}			
 			
 		} catch (Exception e) {
-			System.out.println(e);
-		}				
+			System.out.println("EBookDAO.getExternalEBookCount()");
+			e.printStackTrace();
+		}			
 		
 		return 0;
 	}
 
-	//EBookAddOk 서블릿 -> EBook 추가
+	
+	/**
+	 * (관리자) EBook 추가 메서드
+	 * @param ebdto 추가할 EBook 정보
+	 * @return 추가 성공 여부
+	 */
 	public int add(EBookDTO ebdto) {
 		
 		try {
@@ -346,18 +396,23 @@ public class EBookDAO {
 			pstat.setString(12, ebdto.geteFile());
 			pstat.setString(13, ebdto.getContents());
 			
-			return pstat.executeUpdate();
+			return pstat.executeUpdate();			
 			
 		} catch (Exception e) {
-			System.out.println(e);
-		}		
+			System.out.println("EBookDAO.add()");
+			e.printStackTrace();
+		}	
 		
 		return 0;
 	}
 
-	//EBookEdit 서블릿 -> EBook 상세
+	
+	/**
+	 * (관리자) EBook 상세 정보 반환 메서드
+	 * @param seq EBook 번호
+	 * @return EBook 상세 정보
+	 */
 	public EBookDTO getAdminEBookDetail(String seq) {
-		
 		try {
 			
 			String sql = "select * from viewEBook where seq = ?";
@@ -393,16 +448,22 @@ public class EBookDAO {
 				
 				return dto;
 				
-			}
+			}			
 			
 		} catch (Exception e) {
-			System.out.println(e);
-		}		
+			System.out.println("EBookDAO.getAdminEBookDetail()");
+			e.printStackTrace();
+		}	
 		
 		return null;
 	}
 
-	//EBookEditOk 서블릿 -> 이미지 수정 안한 경우 이미지 파일명 가져오기
+	
+	/**
+	 * (관리자) EBook 수정 시 이미지 수정 안 한 경우 이미지 파일명 반환 메서드
+	 * @param seq EBook 번호
+	 * @return 이미지 파일명
+	 */
 	public String getImageFileName(String seq) {
 
 		try {
@@ -414,16 +475,22 @@ public class EBookDAO {
 			
 			if (rs.next()) {
 				return rs.getString("image");
-			}
+			}			
 			
 		} catch (Exception e) {
-			System.out.println(e);
-		}		
+			System.out.println("EBookDAO.getImageFileName()");
+			e.printStackTrace();
+		}	
 		
 		return null;
 	}
 
-	//EBookEditOk 서블릿 -> eFile 수정 안한 경우 EBook 파일명 가져오기
+	
+	/**
+	 * (관리자) EBook 수정 시 eFile명 수정 안 한 경우 eFile명 반환 메서드
+	 * @param seq EBook 번호
+	 * @return eFile명
+	 */
 	public String getEBookFileName(String seq) {
 
 		try {
@@ -435,16 +502,22 @@ public class EBookDAO {
 			
 			if (rs.next()) {
 				return rs.getString("eFile");
-			}
+			}			
 			
 		} catch (Exception e) {
-			System.out.println(e);
-		}		
+			System.out.println("EBookDAO.getEBookFileName()");
+			e.printStackTrace();
+		}	
 		
 		return null;
 	}
 
-	//EBookEditOk 서블릿 -> 도서 수정
+	
+	/**
+	 * (관리자) EBook 수정 메서드
+	 * @param ebdto 수정할 EBook 정보
+	 * @return 수정 성공 여부
+	 */
 	public int edit(EBookDTO ebdto) {
 
 		try {
@@ -467,16 +540,22 @@ public class EBookDAO {
 			
 			pstat.setString(14, ebdto.getSeq());
 			
-			return pstat.executeUpdate();
+			return pstat.executeUpdate();			
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("EBookDAO.edit()");
+			e.printStackTrace();
 		}		
 		
 		return 0;
 	}
 
-	//EBookDelOk 서블릿 -> 주문 있는지 확인
+	
+	/**
+	 * (관리자) EBook 삭제 시 주문 내역 확인 메서드
+	 * @param seq EBook 번호
+	 * @return 주문 내역 존재 여부
+	 */
 	public boolean isOrder(String seq) {
 		
 		try {
@@ -499,7 +578,12 @@ public class EBookDAO {
 		return false;
 	}
 
-	//EBookDelOk 서블릿 -> EBook 삭제
+	
+	/**
+	 * (관리자) EBook 삭제 메서드
+	 * @param seq EBook 번호
+	 * @return 삭제 성공 여부
+	 */
 	public int del(String seq) {
 
 		try {

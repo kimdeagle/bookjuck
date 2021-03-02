@@ -9,12 +9,18 @@ import java.util.ArrayList;
 import com.test.bookjuck.DBUtil;
 import com.test.bookjuck.dto.CategoryDTO;
 
+/**
+ * 카테고리 관련 DB 작업 담당 클래스
+ * @author 김주혁
+ *
+ */
 public class CategoryDAO {
 
 	private Connection conn;
 	private Statement stat;
 	private PreparedStatement pstat;
 	private ResultSet rs;
+	
 	
 	public CategoryDAO() {
 		conn = DBUtil.open();
@@ -23,16 +29,20 @@ public class CategoryDAO {
 	public void close() {
 		
 		try {
-			conn.close();			
+			conn.close();
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("CategoryDAO.close()");
+			e.printStackTrace();
 		}
 		
 	}
 
 	//주혁 시작
 	
-	//Header 서블릿 -> 중분류 카테고리 리스트 반환
+	/**
+	 * (사용자) 중분류 카테고리 리스트 반환 메서드
+	 * @return 중분류 카테고리 리스트
+	 */
 	public ArrayList<CategoryDTO> mCategoryList() {
 		
 		try {
@@ -57,13 +67,20 @@ public class CategoryDAO {
 			return mCategoryList;
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("CategoryDAO.mCategoryList()");
+			e.printStackTrace();
 		}
 		
 		return null;
 	}
 
-	//Category 서블릿 -> 소분류 카테고리 리스트 반환
+	
+	/**
+	 * (사용자) 소분류 카테고리 리스트 반환 메서드
+	 * @param seqLCategory 대분류 카테고리 번호
+	 * @param seqMCategory 중분류 카테고리 번호
+	 * @return 소분류 카테고리 리스트
+	 */
 	public ArrayList<CategoryDTO> sCategoryList(String seqLCategory, String seqMCategory) {
 		
 		try {
@@ -90,16 +107,21 @@ public class CategoryDAO {
 				sCategoryList.add(dto);
 			}
 			
-			return sCategoryList;
+			return sCategoryList;			
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("CategoryDAO.sCategoryList()");
+			e.printStackTrace();
 		}
 		
 		return null;
 	}
 
-	//EBookCategory 서블릿 -> ebookcategorylist 반환
+	
+	/**
+	 * (사용자) EBook 카테고리 리스트 반환 메서드
+	 * @return EBook 카테고리 리스트
+	 */
 	public ArrayList<CategoryDTO> eBookCategoryList() {
 		
 		try {
@@ -125,15 +147,21 @@ public class CategoryDAO {
 				
 			}
 			
-			return categoryList;
+			return categoryList;			
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("CategoryDAO.eBookCategoryList()");
+			e.printStackTrace();
 		}
 		
 		return null;
 	}
 	
+	
+	/**
+	 * (관리자) 대분류 카테고리 리스트 반환 메서드
+	 * @return 대분류 카테고리 리스트
+	 */
 	public ArrayList<CategoryDTO> getLCategoryList() {
 		
 		try {
@@ -155,15 +183,20 @@ public class CategoryDAO {
 				
 			}
 			
-			return clist;
+			return clist;			
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("CategoryDAO.getLCategoryList()");
+			e.printStackTrace();
 		}
 		
 		return null;
 	}	
-	
+
+	/**
+	 * (관리자) 중분류 카테고리 리스트 반환 메서드
+	 * @return 중분류 카테고리 리스트
+	 */
 	public ArrayList<CategoryDTO> getMCategoryList() {
 		
 		try {
@@ -187,15 +220,20 @@ public class CategoryDAO {
 				
 			}
 			
-			return clist;
+			return clist;			
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("CategoryDAO.getMCategoryList()");
+			e.printStackTrace();
 		}
 		
 		return null;
 	}	
 
+	/**
+	 * (관리자) 소분류 카테고리 리스트 반환 메서드
+	 * @return 소분류 카테고리 리스트
+	 */
 	public ArrayList<CategoryDTO> getSCategoryList() {
 		
 		try {
@@ -221,16 +259,22 @@ public class CategoryDAO {
 				
 			}
 			
-			return clist;
+			return clist;			
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("CategoryDAO.getSCategoryList()");
+			e.printStackTrace();
 		}
 		
 		return null;
 	}
 
-	//Category 서블릿 -> 도서번호로 소분류 카테고리 가져오기
+	
+	/**
+	 * (사용자) 도서번호를 통한 소분류 카테고리 리스트 반환 메서드 
+	 * @param seqBook 도서번호
+	 * @return 소분류 카테고리 리스트
+	 */
 	public ArrayList<CategoryDTO> sCategoryList(String seqBook) {
 
 		try {

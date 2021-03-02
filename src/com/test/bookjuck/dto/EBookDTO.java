@@ -1,21 +1,26 @@
 package com.test.bookjuck.dto;
 
+/**
+ * EBook 정보 DTO
+ * @author 김주혁
+ *
+ */
 public class EBookDTO {
 	
-	private String seq;
-	private String seqAuthor;
-	private String seqSCategory;
-	private String title; 
-	private String publisher;
-	private String pubDate; 
-	private int price;
-	private int salePrice; 
-	private String isbn; 
-	private String copy; 
-	private String intro;
-	private String contents; 
-	private String image;
-	private String eFile;
+	private String seq; //EBook 번호
+	private String seqAuthor; //작가 번호
+	private String seqSCategory; //소분류 카테고리 번호
+	private String title; //EBook 제목
+	private String publisher; //출판사
+	private String pubDate; //출간일
+	private int price; //가격
+	private int salePrice; //판매 가격
+	private String isbn; //ISBN
+	private String copy; //한줄카피
+	private String intro; //도서 소개
+	private String contents; //목차 
+	private String image; //이미지 파일명
+	private String eFile; //EBook 파일명
 	
 	private String author; //작가명
 	
