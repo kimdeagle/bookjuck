@@ -9,8 +9,8 @@
     </div>
 
     <div id="intro">
-        <p>어서오세요, <strong>홍길동</strong>님!</p>
-        <p><a href="/bookjuck/member/mypage/point.do">포인트 : ${points} </a></p>
+        <p>어서오세요, <strong>${name}</strong>님!</p>
+        <p><a href="/bookjuck/member/mypage/point.do">포인트 : ${points}원 </a></p>
     </div>
 
     <div id="mypagemenu">
