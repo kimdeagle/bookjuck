@@ -10,7 +10,11 @@ import java.util.HashMap;
 import com.test.bookjuck.DBUtil;
 import com.test.bookjuck.dto.BaroOrderDTO;
 import com.test.bookjuck.dto.BookOrderDetailDTO;
-
+/**
+ * 바로드림 주문 내역 관련 메서드들을 담은 DAO입니다.
+ * @author 김다은
+ *
+ */
 public class BaroOrderDAO {
 	
 

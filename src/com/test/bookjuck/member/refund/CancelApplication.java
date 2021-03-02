@@ -15,7 +15,11 @@ import com.test.bookjuck.dao.BaroOrderDAO;
 import com.test.bookjuck.dao.BookOrderDAO;
 import com.test.bookjuck.dao.EBookOrderDAO;
 import com.test.bookjuck.dto.BookOrderDetailDTO;
-
+/**
+ * 주문 취소 신청을 담당하는 서블릿입니다.
+ * @author 김다은
+ *
+ */
 @WebServlet("/member/refund/cancelapplication.do")
 public class CancelApplication extends HttpServlet {
 
