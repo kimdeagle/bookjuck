@@ -8,6 +8,11 @@ import java.sql.Statement;
 import com.test.bookjuck.DBUtil;
 import com.test.bookjuck.dto.BookInventoryDTO;
 
+/**
+ * 도서 재고 관련 DB 작업 담당 클래스
+ * @author 김주혁
+ *
+ */
 public class BookInventoryDAO {
 
 	private Connection conn;
@@ -17,25 +22,27 @@ public class BookInventoryDAO {
 
 	
 	public BookInventoryDAO() {
-	      // DB 연결
 	      conn = DBUtil.open();
 	   }
 
 	public void close() {
 
 		try {
-
 			conn.close();
-
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("BookInventoryDAO.close()");
+			e.printStackTrace();
 		}
 
 	}
 
 	//---------------주혁 시작
 	
-	//BookAddOk 서블릿 -> 도서재고 추가
+	/**
+	 * (관리자) 도서 재고 추가 메서드
+	 * @param bidto 추가할 도서 재고 정보
+	 * @return 도서 재고 추가 성공 여부
+	 */
 	public int add(BookInventoryDTO bidto) {
 		
 		try {
@@ -45,16 +52,22 @@ public class BookInventoryDAO {
 			pstat.setString(1, bidto.getSeqBook());
 			pstat.setString(2, bidto.getAmount());
 			
-			return pstat.executeUpdate();
+			return pstat.executeUpdate();			
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("BookInventoryDAO.add()");
+			e.printStackTrace();
 		}
 		
 		return 0;
 	}
 
-	//BookEditOk 서블릿 -> 도서재고 수정
+	
+	/**
+	 * (관리자) 도서 재고 수정 메서드
+	 * @param bidto 수정할 도서 재고 정보
+	 * @return 도서 재고 수정 성공 여부
+	 */
 	public int edit(BookInventoryDTO bidto) {
 		
 		try {
@@ -64,11 +77,12 @@ public class BookInventoryDAO {
 			pstat.setString(1, bidto.getAmount());
 			pstat.setString(2, bidto.getSeqBook());
 			
-			return pstat.executeUpdate();
+			return pstat.executeUpdate();			
 			
 		} catch (Exception e) {
-			System.out.println(e);
-		}		
+			System.out.println("BookInventoryDAO.edit()");
+			e.printStackTrace();
+		}	
 		
 		return 0;
 	}	

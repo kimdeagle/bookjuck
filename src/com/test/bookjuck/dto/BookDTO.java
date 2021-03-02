@@ -2,27 +2,27 @@ package com.test.bookjuck.dto;
 	
 
 /**
- * 도서의 정보를 저장하고, 이외 관련기능을 구현하기 위한 클래스
- * @author 4조
+ * 도서 정보 DTO
+ * @author 김주혁, 이현우
  *
  */
 public class BookDTO {
 	
-	private String seq;
-	private String seqAuthor;
-	private String seqSCategory;
-	private String title; 
-	private String publisher; 
-	private int price; 
-	private int salePrice; 
-	private String pubDate; 
-	private String summary;
-	private String isbn; 
-	private String copy; 
-	private String image;
-	private String contents; 
-	private int page;
-	private String paydate;
+	private String seq; //도서 번호
+	private String seqAuthor; //작가 번호
+	private String seqSCategory; //소분류 카테고리 번호
+	private String title; //도서 제목
+	private String publisher; //출판사
+	private int price; //가격
+	private int salePrice; //판매 가격
+	private String pubDate; //출간일
+	private String summary; //도서 소개 or 줄거리
+	private String isbn; //ISBN
+	private String copy; //한줄카피
+	private String image; //이미지 파일명
+	private String contents; //목차
+	private int page; //페이지 수
+	private String paydate; //
 	
 	
 	private String author; //작가명

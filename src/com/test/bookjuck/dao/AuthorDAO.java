@@ -9,6 +9,11 @@ import java.util.ArrayList;
 import com.test.bookjuck.DBUtil;
 import com.test.bookjuck.dto.AuthorDTO;
 
+/**
+ * 작가 관련 DB 작업 담당 클래스
+ * @author 김주혁
+ *
+ */
 public class AuthorDAO {
 
 	private Connection conn;
@@ -17,25 +22,27 @@ public class AuthorDAO {
 	private ResultSet rs;
 
 	public AuthorDAO() {
-		// DB 연결
 		conn = DBUtil.open();
 	}
 
 	public void close() {
 
 		try {
-
 			conn.close();
-
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("AuthorDAO.close()");
+			e.printStackTrace();
 		}
 
 	}
 
 	//==============주혁 시작
 	
-	//admin -> BookAdd 서블릿 -> 작가 리스트
+	
+	/**
+	 * (관리자) 작가 리스트 반환 메서드
+	 * @return 작가 리스트
+	 */
 	public ArrayList<AuthorDTO> getAuthorList() {
 		
 		try {
@@ -57,16 +64,22 @@ public class AuthorDAO {
 				
 			}
 			
-			return alist;
+			return alist;			
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("AuthorDAO.getAuthorList()");
+			e.printStackTrace();
 		}
 		
 		return null;
 	}
 
-	//BookAddOk 서블릿 -> 작가 추가
+	
+	/**
+	 * (관리자) 작가 추가 메서드
+	 * @param adto 추가할 작가 정보
+	 * @return 추가한 작가 번호
+	 */
 	public String add(AuthorDTO adto) {
 		
 		try {
@@ -87,11 +100,11 @@ public class AuthorDAO {
 					return rs.getString("seq");
 				}
 				
-			}
-			
+			}			
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("AuthorDAO.add()");
+			e.printStackTrace();
 		}
 		
 		return null;

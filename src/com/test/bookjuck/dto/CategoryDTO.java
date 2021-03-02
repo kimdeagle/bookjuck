@@ -1,13 +1,18 @@
 package com.test.bookjuck.dto;
 
+/**
+ * 카테고리 정보 DTO
+ * @author 김주혁
+ *
+ */
 public class CategoryDTO {
 
-	private String seqLCategory;
-	private String seqMCategory;
-	private String seqSCategory;
-	private String lCategory;
-	private String mCategory;
-	private String sCategory;
+	private String seqLCategory; //대분류 카테고리 번호
+	private String seqMCategory; //중분류 카테고리 번호
+	private String seqSCategory; //소분류 카테고리 번호
+	private String lCategory; //대분류 카테고리
+	private String mCategory; //중분류 카테고리
+	private String sCategory; //소분류 카테고리
 	
 	public String getSeqLCategory() {
 		return seqLCategory;
