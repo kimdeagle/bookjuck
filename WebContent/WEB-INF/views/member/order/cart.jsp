@@ -105,7 +105,7 @@
 			            <td>${dto.salePrice}</td>
 			            <td>
 			            	<input type="text" id="amount${rs.index}" class="cartcount" value="${dto.amount}">
-			            	<a href="#!" onclick="amountChange('${rs.index}')" id="amountChange${rs.index}" class="btn1">변경</a>
+			            	<a href="#!" onclick="" id="amountChange${rs.index}" class="btn1">변경</a>
 			            </td>
 			            <td><span id="totalpay${rs.index}">${dto.total}</span></td>
 			        </tr>
@@ -193,25 +193,7 @@
 				}
 				
 			});
-			
-			/* function amountChange(index) {
-				$.ajax({
-					type:"GET",
-					url:"/bookjuck/member/order/cart.do",
-					data:{
-						$("#amount"index).val()
-					},
-					success: function(result) {
-						
-						${"#amount"index}.val
-						
-					}
-					error: function(a,b,c) {
-						console.log("amountChange() : "a,b,c);
-					}
-				});
-			} */
-			
+
 		
 	
 	</script>

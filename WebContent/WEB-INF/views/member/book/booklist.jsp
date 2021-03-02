@@ -82,7 +82,6 @@
 				</c:if>
 			
 				<c:forEach items="${blist}" var="dto">
-				<form name="buy" method="POST">
 				<tr>
 					<td>
 						<a href="/bookjuck/member/book/bookdetail.do?seqLCategory=${seqLCategory}&seqMCategory=${seqMCategory}&seqSCategory=${dto.seqSCategory}&seq=${dto.seq}">
@@ -110,13 +109,13 @@
 						<input type="hidden" id="seqBook" name="seqBook" value="${dto.seq}">
 						<input type="hidden" id="id" name="id" value="${id}">
 						<div class="btns">
-							<button class="btn btn-success btn-lg btn-block cart" id="cart" type="submit" formaction="/bookjuck/member/order/cartaddok.do"> 장바구니</button>
-							<button class="btn btn-primary btn-lg btn-block buy" id="direct" onclick="getPost('direct')" formaction="/bookjuck/member/order/orderpaymem.do">바로구매</button>
+							<button class="btn btn-success btn-lg btn-block cart" id="cart"> 장바구니</button>
+							<button class="btn btn-primary btn-lg btn-block buy" id="direct" onclick="getPost('direct')">바로구매</button>
 							<button class="btn btn-warning btn-lg btn-block baro" id="baro" onclick="getPost('baro')">바로드림</button>
 						</div>
 					</td>
 				</tr>
-				</form>
+
 				</c:forEach>
 				
 			</tbody>
