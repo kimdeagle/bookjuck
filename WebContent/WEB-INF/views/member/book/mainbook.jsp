@@ -22,6 +22,12 @@
             <div>
   			<div id="recbook" style="display:none;"> <!-- default는 베스트도서  -->
    			<table id="booktable">
+   			<c:if test="${empty list11}">
+   				<tr>
+   					<td colspan="3">추천 도서 없음</td>
+   				</tr>
+   			</c:if>
+   			<c:if test="${not empty list11}">
    			<tr>
    				<c:forEach items="${list11}" var="dto"> <!--추천도서-->
                     <td>
@@ -33,6 +39,10 @@
                     </td>
             </c:forEach>
             </tr>
+            </c:if>
+            <c:if test="${empty list22}">
+            </c:if>
+            <c:if test="${not empty list22}">
             <tr>
    				<c:forEach items="${list22}" var="dto"> <!--추천도서 2번째줄-->
                     <td>
@@ -44,6 +54,7 @@
                     </td>
             </c:forEach>
             </tr>
+            </c:if>
             </table>
             </div>
             </div>
