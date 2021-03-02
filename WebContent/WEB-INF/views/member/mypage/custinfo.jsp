@@ -61,7 +61,7 @@
 
 
 					<tr>
-						<th width="290">아이디:</th>
+						<th width="300">아이디:</th>
 						<td colspan="1">${id}</td>
 						<td></td>
 					</tr>
