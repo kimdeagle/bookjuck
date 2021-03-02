@@ -109,7 +109,7 @@
 			</form>
 			<!-- 비회원 주문 조회 종료-->
 
-			<div>
+			<div id="foot">
 				<address>
 					<a href="/bookjuck/member/notice/list.do">고객센터</a>
 					<p>
@@ -476,9 +476,9 @@
 		      Kakao.API.request({
 			        url: '/v2/user/me',
 			        success: function(res) {
-			        	alert(res.properties.nickname);
+			       	 /* alert(res.properties.nickname);
 			        	alert(res.id);
-			        	alert(res.kakao_account.birthday);
+			        	alert(res.kakao_account.birthday); */
 			        	
 			        	
 			        	/* alert(res.kako-account.email); */

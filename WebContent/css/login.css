@@ -100,7 +100,10 @@ address{
 	
 }
 
-
+#foot{
+	margin-top: 200px;
+	border: 1px solid white;
+}
 
 /*로그인 CSS*/
 #switchBox {
