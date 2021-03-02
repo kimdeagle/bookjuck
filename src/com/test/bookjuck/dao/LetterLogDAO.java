@@ -42,6 +42,7 @@ public class LetterLogDAO {
 	// ############ (조아라) 시작
 	/**
 	 * 큐레이션레터 전송내역을 가져오는 메서드입니다.
+	 * @param pagination을 위한 시작 큐레이션레터 전송내역번호와 끝 큐레이션레터 전송내역번호를 담고 있는 HashMap입니다.
 	 * @return 큐레이션레터 정보가 담긴 LetterLogDTO들의 ArrayList를 반환합니다.
 	 */
 	public ArrayList<LetterLogDTO> getList(HashMap<String, String> map) {
@@ -85,6 +86,10 @@ public class LetterLogDAO {
 		return null;
 	}
 
+	/**
+	 * 큐레이션레터 전송내역의 총 개수를 반환하는 메서드입니다.
+	 * @return 큐레이션레터 전송내역의 총 개수를 반환합니다.
+	 */
 	public int getTotalCount(HashMap<String, String> map) {
 		
 		try {
@@ -106,6 +111,11 @@ public class LetterLogDAO {
 		return 0;
 	}
 	
+	/**
+	 * 큐레이션레터 전송내역을 추가하는 메서드입니다.
+	 * @param dto 큐레이션레터 전송내역 정보를 담고 있는 LetterLogDTO입니다.
+	 * @return 성공하면 1, 실패하면 0을 반환합니다.
+	 */
 	public int add(LetterLogDTO dto) {
 		
 		try {

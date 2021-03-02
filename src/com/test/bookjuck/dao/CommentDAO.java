@@ -36,9 +36,9 @@ public class CommentDAO {
 	// ############ (조아라) 시작
     
     /**
-     * 
-     * @param seq
-     * @return
+     * 게시물번호에 따른 댓글들을 가져오는 메서드입니다.
+     * @param seq 게시물번호입니다.
+     * @return 댓글정보인 CommentDTO들이 담긴 ArrayList를 반환합니다.
      */
 	public ArrayList<CommentDTO> getList(String seq) {
 	
