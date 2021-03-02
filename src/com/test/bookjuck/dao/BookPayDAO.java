@@ -37,6 +37,11 @@ public class BookPayDAO {
 	
 	//############################ 오수경 ##############################
 	//############################ 시작 ##############################
+	/**
+	 * 종이책 결제 내역
+	 * @param seqBookOrder 종이책 주문 번호
+	 * @return list 종이책 결제 내역 반환
+	 */
 	// orderdetail 서블릿. 
 	public ArrayList<BookPayDTO> listBookPay(String seqBookOrder) {
 		try {

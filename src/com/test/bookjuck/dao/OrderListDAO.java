@@ -44,6 +44,12 @@ public class OrderListDAO {
 	// ###################### 오수경 ############################
 	// ####################### 시작 #############################
 	
+	/**
+	 * 종이책 주문 상세 내역
+	 * @param seq 회원번호
+	 * @param seqBookOrder 종이책 주문 번호
+	 * @return blist 종이책 상세 주문 내역 반환
+	 */
 	//OrderList 서블릿. 종이책 주문 상세 내역. 주문 번호를 넘기고 상세 주문 내역 담기
 	public ArrayList<BookOrderDetailDTO> listBookDetail(String seq, String seqBookOrder) {
 		try {
@@ -111,6 +117,11 @@ public class OrderListDAO {
 		return null;
 	}
 
+	/**
+	 * 종이책 일반 주문 내역 조회
+	 * @param seq 회원번호
+	 * @return bolist 종이책 일반 주문 내역 반환
+	 */
 	//주문 내역 조회
 	public ArrayList<BookOrderDetailDTO> listBookOrder(String seq) {
 		try {
@@ -169,6 +180,11 @@ public class OrderListDAO {
 		return null;
 	}
 	
+	/**
+	 * 종이책 운송장 번호
+	 * @param seqBookOrder 종이책 주문 번호
+	 * @return deliveryNumber 종이책 운송장번호 반환
+	 */
 	//orderdetail 서블릿. 운송장 번호 가져오기
 	public String getDeliveryNumber(String seqBookOrder) {
 		
@@ -196,6 +212,11 @@ public class OrderListDAO {
 		return null;
 	}
 
+	/**
+	 * 종이책 주문일
+	 * @param seqBookOrder 종이책 주문 번호
+	 * @return orderDate 종이책 주문일 반환
+	 */
 	public String getOrderDate(String seqBookOrder) {
 		
 		try {
@@ -219,6 +240,11 @@ public class OrderListDAO {
 		return null;
 	}
 
+	/**
+	 * 종이책 카운트
+	 * @param seq 회원 번호
+	 * @return list 종이책 주문별 개수 반환
+	 */
 	public ArrayList<BookOrderDetailDTO> bcntlist(String seq) {
 		try {
 			
@@ -248,6 +274,11 @@ public class OrderListDAO {
 		return null;
 	}
 
+	/**
+	 * 바로드림 일반 주문 내역
+	 * @param seq 회원 번호
+	 * @return lalist 바로드림 일반 주문 내역 반환
+	 */
 	public ArrayList<BaroOrderDTO> listBaroOrder(String seq) {
 		try {
 
@@ -305,6 +336,11 @@ public class OrderListDAO {
 		return null;
 	}
 
+	/**
+	 * 이북 일반 주문 내역
+	 * @param seq 회원 번호
+	 * @return elist 이북 일반 주문 내역 반환
+	 */
 	public ArrayList<EBookOrderDTO> listEBookOrder(String seq) {
 		try {
 
@@ -363,7 +399,12 @@ public class OrderListDAO {
 	}
 
 
-	//컬럼명 as cnt로 바꿨는데 안 가져와짐, 주문상태에 따라 카운트하기
+	/**
+	 * 주문 상태에 따라 count
+	 * @param seq 회원 번호
+	 * @param orderState 주문 상태
+	 * @return cnt 주문 상태 별 개수
+	 */
 	public int getCount(String seq, String orderState) {
 				
 		try {

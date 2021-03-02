@@ -34,6 +34,11 @@ public class EBookPayDAO {
 
 	}
 
+	/**
+	 * 이북 결제 내역
+	 * @param seqEBookOrder 이북 주문 번호
+	 * @return list 이북 결제 내역 반환
+	 */
 	public ArrayList<EBookPayDTO> listEBookPay(String seqEBookOrder) {
 		try {
 

@@ -1,7 +1,7 @@
 package com.test.bookjuck.dto;
 
 /**
- * 종이책 장바구니
+ * 종이책 장바구니 DTO
  * @author 오수경
  *
  */

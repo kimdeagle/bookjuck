@@ -1,7 +1,7 @@
 package com.test.bookjuck.dto;
 
 /**
- * 바로드림 결제
+ * 바로드림 결제 DTO
  * @author 오수경
  *
  */

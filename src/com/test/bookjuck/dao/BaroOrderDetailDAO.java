@@ -40,7 +40,12 @@ public class BaroOrderDetailDAO {
 	}
 
 	// 수경 시작
-
+	/**
+	 * 바로드림 상세 주문 내역.
+	 * @param seq 회원번호
+	 * @param seqBaroOrder 바로드림 주문 번호
+	 * @return balist 바로드림 상세 주문 리스트
+	 */
 	public ArrayList<BaroOrderDetailDTO> listBaroDetail(String seq, String seqBaroOrder) {
 		try {
 
@@ -90,6 +95,11 @@ public class BaroOrderDetailDAO {
 
 	}
 
+	/**
+	 * 바로드림 주문일
+	 * @param seqBaroOrder 바로드림 주문 번호
+	 * @return orderDate 바로드림 주문일
+	 */
 	public String getOrderDate(String seqBaroOrder) {
 		try {
 			
