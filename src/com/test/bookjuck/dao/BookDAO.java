@@ -16,12 +16,12 @@ import oracle.jdbc.OracleTypes;
 
 
 
-
 /**
- * 도서 관련 DB 작업 담당 클래스
- * @author 김주혁, 이현우
+ * 도서와 관련된 모든 기능을 구현하기 위한 클래스
+ * @author 아라, 주혁, 현우
  *
  */
+
 public class BookDAO {
 	
 	private Connection conn;
@@ -48,7 +48,12 @@ public class BookDAO {
 	
   
   //----- 현우 시작 
-	//검색구현 -- 이현우
+
+	/**
+	 * 
+	 * @param map 조회기간
+	 * @return 검색결과
+	 */
 	public ArrayList<BookDTO> list (HashMap<String, String> map){
 		
 		try {
@@ -113,7 +118,12 @@ public class BookDAO {
 	
 	}
 	
-	//베스트셀러 list -- 이현우
+
+	/**
+	 * 
+	 * @param map 조회기간
+	 * @return 베스트셀러 목록
+	 */
 	public ArrayList<BookDTO> bestSeller (HashMap<String, String> map){
 		
 		
@@ -186,7 +196,11 @@ public class BookDAO {
 		return null;
 		
 	} 
-//no카테고리 날짜만 적용
+/**
+ * 
+ * @param map 날짜
+ * @return 카테고리 미적용 베스트셀러
+ */
 public ArrayList<BookDTO> NoCategorybestSeller (HashMap<String, String> map){
 		
 		
@@ -261,7 +275,12 @@ public ArrayList<BookDTO> NoCategorybestSeller (HashMap<String, String> map){
 		
 	} 
 	
-	//m카테고리 적용 베스트셀러 list -- 이현우
+	
+		/**
+		 * 
+		 * @param map 조회기간
+		 * @return 카테고리 적용 베스트셀러 목록
+		 */
 		public ArrayList<BookDTO> CategorybestSeller (HashMap<String, String> map){
 			
 			
@@ -335,7 +354,11 @@ public ArrayList<BookDTO> NoCategorybestSeller (HashMap<String, String> map){
 		} 
 	
 	
-	//(날짜 입력 전)신간도서 list --이현우 
+
+	/**
+	 * 
+	 * @return 신간도서 목록 
+	 */
 	public ArrayList<BookDTO> defaultNewBook(){
 		
 		
@@ -387,7 +410,12 @@ public ArrayList<BookDTO> NoCategorybestSeller (HashMap<String, String> map){
 	
 	
 	
-	//(날짜 입력 후)신간도서 list -- 이현우
+
+	/**
+	 * 
+	 * @param map 조회기간
+	 * @return 신간도서 목록
+	 */
 	public ArrayList<BookDTO> newBook (HashMap<String, String> map){
 		
 		try {
@@ -453,7 +481,12 @@ public ArrayList<BookDTO> NoCategorybestSeller (HashMap<String, String> map){
 		
 	} 
 	
-	//카테고리 적용 신간도서 -- 이현우
+
+	/**
+	 * 
+	 * @param map 조회기간
+	 * @return 카테고리 적용 신간도서목록
+	 */
 	public ArrayList<BookDTO> CategroyNewBook (HashMap<String, String> map){
 		
 		try {
@@ -520,7 +553,11 @@ public ArrayList<BookDTO> NoCategorybestSeller (HashMap<String, String> map){
 		return null;
 		
 	} 
-	
+/**
+ * 
+ * @param map 조회기간
+ * @return 카테고리 미적용 신간목록
+ */
 public ArrayList<BookDTO> NoCategoryNewBook (HashMap<String, String> map){
 		
 		
@@ -591,7 +628,11 @@ public ArrayList<BookDTO> NoCategoryNewBook (HashMap<String, String> map){
 		return null;
 		
 	} 
-	//월간베스트 -- 이현우
+
+	/**
+	 * 
+	 * @return 월간베스트 목록
+	 */
 	public ArrayList<BookDTO> monthlyBestSeller() {
 		
 		
@@ -641,8 +682,11 @@ public ArrayList<BookDTO> NoCategoryNewBook (HashMap<String, String> map){
 		return null;
 		
 	}
-	
-public ArrayList<BookDTO> mBestSeller() {
+	/**
+	 * 
+	 * @return 메인화면 베스트셀러
+	 */
+	public ArrayList<BookDTO> mBestSeller() {
 		
 		
 		try {
@@ -687,7 +731,11 @@ public ArrayList<BookDTO> mBestSeller() {
 		return null;
 		
 	}
-	//메인 베스트셀러 --이현우
+
+	/**
+	 * 
+	 * @return 메인화면 베스트셀러 목록
+	 */
 	public ArrayList<BookDTO> mainBestSeller(){
 		
 		try {
@@ -737,7 +785,11 @@ public ArrayList<BookDTO> mBestSeller() {
 		
 		
 	}
-	// 메인 신간도서 -- 이현우
+	
+	/**
+	 * 
+	 * @return 메인화면 신간도서 목록
+	 */
 	public ArrayList<BookDTO> mainNewBook(){
 		
 		
@@ -788,7 +840,13 @@ public ArrayList<BookDTO> mBestSeller() {
 		
 	}
 	
-	//메인 추천도서--이현우
+	
+	
+	/**
+	 * 
+	 * @param seq 회원번호
+	 * @return 메인화면 추천도서 목록
+	 */
 	public ArrayList<BookDTO> mainRecommendBook (String seq){
 		
 		

@@ -9,7 +9,11 @@ import java.util.ArrayList;
 import com.test.bookjuck.DBUtil;
 import com.test.bookjuck.dto.RealTimeSearchDTO;
 
-
+/**
+ * 실시간 검색어 기능을 구현하기 위한 클래스
+ * @author 이현우
+ *
+ */
 public class RealTimeSearchDAO {
 	
 	
@@ -34,7 +38,13 @@ public class RealTimeSearchDAO {
 		}
 	}
 	
-	//검색어 DB 삽입 --이현우
+	
+	
+	/**
+	 * 
+	 * @param dto 검색어 DB 삽입 
+	 * @return
+	 */
 	public int insertWord(RealTimeSearchDTO dto) {
 		
 		
@@ -61,7 +71,12 @@ public class RealTimeSearchDAO {
 	
 	
 	
-	//검색어 순위 - 이현우
+
+	
+	/**
+	 * 
+	 * @return 검색어 순위
+	 */
 	public ArrayList<RealTimeSearchDTO> getSearchRank() {
 		
 		try {

@@ -42,6 +42,8 @@ public class LoginOk extends HttpServlet {
 		//휴면계정 찾기
 		int result_h = dao_h.check(dto);
 		
+		System.out.println(result_h);
+		
 		
 		if (result == 1 && result_h == 0) {
 
@@ -68,6 +70,7 @@ public class LoginOk extends HttpServlet {
 			session.setAttribute("lastDate", rdto.getLastDate());
 			
 			session.setAttribute("curation", rdto.getCuration());
+			
 			
 			//시작 페이지로 이동
 			resp.sendRedirect("http://localhost:8090/bookjuck/index.do");

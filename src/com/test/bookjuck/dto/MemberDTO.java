@@ -1,5 +1,11 @@
 package com.test.bookjuck.dto;
 
+
+/**
+ * 회원 정보를 담고있는 DTO 입니다.
+ * @author 최진영
+ *
+ */
 public class MemberDTO {
 
 	private String seq;			//번호

@@ -1,5 +1,10 @@
 package com.test.bookjuck.dto;
 
+/**
+ * 휴면 회원 정보를 담고 있는 DTO 입니다.
+ * @author 최진영
+ *
+ */
 public class GhostMemberDTO {
 	
 	private String seq;			//번호
