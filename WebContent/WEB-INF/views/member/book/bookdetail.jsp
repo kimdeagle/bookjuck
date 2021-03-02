@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>북적북적::Welcome</title>
+<title>북적북적::${dto.title}</title>
 
 <%@include file="/WEB-INF/views/member/inc/asset.jsp" %>
 
@@ -78,7 +78,8 @@
 						<div class="priceinfo">
 							<span class="price"><s>정가 ${String.format('%,d원', dto.price)}</s></span>
 							<span class="saleprice">판매가 <strong>${String.format('%,d', dto.salePrice)}</strong>원</span>
-							<span class="savepoint">(적립금 <fmt:formatNumber type="number" value="${dto.salePrice / 10}" />원)</span>
+							<fmt:parseNumber var="salePrice" value="${dto.salePrice / 20}" integerOnly="true" />
+							<span class="savepoint">(적립금 ${String.format('%,d원', salePrice)})</span>
 						</div>
 					</td>
 					<td>
