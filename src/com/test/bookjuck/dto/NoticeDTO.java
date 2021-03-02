@@ -1,6 +1,10 @@
 package com.test.bookjuck.dto;
 
-
+/**
+ * 공지사항 정보를 담고 있는 DTO입니다.
+ * @author 조아라
+ *
+ */
 public class NoticeDTO {
 	
 	private String seq;		//번호

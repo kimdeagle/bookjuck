@@ -10,6 +10,11 @@ import java.util.HashMap;
 import com.test.bookjuck.DBUtil;
 import com.test.bookjuck.dto.QCategoryDTO;
 
+/**
+ * 질문카테고리 DB에 접근하는 DAO입니다.
+ * @author 조아라
+ *
+ */
 public class QCategoryDAO {
 
 	private Connection conn;

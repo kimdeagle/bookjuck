@@ -16,6 +16,7 @@ public class ReviewDTO {
 	private String reviewContent;	// 내용
 	private String regDate;			// 작성일자
 	private String isPrize;			// 우수독후감여부
+	
 	public String getSeq() {
 		return seq;
 	}

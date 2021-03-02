@@ -335,7 +335,7 @@ public class ReviewDAO {
 	}
 	
 	/**
-	 * 독후감번호로 독후감 작성자의 PK()를 가져오는 메서드입니다.
+	 * 독후감번호로 독후감 작성자의 PK(seq)를 가져오는 메서드입니다.
 	 * @param seq 독후감번호입니다.
 	 * @return 독후감 작성자의 PK(seq)를 반환합니다.
 	 */
@@ -361,6 +361,11 @@ public class ReviewDAO {
 		
 	}
 
+	/**
+	 * 독후감을 추가하는 메서드입니다.
+	 * @param dto 저장할 독후감 정보를 담고 있는 ReviewDTO입니다.
+	 * @return 성공하면 1, 실패하면 0을 반환합니다.
+	 */
 	public int add(ReviewDTO dto) {
 		
 		try {
@@ -382,6 +387,11 @@ public class ReviewDAO {
 		return 0;
 	}
 
+	/**
+	 * 독후감을 수정하는 메서드입니다.
+	 * @param dto 수정할 독후감 정보를 담고 있는 ReviewDTO입니다.
+	 * @return 성공하면 1, 실패하면 0을 반환합니다.
+	 */
 	public int edit(ReviewDTO dto) {
 	
 		try {
