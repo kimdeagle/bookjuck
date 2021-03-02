@@ -110,7 +110,7 @@
                   <th>결제금액</th>
                   <th>적립 포인트</th>
                </tr>
-               <c:forEach items="${plist}" var="bpdto">
+               <c:forEach items="${plist}" var="pdto">
                <tr>
                   <td>${pdto.totalPay}</td>
                   <!-- 비회원일 경우 0 -->

@@ -115,7 +115,7 @@ public class OrderListDAO {
 	public ArrayList<BookOrderDetailDTO> listBookOrder(String seq) {
 		try {
 
-			String sql2 = "select distinct(seqBookOrder) from vwbookorderlist where seqmember = ?";
+			String sql2 = "select distinct(seqBookOrder),orderDate from vwbookorderlist where seqmember = ? order by orderDate";
 			
 			pstat = conn.prepareStatement(sql2);
 			pstat.setString(1, seq);
@@ -251,7 +251,7 @@ public class OrderListDAO {
 	public ArrayList<BaroOrderDTO> listBaroOrder(String seq) {
 		try {
 
-			String sql2 = "select distinct(seqBaroOrder) from vwbaroorderlist where seqmember = ?";
+			String sql2 = "select distinct(seqBaroOrder),orderDate from vwbaroorderlist where seqmember = ? order by orderDate";
 			
 			pstat = conn.prepareStatement(sql2);
 			pstat.setString(1, seq);
@@ -308,7 +308,7 @@ public class OrderListDAO {
 	public ArrayList<EBookOrderDTO> listEBookOrder(String seq) {
 		try {
 
-			String sql2 = "select distinct(seqEBookOrder) from vwEBookorderlist where seqmember = ?";
+			String sql2 = "select distinct(seqEBookOrder),orderDate from vwEBookorderlist where seqmember = ? order by orderDate";
 			
 			pstat = conn.prepareStatement(sql2);
 			pstat.setString(1, seq);
