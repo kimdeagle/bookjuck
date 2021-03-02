@@ -2,7 +2,7 @@ package com.test.bookjuck.dto;
 
 /**
  * 
- * 바로드림 상세 주문
+ * 바로드림 상세 주문 DTO
  * @author 오수경
  *
  */

@@ -197,17 +197,17 @@
 				<!-- 주문 신청한 장바구니 정보 가져오기 -->
 				<table class="tbl-orderpaylist table tbl-lg">
 					<tr>
-						<th>상품정보</th>
-						<th>판매가</th>
+						<th>상품명</th>
+						<th>가격</th>
 					</tr>
 					<tr>
 						<td>
 							<div>
-								<img src="/bookjuck/image/달러구트 꿈 백화점.png" class="book-xs">
-								<a href="/bookjuck/member/book/bookdetail.do">${seqBook}</a>
+								<img src="/bookjuck/image/박기당 컬렉션.png" class="book-xs">
+								<a href="/bookjuck/member/book/bookdetail.do">박기당 컬렉션</a>
 							</div>
 						</td>
-						<td>판매가x수량 | 수량<br>판매가
+						<td>81000 | 3<br>27000
 						</td>
 					</tr>
 				</table>
@@ -222,23 +222,23 @@
 					<table class="tbl-payment table tbl-sm">
 						<tr>
 							<td>상품금액</td>
-							<td>원</td>
+							<td>81000원</td>
 						</tr>
 						<tr>
 							<td>배송비</td>
-							<td>원</td>
+							<td>0원</td>
 						</tr>
 						<tr>
 							<td>할인금액</td>
-							<td>원</td>
+							<td>1000원</td>
 						</tr>
 						<tr>
 							<th>최종금액</th>
-							<td style="color: #BC4B51"><span name="actualpay">원</span></td>
+							<td style="color: #BC4B51"><span name="actualpay">80000원</span></td>
 						</tr>
 						<tr>
 							<td>적립예정 포인트</td>
-							<td>원</td>
+							<td>4000원</td>
 						</tr>
 					</table>
 					
@@ -412,12 +412,12 @@
 				pg : 'inicis', // version 1.1.0부터 지원.
 				pay_method : 'card',
 				merchant_uid : 'merchant_' + new Date().getTime(),
-				name : '북적북적', //구매한 도서명
-				amount : 10,
+				name : '박기량 컬렉션', //구매한 도서명
+				amount : 80000,
 				buyer_email : 'iamport@siot.do',
-				buyer_name : '구매자이름',
-				buyer_tel : '010-1234-5678',
-				buyer_addr : '서울특별시 강남구 삼성동',
+				buyer_name : '채원희',
+				buyer_tel : '010-3640-0075',
+				buyer_addr : '서울시 성북구 삼선동 국원대로 66번길 66',
 				buyer_postcode : '123-456'
 			}, function(rsp) {
 				if (rsp.success) {

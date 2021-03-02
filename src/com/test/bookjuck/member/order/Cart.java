@@ -29,8 +29,12 @@ public class Cart extends HttpServlet {
 		//장바구니 리스트
 		ArrayList<BookCartDTO> list = dao.list(seqMember);
 		
+		//장바구니 금액 리스트
+		int price = dao.getPrice(seqMember);
+		
 		
 		req.setAttribute("list", list);
+		req.setAttribute("price", price);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/member/order/cart.jsp");
 		dispatcher.forward(req, resp);

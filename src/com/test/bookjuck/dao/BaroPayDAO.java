@@ -35,9 +35,14 @@ public class BaroPayDAO {
 
    }
 
+	/**
+	 * 바로드림 결제 내역
+	 * @param seqBaroOrder 바로드림 주문번호
+	 * @return list 바로드림 결제 내역
+	 */
 	public ArrayList<BaroPayDTO> listBookPay(String seqBaroOrder) {
 		
-try {
+		try {
 			
 			String sql = "select * from tblBaroPay where seqBaroOrder = ?";
 			

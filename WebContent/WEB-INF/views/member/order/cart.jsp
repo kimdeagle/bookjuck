@@ -117,15 +117,31 @@
 		    	<table class="carttotalpay table tbl-lg">
 		    		<tr>
 		    			<th id="totalPay">상품 금액</th>
-		    			<th id="deliveryPay"></th>
+		    			<th id="deliveryPay">배송 금액</th>
 		    			<th id="actualPay">결제 예정금액</th>
 		    			<th id="savePoints">적립예정 포인트</th>
 		    		</tr>
 		    		<tr>
-		    			<td><span id="totalpay">원</span></td>
-		    			<td>원</td>
-		    			<td style="color: #BC4B51">원</td>
-		    			<td></td>
+		    			<td><span id="totalpay">${price}원</span></td>
+		    			<td>
+		    			<c:if test="${price>30000}">
+		    				0원
+		    			</c:if>
+		    			<c:if test="${price<=30000}">
+		    				3000원
+		    			</c:if>
+		    			</td>
+		    			<td style="color: #BC4B51">
+		    			<c:if test="${price>30000}">
+		    				${price}원
+		    			</c:if>
+		    			<c:if test="${price<=30000}">
+		    				${price+3000}원
+		    			</c:if>
+		    			</td>
+		    			<td>
+		    			4050원
+		    			</td>
 		    		</tr>
 		    	</table>
 		    </div>

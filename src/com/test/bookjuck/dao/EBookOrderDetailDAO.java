@@ -35,6 +35,11 @@ public class EBookOrderDetailDAO {
 
    }
 
+	/**
+	 * 이북 주문일
+	 * @param seqEBookOrder 이북 주문 번호
+	 * @return orderDate 이분 주문일 반환
+	 */
 	public String getOrderDate(String seqEBookOrder) {
 		try {
 			
@@ -57,6 +62,12 @@ public class EBookOrderDetailDAO {
 		return null;
 	}
 
+	/**
+	 * 이북 상세 주문 내역
+	 * @param seq 회원 번호
+	 * @param seqEBookOrder 이북 주문 번호
+	 * @return elist 이북 주문 내역 반환
+	 */
 	public ArrayList<EBookOrderDetailDTO> listEBookDetail(String seq, String seqEBookOrder) {
 		try {
 

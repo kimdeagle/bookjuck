@@ -17,6 +17,19 @@
 
 <style>
 
+
+table td:last-child {
+	border-right: 0;
+	vertical-align: middle;
+}
+
+
+table tr td>button{
+    
+    width: 80px;
+}
+
+
 </style>
 </head>
 
@@ -64,26 +77,26 @@
 		            <th>주문금액</th>
 		            <th>상품정보</th>
 		            <th>수량</th>
-		            <th>주문상태</th>
-		            <th>취소/교환/환불</th>
+		            <th style="border-right: 1px solid #DDD;">주문상태</th>
+		            <th style="border-right: 0;">취소/교환/환불</th>
 		        </tr>
 		        <tr class="olInfo">
 		            <td>
-		                <a href="/bookjuck/member/mypage/orderdetail.do">주문번호</a><br>
-		                (주문일)<br><br>
+		                <a href="/bookjuck/member/mypage/orderdetail.do">1398451</a><br>
+		                (2021-03-02)<br><br>
 		                <a href="/bookjuck/member/mypage/orderdetail.do" onclick="" class="btn-order">주문상세보기</a>
 		            </td>
-		            <td>가격</td>
+		            <td>80000</td>
 		            <td>
-		                <img src="/bookjuck/image/달러구트 꿈 백화점.png" class="book-xs">
-		                <a href="#">도서명</a>
+		                <img src="/bookjuck/image/박기당 컬렉션.png" class="book-xs">
+		                <a href="#">박기당 컬렉션</a>
 		            </td>
-		            <td>0</td>
-		            <td>결제완료</td>
+		            <td>3</td>
+		            <td style="border-right: 1px solid #DDD; vertical-align: middle">결제완료</td>
 		            <td>
-		                <button type="submit" class="btn" onclick="location.href='';">취 소</button>
-		                <button type="submit" class="btn" onclick="location.href='';">교 환</button>
-		                <button type="submit" class="btn" onclick="location.href='';">환 불</button>
+		                <button type="submit" class="btn" onclick="location.href='';" style="margin-top:11px; margin-bottom: 5px;">취 소</button>
+		                <button type="submit" class="btn" onclick="location.href='';" style="margin-bottom: 5px;">교 환</button>
+		                <button type="submit" class="btn" onclick="location.href='';" style="margin-bottom: 5px;">환 불</button>
 		            </td>
 		        </tr>
 		    </table>

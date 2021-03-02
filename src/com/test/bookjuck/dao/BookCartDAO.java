@@ -39,8 +39,12 @@ public class BookCartDAO {
 
    }
 
+	/**
+	 * 
+	 * @param seqMember 회원번호
+	 * @return list 장바구니 내역
+	 */
 	//Cart 서블릿 -> 글목록 달라고 위임
-	//seq는 임시로 지정(회원번호 21번)
 	public ArrayList<BookCartDTO> list(String seqMember) {
 		
 		try {
@@ -83,6 +87,11 @@ public class BookCartDAO {
 		return null;
 	}
 
+	/**
+	 * 장바구니 담기
+	 * @param dto 장바구니에 담을 상품 내역
+	 * @return 성공시 1, 실패시 0 반환
+	 */
 	public int add(BookCartDTO dto) {
 		try {
 			
@@ -96,6 +105,31 @@ public class BookCartDAO {
 			
 		} catch (Exception e) {
 			System.out.println("BookCartDAO add : "+e);
+		}
+		return 0;
+	}
+
+	/**
+	 * 장바구니 총 금액
+	 * @param seqMember 회원번호
+	 * @return total 장바구니에 담긴 총 상품 금액
+	 */
+	public int getPrice(String seqMember) {
+		try {
+			
+			String sql = "select sum(total) as total from vwbookcart where seqMember =?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seqMember);
+			
+			rs = pstat.executeQuery();
+			
+			if(rs.next()) {
+				return rs.getInt("total");
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
 		}
 		return 0;
 	}

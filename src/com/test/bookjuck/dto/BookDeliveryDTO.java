@@ -1,5 +1,10 @@
 package com.test.bookjuck.dto;
 
+/**
+ * 종이책 배달 DTO
+ * @author 오수경
+ *
+ */
 public class BookDeliveryDTO {
 	
 	private String seq;
