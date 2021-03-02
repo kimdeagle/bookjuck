@@ -31,6 +31,13 @@ public class NonMemberDAO {
 
 	   }
 
+	/**
+	 * @author 최진영
+	 * @param dto 회원 정보
+	 * @return 결과값 반환
+	 * 비회원 로그인 메소드
+	 * 
+	 */
 	// ############ (최진영) 시작
 	public int nmlogin(NonMemberDTO dto) {
 		try {
@@ -66,6 +73,13 @@ public class NonMemberDAO {
 	// ############ (최진영) 종료
 
 	
+	/**
+	 * @author 최진영
+	 * @param email 이메일
+	 * @return 결과값 반환
+	 * 이메일을 이용한 비회원 세션 반환 메소드
+	 * 
+	 */
 	// ############ (최진영) 시작
 	/* public NonMemberDTO getNonmember(String email, int tel, String pw) { */
 		public NonMemberDTO getNonmember(String email) {

@@ -9,6 +9,11 @@ import com.test.bookjuck.DBUtil;
 import com.test.bookjuck.dto.AdminDTO;
 import com.test.bookjuck.dto.MemberDTO;
 
+/**
+ * 
+ * @author 최진영
+ * 관리자 계정 정보
+ */
 public class AdminDAO {
 	
 	private Connection conn;
@@ -34,6 +39,12 @@ public class AdminDAO {
 
 	}
 
+	/**
+	 * @author 최진영
+	 * @param dto 로그인할 관리자 계정의 아이디, 비밀번호  호출
+	 * @return 로그인 결과
+	 * 관리자 로그인 
+	 */
 	public int login(AdminDTO dto) {
 		try {
 			
@@ -61,6 +72,13 @@ public class AdminDAO {
 		return 0;
 	}
 
+	
+	/**
+	 * @author 최진영
+	 * @param id 
+	 * @return 관리자 정보가 담긴 DTO
+	 * 세션에 관리자 정보 담기 위해 사용
+	 */
 	public AdminDTO getMember(String id) {
 		try {
 		String sql = "select * from tblAdmin where id = ?";
