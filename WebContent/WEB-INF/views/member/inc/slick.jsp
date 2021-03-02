@@ -10,7 +10,7 @@
             <h6>달러구트 꿈 백화점</h6>
             <p>여기는 잠들어야만 입장할 수 있는 ‘달러구트 꿈 백화점’입니다</p>
         </div>
-
+		
         <div class="slick-item">
             <img src="image/어떻게 살 것인가.png" class="book-sm">
             <h6>어떻게 살 것인가</h6>

@@ -233,7 +233,7 @@ public class MainBook extends HttpServlet {
 		
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/member/book/mainbook.jsp");
-		dispatcher.forward(req, resp);
+		dispatcher.include(req, resp);
 
 	}
 
