@@ -13,6 +13,11 @@ import com.test.bookjuck.dto.StatisticsPiDTO;
 
 import oracle.jdbc.OracleTypes;
 
+/**
+ * 통계-연령,성별 데이터 파이차트를 구현하기 위한 클래스
+ * @author 이현우
+ *
+ */
 public class StatisticsPiDAO {
 	
 	private Connection conn;
