@@ -13,6 +13,11 @@ import java.util.HashMap;
 import com.test.bookjuck.DBUtil;
 import com.test.bookjuck.dto.MemberDTO;
 
+/**
+ * 
+ * @author 최진영
+ * 회원 정보를 조작하기 위한 DAO
+ */
 public class MemberDAO {
 	private Connection conn;
 	private Statement stat;
@@ -37,7 +42,12 @@ public class MemberDAO {
 	}
 
 	
-
+	/**
+	 * @author 최진영
+	 * @param dto 회원 가입 데이터 저장
+	 * @return 회원가입 결과 
+	 * 회원가입에서 기입된 정보를 입력하는 메소드
+	 */
 	// ############ (최진영) 시작
 	public int add(MemberDTO dto) {
 
@@ -71,6 +81,12 @@ public class MemberDAO {
 	// ############ (최진영) 종료
 
 	
+	/**
+	 * @author최진영
+	 * @param dto 로그인 아이디, 비밀번호
+	 * @return 로그인 결과 
+	 * 로그인시 아이디와 비밀번호를 비교 후 결과값 반환하는 메소드
+	 */
 	// ############ (최진영) 시작 
 	public int login(MemberDTO dto) {
 
@@ -101,6 +117,11 @@ public class MemberDAO {
 	// ############ (최진영) 종료 
 
 	
+	/**
+	 * @author 최진영
+	 * @param id 계정 아이디
+	 * @return dto 
+	 */
 	// ############ (최진영) 시작
 	public MemberDTO getMember(String id) {
 		try {
@@ -129,6 +150,7 @@ public class MemberDAO {
 				dto.setPrivacy(rs.getInt("privacy"));
 				dto.setLastDate(rs.getString("lastDate"));
 				dto.setCuration(rs.getString("curation"));
+				
 				return dto;
 			}
 
@@ -139,7 +161,12 @@ public class MemberDAO {
 	}
   // ############ (최진영) 종료
 
-	
+	/**
+	 * @author 최진영
+	 * @param dto 큐레이션 레터 서비스 구독  
+	 * @return 결과값
+	 * 회원가입 큐레이션 구독 시 사용하는 메소드
+	 */
 	// ############ (최진영) 시작 
 	public int add_c(MemberDTO dto) {
 		
@@ -157,6 +184,13 @@ public class MemberDAO {
 	}
 	// ############ (최진영) 종료
 
+	
+	/**
+	 * @author최진영
+	 * @param id  아이디
+	 * @return 결과값
+	 * 회원 가입시 아이디 중복 검사 메소드
+	 */
 	// ############ (최진영) 시작
 	public int checkId(String id) {
 	
@@ -184,6 +218,14 @@ public class MemberDAO {
 	// ############ (최진영) 종료
 
 	
+	
+	/**
+	 * @author 최진영
+	 * @param ssn 주민번호
+	 * @param name 이름
+	 * @return 결과값
+	 * 주민번호를 이용한 아이디 찾기
+	 */ 
 	// ############ (최진영) 시작
 	public String findIdSsn(String ssn, String name) {
 		
@@ -250,6 +292,13 @@ public class MemberDAO {
 	// ############ (조아라) 끝
 
 	
+	/**
+	 * @author 최진영
+	 * @param email 이메일
+	 * @param name	이름
+	 * @return 결과값
+	 * 이메일을 이용한 아이디 찾기
+	 */
 	// ############ (최진영) 시작
 	public String findIdEmail(String email, String name) {
 		try {
@@ -274,6 +323,13 @@ public class MemberDAO {
 	// ############ (최진영) 종료
 
 	
+	/**
+	 * @author최진영
+	 * @param tel 전화번호
+	 * @param name 이름
+	 * @return 결과값
+	 * 전화번호를 이용한 아이디 찾기
+	 */
 	// ############ (최진영) 시작
 	public String findIdTel(int tel, String name) {
 		
@@ -299,6 +355,14 @@ public class MemberDAO {
 	// ############ (최진영) 종료
 
 	
+	/**
+	 * @author 최진영
+	 * @param email 이메일
+	 * @param name 이름
+	 * @param id 아이디
+	 * @return 결과값
+	 * 이메일 아이디를 이용한 비밀번호 찾기
+	 */
 	// ############ (최진영) 시작
 	public String findPwEmail(String email, String name, String id) {
 		try {
@@ -323,6 +387,15 @@ public class MemberDAO {
 	}
 	// ############ (최진영) 종료
 
+	
+	/**
+	 * @author 최진영
+	 * @param ssn 주민번호
+	 * @param name 이름
+	 * @param id 아이디
+	 * @return 결과값
+	 * 주민번호 아이디를 이용한 비밀번호 찾기
+	 */
 	// ############ (최진영) 시작
 	public String findPwSsn(String ssn, String name, String id) {
 		try {
@@ -347,6 +420,15 @@ public class MemberDAO {
 	}
 	// ############ (최진영) 종료
 
+	
+	/**
+	 * @author 최진영
+	 * @param tel 전화번호
+	 * @param name 이름
+	 * @param id 아이디
+	 * @return 결과값
+	 *  전화번호 아이디를 이용한 비밀번호 찾기
+	 */
 	// ############ (최진영) 시작
 	public String findPwTel(int tel, String name, String id) {
 		try {
@@ -372,6 +454,13 @@ public class MemberDAO {
 	// ############ (최진영) 종료
 
 	
+	
+	/**
+	 * @author 최진영
+	 * @param map 회원관리 페이지 시작번호, 끝 번호
+	 * @return 회원정보 리스트 반환
+	 * 관리자 회원 관리 페이지 회원 정보 리스트 메소드
+	 */
 	// ############ (최진영) 시작	
 	public ArrayList<MemberDTO> custMngList(HashMap<String, String> map) {
 		
@@ -414,7 +503,13 @@ public class MemberDAO {
 	}
 	// ############ (최진영) 종료
 	
-	
+	/**
+	 * 
+	 * @author 최진영
+	 * @param map 회원 총 페이지
+	 * @return  회원 총 페이지
+	 * 총 페이지 개수를 반환하는 메소드
+	 */
 	// ############ (최진영) 시작
 	public int getTotalCount(HashMap<String, String> map) {
 		
@@ -443,6 +538,12 @@ public class MemberDAO {
 	// ############ (최진영) 종료
 
 	
+	/**
+	 * @author 최진영
+	 * @param dto 회원 번호
+	 * @return 결과값
+	 * 회원 번호를 이용한 회원 삭제 메소드
+	 */
 	// ############ (최진영) 시작
 	public int del(MemberDTO dto) {
 		
@@ -463,7 +564,12 @@ public class MemberDAO {
    // ############ (최진영) 종료
 
 	
-	
+	/**
+	 * @author 최진영
+	 * @param dto_m 회원 정보
+	 * @return 결과값 반환
+	 * 관리자 휴면 계정 관리에서 휴면 계정 -> 일반 계정 전환 시 중복 확인 메소드
+	 */
 	// ############ (최진영) 시작
 	public int check(MemberDTO dto_m) {
 		try {
@@ -509,7 +615,12 @@ public class MemberDAO {
 		return 0;
 	}
 
-	
+	/**
+	 * @author 최진영
+	 * @param dto 회원 정보
+	 * @return 결과값
+	 * 회원 정보 수정 메소드
+	 */
 	// ############ (최진영) 시작
 	public int edit(MemberDTO dto) {
 		try {
@@ -525,8 +636,6 @@ public class MemberDAO {
 			pstat.setString(5, dto.getId());
 			pstat.setString(6, dto.getPw());
 			
-			System.out.println("제발 돼주세요 제발요");
-			
 			return pstat.executeUpdate();
 
 		} catch (Exception e) {
@@ -538,6 +647,12 @@ public class MemberDAO {
 	// ############ (최진영) 종료
 	
 
+	/**
+	 * @author 최진영
+	 * @param dto 회원 번호
+	 * @return 결과갑 반환
+	 * 큐레이션 레터 서비스 구독 -> 비구독 전환 메소드
+	 */
 	// ############ (최진영) 시작
 	public int del_c(MemberDTO dto) {
 		try {
@@ -557,6 +672,12 @@ public class MemberDAO {
 	// ############ (최진영) 종료
 
 	
+	/**
+	 * @author 최진영
+	 * @param dto 회원 비밀번호, 아이디 
+	 * @return 결과값
+	 * 비밀번호 변경 메소드
+	 */
 	// ############ (최진영) 시작
 	public int pwEdit(MemberDTO dto) {
 		
@@ -572,7 +693,7 @@ public class MemberDAO {
 			return pstat.executeUpdate();
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println(e);
 		}
 		return 0;
 	}

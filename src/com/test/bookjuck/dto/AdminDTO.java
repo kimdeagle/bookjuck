@@ -1,5 +1,10 @@
 package com.test.bookjuck.dto;
 
+/**
+ * 어드민 계정 정보를 담고 있는 DTO 입니다.
+ * @author 최진영
+ *
+ */
 public class AdminDTO {
 	
 	private String seq; 		//번호

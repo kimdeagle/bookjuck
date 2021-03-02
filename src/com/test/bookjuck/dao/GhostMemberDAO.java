@@ -11,6 +11,11 @@ import com.test.bookjuck.DBUtil;
 import com.test.bookjuck.dto.GhostMemberDTO;
 import com.test.bookjuck.dto.MemberDTO;
 
+/**
+ * 휴면 계정 메소드
+ * @author 최진영
+ *
+ */
 public class GhostMemberDAO {
 
 	   private Connection conn;
@@ -35,6 +40,13 @@ public class GhostMemberDAO {
 
 	   }
 	  
+	   
+	   /**
+	    * 일반계정 -> 휴면계정 전환 메소드
+	    * @author 최진영
+	    * @param dto 휴면계정 정보 DTO
+	    * @return 결과값 
+	    */
 	// ############ (최진영) 시작
 	public int add(GhostMemberDTO dto) {
 		try {
@@ -59,6 +71,12 @@ public class GhostMemberDAO {
 	// ############ (최진영) 종료
 	
 	
+	/**
+	 * 일반계정 -> 휴면계정 전환시 중복 확인 
+	 * @author 최진영
+	 * @param dto 휴면 정보 DTO
+	 * @return 결과값
+	 */
 	// ############ (최진영) 시작
 	public int check(MemberDTO dto) {
 		try {
@@ -83,6 +101,11 @@ public class GhostMemberDAO {
 	// ############ (최진영) 종료
 
 	
+	/**
+	 * 관리자 휴면 계정 관리 페이지에서 휴면 계정 리스트 반환 메소드
+	 * @param map 시작번호, 끝번호
+	 * @return 결과값 반환
+	 */
 	// ############ (최진영) 시작
 	public ArrayList<GhostMemberDTO> custDmcList(HashMap<String, String> map) {
 		
@@ -128,7 +151,12 @@ public class GhostMemberDAO {
 	}
 	// ############ (최진영) 종료
 
-	
+	/**
+	 * 휴면 계정 관리 총페이지 반환 메소드
+	 * @author최진영
+	 * @param map 휴면 계정 
+	 * @return 결과값
+	 */
 	// ############ (최진영) 시작
 	public int getTotalCount(HashMap<String, String> map) {
 		
@@ -151,6 +179,13 @@ public class GhostMemberDAO {
 	}
 	// ############ (최진영) 종료
 	
+	/**
+	 * 휴면 계정 중복 환인 메소드
+	 * @author 최진영
+	 * @param id 아이디
+	 * @param pw 비밀번호
+	 * @return 결과값
+	 */
 	// ############ (최진영) 시작
 	public int check(String id, String pw) {
 		try {
@@ -176,6 +211,15 @@ public class GhostMemberDAO {
 	}
 	// ############ (최진영) 종료
 
+	
+	/**
+	 * 휴면 계정 삭제 메소드
+	 * @author 최진영
+	 * @param dto 휴면 정보
+	 * @return 결과값
+	 * 
+	 */
+	// ############ (최진영) 시작
 	public int del(GhostMemberDTO dto) {
 		try {
 			String sql = "DELETE FROM tblGhostMember where seq = ?";
@@ -191,6 +235,6 @@ public class GhostMemberDAO {
 		}
 		return 0;
 	}
-
+	// ############ (최진영) 종료
 	
 }
