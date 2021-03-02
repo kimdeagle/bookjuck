@@ -42,7 +42,7 @@
             <input type="hidden" class="form-control" id="t_key" name="t_key" value="L9BSPPCImhVbYsYrWTr6fg">
             </div>
             <div class="form-group">
-            <input type="hidden" class="form-control" name="t_code" id="t_code" value="택배사 코드">
+            <input type="hidden" class="form-control" name="t_code" id="t_code" value="04">
             </div>
             <div class="form-group">
             <label for="t_invoice">운송장 번호</label>

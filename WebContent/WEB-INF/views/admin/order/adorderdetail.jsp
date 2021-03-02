@@ -378,6 +378,14 @@
 
 	</div>
 
+<style>
+/* 모달창 제어 */
+.modal .table th {
+    width: 150px;
+    text-align: center;
+}
+
+</style>
 
 	<!-- ######### Modal 자사배송 도서 주문상태 모달 -->
     <div class="modal fade" id="orderstate" role="dialog" aria-labelledby="orderstateHeader" aria-hidden="true" tabindex="-1">
@@ -391,7 +399,7 @@
                         <table class="table">
                             <tr>
                                 <th>주문번호</th>
-                                <td>00000000</td>
+                                <td>1679524</td>
                             </tr>
                             <tr>
                                 <th>주문상태</th>
@@ -432,7 +440,7 @@
                         <table class="table">
                             <tr>
                                 <th>주문번호</th>
-                                <td>00000000</td>
+                                <td>1679524</td>
                             </tr>
                             <tr>
                                 <th>처리상태</th>
@@ -540,7 +548,7 @@
                         <table class="table">
                             <tr>
                                 <th>주문번호</th>
-                                <td>00000000</td>
+                                <td>1679524</td>
                             </tr>
                             <tr>
                                 <th colspan="2" style="text-align: center; font-size: 1.7em;">해당 주문을 취소하시겠습니까?</th>

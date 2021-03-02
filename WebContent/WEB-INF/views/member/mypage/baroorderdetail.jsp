@@ -136,7 +136,7 @@
                   <th>환불금액</th>
                   <th>환불 포인트</th>
                </tr>
-               <c:forEach items="${plist}" var="bpdto">
+               <c:forEach items="${plist}" var="pdto">
                <tr>
                   <td>${pdto.totalPay}</td>
                   <!-- 비회원일 경우 0 -->
