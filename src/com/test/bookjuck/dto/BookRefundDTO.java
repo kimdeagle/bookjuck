@@ -1,5 +1,9 @@
 package com.test.bookjuck.dto;
-
+/**
+ * 일반배송 주문환불 DTO입니다.
+ * @author 김다은
+ *
+ */
 public class BookRefundDTO {
 	
 	private String seq;

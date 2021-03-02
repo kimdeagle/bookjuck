@@ -44,6 +44,11 @@ public class UsedBoardDAO {
 	// ############ (김다은) 시작
 
 	// WriteOk 서블릿이 글쓰기를 위임
+	/**
+	 * 중고거래 게시판에서 글쓰기를 위한 메서드입니다.
+	 * @param dto
+	 * @return 반환 결과 성공시 1, 실패시 0
+	 */
 	public int write(UsedBoardDTO dto) {
 
 		try {
@@ -72,6 +77,11 @@ public class UsedBoardDAO {
 	
 	
 	//List 서블릿이 글 목록을 달라고 위임
+	/**
+	 * 중고거래 게시판에서 글목록을 반환하는 메서드입니다.
+	 * @param map
+	 * @return list
+	 */
 	public ArrayList<UsedBoardDTO> list(HashMap<String, String> map) {
 
 		try {
@@ -172,6 +182,10 @@ public class UsedBoardDAO {
 
 	
 	//조회 수 증가시키기
+	/**
+	 * 중고게시판 글 조회 수를 증가시키는 메서드입니다.
+	 * @param seq
+	 */
 	public void updateReadcnt(String seq) {
 
 		try {
@@ -193,6 +207,11 @@ public class UsedBoardDAO {
 
 	
 	//EditOk 서블릿 -> 글 수정해달라고 요청
+	/**
+	 * 중고게시판에서 글을 수정하는 메서드입니다.
+	 * @param dto
+	 * @return
+	 */
 	public int edit(UsedBoardDTO dto) {
 
 		try {
@@ -262,6 +281,11 @@ public class UsedBoardDAO {
 
 	//총 게시물 수 를 세는 메서드
 	//List 서블릿 -> 총 게시물 수 반환
+	/**
+	 * 중고거래 게시판의 총 게시물 수 를 세는 메서드입니다.
+	 * @param map
+	 * @return
+	 */
 	public int getTotalCount(HashMap<String, String> map) {
 		
 		try {
@@ -295,6 +319,11 @@ public class UsedBoardDAO {
 	
 	
 	//CommentOk 서블릿 -> 댓글 쓰기
+	/**
+	 * 중고거래 게시판의 댓글을 쓰는 메서드입니다.
+	 * @param dto
+	 * @return
+	 */
 	public int writeComment(CommentDTO dto) {
 		
 		try {
@@ -318,6 +347,11 @@ public class UsedBoardDAO {
 	
 	
 	//View 서블릿 -> 댓글 목록
+	/**
+	 * 중고게시판 상세보기에서 댓글 목록을 불러오는 메서드입니다.
+	 * @param seq
+	 * @return
+	 */
 	public ArrayList<CommentDTO> listComment(String seq) {
 		
 
@@ -360,6 +394,11 @@ public class UsedBoardDAO {
 
 	
 	//Comment 삭제 메서드
+	/**
+	 * 중고거래 게시판에서 댓글을 삭제하는 메서드입니다.
+	 * @param seq
+	 * @return
+	 */
 	public int deleteComment(String seq) {
 		
 		try {

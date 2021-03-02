@@ -1,5 +1,9 @@
 package com.test.bookjuck.dto;
-
+/**
+ * 일반배송 주문교환 DTO입니다.
+ * @author 김다은
+ *
+ */
 public class BookChangeDTO {
 	
 	private String seq; 

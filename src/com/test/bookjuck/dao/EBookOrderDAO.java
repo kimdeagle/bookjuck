@@ -12,6 +12,11 @@ import com.test.bookjuck.dto.BaroOrderDTO;
 import com.test.bookjuck.dto.BookOrderDetailDTO;
 import com.test.bookjuck.dto.EBookOrderDTO;
 
+/**
+ * ebook 주문과 관련된 메서드들을 담고있는 DAO입니다.
+ * @author 김다은
+ *
+ */
 public class EBookOrderDAO {
 	
 
