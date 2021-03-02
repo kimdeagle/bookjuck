@@ -229,6 +229,51 @@ public class CategoryDAO {
 		
 		return null;
 	}
+
+	//Category 서블릿 -> 도서번호로 소분류 카테고리 가져오기
+	public ArrayList<CategoryDTO> sCategoryList(String seqBook) {
+
+		try {
+			
+			String sql = "select seqMCategory from viewBook where seq = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seqBook);
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				String seqMCategory = rs.getString("seqMCategory");
+				
+				sql = "select * from vwSCategory where seqMCategory = ?";
+				pstat = conn.prepareStatement(sql);
+				pstat.setString(1, seqMCategory);
+				
+				rs = pstat.executeQuery();
+				
+				ArrayList<CategoryDTO> sCategoryList = new ArrayList<CategoryDTO>();
+				
+				while (rs.next()) {
+					CategoryDTO dto = new CategoryDTO();
+					
+					dto.setSeqLCategory(rs.getString("seqLCategory"));
+					dto.setSeqMCategory(rs.getString("seqMCategory"));
+					dto.setSeqSCategory(rs.getString("seqSCategory"));
+					dto.setlCategory(rs.getString("lCategory"));
+					dto.setmCategory(rs.getString("mCategory"));
+					dto.setsCategory(rs.getString("sCategory"));
+					
+					sCategoryList.add(dto);
+				}
+				
+				return sCategoryList;
+			}
+			
+		} catch (Exception e) {
+			System.out.println("CategoryDAO.sCategoryList()");
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
 	
 	//주혁 끝
 	

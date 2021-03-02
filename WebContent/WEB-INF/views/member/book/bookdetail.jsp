@@ -88,7 +88,7 @@
 							<input type="button" value="+" class="plus btn btn-default btn-sm">
 						</div>
 						<div class="btns">
-							<button class="btn btn-success btn-lg btn-block cart" onclick="fnCart()">장바구니</button>
+							<button class="btn btn-success btn-lg btn-block cart" onclick="">장바구니</button>
 							<button class="btn btn-primary btn-lg btn-block buy">바로구매</button>
 							<button class="btn btn-warning btn-lg btn-block baro">바로드림</button>
 						</div>
@@ -151,9 +151,7 @@
 	
 	// 수경
 	
-	function fnCart(name,price) {
-		alert="장바구니에 담으시겠습니까?";
-	}
+	
 
 	
 	

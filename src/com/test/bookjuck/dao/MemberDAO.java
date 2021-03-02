@@ -105,7 +105,7 @@ public class MemberDAO {
 	public MemberDTO getMember(String id) {
 		try {
 
-			String sql = "select * from tblMember where id = ?";
+			String sql = "select * from vwCustMng where id = ?";
 
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, id);
@@ -128,7 +128,7 @@ public class MemberDAO {
 				dto.setPoints(rs.getInt("points"));
 				dto.setPrivacy(rs.getInt("privacy"));
 				dto.setLastDate(rs.getString("lastDate"));
-
+				dto.setCuration(rs.getString("curation"));
 				return dto;
 			}
 
@@ -486,5 +486,96 @@ public class MemberDAO {
 		return 0;
 	}
    // ############ (최진영) 종료
+
+
+	//############ 수경 시작
+	public int getPoint(String id) {
+		try {
+			
+			String sql = "select points from tblMember where id=?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, id);
+			rs = pstat.executeQuery();
+			
+			if(rs.next()) {
+				return rs.getInt("points");
+			}
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
+
 	
+	// ############ (최진영) 시작
+	public int edit(MemberDTO dto) {
+		try {
+
+			String sql = "update tblMember set tel=?, address=?, privacy=?, email=? where id =? and pw =?";
+
+			pstat = conn.prepareStatement(sql);
+			
+			pstat.setInt(1, dto.getTel());
+			pstat.setString(2, dto.getAddress());
+			pstat.setInt(3, dto.getPrivacy());
+			pstat.setString(4, dto.getEmail());
+			pstat.setString(5, dto.getId());
+			pstat.setString(6, dto.getPw());
+			
+			System.out.println("제발 돼주세요 제발요");
+			
+			return pstat.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+		return 0;
+	}
+	// ############ (최진영) 종료
+	
+
+	// ############ (최진영) 시작
+	public int del_c(MemberDTO dto) {
+		try {
+			String sql = "delete from tblLetterRecipient where seqmember=?";
+			
+			pstat = conn.prepareStatement(sql);
+			
+			pstat.setString(1, dto.getPw());
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}		
+		return 0;
+	}
+	// ############ (최진영) 종료
+
+	
+	// ############ (최진영) 시작
+	public int pwEdit(MemberDTO dto) {
+		
+		try {
+			
+			String sql = "update tblMember set pw =? where id= ? ";
+			
+			pstat = conn.prepareStatement(sql);
+			
+			pstat.setString(1, dto.getPw());
+			pstat.setString(2, dto.getId());
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return 0;
+	}
+	// ############ (최진영) 종료
+
 }

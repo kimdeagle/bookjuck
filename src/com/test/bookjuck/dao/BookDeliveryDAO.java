@@ -69,9 +69,41 @@ public ArrayList<BookDeliveryDTO> listBookDelivery(String seqBookOrder) {
 	}
 	
 	return null;
+}
+
+public ArrayList<BookDeliveryDTO> getLatestDelivery(String seq) {
+	try {
+		
+		String sql = "select * from vwBookOrderList where seqMember = ? and rownum = 1 order by orderDate desc";
+		
+		pstat = conn.prepareStatement(sql);
+		pstat.setString(1, seq);
+		
+		rs = pstat.executeQuery();
+		
+		ArrayList<BookDeliveryDTO> list = new ArrayList<BookDeliveryDTO>();
+		
+		while(rs.next()) {
+			
+			BookDeliveryDTO dto = new BookDeliveryDTO();
+			
+			dto.setName(rs.getString("deliveryname"));
+			dto.setAddress(rs.getString("deliveryaddress"));
+			dto.setTel(rs.getString("deliverytel"));
+			
+			list.add(dto);
+			
+		}
+		
+		return list;
+		
+	} catch (Exception e) {
+		System.out.println("BookDeliveryDAO getLastestDelivery : "+e);
+	}
+	return null;
 }	
 
 //################# 오수경 ####################
-//################# 시작 ####################
+//################# 끝 ####################
 	
 }

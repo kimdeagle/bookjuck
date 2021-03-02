@@ -10,7 +10,7 @@
 
     <div id="intro">
         <p>어서오세요, <strong>홍길동</strong>님!</p>
-        <p><a href="#">포인트 : 200,000</a></p>
+        <p><a href="/bookjuck/member/mypage/point.do">포인트 : ${points} </a></p>
     </div>
 
     <div id="mypagemenu">
@@ -22,9 +22,9 @@
                 </ul>
             <li class="menuitem"><h6>나의 정보</h6></li>
                 <ul>
-                    <li class="menusubitem"><a href="#">회원정보 조회/수정</a></li>
-                    <li class="menusubitem"><a href="#">비밀번호 수정</a></li>
-                    <li class="menusubitem"><a href="#">회원탈퇴</a></li>
+                    <li class="menusubitem"><a href="/bookjuck/member/mypage/custinfo.do">회원정보 조회/수정 </a></li>
+                    <li class="menusubitem"><a href="/bookjuck/member/mypage/pwedit.do">비밀번호 수정</a></li>
+                    <li class="menusubitem"><a href="/bookjuck/member/mypage/withdrawal.do">회원탈퇴</a></li>
                 </ul>
             <li class="menuitem"><h6>기타</h6></li>
                 <ul>

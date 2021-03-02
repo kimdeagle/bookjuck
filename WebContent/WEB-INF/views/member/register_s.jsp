@@ -68,26 +68,7 @@
 				<td><input type="password" class="log-md" id="cpw" name="cpw" maxlength="20" required></td>
 				<td><a>[유의사항]</a></td>
 			</tr>
-			<!-- <tr>
-				<td colspan = "3">
-					<div class="progress">
-						<div class="progress-bar progress-bar-danger" role="progressbar" style="width:25%">
-	    				위험
-					    </div>
-						<div class="progress-bar progress-bar-warning" role="progressbar" style="width:50%">
-						경고
-						</div>
-						<div class="progress-bar progress-bar-info" role="progressbar" style="width:75%">
-						주의
-						</div>
-						<div class="progress-bar progress-bar-success" role="progressbar" style="width:100%">
-						안전
-						</div>
-					</div>
-				</td>
-				<td></td>
-				<td></td>
-			</tr> -->
+			
 		</table>
 		<!-- 회원 아이디 정보 입력  끝-->
 	
@@ -97,24 +78,19 @@
 		<table class="createId table" id="test001">
 			<tr>
 				<th>이름:</th>
-				<td><%= name%></td>
+				<td><input type="text" class="log-md"></td>
 			</tr>
 			<tr>
 				<th>성별:</th>
 				<td>
-					<c:if test="${param.ssn2.substring(0,1) eq '1'}">
-						남자
-					</c:if>
-					
-					<c:if test="${param.ssn2.substring(0,1) eq '2'}">
-						여자
-					</c:if>  
+					<label>여자<input type="radio" name="gender"  value="1" checked></label>
+					<label>남자<input type="radio" name="gender"  value="2"></label>
 				</td>
 			</tr>
 			<tr>
 				<th>주민번호:</th>
 				<td>
-					<%=ssn1%><span>- </span><%=ssn2%>
+					<input type="text" class="log-sm"><span>- </span><input type="text" class="log-sm">
 				</td>
 			</tr>
 			<tr>
@@ -129,13 +105,7 @@
 			</tr>
 			<tr>
 				<th>E-Mail:</th>
-				<td><%=email1 %><span>@</span><%=email2 %>
-				<!-- <select class="selectpicker">
-						<option>구글</option>
-						<option>네이버</option>
-						<option>다음</option>
-						<option>직접입력</option>
-				</select> --></td>
+				<td><input type="text" class="log-sm"><span>@</span><input type="text" class="log-md"></td>
 			</tr>
 			<tr>
 				<th>연락처:</th>

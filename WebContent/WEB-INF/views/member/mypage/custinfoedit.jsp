@@ -46,28 +46,28 @@
 				<h3>회원정보 수정</h3>
 
 				<h5>아이디 정보</h5>
-				<form action="" method="GET">
+				<form action="/bookjuck/member/mypage/custinfoeditok.do" method="GET" id="custinfo">
 				<table class="table table tbl-md" id="editidtbl">
 					<tr>
-						<th width="250">아이디:</th>
+						<th width="290">아이디:</th>
 						<td colspan="1">
-							TEST001
+							${id }
 						</td>
 						<td></td>
 					</tr>
 					<tr>
 						<th>비밀번호:</th>
-						<td>
-							<input type="password" class="info-md" maxlength="20" required>
+						<td >
+							<input type="password" id ="pw" name="pw" class="info-md" maxlength="20" required>
 						</td>
 						<td>
-							<a>[비밀번호 보기]</a>
+							<a id="pwview" onmouseover="over()">[비밀번호 보기]</a>
 						</td>
 					</tr>
 					<tr>
 						<th>비밀번호 재확인:</th>
 						<td>
-							<input type="password" class="info-md" maxlength="20" required>
+							<input type="password" id ="cpw" name="cpw" class="info-md" maxlength="20" required>
 							<p>비밀번호 안전 등급 표기 위치</p>
 						</td>
 						<td>
@@ -85,48 +85,57 @@
 				<table class="createId table" id="test001">
 			<tr>
 				<th>이름:</th>
-				<td>홍길동</td>
+				<td>${name}</td>
 			</tr>
 			<tr>
 				<th>성별:</th>
-				<td>남자</td>
-			</tr>
-			<tr>
-				<th>주민번호:</th>
 				<td>
-					940123-1122345
+					<c:if test="${ssn.substring(7,8) eq '1'}">
+						남자
+					</c:if>
+					
+					<c:if test="${ssn.substring(7,8) eq '2'}">
+						여자
+					</c:if> 
 				</td>
 			</tr>
 			<tr>
+				<th>주민번호:</th>
+				<td>${ssn}</td>
+			</tr>
+			<tr>
 				<th>주소:</th>
-				<td><input type="text" class="info-lg" placeholder="" required></td>
+				<td><input type="text" id="address" name="address" class="info-lg" placeholder="${address}" required></td>
 			</tr>
 			<tr>
 				<th>E-Mail:</th>
-				<td><input type="text" class="info-sm" required><span>@</span><input
-					type="text" class="info-md" required> <select class="selectpicker">
-						<option>구글</option>
-						<option>네이버</option>
-						<option>다음</option>
-						<option>직접입력</option>
-				</select></td>
+				<td><input type="email" id="email" name="email" class="info-lg" placeholder="${email}" required>					
 			</tr>
 			<tr>
 				<th>연락처:</th>
-				<td><input type="text" class="info-sm" maxlength="3" required><span>-</span><input
-								type="text" class="info-sm" maxlength="4" required><span>-</span><input
-								type="text" class="info-sm" maxlength="4" required></td>
+				<td><input type="text" id="tel" name="tel" class="info-lg" maxlength="11" placeholder="0${tel}" required></td>
 			</tr>
 			<tr>
 				<th>큐레이션레터 서비스:</th>
-				<td> <label>구독<input type="radio" name="subscriptBtn" checked></label><label>비구독<input type="radio" name="subscriptBtn"></label></td>
+				<td> 
+					 <label>구독<input type="radio" name="subscriptBtn" value="구독" checked></label>
+					 <label>비구독<input type="radio" name="subscriptBtn" value="비구독"></label>
+			    </td>
 			</tr>
 			<tr>
 				<th>개인정보 유효 기간</th>
-				<td> <label>1년<input type="radio" name="term" checked></label><label>2년<input type="radio" name="term" cheked value="3"></label><label>5년<input type="radio" name="term" cheked value="3"></label><label>10년<input type="radio" name="term" cheked value="3"></label></td>
+				<td> 
+					<label>1년<input type="radio" name="term"  value="1" checked></label>
+				    <label>2년<input type="radio" name="term"  value="2"></label>
+				    <label>5년<input type="radio" name="term"  value="5"></label>
+				    <label>10년<input type="radio" name="term" value="10"></label>
+				</td>
 			</tr>		
 		</table>
-		<input type="submit" class="btn btn-general" id="submit-btn" value="수 정">
+		<input type="submit" class="btn btn-general" id="submit-btn" value="확   인">
+		
+		<input type="hidden" name="id" value="${id}">
+		
 		</form>
 	
 			</article>
@@ -139,6 +148,35 @@
 
 	</div>
 
+
+<script type="text/javascript">
+	
+	/*비밀번호 중복 검사*/
+	$("#custinfo").submit(function(evt) {
+		
+		//계정 비밀번호
+		var rpw = "${pw}";
+		
+		//비밀번호 재확인 중복 검사
+		if ($("#pw").val() != $("#cpw").val()) {
+			alert("암호가 일치하지 않습니다.");
+			evt.preventDefault();
+			return false; 
+		//계정 비밀번호 검사
+		}else if($("#pw").val() != rpw){
+			alert("계정 비밀번호가 틀렸습니다.");
+			evt.preventDefault();
+			return false;
+			
+		}		
+	});
+
+	/*비밀번호 보기*/
+	/* function over(){
+		alert('test');
+   	 	$("#pwview").prop("type", "text");
+    } */
+</script>
 
 
 </body>

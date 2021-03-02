@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.test.bookjuck.DBUtil;
 import com.test.bookjuck.dto.BaroOrderDTO;
@@ -114,7 +115,7 @@ public class OrderListDAO {
 	public ArrayList<BookOrderDetailDTO> listBookOrder(String seq) {
 		try {
 
-			String sql2 = "select distinct(seqBookOrder) from vwbookorderlist where seqmember = ?";
+			String sql2 = "select distinct(seqBookOrder),orderDate from vwbookorderlist where seqmember = ? order by orderDate";
 			
 			pstat = conn.prepareStatement(sql2);
 			pstat.setString(1, seq);
@@ -250,7 +251,7 @@ public class OrderListDAO {
 	public ArrayList<BaroOrderDTO> listBaroOrder(String seq) {
 		try {
 
-			String sql2 = "select distinct(seqBaroOrder) from vwbaroorderlist where seqmember = ?";
+			String sql2 = "select distinct(seqBaroOrder),orderDate from vwbaroorderlist where seqmember = ? order by orderDate";
 			
 			pstat = conn.prepareStatement(sql2);
 			pstat.setString(1, seq);
@@ -307,7 +308,7 @@ public class OrderListDAO {
 	public ArrayList<EBookOrderDTO> listEBookOrder(String seq) {
 		try {
 
-			String sql2 = "select distinct(seqEBookOrder) from vwEBookorderlist where seqmember = ?";
+			String sql2 = "select distinct(seqEBookOrder),orderDate from vwEBookorderlist where seqmember = ? order by orderDate";
 			
 			pstat = conn.prepareStatement(sql2);
 			pstat.setString(1, seq);
@@ -359,6 +360,30 @@ public class OrderListDAO {
 		}
 		
 		return null;
+	}
+
+
+	//컬럼명 as cnt로 바꿨는데 안 가져와짐, 주문상태에 따라 카운트하기
+	public int getCount(String seq, String orderState) {
+				
+		try {
+			
+			String sql = "select count(*) as cnt from vwBookorderlist where seqMember = ? and orderState = '?'";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			pstat.setString(2, orderState);
+			rs = pstat.executeQuery();
+			
+			if(rs.next()) {
+				return rs.getInt("cnt");				
+			}
+			
+			
+		} catch (Exception e) {
+			System.out.println("orderlistDAO getcount : "+e);
+		}
+		
+		return 0;
 	}
 
 
