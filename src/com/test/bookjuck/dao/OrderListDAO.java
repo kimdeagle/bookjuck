@@ -367,7 +367,7 @@ public class OrderListDAO {
 				
 		try {
 			
-			String sql = "select count(*) as cnt from vwBookorderlist where seqMember = ? and orderState = '?'";
+			String sql = "select count(*) as cnt from vwBookorderlist where seqMember = ? and orderState = ?";
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, seq);
 			pstat.setString(2, orderState);
