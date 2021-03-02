@@ -127,7 +127,7 @@
 		  	</div>
 		  	
 		  	<div class="form-group actionbtns">
-			  	<input type="button" class="btn btn-primary" id="btnEedit" value="수정">
+			  	<input type="button" class="btn btn-success" id="btnEedit" value="수정">
 			  	<c:if test="${empty seqLCategory}">
 				  	<input type="button" class="btn btn-default" id="btncancel" value="취소" onclick="location.href='/bookjuck/admin/book/ebooklist.do?page=${page}';">			  	
 			  	</c:if>
