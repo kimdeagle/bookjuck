@@ -16,7 +16,11 @@ import oracle.jdbc.OracleTypes;
 
 
 
-
+/**
+ * 도서와 관련된 모든 기능을 구현하기 위한 클래스
+ * @author 아라, 주혁, 현우
+ *
+ */
 
 public class BookDAO {
 	

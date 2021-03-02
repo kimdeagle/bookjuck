@@ -11,7 +11,11 @@ import com.test.bookjuck.DBUtil;
 import com.test.bookjuck.dto.BookDTO;
 import com.test.bookjuck.dto.StatisticsBarDTO;
 
-
+/**
+ * 통계-매출 막대그래프를 구현하기 위한 클래스
+ * @author 이현우
+ *
+ */
 public class StatisticsBarDAO {
 	
 	private Connection conn;
