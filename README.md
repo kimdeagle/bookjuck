@@ -28,8 +28,7 @@
 
 ### ▶ 담당 업무 구현 Development
 + __(사용자) 국내도서, 해외도서, E-Book 정보__
-
-+ __(관리자) 도서 관리, E-Book 관리__
++ __(관리자) 도서 관리, E-Book관리__
 
 <img src="images/development.png">
 
